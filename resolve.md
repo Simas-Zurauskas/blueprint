@@ -151,10 +151,15 @@ anything else is described, not written, and handed to the check.
 
 ### R3.2 The independent check
 
-**Fresh context, and a different model from the writer wherever two are available.** The measured variable
-is model identity, not context isolation: a model recognises its own generations at 73.5% and prefers
-them. Record `independence: writer <a>, checker <b>`, or `independence: same model, fresh context only`,
-in the entry and the report — and do not call the second one independence.
+**A genuinely separate agent dispatch, and a different model from the writer wherever two are available**
+([`SKILL.md`](SKILL.md) rule 6 is the single home of what "separate" requires and its fallback). The measured variable is
+model identity, not context isolation: a model recognises its own generations at 73.5% and prefers them.
+Record `independence: writer <a>, checker <b>`, or `independence: same model, fresh context only` —
+**only where a real second dispatch actually happened in a fresh context** — in the entry and the report,
+and do not call either one independence otherwise. **No second dispatch available means the check did not
+happen:** record `independence: could not be performed — no second dispatch available` and carry the item
+as unverified rather than writing `Clean` or `Patched` off the writer's own say-so. A same-turn "now I will
+check my own work" is not this phase; it is the exact rubber stamp this seam exists to prevent.
 
 **It receives:** the vetted `Answer & why`, the affected feature's requirements with the affected one first
 or last, that feature's `Not doing` lines, and the writer's proposed delta. The answer arrives as labelled
@@ -267,7 +272,9 @@ seed body is shown verbatim and whole**, never summarised.
 
 **Content first, properties second, read back after each batch — and on a locked Blueprint, the
 change-log entry with them** ([`lock.md`](lock.md) L4): one entry for the sitting, each applied answer a
-line, the question row cited as the ask. That order is what makes a crash safe: a
+line, the question row cited as the ask. **Regenerate every `⟳` view this sitting's applies touched**
+([`spec/doc-shape.md`](spec/doc-shape.md) §3's single home) in the same write-back — a fresh count from
+the rows as they now stand, never the prior view patched forward. That order is what makes a crash safe: a
 crash before the property writes leaves every row in the queue, however much work was done. **No single
 write call spans more than one named block.** Property writes go over the primary path first and are read
 back to confirm ([`spec/targets.md`](spec/targets.md) operation 6); anything that did not land is named in
@@ -288,7 +295,11 @@ away — with one exception, the only remedy for a run that died: **a human writ
 dead entry, by hand.** The entry opens at the top of R2. **A wall-clock time and a six-character run id** on
 the header, minted at R1 and never reused — the date alone cannot order two entries written the same day.
 **An entry is open until closed** — `CLOSED hh:mm` or `PAUSED …`, never neither. **Verdict reasons are keyed
-by feature ID beside the title**, because titles get edited and two features can read alike.
+by feature ID beside the title**, because titles get edited and two features can read alike. **Every count
+this entry states is recomputed from the actual rows at the moment of writing** ([`SKILL.md`](SKILL.md)
+rule 7) — never carried forward from what an earlier entry claimed or from what this sitting expected to
+be true going in; a marker or status tally that cannot be re-derived from the files right now does not go
+in the log.
 
 ```
 2026-08-12 09:14 · resolve · run 7f3a2c · skill v1 · queue 4 questions

@@ -23,7 +23,7 @@ one definition of what "locked" means.
 
 **Always printed, by `lock` and by [`status.md`](status.md) S3, from this one definition.** **Open the
 run-log entry before L3 writes anything**, and close it at the end ([`SKILL.md`](SKILL.md) pre-flight
-check 5). Six questions, each answered with names and counts, never a score:
+check 5). Seven questions, each answered with names and counts, never a score:
 
 | # | What it asks | Why it matters |
 |---|---|---|
@@ -33,13 +33,17 @@ check 5). Six questions, each answered with names and counts, never a score:
 | 4 | **Which features' `Behaviour` blocks hold no numbered requirement?** | A feature with no failable requirement is a title, not a spec |
 | 5 | **Which `Not doing` lines have no `revisit if:`?** | A refusal with no reopening condition becomes dogma |
 | 6 | **Which rows are still `Confirmed = AI generated`?** | Nobody has read them |
+| 7 | **Was the Operating block's owner ever confirmed with a human, or does it still read as inferred?** | [`init.md`](init.md) I3 is where this is meant to be settled; this question exists because a Blueprint can reach a lock having skipped that stop, or predate this rule, and nothing else ever asks again |
 
 **Then the final grilling.** Before anything is locked, run the adversarial battery of
 [`questions.md`](questions.md) Q2 — the lenses live there and are not restated here — over the whole
 document, one last time. A document about to become the thing people build from deserves one full attempt
 to break it. What the grilling finds becomes proposals through the ordinary gate, or is acknowledged at
 L2 with everything else; **an empty grilling result is not evidence the document is complete**, and the
-report says so.
+report says so. **Every discard and every "already decided" or "duplicate" citation this pass produces
+answers to [`questions.md`](questions.md) Q3's quote-must-answer rule exactly as any other sitting does —
+there is no final-grilling exception, and a citation that cannot quote the sentence it claims answers the
+gap is not a discard, it is a candidate that gets proposed.**
 
 **Match markers on `NEEDS CLARIFICATION` without the leading bracket**
 ([`spec/notion-mechanics.md`](spec/notion-mechanics.md) §3) — a literal `[NEEDS` match reports a clean
@@ -62,7 +66,17 @@ each one and say so.
 **Locking over an unsettled item is allowed. Locking over one silently is not.**
 
 Print the readiness report and the grilling result, then ask **one act at a time** for each category that
-is non-empty — not as a list, because every item put to a person as more than one act produces one act:
+is non-empty — not as a list, because every item put to a person as more than one act produces one act.
+
+**Every individual qualifying row gets its own numbered item — never grouped behind a count, and never
+pre-judged in prose beside another item's choice.** Two `Answered`-but-not-applied questions are two
+numbered items, each with its own `[r]esolve first · [i]nclude anyway · [h]old`, even where one is older
+or more familiar than the other. A run once gave one such question its full numbered choice and folded a
+second, newer one into an unnumbered aside describing it as "downstream mechanics" — its stale value then
+shipped with no marker warning a reader it had been superseded, and no choice was ever actually put to the
+human for it. **A row this category names is either given its own numbered choice, or the category is not
+yet fully enumerated** — a count with examples is not the same act as asking about every row the count
+contains.
 
 ```
 LOCK «Golden Crumb» — nothing is written yet.
@@ -102,7 +116,13 @@ still matters: it is the record that a person read it, not that a ceremony happe
 
 ## L3 — Lock it
 
-Append the `LOCKED` entry to the run log. That entry is what makes the lock real:
+**Regenerate every `⟳` view from the rows as they now stand** ([`spec/doc-shape.md`](spec/doc-shape.md)
+§3's single home) before writing anything else — the lock is the moment the front door most needs to be
+right, since it is what a reader now trusts as settled.
+
+Append the `LOCKED` entry to the run log, every count in it freshly recomputed at this moment
+([`SKILL.md`](SKILL.md) rule 7, never carried forward from L1's earlier read). That entry is what makes
+the lock real:
 
 ```
 2026-08-14 16:20 · lock · run 4d1e9a · skill v2

@@ -44,6 +44,13 @@ since the last run — in the UI, at their own pace, without this skill.
 source material bears on it — in which case it is proposed once, citing the earlier rejection so the
 reviewer can see they are being asked twice and why.
 
+**A row's `Confirmed by` or `Confirmed` field, if a human has already touched it, is read, never edited —
+not even to blank it, and not even where doing so seems to enforce this file's own gate correctly.**
+[`SKILL.md`](SKILL.md) rule 1 is the single home of this and bars clearing exactly as much as setting; a
+row that looks prematurely vetted is reported as a discrepancy and left alone — eligibility already runs
+on the `Confirmed` value, per [`spec/databases.md`](spec/databases.md) §4, so there is never a reason to
+touch what a human wrote to make a row ineligible.
+
 This phase is first because generating before reading it means proposing questions somebody already
 approved this morning. **Open the run-log entry here**, before any proposal is written, and close it at
 the end ([`SKILL.md`](SKILL.md) pre-flight check 5).
@@ -53,7 +60,7 @@ the end ([`SKILL.md`](SKILL.md) pre-flight check 5).
 ## Q2 — The grilling
 
 Over the Blueprint **as it stands now**, not as some earlier run left it. This is not a checklist pass —
-it is an attack. **Four adversarial lenses, each run as its own pass with its own framing**, because a
+it is an attack. **Five adversarial lenses, each run as its own pass with its own framing**, because a
 reader looking for everything finds the average of it; a reader trying to break one thing finds it. This
 phase is the single home of the lenses — [`init.md`](init.md) I2, [`add.md`](add.md) A2 and
 [`lock.md`](lock.md) L1 all point here and restate nothing.
@@ -77,6 +84,20 @@ cancelled or changed.
 **Lens 4 — collisions and boundaries.** Where two features touch the same record or state and neither
 says who wins · where a feature's edge touches another feature, a third party, or money, and nothing says
 which side of the line it falls · anything the overview's NOT-clause should refuse and does not.
+
+**Lens 5 — who is this for, really.** Reconcile the overview's `Who it's for` block against the features,
+in both directions. **A named user kind no feature serves** — walk each kind's line and find the
+requirement that delivers the job it hires the product for; none is a candidate. **An actor the
+requirements keep naming that `Who it's for` never does** — "the organiser", "a carrier", "staff" doing
+things in `Behaviour` blocks while the audience block is silent about them; every such actor is a
+candidate. **A job with no requirement behind it, and a feature no named kind wants** — both read as
+essence gaps, not feature gaps. **A product paragraph that never says what winning looks like** — no
+observable change anywhere that would tell anyone this worked ([`spec/doc-shape.md`](spec/doc-shape.md)
+§3) — is a candidate, phrased as *what one or two observable things would tell you this worked?*, never
+answered with an invented number. And where the sources named no audience at all, **the audience itself
+is the proposal**: ask who this is for, never invent a persona to fill the silence. This lens exists
+because a document can hold ten well-grilled features and still not say who the product is for or what
+success means — every other lens reads the features, and only this one reads the front door against them.
 
 **And the standing sweep, after the lenses** — the mechanical part:
 
@@ -227,7 +248,7 @@ it and vets their own answer. Approving a *question* and vetting an *answer* are
    **A marker pointing at a row that was *deleted* is not this route.** That is broken, and it is
    reported, never quietly removed — the difference is that a closed row still carries a reason and a
    deleted one carries nothing.
-4. **Where Q2 item 9 turned a decided exclusion loose in prose into a `Not doing` line, remove any marker
+4. **Where Q2's standing sweep item 5 turned a decided exclusion loose in prose into a `Not doing` line, remove any marker
    that line now answers, citing the line.** This is [`spec/doc-shape.md`](spec/doc-shape.md) §9
    **route 3**, and this step is its only executor. A decision is not an unknown, so a marker raised over
    something a source had already decided is blocking for nothing — but it is removed **because the line
@@ -241,7 +262,10 @@ it and vets their own answer. Approving a *question* and vetting an *answer* are
    until they do, nothing enters the document.
 7. **Log every proposal with its outcome**, including the rejected ones and the reason, so a rejection is
    answerable later without being an open question now.
-8. **Report.**
+8. **Regenerate every `⟳` view this sitting touched** ([`spec/doc-shape.md`](spec/doc-shape.md) §3's
+   single home) — a fresh count from the rows as they now stand, never the prior view patched forward.
+9. **Report** — every count in it freshly derived at the moment of printing ([`SKILL.md`](SKILL.md)
+   rule 7), never carried from an earlier sitting's tally.
 
 ```
 QUESTIONS — «Golden Crumb» · 2026-08-11

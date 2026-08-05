@@ -131,6 +131,11 @@ sees first.
 | The change log | the write run that made the change, one entry per sitting ([`../lock.md`](../lock.md) L4), each carrying the ask verbatim | anyone rewriting it — append-only, like the run log |
 | `Created` | the target, at creation | everyone |
 
+**"Never written by any run" bars clearing a field exactly as much as setting one** — a run that finds
+`Confirmed by` or `Confirmed = Human approved` already populated does not blank it to force a different
+state, even reasoning from a rule it read correctly ([`../SKILL.md`](../SKILL.md) rule 1 is the single home
+of this and the incident that made it explicit).
+
 The record of who decided must be untouchable by the thing whose confidence degrades before its competence
 does: users given an AI assistant wrote more insecure code *and rated it more secure*, trust 4.0 against
 1.5 (Perry et al., ACM CCS 2023).

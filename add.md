@@ -139,10 +139,11 @@ source record survives for the next attempt.
 
 ## A5 — Check, then questions, then finish
 
-**The faithfulness check is [`init.md`](init.md) I6 run over this run's writes only** — a separate context,
-a different model where two are available, briefed with this run's source record and the changed rows read
-back from the target. Same four verdicts, same rule that a removed claim always leaves a marker behind,
-same one retry.
+**The faithfulness check is [`init.md`](init.md) I6 run over this run's writes only** — a genuinely
+separate dispatch, a different model where two are available, briefed with this run's source record and
+the changed rows read back from the target ([`SKILL.md`](SKILL.md) rule 6 owns what "separate" requires,
+and the same `could not be performed` fallback applies if no second dispatch exists). Same four verdicts,
+same rule that a removed claim always leaves a marker behind, same one retry.
 
 One addition `add` needs: **the check also reads the affected feature's other requirements and its
 `Not doing` lines**, and a delta that contradicts one is `Flagged` rather than written — the same
@@ -161,7 +162,12 @@ Part of the write-back, not an extra step; ending without it is ending unfinishe
 **Write a `STALE AGREEMENT «feature»` line into the run-log entry for every `Agreed` feature this run
 wrote into** (A2 item 4). The printed `RE-AGREE THESE` block is not persisted, and
 [`status.md`](status.md) C6 reads that logged line — nothing anywhere records *when* a feature was
-agreed, so there is no other way for a later run to know. Then print **one screen**.
+agreed, so there is no other way for a later run to know.
+
+**Regenerate every `⟳` view this delta touched** ([`spec/doc-shape.md`](spec/doc-shape.md) §3's single
+home) as part of this same write-back, before printing the screen — never patch a view's existing text
+forward, and never leave a count in it that this sitting's writes have already made false. Then print
+**one screen**.
 
 ```
 ADD — «Golden Crumb» · 2026-08-11 · 1 source

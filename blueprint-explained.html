@@ -83,11 +83,11 @@
 <main class="page">
 
 <header>
-  <p class="eyebrow">Skill version 2</p>
+  <p class="eyebrow">Skill version 3</p>
   <h1>The Blueprint, explained</h1>
   <p class="lede">A product definition built from whatever exists &mdash; a client's material, a team's
   notes, or nothing but your own idea &mdash; grilled until the gray areas are named, and locked once it
-  is settled. Every gap in it is said out loud rather than guessed at.</p>
+  is settled. Every gap is said out loud instead of guessed at.</p>
   <p class="standfirst">The skill files beside this page are the source of truth. Where this page and
   those files disagree, those files are right.</p>
 </header>
@@ -95,22 +95,21 @@
 <nav class="toc" aria-label="Contents">
   <h2>Contents</h2>
   <ol>
-    <li><a href="#what">What it is, and what it is for</a>
+    <li><a href="#what">What it is</a>
       <span class="gloss">The one thing it refuses to do</span></li>
     <li><a href="#loop">What you actually do</a>
-      <span class="gloss">Seven steps, from a pile of notes to a settled definition</span></li>
-    <li><a href="#proposals">The grilling, and why a proposal is not a question</a>
-      <span class="gloss">Nothing planned is written or locked unattacked</span></li>
+      <span class="gloss">Seven steps, notes to settled definition</span></li>
+    <li><a href="#proposals">The grilling</a>
+      <span class="gloss">Five lenses, and why a proposal is not a question</span></li>
     <li><a href="#shape">The shape</a>
-      <span class="gloss">An overview, two databases, a log, and the change log</span></li>
+      <span class="gloss">An overview, two databases, two logs</span></li>
     <li><a href="#feature">A feature row is the spec</a>
-      <span class="gloss">Five blocks, and the one test for a requirement</span></li>
+      <span class="gloss">Five blocks, one test for a requirement</span></li>
     <li><a href="#lifecycle">The life of a question</a>
       <span class="gloss">Seven states, and who may move between them</span></li>
     <li><a href="#authority">What a machine may never decide</a></li>
-    <li><a href="#markers">Markers, and the one thing that blocks</a></li>
-    <li><a href="#freeze">Locking, and the change log</a>
-      <span class="gloss">The document stays live; the record starts</span></li>
+    <li><a href="#markers">Markers &mdash; the one thing that blocks</a></li>
+    <li><a href="#freeze">Locking, and the change log</a></li>
     <li><a href="#storage">Where it stores things</a></li>
     <li><a href="#limits">Limits, honestly</a></li>
   </ol>
@@ -118,182 +117,138 @@
 
 <section id="what">
   <p class="sec-num">One</p>
-  <h2>What it is, and what it is for</h2>
+  <h2>What it is</h2>
 
-  <p>A project starts as a pile of material nobody has reconciled: a deck, a call transcript, two pages of
-  notes, an email thread, and whatever three people remember differently. Somewhere in it is a product.
-  Also in it: two sources that contradict each other, four decisions nobody wrote down, and a dozen things
-  that were never decided at all and will therefore be decided by whoever writes the code first.</p>
+  <p>A project starts as a pile of material nobody has reconciled: a deck, a transcript, notes, and what
+  three people remember differently. Somewhere in it is a product. Also in it: sources that contradict
+  each other, decisions nobody wrote down, and a dozen things never decided at all &mdash; which will
+  therefore be decided by whoever writes the code first.</p>
 
-  <p>The Blueprint is what you get when that pile &mdash; or just the idea in your head &mdash; is turned
-  into a definition you can hand to whoever builds it, human or agent, and to whoever has to agree to it.
-  When it is settled you <strong>lock</strong> it, and from then on every change is one readable entry in
-  a change log.</p>
+  <p>The Blueprint turns that pile &mdash; or just the idea in your head &mdash; into a definition you can
+  hand to whoever builds it, human or agent. When it is settled, you <strong>lock</strong> it; from then
+  on every change is one readable entry in a change log.</p>
 
   <div class="callout">
     <p class="lbl">The one thing it will not do</p>
-    <p><strong>Guess.</strong> Every sentence traces to a source somebody can point at, or it is an
-    admitted gap carrying a marker and a question with a named owner. An unsupported sentence in a
-    specification is worse than an admitted gap: a gap gets asked about, a guess gets built.</p>
+    <p><strong>Guess.</strong> Every sentence traces to a source somebody can point at, or it becomes an
+    admitted gap with a question and a named owner. A gap gets asked about; a guess gets built.</p>
   </div>
 
-  <p>Everything else in this page is machinery for keeping that true while still being useful. Four things
-  should hold when it is done:</p>
+  <p>Four things hold when it is done:</p>
 
   <ul>
-    <li><strong>You can build from it.</strong> Hand a feature row to a developer or an agent and what
-    comes back is what you meant &mdash; including what you did <em>not</em> want built.</li>
-    <li><strong>It says what nobody has decided</strong>, in a list with names against it, instead of
-    quietly inventing an answer.</li>
-    <li><strong>It settles whether a new idea belongs</strong>, by citation rather than argument.</li>
-    <li><strong>What moved since we settled it is always one page.</strong> Every post-lock change
-    carries the ask in the words of whoever asked.</li>
+    <li><strong>You can build from it</strong> &mdash; including what you did <em>not</em> want built.</li>
+    <li><strong>It says what nobody has decided</strong>, with names, instead of inventing answers.</li>
+    <li><strong>It settles whether a new idea belongs</strong> &mdash; by citation, not argument.</li>
+    <li><strong>What moved since settling is always one page</strong>, in the words of whoever asked.</li>
   </ul>
 
-  <p><strong>It records intent, never implementation.</strong> Nothing here looks at a running app, reads
-  a repo, or tracks work in flight. That boundary is deliberate: a document that tries to be both a
-  definition and a status report is reliably neither. The document may keep growing after the lock &mdash;
-  ideas do &mdash; but every change is deliberate, gated, and logged.</p>
-
-  <p><strong>Worth it when</strong> somebody outside your head has to build this, or pay for it, or agree
-  to it &mdash; and "somebody" includes a coding agent, and includes you in three months. <strong>Not
-  worth it</strong> for a throwaway prototype.</p>
+  <p><strong>It records intent, never implementation.</strong> Nothing here reads code or tracks work in
+  flight &mdash; a document that tries to be both a definition and a status report is reliably neither.
+  Worth it when somebody outside your head has to build, pay for, or agree to this &mdash; and "somebody"
+  includes a coding agent, and you in three months.</p>
 </section>
 
 <section id="loop">
   <p class="sec-num">Two</p>
   <h2>What you actually do</h2>
 
-  <p>Seven steps, and only three of them are yours to think hard about.</p>
-
   <h3>1 &middot; Give it whatever you already have</h3>
-  <p><code>/blueprint init</code>, and hand over the material however it is &mdash; a deck, a transcript,
-  a page of notes, three contradictory documents, or nothing but yourself and ten minutes. It reads
-  everything <strong>verbatim first</strong>, then shows you a proposed skeleton: the features it found,
-  the exclusions, the contradictions, the gaps, and <strong>what it did not use and why</strong>. Then it
-  stops. Nothing is created until you confirm, and declining is a normal ending.</p>
-
-  <p>One shape of source it refuses: a code repository. What the product <em>should</em> do is not
-  recoverable from what somebody already built &mdash; <em>"the code does it, so that is what we
-  meant"</em> is the most common way a document records a bug as a requirement. Where a project is
-  half-built, describe the behaviour you want kept, in words, and that is a source like any other.</p>
+  <p><code>/blueprint init</code> &mdash; a deck, a transcript, contradictory notes, or nothing but ten
+  minutes of interview. It reads everything <strong>verbatim first</strong>, then shows a skeleton: the
+  features it found, who it's for, the exclusions, contradictions, gaps, the owner it proposes, and what
+  it did not use and why. Then it <strong>stops</strong> &mdash; nothing exists until you confirm. One
+  source it refuses: a code repository. What a product <em>should</em> do is not recoverable from what
+  somebody already built; describe the behaviour in words, and that is a source like any other.</p>
 
   <h3>2 &middot; It grills the document; you decide which finds are real</h3>
-  <p>The part that earns the tool, and it is never skipped &mdash; the skeleton at <code>init</code>,
-  every delta at <code>add</code>, the whole document before a lock. Covered on its own, next.</p>
+  <p>Never skipped &mdash; the skeleton at <code>init</code>, every delta at <code>add</code>, the whole
+  document before a lock. Covered next.</p>
 
-  <h3>3 &middot; You answer the ones you kept</h3>
-  <p>Write the answer <strong>and why</strong>, put your name in <code>Confirmed by</code>, and move
-  <code>Confirmed</code> to <code>Human approved</code>. A row still reading <code>AI generated</code> is
-  never applied, however good the answer looks &mdash; that is the whole job of the label.</p>
+  <h3>3 &middot; You answer the questions you kept</h3>
+  <p>Write the answer <strong>and why</strong>, your name in <code>Confirmed by</code>,
+  <code>Confirmed = Human approved</code>. A row still reading <code>AI generated</code> is never applied,
+  however good the answer looks.</p>
 
   <h3>4 &middot; <code>/blueprint resolve</code> writes the answers in</h3>
-  <p>For each vetted answer, one agent drafts the change and a <strong>second, independent</strong> one
-  checks it against the answer &mdash; asked <em>where is the inconsistency</em>, never <em>do you
-  agree</em>. Then it writes into the feature the question touches, removes the marker, and dates the
-  provenance line. Three outcomes, and the third is the honest one: <code>Clean</code>,
-  <code>Patched</code>, or <strong><code>Flagged</code></strong> &mdash; <em>we tried and could not write
-  this honestly</em>, with the objection on the row.</p>
+  <p>One agent drafts the change; a second, genuinely separate one checks it &mdash; asked <em>where is
+  the inconsistency</em>, never <em>do you agree</em>. Outcomes: <code>Clean</code>, <code>Patched</code>,
+  or <code>Flagged</code> &mdash; <em>we tried and could not write this honestly</em>, objection on the
+  row.</p>
 
   <h3>5 &middot; You agree the features</h3>
-  <p>Set <code>Intent = Agreed</code> yourself, and put your name to it. No run ever does either.</p>
+  <p><code>Intent = Agreed</code>, your name on it. No run ever does either.</p>
 
   <h3>6 &middot; <code>/blueprint lock</code></h3>
-  <p>It prints a readiness report, runs one final grilling over the whole document, and you acknowledge
-  each unsettled item on the record. Then the Blueprint is locked.</p>
+  <p>A readiness report, one final grilling, and your item-by-item acknowledgment on the record.</p>
 
   <h3>7 &middot; After that, every change writes the change log</h3>
-  <p>Locking halts nothing &mdash; the document stays live and every change still runs the same gates.
-  What changes is the record: one entry per change, with the ask in the words of whoever asked.</p>
-
-  <p><code>/blueprint add</code> takes more material in at any point, locked or not; <code>/blueprint
-  status</code> reads everything and writes nothing.</p>
+  <p>Locking halts nothing &mdash; the document stays live, every change runs the same gates. What changes
+  is the record. <code>/blueprint add</code> takes new material any time; <code>/blueprint status</code>
+  reads everything and writes nothing.</p>
 </section>
 
 <section id="proposals">
   <p class="sec-num">Three</p>
-  <h2>The grilling, and why a proposal is not a question</h2>
+  <h2>The grilling</h2>
 
   <p><strong>Nothing planned is ever written or locked without being adversarially attacked first.</strong>
-  The drafted skeleton at <code>init</code>, every delta at <code>add</code>, the whole document one last
-  time before a lock, and any time you ask &mdash; <em>"grill this spec"</em>. Four hostile lenses, each
-  run as its own pass:</p>
+  Five hostile lenses, each its own pass:</p>
 
   <ul>
-    <li><strong>The builder who must not guess</strong> &mdash; walks each feature as if implementing it
-    tomorrow, forbidden from deciding anything. Every place they would have to stop and ask is a find.
-    This lens reads the document the way its real consumer will.</li>
-    <li><strong>The hostile tester</strong> &mdash; attacks each requirement, hunting for an input or a
-    sequence the sentence does not decide. Its sharpest tool: draft both behaviours a requirement could
-    mean and compare &mdash; where the drafts diverge, the divergence names the question.</li>
+    <li><strong>The builder who must not guess</strong> &mdash; implements each feature in their head,
+    forbidden from deciding anything. Every forced pause is a find.</li>
+    <li><strong>The hostile tester</strong> &mdash; hunts inputs a requirement does not decide. Sharpest
+    tool: draft both behaviours a sentence could mean; where the drafts diverge, that names the question.</li>
     <li><strong>The first week of real life</strong> &mdash; data lifecycle, permissions, empty and error
-    states, anything touching money, what exists on day one.</li>
+    states, money, day one.</li>
     <li><strong>Collisions and boundaries</strong> &mdash; two features touching the same record with
-    nothing saying who wins; edges where a feature meets another feature, a third party, or money.</li>
+    nothing saying who wins; edges that meet a third party or money.</li>
+    <li><strong>Who is this for, really</strong> &mdash; reads the front door against the features: a
+    named user kind no feature serves, an actor the requirements keep naming that the audience block never
+    does, a product paragraph that never says what winning looks like.</li>
   </ul>
 
-  <p>What the grilling produces are <strong>proposals</strong>. They land at
-  <code>Status = Proposed</code>, invisible to every open-questions view, each carrying a
-  <strong><code>Why asked</code></strong> line naming what prompted it. Then it asks you, one row at a
-  time:</p>
+  <p>Everything found becomes a <strong>proposal</strong> &mdash; <code>Status = Proposed</code>,
+  invisible to every open-questions view, each carrying a <code>Why asked</code> line. Then it asks you,
+  one row at a time:</p>
 
-  <pre><code>PROPOSED (6) — none of these is a question yet. Ordered by how much the answer changes.
+  <pre><code>1/6  «Can a customer retry a failed payment?»
+     why asked: «Checkout» FR-2 says payment succeeds or fails; no source says
+                what happens next
+     a marker on «Checkout» is waiting on this — rejecting it decides the marker too
+     [a]pprove · a[n]swer now · [e]dit · [r]eject · already [d]ecided · [s]kip</code></pre>
 
-  1/6  «Can a customer retry a failed payment?»
-       why asked: «Checkout» FR-2 says payment succeeds or fails; no source says what
-                  happens next, and no edge case covers it
-       a marker on «Checkout» is waiting on this — rejecting it decides the marker too
-       suggested owner: Ana
-       [a]pprove · a[n]swer now · [e]dit · [r]eject · already [d]ecided · [s]kip</code></pre>
-
-  <p><strong>Only what you approve becomes a real question.</strong> Rejections keep their reason in the
-  record and never reappear as unresolved product questions. Skipping is not rejecting &mdash; a skipped
-  proposal comes back next sitting.</p>
-
-  <p><strong>And if you can answer on the spot, say so.</strong> <em>Answer now</em> takes your answer in
-  your own words, verbatim, drafts the row, and leaves exactly one act for later &mdash; your name in
-  <code>Confirmed by</code>, which no run may ever fill. One sitting from gray area to closed, with the
-  one click that keeps the provenance honest.</p>
+  <p><strong>Only what you approve becomes a real question.</strong> <em>Answer now</em> is the fast path:
+  your words are taken verbatim, and one act remains &mdash; your name in <code>Confirmed by</code>, which
+  no run may ever fill. Skipping is not rejecting; a skipped proposal returns next sitting. About ten per
+  sitting, most consequential first &mdash; past that, people stop reading and start agreeing.</p>
 
   <div class="callout">
-    <p class="lbl">Why the extra step</p>
+    <p class="lbl">Why proposals are not questions</p>
     <p>A generated question that lands straight in the list acquires the authority of one somebody
-    actually asked. The list then reads as your real unknowns while holding a machine's guesses about what
-    <em>might</em> be unknown &mdash; and the measured ceiling on that generator is low. <strong>The best
-    agent on the nearest benchmark finds 44.4% of real gaps.</strong> Most of what it produces is noise,
-    and an empty proposal list is never evidence the Blueprint is complete.</p>
+    actually asked &mdash; while the best measured generator finds only <strong>44%</strong> of real gaps.
+    So the machine proposes, a person decides, and an empty proposal list is never evidence the Blueprint
+    is complete.</p>
   </div>
 
-  <p>About ten a sitting, ordered by how much the answer changes what gets built and by whether the named
-  owner can actually answer it. Past ten, the rest are named as next sitting's &mdash; the cap binds what
-  the run offers, never what you may pull forward. Past that number people stop reading and start
-  agreeing, which is worse than a shorter list.</p>
-
-  <h3>Rejecting takes a reason, and the reason decides something</h3>
-  <p>This is the subtlest part of the design. A proposal is often raised over a
-  <code>[NEEDS CLARIFICATION]</code> marker sitting in a feature body. What happens to that marker depends
-  on <em>why</em> you rejected the question:</p>
+  <h3>Rejecting takes a reason, and the reason decides the marker</h3>
 
   <div class="tw">
   <table>
-    <thead><tr><th>You say</th><th>The marker</th></tr></thead>
+    <thead><tr><th>You say</th><th>The marker waiting on it</th></tr></thead>
     <tbody>
-      <tr><td><strong>Not a real gap</strong></td><td><strong>Removed</strong>, citing the rejected row &mdash; it was raised over nothing</td></tr>
-      <tr><td><strong>Already decided</strong></td><td><strong>Removed</strong>, citing the requirement or <code>Not doing</code> line that answers it</td></tr>
+      <tr><td><strong>Not a real gap</strong></td><td><strong>Removed</strong> &mdash; it was raised over nothing</td></tr>
+      <tr><td><strong>Already decided</strong></td><td><strong>Removed</strong>, citing the text that answers it</td></tr>
       <tr><td><strong>Ask it better</strong></td><td><strong>Stays.</strong> The gap is real; only the wording was wrong</td></tr>
     </tbody>
   </table>
   </div>
 
-  <p>Without that split there are two ways to be wrong and no way to be right. Remove the marker on every
-  rejection and a badly-worded question quietly converts a known unknown into an unknown unknown. Remove it
-  on none and a rejected proposal strands its marker forever &mdash; blocking that feature from ever being
-  agreed, with nothing in the system able to clear it, so the definition can never honestly be
-  settled.</p>
-
-  <p>You can also do all of this in Notion instead, at your own pace: proposals are ordinary rows in the
-  <em>Proposed &mdash; needs review</em> view. Approve or reject them there and the next run reads what
-  you did and never reverses it.</p>
+  <p>Without that split there are two ways to be wrong: remove on every rejection and a badly-worded
+  question quietly turns a known unknown into an unknown unknown; remove on none and a rejected proposal
+  blocks its feature forever. Prefer Notion? Proposals are ordinary rows in the <em>Proposed &mdash; needs
+  review</em> view &mdash; decide there, and the next run reads what you did and never reverses it.</p>
 </section>
 
 <section id="shape">
@@ -301,7 +256,7 @@
   <h2>The shape</h2>
 
   <p>An overview page, two databases, an append-only run log, and &mdash; once locked &mdash; the change
-  log. There is no third database and nothing tracks work.</p>
+  log. No third database, and nothing tracks work.</p>
 
   <figure>
     <div class="fig-scroll">
@@ -350,24 +305,25 @@
       <path d="M 460 97 H 450" fill="none" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 3"/>
     </svg>
     </div>
-    <figcaption>One destination per project. Nothing is ever merged across projects. The run log is the
-    only place that records what each run did &mdash; and the only place that says whether the Blueprint
-    is locked.</figcaption>
+    <figcaption>One destination per project, never merged with another. The run log records what every run
+    did &mdash; and is the only place that says whether the Blueprint is locked.</figcaption>
   </figure>
 
-  <p><strong>Day one the whole thing is an overview page and two empty databases.</strong> A one-paragraph
-  document with nine open questions is valid and honest.</p>
+  <p><strong>Day one the whole thing is an overview page and two empty databases</strong> &mdash; a
+  one-paragraph document with nine open questions is valid and honest. The overview never grows: every
+  human block is capped, every index on it is a generated view, so it is the same size at 200 features as
+  on day one.</p>
 
-  <p>The overview never grows: every human block is capped and every index on it is a view, so it is the
-  same size at 200 features as on day one. Its blocks are a TL;DR, <em>What this product is</em> ending in
-  a one-sentence NOT-clause, <em>Who it's for</em>, one picture, three <code>&#10227;</code> views, links,
-  and an <em>Operating</em> block. A <code>&#10227;</code> heading is a view; text typed under one is an
-  error the next run reports.</p>
+  <p>Its blocks carry the product's essence: a TL;DR &middot; <em>What this product is</em> &mdash; the
+  problem, who has it, what this does about it, what observable change would mean it worked, ending in a
+  one-sentence NOT-clause &middot; <em>Who it's for</em> &mdash; real user kinds, the job each hires it
+  for, what they use today, optionally who it is <em>not</em> for &middot; one picture &middot; three
+  <code>&#10227;</code> views &middot; links &middot; an <em>Operating</em> block with a confirmed owner,
+  never an inferred one.</p>
 
-  <p>A run may write an overview block, but <strong>only as verbatim text you accept at a
-  checkpoint</strong> &mdash; one block per write, never silently. The overview is part of what is being
-  drafted here, and a NOT-clause that no longer matches the features is a defect in the thing
-  people will build from.</p>
+  <p>Two rules keep it trustworthy: views are <strong>regenerated from the rows, never patched
+  forward</strong>, so a count on the front door is always current &mdash; and a run may change a prose
+  block <strong>only as verbatim text you accept</strong>, one block at a time, never silently.</p>
 </section>
 
 <section id="feature">
@@ -382,9 +338,9 @@
     <tbody>
       <tr><td><code>## Why</code></td><td>Two to four sentences: the problem, who has it, why now. No solution talk.</td></tr>
       <tr><td><code>## Behaviour</code></td><td>Numbered requirements, <code>FR-1</code> onward, each one a thing that can fail.</td></tr>
-      <tr><td><code>## Edge cases</code></td><td>Empty, error, slow, offline, not signed in, which record / whose data, ties and ordering. Every default is a decision.</td></tr>
-      <tr><td><code>## Rabbit holes</code></td><td>Implementation traps with the call already made. Empty is fine &mdash; never a finding.</td></tr>
-      <tr><td><code>## Not doing</code></td><td>One line each, in one shape: <em>No X &mdash; because Y; revisit if Z.</em></td></tr>
+      <tr><td><code>## Edge cases</code></td><td>Empty, error, slow, offline, whose data, ties. Every default is a decision.</td></tr>
+      <tr><td><code>## Rabbit holes</code></td><td>Implementation traps with the call already made. Empty is fine.</td></tr>
+      <tr><td><code>## Not doing</code></td><td>One line each: <em>No X &mdash; because Y; revisit if Z.</em></td></tr>
     </tbody>
   </table>
   </div>
@@ -394,33 +350,26 @@
     belong here.</p>
   </blockquote>
 
-  <p>Three tests for one requirement: one trigger, one actor, one observable outcome, condition leading
-  (<em>"When X, the system does Y"</em>); <strong>"and" between two outcomes means two
-  requirements</strong>; and a requirement must be readable without the one above it. That is the whole
-  grammar &mdash; deliberately not EARS, not Gherkin, not YAML. Seven requirement formats spanned about
-  2.4 points in one measurement, while syntactic <em>ambiguity</em> cost up to <strong>31 points</strong>
-  of pass@1 and doubled the conflict between two runs of the same model. Format is a small lever; content
-  completeness is a large one.</p>
-
-  <p>Ten minutes to fill. Longer means the feature is too big, so split it &mdash; but that is never a
-  licence to leave blocks as placeholders. The five blocks are redundant channels, and that is the
-  measured point: removing one constraint costs 11.8% pass@1 on a single-channel spec against 0.9% on a
-  multi-channel one.</p>
+  <p>Three tests for one requirement: one trigger, one actor, one observable outcome (<em>"When X, the
+  system does Y"</em>); "and" between two outcomes means two requirements; each readable without the one
+  above it. Deliberately no syntax standard &mdash; measured, format moves quality ~2 points while
+  <em>ambiguity</em> costs up to 31. Ten minutes to fill; longer means the feature is too big, so split
+  it.</p>
 
   <h3>A refusal is a line, not a database</h3>
   <p><em>"No native mobile app &mdash; the team cannot staff two clients; revisit if a customer asks and
-  will pay for it."</em> The <strong>why</strong> has to be on the same screen as the refusal, and the
-  <strong>revisit if</strong> is what stops a refusal becoming dogma &mdash; the answer to a proposal
-  becomes <em>"no, and here is exactly what would change our mind"</em>. A run never invents the
-  reopening condition; where one is missing it proposes a question instead.</p>
+  will pay for it."</em> The <strong>why</strong> sits on the same screen as the refusal, and the
+  <strong>revisit if</strong> stops it becoming dogma: the answer to a proposal becomes <em>"no, and here
+  is exactly what would change our mind."</em> A run never invents the reopening condition &mdash; where
+  one is missing, it asks.</p>
 </section>
 
 <section id="lifecycle">
   <p class="sec-num">Six</p>
   <h2>The life of a question</h2>
 
-  <p>Seven states. The two on the right of the line are terminal, and the run only ever moves a row
-  along the middle path.</p>
+  <p>Seven states. The run only ever moves a row along the middle path; everything else belongs to a
+  person.</p>
 
   <figure>
     <div class="fig-scroll">
@@ -472,184 +421,147 @@
     </svg>
     </div>
     <figcaption>Solid arrows are the ordinary path. <code>Applied</code> and <code>Flagged</code> are
-    written by <code>resolve</code> and by nothing else; every other move belongs to a person.</figcaption>
+    written by <code>resolve</code> and nothing else; every other move belongs to a person.</figcaption>
   </figure>
 
-  <p><strong><code>Flagged</code> is a real state, not a failure.</strong> Without it a question a run
-  refused to write stays answered, vetted and eligible &mdash; passing the same checks on every later run,
-  spending a writer and a checker to reproduce the same verdict forever, and appearing in no report. It is
-  terminal for runs and clearable only by a person.</p>
+  <p><strong><code>Flagged</code> is a real state, not a failure</strong> &mdash; without it, a question a
+  run refused to write would stay eligible forever, burning a writer and a checker every run to reproduce
+  the same verdict. <strong>A bad question has an exit too:</strong> a person sets
+  <code>Closed (not applied)</code> with a one-line reason. No run ever proposes that &mdash; a machine
+  recommending your question be dropped would be deciding on its own judgement.</p>
 
-  <p><strong>A bad question has an exit too.</strong> Off-topic, duplicated, overtaken by events: a person
-  sets <code>Closed (not applied)</code> and writes the one-line reason where the answer would go. No run
-  ever sets that for this reason &mdash; a run sees only vetted answers, so it has no evidence that a
-  question is a bad question, and proposing it would be a machine recommending that your question be
-  dropped on its own judgement.</p>
-
-  <p><code>Applied</code>, <code>Rejected</code> and <code>Closed (not applied)</code> rows, sorted by
-  date, are the project's decision log. There is no separate register, and an answered question is never
-  edited &mdash; changing your mind is a new row, which is what makes <em>why is it like that</em> a chain
-  you can read.</p>
+  <p><code>Applied</code>, <code>Rejected</code> and <code>Closed</code> rows, by date, are the project's
+  decision log. An answered question is never edited &mdash; changing your mind is a new row, which is
+  what makes <em>why is it like that</em> a chain you can read.</p>
 </section>
 
 <section id="authority">
   <p class="sec-num">Seven</p>
   <h2>What a machine may never decide</h2>
 
-  <p>One label carries provenance: <code>Confirmed</code>, either <code>AI generated</code> or
-  <code>Human approved</code>, plus <code>Confirmed by</code> for the name. A run may set
-  <code>AI generated</code> on a row it created. It never writes the other one, and it never writes
-  <code>Intent = Agreed</code>.</p>
+  <p>One label carries provenance: <code>Confirmed</code> &mdash; <code>AI generated</code> or
+  <code>Human approved</code> &mdash; plus <code>Confirmed by</code> for the name. A run may mark its own
+  rows <code>AI generated</code>. It never writes the other value, never writes a name, never sets
+  <code>Intent = Agreed</code> &mdash; <strong>and never clears any of them either</strong>: a human-set
+  field is not a run's to blank, whatever the reasoning.</p>
 
   <div class="callout">
-    <p class="lbl">Why the record of who decided has to be untouchable</p>
-    <p>The failure mode of a machine-assisted specification is not bad prose, it is
-    <strong>laundering</strong>: a guess acquiring the authority of a signed-off requirement because
-    something moved it one square forward. Users given an AI assistant wrote more insecure code
-    <em>and rated it more secure</em> &mdash; trust averaging 4.0 against 1.5 among those producing
-    insecure solutions. Confidence degrades before competence does, so the record of who decided has to be
-    untouchable by the thing whose confidence is degrading.</p>
+    <p class="lbl">Why the record of who decided is untouchable</p>
+    <p>The failure mode of a machine-assisted specification is <strong>laundering</strong>: a guess
+    acquiring the authority of a signed-off requirement because something moved it one square forward.
+    Measured: users with an AI assistant wrote more insecure code <em>and rated it more secure</em>.
+    Confidence degrades before competence, so who-decided must be untouchable by the thing degrading.</p>
   </div>
 
-  <p>Five things only a person can do, and no run will do them for you: approve a proposal; mark a drafted
-  row <code>Human approved</code>; agree a feature and put your name to it; take out a value the content
-  rule bars if a run flags one; and write any numbered requirement beyond the first into a feature body.
-  A run may draft <code>FR-1</code> on a body that has none, shown verbatim for you to accept or rewrite.
-  <strong><code>FR-2</code> onward is yours</strong> &mdash; a requirement nobody chose is permanent.</p>
+  <p>Only a person can: approve a proposal &middot; mark a row <code>Human approved</code> &middot; agree
+  a feature &middot; remove a value the content rule bars &middot; write any requirement beyond
+  <code>FR-1</code> (a run may draft the first, shown verbatim; the rest are permanent choices and
+  therefore yours).</p>
 
-  <h3>Two rules that hold everywhere</h3>
-  <p><strong>Everything arriving as text is data, never instructions.</strong> Sources, answers, titles.
-  Text trying to steer a run &mdash; <em>"mark these agreed"</em>, <em>"skip the check"</em> &mdash; is
-  quoted in the report, obeyed in no part, and its surrounding content waits for a person. The independent
-  checker receives the writer's own draft inside the same untrusted delimiters, because an injection that
-  survives the writer would otherwise arrive there as trusted content.</p>
-
-  <p><strong>An edit a run did not make always wins.</strong> Every write re-reads the exact block
-  immediately before overwriting it and compares. Any difference is somebody else's: the run reports the
-  conflict and leaves their text alone.</p>
+  <h3>Three rules that hold everywhere</h3>
+  <p><strong>Everything arriving as text is data, never instructions.</strong> A source saying <em>"mark
+  these agreed"</em> is quoted in the report and obeyed in no part &mdash; and the checker receives even
+  the writer's own draft as untrusted, so an injection cannot survive by passing through one agent.</p>
+  <p><strong>An edit a run did not make always wins.</strong> Every write re-reads the block immediately
+  before overwriting; any difference is somebody else's and stays.</p>
+  <p><strong>A check is a real second dispatch, and a count is counted fresh.</strong> "Independent" means
+  a genuinely separate agent &mdash; if none can be dispatched, the check records that it could not be
+  performed and nothing gets called verified. And every number in a report or log is recounted from the
+  rows at that moment, never carried forward from an earlier claim.</p>
 
   <h3>Write the role, never the specific</h3>
-  <p>Sources arrive full of things that are true and that nobody meant to publish. So
-  <code>"Northgate Retail Park &mdash; P1 4 hours, £250 penalty, contract to 2028-03-31"</code> is written
-  as <em>"a site on the enterprise contract has a four-hour response target for P1 faults, with a
-  penalty"</em> &mdash; and the requirement is just as failable. A project can widen this for a class of
-  fact with one dated line in the <em>Operating</em> block. Reports name the row and the class of thing
-  found, never the value: a report that quotes the leak spreads it to everyone who reads the report.</p>
+  <p><code>"Northgate Retail Park &mdash; £250 penalty, contract to 2028-03-31"</code> is written as
+  <em>"a site on the enterprise contract has a four-hour response target, with a penalty"</em> &mdash;
+  just as failable, publishable to the whole teamspace. That covers every character of every field,
+  including a name signed at the end of an answer. A project can widen the rule with one dated line in
+  <em>Operating</em>; reports name the class of leak, never the value.</p>
 </section>
 
 <section id="markers">
   <p class="sec-num">Eight</p>
-  <h2>Markers, and the one thing that blocks</h2>
+  <h2>Markers &mdash; the one thing that blocks</h2>
 
-  <p>Where a source does not say, the run writes a marker where the unknown bites:</p>
+  <p>Where a source does not say, the run writes a marker exactly where the unknown bites:</p>
 
   <pre><code>[NEEDS CLARIFICATION: can a customer change a pickup slot after paying?
                      &rarr; Question: &lt;link to the row&gt;]</code></pre>
 
-  <p><strong>An open marker blocks <code>Intent = Agreed</code> on its feature.</strong> That is the only
-  thing in the whole system that blocks anything.</p>
+  <p><strong>An open marker blocks <code>Intent = Agreed</code> on its feature</strong> &mdash; the only
+  thing in the whole system that blocks anything. It exists because builders do not ask: measured agents
+  raised a clarifying question on only <strong>24%</strong> of underspecified tasks. Underspecification
+  does not make them fail &mdash; it makes them guess. So the document carries the question.</p>
 
-  <p>It exists because whoever builds this will not raise the question themselves: baseline agents ask a
-  clarifying question on only <strong>24%</strong> of underspecified tasks, and one frontier model asked
-  in 1.7% of its non-actions. <em>Underspecification does not make agents fail &mdash; it makes them
-  guess.</em> So the document has to carry the question.</p>
+  <p>A marker names the entity it is about &mdash; the feature, the requirement, the field. One whose
+  question is not yet proposed reads <code>carried</code> and waits; one pointing at a deleted row is
+  <strong>broken</strong> and reported as a fault. There are exactly five sanctioned ways a marker is
+  removed, and every removal cites the row that justified it.</p>
 
-  <p><strong>A marker must name the entity it is about</strong> &mdash; the feature, the requirement
-  number, the specific field. <em>"Is this right?"</em> is not a marker. Naming the target is not a
-  style preference: with the target unstated, wrong-target actions rose from 9.6% to <strong>75%</strong>
-  in one measurement.</p>
-
-  <p>A marker whose question has not been proposed yet reads <code>carried</code> and waits for the next
-  sitting; one pointing at a row that no longer exists is <strong>broken</strong> and is a fault. Reports
-  print the two apart, because a queue buried in a fault list teaches people to skip the list.</p>
-
-  <p>There are exactly five ways a marker is removed, they live in one file, and every removal names the
-  row that justified it in the log. The fifth is the one worth knowing: <strong>a decision made out loud
-  clears a marker only by becoming an ordinary vetted answer first.</strong> The run drafts the row with
-  your words verbatim and your name as owner, and leaves <code>Confirmed by</code> empty. You fill it in;
-  the next <code>resolve</code> writes it in. If you never do, nothing enters the document &mdash; which
-  is the honest failure, and strictly better than a claim entering ungated.</p>
+  <p>The one worth knowing: <strong>a decision made out loud clears a marker only by becoming a vetted
+  answer first.</strong> The run drafts the row with your words verbatim and leaves
+  <code>Confirmed by</code> empty; you add your name, the next <code>resolve</code> writes it in. If you
+  never do, nothing enters the document &mdash; the honest failure, strictly better than a claim entering
+  ungated.</p>
 </section>
 
 <section id="freeze">
   <p class="sec-num">Nine</p>
   <h2>Locking, and the change log</h2>
 
-  <p><code>/blueprint lock</code> prints a readiness report first &mdash; named lists, never a score.
-  Which features are not agreed. Which carry an open marker. Which questions are open,
-  answered-but-not-applied, or flagged. Which bodies hold no numbered requirement. Which refusals have no
-  reopening condition. Which rows nobody has read. Then it runs <strong>one final grilling</strong> over
-  the whole document, because a definition about to become the thing people build from deserves one full
-  attempt to break it.</p>
+  <p><code>/blueprint lock</code> prints a readiness report &mdash; seven named lists, never a score:
+  features not agreed &middot; open markers &middot; questions open, answered-but-unapplied, or flagged
+  &middot; bodies with no numbered requirement &middot; refusals with no reopening condition &middot;
+  rows nobody has read &middot; whether the owner was ever actually confirmed. Then one final grilling,
+  because a definition about to become the thing people build from deserves one last attempt to break
+  it.</p>
 
-  <p><strong>None of it blocks a lock.</strong> A definition settled with nine open questions is a normal,
-  honest artifact &mdash; much better than one where the questions were quietly closed to make a report
-  look clean. What is required is that you see each item and say so, one at a time, on the record:</p>
+  <p><strong>None of it blocks a lock</strong> &mdash; a definition settled with nine open questions is
+  honest, and better than one whose questions were quietly closed to look clean. What is required: you see
+  every item and say so. <strong>Every qualifying row gets its own numbered choice</strong> &mdash; never
+  a count with examples, never one row decided in an aside next to another's choice:</p>
 
   <pre><code>  3/4  1 question is Answered but not applied: «Can a customer retry a failed payment?»
-       This one is worth holding for: the decision exists and the spec does not say it.
-       Run /blueprint resolve first and it is in the document you lock.
+       Worth holding for: the decision exists and the spec does not say it.
        [r]esolve first (recommended) · [i]nclude anyway · [h]old</code></pre>
 
-  <p>Every acknowledgement is recorded by name &mdash; and when you are the only human on the project,
-  that name is yours, which matters exactly as much: it is the record that a person read it.</p>
-
   <h3>Locking halts nothing. It starts the record</h3>
-  <p>After the lock the document stays live. <code>add</code> and <code>resolve</code> keep working, every
-  change still runs the same gates &mdash; sources, proposals, vetted answers, the independent check.
-  What changes is the obligation: <strong>every change to product intent now lands as one entry in the
-  change log</strong>, written by the run that made it, as part of making it.</p>
+  <p>The document stays live; <code>add</code> and <code>resolve</code> keep working through the same
+  gates. What changes: <strong>every change to product intent now lands as one change-log entry</strong>,
+  written by the run that made it, as part of making it &mdash; the date, what changed by feature and
+  requirement, and <strong>the ask in the words of whoever asked, verbatim</strong>, because six weeks
+  later <em>"why does the document say something different?"</em> is answered by that text and nothing
+  else.</p>
 
   <pre><code>## 2026-08-20 · via add · asked by Kate
 
-> "The hall has told us we can have the room until 2pm from September, not 1pm.
+> "The hall has told us we can have the room until 2pm from September.
 >  So that's two more slots per fixer. Worth doing."
 
-- «Book a repair slot» — FR-6 added: sessions run 10:00–14:00, eight slots per fixer
-- «Run the session» — FR-4 added: mark a repair as needing a part; person returns next session</code></pre>
+- «Book a repair slot» — FR-6 added: sessions run 10:00–14:00, eight slots per fixer</code></pre>
 
-  <p>The date, who asked, <strong>the ask in their own words, verbatim</strong> &mdash; because six weeks
-  later <em>"why does the document say something different?"</em> is answered by that text and nothing
-  else &mdash; and what changed, by feature and requirement number. Three to ten lines. When the change is
-  your own idea and nobody asked, your reason fills the same slot.</p>
-
-  <p><strong>The change log is for people; the run log is for runs.</strong> The run log records every
-  mechanical act with hashes and verdicts and is unreadable by design. The change log answers one question
-  &mdash; <em>what moved since we settled this, and why</em> &mdash; and it starts at the lock, because
-  that is the moment changes start needing an explanation. It is append-only and never rewritten; an entry
-  that turns out wrong is corrected by a newer entry saying so.</p>
-
-  <p><strong>Locked is derived from the run log</strong> &mdash; a <code>LOCKED</code> entry exists &mdash;
-  never from a local cache. And a write run that ends without its change-log entry has not finished:
-  <code>status</code> names every write the run log records after the lock that no change-log entry
-  explains, because a change nobody was told about is the one thing the lock exists to prevent.</p>
-
-  <p>Want a frozen copy anyway, for a signature moment? Page history on Notion, or your own version
-  control on files, at the date the <code>LOCKED</code> entry names. This skill does not mint snapshot
-  documents &mdash; a second copy is a second thing to keep true.</p>
+  <p>The change log is for people; the run log is for runs. Locked-ness itself is one fact in the run log
+  &mdash; a <code>LOCKED</code> entry &mdash; never a local cache, and <code>status</code> names any
+  post-lock write that no change-log entry explains. Want a frozen copy for a signature moment? Page
+  history, or your own version control, at the date the entry names &mdash; a second document is a second
+  thing to keep true.</p>
 </section>
 
 <section id="storage">
   <p class="sec-num">Ten</p>
   <h2>Where it stores things</h2>
 
-  <p><strong>Notion</strong> or <strong>a folder of markdown files</strong>. You choose at
-  <code>init</code> and it is recorded.</p>
+  <p><strong>Notion</strong> or <strong>a folder of markdown files</strong> &mdash; chosen once at
+  <code>init</code>.</p>
 
-  <p>Notion gives you the views, the review surface and a document the whole team can read without
-  installing anything. Three things a person does once, because the API cannot: create the teamspace,
-  create one page inside it to be the overview, and attach the connection to that page. A token is
-  optional &mdash; writes go over the connection first, and every property write is read back to confirm
-  it landed, because a write that silently does nothing is worse than one that fails loudly.</p>
+  <p>Notion gives the team views and a document anyone can read with nothing installed. A person does
+  three things once, because the API cannot: create the teamspace, create the overview page, attach the
+  connection. Every property write is read back to confirm it landed &mdash; a write that silently does
+  nothing is worse than one that fails loudly.</p>
 
-  <p>A local folder gives you files you can commit, diff and hand over, and needs no account at all:
-  <code>README.md</code> for the overview, one file per feature, <code>questions.md</code>,
-  <code>run-log.md</code>, and <code>changelog.md</code> once locked. It is also the right way to try the
-  whole thing without touching a live workspace &mdash; or to spec an idea tonight with zero setup.</p>
-
-  <p>Anywhere else, it tells you what that would take rather than improvising. Every safety rule in this
-  skill &mdash; read-back, conflict detection, truncation checks, child preservation &mdash; is specific
-  to how one platform fails, and an adapter written by analogy has none of them.</p>
+  <p>A local folder needs no account at all: <code>README.md</code> for the overview, one file per
+  feature, <code>questions.md</code>, <code>run-log.md</code>, <code>changelog.md</code> once locked.
+  Files you can commit, diff, and hand over &mdash; the right way to spec an idea tonight. Anywhere else,
+  it says what that would take rather than improvising: every safety rule here is specific to how one
+  platform fails.</p>
 </section>
 
 <section id="limits">
@@ -658,31 +570,25 @@
 
   <ol>
     <li><strong>The premise is unmeasured.</strong> Whether a structured specification measurably improves
-    what gets built has never been measured. Everything else is a cost paid against a benefit this design
-    believes in and cannot cite. Largest honest caveat, so it goes first.</li>
-    <li><strong>The question generator finds a minority of real gaps</strong> &mdash; 44.4% for the best
-    agent on the nearest benchmark. It is a prompt for a person, never a completeness check.</li>
-    <li><strong>The writer/checker seam is blind to correlated error.</strong> When two models both err
-    they give the same wrong answer about 60% of the time, and larger models are <em>more</em> correlated.
-    That residual is what the human gates absorb, which is why there is no auto-apply mode anywhere.</li>
-    <li><strong>Reviewing proposals costs real attention.</strong> The cap is about ten a sitting, and it
-    is a cap for a reason &mdash; past it, people stop reading and start agreeing.</li>
-    <li><strong>Between runs it has no eyes at all.</strong> Only two things reach the Blueprint: a source
-    somebody gave it, and an answer somebody vetted. A decision made in a meeting, an email, a thing
-    somebody noticed &mdash; none of it enters unless a person puts it into one of those two shapes. That
-    gap is real and nothing in these files repairs it.</li>
-    <li><strong>Concurrency is bounded, not solved.</strong> The mechanism is a halt: a second write run on
-    the same project stops rather than merging.</li>
+    what gets built has never been measured. Largest caveat, so it goes first.</li>
+    <li><strong>The grilling finds a minority of real gaps</strong> &mdash; ~44% for the best measured
+    generator. It prompts a person; it never certifies completeness.</li>
+    <li><strong>The writer/checker seam is blind to correlated error</strong> &mdash; two models that both
+    err agree on the wrong answer ~60% of the time. The human gates absorb that residual, which is why
+    nothing auto-applies.</li>
+    <li><strong>Between runs it has no eyes.</strong> Only a source you give it and an answer you vet ever
+    reach the document. Meetings, chats, things somebody noticed &mdash; a person must carry them in.</li>
+    <li><strong>Reviewing proposals costs real attention</strong> &mdash; hence the ~10 cap.</li>
+    <li><strong>Concurrency is a halt, not a merge.</strong> A second write run on the same project stops.</li>
   </ol>
 
-  <p>And one that is not a limitation but is worth saying plainly: <strong>a sparse Blueprint is a
-  success.</strong> A one-paragraph overview, two feature rows and nine open questions is a valid
-  specification. Padding it out with plausible invention is the one failure this whole design exists to
-  prevent.</p>
+  <p>And one that is not a limit: <strong>a sparse Blueprint is a success.</strong> A one-paragraph
+  overview, two features and nine open questions is a valid definition. Padding it with plausible
+  invention is the one failure this whole design exists to prevent.</p>
 </section>
 
 <footer>
-  <p><strong>Skill version 2.</strong> Six commands &mdash; <code>init</code>, <code>add</code>,
+  <p><strong>Skill version 3.</strong> Six commands &mdash; <code>init</code>, <code>add</code>,
   <code>questions</code>, <code>resolve</code>, <code>lock</code>, <code>status</code>. The files beside
   this page are the source of truth; this page is a reading of them.</p>
   <!-- legacy-vocab: start -->

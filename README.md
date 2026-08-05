@@ -5,7 +5,8 @@ into a **product definition good enough to build from**, before any code is writ
 
 It produces one document per project, called **the Blueprint**:
 
-- an **overview** — what this product is, who it's for, and what it deliberately will *not* do;
+- an **overview** — what this product is, who it's for, what success would look like, and what it
+  deliberately will *not* do;
 - one **feature row per feature** — the row *is* the spec: why it exists, numbered requirements that can
   each fail, edge cases, and its own "not doing" lines;
 - an **open questions list** — everything nobody has decided yet, said out loud instead of guessed at.
@@ -33,11 +34,13 @@ Not for: tracking development, reading code, or documenting what has already bee
 ### 1 · `/blueprint init` — start
 
 Hand it whatever exists: files, notes, a transcript — or nothing, and it interviews you (three questions:
-what is this and what is it *not*; who is it for; which features do you already know you want).
+what is this and what is it *not*; who is it for; which features do you already know you want — plus
+short follow-ups like who it's *not* for and what would tell you it worked).
 
-It drafts a skeleton, **grills it** with four adversarial lenses (a builder forbidden from guessing, a
-hostile tester, the first week of real life, cross-feature collisions), shows you everything it found,
-and **stops**. Nothing is created until you confirm.
+It drafts a skeleton, **grills it** with five adversarial lenses (a builder forbidden from guessing, a
+hostile tester, the first week of real life, cross-feature collisions, and a reconciliation of every
+feature against who the product is actually for), shows you everything it found, and **stops**. Nothing
+is created until you confirm.
 
 It also asks where to store the result: **Notion** or **a local folder of markdown files**. Local needs
 zero setup — right for speccing an idea tonight.

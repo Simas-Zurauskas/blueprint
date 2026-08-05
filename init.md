@@ -46,8 +46,14 @@ transcript: keep it whole. Nothing at all: interview.
 **There is one shape of source this run refuses: a code repository.** What the product *should* do is not
 recoverable from what somebody already built — code disagreeing with a stated intention is a
 contradiction, and reading *"the code does it, so that is what we meant"* into a specification is the
-single most common way a document records a bug as a requirement. Where a project is half-built, a human
-describes the behaviour they want kept, in words, and that description is a source like any other.
+single most common way a document records a bug as a requirement.
+
+**Declining it and asking for the behaviour in words are one act, said in the same breath, never two
+separate steps.** *"I can't read the repo directly — can you describe what it should do, in words, for
+the areas it would have covered?"* A decline with no accompanying ask is incomplete: a simulated project
+correctly refused an offered repo and then simply moved on, and the exact areas that repo would have
+covered were precisely what shipped as unresolved open gaps. Where a project is half-built, that spoken
+description is the source, and it is a source like any other.
 
 **Capture before interpreting.** Every source lands in the run's **source record**
 (`.blueprint/sources/<run-id>/`), holding per source its name, its link, and either the text verbatim or a
@@ -73,10 +79,17 @@ send a wall of fifteen** — a wall gets skimmed, three questions get thought ab
 
 That is enough to draft; everything else is a follow-up, asked one or two at a time and marked optional.
 **Spend the follow-ups on defaults, boundaries and tie-breaks** — what happens when the list is empty, who
-wins when two people act at once, what the system does at the edge of a range — and least on prose polish:
-those are the answers that make a requirement failable, and wording is a ~2-point lever against a 12–29
-point one. **Stop interviewing the moment more answers stop changing the skeleton**; the rest are better as
-question rows than as an interrogation.
+wins when two people act at once, what the system does at the edge of a range — **and on the audience's
+edges**: who is this deliberately *not* for, and what do these people use for this job today. Those two
+answers are what make the `Who it's for` block worth reconciling features against later
+([`questions.md`](questions.md) Q2, lens 5), and nobody volunteers either unprompted. **Ask once what
+winning looks like**: *what one or two observable things would tell you this worked?* A sourced answer
+becomes a sentence in the overview's product paragraph; no answer becomes an owned open question, never an
+invented number — the most convergent section across every serious product-definition framework is also
+the most skipped in practice, and this tool's whole job is naming that kind of silence. Spend least on
+prose polish: those first answers are what make a requirement failable, and wording is a ~2-point lever
+against a 12–29 point one. **Stop interviewing the moment more answers stop changing the skeleton**; the
+rest are better as question rows than as an interrogation.
 
 ---
 
@@ -124,7 +137,13 @@ a permissive one (Qu et al.).
 BLUEPRINT SKELETON — proposed. Nothing has been created.
 target: Notion · «Golden Crumb» teamspace
 
-OVERVIEW   «Golden Crumb» — what it is · the NOT-clause · who it's for · one picture · links
+OVERVIEW   «Golden Crumb» — what it is · the NOT-clause · one picture · links
+FOR        walk-in regulars ordering ahead · office managers running a weekly group order
+           ← deck p.1 + interview Q2. Not for: wholesale buyers (interview, "that's a
+           different business"). One kind the requirements name that no source does:
+           «staff fulfilling orders» — proposed as a question, not invented into the block
+OWNER      Ana — the only named person anywhere in the source record. Confirm, or name
+           someone else: this is the last point anyone asks before it is written.
 AREAS      Ordering (5 features) · Loyalty (2) · Admin (3)
 FEATURES   10 rows · Intent: Draft · Confirmed: AI generated
            Ordering · Browse the menu   ← pitch deck p.2 + interview Q1
@@ -144,6 +163,12 @@ Confirm, edit any line, or decline. Nothing is created until you answer.
 The human may confirm, change any line, add or cut features, or decline the whole thing. **Declining is a
 normal outcome** — the source record survives and the next run starts from it. A confirmation arriving
 with edits is re-presented once, briefly, so nobody confirms a skeleton they have not seen.
+
+**The `OWNER` line is where the Operating block's owner is confirmed, not inferred** — this stop already
+exists, so it is where confirming the owner belongs rather than a second, silent mechanism at I5. Where
+the source record names exactly one person, propose them by name and let this same confirm-or-edit answer
+settle it; where it names nobody or more than one, leave the line asking rather than guessing. **I5 writes
+whatever was confirmed here and never asks again.**
 
 ---
 
@@ -177,9 +202,9 @@ are `FR-1…` and are never renumbered.
 capped human blocks — TL;DR (written first, rewritten last), **What this product is** (one paragraph
 closing in a one-sentence NOT-clause naming the *kind* of thing this product refuses; it does not try to
 be the list), **Who it's for**, **How it works, in one picture**. **Embed the three `⟳` views** and **type
-nothing under a `⟳` heading**, now or ever. Write **Links** and the **Operating** block — a named owner,
-the run-log link, any widening of the content rule — confirming the owner with the human, never "the
-team".
+nothing under a `⟳` heading**, now or ever. Write **Links** and the **Operating** block — the run-log link,
+any widening of the content rule, and the owner **exactly as confirmed at I3's stop**, never "the team"
+and never re-asked here: that confirmation already happened, and I5 only transcribes it.
 
 **This is the largest single write the overview ever receives**, and it walks into the child-deletion trap
 under a human's eye: re-emit every child block, foreign children included, then **re-read everything and
@@ -200,10 +225,14 @@ with plausible invention launders a guess into the source of truth.
 
 ## I6 — Faithfulness check
 
-**A separate context does this, not the one that wrote the pages — and a different model wherever two are
-available**, because the measured variable is model identity, not context isolation: a model recognises
-its own generations at 73.5% and prefers them. Record `independence: writer <a>, checker <b>`, or
-`independence: same model, fresh context only`, and do not call the second one independence.
+**A genuinely separate agent dispatch does this, not the one that wrote the pages continuing in the same
+turn — and a different model wherever two are available** ([`SKILL.md`](SKILL.md) rule 6 is the single
+home of what "separate" requires and its fallback). The measured variable is model identity, not context isolation:
+a model recognises its own generations at 73.5% and prefers them. Record `independence: writer <a>,
+checker <b>`, or `independence: same model, fresh context only` where a genuine second dispatch happened
+in a fresh context, and do not call either one independence if it did not. **If no second dispatch is
+possible, say `independence: could not be performed — no second dispatch available` and treat every
+verdict below as unverified** — never write `Clean` off a check that never left the writer's own turn.
 
 The brief gets exactly two things: the source record (wrapped as data) and the Blueprint **read back from
 the target**, never the draft that was pushed. **Ask for the inconsistency, never for agreement:** *where
@@ -245,12 +274,17 @@ disposition; **none of it is restated here**, so there is one description of the
 two. What `init` contributes is its own findings as inputs: I2's contradictions and gaps, I6's flagged
 claims, and every `Not doing` line with no `revisit if:`.
 
+**Regenerate every `⟳` view from the rows just written** ([`spec/doc-shape.md`](spec/doc-shape.md) §3's
+single home) before printing the closing screen — the first write of the overview already builds them
+fresh at I5, so this is a check that they still match what Q1–Q6 just changed, not a second act.
+
 Then write the first run-log entry and print **one screen. Not three.**
 
 ```
 BLUEPRINT INIT — «Golden Crumb» · 2026-08-04 · target: Notion
 
 Created    2 databases · 5 views · 10 feature rows · overview written once
+Owner      Ana — confirmed at the I3 stop, not inferred
 Sources    4 — 2 documents, 1 upload, 1 interview. All mapped; 6 pages unused (listed)
 Check      9 Clean · 1 narrowed (loyalty rules narrowed to what the deck says) · 0 Flagged
            independence: writer <a>, checker <b>

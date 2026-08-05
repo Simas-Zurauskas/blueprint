@@ -53,8 +53,8 @@ prose; a **`⟳` heading** is a saved view. One rule: ***never type under a `⟳
 | Block | Content | Cap |
 |---|---|---|
 | **TL;DR** | What this is, who should read it, what to read first | 2–3 sentences |
-| **What this product is** | One paragraph, ending in a one-sentence NOT-clause naming the *kind* of thing this product refuses | 1 paragraph |
-| **Who it's for** | Real user kinds and the job each hires it for | 3 lines |
+| **What this product is** | One paragraph carrying the essence: **the problem, who has it, what this product does about it, and — where a source states it — what observable change means it worked** (one or two things somebody could check, never an invented number; unstated means an owned open question, not a guess) — ending in a one-sentence NOT-clause naming the *kind* of thing this product refuses | 1 paragraph |
+| **Who it's for** | **Real user kinds — never "users"** — one line each: the kind, the job they hire this product for, and (where a source says) what they use for that job today. May close with one **`Not for:`** line naming who this product deliberately does not serve — sourced, like any exclusion, never invented | 3 lines + one optional `Not for:` line |
 | **How it works, in one picture** | One mermaid diagram | ≤9 nodes |
 | **`## ⟳ Where things are`** | Features grouped by `Area` — a view | — |
 | **`## ⟳ Proposed — needs review`** | Question proposals waiting on a human — a view | — |
@@ -64,6 +64,27 @@ prose; a **`⟳` heading** is a saved view. One rule: ***never type under a `⟳
 
 **The front page is the same size at 200 features as on day 1** — every human block is capped and every
 index on it is a view. That is what keeps a front door readable rather than turning it into the document.
+
+**`Who it's for` is load-bearing, not decoration.** It is the block every grilling reconciles the
+features against ([`../questions.md`](../questions.md) Q2, lens 5): a named user kind no feature serves,
+an actor the requirements keep naming that this block never does, and a job no requirement delivers are
+all findings. Where the sources name no audience at all, **the audience itself is the gap** — a marker on
+this block and a proposed question, never an invented persona: a made-up user kind is the same laundering
+as a made-up requirement, wearing a friendlier face.
+
+### The overview IS the product-level spec — and the machinery treats it as one
+
+There is no separate product-definition entity, deliberately: these blocks are where every product-level
+fact lives, and a second home would be the split this file's §7 exists to prevent. What makes that more
+than a filing decision is that **the whole question machinery serves this level exactly as it serves a
+feature row**: a product-level unknown is a marker on the block where it bites; its question is a
+**project-level row** — `Touches` empty ([`databases.md`](databases.md) §2) — proposed, gated, owned and
+answered like any other; lens 5 grills these blocks against the features every sitting; and a vetted
+project-level answer comes back as a verbatim block proposal at the resolve checkpoint
+([`../resolve.md`](../resolve.md) R3.1, R4), which a human accepts before it lands. **The essence gets the
+same rigor the features get** — sourced, grilled, marked, resolved — it just gets it through the front
+door's own gate rather than a body write, because the front door is the one page every reader trusts
+without cross-checking.
 
 ### How a run may write it — the one rule
 
@@ -83,6 +104,23 @@ child block, foreign children included, and re-fetches to confirm nothing was lo
 **What does not go on it:** an Areas list in prose (the `Area` property is that list), build rules for
 coding agents (they live in the repo's `CLAUDE.md`), a history of every draft (page history covers
 it), or any count of anything.
+
+### Views are regenerated, never patched
+
+The three `⟳` views, and the local-markdown target's equivalent generated lists
+([`targets.md`](targets.md) §3), are never edited in place — they are **thrown away and rebuilt from a
+fresh scan of the actual current rows**, every time a write-back touches a feature's
+`Intent`/`Area`/`What it does` or a question's `Status`. Patching a view's existing text forward from what
+it said last time is exactly how a reader ends up trusting a count that was true an hour ago.
+
+**This is why no number is ever carried into the TL;DR**, restated here because a simulated run's TL;DR
+grew past its own cap and quoted a live question tally — both already barred by "what does not go on it"
+above — and nothing caught it, because nothing re-derives the TL;DR's own claims against the rows before
+publishing them. **Regenerating every view it touches is part of the same write-back**, not a follow-up
+step: [`../add.md`](../add.md) A5, [`../resolve.md`](../resolve.md) R5, [`../questions.md`](../questions.md)
+Q6 and [`../lock.md`](../lock.md) L3 each point here rather than restating it.
+[`../status.md`](../status.md) C8 is the mechanical backstop — it recomputes the same counts from the same
+rows and names any view whose printed state disagrees with them.
 
 ## 4. Chapter pages
 
@@ -196,6 +234,25 @@ line in the overview's `Operating` block**, which every run already reads. Where
 load-bearing and the default forbids it, that is a question row with an owner, not a judgement call inside
 a draft. Every writing sub-agent is briefed with this rule, a delta breaking it is refused, and
 [`../status.md`](../status.md) C9 sweeps for it after the fact.
+
+**The rule reaches every character of an in-scope free-text field, including a sign-off at the end of
+it.** *"— Grace, 2026-08-04"* closing an `Answer & why` is still an individual's name in a field this rule
+covers; the exemption is the `Owner` and `Confirmed by` **properties** themselves, never prose that sits
+next to them in a text field. A simulated run's own faithfulness check correctly scrubbed a name from
+feature-body prose while five separately-signed answers sat uncaught in the same project's `Answer & why`
+field, because the sweep followed the property list rather than reading every character of the fields it
+was already scoped to.
+
+**A source calling its own number a placeholder does not make the number safe to publish.** *"100 points =
+$5 off, TBD"* is still a specific figure. Write it as *"points redeem at a fixed rate the team has not yet
+set"*, and let an open question carry the real number once one exists — the source's own hedge is not a
+license, it is the tell that the figure was never settled.
+
+**No field exists outside [`databases.md`](databases.md) §1/§2's property lists.** An `Approved:` line, a
+`Verified by:` note, or anything else added to a row that is not one of the named properties is a fact
+with no home — invisible to any check that reads the schema rather than the raw text, so its content is
+unaudited by construction. A fact needing a place goes in `Answer & why` or the row's own governed shape;
+it never gets a field nobody defined.
 
 ## 7. Single home per fact — with one exception
 
