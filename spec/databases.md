@@ -4,11 +4,11 @@
 is shared across projects. Companions: [`doc-shape.md`](doc-shape.md) · [`targets.md`](targets.md) ·
 [`notion-mechanics.md`](notion-mechanics.md).
 
-**17 properties, 3 frozen vocabularies, 11 option values.** Every option name below is exact. On the
+**13 properties, 2 frozen vocabularies, 9 option values.** Every option name below is exact. On the
 Notion target an existing select option cannot be renamed over the API, so create them verbatim at setup
 — **including options no row uses yet**.
 
-## 1. Features — 8 properties
+## 1. Features — 6 properties
 
 | Property | Type | Options / notes |
 |---|---|---|
@@ -16,8 +16,6 @@ Notion target an existing select option cannot be renamed over the API, so creat
 | `What it does` | rich text | **One line.** A property, not a body line, so every view and read path carries it |
 | `Intent` | select | `Draft` · `Agreed`. **A human writes this. No run ever does** |
 | `Area` | select | Project-defined. Same names as the chapter pages — one vocabulary everywhere |
-| `Confirmed` | select | `AI generated` · `Human approved`. **A run may write `AI generated` on a row it created. Only a human ever writes `Human approved`** |
-| `Confirmed by` | people | Who set `Confirmed = Human approved` or `Intent = Agreed`. **Human only, always** |
 | `Questions` | relation → Open Questions | Two-way; reverse of `Open Questions.Touches` |
 | `Created` | created time | Written by the target at creation, read-only on every write path. Exists so views can sort oldest-first — a saved view cannot address a built-in creation time |
 
@@ -29,7 +27,7 @@ there is one axis and it is human-written: `Draft` until a person says `Agreed`.
 ([`../lock.md`](../lock.md) L1), and **an open `[NEEDS CLARIFICATION]` marker blocks it**
 ([`doc-shape.md`](doc-shape.md) §9) — the only thing in this system that blocks anything.
 
-## 2. Open Questions — 9 properties
+## 2. Open Questions — 7 properties
 
 | Property | Type | Options / notes |
 |---|---|---|
@@ -38,9 +36,7 @@ there is one axis and it is human-written: `Draft` until a person says `Agreed`.
 | `Answer & why` | rich text | The answer **and** its reasoning. Empty = still open. The only place the *why* survives once a page states the *what*. On a `Rejected` or `Closed (not applied)` row it carries the one-line reason instead |
 | `Why asked` | rich text | **What prompted this** — the gap, the contradiction, the source segment, the ambiguity. Written by the run that proposed it, and it is what makes a `Proposed` row reviewable by somebody who was not in the room when it was generated |
 | `Touches` | relation → Features | Two-way. Empty = a project-level question |
-| `Status` | select | Seven values, §3 |
-| `Confirmed` | select | `AI generated` · `Human approved` |
-| `Confirmed by` | people | Who vetted the answer. Human only. **The gate is `Confirmed = Human approved`** (§4) — this records who did it |
+| `Status` | select | Seven values, §3. **`Answered` is the gate, and it is a human's move** (§4) |
 | `Created` | created time | As above. Two views sort on it |
 
 **`Why asked` exists because proposals are reviewed away from the run that made them.** A row a person
@@ -60,7 +56,7 @@ Proposed ──approve──> Open ──answer+vet──> Answered ──resolv
 |---|---|---|
 | **`Proposed`** | A run generated it from a gap. **It is not a question yet.** Excluded from every open-questions view and from every queue | a run |
 | **`Open`** | A human approved it. Nobody has answered | a human, or a run recording a human's approval at the checkpoint |
-| **`Answered`** | The answer and its reasoning are written. **Resolve-eligible only when `Confirmed = Human approved` and `Confirmed by` is set** (§4) | **A human, always — with one exception:** a run transcribing a decision given out loud ([`doc-shape.md`](doc-shape.md) §9 route 5) creates the row at `Answered` with `Confirmed = AI generated` and **`Confirmed by` empty**, which is precisely why §4's gate is the `Confirmed` pair and not the status |
+| **`Answered`** | The answer and its reasoning are written. **Resolve-eligible** (§4) | **A human** — in the UI at their own pace, or spoken at a checkpoint with the run transcribing their words **verbatim** and recording the move as theirs ([`doc-shape.md`](doc-shape.md) §9 route 5). **A run never sets it on its own initiative and never invents the answer** |
 | **`Applied`** | The answer now lives in the feature documentation | **[`../resolve.md`](../resolve.md) only** |
 | **`Flagged`** | A run tried to write the answer in and could not do it honestly; the objection is on the row. **Excluded from the queue** | **[`../resolve.md`](../resolve.md) only.** A human who resolves the disagreement moves it back to `Answered` |
 | **`Closed (not applied)`** | Terminal, part of the record, never applied. **Two ways in.** (a) Answered and vetted, but the answer's home is elsewhere. (b) Nobody will ever answer it — off-topic, duplicative, overtaken by events; then `Answer & why` carries the one-line reason instead of an answer | **A human.** A run may propose (a) and never sets either |
@@ -95,44 +91,41 @@ by date, are the project's decision log** — there is no separate register.
 Nothing here is enforced by the platform. Every "required" means *checked by a run's opening checks and
 reported by [`../status.md`](../status.md)*.
 
-**A question is resolve-eligible when all of:** `Status = Answered`; **`Confirmed = Human approved`**;
-`Answer & why` non-empty; `Confirmed by` non-empty.
+**A question is resolve-eligible when all of:** `Status = Answered`; `Answer & why` non-empty.
+*(The `Confirmed` select gated resolve until 2026-08-06, when the owner had the field removed — §8.
+`Answered` is a human's move, and that move is the sign-off.)*
 
 **Every other status is excluded by name** — `Proposed`, `Open`, `Applied`, `Flagged`,
 `Closed (not applied)`, `Rejected`. Nothing else is ever consumed: not a comment thread, not a decision
 somebody described verbally, not a `Proposed` row however good it looks.
 
-**A feature is lock-ready when:** `Intent = Agreed`, `Confirmed by` set, no open marker in its body,
+**A feature is lock-ready when:** `Intent = Agreed`, no open marker in its body,
 and its `Behaviour` block holds at least one numbered requirement. [`../lock.md`](../lock.md) L1
 counts these and names every miss; a human may still lock over them, deliberately and on the record.
 
-**`Confirmed` is the gate, and it is the gate because it is the visible one.** A row a run drafted starts
-at `AI generated` and **stays there until a human moves it to `Human approved`** — and nothing is applied
-from a row still reading `AI generated`, however good the answer looks and whoever is named in
-`Confirmed by`. That is the whole point of the label: *what has a person actually confirmed?* A gate kept
-on a field nobody looks at, while the field everybody looks at never changes, is a gate that informs
-nobody. `Confirmed by` records **who**; `Confirmed` records **that it happened**, in the column a reader
-sees first.
+**`Answered` is the gate, and it is a human's move.** A run may record it only as a transcription of a
+human's own words given at a checkpoint — verbatim, never a paraphrase, never on its own initiative —
+so the queue holds only human-sanctioned answers by construction. Neither *who* answered beyond `Owner`
+nor *who drafted a row* is recorded anywhere (§8), and no run may claim to know either — the platform
+keeps no queryable per-property history ([`notion-mechanics.md`](notion-mechanics.md) §5).
 
 ## 5. Who may write what
 
 | Field | Written by | Never written by |
 |---|---|---|
-| Features `Intent`, `Confirmed by` · Open Questions `Confirmed by` · `Confirmed = Human approved` | **a human, always** | any run, in any circumstance |
-| Open Questions `Answer & why` | **a human, always** — except the verbatim transcription at [`doc-shape.md`](doc-shape.md) §9 route 5, which a human then confirms | a run writing an answer it then reads and applies — that is the laundering this design exists to prevent |
+| Features `Intent` | **a human, always** | any run, in any circumstance |
+| Open Questions `Answer & why` | **a human, always** — except the verbatim transcription at [`doc-shape.md`](doc-shape.md) §9 route 5 | a run writing an answer it invented — that is the laundering this design exists to prevent |
 | Open Questions `Status: Proposed` | the run that generated it | — |
 | Open Questions `Status: → Open`, `→ Rejected` | **a human**, at the checkpoint or in the UI (a run records the choice) | a run choosing for itself |
-| Open Questions `Status: → Answered` | **a human, always** — **except** a run performing [`doc-shape.md`](doc-shape.md) §9 route 5, which leaves `Confirmed = AI generated` and `Confirmed by` empty so the row cannot be consumed until a person signs it | a run in any other circumstance, and never with `Confirmed by` filled |
+| Open Questions `Status: → Answered` | **a human** — in the UI, or their spoken answer at a checkpoint transcribed **verbatim** by the run and recorded as their move ([`doc-shape.md`](doc-shape.md) §9 route 5) | a run on its own initiative, or with an answer no human gave |
 | Open Questions `Status: Answered → Applied`, `→ Flagged` | [`../resolve.md`](../resolve.md) only | a human |
 | Open Questions `Status: → Closed (not applied)` | a human (a run may propose route (a)) | a run |
-| `Confirmed = AI generated` | whoever creates the row, once | anyone, afterwards |
-| `Confirmed: AI generated → Human approved` | **a human, always** — the one sanctioned change to this field | **any run, in any circumstance** |
 | The overview page | a human, **or a run writing a verbatim proposal a human accepted** ([`doc-shape.md`](doc-shape.md) §3) | a run writing it silently or wholesale |
 | The change log | the write run that made the change, one entry per sitting ([`../lock.md`](../lock.md) L4), each carrying the ask verbatim | anyone rewriting it — append-only, like the run log |
 | `Created` | the target, at creation | everyone |
 
 **"Never written by any run" bars clearing a field exactly as much as setting one** — a run that finds
-`Confirmed by` or `Confirmed = Human approved` already populated does not blank it to force a different
+`Intent = Agreed` or a human-set status already populated does not blank it to force a different
 state, even reasoning from a rule it read correctly ([`../SKILL.md`](../SKILL.md) rule 1 is the single home
 of this and the incident that made it explicit).
 
@@ -193,6 +186,16 @@ Reintroducing one needs a better reason than "it would be nice to know".
   body's `Not doing` block, or the overview's NOT-clause.
 - **`Owner`, `Size` and `Design` on a feature.** `Owner` was empty on every row it was measured on; `Size`
   had one consumer and that consumer is gone; a link belongs in `Why` or the overview's `Links`.
+- **A `Confirmed by` people property, recording who confirmed.** Both databases carried one until
+  2026-08-05, when the owner had it removed (run `2026-08-05-amend-1`). The *who* behind a confirmation
+  is not recorded anywhere, and no run may claim to know it — there is
+  no queryable per-property edit history to derive it from
+  ([`notion-mechanics.md`](notion-mechanics.md) §5).
+- **A `Confirmed` select (`AI generated` · `Human approved`), recording drafting provenance and gating
+  resolve.** Both databases carried one until 2026-08-06, when the owner had it removed (run `rsv7a1`):
+  `Status = Answered` — a human's move — is the resolve gate, and who drafted a row is not tracked.
+  What survives the removal: a run still never sets `Intent = Agreed`, never approves its own
+  proposals, and never records an answer no human gave.
 - **Rollups and formulas.** A formula property is not queryable at all — Notion returns it under
   `notAvailableInQuerySql`, so it is display-only and no run may filter or count on it. Everything here
   counts by querying rows, which was already the rule for a softer reason: a number alone cannot name

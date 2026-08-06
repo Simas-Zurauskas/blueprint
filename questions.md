@@ -44,11 +44,10 @@ since the last run — in the UI, at their own pace, without this skill.
 source material bears on it — in which case it is proposed once, citing the earlier rejection so the
 reviewer can see they are being asked twice and why.
 
-**A row's `Confirmed by` or `Confirmed` field, if a human has already touched it, is read, never edited —
+**A field a human has set is read, never edited —
 not even to blank it, and not even where doing so seems to enforce this file's own gate correctly.**
 [`SKILL.md`](SKILL.md) rule 1 is the single home of this and bars clearing exactly as much as setting; a
-row that looks prematurely vetted is reported as a discrepancy and left alone — eligibility already runs
-on the `Confirmed` value, per [`spec/databases.md`](spec/databases.md) §4, so there is never a reason to
+row that looks prematurely moved is reported as a discrepancy and left alone — there is never a reason to
 touch what a human wrote to make a row ineligible.
 
 This phase is first because generating before reading it means proposing questions somebody already
@@ -106,7 +105,8 @@ success means — every other lens reads the features, and only this one reads t
    agreed was a gap.
 2. **Contradictions** carried in from [`init.md`](init.md) I2 or [`add.md`](add.md) A2 — between two
    sources, or between a source and what the Blueprint says. Each gets **one blocking question** naming
-   both sides.
+   both sides. Where the marker cites a `CON-k`, **dereference the run-log entry it names and work from
+   the verbatim quotes there**, never from the marker's compressed wording alone.
 3. **A `Behaviour` block with no numbered requirement**, or a feature whose body is still the empty
    skeleton.
 4. **A `Not doing` line with no `revisit if:`** — a refusal without a reopening condition becomes dogma,
@@ -164,9 +164,11 @@ Everything past ten is **carried, not lost**: named as next sitting's in the rep
 review can pull a named carried item into this sitting.
 
 Each proposal row: `Question` phrased **as a question**, in one sentence · `Why asked` naming what
-prompted it and **whether a marker is already waiting on it**, because that changes what rejecting costs ·
+prompted it and **whether a marker is already waiting on it**, because that changes what rejecting costs —
+and, on a contradiction-backed proposal, **carrying both verbatim quotes with both source names**, never
+a paraphrase: the reviewer judges the disagreement itself, not the run's summary of it ·
 `Touches` set where it is feature-scoped, empty where it is project-level · `Status: Proposed` ·
-`Confirmed: AI generated` · `Confirmed by` empty · **`Owner` suggested, not set** — the owner is part of
+**`Owner` suggested, not set** — the owner is part of
 what the human approves.
 
 ---
@@ -193,7 +195,7 @@ PROPOSED (6) — none of these is a question yet. Ordered by how much the answer
 | Outcome | The row becomes | The marker waiting on it |
 |---|---|---|
 | **Approve** | `Status: Open`, owner named | patched with the row link |
-| **Answer now** | `Status: Answered`, **their words verbatim** in `Answer & why`, their name as `Owner`, `Confirmed: AI generated`, **`Confirmed by` empty** | patched with the row link; the next `resolve` removes it when the answer is applied |
+| **Answer now** | `Status: Answered` — their move, made in the room — with **their words verbatim** in `Answer & why` and their name as `Owner` | patched with the row link; the next `resolve` removes it when the answer is applied |
 | **Edit, then approve** | `Status: Open`, **the human's wording verbatim** | patched with the row link |
 | **Reject — not a real gap** | `Status: Rejected`, reason in `Answer & why` | **removed**, citing the rejected row ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 4) |
 | **Already decided** | `Status: Rejected`, pointing at what answers it | **removed**, citing the requirement or `Not doing` line that answers it |
@@ -217,14 +219,13 @@ as not a real gap removes the marker on «Checkout» — that feature can then b
 
 **Answer now closes the gray area in one sitting — with one click deliberately left over.** It is
 [`spec/doc-shape.md`](spec/doc-shape.md) §9 route 5 fired at the review: the answer is given out loud, the
-run transcribes it verbatim, and the row waits at `Answered` with **`Confirmed by` empty**. The human puts
-their name on it — one click in Notion, one line in a file — and the next `resolve` writes it in. **If
-they never do, nothing enters the document**, which is the honest failure. The run never fills that field,
-whatever was said at the review: the vet is the one act that must survive as a person's own, because the
-whole provenance design rests on it.
+run transcribes it **verbatim** and records the row at `Answered` — the human's own move, made in the
+room — and the next `resolve` writes it in. **The run never invents the answer and never sets `Answered`
+on its own initiative**, whatever seems obvious: transcription of a person's words is the only route,
+because the whole provenance design rests on the answer being theirs.
 
-**An approval never sets `Confirmed = Human approved`.** The row is `AI generated` until a person answers
-it and vets their own answer. Approving a *question* and vetting an *answer* are different acts by design.
+**Approving a *question* and answering it are different acts by design.** An approval makes a row `Open`;
+only an answer — the human's own, in the UI or spoken at the review — makes it `Answered`.
 
 ---
 
@@ -258,10 +259,14 @@ it and vets their own answer. Approving a *question* and vetting an *answer* are
 6. **Write the row for every answer given out loud** — the review's *answer now* outcome, and any decision
    quoted from a meeting or a message ([`spec/doc-shape.md`](spec/doc-shape.md)
    §9 route 5): the human's words **verbatim** in `Answer & why`, their name as `Owner`,
-   `Status: Answered`, `Confirmed: AI generated`, **`Confirmed by` empty** — they set that themselves, and
-   until they do, nothing enters the document.
+   `Status: Answered` where the words were given to the run directly — recorded as the human's own move —
+   or `Status: Open` where the decision is second-hand, for its decider to move on themselves
+   ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 5).
 7. **Log every proposal with its outcome**, including the rejected ones and the reason, so a rejection is
-   answerable later without being an open question now.
+   answerable later without being an open question now. **Every Q3 discard goes into the run-log entry
+   too** — filter, verbatim quote and counter-case, not only the sitting's printed report: a report is a
+   screen and the log is the record, and a discard that exists only on a screen is the same silent loss
+   the `CON-k` inventory closes for contradictions ([`init.md`](init.md) I7).
 8. **Regenerate every `⟳` view this sitting touched** ([`spec/doc-shape.md`](spec/doc-shape.md) §3's
    single home) — a fresh count from the rows as they now stand, never the prior view patched forward.
 9. **Report** — every count in it freshly derived at the moment of printing ([`SKILL.md`](SKILL.md)
@@ -271,8 +276,8 @@ it and vets their own answer. Approving a *question* and vetting an *answer* are
 QUESTIONS — «Golden Crumb» · 2026-08-11
 
 PROPOSED   6 of 14 candidates · 8 discarded on a filter (listed with their counter-case)
-REVIEWED   3 approved (Ana ×2, Tom ×1) · 1 answered now (waiting on Ana's name in
-           Confirmed by — then resolve writes it in) · 2 rejected · 1 unanswered, back next sitting
+REVIEWED   3 approved (Ana ×2, Tom ×1) · 1 answered now (recorded at Answered — the next
+           resolve writes it in) · 2 rejected · 1 unanswered, back next sitting
 MARKERS    2 patched with their row · 1 removed («Loyalty» — rejected as already decided,
            answered by the Not doing line on point expiry) · 4 still carried
 CARRIED    4 markers have no question yet — «Refunds» ×2, «Checkout» ×2. They block

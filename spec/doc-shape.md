@@ -60,7 +60,7 @@ prose; a **`⟳` heading** is a saved view. One rule: ***never type under a `⟳
 | **`## ⟳ Proposed — needs review`** | Question proposals waiting on a human — a view | — |
 | **`## ⟳ Open questions`** | Approved questions and their answers — a view | — |
 | **Links** | Source material, design files, whoever's original documents. Links only | — |
-| **Operating** | Who owns this Blueprint · the run-log link · the change-log link once locked · any widening of the content rule (§6) | 4 lines |
+| **Operating** | The run-log link · the change-log link once locked · any widening of the content rule (§6) | 3 lines |
 
 **The front page is the same size at 200 features as on day 1** — every human block is capped and every
 index on it is a view. That is what keeps a front door readable rather than turning it into the document.
@@ -221,11 +221,12 @@ third-party names, no individuals' names, no contract terms or dates, no penalti
 enterprise contract has a four-hour response target for P1 faults, with a penalty"* — and the requirement
 is just as failable.
 
-**Two standing exemptions, because the design mandates the thing the rule bars.** The rule is about the
-*product being described*, never about the people running the process. So: **the `Operating` block's named
-owner** and **every people-typed property** — `Owner`, `Confirmed by` — are outside this rule and are never
-a finding. Naming who decides is the record the whole provenance design rests on; a sweep that flags it
-fires on the front door every run forever, and a check that always fires is a check nobody reads.
+**One standing exemption, because the design mandates the thing the rule bars.** The rule is about the
+*product being described*, never about the people running the process. So: **the people-typed `Owner`
+property** is outside this rule and is never a finding — naming who owns a question is the record the
+provenance design rests on, and a check that always fires is a check nobody reads. (Until 2026-08-06 the
+`Operating` block also carried a named owner under this exemption; the owner had it removed, so the
+overview names nobody and per-question `Owner` is the only named-person surface.)
 **Everything else about a person still falls under the rule**, including a person named in prose in a
 feature body, a requirement, or an answer.
 
@@ -237,8 +238,8 @@ a draft. Every writing sub-agent is briefed with this rule, a delta breaking it 
 
 **The rule reaches every character of an in-scope free-text field, including a sign-off at the end of
 it.** *"— Grace, 2026-08-04"* closing an `Answer & why` is still an individual's name in a field this rule
-covers; the exemption is the `Owner` and `Confirmed by` **properties** themselves, never prose that sits
-next to them in a text field. A simulated run's own faithfulness check correctly scrubbed a name from
+covers; the exemption is the `Owner` **property** itself, never prose that sits
+next to it in a text field. A simulated run's own faithfulness check correctly scrubbed a name from
 feature-body prose while five separately-signed answers sat uncaught in the same project's `Answer & why`
 field, because the sweep followed the property list rather than reading every character of the fields it
 was already scoped to.
@@ -311,7 +312,11 @@ makes them guess*, so the document has to carry the question.
 - **Carried is a legitimate state, and it is not the same as broken.** A run may mint more markers than it
   may propose questions, because [`../questions.md`](../questions.md) Q4 caps what is put to a person at a
   sitting. A marker whose question has not been proposed yet reads `→ Question: carried`, blocks
-  `Intent = Agreed` like any other, and waits for the next sitting. A marker pointing at a row that no
+  `Intent = Agreed` like any other, and waits for the next sitting. **A carried marker born from a
+  contradiction between sources also cites its inventory id and the run-log entry holding both verbatim
+  quotes** — `→ Question: carried (CON-7 · run-log 2026-08-04-init-1)` — so the sitting that finally
+  proposes it dereferences the quotes rather than re-paraphrasing a compact marker
+  ([`../init.md`](../init.md) I7 owns the inventory). A marker pointing at a row that no
   longer exists is **broken** and is a fault. [`../status.md`](../status.md) C5 prints the two apart,
   because a queue buried in a fault list teaches people to skip the list. **Never write
   `→ Question: pending`**: it names neither state, and a reader cannot tell whether somebody owes an
@@ -340,14 +345,15 @@ in the third.
    wrong, so the marker stays `carried`. Without this split, rejecting a badly-worded proposal either
    stranded the marker forever or silently converted a known unknown into an unknown unknown.
 5. **It was decided outside the system and recorded here — a gate rather than a shortcut.** A decision
-   made out loud, in a meeting, in a message clears a marker only by becoming an ordinary vetted answer
-   first. At the checkpoint the run drafts the row: `Question` = the marker's own text; `Answer & why` =
-   the human's words **verbatim**, never a paraphrase; `Owner` = the person who said them;
-   `Confirmed = AI generated`; `Status = Answered`; **`Confirmed by` empty**. The human puts their name in
-   `Confirmed by` — one click, on the screen they are already reading — and the next resolve run writes it
-   in. **If they do not click, nothing enters the document:** the row sits with an empty `Confirmed by`,
-   [`../status.md`](../status.md) C6 names it, and the marker stands. That is the honest failure, and it
-   is strictly better than a claim entering ungated.
+   made out loud, in a meeting, in a message clears a marker only by becoming an ordinary answer
+   first. The run drafts the row: `Question` = the marker's own text; `Answer & why` =
+   the human's words **verbatim**, never a paraphrase; `Owner` = the person who said them. **Where the
+   words were given to the run directly — at a review, in the working conversation — the row is recorded
+   at `Status = Answered` as that human's own move, and the next resolve run writes it in. Where the
+   decision is second-hand — a relayed meeting, a message quoted by somebody else — the row lands at
+   `Open`, and the person who decided moves it to `Answered` themselves. If they do not, nothing enters
+   the document:** the row sits `Open`, [`../status.md`](../status.md) C7 names it as it ages, and the
+   marker stands. That is the honest failure, and it is strictly better than a claim entering ungated.
 
 **None of the five is a bypass of another.** A run may never write an answer straight in, and never
 without a row. **A marker removal with no row ID in the run-log entry is a bug, not a tidy-up.**

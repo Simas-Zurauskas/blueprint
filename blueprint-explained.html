@@ -166,9 +166,9 @@
   document before a lock. Covered next.</p>
 
   <h3>3 &middot; You answer the questions you kept</h3>
-  <p>Write the answer <strong>and why</strong>, your name in <code>Confirmed by</code>,
-  <code>Confirmed = Human approved</code>. A row still reading <code>AI generated</code> is never applied,
-  however good the answer looks.</p>
+  <p>Write the answer <strong>and why</strong>, then set
+  <code>Status = Answered</code> &mdash; your move is the sign-off, and resolve consumes only rows a
+  human moved there.</p>
 
   <h3>4 &middot; <code>/blueprint resolve</code> writes the answers in</h3>
   <p>One agent drafts the change; a second, genuinely separate one checks it &mdash; asked <em>where is
@@ -220,8 +220,8 @@
      [a]pprove · a[n]swer now · [e]dit · [r]eject · already [d]ecided · [s]kip</code></pre>
 
   <p><strong>Only what you approve becomes a real question.</strong> <em>Answer now</em> is the fast path:
-  your words are taken verbatim, and one act remains &mdash; your name in <code>Confirmed by</code>, which
-  no run may ever fill. Skipping is not rejecting; a skipped proposal returns next sitting. About ten per
+  your words are taken verbatim and the row is recorded at <code>Answered</code> &mdash; your move,
+  made in the room. Skipping is not rejecting; a skipped proposal returns next sitting. About ten per
   sitting, most consequential first &mdash; past that, people stop reading and start agreeing.</p>
 
   <div class="callout">
@@ -318,7 +318,7 @@
   problem, who has it, what this does about it, what observable change would mean it worked, ending in a
   one-sentence NOT-clause &middot; <em>Who it's for</em> &mdash; real user kinds, the job each hires it
   for, what they use today, optionally who it is <em>not</em> for &middot; one picture &middot; three
-  <code>&#10227;</code> views &middot; links &middot; an <em>Operating</em> block with a confirmed owner,
+  <code>&#10227;</code> views &middot; links &middot; an <em>Operating</em> block naming no one,
   never an inferred one.</p>
 
   <p>Two rules keep it trustworthy: views are <strong>regenerated from the rows, never patched
@@ -439,11 +439,10 @@
   <p class="sec-num">Seven</p>
   <h2>What a machine may never decide</h2>
 
-  <p>One label carries provenance: <code>Confirmed</code> &mdash; <code>AI generated</code> or
-  <code>Human approved</code> &mdash; plus <code>Confirmed by</code> for the name. A run may mark its own
-  rows <code>AI generated</code>. It never writes the other value, never writes a name, never sets
-  <code>Intent = Agreed</code> &mdash; <strong>and never clears any of them either</strong>: a human-set
-  field is not a run's to blank, whatever the reasoning.</p>
+  <p>A run never sets
+  <code>Intent = Agreed</code>, never approves its own proposals, and never records an answer no human
+  gave &mdash; <strong>and never clears a human-set field either</strong>: what a person wrote is not a
+  run's to blank, whatever the reasoning.</p>
 
   <div class="callout">
     <p class="lbl">Why the record of who decided is untouchable</p>
@@ -453,7 +452,7 @@
     Confidence degrades before competence, so who-decided must be untouchable by the thing degrading.</p>
   </div>
 
-  <p>Only a person can: approve a proposal &middot; mark a row <code>Human approved</code> &middot; agree
+  <p>Only a person can: approve a proposal &middot; move a row to <code>Answered</code> &middot; agree
   a feature &middot; remove a value the content rule bars &middot; write any requirement beyond
   <code>FR-1</code> (a run may draft the first, shown verbatim; the rest are permanent choices and
   therefore yours).</p>
@@ -497,8 +496,9 @@
   removed, and every removal cites the row that justified it.</p>
 
   <p>The one worth knowing: <strong>a decision made out loud clears a marker only by becoming a vetted
-  answer first.</strong> The run drafts the row with your words verbatim and leaves
-  <code>Confirmed by</code> empty; you add your name, the next <code>resolve</code> writes it in. If you
+  answer first.</strong> The run drafts the row with your words verbatim and leaves it at
+  <code>Open</code> where the decision was second-hand; you move it to <code>Answered</code>, the next <code>resolve</code>
+  writes it in. If you
   never do, nothing enters the document &mdash; the honest failure, strictly better than a claim entering
   ungated.</p>
 </section>

@@ -53,14 +53,15 @@ Every gap the grilling finds becomes a **proposal** — not a real question unti
 [a]pprove · a[n]swer now · [e]dit · [r]eject · already [d]ecided · [s]kip
 ```
 
-**Answer now** is the fast path: answer on the spot in your own words, and only one act remains — your
-name on the row. Rejections keep their reason and never come back as noise. About ten per sitting, most
+**Answer now** is the fast path: answer on the spot in your own words — the run records the row at
+`Answered` as your move, done in the room. Rejections keep their reason and never come back as noise. About ten per sitting, most
 important first.
 
 ### 3 · Answer the questions you kept
 
-In Notion or the files, at your own pace: write the answer **and why**, put your name in `Confirmed by`,
-set `Confirmed = Human approved` and `Status = Answered`. Nothing a machine drafted enters the spec until
+In Notion or the files, at your own pace: write the answer **and why**, then
+set `Status = Answered` — that move is your sign-off, and resolve consumes only rows a human moved
+there. Nothing a machine drafted enters the spec until
 a person has signed it — that is the whole safety model.
 
 ### 4 · `/blueprint resolve` — write the answers in
@@ -106,7 +107,7 @@ whoever asked. *"Why does the doc say something different now?"* is always answe
 
 ## What only you can do
 
-The tool drafts; you decide. It will never: approve its own proposals, mark anything `Human approved`,
+The tool drafts; you decide. It will never: approve its own proposals, record an answer no human gave,
 set `Intent = Agreed`, write your name, or invent an answer to anything. **Working alone?** All of this
 collapses naturally — you're the owner and the approver everywhere. It isn't ceremony; it's the record
 that a person actually read the thing, which matters just as much when that person is you in three

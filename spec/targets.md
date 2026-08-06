@@ -65,6 +65,7 @@ rehearsing a run without touching a live workspace.
   questions.md           one section per question, in Status order
   run-log.md             append-only, newest entry at the top
   changelog.md           starts at the lock — what changed and why, newest first
+  internal/              the working folder (§5) — the skill's cache, not part of the document
 ```
 
 **A feature file** carries its properties as YAML front matter and its body below, exactly as
@@ -76,8 +77,6 @@ name: Checkout
 what_it_does: A customer pays for the order in their basket and gets a confirmation.
 intent: Draft
 area: Ordering
-confirmed: AI generated
-confirmed_by:
 questions: [q-04, q-07]
 created: 2026-08-04
 ---
@@ -94,8 +93,6 @@ created: 2026-08-04
 - **Owner:**
 - **Touches:** Checkout
 - **Why asked:** The deck says slots are "flexible"; no source says whether that survives payment.
-- **Confirmed:** AI generated
-- **Confirmed by:**
 - **Created:** 2026-08-04
 
 **Answer & why:** _(unanswered)_
@@ -136,10 +133,20 @@ of a body is in the 33% condition.
 
 ## 5. The working folder is a rebuildable cache
 
-`.blueprint/` in the workspace holds:
+**This section is the single home of where the working folder lives.** Every run file says "the working
+folder" and resolves it here:
+
+| Target | The working folder |
+|---|---|
+| **Local markdown folder** | **`<blueprint-dir>/internal/`** — inside the Blueprint, so a project holds one directory, not two siblings |
+| **Notion** | **`.blueprint/` in the workspace** — there is no local Blueprint folder to nest into, and a hidden folder is right for a cache that stands alone |
+
+It holds:
 
 ```
-.blueprint/
+<working-folder>/
+  README.md              two paragraphs saying what this folder is and is not — written at creation,
+                         because "internal" sits beside files people read
   target.md              the target kind and its address — the one thing not reconstructible
   mapping.md             entity IDs, parents, child order, a content hash per entity
   sources/<run-id>/      the source record: every ingested source, verbatim
@@ -147,6 +154,10 @@ of a body is in the 33% condition.
 ```
 
 - **Nothing secret, no token, ever.** Outside this folder the skill never writes into a code repo.
+- **Keep it out of version control either way** — `sources/` holds material *verbatim*, which is exactly
+  the specifics the content rule keeps out of the Blueprint. On a local target the entry is
+  `<blueprint-dir>/internal/`; on Notion it is `.blueprint/`. A human who deliberately commits the
+  rendered Blueprint itself commits `internal/` only by choosing to.
 - **Everything except the target address is reconstructible** from the target itself. Delete the folder
   and the next run rebuilds it.
 - **Therefore no check may treat it as the record of anything that must survive.** In particular
@@ -154,6 +165,10 @@ of a body is in the 33% condition.
   ([`../lock.md`](../lock.md) L3). A marker kept in a rebuildable cache disappears on another machine,
   and the next change to a settled document goes unrecorded.
 - **If the cache and the target disagree, the target is right.**
+- **A sibling `.blueprint/` beside a local-target Blueprint is the earlier layout of this skill.** Treat
+  finding one as a rename, not a fork: move it to `<blueprint-dir>/internal/`, move the ignore entry
+  with it, note the move in the run log, and say that you did. Never read from both — two working
+  folders is exactly the two-places state this section exists to prevent.
 
 ## 6. Anything else
 

@@ -45,8 +45,8 @@ read. Report and halt, naming both versions and the one route forward — a huma
 files back, or migrates deliberately and records it as a dated line in the log. Newer than `VERSION` →
 someone is running older skill files than the Blueprint was built with; update the skill.
 
-**The queue is exactly:** `Status = Answered` **and** `Confirmed = Human approved` **and** `Answer & why`
-non-empty **and** `Confirmed by` non-empty ([`spec/databases.md`](spec/databases.md) §4).
+**The queue is exactly:** `Status = Answered` **and** `Answer & why`
+non-empty ([`spec/databases.md`](spec/databases.md) §4).
 
 **Every other status is excluded by name, and each for its own reason:**
 
@@ -58,8 +58,10 @@ non-empty **and** `Confirmed by` non-empty ([`spec/databases.md`](spec/databases
 | `Applied` | Already written in |
 | `Closed (not applied)`, `Rejected` | Terminal by a human's decision |
 
-**A row still reading `Confirmed = AI generated` is never consumed**, however good the answer looks — a run
-drafted it and no human has moved it on.
+**`Answered` is a human's move** ([`spec/databases.md`](spec/databases.md) §5): a person set it in the UI,
+or a run recorded their spoken answer verbatim at a checkpoint — so the queue holds only human-sanctioned
+answers by construction. A run that finds an `Answered` row whose answer no human gave has found a defect,
+not a queue item: report it, consume nothing from it.
 
 **An empty queue is a valid run:** skip R3, do the rest. It should feel cheap. If it does not, something is
 re-writing content that did not change.
@@ -372,8 +374,8 @@ a flag always carries its evidence.
       carries its dated provenance line.
 - [ ] Every write was read back; no write spanned more than one named block; **nothing was written to the
       overview except a block a human accepted verbatim**; the `Untouched:` line was checked.
-- [ ] No `Intent`, `Confirmed by` or `Confirmed = Human approved` was written by this run; no existing
-      `Confirmed` was edited; no barred value reached a row, the report or the log.
+- [ ] No `Intent` was written by this run; no human-set status was reversed; no barred value reached a
+      row, the report or the log.
 - [ ] Every marker removed names a row ID in the log entry; every marker still open reads `carried` or
       points at a real row.
 - [ ] The entry opened at the top of R2, ends in `CLOSED hh:mm` or `PAUSED …`, and contains no token.

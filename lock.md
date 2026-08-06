@@ -23,7 +23,7 @@ one definition of what "locked" means.
 
 **Always printed, by `lock` and by [`status.md`](status.md) S3, from this one definition.** **Open the
 run-log entry before L3 writes anything**, and close it at the end ([`SKILL.md`](SKILL.md) pre-flight
-check 5). Seven questions, each answered with names and counts, never a score:
+check 5). Five questions, each answered with names and counts, never a score:
 
 | # | What it asks | Why it matters |
 |---|---|---|
@@ -32,8 +32,6 @@ check 5). Seven questions, each answered with names and counts, never a score:
 | 3 | **Which questions are `Open`, `Answered` or `Flagged`?** | `Open` = nobody has decided. `Answered` = decided but not yet written in — run `/blueprint resolve` first. `Flagged` = a run could not write it honestly and a person has not looked |
 | 4 | **Which features' `Behaviour` blocks hold no numbered requirement?** | A feature with no failable requirement is a title, not a spec |
 | 5 | **Which `Not doing` lines have no `revisit if:`?** | A refusal with no reopening condition becomes dogma |
-| 6 | **Which rows are still `Confirmed = AI generated`?** | Nobody has read them |
-| 7 | **Was the Operating block's owner ever confirmed with a human, or does it still read as inferred?** | [`init.md`](init.md) I3 is where this is meant to be settled; this question exists because a Blueprint can reach a lock having skipped that stop, or predate this rule, and nothing else ever asks again |
 
 **Then the final grilling.** Before anything is locked, run the adversarial battery of
 [`questions.md`](questions.md) Q2 — the lenses live there and are not restated here — over the whole
@@ -144,7 +142,7 @@ command's pre-flight reads it here and nothing redefines it elsewhere. There is 
 re-lock — the change log carries everything that happens afterwards, which is what makes a second lock
 meaningless.
 
-**It is derived from the target, never from `.blueprint/`.** The working folder is a rebuildable cache
+**It is derived from the target, never from the working folder**, which is a rebuildable cache
 ([`spec/targets.md`](spec/targets.md) §5) — a marker kept there vanishes on another machine or after the
 cache is rebuilt, and the next change goes unrecorded. The run log travels with the Blueprint, so the
 answer travels with it.

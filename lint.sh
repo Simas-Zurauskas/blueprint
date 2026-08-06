@@ -129,8 +129,8 @@ if [ -f spec/databases.md ]; then
     n=$(grep -cE "^\| \*\*\`$(printf '%s' "$v" | sed 's/[()]/\\&/g')\`\*\*" spec/databases.md)
     [ "$n" -ne 1 ] && { echo "FROZEN VOCABULARY: \`$v\` has $n definition rows in spec/databases.md (want exactly 1)"; fail=1; }
   done
-  # The Intent and Confirmed vocabularies are defined in property tables, not status rows
-  for v in 'Draft' 'Agreed' 'AI generated' 'Human approved'; do
+  # The Intent vocabulary is defined in a property table, not status rows
+  for v in 'Draft' 'Agreed'; do
     n=$(grep -cF "\`$v\`" spec/databases.md)
     [ "$n" -eq 0 ] && { echo "FROZEN VOCABULARY: \`$v\` is never defined in spec/databases.md"; fail=1; }
   done
