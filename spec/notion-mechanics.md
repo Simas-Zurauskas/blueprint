@@ -75,8 +75,10 @@ The sharpest edges in the API surface. Both are silent.
   replace on a page with children must re-emit every child block. **Verified live 2026-08-03: on the MCP
   markdown path this is now guarded** — a replace that would orphan children returns a `validation_error`
   naming every page and database at risk, and only proceeds with `allow_deleting_content: true`. **Never
-  pass that flag.** The guard is a seat belt, not a licence: re-emit the children and treat the error as
-  the near-miss it is. Do not assume the guard covers every path.
+  pass that flag to save a malformed write** — re-emit the children and treat the error as the near-miss
+  it is. **The one sanctioned use:** a deliberate removal of a named child the owner explicitly ordered
+  deleted, with the ask quoted in the run-log entry (first used 2026-08-06, removing an embedded view at
+  the owner's layout ask). The guard is a seat belt, not a licence, and it does not cover every path.
   **This matters more here than it used to**, because this skill's overview writes are proposals a human
   accepted ([`doc-shape.md`](doc-shape.md) §3) — and the overview is the page that holds every child.
 - **The marker bracket escape, on the one blocking mechanism in the Blueprint.**
@@ -166,7 +168,7 @@ ceiling. Report it as a halt with the plan named — never a partial read presen
 | Symptom | Cause | What to do |
 |---|---|---|
 | A child page vanished after a content write | Its page block was omitted on a replace | Restore from page history; re-emit every child block, always |
-| A content replace returns `validation_error` naming child pages or databases | The replace omitted them, and the guard caught it (§3) | Re-emit every named child and retry. **Never** pass `allow_deleting_content` to silence it |
+| A content replace returns `validation_error` naming child pages or databases | The replace omitted them, and the guard caught it (§3) | Re-emit every named child and retry. **Never** pass `allow_deleting_content` to silence it — only a deliberate, owner-ordered removal may carry it, logged (§3) |
 | A marker sweep reports zero markers on a document that has them | The literal `[NEEDS CLARIFICATION` match; Notion escapes the bracket (§3) | Match without the leading bracket |
 | A cross-link renders but goes nowhere | A space in a mention URL, or a page block used as a link | Rebuild as a mention with a clean URL |
 | A page moved under another unexpectedly | A page block used as a cross-link | Move it back in the UI; switch to a mention |
@@ -183,8 +185,8 @@ ceiling. Report it as a halt with the plan named — never a partial read presen
 
 Never create a teamspace or an overview page from code. Never write a token into a file, a log, a page or
 the mapping. Never trust a property write — MCP or REST — that was not read back. Never delete an orphan
-automatically, or delete or reorder a foreign child. **Never pass `allow_deleting_content`** — re-emit the
-children instead. **Never match a marker on a literal `[NEEDS CLARIFICATION`**, which Notion escapes.
+automatically, or delete or reorder a foreign child. **Never pass `allow_deleting_content` except for a deliberate,
+owner-ordered removal, logged with the ask** — re-emit the children in every other case. **Never match a marker on a literal `[NEEDS CLARIFICATION`**, which Notion escapes.
 Never overwrite an edit this run did not make. Never blind-append to a page, and never interpolate a
 timestamp into page content. Never read a relation off a page object, or read a truncated query as
 complete. Never hand a body to a sub-agent or an export without the read-out line

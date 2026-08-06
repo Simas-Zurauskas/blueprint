@@ -28,7 +28,7 @@ than an admitted gap, because a gap gets asked about and a guess gets built.
 
 ```mermaid
 graph TD
-  R["OVERVIEW page — the front door, constant size<br/>TL;DR · What this product is · Who it's for · One picture<br/>⟳ Where things are · ⟳ Proposed — needs review · ⟳ Open questions<br/>Links · Operating"]
+  R["OVERVIEW page — the front door, constant size<br/>TL;DR · What this product is · Who it's for · One picture<br/>⟳ Where things are · ⟳ Open questions (grouped)<br/>Links · Operating"]
   C["Chapter page — optional. A human writes it"]
   F["FEATURES — the row IS the spec<br/>Intent: Draft → Agreed, by a human"]
   Q["OPEN QUESTIONS — one row = one question and its answer"]
@@ -57,8 +57,7 @@ prose; a **`⟳` heading** is a saved view. One rule: ***never type under a `⟳
 | **Who it's for** | **Real user kinds — never "users"** — one line each: the kind, the job they hire this product for, and (where a source says) what they use for that job today. May close with one **`Not for:`** line naming who this product deliberately does not serve — sourced, like any exclusion, never invented | 3 lines + one optional `Not for:` line |
 | **How it works, in one picture** | One mermaid diagram | ≤9 nodes |
 | **`## ⟳ Where things are`** | Features grouped by `Area` — a view | — |
-| **`## ⟳ Proposed — needs review`** | Question proposals waiting on a human — a view | — |
-| **`## ⟳ Open questions`** | Approved questions and their answers — a view | — |
+| **`## ⟳ Open questions`** | Approved questions and their answers — a view **grouped by `Status`, the groups collapsible** (the owner's 2026-08-06 layout ask: the section stays open, the groups collapse). The `Proposed — needs review` view is a database tab only, never embedded — proposals reach people through the review sittings and `status` | — |
 | **Links** | Source material, design files, whoever's original documents. Links only | — |
 | **Operating** | The run-log link · the change-log link once locked · any widening of the content rule (§6) | 3 lines |
 
@@ -107,7 +106,7 @@ it), or any count of anything.
 
 ### Views are regenerated, never patched
 
-The three `⟳` views, and the local-markdown target's equivalent generated lists
+The `⟳` views, and the local-markdown target's equivalent generated lists
 ([`targets.md`](targets.md) §3), are never edited in place — they are **thrown away and rebuilt from a
 fresh scan of the actual current rows**, every time a write-back touches a feature's
 `Intent`/`Area`/`What it does` or a question's `Status`. Patching a view's existing text forward from what

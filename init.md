@@ -206,7 +206,8 @@ are `FR-1…` and are never renumbered.
 **The overview**, whose blocks and caps live in [`spec/doc-shape.md`](spec/doc-shape.md) §3. Write the four
 capped human blocks — TL;DR (written first, rewritten last), **What this product is** (one paragraph
 closing in a one-sentence NOT-clause naming the *kind* of thing this product refuses; it does not try to
-be the list), **Who it's for**, **How it works, in one picture**. **Embed the three `⟳` views** and **type
+be the list), **Who it's for**, **How it works, in one picture**. **Embed the two `⟳` views** — «Where things are», and «Open questions» grouped
+by `Status` with the groups collapsible; «Proposed — needs review» stays a database tab, never embedded — and **type
 nothing under a `⟳` heading**, now or ever. Write **Links** and the **Operating** block — the run-log link
 and any widening of the content rule. **No owner line**: the overview names nobody
 ([`spec/doc-shape.md`](spec/doc-shape.md) §3), and per-question `Owner` is the only named-person surface.

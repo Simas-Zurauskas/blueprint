@@ -142,8 +142,8 @@ the navigation — every index in this shape is a view.
 |---|---|---|---|
 | Features | **Where things are** | table | Grouped by `Area`. Columns `Name · What it does · Intent`. **Embedded on the overview** |
 | Features | **Not yet agreed** | table | `Intent` is `Draft`, oldest first. What still needs a person |
-| Open Questions | **Proposed — needs review** | table | `Status` is `Proposed`, oldest first. Columns `Question · Why asked · Touches`. **Embedded on the overview** |
-| Open Questions | **Open questions** | table | `Status` is `Open` or `Answered`, grouped by `Status`. **Embedded on the overview** |
+| Open Questions | **Proposed — needs review** | table | `Status` is `Proposed`, oldest first. Columns `Question · Why asked · Touches`. **A database tab only — never embedded** (the owner's 2026-08-06 layout ask) |
+| Open Questions | **Open questions** | table | `Status` is `Open` or `Answered`, grouped by `Status` — the groups are the collapsible things. **Embedded on the overview, not inside a toggle** |
 | Open Questions | **Decision log** | table | `Status` is `Applied`, `Closed (not applied)` or `Rejected`, newest first |
 
 **"Oldest first" means ascending on `Created`** (§1, §2), never on a last-edited time: any edit resets
