@@ -50,7 +50,11 @@ zero setup — right for speccing an idea tonight.
 Every gap the grilling finds becomes a **proposal** — not a real question until you say so. **The run
 never interrogates you: it writes everything it found, prints the report, and stops.** You review in the
 `Proposed — needs review` tab whenever suits: approve, reject (say why), or just write the answer
-directly — the next run picks up every move.
+directly — the next run picks up every move. Each row arrives triaged — a **Key** checkbox marks the
+questions whose answers decide the build (contradiction-backed, or unbuildable without an answer), so
+you can take just the Key rows to a client when time is short — and carries **suggested directions**:
+machine-drafted options with their trade-offs, grounded in your own document, verified by a second
+model before writing, and always labeled *not a source — your answer in your own words is what counts*.
 
 Prefer going through them together? Ask for a review sitting and they come one at a time, ten per round:
 
@@ -100,7 +104,7 @@ whoever asked. *"Why does the doc say something different now?"* is always answe
 |---|---|---|
 | `/blueprint init` | Sources or interview → grilled skeleton → your confirm → the Blueprint | After your confirm |
 | `/blueprint add` | New material or ideas into existing/new features, same stop | After your confirm |
-| `/blueprint questions` | Grill the document; review proposals | Proposals only |
+| `/blueprint questions` | The full grilling battery — every found question written, triaged and given guidance | Proposals + their guidance |
 | `/blueprint resolve` | Write vetted answers into the feature specs | The answers |
 | `/blueprint lock` | Readiness + final grilling + your acknowledgment → locked | The lock + change log |
 | `/blueprint status` | One screen: what's flagged, what's waiting on you, ready to lock? | **Never** |
@@ -121,8 +125,10 @@ months.
 
 ## Honest limits
 
-- The question generator finds a **minority** of real gaps (~44% for the best measured agent). An empty
-  proposal list never means the spec is complete.
+- The full grilling battery, measured in a five-project lab against 77 planted defects, caught **~86%
+  outright and detected ~97%** — with zero hallucinated contradictions. (A single grilling pass manages
+  ~44%; that's why the battery is the only mode that ships.) Still: an empty proposal list never means
+  the spec is complete.
 - Between runs it has no eyes. Decisions made in meetings or chats reach the document only when you put
   them in as a source or an answer.
 - Reviewing proposals costs real attention — the run writes everything down and leaves the pace to you;

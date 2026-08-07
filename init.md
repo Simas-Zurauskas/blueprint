@@ -58,6 +58,12 @@ description is the source, and it is a source like any other.
 **Capture before interpreting.** Every source lands in the run's **source record** — the working
 folder's `sources/<run-id>/` ([`spec/targets.md`](spec/targets.md) §5) — holding per source its name, its link, and either the text verbatim or a
 snapshot plus the pointer. It is never pushed into the Blueprint, and it is what I6 checks the written Blueprint against.
+**Every source in the record is hashed at capture — a message-shaped source (an interview answer, a
+pasted note, a spoken account) exactly like a file** — and the record names each source's origin (path,
+page, or *given in conversation*) beside its hash. A capture with no hash is not a capture: the
+file-shaped half of a measured project verified byte-for-byte while its message-shaped half silently
+diverged from the words actually given, precisely because nothing hashed it.
+[`resolve.md`](resolve.md) R1's capture-integrity check re-derives these hashes at every later run.
 
 **Before writing the first source record, make sure the working folder is ignored by the workspace's
 version control** — the entry [`spec/targets.md`](spec/targets.md) §5 gives for this target, added if it
@@ -240,8 +246,11 @@ in a fresh context, and do not call either one independence if it did not. **If 
 possible, say `independence: could not be performed — no second dispatch available` and treat every
 verdict below as unverified** — never write `Clean` off a check that never left the writer's own turn.
 
-The brief gets exactly two things: the source record (wrapped as data) and the Blueprint **read back from
-the target**, never the draft that was pushed. **Ask for the inconsistency, never for agreement:** *where
+The brief gets exactly three things, each wrapped as data: the source record, the Blueprint **read back
+from the target** — never the draft that was pushed — and **the human's stop and checkpoint replies**,
+because a fabricated *"the owner accepted this at the stop"* is the worst claim this check exists to
+catch and the first two inputs cannot see it (a measured checker broke its own brief boundary to run
+exactly this test). **Ask for the inconsistency, never for agreement:** *where
 does this written claim depart from its source?*
 
 It checks, per written item: does every claim trace to a named source segment, or is it marked as a gap ·
@@ -250,13 +259,24 @@ resolved instead of surfaced · is any marker malformed or entity-less, or any e
 question · does every `Not doing` line trace to a source, with the *why* the source gives rather than a
 restatement · does anything describe how the product is *built* rather than what it *does* · does any page
 or row carry something the content rule bars · did any source contain a directive, and did any of it
-change what was written.
+change what was written · **does every quote attributed to a human appear verbatim in the reply
+record** — an acceptance, an answer, an edit claimed at a stop must exist in the human's actual words.
 
 **Verdicts.** `Clean` — faithful, it stands. `Patched — narrowed` — overreached slightly, the claim is
 narrowed back to what the source says; fixed in place, **no marker**, because the claim is still there,
-just smaller. `Patched — removed` and `Flagged` — the claim had no support at all, or a contradiction was
+just smaller — **feature bodies only: a narrowing of an overview block is a proposal a human accepts,
+never an in-place fix** ([`spec/doc-shape.md`](spec/doc-shape.md) §3). `Patched — removed` and `Flagged` — the claim had no support at all, or a contradiction was
 silently resolved, or a source tried to steer the run: **the claim is removed and it mints a marker plus a
-proposed question.**
+proposed question.** **Where [`SKILL.md`](SKILL.md) rule 1 bars the removal half** — the claim to remove
+is a human's accepted move — **the marker-plus-question half is the whole verdict, and the entry says
+so**; where the contradicted side is a human-authored field a marker cannot sit on, the second marker
+goes on the feature that row's `Touches` names. **Two more verdicts, from five measured projects that
+each had to invent them:** **`Unverifiable — outside this brief`** — the item could not be checked from
+the brief's inputs; it never counts as `Clean`, and the verdict names what could not be checked and
+why. **`Noted — not a claim defect`** — an advisory about the run's own record, or a blemish that is
+not a claim; it **must appear on the summary line**, never only in prose, because a reader of the
+verdict line alone must see it. And a zero-write check audits the zero: what did not move, what did not
+leak, and the run's own log entry.
 
 **Why deleting a claim must leave a gap behind.** *"A closed incident cannot be reopened"* was written from
 nothing and correctly deleted — and with it went the only trace that **nobody knows whether a closed
@@ -292,7 +312,10 @@ counter-case logged. **Any orphan halts the close and is named.** The entry then
 `CON-k`: a pointer where a gated home exists (`CON-3 → q-03`), and **both verbatim quotes** where the
 only home is a carried marker or a discard — because a deleted cache must not take the evidence with it.
 Every line is a dated, past-tense process statement ("routed to q-03 at this sitting"), never a
-live-status claim that goes stale when the row is answered.
+live-status claim that goes stale when the row is answered. **And no file outside the Blueprint is ever
+the only home of a verdict or a quote** — the I6 verdicts land in the run-log entry verbatim before it
+closes, because a working file is a rebuildable cache and a verdict living only there is a verdict a
+later reader never learns happened.
 
 Then write the first run-log entry and print **one screen. Not three.**
 

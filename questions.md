@@ -47,6 +47,8 @@ since the last run — in the UI, at their own pace, without this skill.
   through `Open`. An `Answered` row with an **empty** `Answer & why` is different — that is a status with
   no answer behind it: report it and leave it, a discrepancy for its human ([`SKILL.md`](SKILL.md) rule 1).
 - `Proposed`, edited wording: accept the human's wording as the question. Never restore the original.
+- `Key` set or cleared by a human — detected as a divergence from what the run log records the last run
+  wrote: **their move wins.** Accept it, never re-derive over it, name it in the report.
 - Anything at `Open`, `Answered`, `Applied`, `Flagged`, `Closed (not applied)` or `Rejected`: not this
   run's business, except as duplicate-detection input at Q3.
 
@@ -123,8 +125,16 @@ success means — every other lens reads the features, and only this one reads t
    lifecycle (creation · visibility · export · retention · deletion) · platform matrix and versioning,
    including forced upgrade · permissions and roles, per actor · money, anywhere priced, refunded or
    limited · notifications, including opt-out and quiet failure · legal, privacy and accessibility ·
-   empty and first-run states. The one measured catch of this shape — a product with no sign-out anywhere
-   in its document — was found by an improvised sweep of exactly this kind, not by the lenses.
+   empty and first-run states · **trust and integrity** — per claim the product accepts on faith: what a
+   bad-faith actor gains by lying to it, and what if anything is checked · **timing and commitment
+   windows** — per event the document says happens: how far ahead, how long after, what counts as late.
+   The one measured catch of this shape — a product with no sign-out anywhere
+   in its document — was found by an improvised sweep of exactly this kind, not by the lenses; and the
+   only two outright misses in a five-project measured lab both fell exactly where the last two classes
+   now stand — a fakeable one-tap log nobody questioned, and a publish deadline nobody asked. That lab
+   (2026-08-07, 77 planted defects) measured the full battery at **~86% caught outright, ~97% at least
+   detected, zero hallucinated contradictions** — against the ~44% single-pass ceiling the preamble
+   cites, and still never a completeness certificate.
 3. **One repeat round, budget-stated.** Any pass whose candidates survived Q3 two or more times is
    dispatched once more, fresh. **Two rounds is the budget, not a completeness claim** — a round finding
    nothing new means this generator is dry, never that no gaps remain.
@@ -210,10 +220,20 @@ in the `Proposed — needs review` tab at their own pace, and Q1 reconciles ever
 only when a person asks to go through the rows together. Where a sitting does run, about ten rows are
 offered at a time and no more — past that people stop reading and start agreeing, which is worse than a
 shorter list. **Order the list — in the report and at any sitting — marker-backed candidates first** — a
-marker is a gap somebody already agreed was a gap, and it blocks `Intent = Agreed` on its feature —
-**then by how much the answer changes what gets built, and by whether the named owner can actually answer
+marker is a gap somebody already agreed was a gap, and it blocks `Intent = Agreed` on its feature; that
+precedence is never demoted beneath any judgment — **then `Key` rows, then by how much the answer changes
+what gets built and by whether the named owner can actually answer
 it**: an ordering policy reaches near-ceiling with 3.0 questions against 5.1 unordered. Say the list is
 ordered and on what. It is a judgement and it is labelled as one.
+
+**The `Key` checkbox** ([`spec/databases.md`](spec/databases.md) §2) is set at write time where a stated
+criterion holds — the candidate is **contradiction-backed**, or **the document cannot sensibly be built
+without the answer** — and the one-line criterion is written as the closing clause of the row's
+`Why asked`. Default false hides nothing. **Each questions run re-derives `Key` for `Proposed` rows and
+writes only where the current value equals what the run log records the last run wrote** — a divergence
+is a human's re-tier, left alone and named in the report. The verification dispatch that checks
+suggested directions checks the `Key` assignments of the same batch against their stated criteria; an
+assignment whose criterion does not hold is cleared before writing.
 
 **Writing a row and patching its marker are one act.** The marker's `→ Question: carried` becomes the row
 link at write time — a `Proposed` row is a real destination for a marker, and the marker goes on blocking
@@ -342,29 +362,36 @@ only an answer — the human's own, in the UI or spoken at the review — makes 
 8. **Regenerate every `⟳` view this sitting touched** ([`spec/doc-shape.md`](spec/doc-shape.md) §3's
    single home) — a fresh count from the rows as they now stand, never the prior view patched forward.
 9. **Report** — every count in it freshly derived at the moment of printing ([`SKILL.md`](SKILL.md)
-   rule 7), never carried from an earlier sitting's tally. It carries the **suggested directions**
+   rule 7), never carried from an earlier sitting's tally, the `Key` tally among them. It carries the
+   **suggested directions**
    block (below) for the top proposals, and **it ends with the client packet: every
    `Open` row, grouped by `Area` (via `Touches`; project-level rows in their own group), framed as the
-   one batch to take to whoever answers** — and the honest line beside it: applied answers create new
+   one batch to take to whoever answers — `Key` rows starred inside their groups**, so taking only the
+   starred sub-batch is a choice the packet supports without becoming two packets — and the honest line
+   beside it: applied answers create new
    attackable text, so expect one smaller derivative batch after these are resolved.
 
-**Suggested directions — decision support in the report, never on a row.** For the top proposals by
-the same ordering — **about ten at most, a drain sitting included** — the run drafts 1–3 candidate
-directions per question, each with a one-line why and its main counter-case, grounded first in the
-document itself, **quoting the requirement or principle each direction leans on**; simplicity and
-general practice may argue too, **labeled as such** (*"general practice, not a source"*). A separate
-dispatch on a different model verifies the block before it prints — every quote must exist in the
-document, and anything invented is struck ([`SKILL.md`](SKILL.md) rules 6 and 8). The block is
-**regenerated at every printing and persisted nowhere**: a report is a screen, not the document —
-which is the only reason labeled general-practice reasoning is legitimate here at all. The same words
-on a row would be machine content inside the source of truth; the owner removed two machine-provenance
-fields from this very schema in one week, and the report block is that lesson applied. Asked at any
-time — *"suggest directions for q-12"* — the run drafts one fresh under the same rules. **A suggestion
-never answers anything.** An `Answer & why` that only points at an option (*"go with 2"*) is an answer
-that is only a link — [`resolve.md`](resolve.md) R2.1's rule: not applied, named with the one-line
-fix. A choice made **in conversation** — at a checkpoint, or right after an on-demand suggestion — is
+**Suggested directions — decision support on the row, machine-labeled, consumed by no run.** The run
+that writes a `Proposed` row also drafts its `Suggested directions` field
+([`spec/databases.md`](spec/databases.md) §2): 1–3 candidate directions, each one line — the
+direction, a why grounded in the document (**quoting the requirement or principle it leans on, with
+the requirement's id and the date the quote was taken** — quoted text outlives the text it quotes, and
+an undated quote decays invisibly), and
+its main counter-case; simplicity and general practice may argue too, **labeled as such**
+(*"general practice, not a source"*). Dated, and closed with the standing line: *machine-drafted
+decision support — not a source; your answer in your own words is what counts.* **A separate dispatch
+on a different model verifies every batch before it is written** — a quote that does not exist in the
+document is struck ([`SKILL.md`](SKILL.md) rules 6 and 8). The field is for the reviewing human only:
+no run reads it back, nothing from it is ever copied into `Answer & why`, and an answer that only
+points at an option (*"go with 2"*) is an answer that is only a link — [`resolve.md`](resolve.md)
+R2.1: not applied, named with the one-line fix. A choice made **in conversation** — at a checkpoint,
+or after asking *"suggest directions for q-12"*, which drafts one fresh under the same rules — is
 transcribed with the chosen option's content as the human's own move
-([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 5), which is the friction-free path.
+([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 5). *Decided by the owner 2026-08-07, overriding
+the report-only recommendation and the schema-minimalism bar with the risks on the table: the owner
+reviews in the UI, and guidance nowhere near the review is guidance nobody reads. The
+recommendation-collapse citation (82.3→45.5) is answered by the options-with-counter-cases shape, the
+verification pass and the standing label — not denied.* The report still prints the top ten.
 
 ```
 QUESTIONS — «Golden Crumb» · 2026-08-11
@@ -374,8 +401,8 @@ WRITTEN    12 of 14 candidates → Proposed (3 transcribed from carried markers)
 REVIEW     no sitting asked — all 12 wait in the Proposed tab, listed below most important
            first: approve, reject with a reason, or answer directly there. Or ask for a
            sitting and they come ten at a time.
-SUGGESTED DIRECTIONS — top 2 by the same ordering · drafted fresh at this printing,
-           verified by a second dispatch · never written to any row
+SUGGESTED DIRECTIONS — top 2 by the same ordering · verified by a second dispatch ·
+           written to each row's Suggested directions field, shown here for the top of the list
   «Can a customer retry a failed payment?»
     1. One retry on the same order — FR-2 already isolates payment as its own step
        ("payment succeeds or fails"); counter-case: a retry needs an idempotent order.

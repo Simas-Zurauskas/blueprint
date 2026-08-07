@@ -75,7 +75,10 @@ into a code repo.**
 5. **Is another run already writing?** **Write commands only.** Read the run log: an entry dated today,
    still open — no `CLOSED` and no `PAUSED` — whose run id is not this run's means another run is in
    flight, and the target is last-write-wins. **Report and halt.** [`resolve.md`](resolve.md) R1 is the
-   single home of this check and of how a human clears a crashed run's entry.
+   single home of this check and of how a human clears a crashed run's entry. **An entry's state is its
+   last dated line, and only that** — headings carry date · command · run id · version, never a status
+   token, and this check reads the last dated line of each entry; a heading status would be stale the
+   moment state changed, since entries are never rewritten.
 
    **This only works because every write command opens its log entry before its first write and closes it
    at the end** — [`init.md`](init.md) I1, [`add.md`](add.md) A1, [`questions.md`](questions.md) Q1,
@@ -130,7 +133,17 @@ into a code repo.**
    `independence: could not be performed — no second dispatch available` — and treat the item as
    unverified, never as `Clean` or `Patched` off a self-review. A same-context self-review is the precise
    configuration these checks exist to catch, evidenced by a simulated run that certified a required
-   clause as present and traced when the same context had itself left it out.
+   clause as present and traced when the same context had itself left it out. **Two more strings for the
+   states between:** `independence: separate dispatch, writer model not captured` — a real second
+   dispatch happened but the writer's identity is missing, which is not the same as no dispatch — and
+   `independence: available but not dispatched — <phase> took it` — the mechanism exists and another
+   check consumed it; never write `could not be performed` in a log that sits beside real dispatch
+   verdicts from the same sitting, which a measured lab did seven times. **Every write run stamps its
+   own writing model into its run-log entry**, so `writer <a>` is derivable at all. **And one precedence
+   where a single dispatch is available: pre-write verification of machine-drafted material
+   ([`questions.md`](questions.md) Q4's suggested directions and `Key`) outranks post-write faithfulness
+   checks** — the post-write check can re-derive from written text; the pre-write one has nothing, and
+   in five measured projects the unstated tie broke against it every single time.
 7. **Every count is counted fresh, never carried forward.** A number written into a run-log entry, a
    report, or a generated view — how many markers, how many rows in a status, how many features are
    `Agreed` — is produced by counting the actual current state at the moment of writing, never copied

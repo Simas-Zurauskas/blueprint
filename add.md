@@ -132,7 +132,11 @@ source record survives for the next attempt.
    source.
 3. **Read it back and confirm it landed** — nothing dropped, no cross-link degraded.
 4. **A contradiction is never written.** It becomes a marker at both places and one blocking question, and
-   the existing text stands untouched.
+   the existing text stands untouched. Where one side is a human-authored field a marker cannot sit on —
+   an `Answer & why`, a stop reply — the marker goes on the feature the row's `Touches` names, and the
+   entry records the substitution; where one side is an overview block, the marker text is proposed at
+   the same stop as any overview text ([`spec/doc-shape.md`](spec/doc-shape.md) §3), so a contested
+   front door is visibly contested rather than homeless.
 5. **An overview block is written only if the human accepted its verbatim text at A3**
    ([`spec/doc-shape.md`](spec/doc-shape.md) §3), re-emitting every child block.
 6. **A seed `FR-1`** may be proposed only where a feature's `Behaviour` block holds **no numbered
@@ -143,10 +147,21 @@ source record survives for the next attempt.
 ## A5 — Check, then questions, then finish
 
 **The faithfulness check is [`init.md`](init.md) I6 run over this run's writes only** — a genuinely
-separate dispatch, a different model where two are available, briefed with this run's source record and
-the changed rows read back from the target ([`SKILL.md`](SKILL.md) rule 6 owns what "separate" requires,
-and the same `could not be performed` fallback applies if no second dispatch exists). Same four verdicts,
-same rule that a removed claim always leaves a marker behind, same one retry.
+separate dispatch, a different model where two are available, briefed with this run's source record, the
+changed rows read back from the target, **and the human's A3 stop reply wrapped as data** — a fabricated
+"the owner confirmed this" is invisible without it ([`SKILL.md`](SKILL.md) rule 6 owns what "separate" requires,
+and the same `could not be performed` fallback applies if no second dispatch exists). Same verdicts as
+I6 — the 2026-08-07 additions included —
+same rule that a removed claim always leaves a marker behind, same one retry. **The check's verdicts are
+appended into the run-log entry verbatim before it closes; if the sitting must end first, the entry's
+last dated line reads `PAUSED — A5 verdicts owed`, naming the dispatch and what stands unverified.** No
+file outside the Blueprint is ever the only home of a verdict — in a measured lab, four of five add
+entries ended with complete verdicts sitting in a working file no later reader of the log would ever
+find. **Two more lines the write-back owes:** sweep the content rule over every human-touched
+`Answer & why`, `Why asked` and `Suggested directions` since the last logged sweep, every character,
+and log it ([`resolve.md`](resolve.md) R2.5 is the same obligation on the resolve seam); and mint a
+carried marker for every `Not doing` line this run wrote without a `revisit if:` — an unreopenable
+refusal is manufactured dogma, and in a measured project it blocked the owner's own next idea.
 
 One addition `add` needs: **the check also reads the affected feature's other requirements and its
 `Not doing` lines**, and a delta that contradicts one is `Flagged` rather than written — the same

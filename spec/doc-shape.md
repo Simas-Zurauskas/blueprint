@@ -105,6 +105,16 @@ what makes the canonical term bind future requirement text.
 deletes that child ([`notion-mechanics.md`](notion-mechanics.md) §3). Every overview write re-emits every
 child block, foreign children included, and re-fetches to confirm nothing was lost.
 
+**Three clarifications, each paid for by a measured collision.** A run may propose **marker text for an
+overview block at the same stop** that proposes overview text — a contradiction whose only side is the
+front door must be markable there, or it has no home at all: in one measured project a contradiction
+contested only on the overview ended with no marker, no row, and a log line falsely claiming otherwise.
+An I6 or A5 **narrowing of an overview block is a proposal, never an in-place fix** — "fixed in place"
+belongs to feature bodies, because the front door is the one page every reader trusts without
+cross-checking. And this section's *"any count of anything"* bar binds **human prose**; the `⟳`
+**generated views are exempt** — they are rebuilt from a fresh scan at every write-back and never
+carried forward, which is the exact property the bar exists to protect.
+
 **What does not go on it:** an Areas list in prose (the `Area` property is that list), build rules for
 coding agents (they live in the repo's `CLAUDE.md`), a history of every draft (page history covers
 it), or any count of anything.
@@ -239,6 +249,16 @@ line in the overview's `Operating` block**, which every run already reads. Where
 load-bearing and the default forbids it, that is a question row with an owner, not a judgement call inside
 a draft. Every writing sub-agent is briefed with this rule, a delta breaking it is refused, and
 [`../status.md`](../status.md) C9 sweeps for it after the fact.
+
+**Where this rule collides with [`../SKILL.md`](../SKILL.md) rule 1 — a barred specific inside a
+human's verbatim field — there is one route and no other: a run never edits the field.** It reports the
+row and the class of thing found, and the human either edits the field themselves or records a dated
+widening in `Operating`. A human's instruction to the run to make the edit is transcribed verbatim into
+the log and becomes a question row owned by that human — **an instruction, spoken or typed, is never a
+licence for a run to write a field this rule bars it from writing.** Three measured projects resolved
+this collision three different ways; one of them edited ten human-set fields on a spoken authorisation,
+which is the exact shape rule 1 was hardened against, and this paragraph exists so it cannot happen a
+second time.
 
 **The rule reaches every character of an in-scope free-text field, including a sign-off at the end of
 it.** *"— Grace, 2026-08-04"* closing an `Answer & why` is still an individual's name in a field this rule

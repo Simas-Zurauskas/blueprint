@@ -51,6 +51,13 @@ across the gap silently. **This check is pre-flight 7** ([`SKILL.md`](SKILL.md))
 write command; this paragraph is its single home. A Blueprint with no run log yet has nothing to
 compare — the check is vacuous there.
 
+**Capture-integrity check.** Where a source record names a file path as its origin, re-derive that
+file's hash and compare it against the hash the record states ([`init.md`](init.md) I1). A mismatch
+means the record and its origin have diverged since capture — **report and halt**, because every
+faithfulness verdict downstream rests on the record being what it claims to copy. A measured lab's
+worst yardstick corruption — four persona files rewritten under their captured records — was exactly
+this shape, and only a hash comparison can see it.
+
 **The queue is exactly:** `Status = Answered` **and** `Answer & why`
 non-empty ([`spec/databases.md`](spec/databases.md) §4).
 
@@ -89,7 +96,8 @@ the text belongs to.
 
 Where `Touches` names one feature, that feature's body holds at least one numbered requirement, **or** the
 answer is eligible for a seed (R3.3). An answer that is only a link — a document reference, a ticket
-number, a file name, or a bare pointer at a report's suggested option (*"go with 2"*) — has nothing in
+number, a file name, or a bare pointer at a suggested option (*"go with 2"*, whether from the row's
+`Suggested directions` or a report) — has nothing in
 it to write down; the fix named in the report is one sentence in the owner's own words.
 
 **Anything that fails is simply not applied.** It stays exactly where it is, it is named in the report with
@@ -122,6 +130,15 @@ blocks of [`spec/doc-shape.md`](spec/doc-shape.md) §5 — mechanically: a `Beha
 `FR-n`, or a named block missing outright (an **empty** `Rabbit holes` or `Edge cases` is fine, never a
 finding). Report what is missing and **write none of it** — the missing sections are a human's to write.
 
+### R2.5 The content rule, on the write path
+
+**Sweep the content rule** ([`spec/doc-shape.md`](spec/doc-shape.md) §6) over every `Answer & why`,
+`Why asked` and `Suggested directions` a human has touched since the last logged sweep — **every
+character** — and log the sweep with its row range. [`status.md`](status.md) C9 owns the full sweep;
+this is the write-path echo that catches a leak before the next status run, because in five measured
+projects `status` was never run once and three breaches sat live in human-edited fields the whole time.
+A finding here is reported, never edited ([`spec/doc-shape.md`](spec/doc-shape.md) §6's one route).
+
 ---
 
 ## R3 — Per item: a writer, then an independent check
@@ -149,7 +166,11 @@ and a penalty into a requirement.* · **the delta caps** — no new `FR-n` or va
 observed case), no new named block, note or heading, no list or enumeration the answer does not itself
 contain — and, **where `Touches` names one feature, scope is that feature**: a wider delta is described to
 the check, never written. *These are the caps R3.3 enforces; they are in the brief because a measured
-sitting retried half its items and three of its six catches were exactly these.* The writer receives data
+sitting retried half its items and three of its six catches were exactly these.* **One exemption:** a
+split that divides an existing requirement's two outcomes into two requirements, to satisfy
+[`spec/doc-shape.md`](spec/doc-shape.md) §5 test 2 and adding no new claim, may mint the second `FR-n` —
+the cap is about invention, and a faithful split invents nothing. (Two skill files gave opposite orders
+here in measured projects; this sentence is the arbitration.) The writer receives data
 and never reads files or the target ([`SKILL.md`](SKILL.md) rule 8).
 
 **Its job.** Rewrite the affected section **in place** — not an append, not a whole-page rewrite, never more
@@ -319,11 +340,25 @@ consumed, and names the remainder as next sitting's. **A deliberate pause is dec
 Next run: an item still queued with no log line is applied normally; one with a log line naming its delta
 is **not rewritten** — re-run the check against the text already there and finish the property write.
 
+**Three obligations on the write-back, each one line in the entry.** (1) **A `STALE AGREEMENT «feature»`
+line for every `Agreed` feature this run wrote into** — [`add.md`](add.md) A5 owns the shape and
+[`status.md`](status.md) C6 reads only logged lines, so a resolve write into an `Agreed` body with no
+line is invisible to every later check; the string appeared in `add` and `status` and zero times in this
+file until a measured project proved the gap. (2) **A carried marker for every `Not doing` line this run
+wrote without a `revisit if:`** — the line's own "a question is to be proposed" note is otherwise a
+promise no phase owns, and in a measured project it silently killed the owner's only legitimate scope
+growth. (3) **The report names every row whose quoted text this sitting's writes invalidated** — a
+`Why asked` or `Suggested directions` quoting a requirement this run rewrote now cites text that no
+longer exists, and nobody may edit the written row to fix it.
+
 **The run log** is owned entirely by this run: append-only, newest first, never rewritten, never summarised
 away — with one exception, the only remedy for a run that died: **a human writes `CLOSED (crashed)` under a
 dead entry, by hand.** The entry opens at the top of R2. **A wall-clock time and a six-character run id** on
 the header, minted at R1 and never reused — the date alone cannot order two entries written the same day.
-**An entry is open until closed** — `CLOSED hh:mm` or `PAUSED …`, never neither. **Verdict reasons are keyed
+**An entry is open until closed** — `CLOSED hh:mm` or `PAUSED …`, never neither — **and its state lives in
+its last dated line, and only there.** Headings carry date · command · run id · version, never a status
+token: an append-only entry cannot rewrite its heading, so a heading status is stale the moment state
+changes — five measured projects improvised four different answers to this before it was written down. **Verdict reasons are keyed
 by feature ID beside the title**, because titles get edited and two features can read alike. **Every count
 this entry states is recomputed from the actual rows at the moment of writing** ([`SKILL.md`](SKILL.md)
 rule 7) — never carried forward from what an earlier entry claimed or from what this sitting expected to

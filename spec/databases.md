@@ -4,7 +4,7 @@
 is shared across projects. Companions: [`doc-shape.md`](doc-shape.md) · [`targets.md`](targets.md) ·
 [`notion-mechanics.md`](notion-mechanics.md).
 
-**13 properties, 2 frozen vocabularies, 9 option values.** Every option name below is exact. On the
+**15 properties, 2 frozen vocabularies, 9 option values.** Every option name below is exact. On the
 Notion target an existing select option cannot be renamed over the API, so create them verbatim at setup
 — **including options no row uses yet**.
 
@@ -27,7 +27,7 @@ there is one axis and it is human-written: `Draft` until a person says `Agreed`.
 ([`../lock.md`](../lock.md) L1), and **an open `[NEEDS CLARIFICATION]` marker blocks it**
 ([`doc-shape.md`](doc-shape.md) §9) — the only thing in this system that blocks anything.
 
-## 2. Open Questions — 7 properties
+## 2. Open Questions — 9 properties
 
 | Property | Type | Options / notes |
 |---|---|---|
@@ -35,6 +35,8 @@ there is one axis and it is human-written: `Draft` until a person says `Agreed`.
 | `Owner` | people | Exactly one named human. Never "the team". An unowned question is nobody's |
 | `Answer & why` | rich text | The answer **and** its reasoning. Empty = still open. The only place the *why* survives once a page states the *what*. On a `Rejected` or `Closed (not applied)` row it carries the one-line reason instead |
 | `Why asked` | rich text | **What prompted this** — the gap, the contradiction, the source segment, the ambiguity. Written by the run that proposed it, and it is what makes a `Proposed` row reviewable by somebody who was not in the room when it was generated |
+| `Suggested directions` | rich text | **Machine-drafted decision support, written by the run that proposes the row**: 1–3 candidate directions, each with a why grounded in quoted document text and its main counter-case; general practice labeled as such; dated; **independently verified before writing** (a separate dispatch, a different model). Read by humans, consumed by no run — never copied into `Answer & why`, never an input to resolve; an answer that only points at it is an answer that is only a link ([`../resolve.md`](../resolve.md) R2.1). Added 2026-08-07 at the owner's ask, overriding the report-only recommendation: the owner reviews in the UI, and guidance nowhere near the review is guidance nobody reads |
+| `Key` | checkbox | **The triage flag: this question's answer decides the build.** Machine-set at row creation by the stated criteria ([`../questions.md`](../questions.md) Q4): contradiction-backed, or the document cannot sensibly be built without the answer. Default false hides nothing — unchecked rows stay in the same oldest-first list. **A human may set or clear it at any time and their move wins**: each questions run re-derives `Key` for `Proposed` rows and writes only where the current value equals what the run log records the last run wrote — any divergence is a human's re-tier, left alone and named in the report (the append-only log supplies the provenance [`notion-mechanics.md`](notion-mechanics.md) §5 says no run may otherwise claim). A `Key` assignment carries its one-line criterion as the closing clause of `Why asked`, and every batch is verified by a second dispatch before writing. Added 2026-08-07 at the owner's ask (triage for write-all volume), shaped by adversarial review: a checkbox, not a tier ladder — a binary matches the actual decision ("top questions or full"), and a machine-graded 'Minor' bucket would be a silent trapdoor |
 | `Touches` | relation → Features | Two-way. Empty = a project-level question |
 | `Status` | select | Seven values, §3. **`Answered` is the gate, and it is a human's move** (§4) |
 | `Created` | created time | As above. Two views sort on it |
@@ -125,6 +127,7 @@ keeps no queryable per-property history ([`notion-mechanics.md`](notion-mechanic
 | Open Questions `Status: → Answered` | **a human** — in the UI, or their spoken answer at a checkpoint transcribed **verbatim** by the run and recorded as their move ([`doc-shape.md`](doc-shape.md) §9 route 5) | a run on its own initiative, or with an answer no human gave |
 | Open Questions `Status: Answered → Applied`, `→ Flagged` | [`../resolve.md`](../resolve.md) only | a human |
 | Open Questions `Status: → Closed (not applied)` | a human (a run may propose route (a)) | a run |
+| Open Questions `Key` | the run that writes the row (by the stated criteria, criterion logged); re-derived each questions run **only where the current value equals what the run log records the last run wrote**; a human, any time, and their move wins | a run overwriting a value that diverges from its own logged one — that divergence is a human's re-tier |
 | The overview page | a human, **or a run writing a verbatim proposal a human accepted** ([`doc-shape.md`](doc-shape.md) §3) | a run writing it silently or wholesale |
 | The change log | the write run that made the change, one entry per sitting ([`../lock.md`](../lock.md) L4), each carrying the ask verbatim | anyone rewriting it — append-only, like the run log |
 | `Created` | the target, at creation | everyone |
@@ -147,7 +150,7 @@ the navigation — every index in this shape is a view.
 |---|---|---|---|
 | Features | **Where things are** | table | Grouped by `Area`. Columns `Name · What it does · Intent`. **Embedded on the overview** |
 | Features | **Not yet agreed** | table | `Intent` is `Draft`, oldest first. What still needs a person |
-| Open Questions | **Proposed — needs review** | table | `Status` is `Proposed`, oldest first. Columns `Question · Why asked · Touches`. **A database tab only — never embedded** (the owner's 2026-08-06 layout ask) |
+| Open Questions | **Proposed — needs review** | table | `Status` is `Proposed`, sorted `Key` first then oldest first. Columns `Question · Key · Why asked · Suggested directions · Touches` (the two 2026-08-07 fields belong on this view — it is the screen the owner reviews in). **A database tab only — never embedded** (the owner's 2026-08-06 layout ask) |
 | Open Questions | **Open questions** | table | `Status` is `Open` or `Answered`, grouped by `Status` — the groups are the collapsible things. **Embedded on the overview, not inside a toggle** |
 | Open Questions | **Decision log** | table | `Status` is `Applied`, `Closed (not applied)` or `Rejected`, newest first |
 
@@ -206,5 +209,8 @@ Reintroducing one needs a better reason than "it would be nice to know".
   counts by querying rows, which was already the rule for a softer reason: a number alone cannot name
   *which* rows, and this whole system is built on saying which.
 - **Due dates, priorities, risk scores, and any timestamp beyond `Created`.** They turn a two-minute row
-  into a form nobody fills in.
+  into a form nobody fills in. *The one carve-out is the `Key` checkbox (§2, 2026-08-07): machine-set at
+  creation by stated criteria — nobody fills a form — binary rather than a graded ladder, and needed by
+  the write-all design's own volume; a 70-row batch without triage is a list nobody reads. The bar
+  otherwise stands: no tiers, no scores, no dates.*
 - **Any cross-project database.** Ever.
