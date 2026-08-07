@@ -11,7 +11,7 @@ nothing is `Agreed` when the run ends. Specs obeyed, not restated:
 [`spec/doc-shape.md`](spec/doc-shape.md) · [`spec/databases.md`](spec/databases.md) ·
 [`spec/targets.md`](spec/targets.md) · [`spec/notion-mechanics.md`](spec/notion-mechanics.md).
 
-**Run the six pre-flight checks in [`SKILL.md`](SKILL.md) first.** On the Notion target, **HALT if there
+**Run the seven pre-flight checks in [`SKILL.md`](SKILL.md) first.** On the Notion target, **HALT if there
 is no connected overview page** — print that checklist and stop. Never create a substitute overview page:
 its ID is the one fact this skill cannot rediscover, and a second front door is worse than none.
 
@@ -305,21 +305,21 @@ Sources    4 — 2 documents, 1 upload, 1 interview. All mapped; 6 pages unused 
 Check      9 Clean · 1 narrowed (loyalty rules narrowed to what the deck says) · 0 Flagged
            independence: writer <a>, checker <b>
 Not doing  3 lines — 2 have no revisit-if:, both proposed as questions, neither invented
-Questions  14 proposed · 6 approved (Ana ×4, Tom ×2) · 3 rejected · 5 left for next sitting
-Markers    11 open [NEEDS CLARIFICATION] — each blocks Intent = Agreed on its feature.
-           6 linked to their row · 5 carried, their questions are next sitting's
+Questions  14 written as Proposed — none is a question yet. Review them in the Proposed
+           tab at your own pace, or ask for a sitting and they come ten at a time
+Markers    11 open [NEEDS CLARIFICATION] — each blocks Intent = Agreed on its feature,
+           each linked to its question row. Nothing is carried
 Not yet    Nothing is Agreed. This is a draft specification, not an agreed one.
 
 WHAT HAPPENS NEXT — read this once; nothing else says it
   1. Read the feature rows. They are the spec — the requirements are the test list.
-  2. Answer the 6 approved questions: write the answer and why, then set
-     Status = Answered — that move is your sign-off.
+  2. Review the proposed questions in the Proposed tab: approve, reject with a reason,
+     or write the answer and why directly and set Status = Answered — that move is
+     your sign-off.
   3. Run /blueprint resolve. It writes each answer in and removes that marker.
   4. When a feature has no open marker left, set Intent = Agreed yourself.
   5. When it is settled, run /blueprint lock. After that, every change is recorded in
      the change log — what moved, and why, in the words of whoever asked.
-  The 5 carried markers have no question yet — the next questions sitting proposes them.
-  Nothing is lost and nothing needs doing about them today.
 
 Next       /blueprint status
 ```

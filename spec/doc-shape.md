@@ -57,9 +57,9 @@ prose; a **`⟳` heading** is a saved view. One rule: ***never type under a `⟳
 | **Who it's for** | **Real user kinds — never "users"** — one line each: the kind, the job they hire this product for, and (where a source says) what they use for that job today. May close with one **`Not for:`** line naming who this product deliberately does not serve — sourced, like any exclusion, never invented | 3 lines + one optional `Not for:` line |
 | **How it works, in one picture** | One mermaid diagram | ≤9 nodes |
 | **`## ⟳ Where things are`** | Features grouped by `Area` — a view | — |
-| **`## ⟳ Open questions`** | Approved questions and their answers — a view **grouped by `Status`, the groups collapsible** (the owner's 2026-08-06 layout ask: the section stays open, the groups collapse). The `Proposed — needs review` view is a database tab only, never embedded — proposals reach people through the review sittings and `status` | — |
+| **`## ⟳ Open questions`** | Approved questions and their answers — a view **grouped by `Status`, the groups collapsible** (the owner's 2026-08-06 layout ask: the section stays open, the groups collapse). The `Proposed — needs review` view is a database tab only, never embedded — proposals reach people through that tab, the questions report, and `status` | — |
 | **Links** | Source material, design files, whoever's original documents. Links only | — |
-| **Operating** | The run-log link · the change-log link once locked · any widening of the content rule (§6) | 3 lines |
+| **Operating** | The run-log link · the change-log link once locked · any widening of the content rule (§6) · a ratified vocabulary line, where one exists — the canonical term, its superseded aliases, dated | 4 lines |
 
 **The front page is the same size at 200 features as on day 1** — every human block is capped and every
 index on it is a view. That is what keeps a front door readable rather than turning it into the document.
@@ -95,6 +95,11 @@ because the document was already agreed and a machine editing it could only degr
 **is part of what is being drafted** — a NOT-clause that no longer matches the features is a defect in the
 thing people will build from — so a run must be able to propose the new text. What holds the line is
 that the human sees the exact words before they land, and that the proposal names the block it replaces.
+
+**The vocabulary line is written the same way** — a verbatim proposal a human accepts, usually the
+resolve of a project-level question ([`../resolve.md`](../resolve.md) R3.1). A **contested** name — two
+live candidates — is a question, never a line. Writer briefs carry the line once it exists, which is
+what makes the canonical term bind future requirement text.
 
 **The trap this walks past every time:** on the Notion target, a content replace that omits a child block
 deletes that child ([`notion-mechanics.md`](notion-mechanics.md) §3). Every overview write re-emits every
@@ -308,10 +313,14 @@ makes them guess*, so the document has to carry the question.
 - **An open marker blocks `Intent = Agreed`,** and a feature that is not `Agreed` is named in every
   readiness report ([`../lock.md`](../lock.md) L1). That is the only thing that blocks anything.
 - **A marker is scoped to what it names, not to the page it sits on.**
-- **Carried is a legitimate state, and it is not the same as broken.** A run may mint more markers than it
-  may propose questions, because [`../questions.md`](../questions.md) Q4 caps what is put to a person at a
-  sitting. A marker whose question has not been proposed yet reads `→ Question: carried`, blocks
-  `Intent = Agreed` like any other, and waits for the next sitting. **A carried marker born from a
+- **Carried is a legitimate state, and it is not the same as broken — and it is a state between
+  sittings, never a parking lot.** Write runs mint markers between questions sittings — a resolve run's
+  narrower marker, an init gap — and a marker whose question has not been proposed yet reads
+  `→ Question: carried`, blocks `Intent = Agreed` like any other, and waits for the next questions run.
+  **That run writes a `Proposed` row for every carried marker** ([`../questions.md`](../questions.md)
+  Q2 sweep item 1, Q4), so after any questions sitting the carried count reads zero. On one measured
+  project the old per-sitting cap let this backlog grow silently to ~80 known gaps with no row behind
+  them — more than every question ever asked — which is the failure this rule now forbids. **A carried marker born from a
   contradiction between sources also cites its inventory id and the run-log entry holding both verbatim
   quotes** — `→ Question: carried (CON-7 · run-log 2026-08-04-init-1)` — so the sitting that finally
   proposes it dereferences the quotes rather than re-paraphrasing a compact marker

@@ -49,8 +49,13 @@ rather than the strength of the gap. The measured failure it guards against is t
 Proposed ──approve──> Open ──answer+vet──> Answered ──resolve──> Applied
    │                                           │
    └──reject──> Rejected                       └──> Flagged ──human clears──> Answered
-                                               └──> Closed (not applied)
+   └──approve+answer, in the UI──> Answered    └──> Closed (not applied)
 ```
+
+A human may move `Proposed → Answered` directly in the UI — approving and answering in one move, at
+their own pace, in their own tool. [`../questions.md`](../questions.md) Q1 reconciles it: the marker is
+patched with the row link and `Owner` is backfilled by asking. It is a human's move like any other route
+to `Answered`; only an `Answered` row with an **empty** `Answer & why` is a discrepancy.
 
 | Status | Means | Moved by |
 |---|---|---|

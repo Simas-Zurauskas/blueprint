@@ -45,17 +45,21 @@ is created until you confirm.
 It also asks where to store the result: **Notion** or **a local folder of markdown files**. Local needs
 zero setup — right for speccing an idea tonight.
 
-### 2 · Review the proposed questions, one at a time
+### 2 · Review the proposed questions — at your own pace
 
-Every gap the grilling finds becomes a **proposal** — not a real question until you say so. For each one:
+Every gap the grilling finds becomes a **proposal** — not a real question until you say so. **The run
+never interrogates you: it writes everything it found, prints the report, and stops.** You review in the
+`Proposed — needs review` tab whenever suits: approve, reject (say why), or just write the answer
+directly — the next run picks up every move.
+
+Prefer going through them together? Ask for a review sitting and they come one at a time, ten per round:
 
 ```
 [a]pprove · a[n]swer now · [e]dit · [r]eject · already [d]ecided · [s]kip
 ```
 
-**Answer now** is the fast path: answer on the spot in your own words — the run records the row at
-`Answered` as your move, done in the room. Rejections keep their reason and never come back as noise. About ten per sitting, most
-important first.
+**Answer now** is the fast path there: answer on the spot in your own words — the run records the row at
+`Answered` as your move, done in the room. Rejections keep their reason and never come back as noise.
 
 ### 3 · Answer the questions you kept
 
@@ -121,7 +125,8 @@ months.
   proposal list never means the spec is complete.
 - Between runs it has no eyes. Decisions made in meetings or chats reach the document only when you put
   them in as a source or an answer.
-- Reviewing proposals costs real attention — that's why the cap is ~10 a sitting.
+- Reviewing proposals costs real attention — the run writes everything down and leaves the pace to you;
+  a sitting, if you ask for one, offers ~10 at a time.
 
 ---
 

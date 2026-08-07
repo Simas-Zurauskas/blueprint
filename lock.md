@@ -14,7 +14,7 @@ current; the change log is the memory.
 Specs obeyed, not restated: [`spec/doc-shape.md`](spec/doc-shape.md) ·
 [`spec/databases.md`](spec/databases.md) · [`spec/targets.md`](spec/targets.md).
 
-**Run the six pre-flight checks in [`SKILL.md`](SKILL.md) first** — check 4 reads L3 below, which is the
+**Run the seven pre-flight checks in [`SKILL.md`](SKILL.md) first** — check 4 reads L3 below, which is the
 one definition of what "locked" means.
 
 ---
@@ -23,7 +23,7 @@ one definition of what "locked" means.
 
 **Always printed, by `lock` and by [`status.md`](status.md) S3, from this one definition.** **Open the
 run-log entry before L3 writes anything**, and close it at the end ([`SKILL.md`](SKILL.md) pre-flight
-check 5). Five questions, each answered with names and counts, never a score:
+check 5). Six questions, each answered with names and counts, never a score:
 
 | # | What it asks | Why it matters |
 |---|---|---|
@@ -32,6 +32,7 @@ check 5). Five questions, each answered with names and counts, never a score:
 | 3 | **Which questions are `Open`, `Answered` or `Flagged`?** | `Open` = nobody has decided. `Answered` = decided but not yet written in — run `/blueprint resolve` first. `Flagged` = a run could not write it honestly and a person has not looked |
 | 4 | **Which features' `Behaviour` blocks hold no numbered requirement?** | A feature with no failable requirement is a title, not a spec |
 | 5 | **Which `Not doing` lines have no `revisit if:`?** | A refusal with no reopening condition becomes dogma |
+| 6 | **How many rows sit at `Proposed`?** | Unreviewed grill output — not questions yet, invisible to every open-questions view. Locking over a backlog is allowed, acknowledged at L2 like everything else, never silent |
 
 **Then the final grilling.** Before anything is locked, run the adversarial battery of
 [`questions.md`](questions.md) Q2 — the lenses live there and are not restated here — over the whole

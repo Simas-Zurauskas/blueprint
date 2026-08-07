@@ -1,13 +1,17 @@
 # Run — questions
 
 **Grill the Blueprint**: adversarial passes over the whole document generate question **proposals** from
-what it cannot answer yet, and the **gated review** turns the ones a human approves into real questions.
-Answering them is what solidifies the document — a gray area a builder would have filled in silently
-becomes a decision somebody actually made.
+what it cannot answer yet; a human turns the ones they approve into real questions — in the UI at their
+own pace, or at a review sitting they ask for. **The run never interrogates by default: it writes every
+survivor, prints the report, and stops.** Answering the questions is what solidifies the document — a
+gray area a builder would have filled in silently becomes a decision somebody actually made.
 
 Run on demand — *"grill this spec"*, *"what should we be asking?"* — and automatically at the end of
 [`init.md`](init.md) I7 and [`add.md`](add.md) A5, and one final time before a lock
-([`lock.md`](lock.md) L1). Either way it is these six phases, in this order.
+([`lock.md`](lock.md) L1). Either way it is these six phases, in this order. The battery costs what
+completeness costs; **an embedding run's owner may defer the handoff to a standalone sitting** — say so,
+log the deferral, and the markers that run minted stay visibly `carried` until the sitting happens
+([`status.md`](status.md) C5 keeps naming them).
 
 **A proposal is not a question.** It lands at `Status = Proposed`, invisible to every open-questions view,
 and becomes real only when a named person approves it one row at a time. **No run ever approves its own
@@ -22,7 +26,7 @@ finds 44.4% of real gaps**, so most of what this phase produces is noise and non
 Specs obeyed, not restated: [`spec/doc-shape.md`](spec/doc-shape.md) ·
 [`spec/databases.md`](spec/databases.md) · [`spec/targets.md`](spec/targets.md).
 
-**Run the six pre-flight checks in [`SKILL.md`](SKILL.md) first.** This run works the same on a locked
+**Run the seven pre-flight checks in [`SKILL.md`](SKILL.md) first.** This run works the same on a locked
 Blueprint — proposals and marker links are the question layer, not product intent, so they need no
 change-log entry ([`lock.md`](lock.md) L4 draws that line).
 
@@ -36,6 +40,12 @@ since the last run — in the UI, at their own pace, without this skill.
 - `Proposed → Open`: **a human approved it.** Accept that. Give it an owner if it has none, by asking.
 - `Proposed → Rejected`: **a human rejected it.** Accept that, and read `Answer & why` for the reason so
   Q6 can dispose of any marker that was waiting on it.
+- `Proposed → Answered`, moved in the UI with an answer written: **a human approved and answered in one
+  move** — both acts at their strongest, made at their own pace in their own tool. Accept it: patch any
+  marker waiting on it with the row link, and backfill `Owner` by asking if it is empty. The row is
+  resolve-eligible as it stands ([`spec/databases.md`](spec/databases.md) §4); nothing routes it back
+  through `Open`. An `Answered` row with an **empty** `Answer & why` is different — that is a status with
+  no answer behind it: report it and leave it, a discrepancy for its human ([`SKILL.md`](SKILL.md) rule 1).
 - `Proposed`, edited wording: accept the human's wording as the question. Never restore the original.
 - Anything at `Open`, `Answered`, `Applied`, `Flagged`, `Closed (not applied)` or `Rejected`: not this
   run's business, except as duplicate-detection input at Q3.
@@ -59,7 +69,10 @@ the end ([`SKILL.md`](SKILL.md) pre-flight check 5).
 ## Q2 — The grilling
 
 Over the Blueprint **as it stands now**, not as some earlier run left it. This is not a checklist pass —
-it is an attack. **Five adversarial lenses, each run as its own pass with its own framing**, because a
+it is an attack, and it is **the full battery, every time — there is no light mode.** A single
+whole-document pass per lens is a sampler with a measured sub-50% ceiling, and every re-run to catch its
+misses costs a round of answers collected twice; the owner chose completeness over a cheap sampler
+(2026-08-07). **Five adversarial lenses, each run as its own pass with its own framing**, because a
 reader looking for everything finds the average of it; a reader trying to break one thing finds it. This
 phase is the single home of the lenses — [`init.md`](init.md) I2, [`add.md`](add.md) A2 and
 [`lock.md`](lock.md) L1 all point here and restate nothing.
@@ -97,6 +110,27 @@ answered with an invented number. And where the sources named no audience at all
 is the proposal**: ask who this is for, never invent a persona to fill the silence. This lens exists
 because a document can hold ten well-grilled features and still not say who the product is for or what
 success means — every other lens reads the features, and only this one reads the front door against them.
+
+**The lenses run at two scopes, and absence gets its own passes:**
+
+1. **Per-Area passes.** Lenses 1–3 are dispatched once per `Area` as well as once whole-document, each
+   Area pass briefed with that Area's full feature bodies and the overview's NOT-clause — the focused-brief
+   shape the resolve seam already mandates. Lens 4 runs once per Area-pair where two Areas share records
+   or actors; lens 5 stays whole-document, once — it is definitionally the front door against everything.
+2. **Absence sweeps — whole-document, checklist-framed.** A pass over existing text can only interrogate
+   what is written; these ask the opposite question: *which of these does NO feature cover?* One dispatch
+   per checklist: account lifecycle (sign-up · sign-in · sign-out · credential change · deletion) · data
+   lifecycle (creation · visibility · export · retention · deletion) · platform matrix and versioning,
+   including forced upgrade · permissions and roles, per actor · money, anywhere priced, refunded or
+   limited · notifications, including opt-out and quiet failure · legal, privacy and accessibility ·
+   empty and first-run states. The one measured catch of this shape — a product with no sign-out anywhere
+   in its document — was found by an improvised sweep of exactly this kind, not by the lenses.
+3. **One repeat round, budget-stated.** Any pass whose candidates survived Q3 two or more times is
+   dispatched once more, fresh. **Two rounds is the budget, not a completeness claim** — a round finding
+   nothing new means this generator is dry, never that no gaps remain.
+
+All passes are read-only over the same snapshot and dispatch concurrently, in waves of no more than ten
+([`SKILL.md`](SKILL.md) rule 8); their findings merge before the standing sweep and Q3.
 
 **And the standing sweep, after the lenses** — the mechanical part:
 
@@ -141,6 +175,12 @@ the fact is a candidate silently dropped on a citation nobody checked, and it re
 like a good discard. **If the quote cannot be produced, the discard is invalid and the candidate is
 proposed.** The same applies to the `Duplicate` filter, which quotes the row it points at.
 
+**At volume — an exhaustive sitting, a backlog drain — dedup runs in batches**, each batch checked
+against every existing row and against this run's already-accepted candidates, the quote discipline
+holding per discard. **When in doubt, propose:** a false merge silently converts a known unknown into an
+unknown unknown, which is the worse failure by this file's own rules — a duplicate costs a reviewer one
+`[r]eject`; a false merge costs the project a question nobody will ask again.
+
 | Filter | Discard when | Instead |
 |---|---|---|
 | **Already answered** | A requirement, an `Edge cases` line, a `Not doing` line or the NOT-clause answers it — **and you can quote the sentence** | Link to the answer, quoting it |
@@ -153,29 +193,52 @@ proposed.** The same applies to the `Duplicate` filter, which quotes the row it 
 
 ## Q4 — Write the proposals
 
-**About ten per sitting, and no more.** Past that people stop reading and start agreeing, which is worse
-than a shorter list. **Order them by how much the answer changes what gets built, and by whether the named
-owner can actually answer it** — an ordering policy reaches near-ceiling with 3.0 questions against 5.1
-unordered, and past the plateau each further question is less answerable rather than more thorough. Say
-the list is ordered and on what. It is a judgement and it is labelled as one.
+**Every candidate that survives Q3 is written as a `Proposed` row — all of them, this sitting.** The
+`Proposed` state is the holding pen this design already built: invisible to every open-questions view and
+every queue ([`spec/databases.md`](spec/databases.md) §3), so volume there misleads nobody. A found gap
+that is not written is a gap the next run has to find again — and the measured cost of parking is real: on
+one project the carried backlog grew to ~80 known gaps with no row behind them while every sitting offered
+ten, and no later sitting ever drained it, because fresh finds kept outcompeting the backlog for the ten
+slots.
 
-Everything past ten is **carried, not lost**: named as next sitting's in the report, and its marker reads
-`→ Question: carried`. **The cap binds what the run offers, never what a person may take** — anyone at the
-review can pull a named carried item into this sitting.
+**Every carried marker with no row behind it is written too** — transcription, not generation: the marker
+already names its entity; `Why asked` cites the marker and the run that minted it. After this phase,
+`carried` reads zero until the next write run mints more.
+
+**The run does not open a review sitting on its own — it writes, reports, and stops.** A person reviews
+in the `Proposed — needs review` tab at their own pace, and Q1 reconciles every move next run; Q5 runs
+only when a person asks to go through the rows together. Where a sitting does run, about ten rows are
+offered at a time and no more — past that people stop reading and start agreeing, which is worse than a
+shorter list. **Order the list — in the report and at any sitting — marker-backed candidates first** — a
+marker is a gap somebody already agreed was a gap, and it blocks `Intent = Agreed` on its feature —
+**then by how much the answer changes what gets built, and by whether the named owner can actually answer
+it**: an ordering policy reaches near-ceiling with 3.0 questions against 5.1 unordered. Say the list is
+ordered and on what. It is a judgement and it is labelled as one.
+
+**Writing a row and patching its marker are one act.** The marker's `→ Question: carried` becomes the row
+link at write time — a `Proposed` row is a real destination for a marker, and the marker goes on blocking
+`Intent = Agreed` until the answer is applied. A later rejection removes or keeps the marker by its
+reason, exactly as [`spec/doc-shape.md`](spec/doc-shape.md) §9 routes it.
 
 Each proposal row: `Question` phrased **as a question**, in one sentence · `Why asked` naming what
 prompted it and **whether a marker is already waiting on it**, because that changes what rejecting costs —
 and, on a contradiction-backed proposal, **carrying both verbatim quotes with both source names**, never
 a paraphrase: the reviewer judges the disagreement itself, not the run's summary of it ·
 `Touches` set where it is feature-scoped, empty where it is project-level · `Status: Proposed` ·
-**`Owner` suggested, not set** — the owner is part of
-what the human approves.
+**`Owner` suggested in the report, never written on the row** — a name in `Why asked` prose would be a
+content-rule finding ([`spec/doc-shape.md`](spec/doc-shape.md) §6), and the owner is part of what the
+human approves.
 
 ---
 
-## Q5 — The review, row by row
+## Q5 — The review sitting — on request only
 
-**Ask one row at a time, never as a list.** The same seven minutes put as a list produced two of five
+**The run never starts this uninvited.** The default is no sitting: rows written, report printed, and the
+review done in the `Proposed — needs review` tab at the reviewer's own pace — approve (→ `Open`), reject
+(reason in `Answer & why`), or answer directly (→ `Answered`), each move reconciled by Q1 next run. This
+phase runs when a person asks to go through the rows together.
+
+**Then: ask one row at a time, never as a list.** The same seven minutes put as a list produced two of five
 accepted and no owners; put one row at a time it produced five of five with a named owner each. *Every
 item put to a person as more than one act produces one act.*
 
@@ -213,6 +276,13 @@ its owner later wrote out herself, alone. The log carries
 `review: 6 offered · 3 approved · 2 rejected · 1 unanswered`; **`unanswered` climbing run over run means
 cut the ten to five before adding anything to it.**
 
+**After ten rows, ask exactly one more question: *continue with the next ten now, or stop here?*** A yes
+is a fresh round in the same conversation — same rules, same ordering, next ten. A no, or silence,
+stops: everything unoffered stays `Proposed`, counted in the report, waiting in the tab. Several rounds
+back-to-back in one day is the honest way to clear a drained backlog before a client meeting — and the
+one-sitting attention measurements do not cover marathons, which is exactly why continuing is asked,
+never assumed.
+
 **A rejection is told what it leaves**, at the review and not in the report afterwards: *"rejecting this
 as not a real gap removes the marker on «Checkout» — that feature can then be agreed."* Or, for a reword:
 *"the marker stays and «Checkout» still cannot be agreed until somebody answers this."*
@@ -231,8 +301,10 @@ only an answer — the human's own, in the UI or spoken at the review — makes 
 
 ## Q6 — Dispositions, log, report
 
-1. **Patch every marker whose proposal was approved** with the link to its row.
-2. **Execute every removal Q5 decided**, one at a time, each citing the row that justified it. **A marker
+1. **Verify every written row's marker was patched at Q4** — a marker still reading `carried` with a row
+   written for it is a miss; patch it now, citing the row.
+2. **Execute every removal a human's rejection decided** — at a sitting (Q5), or in the UI since the last
+   run (Q1) — one at a time, each citing the row that justified it. **A marker
    removal with no row ID in the log entry is a bug, not a tidy-up.**
 3. **Sweep for markers pointing at a row that reached a terminal state, and remove them —
    mechanically, with no review slot.** This is [`spec/doc-shape.md`](spec/doc-shape.md) §9 **route 2**,
@@ -270,25 +342,62 @@ only an answer — the human's own, in the UI or spoken at the review — makes 
 8. **Regenerate every `⟳` view this sitting touched** ([`spec/doc-shape.md`](spec/doc-shape.md) §3's
    single home) — a fresh count from the rows as they now stand, never the prior view patched forward.
 9. **Report** — every count in it freshly derived at the moment of printing ([`SKILL.md`](SKILL.md)
-   rule 7), never carried from an earlier sitting's tally.
+   rule 7), never carried from an earlier sitting's tally. It carries the **suggested directions**
+   block (below) for the top proposals, and **it ends with the client packet: every
+   `Open` row, grouped by `Area` (via `Touches`; project-level rows in their own group), framed as the
+   one batch to take to whoever answers** — and the honest line beside it: applied answers create new
+   attackable text, so expect one smaller derivative batch after these are resolved.
+
+**Suggested directions — decision support in the report, never on a row.** For the top proposals by
+the same ordering — **about ten at most, a drain sitting included** — the run drafts 1–3 candidate
+directions per question, each with a one-line why and its main counter-case, grounded first in the
+document itself, **quoting the requirement or principle each direction leans on**; simplicity and
+general practice may argue too, **labeled as such** (*"general practice, not a source"*). A separate
+dispatch on a different model verifies the block before it prints — every quote must exist in the
+document, and anything invented is struck ([`SKILL.md`](SKILL.md) rules 6 and 8). The block is
+**regenerated at every printing and persisted nowhere**: a report is a screen, not the document —
+which is the only reason labeled general-practice reasoning is legitimate here at all. The same words
+on a row would be machine content inside the source of truth; the owner removed two machine-provenance
+fields from this very schema in one week, and the report block is that lesson applied. Asked at any
+time — *"suggest directions for q-12"* — the run drafts one fresh under the same rules. **A suggestion
+never answers anything.** An `Answer & why` that only points at an option (*"go with 2"*) is an answer
+that is only a link — [`resolve.md`](resolve.md) R2.1's rule: not applied, named with the one-line
+fix. A choice made **in conversation** — at a checkpoint, or right after an on-demand suggestion — is
+transcribed with the chosen option's content as the human's own move
+([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 5), which is the friction-free path.
 
 ```
 QUESTIONS — «Golden Crumb» · 2026-08-11
 
-PROPOSED   6 of 14 candidates · 8 discarded on a filter (listed with their counter-case)
-REVIEWED   3 approved (Ana ×2, Tom ×1) · 1 answered now (recorded at Answered — the next
-           resolve writes it in) · 2 rejected · 1 unanswered, back next sitting
-MARKERS    2 patched with their row · 1 removed («Loyalty» — rejected as already decided,
-           answered by the Not doing line on point expiry) · 4 still carried
-CARRIED    4 markers have no question yet — «Refunds» ×2, «Checkout» ×2. They block
-           Intent = Agreed on those features. Next sitting proposes them; nothing is lost.
+WRITTEN    12 of 14 candidates → Proposed (3 transcribed from carried markers) · 2 discarded
+           on a filter (listed with their counter-case)
+REVIEW     no sitting asked — all 12 wait in the Proposed tab, listed below most important
+           first: approve, reject with a reason, or answer directly there. Or ask for a
+           sitting and they come ten at a time.
+SUGGESTED DIRECTIONS — top 2 by the same ordering · drafted fresh at this printing,
+           verified by a second dispatch · never written to any row
+  «Can a customer retry a failed payment?»
+    1. One retry on the same order — FR-2 already isolates payment as its own step
+       ("payment succeeds or fails"); counter-case: a retry needs an idempotent order.
+    2. No retry; the customer starts over — simplest; counter-case: the basket is lost
+       at the moment of highest intent.
+    General practice, not a source: payment providers assume idempotency keys either way.
+  «Do points expire?» — 2 directions, same shape (elided here)
+MARKERS    5 patched with their row · 1 removed («Loyalty» — rejected as already decided,
+           answered by the Not doing line on point expiry) · 0 carried
+WAITING ON ANSWERS — the whole batch, take it in one go
+  Ordering (3)  «Can a customer retry a failed payment?» (Ana) · 2 more
+  Loyalty  (2)  «Do points expire?» (Tom) · 1 more
+  Project  (1)  «What does success look like in month one?» (Ana)
+  Applied answers create new attackable text — expect one smaller derivative batch after
+  these are resolved.
 NOT PROPOSED, AND WHY
   «Should the menu cache?»        implementation, not intent — a Rabbit holes line instead
   «What is the refund window?»    duplicate of q-07, already Open and owned by Tom
 
 An empty proposal list is not evidence this Blueprint is complete.
 
-Untouched: every feature body except the 3 markers named above, every other block.
+Untouched: every feature body except the 6 markers named above, every other block.
 ```
 
 ---
@@ -298,7 +407,7 @@ Untouched: every feature body except the 3 markers named above, every other bloc
 | Situation | What the run does |
 |---|---|
 | Nothing to propose | Say so in two lines. A short report on a well-covered Blueprint is the honest outcome, and the standing caveat above still prints |
-| More than ten real gaps | Ten offered, the rest carried and named. The cap is measured; the completeness rule is not, so the cap wins |
+| More than ten real gaps | All written as `Proposed` (Q4) and listed in the report, most important first. A sitting, if asked for, offers ten at a time (Q5). Nothing found is left unwritten |
 | A human approved rows in the UI and also wants a review | Q1 takes the approvals as given; only rows still at `Proposed` reach Q5 |
 | A human rejects everything | A legitimate outcome. Every marker disposition still runs, and the report says what was left carried |
 | A proposal duplicates a rejected row | Not proposed again unless new source material bears on it — then once, citing the rejection |

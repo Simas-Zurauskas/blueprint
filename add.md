@@ -9,7 +9,7 @@ one extra job `init` does not: **deciding where each segment lands is proposed a
 inferred silently** — and material that contradicts what is already written is a contradiction to surface,
 never an overwrite.
 
-**Run the six pre-flight checks in [`SKILL.md`](SKILL.md) first.** On a **locked** Blueprint this run
+**Run the seven pre-flight checks in [`SKILL.md`](SKILL.md) first.** On a **locked** Blueprint this run
 proceeds normally and picks up one obligation: its write-back ends with a change-log entry — what
 changed, and the ask in the words of whoever asked ([`lock.md`](lock.md) L4). A run that ends without it
 has not finished.
@@ -154,7 +154,9 @@ judgement A2 makes against the whole Blueprint, applied again after the writing,
 is easiest to see in the text that was actually produced.
 
 **Then hand off to [`questions.md`](questions.md) Q1–Q6**, in this same sitting, over the updated
-Blueprint. That file owns the proposal flow, the review and every marker disposition; none of it is
+Blueprint — or, at the owner's word, **defer the handoff to a standalone sitting**: log the deferral,
+and the markers this run minted stay visibly `carried` until it happens. That file owns the proposal
+flow, the review and every marker disposition; none of it is
 restated here. `add` contributes its own findings as inputs: A2's contradictions and gaps, A5's flagged
 claims, and every new `Not doing` line with no `revisit if:`.
 
@@ -181,7 +183,7 @@ DID NOT WRITE (1)
   «Checkout» FR-5 — the transcript contradicts it. Both marked, one question proposed.
   Nothing was overwritten; FR-5 says what it said this morning.
 Check      5 Clean · 1 narrowed · 0 Flagged · independence: writer <a>, checker <b>
-Questions  8 proposed · 4 approved · 2 rejected · 2 left for next sitting
+Questions  8 written as Proposed — review them in the Proposed tab, or ask for a sitting
 Markers    3 new — «Checkout» ×2, «Refunds» ×1. Each blocks Intent = Agreed on its feature
 RE-AGREE THESE (1)
   «Checkout» was Agreed before FR-2 changed under this run. It still reads Agreed over a

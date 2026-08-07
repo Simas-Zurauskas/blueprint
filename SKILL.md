@@ -26,7 +26,7 @@ gets built.
 |---|---|---|
 | `/blueprint init` | [`init.md`](init.md) | Loose sources → source record → a proposed skeleton that **stops until a human confirms** → creates the structure → writes features, then the overview → an independent faithfulness check → proposes questions |
 | `/blueprint add` | [`add.md`](add.md) | More material into new or existing features. Same spine, same stop, no structure creation |
-| `/blueprint questions` | [`questions.md`](questions.md) | The **grilling**: adversarial passes over the whole document generate question **proposals**, and the gated review turns approved ones into real questions |
+| `/blueprint questions` | [`questions.md`](questions.md) | The **grilling** — always the full battery: five lenses at two scopes, whole-document absence sweeps, one repeat round. Every survivor written and reported, **no interrogation**: a human reviews in the UI at their own pace, or asks for a sitting |
 | `/blueprint resolve` | [`resolve.md`](resolve.md) | The one write seam for answers. Takes questions a human answered **and vetted**, writes each into the feature it touches, removes the marker |
 | `/blueprint lock` | [`lock.md`](lock.md) | Readiness report and one final grilling → a human acknowledges what is still unsettled → the document is locked and the change log begins |
 | `/blueprint status` | [`status.md`](status.md) | Reads everything, runs ten checks, prints one screen worst first. **Writes nothing, ever** |
@@ -55,7 +55,7 @@ the single home of where it lives: `<blueprint-dir>/internal/` on a local target
 workspace on Notion. Nothing secret goes in it, no token, ever. **Outside that folder it never writes
 into a code repo.**
 
-## Before any run — six checks
+## Before any run — seven checks
 
 1. **Which project, and which target?** One Blueprint per project. Resolve the target from the working
    folder's `target.md` ([`spec/targets.md`](spec/targets.md) §5), or ask the human once and record it —
@@ -89,6 +89,11 @@ into a code repo.**
    never delete it. Do not fall back to comparing version numbers — a v19 Blueprint reports a version
    higher than this one and the advice that follows from that is exactly wrong.
    <!-- legacy-vocab: end -->
+7. **Does the skill version match the Blueprint's?** The newest run-log entry's stamped version against
+   `VERSION` — [`resolve.md`](resolve.md) R1 is the single home of the check, its branches and the
+   reconciliation route for a lost lineage. **Write commands only**; `status` reads and reports the
+   mismatch but never reconciles, because it never writes. A Blueprint with no run log yet has nothing
+   to compare.
 
 ## The rules that outrank everything
 
@@ -132,6 +137,24 @@ into a code repo.**
    from an earlier entry's claim or from what a plan expected to be true by now. Simulated runs were
    caught contradicting their own arithmetic between consecutive run-log entries with no logged actor for
    the change in between; a count that cannot be re-derived from the files right now is not a fact yet.
+8. **Parallel compute, serial commit.** Sub-agent dispatches whose briefs are read-only may run
+   concurrently where their inputs are disjoint. What makes that safe, all of it required:
+   **(i) the orchestrating run performs every read and write of the target itself.** A sub-agent is
+   briefed with the data it needs and never reads or writes the target, the working folder, or any
+   file; a dispatch that reports having read outside its brief is a deviation, named in the log — a
+   measured sitting had two before this line was standing. The orchestrator's own reads run no more
+   than three in flight — the per-connection limit
+   ([`spec/notion-mechanics.md`](spec/notion-mechanics.md) §4) — honouring `Retry-After`, backing off
+   together. **(ii) Every content write goes through one serial commit path, in commit order** —
+   fetch-diff, write, read-back, log line — so the run log's append order is the commit order.
+   **Property writes are not part of the commit**: they stay where each run file puts them
+   ([`resolve.md`](resolve.md) R5), which is what keeps a crash before the property writes leaving
+   every row in the queue. **(iii) A phase's human gate opens only after every dispatched pipeline,
+   retries included, has reached a terminal verdict.** Stopping earlier — a pause, an abort — discards
+   in-flight model work unwritten; those items stay queued and the entry says `PAUSED`. Dispatch no
+   more pipelines than the sitting's own cap, and no more than the harness comfortably sustains — the
+   cap is the document's, not the harness's. A pipeline silent past ten minutes is named in the log
+   and either waited on or the run pauses — never a silently hanging gate.
 
 ## What this skill does NOT do
 
