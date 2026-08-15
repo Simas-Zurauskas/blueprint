@@ -1,4 +1,10 @@
 # Spec — Notion mechanics
+**Every dated claim in this file expires.** A claim verified more than ~90 days ago is re-verified
+before a run relies on it — one cheap probe against a scratch page — and its date refreshed here (v12;
+the claims were date-stamped but nothing said when a date is too old, so a reuser could neither trust
+nor cheaply distrust them). The pinned API version is part of this: before adopting a newer one, re-run
+the probes this file's dates record.
+
 
 Every rule here was paid for by a real failure or checked against Notion's own documentation, most of it
 live on 2026-08-03. Nobody using the Blueprint reads this file; every run that writes to the Notion target
@@ -60,15 +66,26 @@ with no second call. **No run ever writes the reverse side.**
 
 **The credential is an internal connection's installation access token** — not a personal access token: a
 PAT inherits its user's whole workspace, while a connection is granted page by page, which is what the
-orphan model assumes. Read it at call time from `NOTION_TOKEN` or the OS keychain and **never** write it
+orphan model assumes. Read it at call time from the environment variable `target.md` names (`token_env`, default `NOTION_TOKEN` — [`targets.md`](targets.md) §2's per-project binding) or the OS keychain, and **never** write it
 into a committed file, a run log, the Blueprint, the mapping, or the terminal.
 
 **Authentication is interactive**, which rules out cron and CI: every run is invoked by a human on
 purpose.
 
-## 3. Page blocks, mention blocks, and the two traps
+## 3. Page blocks, mention blocks, and the traps
 
-The sharpest edges in the API surface. Both are silent.
+The sharpest edges in the API surface. All of them are silent.
+
+- **The unmatched-anchor trap, and it is the one that bites at volume.** A content update keyed on a
+  string to replace whose string **is not found is skipped — with no error, and the call still returns
+  success.** A successful write call is therefore *not* evidence the edit landed; only the read-back is.
+  Two things make it fire: an anchor that a previous edit in the same call already changed (overlapping
+  anchors — order matters, and the second silently does nothing), and an anchor transcribed by hand rather
+  than taken verbatim from the fetched text. **So: simulate the whole set of edits against the fetched
+  body first, apply them in order, and compare the result's hash to the text you intended to end up with.
+  Commit only if they match, and read back after.** Prefer patching only the blocks that actually changed,
+  matched by block id, over replacing a page's content wholesale. *(Measured repeatedly in one 580-row
+  drain; every instance was caught by the simulate-and-compare step and none by the API.)*
 
 - **The child-deletion trap.** A page block inside a parent's content **is that parent's child list.** A
   content replace that omits one of those blocks is asking for that child to be deleted. Any content
@@ -141,6 +158,10 @@ ceiling. Report it as a halt with the plan named — never a partial read presen
   uses `select`: status options must each be assigned to one of three fixed groups (To-do / In
   progress / Complete), and **the groups are UI-only.** This skill's vocabulary does not fit three buckets
   honestly — `Closed (not applied)` and `Rejected` are both terminal and mean different things.
+  **Consequence worth stating, because it costs a run twice:** a `Status` column here is a **`select`**, so
+  a write is `{"Status": {"select": {"name": …}}}` and a filter is a `select` filter. Sending the
+  `status` shape returns a bare `400` naming nothing — once on a query filter, then again on a bulk
+  property write. Read the property's own `type` off the page before writing it at volume.
 - **All saved views are creatable over the API** (`/v1/views`, 2026-03-19), filters, sorts and grouping
   included. Do not budget manual setup steps for a limit that no longer exists.
 - **Database templates** still cannot be *created* or marked default over the API, and a page created from

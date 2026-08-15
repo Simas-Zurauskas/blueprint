@@ -21,8 +21,11 @@ from that moment every change to product intent is recorded in the **change log*
 words of whoever asked — so *what moved since we settled this* is always one readable page, and never a
 silent edit to what was agreed. The document records intent; it never tracks what has been built.
 
-**The one thing this shape refuses to do is guess.** An unsupported sentence in a specification is worse
-than an admitted gap, because a gap gets asked about and a guess gets built.
+**The one thing this shape refuses to do is guess.** An unsupported, unlabeled sentence in a
+specification is worse than an admitted gap, because a gap gets asked about and a guess gets built. A
+**labeled convention default** ([`../SKILL.md`](../SKILL.md) rule 4) is neither: adopted in the open,
+tagged, ledger-listed, blocking until a human ratifies its batch — the third state between sourced and
+unknown.
 
 ## 2. Anatomy
 
@@ -226,6 +229,15 @@ under the requirement they touched, because a reader who stops at the row never 
 >
 > *(Narrowed 2026-08-04 by the faithfulness check: the source says "most orders", not "all orders".)*
 
+**A convention default is one labeled sentence in the block where it bites**, in one of two shapes and no
+other — `Default (standard practice — ratify on review): reset links are single-use and expire.
+(run 9f2c1a · 2026-08-14)` or `Default (adopted from the ratified design, frame 298:9042 — ratify on
+review): …` — written only under [`../SKILL.md`](../SKILL.md) rule 4's four conditions, listed on its
+run's defaults ledger, and re-labeled `(standard practice — ratified <date>)` when its batch is ratified.
+A vetoed default is removed the same sitting and becomes a marker plus a question. **The label is the
+provenance**: an unlabeled sentence claiming convention status is exactly the laundering §9 exists to
+prevent.
+
 ## 6. What may appear in the Blueprint
 
 Sources arrive full of things that are true and that nobody meant to publish into a document a whole
@@ -353,7 +365,7 @@ makes them guess*, so the document has to carry the question.
   the match finds zero markers on a document full of them
   ([`notion-mechanics.md`](notion-mechanics.md) §3).
 
-### Five ways a marker is removed, and this is the canonical list
+### Six ways a marker is removed, and this is the canonical list
 
 Every file that removes a marker **points at this list rather than restating it** — three restatements in
 three files were once three different lists, which is how a route two files sanctioned read as forbidden
@@ -382,8 +394,16 @@ in the third.
    `Open`, and the person who decided moves it to `Answered` themselves. If they do not, nothing enters
    the document:** the row sits `Open`, [`../status.md`](../status.md) C7 names it as it ages, and the
    marker stands. That is the honest failure, and it is strictly better than a claim entering ungated.
+6. **Its gap was adopted as a convention default and the defaults batch was ratified.** When a questions
+   run routes a marker's gap to the DEFAULT channel ([`../questions.md`](../questions.md) Q4), the default
+   is written labeled and the marker is **patched** to cite the default's ledger line —
+   `→ Default: ledger <run id> #<n>, awaiting ratification` — still blocking `Intent = Agreed` like any
+   marker. **The marker is removed only by a human's explicit ratification of that defaults batch**
+   ([`../questions.md`](../questions.md) Q6), the removal citing the ledger line and the ratifying act. A
+   veto on that line converts it back to `→ Question: carried` plus a proposed question. Ratification is
+   never inferred from silence or from time passing.
 
-**None of the five is a bypass of another.** A run may never write an answer straight in, and never
+**None of the six is a bypass of another.** A run may never write an answer straight in, and never
 without a row. **A marker removal with no row ID in the run-log entry is a bug, not a tidy-up.**
 
 **Never invent the missing content.** A guess written as prose launders a guess into the source of truth.
@@ -411,7 +431,8 @@ BUILD PACKET — «Claim a swap»           assembled 2026-08-04 from the locked
 
 WHAT THIS PRODUCT IS NOT       the overview's NOT-clause, verbatim
 NOT DOING, HERE                this feature's Not doing lines, each with its why
-BUILD THIS                     the numbered requirements
+BUILD THIS                     the numbered requirements — provenance italics stripped; the
+                               annotations stay on the page, the packet is the reading view
 NOT DECIDED — do not invent    every open question bearing on this feature. If your work
                                touches one of these, stop and ask
 CALLS ALREADY MADE             the Rabbit holes block

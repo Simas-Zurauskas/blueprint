@@ -50,9 +50,9 @@ zero setup — right for speccing an idea tonight.
 Every gap the grilling finds becomes a **proposal** — not a real question until you say so. **The run
 never interrogates you: it writes everything it found, prints the report, and stops.** You review in the
 `Proposed — needs review` tab whenever suits: approve, reject (say why), or just write the answer
-directly — the next run picks up every move. Each row arrives triaged — a **Key** checkbox marks the
-questions whose answers decide the build (contradiction-backed, or unbuildable without an answer), so
-you can take just the Key rows to a client when time is short — and carries **suggested directions**:
+directly — the next run picks up every move. Every row that reaches you already passed the admission
+gate — a decision only the client can make, without which a named part of the document cannot be
+written — so the list is short by construction. Each row carries **suggested directions**:
 machine-drafted options with their trade-offs, grounded in your own document, verified by a second
 model before writing, and always labeled *not a source — your answer in your own words is what counts*.
 

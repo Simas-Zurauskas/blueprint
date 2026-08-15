@@ -44,8 +44,12 @@ Three things about this target a run must know before it starts:
 
 - **A human creates the teamspace and the overview page, and attaches the connection.** A run cannot
   address a teamspace at all, so it needs a page ID from a person before it can do anything.
-- **Writes go over the connection first**, read back to confirm; REST with a token from `NOTION_TOKEN`
-  (environment or OS keychain — presence checked, never echoed, never written anywhere) is the fallback.
+- **Writes go over the connection first**, read back to confirm; REST with a token is the fallback.
+  **The token is per-project** (v12): the working folder's `target.md` names the environment variable to
+  read — `token_env: NOTION_TOKEN_ACME` — defaulting to `NOTION_TOKEN` where unset. An agency running
+  many client workspaces off one global token is one paste away from writing client A's answers into
+  client B's workspace; the variable name in `target.md` is not a secret, the token in the environment
+  is, and neither is ever echoed or written anywhere.
   **A missing token is not a halt.** With neither path working, finish every read and print the pending
   writes as a checklist a human applies by hand.
 - **Everything is keyed by ID.** Titles get edited and URLs change when a page moves.
@@ -116,6 +120,25 @@ Mapping the contract onto files:
 **Ordering is deterministic** — features by their numeric prefix, questions by `q-NN`, log newest-first —
 or every run looks like a change. **Never interpolate a timestamp into content** that is not a dated
 provenance line: a "last synced" line re-hashes every file on every run and turns a no-op into a rewrite.
+
+### The local target's own hazards (v12 — this list did not exist, and every mechanics
+hazard lived in [`notion-mechanics.md`](notion-mechanics.md), so choosing files silently dropped the
+entire failure catalogue)
+
+- **A sync client is a concurrent writer.** Dropbox/iCloud/Drive can deliver half-written files,
+  conflict copies (`questions (Ana's conflicted copy).md`), or resurrect a deleted file. Treat a
+  conflict copy exactly as rule 3 treats a foreign edit: report, never merge silently.
+- **Write atomically**: temp file + rename, never truncate-in-place — a crash mid-write on the real
+  file is the local equivalent of the half-written page nothing can read back.
+- **Case-insensitive filesystems** (macOS default, Windows): `Checkout.md` and `checkout.md` are one
+  file; slugs must be case-unique or collisions overwrite silently.
+- **No version history unless git is there.** Where the folder is a repo, commit after each run's
+  write-back with the run id as the message — that is the local analogue of the append-only run log's
+  provenance. Where it is not, say so in the read-out line: nothing here can prove an edit's author.
+- **Line endings and encoding**: write UTF-8 with `\n`; a CRLF editor pass makes every anchor
+  comparison miss exactly like Notion's silent-skip trap.
+- **The read-back rule survives the target swap**: after every write, re-read the file and compare —
+  disks and sync clients fail quieter than APIs.
 
 ## 4. The read-out line — every read path prepends it
 

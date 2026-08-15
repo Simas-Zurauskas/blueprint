@@ -9,6 +9,9 @@
 #   5  the frozen vocabularies are each defined exactly once, and no superseded
 #      status literal appears anywhere outside an exemption block
 #   6  VERSION is a bare integer
+#   7  QUICKSTART.md is pointer-only: every bullet carries a (→ …) pointer, and the
+#      file never uses the word "never"/"always"/"must" except inside a pointer line —
+#      it may not become a fifth home for any rule
 #
 # Run it — and get LINT PASS — before bumping VERSION.
 #
@@ -22,7 +25,7 @@ fail=0
 wip=0
 [ "${1:-}" = "--wip" ] && wip=1
 
-MANIFEST="SKILL.md README.md init.md add.md questions.md resolve.md lock.md status.md \
+MANIFEST="SKILL.md README.md QUICKSTART.md init.md add.md questions.md resolve.md lock.md status.md \
 spec/doc-shape.md spec/databases.md spec/targets.md spec/notion-mechanics.md"
 
 # Swept for vocabulary (checks 4 and 5) but not cross-referenced or link-checked:
@@ -149,6 +152,18 @@ else
   echo "MISSING VERSION"; fail=1
 fi
 
+# --- check 7: QUICKSTART is pointer-only -------------------------------------
+if [ -f QUICKSTART.md ]; then
+  bad7=$(awk 'function flush(){if(inb && buf !~ /\(→/) print start": "substr(buf,1,70)"…"}
+    /^(- |[0-9]+\. )/{flush(); inb=1; start=NR; buf=$0; next}
+    /^(#|$)/{flush(); inb=0; next}
+    {if(inb) buf=buf" "$0}
+    END{flush()}' QUICKSTART.md || true)
+  if [ -n "$bad7" ]; then
+    echo "QUICKSTART.md bullet(s) without a (→ pointer):"; echo "$bad7"; fail=1
+  fi
+fi
+
 # ---------------------------------------------------------------------- report
 if [ $fail -eq 0 ]; then
   if [ $missing -gt 0 ]; then
@@ -159,4 +174,5 @@ if [ $fail -eq 0 ]; then
 else
   echo "LINT FAIL"
 fi
+
 exit $fail

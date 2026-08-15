@@ -88,11 +88,15 @@ crash later must not take these results with it.
 
 ### R2.1 Per queued row
 
-`Touches` resolves to **exactly one feature that exists, or is empty**. Empty is not a failure: it is a
+`Touches` resolves to **features that exist, or is empty**. Empty is not a failure: it is a
 **project-level row** ([`spec/databases.md`](spec/databases.md) §2), and it goes down R3.1's project-level
 path — a proposed `Not doing` line, a write into each feature it changes, or a NOT-clause sentence or
-dated `Operating` vocabulary line proposed verbatim at R4. **More than one feature is a failure**, because the run cannot know which of them
-the text belongs to.
+dated `Operating` vocabulary line proposed verbatim at R4. **More than one feature is not a failure
+either — it goes down the same project-level serial path** (added v12; the earlier rule failed such rows
+outright "because the run cannot know which of them the text belongs to", and a measured backlog then
+held 254 answered rows no sitting could ever apply — the project-level path already solves the same
+problem for `Touches` empty, by letting the writer decide the true footprint and the checker verify it
+per feature). A `Touches` naming a feature that does not exist is still a failure.
 
 Where `Touches` names one feature, that feature's body holds at least one numbered requirement, **or** the
 answer is eligible for a seed (R3.3). An answer that is only a link — a document reference, a ticket
@@ -150,9 +154,20 @@ summarising an answer into the Blueprint is a rubber stamp with extra steps.
 their writer→check pipelines concurrently ([`SKILL.md`](SKILL.md) rule 8). **Within a group the items
 run strictly serially, commits included** — the orchestrator briefs a later item's writer with the body
 as the earlier item's commit left it (its own read-back copy; no re-fetch, rule 8(i)) — or R3.6's
-fetch-diff would flag this run's own work as a foreign edit. **Project-level rows (`Touches` empty)
-run in one serial pass after the groups** — their true footprint is decided by the writer (R3.1), so
-no grouping can call them disjoint in advance. Dispatch no more items than the sitting cap (R5).
+fetch-diff would flag this run's own work as a foreign edit. **Project-level rows (`Touches` empty) run in one serial pass after the groups** — their true footprint
+is decided by the writer (R3.1), so no grouping can call them disjoint in advance. **Multi-feature rows
+(`Touches` naming more than one) are bounded, not unbounded:** the writer's scope is the named features
+and no wider, each delta checked against its own feature, and the row flips `Applied` only when every
+named feature has a terminal per-feature verdict **and at least one of them actually carries the answer** —
+a delta written here, or R3.1's output 2 quoting the sentence already there. **A row whose every named
+feature returned R3.1's output 3 (`belongs to «other feature»`) is not applied anywhere: it re-queues
+against the feature named, and never flips on those verdicts alone** (v12; the earlier rule counted any
+terminal verdict, so a row every named feature disowned still flipped `Applied` with nothing written).
+Because
+the scope is bounded by `Touches`, **two multi-feature rows whose named-feature sets do not intersect
+each other's — or any concurrently running group's — may pipeline concurrently** ([`SKILL.md`](SKILL.md)
+rule 8's disjoint-inputs test, met by construction); rows whose sets intersect run serially against each
+other, later briefs carrying earlier commits. Dispatch no more items than the sitting cap (R5).
 
 ### R3.1 The writer
 
@@ -175,7 +190,18 @@ and never reads files or the target ([`SKILL.md`](SKILL.md) rule 8).
 
 **Its job.** Rewrite the affected section **in place** — not an append, not a whole-page rewrite, never more
 than one named block per write call. **Removing the marker and writing the answer in are one act.** The
-*why* stays on the row; the requirement carries the behaviour. **An answer about a `Not doing` line is
+*why* stays on the row; the requirement carries the behaviour. **An answer whose own text grounds in
+standard practice — the grounding labeled as such inside `Answer & why` — keeps that label in the
+document:** its dated provenance line reads *(Applied <date> from «row» — standard practice, adopted, not
+client-specific.)*, so a convention adopted under a directive never reads later as a decision the client
+hand-made ([`SKILL.md`](SKILL.md) rule 4's labeling principle, applied at the write seam). **The label
+names the kind of grounding, and the set of kinds is closed at the start of a sitting and enforced by the
+check — a writer never composes a new one.** What the kinds are is the Blueprint's own vocabulary, not this
+skill's: one project's set was *standard practice, adopted, not client-specific* · *design-confirmed* ·
+*answer and reasoning on that row*. *(v12. Left to the writer, plausible variants accumulate — "owner
+directive", "doc plus standard practice, adopted", "design-verified and standard practice" all appeared in
+one drain — and once the labels vary a reader can no longer tell at a glance which sentences a client
+actually decided, which is the whole point of labelling them.)* **An answer about a `Not doing` line is
 written into that line**, keeping its one shape — *No X — because Y; revisit if Z* — which is where a
 `revisit if:` a human supplied belongs. **A project-level answer** (`Touches` empty) becomes a proposed
 `Not doing` line, or goes into each feature it changes; a NOT-clause sentence **or a dated `Operating`
@@ -183,13 +209,25 @@ vocabulary line** ([`spec/doc-shape.md`](spec/doc-shape.md) §3) is a proposal f
 row stays `Answered` until a human accepts it. **Scope is the row's own feature** — a delta touching
 anything else is described, not written, and handed to the check.
 
-**Three permitted outputs, no fourth. The first is typed, not prose:**
+**Four permitted outputs, no fifth. The first is typed, not prose:**
 
 1. a **delta record** — `entity id · block name · hash of the block before · the block's full new text ·
    the question row it cites`, five fields, every one present. Prose here is how the seam fails:
    inter-agent misalignment is one of three top failure categories across 1,600+ multi-agent traces (MAST);
-2. an explicit **`no doc change because …`** line;
-3. **`conflict — nothing written, reason recorded`** — somebody changed this section since the run read it
+2. **`no change — this body already carries it`**, *quoting the sentence that does*. The quote is the
+   evidence and is not optional: without it the verdict is unfalsifiable. This row **is** resolved;
+3. **`no change — belongs to «other feature»`**, naming that feature. This row is **not** resolved —
+   nothing was written for it anywhere — so **it may never flip `Applied` on this verdict**. It returns to
+   the queue against the feature named, and if no feature should carry it, it stays `Answered` as an R4
+   proposal. *(Split from a single `no doc change because …` verdict in v12. That one line covered both
+   cases and R2.1 accepted either as terminal, so "belongs elsewhere" flipped rows to `Applied` with their
+   substance written into no feature at all. Found by auditing a 580-row drain, which left **52 rows**
+   marked `Applied` with nothing written anywhere — most of them because that run had also handed each
+   multi-feature row a single pre-chosen feature instead of following R2.1, so a disagreement about
+   **where** ended the row rather than redirecting it. Both halves are fixed here: the verdict now says
+   which of the two it means, and only the first can flip a row. The defect is invisible per-item —
+   nothing about a single `no doc change` line looks wrong — which is why R5 closes with a check.)*
+4. **`conflict — nothing written, reason recorded`** — somebody changed this section since the run read it
    (rule 2). Name the section, quote both texts, write nothing; the item takes `Flagged`. Without this
    output such an item reaches neither `Applied` nor `Flagged` and sits in the queue forever.
 
@@ -243,6 +281,16 @@ document. Nothing chases it. A human who resolves the disagreement moves the row
 or a new edge case is not written — additive text inside an existing requirement is cheap to correct while
 a new `FR-n` is permanent.
 
+**A patch anchors in the body, never in the writer's proposal.** The text a `Patched` verdict says to
+replace must be an exact excerpt of the **feature body as it currently stands** — not of the writer's
+proposed new text, and above all not of the provenance line the writer drafted. *(v12. Measured **five
+times** in one drain: the check anchored its fix on the writer's own provenance line, so the stored result
+was a label-only edit carrying none of the answer's substance — and it reads as a clean `Patched`. It
+surfaces only when the delta is replayed against the real body and matches nothing, and re-dispatching
+reproduces it identically, so the recovery is to take the writer's original delta and apply the patch
+inside it.)* **A `Patched` whose anchor is not found in the body is not a verdict** — treat the item as
+unverified and re-dispatch, or carry it `Flagged`.
+
 **One narrow exception.** Where a feature's `Behaviour` block has **no numbered requirement at all**, the
 writer proposes a seed — `## Why` plus **`FR-1` only**, derived from the answer and cited — and the checker
 checks it as it checks any delta. The seed is shown to a human at R4 **verbatim** and written only if they
@@ -259,8 +307,10 @@ author's text is still there on the retry.
 
 ### R3.5 Applied means something
 
-**A row flips to `Applied` only with a named delta (entity ID plus block) or an explicit `no doc change
-because …` line in the log.** Neither, no `Applied` — it stays in the queue and R2 names it next run. That
+**A row flips to `Applied` only with a named delta (entity ID plus block) or an explicit
+`no change — this body already carries it` line quoting the carrying sentence (R3.1 output 2).** A
+`no change — belongs to «other feature»` line (output 3) never flips a row — it re-queues it. Neither
+delta nor carrying quote, no `Applied` — the row stays in the queue and R2 names it next run. That
 is what makes the status mean something: every applied row can be pointed at.
 
 **An answer whose home is outside the Blueprint** — a build rule, a hosting choice — must never flip to
@@ -319,6 +369,14 @@ seed body is shown verbatim and whole**, never summarised.
 
 ## R5 — Write back, log, report
 
+**Every sitting's entry ends with a cost-and-outcome line** (v12): dispatches made · approximate
+tokens · wall-clock · items applied / returned / flagged. The cost half is self-reported and marked
+`(self-reported, not recountable)` — [`status.md`](status.md) C10's arithmetic spot-check excludes it,
+because only the outcome half can be re-derived from the files. It exists because every improvement to
+this skill claims a cost or volume change, and none is checkable without a before-number: the first
+580-row drain burned roughly 1,100 dispatches across three interruptions and nobody could say so from
+the log.
+
 **Content first, properties second, read back after each batch — and on a locked Blueprint, the
 change-log entry with them** ([`lock.md`](lock.md) L4): one entry for the sitting, each applied answer a
 line, the question row cited as the ask. **Regenerate every `⟳` view this sitting's applies touched**
@@ -328,6 +386,27 @@ crash before the property writes leaves every row in the queue, however much wor
 write call spans more than one named block.** Property writes go over the primary path first and are read
 back to confirm ([`spec/targets.md`](spec/targets.md) operation 6); anything that did not land is named in
 the report and the log, by row and property, and the next run writes it.
+
+**The reconciliation gate — before the sitting may close, over this sitting's own applies and no wider.**
+Per-item checks cannot see this class of error: for **every row this sitting moved to `Applied`**, confirm
+the document now carries its answer — the delta this sitting committed, or, for R3.1's output 2, the
+sentence the writer quoted as already carrying it. **Anything that carries neither returns to `Answered`**
+and re-queues; the row was never applied, and the `Applied` count falling is the correction, not a
+regression. Log two numbers in the entry: rows applied, rows returned.
+
+*Scoped to the sitting deliberately. A whole-document sweep costs the same on a ten-item sitting as on a
+580-row drain and mostly re-checks rows this run never touched — that belongs in
+[`status.md`](status.md), which reads everything and writes nothing, not in the write seam.*
+
+**The wider sweep, when a drain has been running or a count is doubted**, and its two traps. Collect every
+question a provenance line actually cites across all bodies, and score each `Applied` row by how much of a
+*cited* string its question covers. **A row with no match is a suspect, not a defect** — output 2 leaves no
+citation either — so check each against the bodies it touches, asking only *is this answer's substance
+present, quote the sentence.* **Trap one:** score against the **cited** string, never the row's full
+question, which writers deliberately shorten — that error flagged 334 correctly-applied rows in one
+measured pass. **Trap two:** take only quotation spans **inside a provenance line**; spans found anywhere
+in the text match feature names in ordinary prose. Even done right the suspect list is mostly false —
+116 of 168 in that pass were fine — so **no threshold decides anything; it only orders the reading.**
 
 **Sittings.** Per item: write the content → read it back → append the log line → write the properties. The
 one legal stop boundary is **between commits — after an item's commit completes** ([`SKILL.md`](SKILL.md)
@@ -339,6 +418,17 @@ degradation that has already happened. The run declares `PAUSED`, carries on int
 consumed, and names the remainder as next sitting's. **A deliberate pause is declared; a crash is not.**
 Next run: an item still queued with no log line is applied normally; one with a log line naming its delta
 is **not rewritten** — re-run the check against the text already there and finish the property write.
+
+**At volume — a backlog drain a human ordered — the sitting is a tranche of up to fifty items** (added
+v12, when a 580-row adopted-answer queue met the ten-item cap: 58 interactive sittings is the workload
+the drain exists to remove). What makes the larger tranche honest is what the ten-item evidence is
+actually about: self-conditioning degradation in one context grinding many steps. In a tranche, **every
+item's writer and checker are fresh dispatches with no memory of earlier items**, the orchestrator's
+per-item work is mechanical (brief → dispatch → fetch-diff → commit → log), and the tranche boundary is
+still a real `PAUSED` entry with fresh counts before the next begins. The **ten-item cap stands
+unchanged for interactive sittings** — anywhere a human is reviewing items in the room — and no tranche
+may span a human gate: R4 items accumulate and are put to their human at the tranche boundary or the
+run's end, one at a time as always.
 
 **Three obligations on the write-back, each one line in the entry.** (1) **A `STALE AGREEMENT «feature»`
 line for every `Agreed` feature this run wrote into** — [`add.md`](add.md) A5 owns the shape and
@@ -372,8 +462,10 @@ independence: writer <a>, checker <b>
 APPLIED                                  verdict  feature    delta
   «Can a customer retry a failed…»       Clean    3afc…b75   «Checkout» FR-2, FR-5
   «Do slots roll over at midnight?»      Patched  04ab…4ef   «Pickup slots» FR-3 (additive)
-  «Should the menu cache?»               —        9c31…2ab   no doc change because the
-                                                             answer is a build choice
+  «Should menus show sold-out items?»    —        9c31…2ab   no change — already carries it:
+                                                             «Menu» FR-4 "…shown greyed, never hidden"
+NOT APPLIED (re-queued)
+  «Should the menu cache?»               —        9c31…2ab   no change — belongs to «Offline behaviour»
 FLAGGED                                           feature at the time of the flag
   «Can a paid order be changed?»  contradicts «Checkout» FR-5, which says it cannot   3afc…b75
 NOT APPLIED — nothing in them to write down
@@ -425,13 +517,17 @@ a flag always carries its evidence.
 
 ## Before calling the run complete
 
-- [ ] Every `Applied` row has a named delta or a `no doc change because …` line; every `Flagged` row did not
+- [ ] Every `Applied` row has a named delta or a `no change — already carries it` line with its quote; no
+      row flipped on a `belongs to «other feature»` line; every `Flagged` row did not
       reach `Applied`, has its objection on the row, and is logged with which condition fired.
 - [ ] No `Patched` minted a new numbered requirement or edge case beyond an accepted seed; every
       not-applied row is exactly where its human left it, named with its one-line reason **and the act that
       applies it**.
 - [ ] **The queue was re-read after the checkpoint**, and everything eligible now that was not eligible at
       R2 went through R3 once — accepted seeds included — with no item going through it twice.
+- [ ] **R5's reconciliation gate ran over this sitting's applies, and its two numbers are in the entry** —
+      rows applied, rows returned to `Answered`. Every row this sitting flipped `Applied` is carried by
+      text in the document; none flipped on a `belongs to «other feature»` verdict alone.
 - [ ] No seed body was written that a human did not accept, none carried an `FR-2`, and every accepted one
       carries its dated provenance line.
 - [ ] Every write was read back; no write spanned more than one named block; **nothing was written to the

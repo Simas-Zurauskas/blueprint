@@ -23,7 +23,7 @@ one definition of what "locked" means.
 
 **Always printed, by `lock` and by [`status.md`](status.md) S3, from this one definition.** **Open the
 run-log entry before L3 writes anything**, and close it at the end ([`SKILL.md`](SKILL.md) pre-flight
-check 5). Six questions, each answered with names and counts, never a score:
+check 5). Seven questions, each answered with names and counts, never a score:
 
 | # | What it asks | Why it matters |
 |---|---|---|
@@ -33,6 +33,7 @@ check 5). Six questions, each answered with names and counts, never a score:
 | 4 | **Which features' `Behaviour` blocks hold no numbered requirement?** | A feature with no failable requirement is a title, not a spec |
 | 5 | **Which `Not doing` lines have no `revisit if:`?** | A refusal with no reopening condition becomes dogma |
 | 6 | **How many rows sit at `Proposed`?** | Unreviewed grill output — not questions yet, invisible to every open-questions view. Locking over a backlog is allowed, acknowledged at L2 like everything else, never silent |
+| 7 | **Which convention defaults are adopted but unratified?** | Labeled machine text nobody has ratified ([`SKILL.md`](SKILL.md) rule 4) — each batch named by run id and line count. Their patched markers block `Intent = Agreed` like any marker, and locking over them is acknowledged at L2 item by item, never silent |
 
 **Then the final grilling.** Before anything is locked, run the adversarial battery of
 [`questions.md`](questions.md) Q2 — the lenses live there and are not restated here — over the whole
@@ -154,12 +155,23 @@ obligation below.
 
 ---
 
+**The lock's closing act — the handoff set** (v12). Assemble the build packet
+([`spec/doc-shape.md`](spec/doc-shape.md)) for **every feature**, at this moment, and put the set where
+the delivery team actually works — a `handoff/` folder beside the working folder, or the target's own
+space, named in the run-log entry. This is the artifact the whole Blueprint exists to produce, and until
+v12 no phase owned producing it: the packet was specified as derive-on-demand and nobody's job, so the
+one moment the document was declared done handed the team nothing. Derive-on-demand still holds
+afterwards — a packet is regenerated, never edited — but the lock hands over a complete, dated set.
+*(The measured absence: a finished 63-feature document whose bodies run 30–51% annotation lines by
+count, with no stripped view anywhere for the people the document is for.)*
+
 ## L4 — After the lock: the change log
 
 **Every run that writes into a locked Blueprint appends one change-log entry per sitting, as part of its
-write-back.** This is an obligation on [`add.md`](add.md) A4–A5 and [`resolve.md`](resolve.md) R5, not a
-separate command, and a write run that ends without its entry has not finished
-([`status.md`](status.md) C7 names the gap).
+write-back.** This is an obligation on [`add.md`](add.md) A4–A5, [`resolve.md`](resolve.md) R5 **and any
+[`questions.md`](questions.md) Q4 sitting that lands defaults or doc-fixes** — proposals and marker links
+alone still owe none — not a separate command, and a write run that ends without its entry has not
+finished ([`status.md`](status.md) C7 names the gap).
 
 One entry, four things:
 
