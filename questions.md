@@ -533,8 +533,10 @@ UI or spoken at the review — makes it `Answered`.
    marker plus a question through the ordinary gate, and vetoed text is removed in the same sitting. No
    sitting asked means all three simply wait, labeled and reported, named by
    [`status.md`](status.md) as they age — an unratified default is never silently promoted by time.
-9. **Every candidate's disposition is in the log, and each one is a line** ([`resolve.md`](resolve.md) R5's
-   closed list is the shape). A candidate that became a question is its row · a default is its **one**
+9. **Every candidate's disposition is recorded, and every one that is not a question is a line in the log**
+   ([`resolve.md`](resolve.md) R5's closed list is the shape).
+   A candidate that became a question is carried by its row and counted in the funnel — never re-listed
+   line by line, which would put the whole backlog back in the log · a default is its **one**
    ledger line · a slot is its manifest line · a fix is its batch line · a demotion is one line with its
    grounding quote. **A Q3 discard is one line too — its filter and a short quote of the candidate**, so a
    rejection is answerable later without being an open question now; a discard that exists only on the

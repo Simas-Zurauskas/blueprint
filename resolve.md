@@ -563,7 +563,8 @@ read it.*
 | **header** | date · time · command · run id · version · sitting · queue |
 | **independence** | the writer and checker models ([`SKILL.md`](SKILL.md) rule 6) |
 | **check** | one line per named check — R1's pre-flight halts and its dated version-reconciliation line, R2's per-check lines |
-| **item** | one per item: row · verdict · feature ID · the delta as a **pointer** — `«Feature» FR-n`, never a recap of what it says, which the body's own provenance line already carries |
+| **item** | one per item: row · verdict · feature ID · the delta as a **pointer** — `«Feature» FR-n`, never a recap of what it says, which the body's own provenance line already carries. On `init` and `add`, where a commit has no queue row, the item is its feature ID with the source segment or `CON-k` it came from |
+| **group heading** | the `APPLIED` · `NOT APPLIED` · `FLAGGED` headers the samples use, and the blank line between blocks. Layout, carrying no fact of its own — the only kind that is not read by anything, and it earns its place by making the rest legible |
 | **FLAGGED** | one per row: the row and its objection. The database has no field for it and [`status.md`](status.md) C1 reads it here, so this one explanation is deliberately durable |
 | **MARKERS** | removed, each citing its row ID · carried · deliberate holds |
 | **CHECKPOINT** | offered · accepted · unanswered (R4) |
@@ -582,8 +583,8 @@ More belong to single commands. `init` and `add`: **CON-k** lines and **VERDICTS
 verdict that is not `Clean`, verbatim, `Clean` as a count ([`init.md`](init.md) I6–I7,
 [`add.md`](add.md) A2, A5). `questions`: the **defaults ledger**, the **fixes batch**, the **content
 manifest**, one line per **demotion** and one per **discard**, and the **funnel**
-([`questions.md`](questions.md) Q4, Q6). `lock`: the **`LOCKED`** entry, whose acknowledgements and
-handoff-set location are part of it ([`lock.md`](lock.md) L3).
+([`questions.md`](questions.md) Q4, Q6). `lock`: the **`LOCKED`** entry, whose grilling result,
+acknowledgements and handoff-set location are part of it ([`lock.md`](lock.md) L3).
 
 **The samples below are the cap, not an illustration.**
 

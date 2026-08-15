@@ -310,8 +310,9 @@ fresh at I5, so this is a check that they still match what Q1–Q6 just changed,
 **Before the run-log entry closes, run the contradiction conservation check** — the same mechanical
 discipline as [`spec/doc-shape.md`](spec/doc-shape.md) §8's split verification: every `CON-k` from I2
 resolves to **exactly one** disposition — a question row `q-NN` · a carried marker citing its `CON-k` ·
-closed by the human's answer at I3 · discarded at [`questions.md`](questions.md) Q3 with the quote and
-counter-case logged. **Any orphan halts the close and is named.** The entry then carries one line per
+closed by the human's answer at I3 · discarded at [`questions.md`](questions.md) Q3 with the quote
+logged, its counter-case in the report ([`questions.md`](questions.md) Q6). **Any orphan halts the close
+and is named.** The entry then carries one line per
 `CON-k`: a pointer where a gated home exists (`CON-3 → q-03`), and **both verbatim quotes** where the
 only home is a carried marker or a discard — because a deleted cache must not take the evidence with it.
 Every line is a dated, past-tense process statement ("routed to q-03 at this sitting"), never a

@@ -89,10 +89,8 @@ into a code repo.**
 
    **What an entry may contain is a closed list of line kinds, and
    [`resolve.md`](resolve.md) R5 is its single home for every write command** — no line is a
-   paragraph, and a kind not on that list does not go in the log. Some kinds belong to single
-   commands and are named there: `CON-k` and verdicts (`init`, `add`) · the defaults ledger, fixes
-   batch, content manifest, demotions, discards and funnel (`questions`) · the `LOCKED` entry
-   (`lock`).
+   paragraph, and a kind not on that list does not go in the log. The kinds each command adds to the
+   core set are named there too, so this stays a pointer rather than a second copy to keep true.
 6. **Was this built by the superseded skill?**
    <!-- legacy-vocab: start -->
    A Blueprint with a **Board** database beneath its overview page was built by the maintenance-oriented
