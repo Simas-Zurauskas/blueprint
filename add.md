@@ -139,9 +139,10 @@ changed rows read back from the target, **and the human's A3 stop reply wrapped 
 "the owner confirmed this" is invisible without it ([`SKILL.md`](SKILL.md) rule 6 owns what "separate" requires,
 and the same `could not be performed` fallback applies if no second dispatch exists). Same verdicts as
 I6 — the 2026-08-07 additions included —
-same rule that a removed claim always leaves a marker behind, same one retry. **The check's verdicts are
-appended into the run-log entry verbatim before it closes; if the sitting must end first, the entry's
-last dated line reads `PAUSED — A5 verdicts owed`, naming the dispatch and what stands unverified.** No
+same rule that a removed claim always leaves a marker behind, same one retry. **Every verdict that is not
+`Clean` is appended into the run-log entry verbatim before it closes, and `Clean` is a count** (I7 owns
+that split); if the sitting must end first, the entry's
+last dated line reads `PAUSED — A5 verdicts owed`, naming the dispatch and what stands unverified. No
 file outside the Blueprint is ever the only home of a verdict — in a measured lab, four of five add
 entries ended with complete verdicts sitting in a working file no later reader of the log would ever
 find. **Two more lines the write-back owes:** sweep the content rule over every human-touched

@@ -316,9 +316,13 @@ counter-case logged. **Any orphan halts the close and is named.** The entry then
 only home is a carried marker or a discard — because a deleted cache must not take the evidence with it.
 Every line is a dated, past-tense process statement ("routed to q-03 at this sitting"), never a
 live-status claim that goes stale when the row is answered. **And no file outside the Blueprint is ever
-the only home of a verdict or a quote** — the I6 verdicts land in the run-log entry verbatim before it
-closes, because a working file is a rebuildable cache and a verdict living only there is a verdict a
-later reader never learns happened.
+the only home of a verdict or a quote** — a working file is a rebuildable cache, and a verdict living only
+there is a verdict a later reader never learns happened. **What that costs the entry is bounded: every
+I6 verdict that is not `Clean` lands in it verbatim** — narrowed, removed, `Flagged`,
+`Unverifiable — outside this brief`, and `Noted — not a claim defect`, which keeps its place on the
+summary line as well. **`Clean` is a count** (`I6 42 checked · 39 Clean`): a `Clean` verdict's whole
+content is that nothing was wrong, the count carries it exactly, and a later reader learns as much from
+the number as from thirty-nine repetitions of the word.
 
 Then write the first run-log entry and print **one screen. Not three.**
 

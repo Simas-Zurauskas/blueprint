@@ -314,9 +314,10 @@ the DEFAULT channel, its marker patched to the ledger line per
 feature body as `Default (standard practice — ratify on review): …` — or its design twin,
 `Default (adopted from the ratified design, frame N — ratify on review): …` — one labeled sentence
 stating the adopted behaviour, tagged with run id and date, through the serial commit path
-([`SKILL.md`](SKILL.md) rule 8), never overriding existing text. Every default also lands as one line on
-the run's **defaults ledger** (run log + report): the sentence, the grounding, the four attestations, and
-what client-owned thing it does not decide. The ledger is **risk-sorted** — anything adjacent to the
+([`SKILL.md`](SKILL.md) rule 8), never overriding existing text. Every default also lands as **one line —
+one, and clauses rather than paragraphs** — on the run's **defaults ledger** (run log + report): the
+sentence, the grounding, the four attestations ([`SKILL.md`](SKILL.md) rule 4, one clause each), and a
+last clause naming what client-owned thing it does not decide. The ledger is **risk-sorted** — anything adjacent to the
 always-ask register or irreversible first — and **capped at what one sitting can honestly ratify**;
 overflow defaults stay written and labeled but head the next sitting's ledger.
 
@@ -525,21 +526,23 @@ UI or spoken at the review — makes it `Answered`.
 8. **Put the defaults ledger, the fixes batch and the content manifest to their human — one explicit act each, never
    ratification by silence.** The ledger prints risk-sorted (always-ask-adjacent and irreversible items
    first) with each line vetoable by number; the fixes batch prints each replacement beside what it
-   replaced. **Before ratifying, the human is handed a small random sample of ledger lines with their
-   full attestations to spot-check** — the sample is the honesty probe that keeps a batch act from
+   replaced. **Before ratifying, the human is handed a small random sample of ledger lines to
+   spot-check** — the sample is the honesty probe that keeps a batch act from
    becoming a rubber stamp, and a failed spot-check vetoes the line and doubles the next sample. **Ratifying the defaults batch is the human act that clears each default's patched marker**
    ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 6); a **veto** converts that line back into a
    marker plus a question through the ordinary gate, and vetoed text is removed in the same sitting. No
    sitting asked means all three simply wait, labeled and reported, named by
    [`status.md`](status.md) as they age — an unratified default is never silently promoted by time.
-9. **Log every candidate with its disposition**, including the rejected ones and the reason, so a
-   rejection is answerable later without being an open question now — and the funnel line fresh:
-   drafted → routed default → routed fix → routed slot → written as questions, with per-pass candidate
-   counts and their distribution.
-   **Every Q3 discard goes into the run-log entry
-   too** — filter, verbatim quote and counter-case, not only the sitting's printed report: a report is a
-   screen and the log is the record, and a discard that exists only on a screen is the same silent loss
-   the `CON-k` inventory closes for contradictions ([`init.md`](init.md) I7).
+9. **Every candidate's disposition is in the log, and each one is a line** ([`resolve.md`](resolve.md) R5's
+   closed list is the shape). A candidate that became a question is its row · a default is its **one**
+   ledger line · a slot is its manifest line · a fix is its batch line · a demotion is one line with its
+   grounding quote. **A Q3 discard is one line too — its filter and a short quote of the candidate**, so a
+   rejection is answerable later without being an open question now; a discard that exists only on the
+   sitting's screen is the silent loss the `CON-k` inventory closes for contradictions
+   ([`init.md`](init.md) I7). **The one discard that carries more is a `CON-k`-backed one**, which keeps
+   both verbatim quotes because the conservation check dereferences them (I7). The counter-case belongs to
+   the report. Then the funnel line, fresh: drafted → routed default → routed fix → routed slot → written
+   as questions, with per-pass candidate counts and their distribution — numbers, not an account of them.
 10. **Regenerate every `⟳` view this sitting touched** ([`spec/doc-shape.md`](spec/doc-shape.md) §3's
    single home) — a fresh count from the rows as they now stand, never the prior view patched forward.
 11. **Report** — every count in it freshly derived at the moment of printing ([`SKILL.md`](SKILL.md)

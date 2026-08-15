@@ -86,6 +86,13 @@ into a code repo.**
    at the end** — [`init.md`](init.md) I1, [`add.md`](add.md) A1, [`questions.md`](questions.md) Q1,
    [`resolve.md`](resolve.md) R2 and [`lock.md`](lock.md) L1/L3. A command that logs only at the
    end leaves nothing for the next run to see, and two concurrent runs both proceed.
+
+   **What an entry may contain is a closed list of line kinds, and
+   [`resolve.md`](resolve.md) R5 is its single home for every write command** — no line is a
+   paragraph, and a kind not on that list does not go in the log. Some kinds belong to single
+   commands and are named there: `CON-k` and verdicts (`init`, `add`) · the defaults ledger, fixes
+   batch, content manifest, demotions, discards and funnel (`questions`) · the `LOCKED` entry
+   (`lock`).
 6. **Was this built by the superseded skill?**
    <!-- legacy-vocab: start -->
    A Blueprint with a **Board** database beneath its overview page was built by the maintenance-oriented
@@ -134,7 +141,9 @@ into a code repo.**
    `Not doing` line, never a question. **The Convention carve-out** (added v12 at the owner's direction,
    after a measured 693-row backlog of which 4.8% needed a client): a gap may instead be written into a
    feature body as `Default (standard practice — ratify on review): …` tagged with run id and date, only
-   where **all four** hold, each attested in the run log with a one-line grounding: **(a)** one dominant
+   where **all four** hold, each attested with its grounding as a clause on the default's **single**
+   ledger line ([`questions.md`](questions.md) Q4) — four clauses, not four lines, and never a
+   paragraph: **(a)** one dominant
    convention any competent team picks the same way — a menu of live options is a fork, and a fork is a
    question; **(b)** nothing client-owned turns on it — no money, no legal or IP exposure, no brand voice,
    no contractual scope, no dates; **(c)** reversible without breaking a promise already made to users;
@@ -148,7 +157,7 @@ into a code repo.**
    per-string question · contractual scope · **dates and calendar commitments however phrased** —
    deadlines, seasons, windows, durations, unlock cadences · terms the client coined ·
    **retention or deletion windows for user-provided media** · and **anything touching children's or
-   minors' data**. Each attestation also states in one sentence what client-owned thing the default does
+   minors' data**. The ledger line ends with one clause naming what client-owned thing the default does
    **not** decide, **validated clause by clause against this list**. Condition (c) measures the
    operation, not the policy: **a default whose routine operation destroys user data or user-provided
    material is not reversible**, however adjustable its window. An external authority's

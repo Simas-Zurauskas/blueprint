@@ -192,9 +192,10 @@ One entry, four things:
   new text and the dated provenance lines.
 - Nothing else. An entry is three to ten lines, and the log stays readable top to bottom.
 
-**The change log is for people; the run log is for runs.** The run log records every mechanical act with
-hashes and verdicts and is unreadable by design. The change log answers one question — *what moved since
-we settled this, and why* — and a reader gets the answer without opening anything else.
+**The change log is for people; the run log is for runs.** The run log records every mechanical act as
+structured one-line facts — hashes, verdicts, counts, and nothing that needs reading twice
+([`resolve.md`](resolve.md) R5's closed list is its shape). The change log answers one question — *what
+moved since we settled this, and why* — and a reader gets the answer without opening anything else.
 
 **Before the lock, no change-log entries are written.** A draft changes constantly and logging that is
 noise; the run log already carries the mechanical record. The change log starts at the lock because that

@@ -463,7 +463,7 @@ pretends the run finished either: the next run says so in its report and carries
 simply stops there and reports success is the defect this whole section exists to remove, and it does not
 become acceptable for happening in the gap.*
 
-**Ordered by what the answer changes, and the order is named in each entry. Every row is in exactly one
+**Ordered by what the answer changes. Every row is in exactly one
 band — first match wins:** **(1)** a **single-feature** row whose answer resolves an open marker: it
 retires an admitted gap, which is what a readiness check reports; **(2)** every other **single-feature**
 row — the cheapest, and the only ones that pipeline freely; **(3)** multi-feature and project-level rows,
@@ -516,7 +516,9 @@ plus the rows its reconciliation gate returned, over the items in that sitting �
 so the rate can never exceed one.** *Retries are deliberately not in it: R3.4 grants one, and a retry that
 comes back `Clean` is a success, not a miss — counting it would stop a healthy run, which is the failure
 this whole section exists to remove.* The run stops when **two consecutive full sittings each exceed one
-half**, and both rates go in the entry. Two rather than one, because a single bad sitting is usually one
+half**. Every sitting computes its rate; **a rate goes on the `GATE` line only where it exceeded the half
+or the brake fired** — on a healthy sitting the applied-and-returned counts beside it already say so, and
+a number nothing turns on is a line nobody reads. Two rather than one, because a single bad sitting is one
 bad neighbourhood of the document; **a final short sitting of fewer than five items never triggers it**,
 being too noisy to mean anything.
 
@@ -547,10 +549,50 @@ rule 7) — never carried forward from what an earlier entry claimed or from wha
 be true going in; a marker or status tally that cannot be re-derived from the files right now does not go
 in the log.
 
+**The closed list of line kinds — this is the single home of the entry's shape, for every write command.
+A kind not on this list does not go in the log**, and the list is widened by a skill edit and a `VERSION`
+bump, never by a run. **No line is a paragraph.** Anything needing a sentence of explanation goes in the
+report, where a person actually reads it; the log carries the fact, not the account of it. *Written because
+the entry was the one artifact in this skill with no cap — the change log is held to three to ten lines and
+the report to one screen — and runs filled the vacuum with narrative: a measured 580-row drain wrote ~315k
+characters, ~400 per item against the ~100 these samples imply, and its owner deleted the page rather than
+read it.*
+
+| Kind | What it carries |
+|---|---|
+| **header** | date · time · command · run id · version · sitting · queue |
+| **independence** | the writer and checker models ([`SKILL.md`](SKILL.md) rule 6) |
+| **check** | one line per named check — R1's pre-flight halts and its dated version-reconciliation line, R2's per-check lines |
+| **item** | one per item: row · verdict · feature ID · the delta as a **pointer** — `«Feature» FR-n`, never a recap of what it says, which the body's own provenance line already carries |
+| **FLAGGED** | one per row: the row and its objection. The database has no field for it and [`status.md`](status.md) C1 reads it here, so this one explanation is deliberately durable |
+| **MARKERS** | removed, each citing its row ID · carried · deliberate holds |
+| **CHECKPOINT** | offered · accepted · unanswered (R4) |
+| **GATE** | applied · returned · `overturns n` — and a miss rate **only** where a sitting exceeded the threshold or the brake fired |
+| **SWEEP** | the closing sweep's three numbers |
+| **SWEEP-NOTE** | the content-rule sweep with its row range — R2.5 and [`add.md`](add.md) A5 scope the next sweep from this line, so it is read, not filed |
+| **COUNTS** | the fresh tallies rule 7 requires |
+| **HASHES** | the body hashes R2.3 compares against |
+| **CARRIED-FORWARD** | one line per obligation owed to the next run |
+| **DEVIATIONS** | one classified line each — `brief-violation` · `label-normalised` · `replay-re-anchored` · `outside-source-discounted` · `pipeline-silent` ([`SKILL.md`](SKILL.md) rule 8) — the class and the item, never the story |
+| **NOTE** | one dated line, only on the occasions the files already name: a platform defect resurfacing ([`spec/notion-mechanics.md`](spec/notion-mechanics.md) §2, §6) · a destructive act, **carrying the human's ask verbatim** (§3) · a working-folder move ([`spec/targets.md`](spec/targets.md) §5) · a deferral · a review sitting ([`questions.md`](questions.md) Q5) |
+| **COST** | the one self-reported line above |
+| **closing** | `CLOSED hh:mm` with the stop reason, or `PAUSED …` |
+
+More belong to single commands. `init` and `add`: **CON-k** lines and **VERDICTS** — every faithfulness
+verdict that is not `Clean`, verbatim, `Clean` as a count ([`init.md`](init.md) I6–I7,
+[`add.md`](add.md) A2, A5). `questions`: the **defaults ledger**, the **fixes batch**, the **content
+manifest**, one line per **demotion** and one per **discard**, and the **funnel**
+([`questions.md`](questions.md) Q4, Q6). `lock`: the **`LOCKED`** entry, whose acknowledgements and
+handoff-set location are part of it ([`lock.md`](lock.md) L3).
+
+**The samples below are the cap, not an illustration.**
+
 ```
 2026-08-12 09:14 · resolve · run 7f3a2c · skill v1 · sitting 1 · 6 of 18 queued
 independence: writer <a>, checker <b>
-order: markers · single-feature · multi/project
+R1           version 1 = VERSION · no open entry · capture integrity 4 of 4
+R2           eligible 6 of 18 · 6 markers live, none over a queued row · 4 bases hashed
+SWEEP-NOTE   content rule swept rows 1–18 · 0 findings
 
 APPLIED                                  verdict  feature    delta
   «Can a customer retry a failed…»       Clean    3afc…b75   «Checkout» FR-2, FR-5
@@ -564,11 +606,18 @@ FLAGGED                                           feature at the time of the fla
 NOT APPLIED — nothing in them to write down
   «What is the refund window?»  answer is only a link to a document
 CHECKPOINT   3 offered · 2 accepted · 1 unanswered
-GATE         3 applied, 0 returned · miss rate 0.17 (1 flagged of 6)
+GATE         3 applied, 0 returned · 1 overturn
 MARKERS      2 removed, rows q-04 and q-11 cited · 4 still carried
 HASHES       «Checkout» 9f2c…41d · «Pickup slots» 4a1e…88b
+COUNTS       Answered 14 · Applied 47 · Flagged 1 · Open 26 = 88
+DEVIATIONS   replay-re-anchored · «Pickup slots»
+COST         (self-reported, not recountable) 14 dispatches · ~180k tokens · 1h05m
 PAUSED — sitting 1 of a continuing run, 12 rows still queued
 ```
+
+**Twenty-four lines for six items, and every one of them is read by something.** No line explains a
+verdict, recounts what a delta says, or tells the story of an overturn — the report did all three while
+this was being written. `GATE` carries no miss rate because the sitting was healthy.
 
 The next sitting opens its own entry under the same run id, and only the last one closes the run — with
 the reason, the run totals, and the closing sweep's own number beside the sittings' own:
@@ -576,7 +625,7 @@ the reason, the run totals, and the closing sweep's own number beside the sittin
 ```
 2026-08-12 12:41 · resolve · run 7f3a2c · skill v1 · sitting 3 · 4 of 4 queued
 …
-GATE         4 applied, 0 returned · miss rate 0.00 (0 flagged of 4)
+GATE         4 applied, 0 returned
 SWEEP        14 applied this run · 1 suspect read · 0 returned
 CLOSED 13:20 · DRAINED · run totals: 14 applied, 1 returned by a sitting gate, 0 by the sweep · 3 sittings
 ```
@@ -622,10 +671,14 @@ Untouched: the overview, every other feature, every other block.
 
 Beyond that block: every verdict with its delta · every marker removed with the row it cited · every
 discarded proposal with its filter · every property write that did not land · and last, what a human needs
-to do next. **Lead each item with the measurement that triggered it, not the verdict**, and keep the
-checker's reasoning in the log rather than the report: an explanation attached to a recommendation
-increases acceptance without increasing discrimination. So a `Clean` verdict never carries a rationale, and
-a flag always carries its evidence.
+to do next. **Lead each item with the measurement that triggered it, not the verdict.** A checker's
+reasoning — what it overturned and why, what an intervention caught — **is the report's, not the log's**:
+the log carries `overturns n` on its `GATE` line and nothing more, because that reasoning is an
+explanation, and an explanation attached to a recommendation increases acceptance without increasing
+discrimination. So a `Clean` verdict never carries a rationale anywhere, and **a flag always carries its
+evidence — in both**, the report for the person reading now and the one `FLAGGED` line for
+[`status.md`](status.md) C1 later. *(An earlier rule sent the reasoning to the log instead. It was the
+single largest source of narrative there, and the log has no reader for it.)*
 
 ---
 
@@ -651,6 +704,8 @@ a flag always carries its evidence.
 - [ ] Every marker removed names a row ID in the log entry; every marker still open reads `carried` or
       points at a real row.
 - [ ] Every entry opened at the top of R2, ends in `CLOSED hh:mm` or `PAUSED …`, and contains no token.
+- [ ] **Every line in every entry is one of R5's line kinds, and none of them is a paragraph.** A verdict's
+      reasoning, an overturn's story and a delta's content are in the report; the log has the fact.
 - [ ] **The run ended on a reason from R5's closed list, named in the last entry's closing line** — or
       there was nothing left it could act on. Rows it could still have acted on, with no named reason, is
       an unfinished run, not a short sitting.

@@ -38,6 +38,8 @@ If this file and a run file ever disagree, the run file wins and this file is wr
 - A sitting is ten items; a run keeps opening sittings until a named stop reason fires
   (→ resolve.md R5).
 - Every write run logs a cost line — dispatches, tokens, wall-clock (→ resolve.md R5).
+- A run-log entry is a closed list of line kinds, not prose; explanations go in the report
+  (→ resolve.md R5).
 
 ## When it is settled
 
