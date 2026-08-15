@@ -113,8 +113,8 @@ WILL NOT APPLY NEXT TIME (2) — nothing in these to write down
 
 BLOCKING LINKS (1 broken, 4 carried)
   x «Checkout» marker (9d) — its question row was deleted. Broken; nothing clears it
-  ~ 4 carried markers — «Refunds» ×2, «Loyalty» ×2. No row behind them yet
-    and want a sitting, not a repair
+  ~ 4 carried markers — «Refunds» ×2, «Loyalty» ×2. No row behind them yet; they
+    want a sitting, not a repair
 
 UNSENT QUESTIONS (6) — live, unanswered, not yet in a packet
   ~ oldest 11d · «Can a customer retry a failed payment?» and 5 more
@@ -126,7 +126,7 @@ STUCK AND GOING STALE (2)
   ~ «Who approves an outgoing loan?»   answered, vetted by Ana, waiting 9d — one resolve
                                        run writes it in
 READY TO LOCK?  not yet, and here is exactly what is in the way
-  2 features carrying a marker · 6 open questions
+  3 features carrying a marker · 6 open questions
   3 answered questions not yet applied · 2 Not doing lines with no revisit-if
   None of it blocks a lock — locking includes them and records what you acknowledged.
 

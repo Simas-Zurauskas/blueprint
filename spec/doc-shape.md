@@ -62,7 +62,7 @@ prose; a **`⟳` heading** is a saved view. One rule: ***never type under a `⟳
 | **`## ⟳ Where things are`** | Features grouped by `Area` — a view | — |
 | **`## ⟳ Open questions`** | Live questions and their answers — a view **grouped by `Status`, the groups collapsible** (the owner's 2026-08-06 layout ask: the section stays open, the groups collapse). Since v13 a run writes questions straight to `Open`, so this view carries rows a person may not have read yet; the `Unsent — packet candidates` view is the reading screen and is a database tab only, never embedded | — |
 | **Links** | Source material, design files, whoever's original documents. Links only | — |
-| **Operating** | The run-log link · the change-log link once locked · the **always-ask register** — the dated list of topics no convention default may settle, seeded at `init` with its two mandatory entries and widened only by a human ([`../SKILL.md`](../SKILL.md) rule 4) · any widening of the content rule (§6) · a ratified vocabulary line, where one exists — the canonical term, its superseded aliases, dated | 4 lines |
+| **Operating** | The run-log link · the change-log link once locked · the **always-ask register** — the dated list of topics no convention default may settle, seeded at `init` with its two mandatory entries and widened only by a human ([`../SKILL.md`](../SKILL.md) rule 4), kept to **one line, topics comma-separated** · any widening of the content rule (§6) · a ratified vocabulary line, where one exists — the canonical term, its superseded aliases, dated | 6 lines |
 
 **The front page is the same size at 200 features as on day 1** — every human block is capped and every
 index on it is a view. That is what keeps a front door readable rather than turning it into the document.
@@ -353,7 +353,8 @@ makes them guess*, so the document has to carry the question.
   `→ Question: carried`, is counted like any other, and waits for the next questions run.
   **That run disposes every carried marker** ([`../questions.md`](../questions.md) Q2 sweep item 1,
   Q4) — a client-bound gap becomes a question row, a convention-settled one becomes a labeled default
-  with the marker patched to its ledger line — so after any questions sitting the carried count reads zero. On one measured
+  with the marker patched to its ledger line — so after any questions sitting the carried count reads zero, except markers a human's *ask it better*
+  rejection (route 4) or defaults veto (route 6) returned to `carried`. On one measured
   project the old per-sitting cap let this backlog grow silently to ~80 known gaps with no row behind
   them — more than every question ever asked — which is the failure this rule now forbids. **A carried marker born from a
   contradiction between sources also cites its inventory id and the run-log entry holding both verbatim

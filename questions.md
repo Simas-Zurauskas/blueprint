@@ -530,7 +530,7 @@ UI or spoken at the review — makes it `Answered`.
    becoming a rubber stamp, and a failed spot-check vetoes the line and doubles the next sample. **Ratifying the defaults batch is the human act that clears each default's patched marker**
    ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 6); a **veto** converts that line back into a
    marker plus a question through the ordinary gate, and vetoed text is removed in the same sitting. No
-   sitting asked means both batches simply wait, labeled and reported, named by
+   sitting asked means all three simply wait, labeled and reported, named by
    [`status.md`](status.md) as they age — an unratified default is never silently promoted by time.
 9. **Log every candidate with its disposition**, including the rejected ones and the reason, so a
    rejection is answerable later without being an open question now — and the funnel line fresh:
@@ -552,7 +552,7 @@ UI or spoken at the review — makes it `Answered`.
    block (below) for the top proposals, and the per-feature routing diagnostic — a feature carrying more
    than about one open question is named with which channel leaked, never used as a generation target —
    and **it ends with the client packet — a candidate list, not a send.** The report proposes every
-   `Open` row grouped by `Area` (via `Touches`; project-level rows in their own group), so taking only
+   `Open` row grouped by `Area` (via `Touches`; project-level rows in their own group), so taking
    only one `Area` group is a choice the packet supports without becoming two packets. **A human decides
    what actually goes, and a human sends it** ([`SKILL.md`](SKILL.md) rules 1 and 5): since v13 a run
    writes questions directly to `Open`, so the `Open` view holds machine-written rows a person may not
@@ -600,7 +600,7 @@ DEFAULTS ADOPTED (14) — ratify or veto by number; risk-sorted, spot-check samp
 FIXES APPLIED (2) — ratify below
    «Loyalty» FR-3 under-enumerated its own list (quote → replacement, applied)
    «Checkout» stale line superseded by the applied answer on q-04 (quote → replacement)
-WRITTEN    4 → Open, each naming its client-only act. No sitting asked — they wait in
+WRITTEN    3 → Open, each naming its client-only act. No sitting asked — they wait in
            the Unsent tab: answer directly, reject with a reason, or carry into a packet.
 SUGGESTED DIRECTIONS — top 2 by ordering · verified by the same dispatch that disposed them
   «Can a customer retry a failed payment?»

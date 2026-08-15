@@ -67,8 +67,7 @@ Four lists again, and a fifth that only `add` has.
 5. **Exclusions** the new material carries, in the one shape, with the *why* the source gives.
 6. **Grill the delta.** Run the adversarial lenses of [`questions.md`](questions.md) Q2 — single home,
    not restated — over the planned changes *and the features they land in*: what does the new requirement
-   not decide, what does it collide with, what would its builder have to guess. Findings join lists 3 and 4 and
-   5, so A3 presents a delta that has already been attacked. **No planned change is ever presented
+   not decide, what does it collide with, what would its builder have to guess. Findings join lists 3 and 4, so A3 presents a delta that has already been attacked. **No planned change is ever presented
    ungrilled.**
 
 ---
