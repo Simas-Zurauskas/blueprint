@@ -11,7 +11,7 @@ Nothing is settled when the run ends — the lock is the sign-off, and it comes 
 [`spec/targets.md`](spec/targets.md) · [`spec/notion-mechanics.md`](spec/notion-mechanics.md).
 
 **Run the seven pre-flight checks in [`SKILL.md`](SKILL.md) first.** On the Notion target, **HALT if there
-is no connected overview page** — print that checklist and stop. Never create a substitute overview page:
+is no connected overview page** — print the human-setup checklist ([`spec/databases.md`](spec/databases.md) §7) and stop. Never create a substitute overview page:
 its ID is the one fact this skill cannot rediscover, and a second front door is worse than none.
 
 **What init never does.** Never invents content. Never resolves a contradiction between two sources on its
@@ -167,7 +167,7 @@ CONTRADICTIONS  CON-1 — pickup window is 15 min in the deck, 30 min in the not
                 the run reads as reconcilable, whose reading this same answer accepts or
                 reopens. None is decided off-screen.
 GAPS            7 — become [NEEDS CLARIFICATION] markers + proposed questions
-GRILLED         4 lenses run over this skeleton — 3 of the 7 gaps are the grilling's finds
+GRILLED         5 lenses run over this skeleton — 3 of the 7 gaps are the grilling's finds
 NOT USED    «Q3 roadmap.pdf» pp. 4–9 — pricing plans, no product behaviour (asked: Ana)
 
 Confirm, edit any line, or decline. Nothing is created until you answer.
@@ -201,7 +201,7 @@ rather than duplicating.
 
 ## I5 — Write the Blueprint
 
-Rows first, then the overview — the overview's three `⟳` blocks are views of databases that must exist
+Rows first, then the overview — the overview's two `⟳` blocks are views of databases that must exist
 first.
 
 **Feature rows.** One per feature, with the body skeleton from [`spec/doc-shape.md`](spec/doc-shape.md) §5
@@ -215,7 +215,9 @@ capped human blocks — TL;DR (written first, rewritten last), **What this produ
 closing in a one-sentence NOT-clause naming the *kind* of thing this product refuses; it does not try to
 be the list), **Who it's for**, **How it works, in one picture**. **Embed the two `⟳` views** — «Where things are», and «Open questions» grouped
 by `Status` with the groups collapsible; «Unsent — packet candidates» stays a database tab, never embedded — and **type
-nothing under a `⟳` heading**, now or ever. Write **Links** and the **Operating** block — the run-log link
+nothing under a `⟳` heading**, now or ever. Write **Links** and the **Operating** block — the run-log link, the always-ask register seeded with
+its two mandatory entries (*minors' data protection and child-recording consent*, *regulatory
+applicability* — [`SKILL.md`](SKILL.md) rule 4; a human widens it thereafter),
 and any widening of the content rule. **No owner line**: the overview names nobody
 ([`spec/doc-shape.md`](spec/doc-shape.md) §3), and per-question `Owner` is the only named-person surface.
 
@@ -286,7 +288,7 @@ asked. Narrowing needs no marker; deleting always does, or this check converts a
 unknown unknown, which is the one thing it exists to prevent.
 
 **One automatic retry per item**, then it goes to the human. No third pass, no debate. Nothing here is a
-blocker: every feature is at `Draft`, so a `Flagged` item costs a line in the summary and an honest gap,
+blocker: nothing is settled until the lock, so a `Flagged` item costs a line in the summary and an honest gap,
 not a stalled run.
 
 ---
@@ -323,7 +325,7 @@ Then write the first run-log entry and print **one screen. Not three.**
 ```
 BLUEPRINT INIT — «Golden Crumb» · 2026-08-04 · target: Notion
 
-Created    2 databases · 5 views · 10 feature rows · overview written once
+Created    2 databases · 4 views · 10 feature rows · overview written once
 Sources    4 — 2 documents, 1 upload, 1 interview. All mapped; 6 pages unused (listed)
 Check      9 Clean · 1 narrowed (loyalty rules narrowed to what the deck says) · 0 Flagged
            independence: writer <a>, checker <b>
@@ -332,7 +334,7 @@ Questions  14 written, live at Open. Read them in the Unsent tab at your own pac
            ask for a sitting and they come ten at a time
 Markers    11 open [NEEDS CLARIFICATION] — each an admitted gap on its feature,
            each linked to its question row. Nothing is carried
-Not yet    Nothing is Agreed. This is a draft specification, not an agreed one.
+Not yet    Nothing is locked. This is a draft specification, not a settled one.
 
 WHAT HAPPENS NEXT — read this once; nothing else says it
   1. Read the feature rows. They are the spec — the requirements are the test list.

@@ -24,7 +24,7 @@ silent edit to what was agreed. The document records intent; it never tracks wha
 **The one thing this shape refuses to do is guess.** An unsupported, unlabeled sentence in a
 specification is worse than an admitted gap, because a gap gets asked about and a guess gets built. A
 **labeled convention default** ([`../SKILL.md`](../SKILL.md) rule 4) is neither: adopted in the open,
-tagged, ledger-listed, blocking until a human ratifies its batch — the third state between sourced and
+tagged, ledger-listed, counted and reported until a human ratifies its batch — the third state between sourced and
 unknown.
 
 ## 2. Anatomy
@@ -62,7 +62,7 @@ prose; a **`⟳` heading** is a saved view. One rule: ***never type under a `⟳
 | **`## ⟳ Where things are`** | Features grouped by `Area` — a view | — |
 | **`## ⟳ Open questions`** | Live questions and their answers — a view **grouped by `Status`, the groups collapsible** (the owner's 2026-08-06 layout ask: the section stays open, the groups collapse). Since v13 a run writes questions straight to `Open`, so this view carries rows a person may not have read yet; the `Unsent — packet candidates` view is the reading screen and is a database tab only, never embedded | — |
 | **Links** | Source material, design files, whoever's original documents. Links only | — |
-| **Operating** | The run-log link · the change-log link once locked · any widening of the content rule (§6) · a ratified vocabulary line, where one exists — the canonical term, its superseded aliases, dated | 4 lines |
+| **Operating** | The run-log link · the change-log link once locked · the **always-ask register** — the dated list of topics no convention default may settle, seeded at `init` with its two mandatory entries and widened only by a human ([`../SKILL.md`](../SKILL.md) rule 4) · any widening of the content rule (§6) · a ratified vocabulary line, where one exists — the canonical term, its superseded aliases, dated | 4 lines |
 
 **The front page is the same size at 200 features as on day 1** — every human block is capped and every
 index on it is a view. That is what keeps a front door readable rather than turning it into the document.
@@ -329,7 +329,7 @@ solutions** (Mäder & Egyed, EMSE 2015).
 
 ## 9. `[NEEDS CLARIFICATION]` markers
 
-The one and only blocking mechanism in the Blueprint. It exists because whoever builds this will not raise
+The one and only admitted-gap mechanism in the Blueprint — it blocks nothing (v13). It exists because whoever builds this will not raise
 the question: baseline agents ask a clarifying question on only **24.12%** of underspecified tasks, and one
 frontier model asked in **1.7%** of its non-actions. *Underspecification does not make agents fail — it
 makes them guess*, so the document has to carry the question.
@@ -351,8 +351,9 @@ makes them guess*, so the document has to carry the question.
   sittings, never a parking lot.** Write runs mint markers between questions sittings — a resolve run's
   narrower marker, an init gap — and a marker whose question has not been proposed yet reads
   `→ Question: carried`, is counted like any other, and waits for the next questions run.
-  **That run writes a question row for every carried marker** ([`../questions.md`](../questions.md)
-  Q2 sweep item 1, Q4), so after any questions sitting the carried count reads zero. On one measured
+  **That run disposes every carried marker** ([`../questions.md`](../questions.md) Q2 sweep item 1,
+  Q4) — a client-bound gap becomes a question row, a convention-settled one becomes a labeled default
+  with the marker patched to its ledger line — so after any questions sitting the carried count reads zero. On one measured
   project the old per-sitting cap let this backlog grow silently to ~80 known gaps with no row behind
   them — more than every question ever asked — which is the failure this rule now forbids. **A carried marker born from a
   contradiction between sources also cites its inventory id and the run-log entry holding both verbatim
@@ -416,12 +417,12 @@ Contradictions between sources are surfaced, never silently resolved.
 | I want to… | Where I look |
 |---|---|
 | **Settle the scope — with a client, a team, or yourself** | The overview's NOT-clause, then the feature rows and their `Not doing` lines |
-| **Build the first thing** | Feature rows at `Agreed`: requirements, `Not doing` lines, rabbit holes. Every requirement can fail, so it is both the build brief and the test list |
+| **Build the first thing** | The feature rows: requirements, `Not doing` lines, rabbit holes. Every requirement can fail, so it is both the build brief and the test list |
 | **Know what is still undecided** | Open Questions. A question written down — owned or not — is the honest form of "we do not know yet" |
 | **Judge whether a proposed feature fits** | The NOT-clause, then the `Not doing` lines of the features it touches. A citation with an argument attached |
 
 The acceptance test: hand the Blueprint to somebody who has never seen the project and ask what the
-product does, what one agreed feature must and must not do, and what they would still have to guess at.
+product does, what one feature must and must not do, and what they would still have to guess at.
 An honest *"that is not written down"* on the third beats a confident invention.
 
 **The build packet — derived at build time, never stored.** Whoever builds is never handed the feature

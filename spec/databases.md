@@ -88,7 +88,7 @@ What 44.4% does support, and all it supports: **an empty question list is never 
 is complete.**
 
 **Why `Flagged` is a real state.** Without it, a question a run refused to write stays `Answered`,
-`Human approved` and vetted — passing eligibility on every later run, re-dispatching a writer and a
+with a vetted answer — passing eligibility on every later run, re-dispatching a writer and a
 checker to reproduce the same verdict forever, and appearing in no report. It is terminal for runs and
 clearable only by a person.
 

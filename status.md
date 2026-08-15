@@ -1,7 +1,7 @@
 # Run — status
 
 `/blueprint status` reads the Blueprint and prints **one screen**: what could not be applied, what is
-waiting on a person, what will not apply next time, what is stuck, what nobody has confirmed, and how
+waiting on a person, what will not apply next time, what is stuck, what the document should not be carrying, and how
 ready this is to lock. Worst first; every line names the thing and the next move.
 
 **This run never writes.** Not a property, not a page, not a comment. If a check makes a fix look obvious,
@@ -27,7 +27,7 @@ owns what.
    ([`spec/notion-mechanics.md`](spec/notion-mechanics.md) §4).
 3. **Read the body of every feature row.** C5 needs it for markers, C9 for the content sweep. Read each
    body once and let the checks share it. There is no per-feature state to scope this read by, and there
-   deliberately never was a good one: an earlier design scoped it to agreed features, which read nothing
+   deliberately never was a good one: an earlier design scoped it to signed-off features, which read nothing
    on the first run of a project's life.
 4. **Read the run log** — the source of the last run's date, the only source for when a question was
    flagged (C1), and **the only source for whether this Blueprint is locked**
@@ -66,8 +66,8 @@ it does not chase anybody, and it never writes.
 | **C7** | **Stuck and going stale** | The age check, from the target's built-in times and the log's flag dates: a question `Answered` that no resolve run has picked up · an `Open` question past 14 days with no answer and no rejection (nothing records packet membership, so nothing is inferred from it) — read against C2's pace line after a bulk write: dozens aging while tens clear per sitting is a queue being worked, not a stall · the oldest `Open` questions, each with its age — **an empty `Owner` is never a finding** ([`spec/databases.md`](spec/databases.md) §2: it is an informal label, and a check that fires on it every run is one nobody reads) — **and, on a locked Blueprint, every write the run log records after the `LOCKED` entry that no change-log entry explains.** A change nobody was told about is the one thing the lock exists to prevent, and this is the check that catches a run that ended without its entry ([`lock.md`](lock.md) L4). An item C1–C5 already names is not repeated here; its age goes on that line instead |
 | **C8** | **The front door** | Read the overview's human prose against the current state — TL;DR, `What this product is` and its NOT-clause, `Who it's for`, `Links`, `Operating` — and quote any sentence the rows contradict, with the page's last-edited age beside it. **This includes a mechanical recount, not only a narrative read**: re-derive every number a generated view claims (a question tally in the TL;DR that should carry none at all, the `⟳ Where things are` and `⟳ Open questions` views, the local-markdown equivalents in `mapping.md`) from the actual current rows, and name any view whose printed state disagrees with that recount — this is [`spec/doc-shape.md`](spec/doc-shape.md) §3's regeneration rule, checked here rather than trusted. Also anything typed under a `⟳` heading, which is the one rule the overview carries. **No run may correct it here** — a fix is a proposal at a checkpoint ([`spec/doc-shape.md`](spec/doc-shape.md) §3), so every line is one a human accepts elsewhere |
 | **C9** | **Content the rule bars** | Sweep every feature body, every question `Answer & why`, every `Why asked` and every `Suggested directions` for customer and third-party names, individuals' names, contract terms and dates, penalties and prices, against the default (*write the role, never the specific*) and any widening the `Operating` block records. **The sweep reads every character of an in-scope field, including a sign-off at the end of it** — a name signed at the close of an `Answer & why` is exactly as much a finding as the same name in a feature body, and a source's own disclaimed placeholder figure ("TBD", "e.g.") is still a specific once it is quoted verbatim rather than described. **Also flag any field on a row that is not one of [`spec/databases.md`](spec/databases.md) §1/§2's named properties** — an ad hoc field is unaudited by construction, whatever it contains. **One thing is never a finding** ([`spec/doc-shape.md`](spec/doc-shape.md) §6): the people-typed `Owner` property. A check that fires on it every run is one nobody reads. **Name the row and the block, and never print the value** — this report is read by the same people the rule protects the document from |
-| **C10** | **Run-log arithmetic** | Spot-check the run log's own claimed counts against a fresh recount of the actual current files — marker totals, status tallies, `Confirmed` breakdowns — for the newest handful of entries. **A run log that contradicts its own arithmetic, or contradicts its own immediately preceding entry with no logged actor for the change in between, is named here** — this is not a claim about which entry is right, only that they cannot both be true as written, and a reader trusting the append-only record deserves to know that before trusting anything it says. [`SKILL.md`](SKILL.md) rule 7 is what every future entry owes; this check is what catches one that didn't pay it |
-| **C11** | **Can a builder test this?** *(v12; on demand — say `status full` — because unlike C1–C10 it dispatches sub-agent reads and costs real money)* | Three defects per feature, named with quotes: **a tautological FR** — one whose pass condition restates itself ("shows only the surfaces appropriate to them") so no test can fail it · **load-bearing unnumbered text** — an Edge-cases or prose line carrying behaviour no FR owns, which can be neither ticketed nor acceptance-tested · **an undefined cross-feature term** — a phrase like "the parent check" whose definition lives in another feature with no pointer, invisible to a builder reading this one. Measured absence: a finished 63-feature document shipped all three kinds and no check owned any of them — two independent reader-in-role dispatches found them in six bodies within minutes. Reports names and quotes only; fixing is a human's or a DOC-FIX candidate's |
+| **C10** | **Run-log arithmetic** | Spot-check the run log's own claimed counts against a fresh recount of the actual current files — marker totals, status tallies, defaults-ledger line counts — for the newest handful of entries. **A run log that contradicts its own arithmetic, or contradicts its own immediately preceding entry with no logged actor for the change in between, is named here** — this is not a claim about which entry is right, only that they cannot both be true as written, and a reader trusting the append-only record deserves to know that before trusting anything it says. [`SKILL.md`](SKILL.md) rule 7 is what every future entry owes; this check is what catches one that didn't pay it |
+| **C11** | **Can a builder test this?** *(v12; on demand — say `status full` — because unlike C1–C5 and C7–C10 it dispatches sub-agent reads and costs real money)* | Three defects per feature, named with quotes: **a tautological FR** — one whose pass condition restates itself ("shows only the surfaces appropriate to them") so no test can fail it · **load-bearing unnumbered text** — an Edge-cases or prose line carrying behaviour no FR owns, which can be neither ticketed nor acceptance-tested · **an undefined cross-feature term** — a phrase like "the parent check" whose definition lives in another feature with no pointer, invisible to a builder reading this one. Measured absence: a finished 63-feature document shipped all three kinds and no check owned any of them — two independent reader-in-role dispatches found them in six bodies within minutes. Reports names and quotes only; fixing is a human's or a DOC-FIX candidate's |
 
 Also print, without comment: the size of each queue, the date of the last run, and whether the Blueprint
 is locked, with the lock date and the count of change-log entries since. **Never invent an age or a date** — a missing timestamp is "unknown", never
@@ -78,7 +78,8 @@ is locked, with the lock date and the count of change-log entries since. **Never
 **Fixed order, worst first. Every check has a section, and a check with nowhere to print is a check that
 does not exist:** 1 CONTENT THE RULE BARS (C9) · 2 COULD NOT APPLY (C1) · 3 STATE NOTHING WROTE (C4) ·
 4 RUN-LOG ARITHMETIC (C10) · 5 WILL NOT APPLY NEXT TIME (C3) · 6 BLOCKING LINKS (C5) · 7 UNSENT QUESTIONS
-(C2) · 8 STUCK AND GOING STALE (C7) · 9 THE FRONT DOOR (C8).
+(C2) · 8 STUCK AND GOING STALE (C7) · 9 THE FRONT DOOR (C8). **C11 is the one exemption** — it runs
+only when `status full` is asked, and prints under its own heading after section 9.
 C9 prints first because it is the only line about something that should not be in the document at all;
 every other line is about something that is wrong. It is also, on almost every run, absent. C10 sits
 beside C4 because both are about the mechanical record itself being unreliable, not about the product
@@ -90,7 +91,7 @@ bottom because it is a summary of everything above, not a fault of its own. On a
 replaced by one line: the lock date and how many change-log entries have landed since.
 
 The header carries the queue numbers, the last run date and the locked state; nothing repeats them lower
-down. **An empty section is omitted, never printed empty**, which is why ten sections read as one screen
+down. **An empty section is omitted, never printed empty**, which is why nine sections read as one screen
 on a healthy project. **One screen means one screen:** at most 5 rows per section, then `+N more` plus the
 view that shows the rest, whole report under about 40 lines. **Every line ends in a move.**
 
@@ -107,13 +108,12 @@ COULD NOT APPLY (1) — a run tried and could not write this honestly
 WILL NOT APPLY NEXT TIME (2) — nothing in these to write down
   x «What is the refund window?»   Answered 5d · the answer is only a link — write the
                                    decision itself, in a sentence
-  x «Who approves a refund?»       Answered 3d · Confirmed still AI generated — Ana vets
-                                   it or it is never applied
+  x «Who approves a refund?»       Answered 3d · Touches names «Approvals», which does
+                                   not exist — repoint it
 
-BLOCKING LINKS (1 broken, 4 carried, 1 Agreed-with-marker)
+BLOCKING LINKS (1 broken, 4 carried)
   x «Checkout» marker (9d) — its question row was deleted. Broken; nothing clears it
-  x «Checkout» is Agreed and carries that marker — agree it again once it clears
-  ~ 4 carried markers — «Refunds» ×2, «Loyalty» ×2. Not yet proposed; they block Agreed
+  ~ 4 carried markers — «Refunds» ×2, «Loyalty» ×2. No row behind them yet
     and want a sitting, not a repair
 
 UNSENT QUESTIONS (6) — live, unanswered, not yet in a packet
@@ -126,7 +126,7 @@ STUCK AND GOING STALE (2)
   ~ «Who approves an outgoing loan?»   answered, vetted by Ana, waiting 9d — one resolve
                                        run writes it in
 READY TO LOCK?  not yet, and here is exactly what is in the way
-  1 feature carrying a marker · 4 open questions
+  2 features carrying a marker · 6 open questions
   3 answered questions not yet applied · 2 Not doing lines with no revisit-if
   None of it blocks a lock — locking includes them and records what you acknowledged.
 

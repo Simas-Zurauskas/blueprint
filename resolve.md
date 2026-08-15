@@ -328,7 +328,7 @@ question is a bad question.
 ### R3.6 Writing the delta
 
 1. **Fetch the section again and diff it against the text read at R3.1, immediately before writing.** Any
-   difference is an edit this run did not make: take output 3, write nothing, flag the item. A re-fetch
+   difference is an edit this run did not make: take output 4, write nothing, flag the item. A re-fetch
    only *after* the push reports success over an overwrite.
 2. **Write the content**, never more than one named block per call.
 3. **Read it back and confirm it landed** — nothing dropped, no cross-link degraded.
@@ -432,7 +432,7 @@ run's end, one at a time as always.
 **Two obligations on the write-back, each one line in the entry.** (1) **A carried marker for every `Not doing` line this run
 wrote without a `revisit if:`** — the line's own "a question is to be proposed" note is otherwise a
 promise no phase owns, and in a measured project it silently killed the owner's only legitimate scope
-growth. (3) **The report names every row whose quoted text this sitting's writes invalidated** — a
+growth. (2) **The report names every row whose quoted text this sitting's writes invalidated** — a
 `Why asked` or `Suggested directions` quoting a requirement this run rewrote now cites text that no
 longer exists, and nobody may edit the written row to fix it.
 

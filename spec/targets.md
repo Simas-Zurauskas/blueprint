@@ -79,7 +79,6 @@ rehearsing a run without touching a live workspace.
 ---
 name: Checkout
 what_it_does: A customer pays for the order in their basket and gets a confirmation.
-intent: Draft
 area: Ordering
 questions: [q-04, q-07]
 created: 2026-08-04
@@ -146,7 +145,7 @@ A feature's identity lives in its properties, and a body read as text carries no
 reading a row out — a sub-agent brief, a build packet, an export — **prepends one line before the body**:
 
 ```
-«Checkout» · Ordering · Draft
+«Checkout» · Ordering
 ```
 
 `title · Area`, in that order, ahead of `## Why`. A projection assembled at read time, never

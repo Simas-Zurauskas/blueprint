@@ -23,7 +23,7 @@ one definition of what "locked" means.
 
 **Always printed, by `lock` and by [`status.md`](status.md) S3, from this one definition.** **Open the
 run-log entry before L3 writes anything**, and close it at the end ([`SKILL.md`](SKILL.md) pre-flight
-check 5). Seven questions, each answered with names and counts, never a score:
+check 5). Six questions, each answered with names and counts, never a score:
 
 | # | What it asks | Why it matters |
 |---|---|---|
@@ -80,10 +80,10 @@ contains.
 ```
 LOCK «Golden Crumb» — nothing is written yet.
 
-  1/4  3 features are still Draft: «Refunds» · «Loyalty tiers» · «Admin export»
-       Locking includes them as drafts. They read Draft in the document, and whoever
-       builds from it knows they were never agreed.
-       [i]nclude as draft · [h]old the lock so somebody can agree them
+  1/4  2 features carry an open [NEEDS CLARIFICATION] marker: «Refunds» · «Loyalty tiers»
+       Locking includes them. The gaps stay named in the document, and whoever builds
+       from it knows exactly what was never settled.
+       [i]nclude · [h]old the lock so somebody can answer them
 
   2/4  4 open questions, 2 of them owned by Ana
        Locking does not close them. They stay open in the document — which is honest,
@@ -107,7 +107,7 @@ correct at any experience level, and *information rather than recommendation* is
 **A hold is a normal ending.** Nothing is written, the readiness report stands, and the run says what to
 do next.
 
-**Every acknowledgement is recorded in the log by name** — *"3 Draft features included as drafts,
+**Every acknowledgement is recorded in the log by name** — *"2 features with open markers included,
 acknowledged by Ana, 2026-08-14"*. When you are the only human on the project, that name is yours, and it
 still matters: it is the record that a person read it, not that a ceremony happened.
 
@@ -125,9 +125,9 @@ the lock real:
 
 ```
 2026-08-14 16:20 · lock · run 4d1e9a · skill v2
-LOCKED — 10 features (7 Agreed, 3 Draft) · 9 questions (4 Open, 5 Applied)
+LOCKED — 10 features · 9 questions (4 Open, 5 Applied)
 GRILLED    full battery run · 2 new questions written to Open, unanswered
-ACKNOWLEDGED  3 Draft features · 4 open questions · 2 grilling finds — by Ana
+ACKNOWLEDGED  2 features with open markers · 4 open questions · 2 grilling finds — by Ana
 CLOSED 16:22
 ```
 
@@ -209,7 +209,7 @@ corrected by a newer entry saying so.
 
 | Situation | What the run does |
 |---|---|
-| `lock` on a Blueprint with nothing agreed | Allowed, after L2. A locked document of ten drafts is honest and says so on its face |
+| `lock` on a Blueprint where nothing is settled | Allowed, after L2. A locked document that is mostly open questions is honest and says so on its face |
 | `lock` with an `Answered` question not yet applied | L2 recommends resolving first, with the counter-case. A decision that exists while the spec is silent is the one gap worth holding for |
 | `lock` on an already locked Blueprint | Nothing to do. Say so, point at the change log, stop |
 | A write run on a locked Blueprint ends without a change-log entry | It has not finished — the entry is part of the write-back. [`status.md`](status.md) C7 names any write the run log records after the lock that no change-log entry explains |

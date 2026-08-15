@@ -81,7 +81,7 @@ since the last run — in the UI, at their own pace, without this skill.
   original.
 - A `Key` value changed by a human (legacy projects only — the flag is retired, Q4): **their move
   wins.** Read, never edited; the run neither derives nor writes `Key` anywhere.
-- Anything at `Open`, `Answered`, `Applied`, `Flagged`, `Closed (not applied)` or `Rejected`: not this
+- Anything at `Applied`, `Flagged` or `Closed (not applied)`: not this
   run's business, except as duplicate-detection input at Q3.
 
 **A run never reverses a human's move**, and never re-proposes something a human rejected unless new
@@ -460,8 +460,8 @@ one-sitting attention measurements do not cover marathons, which is exactly why 
 never assumed.
 
 **A rejection is told what it leaves**, at the review and not in the report afterwards: *"rejecting this
-as not a real gap removes the marker on «Checkout» — that feature can then be agreed."* Or, for a reword:
-*"the marker stays and «Checkout» still cannot be agreed until somebody answers this."*
+as not a real gap removes the marker on «Checkout» — that gap stops being reported."* Or, for a reword:
+*"the marker stays, and «Checkout» keeps carrying an admitted gap until somebody answers this."*
 
 **Answer now closes the gray area in one sitting — with one click deliberately left over.** It is
 [`spec/doc-shape.md`](spec/doc-shape.md) §9 route 5 fired at the review: the answer is given out loud, the
@@ -512,7 +512,9 @@ UI or spoken at the review — makes it `Answered`.
    something a source had already decided is blocking for nothing — but it is removed **because the line
    was written**, never merely because the exclusion was noticed. Where the line has not been written
    yet, the marker stands.
-6. **Every remaining marker reads `→ Question: carried`** — never `pending`, which names neither state.
+6. **Every remaining marker reads one of the three legitimate forms** — `→ Question: <row link>` (a row
+   was written for it, step 1), `→ Default: ledger <run id> #<n>, awaiting ratification` (route 6), or
+   `→ Question: carried` where neither applies — never `pending`, which names neither state.
 7. **Write the row for every answer given out loud** — the review's *answer now* outcome, and any decision
    quoted from a meeting or a message ([`spec/doc-shape.md`](spec/doc-shape.md)
    §9 route 5): the human's words **verbatim** in `Answer & why` (`Owner` is left alone — no run writes it,
@@ -520,7 +522,7 @@ UI or spoken at the review — makes it `Answered`.
    `Status: Answered` where the words were given to the run directly — recorded as the human's own move —
    or `Status: Open` where the decision is second-hand, for its decider to move on themselves
    ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 5).
-8. **Put the defaults ledger and the fixes batch to their human — one explicit act each, never
+8. **Put the defaults ledger, the fixes batch and the content manifest to their human — one explicit act each, never
    ratification by silence.** The ledger prints risk-sorted (always-ask-adjacent and irreversible items
    first) with each line vetoable by number; the fixes batch prints each replacement beside what it
    replaced. **Before ratifying, the human is handed a small random sample of ledger lines with their
@@ -528,11 +530,12 @@ UI or spoken at the review — makes it `Answered`.
    becoming a rubber stamp, and a failed spot-check vetoes the line and doubles the next sample. **Ratifying the defaults batch is the human act that clears each default's patched marker**
    ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 6); a **veto** converts that line back into a
    marker plus a question through the ordinary gate, and vetoed text is removed in the same sitting. No
-   sitting asked means both batches simply wait, labeled and blocking, named by
+   sitting asked means both batches simply wait, labeled and reported, named by
    [`status.md`](status.md) as they age — an unratified default is never silently promoted by time.
 9. **Log every candidate with its disposition**, including the rejected ones and the reason, so a
    rejection is answerable later without being an open question now — and the funnel line fresh:
-   drafted → default → fix → written as questions, with per-pass candidate counts and their distribution.
+   drafted → routed default → routed fix → routed slot → written as questions, with per-pass candidate
+   counts and their distribution.
    **Every Q3 discard goes into the run-log entry
    too** — filter, verbatim quote and counter-case, not only the sitting's printed report: a report is a
    screen and the log is the record, and a discard that exists only on a screen is the same silent loss
@@ -541,15 +544,16 @@ UI or spoken at the review — makes it `Answered`.
    single home) — a fresh count from the rows as they now stand, never the prior view patched forward.
 11. **Report** — every count in it freshly derived at the moment of printing ([`SKILL.md`](SKILL.md)
    rule 7), never carried from an earlier sitting's tally. It opens with the
-   **funnel line** — candidates drafted → routed default → routed fix → written as questions — printed
+   **funnel line** — candidates drafted → routed default → routed fix → routed slot → written as
+   questions — printed
    fresh every run so a silent regression to question-flooding is visible on its face, then carries the
-   **`DEFAULTS ADOPTED (n) — ratify or veto by number`** and **`FIXES APPLIED (n) — ratify below`**
-   blocks, the **suggested directions**
+   **`DEFAULTS ADOPTED (n) — ratify or veto by number`**, **`FIXES APPLIED (n) — ratify below`** and
+   **`CONTENT SLOTS (n) — one batched sign-off`** blocks, the **suggested directions**
    block (below) for the top proposals, and the per-feature routing diagnostic — a feature carrying more
    than about one open question is named with which channel leaked, never used as a generation target —
    and **it ends with the client packet — a candidate list, not a send.** The report proposes every
    `Open` row grouped by `Area` (via `Touches`; project-level rows in their own group), so taking only
-   the starred sub-batch is a choice the packet supports without becoming two packets. **A human decides
+   only one `Area` group is a choice the packet supports without becoming two packets. **A human decides
    what actually goes, and a human sends it** ([`SKILL.md`](SKILL.md) rules 1 and 5): since v13 a run
    writes questions directly to `Open`, so the `Open` view holds machine-written rows a person may not
    have read yet, and piping it to a client unread is the one failure retiring that state could
@@ -584,7 +588,7 @@ verification pass and the standing label — not denied.* The report still print
 ```
 QUESTIONS — «Golden Crumb» · 2026-08-11
 
-FUNNEL     31 candidates drafted → 14 routed default · 2 routed fix · 4 written as questions
+FUNNEL     31 candidates drafted → 14 routed default · 2 routed fix · 1 routed slot · 3 written as questions
            (1 transcribed from a carried marker) · 11 discarded on a filter (listed with
            their counter-case). Per-pass counts logged; distribution printed in the entry.
 DEFAULTS ADOPTED (14) — ratify or veto by number; risk-sorted, spot-check sample: #3, #11

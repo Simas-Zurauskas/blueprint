@@ -4,7 +4,7 @@
 into a Blueprint that already exists. Same spine as [`init.md`](init.md): capture verbatim, propose,
 **stop**, write only what a source supports, check independently, then propose questions.
 
-The difference is that the destination already has content, and somebody agreed some of it. So `add` has
+The difference is that the destination already has content, and somebody may have settled some of it. So `add` has
 one extra job `init` does not: **deciding where each segment lands is proposed and confirmed, never
 inferred silently** — and material that contradicts what is already written is a contradiction to surface,
 never an overwrite.
@@ -62,12 +62,12 @@ Four lists again, and a fifth that only `add` has.
    closes ([`init.md`](init.md) I7). **Neither is resolved by this run.** A contradiction against
    text already locked is listed first and marked as such: material that undoes a locked decision is a
    decision a person makes, never a rewrite a run performs.
-5. **Gaps** — anything the new material needs and no source supplies. Each becomes a marker plus a
+4. **Gaps** — anything the new material needs and no source supplies. Each becomes a marker plus a
    proposed question.
-6. **Exclusions** the new material carries, in the one shape, with the *why* the source gives.
-7. **Grill the delta.** Run the adversarial lenses of [`questions.md`](questions.md) Q2 — single home,
+5. **Exclusions** the new material carries, in the one shape, with the *why* the source gives.
+6. **Grill the delta.** Run the adversarial lenses of [`questions.md`](questions.md) Q2 — single home,
    not restated — over the planned changes *and the features they land in*: what does the new requirement
-   not decide, what does it collide with, what would its builder have to guess. Findings join lists 3 and
+   not decide, what does it collide with, what would its builder have to guess. Findings join lists 3 and 4 and
    5, so A3 presents a delta that has already been attacked. **No planned change is ever presented
    ungrilled.**
 
@@ -185,7 +185,7 @@ Questions  8 written, live at Open — read them in the Unsent tab, or ask for a
 Markers    3 new — «Checkout» ×2, «Refunds» ×1. Each an admitted gap on its feature
 Not used   transcript 00:00–07:30 (asked: Ana)
 
-Untouched: every other feature, every other block, every agreed requirement.
+Untouched: every other feature, every other block, every existing requirement.
 ```
 
 **That last line is printable because every write addressed one named block of one row.** Never print it
@@ -199,7 +199,7 @@ wrong once never reads it again.
 | Situation | What the run does |
 |---|---|
 | The Blueprint is locked | Proceed normally; the write-back ends with a change-log entry carrying the ask verbatim ([`lock.md`](lock.md) L4) |
-| New material contradicts an `Agreed` feature | Listed first at A3, never written. A person decides; the run offers a question |
+| New material contradicts text already locked | Listed first at A3, never written. A person decides; the run offers a question |
 | New material duplicates what a feature already says | Not a change. Named in the report as already covered, with the requirement that covers it |
 | A segment could belong to two features | Never split by guess. Named at A3 with both candidates, and a human picks |
 | A new `Area` appears | Proposed at A3 by name. Areas are a vocabulary shared with the chapter pages, so a new one is a decision |

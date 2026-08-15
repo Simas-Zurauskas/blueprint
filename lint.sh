@@ -1,7 +1,7 @@
 #!/bin/bash
 # lint.sh — cross-reference and vocabulary lint for the blueprint skill files.
 #
-# Six checks:
+# Seven checks:
 #   1  every manifest file exists            (--wip: report and skip, still exit 0)
 #   2  every In / An / Qn / Rn / Ln / Cn / Sn reference resolves to a definition
 #   3  every relative markdown link resolves on disk
@@ -125,7 +125,7 @@ done
 
 # ------------------------------------------------------- 5. frozen vocabulary
 if [ -f spec/databases.md ]; then
-  # Each of the 7 Status values is defined EXACTLY ONCE, as a definition row in §3's table
+  # Each of the 6 Status values is defined EXACTLY ONCE, as a definition row in §3's table
   # ("| **`Value`** | ..."). Counting anywhere-in-the-file would pass a second, drifting
   # definition row, which is the failure this check exists to catch.
   for v in 'Open' 'Answered' 'Applied' 'Flagged' 'Closed (not applied)' 'Rejected'; do

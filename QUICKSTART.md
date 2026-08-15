@@ -29,7 +29,7 @@ If this file and a run file ever disagree, the run file wins and this file is wr
    decides the marker's fate (→ spec/doc-shape.md §9 route 4).
 6. Expect few questions: only client-gating build decisions qualify; convention becomes labeled
    defaults you ratify in one batch, content becomes slots on one manifest (→ questions.md Q4).
-7. Say `/blueprint resolve` to write vetted answers in. It commits only whole verified tranches and
+7. Say `/blueprint resolve` to write vetted answers in. It commits one verified item at a time and
    reads everything back (→ resolve.md R3–R5).
 8. Say `/blueprint status` any time — read-only, tells you what to do next (→ status.md).
 

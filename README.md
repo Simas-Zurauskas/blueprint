@@ -84,7 +84,7 @@ requirement) is flagged with the objection and waits for you.
 One readiness report, one final grilling, and you acknowledge each unsettled item on the record. Then the
 Blueprint is locked.
 
-### 7 · Keep extending it — every change is logged
+### 6 · Keep extending it — every change is logged
 
 Locking halts nothing. New thinking, new material → `/blueprint add`. Grill it again → `/blueprint
 questions`. Apply new answers → `/blueprint resolve`. The difference after the lock: every change to the
