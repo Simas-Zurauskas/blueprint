@@ -35,7 +35,7 @@ If this file and a run file ever disagree, the run file wins and this file is wr
 
 ## What a sitting costs
 
-- Interactive sittings cap at ten items; volume drains run tranches with the same gates
+- A sitting is ten items; a run keeps opening sittings until a named stop reason fires
   (→ resolve.md R5).
 - Every write run logs a cost line — dispatches, tokens, wall-clock (→ resolve.md R5).
 

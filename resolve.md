@@ -194,7 +194,8 @@ standard practice — the grounding labeled as such inside `Answer & why` — ke
 document:** its dated provenance line reads *(Applied <date> from «row» — standard practice, adopted, not
 client-specific.)*, so a convention adopted under a directive never reads later as a decision the client
 hand-made ([`SKILL.md`](SKILL.md) rule 4's labeling principle, applied at the write seam). **The label
-names the kind of grounding, and the set of kinds is closed at the start of a sitting and enforced by the
+names the kind of grounding, and the set of kinds is closed at the start of the **run** — not per sitting,
+or a long drain would re-open it once per sitting and drift exactly as below — and enforced by the
 check — a writer never composes a new one.** What the kinds are is the Blueprint's own vocabulary, not this
 skill's: one project's set was *standard practice, adopted, not client-specific* · *design-confirmed* ·
 *answer and reasoning on that row*. *(v12. Left to the writer, plausible variants accumulate — "owner
@@ -344,6 +345,13 @@ Property writes wait for R5.
 here, and each item is **one act
 asked one at a time**, never a list: *every item put to a person as more than one act produces one act.*
 
+**One checkpoint per sitting, and a checkpoint nobody answers does not end the run.** Every item silence
+leaves is recorded `unanswered` and re-offered as this phase says below; the row is disposed for this run,
+so the next sitting does not re-ask it — and **the run opens that sitting anyway** (R5). A human gate
+paces a run; it never terminates one. *(v14.
+It stays per sitting rather than moving to the end of the run so that a person reviewing in the room still
+sees ten items and can still course-correct — the same attention bound the sitting exists for.)*
+
 Five kinds compete: a **proposed seed body** (R3.3) · a **body edit this seam did not make** (R2.3) · a
 **`Closed (not applied)` proposal** (R3.5) · an **overview block proposed verbatim** (R3.1) · a **marker
 that may already be decided**.
@@ -356,7 +364,8 @@ does not land in the room does not get made.
 
 **Ordered by how much the answer changes what gets built**, said to be ordered, and on what.
 **Three outcomes per item: accepted · declined · *no answer*.** A decline is a decision and suppresses the
-item. **Silence is not a decline:** it is re-offered next run and recorded `unanswered` in the log. **A
+item. **Silence is not a decline:** it is recorded `unanswered` in the log and re-offered — next run,
+since the row is disposed for this one (R5's *one attempt per row per run*). **A
 seed body is shown verbatim and whole**, never summarised.
 
 **A decline is told what it leaves**, here and not in the report afterwards — *the marker stays on that
@@ -407,27 +416,115 @@ measured pass. **Trap two:** take only quotation spans **inside a provenance lin
 in the text match feature names in ordinary prose. Even done right the suspect list is mostly false —
 116 of 168 in that pass were fine — so **no threshold decides anything; it only orders the reading.**
 
+**And it is mandatory once — before the run's last entry closes — over every row this run applied across
+all its sittings** (v14). A sitting's own gate cannot see this class: a later sitting rewrites a body an
+earlier sitting's gate already passed, and the earlier row's substance goes out with it. That is exactly
+what left **52 rows marked `Applied` with their substance written nowhere** in the measured 580-row drain,
+found only by a whole-document audit and invisible to every per-item and per-sitting check. It is the
+sweep just described, both traps included; **anything carrying neither a delta nor a carrying quote
+returns to `Answered`**, and the closing line states three numbers: rows applied, rows returned by a
+sitting gate, rows returned by this sweep. **A run of a single sitting does not owe it** — there is no
+earlier sitting for a later one to overwrite.
+
 **Sittings.** Per item: write the content → read it back → append the log line → write the properties. The
 one legal stop boundary is **between commits — after an item's commit completes** ([`SKILL.md`](SKILL.md)
 rule 8); stopping part-way through an item is a crash whatever the intention was. At a pause, in-flight
-pipelines are discarded unwritten and their items stay queued. **Past ten items in one sitting the run pauses; it does not ask** — per-step accuracy
+pipelines are discarded unwritten and their items stay queued. **Past ten items in one sitting the sitting ends; it does not ask** — per-step accuracy
 degrades as step count grows and models self-condition on their own earlier errors (one model above 95%
 first-step accuracy fell below 50% task accuracy within fifteen turns), and a warning is no defence against
-degradation that has already happened. The run declares `PAUSED`, carries on into R4 → R5 over what it
-consumed, and names the remainder as next sitting's. **A deliberate pause is declared; a crash is not.**
-Next run: an item still queued with no log line is applied normally; one with a log line naming its delta
-is **not rewritten** — re-run the check against the text already there and finish the property write.
+degradation that has already happened. The sitting runs R4 → R5 over what it consumed and closes its
+entry. **A deliberate pause is declared; a crash is not.**
 
-**At volume — a backlog drain a human ordered — the sitting is a tranche of up to fifty items** (added
-v12, when a 580-row adopted-answer queue met the ten-item cap: 58 interactive sittings is the workload
-the drain exists to remove). What makes the larger tranche honest is what the ten-item evidence is
-actually about: self-conditioning degradation in one context grinding many steps. In a tranche, **every
-item's writer and checker are fresh dispatches with no memory of earlier items**, the orchestrator's
-per-item work is mechanical (brief → dispatch → fetch-diff → commit → log), and the tranche boundary is
-still a real `PAUSED` entry with fresh counts before the next begins. The **ten-item cap stands
-unchanged for interactive sittings** — anywhere a human is reviewing items in the room — and no tranche
-may span a human gate: R4 items accumulate and are put to their human at the tranche boundary or the
-run's end, one at a time as always.
+**A sitting is not a run.** When a sitting closes with rows this run may still act on, **the run opens
+the next sitting itself and continues** — fresh entry, same run id, next ten, same ordering, same gates —
+until a stop reason from the closed list below fires. **It does not ask, and it does not hand back.**
+*(v14. The earlier rule ended the run with the sitting and named the remainder "next sitting's", with no
+sentence anywhere permitting the same invocation to continue: a measured 174-row queue applied ten and
+reported a complete run, and a 34-row queue cut itself into 10/10/10/4 and closed with the fourth never
+dispatched and no reason recorded anywhere. What makes back-to-back sittings honest is what the ten's
+evidence is actually about — self-conditioning across many steps in **one** context. Every item's writer
+and checker are fresh dispatches with no memory of earlier items (rule 8(i)), the orchestrator's per-item
+work is mechanical (brief → dispatch → fetch-diff → commit → log), and each sitting re-derives its own
+counts, gate and checkpoint from the rows as they now stand. This is the construction
+[`questions.md`](questions.md) Q5 already runs back-to-back, inverted: that round asks a person whether to
+continue because a person is answering it; here nobody is, so continuing is the default and stopping is
+what must be justified.)*
+
+**Each sitting keeps everything a sitting has** — its own log entry, opened at R2 and closed here · its
+own reconciliation gate over its own applies · its own R4 checkpoint · its own change-log entry on a
+locked Blueprint ([`lock.md`](lock.md) L4, three to ten lines) · its own report. **A sitting that is not
+the last closes `PAUSED — sitting n of a continuing run, m rows still queued`**; only the last carries
+`CLOSED hh:mm` and the stop reason. So a crash **inside** a sitting leaves exactly one open entry, as it
+always did, and R1's route — a human writes `CLOSED (crashed)` by hand — is unchanged and needed no more
+often than before. **A crash *between* sittings leaves none, and that state is readable rather than
+silent:** a `PAUSED — sitting n of a continuing run` line with no later entry under it is a run that died
+in the gap. Nothing is lost — every applied row carries its log line and resume is per item — but nothing
+pretends the run finished either: the next run says so in its report and carries the drain on. *A run that
+simply stops there and reports success is the defect this whole section exists to remove, and it does not
+become acceptable for happening in the gap.*
+
+**Ordered by what the answer changes, and the order is named in each entry. Every row is in exactly one
+band — first match wins:** **(1)** a **single-feature** row whose answer resolves an open marker: it
+retires an admitted gap, which is what a readiness check reports; **(2)** every other **single-feature**
+row — the cheapest, and the only ones that pipeline freely; **(3)** multi-feature and project-level rows,
+serial by construction (R3) and most expensive, so they run last over bodies the earlier sittings have
+already settled. **One feature's rows stay in one sitting where they fit**, so a group's serial chain is
+not split for nothing — and no band splits one by itself, because bands 1 and 2 are both single-feature
+and a feature's rows sort together within a band.
+
+**Resume is free, which is what makes running long safe.** Next sitting, or next run: an item still queued
+with no log line is applied normally; one with a log line naming its delta is **not rewritten** — re-run
+the check against the text already there and finish the property write. So an interruption costs at most
+one item's dispatch, and the target's own run log is the only record needed to continue — never a
+working-folder file, which is a rebuildable cache ([`spec/targets.md`](spec/targets.md) §5). **Stopping
+early to be safe therefore buys nothing.**
+
+**One attempt per row per run.** A row this run has already disposed — applied, flagged, reported
+not-applied, re-queued by R3.1's output 3, returned to `Answered` by a reconciliation gate or the closing
+sweep, **or left as an R4 proposal a person did not answer** — is **not
+picked up again by a later sitting of the same run**. It waits for the next run and is named in the
+report. Without this a gate-returned row could be written, returned and rewritten forever, and R3.4's
+*do not loop* would be true per item and false per run.
+
+**The queue this run may still act on** is every row eligible at R2 that this run has **not yet
+disposed**. A row it reported not-applied, flagged, re-queued or returned is disposed — the run is
+finished with it, and it is not work left undone.
+
+**The closed list of stop reasons. Nothing else ends a run, and the last entry's closing line names which
+one fired.**
+
+| | Fires when |
+|---|---|
+| `DRAINED` | Nothing this run may still act on is left, **and nothing it leaves behind is waiting on a person**. The good end |
+| `HUMAN-BLOCKED` | Nothing actionable is left either, but **what this run leaves behind needs a person** — rows it `Flagged`, or R4 proposals nobody answered. Not a failure, and not a different amount of work done: these two differ only in what a person must do before the next run can do better, so **name this one whenever any residue is waiting on somebody**, and `DRAINED` only when none is |
+| `DEGRADED` | The measure below fired |
+| `TARGET` | Writes stopped landing mid-run, or a sitting returned R3.1's output 4 on more than half its items: somebody is editing the document right now, and rule 3 says leave their text alone rather than race it. **This is not pre-flight 3's no-write-path case** — a run that never had a write path finishes its reads and prints the pending writes as a checklist ([`SKILL.md`](SKILL.md) check 3), which is not a stop |
+| `INTERRUPTED` | A human stopped it, or the run ended for a reason outside the document. Declared where it can be; where it cannot, it is a crash — and a crash is the one entry a human closes by hand (R1) |
+
+**R1's three pre-flight halts are not on this list and are not exceptions to it** — a concurrent run, a
+version gap and a capture-integrity mismatch stop a run *before it writes anything*, and this list governs
+a run that has begun. On hitting one of those, halt as R1 says; never read "nothing else ends a run" as
+pressure to continue past them, which is the one place continuing is wrong.
+
+**A run that ends with rows it could still act on and no reason from this table has not finished.** It is
+a defect in the run, not a short sitting. *Written because the previous rule let a run stop with 164 rows
+still eligible and tick every box on the checklist below, and let another stop with four rows undispatched
+and no record anywhere of why.*
+
+**`DEGRADED` is measured on outcomes, not effort.** A sitting's **miss rate** is the rows it `Flagged`
+plus the rows its reconciliation gate returned, over the items in that sitting — **each row counted once,
+so the rate can never exceed one.** *Retries are deliberately not in it: R3.4 grants one, and a retry that
+comes back `Clean` is a success, not a miss — counting it would stop a healthy run, which is the failure
+this whole section exists to remove.* The run stops when **two consecutive full sittings each exceed one
+half**, and both rates go in the entry. Two rather than one, because a single bad sitting is usually one
+bad neighbourhood of the document; **a final short sitting of fewer than five items never triggers it**,
+being too noisy to mean anything.
+
+*The threshold is a chosen default, not a measured constant, and it is deliberately hard to trip so that
+the run's normal state is to keep going. It is also a coarse brake, and says so: it can only see failures
+the per-item gates already caught. **The check that sees the rest is the closing sweep below** — this
+skill's own record is that a drain's worst output is rows marked `Applied` that passed every per-item gate
+and left nothing in the document at all.*
 
 **Two obligations on the write-back, each one line in the entry.** (1) **A carried marker for every `Not doing` line this run
 wrote without a `revisit if:`** — the line's own "a question is to be proposed" note is otherwise a
@@ -451,8 +548,9 @@ be true going in; a marker or status tally that cannot be re-derived from the fi
 in the log.
 
 ```
-2026-08-12 09:14 · resolve · run 7f3a2c · skill v1 · queue 4 questions
+2026-08-12 09:14 · resolve · run 7f3a2c · skill v1 · sitting 1 · 6 of 18 queued
 independence: writer <a>, checker <b>
+order: markers · single-feature · multi/project
 
 APPLIED                                  verdict  feature    delta
   «Can a customer retry a failed…»       Clean    3afc…b75   «Checkout» FR-2, FR-5
@@ -466,10 +564,30 @@ FLAGGED                                           feature at the time of the fla
 NOT APPLIED — nothing in them to write down
   «What is the refund window?»  answer is only a link to a document
 CHECKPOINT   3 offered · 2 accepted · 1 unanswered
+GATE         3 applied, 0 returned · miss rate 0.17 (1 flagged of 6)
 MARKERS      2 removed, rows q-04 and q-11 cited · 4 still carried
 HASHES       «Checkout» 9f2c…41d · «Pickup slots» 4a1e…88b
-CLOSED 11:02
+PAUSED — sitting 1 of a continuing run, 12 rows still queued
 ```
+
+The next sitting opens its own entry under the same run id, and only the last one closes the run — with
+the reason, the run totals, and the closing sweep's own number beside the sittings' own:
+
+```
+2026-08-12 12:41 · resolve · run 7f3a2c · skill v1 · sitting 3 · 4 of 4 queued
+…
+GATE         4 applied, 0 returned · miss rate 0.00 (0 flagged of 4)
+SWEEP        14 applied this run · 1 suspect read · 0 returned
+CLOSED 13:20 · DRAINED · run totals: 14 applied, 1 returned by a sitting gate, 0 by the sweep · 3 sittings
+```
+
+**The totals close, and that is not decoration.** 18 rows: sitting 1 took 6 and applied 3 · sitting 2
+took 8, applied 8, and its gate returned 1 · sitting 3 took 4 and applied 4 — so 3 + 7 + 4 = **14
+applied net**, 1 returned, and sitting 1's other three rows were disposed unapplied (re-queued, flagged,
+nothing in it to write down). `DRAINED` is honest because nothing actionable is left, **not** because
+everything was applied. *A closing line whose applied count silently swallows the flagged and
+not-applied rows is the `Applied`-means-nothing failure this seam exists to prevent, and a sample is
+what a run copies.*
 
 **The report is one screen.** Mechanical results are **pre-applied and shown for information** — gating them
 just trains people to rubber-stamp the ones that matter — **and the count of `► NEEDS YOU` lines is the
@@ -477,7 +595,8 @@ review's true length**, bounded by changes rather than document size. **The flag
 always.**
 
 ```
-RESOLVE — 2026-08-12 · 3 changes · 2 need you · independence: writer <a>, checker <b>
+RESOLVE — 2026-08-12 · sitting 1 of a continuing run · 3 changes · 2 need you
+independence: writer <a>, checker <b>
 
 ► DID NOT APPLY (2)
   «Can a paid order be changed?»   contradicts «Checkout» FR-5:
@@ -531,4 +650,12 @@ a flag always carries its evidence.
       row, the report or the log.
 - [ ] Every marker removed names a row ID in the log entry; every marker still open reads `carried` or
       points at a real row.
-- [ ] The entry opened at the top of R2, ends in `CLOSED hh:mm` or `PAUSED …`, and contains no token.
+- [ ] Every entry opened at the top of R2, ends in `CLOSED hh:mm` or `PAUSED …`, and contains no token.
+- [ ] **The run ended on a reason from R5's closed list, named in the last entry's closing line** — or
+      there was nothing left it could act on. Rows it could still have acted on, with no named reason, is
+      an unfinished run, not a short sitting.
+- [ ] **Every sitting after the first opened because the previous one closed with rows still to act on**,
+      and **no row was picked up twice** by two sittings of the same run.
+- [ ] **The closing sweep ran** where the run had more than one sitting, and the closing line carries its
+      three numbers — applied, returned by a sitting gate, returned by the sweep — each recomputed from the
+      rows as they now stand ([`SKILL.md`](SKILL.md) rule 7).
