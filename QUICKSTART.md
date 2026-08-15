@@ -20,12 +20,12 @@ If this file and a run file ever disagree, the run file wins and this file is wr
    before creating anything (→ init.md I3 — the hard stop is yours).
 3. Read the NOT-USED list at that stop as carefully as the skeleton — it is where gated commercial
    material gets parked (→ init.md I3).
-4. Let it write features, then check the proposals it ends with — they are not questions yet
-   (→ spec/databases.md §3, `Proposed`).
+4. Let it write features, then read the questions it ends with — they are live, and yours to answer,
+   reject, or carry into a client packet (→ spec/databases.md §3, `Open`).
 
 ## First sitting — questions and answers
 
-5. Review proposals in the UI at your own pace: approve, reject **with a reason**, or answer directly — the reason
+5. Read the live questions in the UI at your own pace: answer directly, or reject **with a reason** — the reason
    decides the marker's fate (→ spec/doc-shape.md §9 route 4).
 6. Expect few questions: only client-gating build decisions qualify; convention becomes labeled
    defaults you ratify in one batch, content becomes slots on one manifest (→ questions.md Q4).

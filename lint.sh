@@ -128,14 +128,9 @@ if [ -f spec/databases.md ]; then
   # Each of the 7 Status values is defined EXACTLY ONCE, as a definition row in §3's table
   # ("| **`Value`** | ..."). Counting anywhere-in-the-file would pass a second, drifting
   # definition row, which is the failure this check exists to catch.
-  for v in 'Proposed' 'Open' 'Answered' 'Applied' 'Flagged' 'Closed (not applied)' 'Rejected'; do
+  for v in 'Open' 'Answered' 'Applied' 'Flagged' 'Closed (not applied)' 'Rejected'; do
     n=$(grep -cE "^\| \*\*\`$(printf '%s' "$v" | sed 's/[()]/\\&/g')\`\*\*" spec/databases.md)
     [ "$n" -ne 1 ] && { echo "FROZEN VOCABULARY: \`$v\` has $n definition rows in spec/databases.md (want exactly 1)"; fail=1; }
-  done
-  # The Intent vocabulary is defined in a property table, not status rows
-  for v in 'Draft' 'Agreed'; do
-    n=$(grep -cF "\`$v\`" spec/databases.md)
-    [ "$n" -eq 0 ] && { echo "FROZEN VOCABULARY: \`$v\` is never defined in spec/databases.md"; fail=1; }
   done
   # a closed list of literals from the superseded schema — decidable, unlike "every other use"
   SUPERSEDED='Sketch|ReadyToFold|Closed \(no fold\)|Matches|Out of step|Backlog|In progress|Dropped'

@@ -45,12 +45,13 @@ is created until you confirm.
 It also asks where to store the result: **Notion** or **a local folder of markdown files**. Local needs
 zero setup — right for speccing an idea tonight.
 
-### 2 · Review the proposed questions — at your own pace
+### 2 · Read the questions — at your own pace
 
-Every gap the grilling finds becomes a **proposal** — not a real question until you say so. **The run
-never interrogates you: it writes everything it found, prints the report, and stops.** You review in the
-`Proposed — needs review` tab whenever suits: approve, reject (say why), or just write the answer
-directly — the next run picks up every move. Every row that reaches you already passed the admission
+Every gap the grilling finds is **written straight in as a live question**. **The run never interrogates
+you: it writes everything it found, prints the report, and stops.** You read them in the
+`Unsent — packet candidates` tab whenever suits: answer, reject (say why), or carry them into the client
+packet — the next run picks up every move. **Nothing goes to a client until you send it**: the run
+proposes the packet, a person decides what is actually in it. Every row that reaches you already passed the admission
 gate — a decision only the client can make, without which a named part of the document cannot be
 written — so the list is short by construction. Each row carries **suggested directions**:
 machine-drafted options with their trade-offs, grounded in your own document, verified by a second
@@ -59,7 +60,7 @@ model before writing, and always labeled *not a source — your answer in your o
 Prefer going through them together? Ask for a review sitting and they come one at a time, ten per round:
 
 ```
-[a]pprove · a[n]swer now · [e]dit · [r]eject · already [d]ecided · [s]kip
+a[n]swer now · [e]dit · [r]eject · already [d]ecided · [s]kip
 ```
 
 **Answer now** is the fast path there: answer on the spot in your own words — the run records the row at
@@ -78,13 +79,7 @@ Each vetted answer is written into the feature it touches by one agent and check
 independent one. Anything that can't be written honestly (say, an answer that contradicts an existing
 requirement) is flagged with the objection and waits for you.
 
-### 5 · Agree the features
-
-Set `Intent = Agreed` on each feature that is right, with your name. No run ever does this. A feature
-with an open `[NEEDS CLARIFICATION]` marker can't be agreed — that marker is the only thing in the whole
-system that blocks anything.
-
-### 6 · `/blueprint lock` — settle it
+### 5 · `/blueprint lock` — settle it
 
 One readiness report, one final grilling, and you acknowledge each unsettled item on the record. Then the
 Blueprint is locked.
@@ -104,7 +99,7 @@ whoever asked. *"Why does the doc say something different now?"* is always answe
 |---|---|---|
 | `/blueprint init` | Sources or interview → grilled skeleton → your confirm → the Blueprint | After your confirm |
 | `/blueprint add` | New material or ideas into existing/new features, same stop | After your confirm |
-| `/blueprint questions` | The full grilling battery — every found question written, triaged and given guidance | Proposals + their guidance |
+| `/blueprint questions` | The full grilling battery — every found question written, triaged and given guidance | Live questions at `Open` + their guidance |
 | `/blueprint resolve` | Write vetted answers into the feature specs | The answers |
 | `/blueprint lock` | Readiness + final grilling + your acknowledgment → locked | The lock + change log |
 | `/blueprint status` | One screen: what's flagged, what's waiting on you, ready to lock? | **Never** |
@@ -115,9 +110,9 @@ whoever asked. *"Why does the doc say something different now?"* is always answe
 
 ## What only you can do
 
-The tool drafts; you decide. It will never: approve its own proposals, record an answer no human gave,
-set `Intent = Agreed`, write your name, or invent an answer to anything. **Working alone?** All of this
-collapses naturally — you're the owner and the approver everywhere. It isn't ceremony; it's the record
+The tool drafts; you decide. It will never: send a client packet it assembled, record an answer no human gave,
+lock a Blueprint, write your name, or invent an answer to anything. **Working alone?** All of this
+collapses naturally — you're the one answering and the one sending, everywhere. It isn't ceremony; it's the record
 that a person actually read the thing, which matters just as much when that person is you in three
 months.
 
@@ -127,11 +122,11 @@ months.
 
 - The full grilling battery, measured in a five-project lab against 77 planted defects, caught **~86%
   outright and detected ~97%** — with zero hallucinated contradictions. (A single grilling pass manages
-  ~44%; that's why the battery is the only mode that ships.) Still: an empty proposal list never means
+  ~44%; that's why the battery is the only mode that ships.) Still: an empty question list never means
   the spec is complete.
 - Between runs it has no eyes. Decisions made in meetings or chats reach the document only when you put
   them in as a source or an answer.
-- Reviewing proposals costs real attention — the run writes everything down and leaves the pace to you;
+- Reading the questions costs real attention — the run writes everything down and leaves the pace to you;
   a sitting, if you ask for one, offers ~10 at a time.
 
 ---

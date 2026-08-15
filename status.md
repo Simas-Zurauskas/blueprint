@@ -25,11 +25,10 @@ owns what.
    wrong answer — say so and stop. **Read relations by querying the far side, never off a row's relation
    property**, which truncates at 25 references and looks exactly like success
    ([`spec/notion-mechanics.md`](spec/notion-mechanics.md) §4).
-3. **Read the body of every feature row, at any `Intent`.** C5 needs it for markers, C9 for the content
-   sweep. Read each body once and let the checks share it. **Not only the `Agreed` ones:** after `init`
-   every feature is at `Draft` by design, so an `Agreed`-scoped read reads nothing on the first run of a
-   project's life — and the content sweep, the one check about something that should not be in the
-   document at all, would be scoped out of every row for as long as it stayed `Draft`.
+3. **Read the body of every feature row.** C5 needs it for markers, C9 for the content sweep. Read each
+   body once and let the checks share it. There is no per-feature state to scope this read by, and there
+   deliberately never was a good one: an earlier design scoped it to agreed features, which read nothing
+   on the first run of a project's life.
 4. **Read the run log** — the source of the last run's date, the only source for when a question was
    flagged (C1), and **the only source for whether this Blueprint is locked**
    ([`lock.md`](lock.md) L3). Where it is locked, **read the change log too** — C7 compares the two.
@@ -52,7 +51,7 @@ A **Board** database beneath the overview → the superseded skill built this, a
 Errors past the retry budget → report how far you got and stop; a partial report is fine if it says it is
 partial.
 
-## S2 — Eleven checks
+## S2 — Ten checks
 
 All mechanical. Each answers *what is wrong with the state*, never *who is being slow*. This run reports;
 it does not chase anybody, and it never writes.
@@ -60,12 +59,11 @@ it does not chase anybody, and it never writes.
 | # | Check | What it looks for |
 |---|---|---|
 | **C1** | **Could not apply** | Every question at `Flagged`, with the objection the run recorded and the flag's age from the log. These are the decisions a run tried to write and could not write honestly. A human who resolves the disagreement moves the row back to `Answered`; nothing here chases them. Where the log shows the requirement it collided with was edited **after** the flag while the row has not moved, add the one line *this one looks fixed* |
-| **C2** | **Proposals waiting on you** | Every row at `Status = Proposed`, counted, with the oldest few named and their `Why asked`. **These are not questions yet** and the line says so. A proposal nobody ever reviews is the one kind of rot this design creates on purpose, so it is named early and aged. **After a bulk write — an exhaustive sitting, a backlog drain — count the pace, not just the pile:** print how many were reviewed since that write beside how many wait; a backlog being cleared in tens is the design working, and only a pace of zero is rot. Where any is missing a `Why asked`, say so — it cannot be reviewed cold. **End this section with the running count of `Rejected` rows**, which is the only place that number is printed |
+| **C2** | **Unsent questions** | Every row at `Status = Open` and unanswered, counted, with the oldest few named and their `Why asked`. Since v13 these are written straight to `Open` by a run, so **the line counts what is actually derivable — rows live and unanswered. Nothing records whether anybody has read one** — the packet a human assembles from them is the send boundary ([`questions.md`](questions.md) Q6), and a pile nobody ever reads is the rot this design still creates on purpose. **After a bulk write — an exhaustive sitting, a backlog drain — count the pace, not just the pile:** print how many were answered or rejected since that write beside how many wait; a backlog cleared in tens is the design working, and only a pace of zero is rot. Where any is missing a `Why asked`, say so — it cannot be judged cold. **End this section with the running count of `Rejected` rows**, which is the only place that number is printed |
 | **C3** | **Will not apply next time** | Queued rows that fail [`resolve.md`](resolve.md) R2.1, with the one-line reason each: `Touches` naming a feature that does not exist (empty and multi-feature are **not** failures — both go down the project-level serial path, [`resolve.md`](resolve.md) R2.1) · an answer that is only a link · a target feature whose body has no numbered requirement and no seed possible.  Nothing happens to any of these; they simply are not applied |
 | **C4** | **State nothing wrote** | Any question at `Applied` that no run-log entry names. `Applied` is a resolve run's write and nothing else's, so that row was moved by hand: nothing wrote the answer into any feature, nothing checked it, and the document does not say what the row claims it says. Name each with the one drag that mends it — back to `Answered` |
-| **C5** | **Blocking links** | Two states, printed apart, because one is a queue and the other is a fault. **Match on `NEEDS CLARIFICATION` without the leading bracket** — it is escaped on the round trip, and a literal `[NEEDS` match returns zero markers on a document full of them ([`spec/notion-mechanics.md`](spec/notion-mechanics.md) §3), which would report this check clean while the only blocking mechanism in the Blueprint went unread. **Broken, one line each** — a marker pointing at a row that was **deleted** · a row whose marker was removed without its answer being applied · a marker naming no entity · a marker pointing at a `Closed (not applied)` or `Rejected` row (say on that line that the next questions run removes it and nobody need do anything) · **a marker pointing at an `Applied` row** — the answer went in but route 1's one-act removal did not reach this marker, usually because marker and answer live on different features; say that the next questions run checks whether the applied answer settles what the marker names and removes it citing the row, keeping any the run log records as a deliberate hold. **Carried, one counted line naming the features** — a marker minted by a write run since the last questions sitting, whose question has not been proposed yet. It blocks `Intent = Agreed` and needs the next questions run — which disposes every one of them ([`questions.md`](questions.md) Q4) — not a repair. **Awaiting ratification, one counted line** — a marker patched to a defaults-ledger line (`→ Default: ledger …`, [`spec/doc-shape.md`](spec/doc-shape.md) §9 route 6): it blocks `Intent = Agreed` until its batch is explicitly ratified, and **a batch unratified past two sittings is named here by run id with its line count** — labeled text aging without a human act is the one rot the defaults channel can create, so it is printed, never assumed ratified. **Broken wins where a marker is both**, so the counts never double-count. **A feature at `Agreed` carrying any open marker is its own line** — that state is about the feature, not the marker |
-| **C6** | **Stale agreements** | **The one item here, printed by name:** every feature named by a `STALE AGREEMENT` line in the run log ([`add.md`](add.md) A5) — a run wrote into it while it was `Agreed`; read that line, **never try to derive when a feature was agreed**, which nothing records and no run may claim to know ([`spec/notion-mechanics.md`](spec/notion-mechanics.md) §5) — the line stops being printed once a human re-agrees the feature and says so, and until then the label is claiming something untrue ([`add.md`](add.md) A2 item 4) |
-| **C7** | **Stuck and going stale** | The age check, from the target's built-in times and the log's flag dates: a question `Answered` that no resolve run has picked up · an `Open` question with no owner · a `Proposed` row past 14 days, which means the review is not happening — read against C2's pace line after a bulk write: dozens aging while tens clear per sitting is a queue being worked, not a stall · the oldest `Open` questions, each with its age and owner — **and, on a locked Blueprint, every write the run log records after the `LOCKED` entry that no change-log entry explains.** A change nobody was told about is the one thing the lock exists to prevent, and this is the check that catches a run that ended without its entry ([`lock.md`](lock.md) L4). An item C1–C6 already names is not repeated here; its age goes on that line instead |
+| **C5** | **Blocking links** | Two states, printed apart, because one is a queue and the other is a fault. **Match on `NEEDS CLARIFICATION` without the leading bracket** — it is escaped on the round trip, and a literal `[NEEDS` match returns zero markers on a document full of them ([`spec/notion-mechanics.md`](spec/notion-mechanics.md) §3), which would report this check clean while every admitted gap in the Blueprint went unread. **Broken, one line each** — a marker pointing at a row that was **deleted** · a row whose marker was removed without its answer being applied · a marker naming no entity · a marker pointing at a `Closed (not applied)` or `Rejected` row (say on that line that the next questions run removes it and nobody need do anything) · **a marker pointing at an `Applied` row** — the answer went in but route 1's one-act removal did not reach this marker, usually because marker and answer live on different features; say that the next questions run checks whether the applied answer settles what the marker names and removes it citing the row, keeping any the run log records as a deliberate hold. **Carried, one counted line naming the features** — a marker minted by a write run since the last questions sitting, whose question has not been proposed yet. It needs the next questions run — which disposes every one of them ([`questions.md`](questions.md) Q4) — not a repair. **Awaiting ratification, one counted line** — a marker patched to a defaults-ledger line (`→ Default: ledger …`, [`spec/doc-shape.md`](spec/doc-shape.md) §9 route 6): it stands, counted and reported, until its batch is explicitly ratified, and **a batch unratified past two sittings is named here by run id with its line count** — labeled text aging without a human act is the one rot the defaults channel can create, so it is printed, never assumed ratified. **Broken wins where a marker is both**, so the counts never double-count. |
+| **C7** | **Stuck and going stale** | The age check, from the target's built-in times and the log's flag dates: a question `Answered` that no resolve run has picked up · an `Open` question past 14 days with no answer and no rejection (nothing records packet membership, so nothing is inferred from it) — read against C2's pace line after a bulk write: dozens aging while tens clear per sitting is a queue being worked, not a stall · the oldest `Open` questions, each with its age — **an empty `Owner` is never a finding** ([`spec/databases.md`](spec/databases.md) §2: it is an informal label, and a check that fires on it every run is one nobody reads) — **and, on a locked Blueprint, every write the run log records after the `LOCKED` entry that no change-log entry explains.** A change nobody was told about is the one thing the lock exists to prevent, and this is the check that catches a run that ended without its entry ([`lock.md`](lock.md) L4). An item C1–C5 already names is not repeated here; its age goes on that line instead |
 | **C8** | **The front door** | Read the overview's human prose against the current state — TL;DR, `What this product is` and its NOT-clause, `Who it's for`, `Links`, `Operating` — and quote any sentence the rows contradict, with the page's last-edited age beside it. **This includes a mechanical recount, not only a narrative read**: re-derive every number a generated view claims (a question tally in the TL;DR that should carry none at all, the `⟳ Where things are` and `⟳ Open questions` views, the local-markdown equivalents in `mapping.md`) from the actual current rows, and name any view whose printed state disagrees with that recount — this is [`spec/doc-shape.md`](spec/doc-shape.md) §3's regeneration rule, checked here rather than trusted. Also anything typed under a `⟳` heading, which is the one rule the overview carries. **No run may correct it here** — a fix is a proposal at a checkpoint ([`spec/doc-shape.md`](spec/doc-shape.md) §3), so every line is one a human accepts elsewhere |
 | **C9** | **Content the rule bars** | Sweep every feature body, every question `Answer & why`, every `Why asked` and every `Suggested directions` for customer and third-party names, individuals' names, contract terms and dates, penalties and prices, against the default (*write the role, never the specific*) and any widening the `Operating` block records. **The sweep reads every character of an in-scope field, including a sign-off at the end of it** — a name signed at the close of an `Answer & why` is exactly as much a finding as the same name in a feature body, and a source's own disclaimed placeholder figure ("TBD", "e.g.") is still a specific once it is quoted verbatim rather than described. **Also flag any field on a row that is not one of [`spec/databases.md`](spec/databases.md) §1/§2's named properties** — an ad hoc field is unaudited by construction, whatever it contains. **One thing is never a finding** ([`spec/doc-shape.md`](spec/doc-shape.md) §6): the people-typed `Owner` property. A check that fires on it every run is one nobody reads. **Name the row and the block, and never print the value** — this report is read by the same people the rule protects the document from |
 | **C10** | **Run-log arithmetic** | Spot-check the run log's own claimed counts against a fresh recount of the actual current files — marker totals, status tallies, `Confirmed` breakdowns — for the newest handful of entries. **A run log that contradicts its own arithmetic, or contradicts its own immediately preceding entry with no logged actor for the change in between, is named here** — this is not a claim about which entry is right, only that they cannot both be true as written, and a reader trusting the append-only record deserves to know that before trusting anything it says. [`SKILL.md`](SKILL.md) rule 7 is what every future entry owes; this check is what catches one that didn't pay it |
@@ -79,8 +77,8 @@ is locked, with the lock date and the count of change-log entries since. **Never
 
 **Fixed order, worst first. Every check has a section, and a check with nowhere to print is a check that
 does not exist:** 1 CONTENT THE RULE BARS (C9) · 2 COULD NOT APPLY (C1) · 3 STATE NOTHING WROTE (C4) ·
-4 RUN-LOG ARITHMETIC (C10) · 5 WILL NOT APPLY NEXT TIME (C3) · 6 BLOCKING LINKS (C5) · 7 PROPOSALS WAITING
-ON YOU (C2) · 8 STUCK AND GOING STALE (C7) · 9 THE FRONT DOOR (C8) · 10 NOBODY HAS CONFIRMED THESE (C6).
+4 RUN-LOG ARITHMETIC (C10) · 5 WILL NOT APPLY NEXT TIME (C3) · 6 BLOCKING LINKS (C5) · 7 UNSENT QUESTIONS
+(C2) · 8 STUCK AND GOING STALE (C7) · 9 THE FRONT DOOR (C8).
 C9 prints first because it is the only line about something that should not be in the document at all;
 every other line is about something that is wrong. It is also, on almost every run, absent. C10 sits
 beside C4 because both are about the mechanical record itself being unreliable, not about the product
@@ -98,7 +96,7 @@ view that shows the rest, whole report under about 40 lines. **Every line ends i
 
 ```
 BLUEPRINT STATUS · Golden Crumb · 2026-08-14 · DRAFT (not locked)
-Last run 2026-08-12 (2d) · 3 questions answered and waiting · 6 proposed · 4 open
+Last run 2026-08-12 (2d) · 3 questions answered and waiting · 6 open, unanswered
 
 COULD NOT APPLY (1) — a run tried and could not write this honestly
   ! «Can a paid order be changed?»   Flagged 2d · Ana
@@ -118,21 +116,17 @@ BLOCKING LINKS (1 broken, 4 carried, 1 Agreed-with-marker)
   ~ 4 carried markers — «Refunds» ×2, «Loyalty» ×2. Not yet proposed; they block Agreed
     and want a sitting, not a repair
 
-PROPOSALS WAITING ON YOU (6) — none of these is a question yet
+UNSENT QUESTIONS (6) — live, unanswered, not yet in a packet
   ~ oldest 11d · «Can a customer retry a failed payment?» and 5 more
-    review them in the Proposed tab — approve, reject with a reason, or answer directly;
+    read them in the Unsent tab — answer directly, reject with a reason, or carry into a packet;
     or ask /blueprint questions for a sitting
 
 STUCK AND GOING STALE (2)
-  ~ «Do slots roll over at midnight?»  Open 34d · unowned — give it one named owner
+  ~ «Do slots roll over at midnight?»  Open 34d · nobody has answered or rejected it
   ~ «Who approves an outgoing loan?»   answered, vetted by Ana, waiting 9d — one resolve
                                        run writes it in
-STALE AGREEMENTS
-  «Checkout» was Agreed before a later run wrote into it — re-agree it or it reads
-  as signed-off over a sentence nobody saw
-
 READY TO LOCK?  not yet, and here is exactly what is in the way
-  3 features Draft · 1 feature Agreed carrying a marker · 4 open questions
+  1 feature carrying a marker · 4 open questions
   3 answered questions not yet applied · 2 Not doing lines with no revisit-if
   None of it blocks a lock — locking includes them and records what you acknowledged.
 
@@ -144,12 +138,12 @@ invented worry.
 
 ## Constraints
 
-- **Never write anything** — no property, no page, no comment. In particular never touch `Status`
-  or `Intent`.
+- **Never write anything** — no property, no page, no comment. In particular never touch `Status`.
 - **Never restate the readiness definition.** [`lock.md`](lock.md) L1 owns it; this run prints it.
 - **Never predict what the next run will do.** A check that guesses the answer prints a prediction the run
   then refuses.
-- **Never call a proposal a question**, anywhere on the screen. That distinction is the design.
+- **Never imply a question has been put to anyone until a human has sent the packet carrying it** (v13:
+  a run writes questions straight to `Open`, so `Open` means live and readable, not asked).
 - **Never claim a written `Not doing` line constrains a build.** It is for the reader and the fit
   judgement; enforcement is [`resolve.md`](resolve.md) R3.2's refusal to write a contradiction.
 - **Never print a value the content rule bars.** C9 names the row and the class of thing it found — a

@@ -1,7 +1,7 @@
 # Run — questions
 
-**Grill the Blueprint**: adversarial passes over the whole document generate question **proposals** from
-what it cannot answer yet; a human turns the ones they approve into real questions — in the UI at their
+**Grill the Blueprint**: adversarial passes over the whole document write **questions** for what it cannot
+answer yet; a human answers them, rejects them, or carries them into a client packet — in the UI at their
 own pace, or at a review sitting they ask for. **The run never interrogates by default: it writes every
 survivor, prints the report, and stops.** Answering the questions is what solidifies the document — a
 gray area a builder would have filled in silently becomes a decision somebody actually made.
@@ -13,9 +13,11 @@ completeness costs; **an embedding run's owner may defer the handoff to a standa
 log the deferral, and the markers that run minted stay visibly `carried` until the sitting happens
 ([`status.md`](status.md) C5 keeps naming them).
 
-**A proposal is not a question.** It lands at `Status = Proposed`, invisible to every open-questions view,
-and becomes real only when a named person approves it one row at a time. **No run ever approves its own
-proposal.**
+**A written question is a question.** It lands at `Status = Open` the moment it passes Q4's admission
+gate — no approval state, no per-row approval *(v13; see [`SKILL.md`](SKILL.md) rule 5 for why the step
+was retired and what replaced it)*. **What a run still never does is send it:** the client packet is a
+batch a human assembles and puts to whoever answers (Q6), never the `Open` view piped outward. Writing a
+question is a run's act; asking a client is not.
 
 **Every candidate that survives the filters ends in exactly one of four dispositions — and a question is
 the rarest of them.** A **QUESTION** is written only for a gap whose answer is an act only the client can
@@ -36,18 +38,20 @@ work.* One diagnostic belongs to the report, never to any pass: **a feature exce
 question is a routing check, not thoroughness** — the Q6 report names which channel leaked; legal- and
 compliance-heavy features legitimately exceed it.
 
-**Why the state exists at all.** A generated question that lands straight in the open-questions list
-acquires the authority of one somebody asked. The list then reads as the project's real unknowns while
-holding a machine's guesses about what might be unknown — and **the best agent on the nearest benchmark
-finds 44.4% of real gaps**, so most of what this phase produces is noise and none of it is authoritative.
-**An empty proposal list is never evidence the Blueprint is complete.**
+**Why the gate is strict, and why a person still assembles the packet.** A generated question that lands straight in the open-questions list
+acquires the authority of one somebody asked — which is exactly why the gate that admits it is strict,
+and why the packet that carries it to a client is assembled by a person. One number, stated correctly:
+**the best agent on the nearest benchmark finds 44.4% of real gaps.** That is a **recall** figure and it
+supports exactly one conclusion — **an empty question list is never evidence the Blueprint is complete.**
+It was previously cited here to argue that most of what this phase produces is noise; that is a
+*precision* claim, it does not follow from a recall measurement, and it has been withdrawn (v13).
 
 Specs obeyed, not restated: [`spec/doc-shape.md`](spec/doc-shape.md) ·
 [`spec/databases.md`](spec/databases.md) · [`spec/targets.md`](spec/targets.md).
 
 **Run the seven pre-flight checks in [`SKILL.md`](SKILL.md) first.** This run works the same on a locked
-Blueprint — proposals and marker links are the question layer, not product intent, so they need no
-change-log entry ([`lock.md`](lock.md) L4 draws that line).
+Blueprint — written questions and marker links are the question layer, not product intent, so they need
+no change-log entry ([`lock.md`](lock.md) L4 draws that line).
 
 ---
 
@@ -56,8 +60,7 @@ change-log entry ([`lock.md`](lock.md) L4 draws that line).
 **First, and before anything is generated**, read every question row and take account of what people did
 since the last run — in the UI, at their own pace, without this skill.
 
-- `Proposed → Open`: **a human approved it.** Accept that. Give it an owner if it has none, by asking.
-- `Proposed → Rejected`: **a human rejected it.** Accept that, and read `Answer & why` for the reason so
+- `Open → Rejected`: **a human turned it down.** Accept that, and read `Answer & why` for the reason so
   Q6 can dispose of any marker that was waiting on it.
 - `Rejected`, but `Answer & why` reads as a **decisive answer** rather than a rejection reason — a
   **rejected-with-answer discrepancy.** It happens when a machine pass or a hurried reviewer records the
@@ -68,13 +71,14 @@ since the last run — in the UI, at their own pace, without this skill.
   revived ten such rows in one sitting — decisions that had sat unreachable behind a `Rejected` status
   since the pass that misfiled them. The report line makes that a routine glance instead of an
   archaeology dig.
-- `Proposed → Answered`, moved in the UI with an answer written: **a human approved and answered in one
-  move** — both acts at their strongest, made at their own pace in their own tool. Accept it: patch any
-  marker waiting on it with the row link, and backfill `Owner` by asking if it is empty. The row is
+- `Open → Answered`, moved in the UI with an answer written: **a human answered it at their own pace, in
+  their own tool** — the act at its strongest. Accept it: patch any marker waiting on it with the row
+  link. Do not chase `Owner`; an empty one is normal ([`spec/databases.md`](spec/databases.md) §2). The row is
   resolve-eligible as it stands ([`spec/databases.md`](spec/databases.md) §4); nothing routes it back
   through `Open`. An `Answered` row with an **empty** `Answer & why` is different — that is a status with
   no answer behind it: report it and leave it, a discrepancy for its human ([`SKILL.md`](SKILL.md) rule 1).
-- `Proposed`, edited wording: accept the human's wording as the question. Never restore the original.
+- An `Open` row whose wording a human edited: accept their wording as the question. Never restore the
+  original.
 - A `Key` value changed by a human (legacy projects only — the flag is retired, Q4): **their move
   wins.** Read, never edited; the run neither derives nor writes `Key` anywhere.
 - Anything at `Open`, `Answered`, `Applied`, `Flagged`, `Closed (not applied)` or `Rejected`: not this
@@ -90,8 +94,8 @@ not even to blank it, and not even where doing so seems to enforce this file's o
 row that looks prematurely moved is reported as a discrepancy and left alone — there is never a reason to
 touch what a human wrote to make a row ineligible.
 
-This phase is first because generating before reading it means proposing questions somebody already
-approved this morning. **Open the run-log entry here**, before any proposal is written, and close it at
+This phase is first because generating before reading it means writing questions somebody already
+answered or rejected this morning. **Open the run-log entry here**, before any proposal is written, and close it at
 the end ([`SKILL.md`](SKILL.md) pre-flight check 5).
 
 ---
@@ -217,8 +221,8 @@ Wrong Target moves from 9.6% to **75.1%** when the target is unstated (Ji et al.
 this will not raise the question themselves: baseline agents ask on **24.12%** of underspecified tasks.
 The grilling exists to ask it for them, before the guess gets built.
 
-**Every proposal must name what prompted it.** That sentence goes in `Why asked` and it is not optional:
-a reviewer meeting the row cold, in a list, with no context, approves on the strength of its wording
+**Every question must name what prompted it.** That sentence goes in `Why asked` and it is not optional:
+a reader meeting the row cold, in a list, with no context, judges it on the strength of its wording
 rather than the strength of the gap.
 
 ---
@@ -260,14 +264,14 @@ backlog no human could review.
 | **Deliverable content, not a decision** | The answer is content the client will produce — a catalog, a scene list, copy, artwork — rather than a decision about behaviour | Route to the **CONTENT SLOT** channel (Q4): the document defines the slot; the content arrives on the content manifest's one batched sign-off, never as per-item questions |
 | **Already decided against** | It is a decided exclusion | A `Not doing` line, never a question |
 
-**The dedup also runs in reverse — once per sitting, against the standing `Proposed` backlog.** Dedup as
+**The dedup also runs in reverse — once per sitting, against the standing `Open` backlog.** Dedup as
 stated above only stops *new* candidates duplicating what exists; nothing re-reads the rows already
-sitting `Proposed` against a document that has moved since they were written. After enough resolve runs
+sitting `Open` against a document that has moved since they were written. After enough resolve runs
 the backlog silently fills with questions the current text now answers — measured on 2026-08-14: a
 classifier pass over 316 standing rows found 40 fully settled by then-current text, none of which any
-report had named. So: sweep every standing `Proposed` row against the current document under the same
+report had named. So: sweep every standing `Open` row against the current document under the same
 quote discipline, and list each **fully**-settled one in the report under *"Already settled — recommend
-closing"*, quoting the text that answers it. **The run closes none of them** — `Proposed` is
+closing"*, quoting the text that answers it. **The run closes none of them** — a live question is
 machine-set, but the disposal is a human's call, made in the UI or by directive at a sitting
 ([`SKILL.md`](SKILL.md) rule 1). A partly-settled row is left alone: half an answer is not an answer.
 
@@ -280,9 +284,9 @@ is silent.** A found gap that lands nowhere is a gap the next run has to find ag
 parking is real: on one project the carried backlog grew to ~80 known gaps with no row behind them. But a
 found gap written as a question when a channel already holds its answer is review work manufactured out of
 nothing — the measured cost of that was 693 rows, 4.8% of which needed a client. So every survivor takes
-exactly one of three routes, and the route is decided **before** anything is written:
+exactly one of four routes, and the route is decided **before** anything is written:
 
-**The admission gate — what earns a `Proposed` row. Two axes, both required.** A QUESTION is written only
+**The admission gate — what earns a written question. Two axes, both required.** A QUESTION is written only
 if its `Why asked` names **(a) the client-only act its answer requires** — committing their money,
 calendar, contractual scope, legal or IP posture, or brand voice, or disclosing a fact resident only in
 their world, including the meaning of a term they coined — and **(b) what this document cannot say until
@@ -342,7 +346,7 @@ disposition blind** — from the candidate and its grounding alone, never shown 
 divergence does is decided by what the two verdicts are, and this ordering is exact** *(v12 — the earlier
 text both mandated escalation on any divergence and permitted demotion on evidence, in the same
 paragraph, leaving the operator's behaviour undetermined between two readings with opposite costs)*:
-- **Either verdict is QUESTION** → the candidate writes as `Proposed` — **the pipeline fails open to
+- **Either verdict is QUESTION** → the candidate is written as a question — **the pipeline fails open to
   asking, never to silence** — *unless* the non-question verdict produced the full demotion evidence (a
   verbatim quote, or a convention with all four conditions attested), in which case the evidence wins and
   the demotion is taken, logged with its quote.
@@ -352,7 +356,7 @@ paragraph, leaving the operator's behaviour undetermined between two readings wi
 Never demoted, regardless of grounding: carried-marker transcriptions of
 client-bound gaps, and anything the document records as awaiting client sign-off or ratification. Every
 demotion is logged with its grounding quote, and the run-log entry prints the funnel fresh: drafted →
-routed default → routed fix → routed slot → written `Proposed`. **The entry ends with the same
+routed default → routed fix → routed slot → written as a question. **The entry ends with the same
 cost-and-outcome line resolve's R5 requires** — dispatches · tokens · wall-clock, marked self-reported,
 beside the funnel counts that are recountable.
 
@@ -363,18 +367,17 @@ with the marker patched to its ledger line. After this phase, `carried` reads ze
 run mints more.
 
 **On a locked Blueprint, defaults and doc-fixes are product-intent writes:** each sitting that lands any
-appends its change-log entry per [`lock.md`](lock.md) L4 — proposals and marker links remain the question
+appends its change-log entry per [`lock.md`](lock.md) L4 — written questions and marker links remain the question
 layer and still need none.
 
 **The run does not open a review sitting on its own — it writes, reports, and stops.** A person reviews
-in the `Proposed — needs review` tab at their own pace, and Q1 reconciles every move next run; Q5 runs
+in the `Unsent — packet candidates` tab at their own pace, and Q1 reconciles every move next run; Q5 runs
 only when a person asks to go through the rows together. Where a sitting does run, about ten rows are
 offered at a time and no more — past that people stop reading and start agreeing, which is worse than a
 shorter list. **Order the list — in the report and at any sitting — marker-backed candidates first** — a
-marker is a gap somebody already agreed was a gap, and it blocks `Intent = Agreed` on its feature; that
+marker is a gap somebody already agreed was a gap, and it is named in every readiness report; that
 precedence is never demoted beneath any judgment — **then by how much the answer changes
-what gets built and by whether the named owner can actually answer
-it**: an ordering policy reaches near-ceiling with 3.0 questions against 5.1 unordered. Say the list is
+what gets built, and by whether anyone reachable can actually answer it**: an ordering policy reaches near-ceiling with 3.0 questions against 5.1 unordered. Say the list is
 ordered and on what. It is a judgement and it is labelled as one.
 
 **The `Key` checkbox is retired** (v12). It was added 2026-08-07 to triage a write-all backlog — "top
@@ -388,25 +391,25 @@ project ever produces real question volume again, that is the admission gate fai
 do not resurrect the flag.**
 
 **Writing a row and patching its marker are one act.** The marker's `→ Question: carried` becomes the row
-link at write time — a `Proposed` row is a real destination for a marker, and the marker goes on blocking
-`Intent = Agreed` until the answer is applied. A later rejection removes or keeps the marker by its
+link at write time — a written row is a real destination for a marker, and the marker stands, counted
+and reported, until the answer is applied. A later rejection removes or keeps the marker by its
 reason, exactly as [`spec/doc-shape.md`](spec/doc-shape.md) §9 routes it.
 
 Each proposal row: `Question` phrased **as a question**, in one sentence · `Why asked` naming what
 prompted it and **whether a marker is already waiting on it**, because that changes what rejecting costs —
 and, on a contradiction-backed proposal, **carrying both verbatim quotes with both source names**, never
 a paraphrase: the reviewer judges the disagreement itself, not the run's summary of it ·
-`Touches` set where it is feature-scoped, empty where it is project-level · `Status: Proposed` ·
-**`Owner` suggested in the report, never written on the row** — a name in `Why asked` prose would be a
-content-rule finding ([`spec/doc-shape.md`](spec/doc-shape.md) §6), and the owner is part of what the
-human approves.
+`Touches` set where it is feature-scoped, empty where it is project-level · `Status: Open` ·
+**`Owner` left empty** — it is an informal label a human sets when it helps them, never a run's to write
+and never a precondition for anything ([`spec/databases.md`](spec/databases.md) §2); a name in `Why asked` prose would be a
+content-rule finding ([`spec/doc-shape.md`](spec/doc-shape.md) §6).
 
 ---
 
 ## Q5 — The review sitting — on request only
 
 **The run never starts this uninvited.** The default is no sitting: rows written, report printed, and the
-review done in the `Proposed — needs review` tab at the reviewer's own pace — approve (→ `Open`), reject
+review done in the `Unsent — packet candidates` tab at the reviewer's own pace — reject
 (reason in `Answer & why`), or answer directly (→ `Answered`), each move reconciled by Q1 next run. This
 phase runs when a person asks to go through the rows together.
 
@@ -415,42 +418,43 @@ accepted and no owners; put one row at a time it produced five of five with a na
 item put to a person as more than one act produces one act.*
 
 ```
-PROPOSED (6) — none of these is a question yet. Ordered by how much the answer changes.
+UNANSWERED (6) — ordered by how much the answer changes.
 
   1/6  «Can a customer retry a failed payment?»
        why asked: «Checkout» FR-2 says payment succeeds or fails; no source says what
                   happens next, and no edge case covers it
        a marker on «Checkout» is waiting on this — rejecting it decides the marker too
-       suggested owner: Ana
-       [a]pprove · a[n]swer now · [e]dit · [r]eject · already [d]ecided · [s]kip
+       a[n]swer now · [e]dit · [r]eject · already [d]ecided · [s]kip
 ```
 
-**Six outcomes, and the middle three are the ones the design turns on:**
+**Six outcomes, and *answer now* is the one the design turns on** *(v13: `approve` and
+`edit-then-approve` left this table when the approval state was retired — a row is already `Open`, so
+there is nothing to promote. Editing the wording survives on its own, as an edit rather than a
+promotion.)*
 
 | Outcome | The row becomes | The marker waiting on it |
 |---|---|---|
-| **Approve** | `Status: Open`, owner named | patched with the row link |
-| **Answer now** | `Status: Answered` — their move, made in the room — with **their words verbatim** in `Answer & why` and their name as `Owner` | patched with the row link; the next `resolve` removes it when the answer is applied |
-| **Edit, then approve** | `Status: Open`, **the human's wording verbatim** | patched with the row link |
+| **Answer now** | `Status: Answered` — their move, made in the room — with **their words verbatim** in `Answer & why` | patched with the row link; the next `resolve` removes it when the answer is applied |
+| **Edit the wording** | stays `Open`, **the human's wording verbatim**, no status change | unchanged |
 | **Reject — not a real gap** | `Status: Rejected`, reason in `Answer & why` | **removed**, citing the rejected row ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 4) |
 | **Already decided** | `Status: Rejected`, pointing at what answers it | **removed**, citing the requirement or `Not doing` line that answers it |
 | **Reject — ask it better** | `Status: Rejected`, reason names the reword expected | **stays `carried`** — the gap is real, only the wording was wrong |
-| **Skip / no answer** | stays `Proposed` | stays `carried`, re-offered next sitting |
+| **Skip / no answer** | stays `Open`, unanswered | stays `carried`, re-offered next sitting |
 
 **Rejecting requires a reason, and the reason is what decides the marker.** Without that split, rejecting
-a badly-worded proposal either strands its marker forever — blocking `Intent = Agreed` on that feature
+a badly-worded question either strands its marker forever — reported on that feature
 with nothing in any file able to clear it, so the document can never honestly be settled — or silently removes
 it, which converts a known unknown into an unknown unknown. Both happened before the reason was asked for.
 
 **Silence is not a decline.** A skipped item is recorded `unanswered` and re-offered next run. One project
 produced thirteen silent proposals that a two-outcome review would have suppressed forever, three of which
 its owner later wrote out herself, alone. The log carries
-`review: 6 offered · 3 approved · 2 rejected · 1 unanswered`; **`unanswered` climbing run over run means
+`review: 6 offered · 3 answered · 2 rejected · 1 unanswered`; **`unanswered` climbing run over run means
 cut the ten to five before adding anything to it.**
 
 **After ten rows, ask exactly one more question: *continue with the next ten now, or stop here?*** A yes
 is a fresh round in the same conversation — same rules, same ordering, next ten. A no, or silence,
-stops: everything unoffered stays `Proposed`, counted in the report, waiting in the tab. Several rounds
+stops: everything unoffered stays `Open` and unanswered, counted in the report, waiting in the tab. Several rounds
 back-to-back in one day is the honest way to clear a drained backlog before a client meeting — and the
 one-sitting attention measurements do not cover marathons, which is exactly why continuing is asked,
 never assumed.
@@ -466,8 +470,9 @@ room — and the next `resolve` writes it in. **The run never invents the answer
 on its own initiative**, whatever seems obvious: transcription of a person's words is the only route,
 because the whole provenance design rests on the answer being theirs.
 
-**Approving a *question* and answering it are different acts by design.** An approval makes a row `Open`;
-only an answer — the human's own, in the UI or spoken at the review — makes it `Answered`.
+**Writing a question and answering it are different acts by design.** A run's write at the Q4 admission
+gate makes a row `Open`, and that is not an approval of anything; only an answer — the human's own, in the
+UI or spoken at the review — makes it `Answered`.
 
 ---
 
@@ -486,7 +491,7 @@ only an answer — the human's own, in the UI or spoken at the review — makes 
 
    It has a step because [`status.md`](status.md) C5 promises a reader that *the next questions run
    removes it and nobody need do anything* — and a promise with no phase behind it is how a marker sits
-   blocking `Intent = Agreed` forever while every report says it is about to clear. Cite the closed row's
+   standing forever while every report says it is about to clear. Cite the closed row's
    ID on every removal, and **name each one in the report**: a marker vanishing with no line is a decision
    nobody was told about.
 
@@ -496,7 +501,7 @@ only an answer — the human's own, in the UI or spoken at the review — makes 
 
 4. **Sweep for markers pointing at an `Applied` row — route 1's stragglers.** Removal and write are one
    act at the resolve seam, but a marker on feature A whose answer was applied into feature B is outside
-   that act's reach, and a measured drain left sixteen of them each wrongly blocking `Intent = Agreed`.
+   that act's reach, and a measured drain left sixteen of them each wrongly reported as open.
    For each: one dispatch checks whether the applied answer settles what the marker names — settled,
    remove it citing the row; not settled, or the run log records the marker as a **deliberate hold**,
    it stays and is named in the report with the reason. Never removed blind: a deliberate hold is a
@@ -510,7 +515,8 @@ only an answer — the human's own, in the UI or spoken at the review — makes 
 6. **Every remaining marker reads `→ Question: carried`** — never `pending`, which names neither state.
 7. **Write the row for every answer given out loud** — the review's *answer now* outcome, and any decision
    quoted from a meeting or a message ([`spec/doc-shape.md`](spec/doc-shape.md)
-   §9 route 5): the human's words **verbatim** in `Answer & why`, their name as `Owner`,
+   §9 route 5): the human's words **verbatim** in `Answer & why` (`Owner` is left alone — no run writes it,
+   [`spec/databases.md`](spec/databases.md) §2),
    `Status: Answered` where the words were given to the run directly — recorded as the human's own move —
    or `Status: Open` where the decision is second-hand, for its decider to move on themselves
    ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 5).
@@ -526,7 +532,7 @@ only an answer — the human's own, in the UI or spoken at the review — makes 
    [`status.md`](status.md) as they age — an unratified default is never silently promoted by time.
 9. **Log every candidate with its disposition**, including the rejected ones and the reason, so a
    rejection is answerable later without being an open question now — and the funnel line fresh:
-   drafted → default → fix → written `Proposed`, with per-pass candidate counts and their distribution.
+   drafted → default → fix → written as questions, with per-pass candidate counts and their distribution.
    **Every Q3 discard goes into the run-log entry
    too** — filter, verbatim quote and counter-case, not only the sitting's printed report: a report is a
    screen and the log is the record, and a discard that exists only on a screen is the same silent loss
@@ -535,21 +541,24 @@ only an answer — the human's own, in the UI or spoken at the review — makes 
    single home) — a fresh count from the rows as they now stand, never the prior view patched forward.
 11. **Report** — every count in it freshly derived at the moment of printing ([`SKILL.md`](SKILL.md)
    rule 7), never carried from an earlier sitting's tally. It opens with the
-   **funnel line** — candidates drafted → routed default → routed fix → written `Proposed` — printed
+   **funnel line** — candidates drafted → routed default → routed fix → written as questions — printed
    fresh every run so a silent regression to question-flooding is visible on its face, then carries the
    **`DEFAULTS ADOPTED (n) — ratify or veto by number`** and **`FIXES APPLIED (n) — ratify below`**
    blocks, the **suggested directions**
    block (below) for the top proposals, and the per-feature routing diagnostic — a feature carrying more
    than about one open question is named with which channel leaked, never used as a generation target —
-   and **it ends with the client packet: every
-   `Open` row, grouped by `Area` (via `Touches`; project-level rows in their own group), framed as the
-   one batch to take to whoever answers**, so taking only the
-   starred sub-batch is a choice the packet supports without becoming two packets — and the honest line
-   beside it: applied answers create new
-   attackable text, so expect one smaller derivative batch after these are resolved.
+   and **it ends with the client packet — a candidate list, not a send.** The report proposes every
+   `Open` row grouped by `Area` (via `Touches`; project-level rows in their own group), so taking only
+   the starred sub-batch is a choice the packet supports without becoming two packets. **A human decides
+   what actually goes, and a human sends it** ([`SKILL.md`](SKILL.md) rules 1 and 5): since v13 a run
+   writes questions directly to `Open`, so the `Open` view holds machine-written rows a person may not
+   have read yet, and piping it to a client unread is the one failure retiring that state could
+   have caused. The packet names how many rows it proposes and states plainly that they are the run's
+   selection awaiting a person's. Beside it, the honest line: applied answers create new attackable text,
+   so expect one smaller derivative batch after these are resolved.
 
 **Suggested directions — decision support on the row, machine-labeled, consumed by no run.** The run
-that writes a `Proposed` row also drafts its `Suggested directions` field
+that writes a question row also drafts its `Suggested directions` field
 ([`spec/databases.md`](spec/databases.md) §2): 1–3 candidate directions, each one line — the
 direction, a why grounded in the document (**quoting the requirement or principle it leans on, with
 the requirement's id and the date the quote was taken** — quoted text outlives the text it quotes, and
@@ -575,7 +584,7 @@ verification pass and the standing label — not denied.* The report still print
 ```
 QUESTIONS — «Golden Crumb» · 2026-08-11
 
-FUNNEL     31 candidates drafted → 14 routed default · 2 routed fix · 4 written Proposed
+FUNNEL     31 candidates drafted → 14 routed default · 2 routed fix · 4 written as questions
            (1 transcribed from a carried marker) · 11 discarded on a filter (listed with
            their counter-case). Per-pass counts logged; distribution printed in the entry.
 DEFAULTS ADOPTED (14) — ratify or veto by number; risk-sorted, spot-check sample: #3, #11
@@ -587,8 +596,8 @@ DEFAULTS ADOPTED (14) — ratify or veto by number; risk-sorted, spot-check samp
 FIXES APPLIED (2) — ratify below
    «Loyalty» FR-3 under-enumerated its own list (quote → replacement, applied)
    «Checkout» stale line superseded by the applied answer on q-04 (quote → replacement)
-WRITTEN    4 → Proposed, each naming its client-only act. No sitting asked — they wait in
-           the Proposed tab: approve, reject with a reason, or answer directly there.
+WRITTEN    4 → Open, each naming its client-only act. No sitting asked — they wait in
+           the Unsent tab: answer directly, reject with a reason, or carry into a packet.
 SUGGESTED DIRECTIONS — top 2 by ordering · verified by the same dispatch that disposed them
   «Can a customer retry a failed payment?»
     1. One retry on the same order — FR-2 already isolates payment as its own step
@@ -611,7 +620,7 @@ NOT PROPOSED, AND WHY
                                   holes line instead
   «What is the refund window?»    duplicate of q-07, already Open and owned by Tom
 
-An empty proposal list is not evidence this Blueprint is complete.
+An empty question list is not evidence this Blueprint is complete.
 
 Untouched: every feature body except the 14 default lines, 2 fixes and 15 markers named
 above, every other block.
@@ -624,8 +633,8 @@ above, every other block.
 | Situation | What the run does |
 |---|---|
 | Nothing to propose | Say so in two lines. A short report on a well-covered Blueprint is the honest outcome, and the standing caveat above still prints |
-| More than ten real gaps | All written as `Proposed` (Q4) and listed in the report, most important first. A sitting, if asked for, offers ten at a time (Q5). Nothing found is left unwritten |
-| A human approved rows in the UI and also wants a review | Q1 takes the approvals as given; only rows still at `Proposed` reach Q5 |
+| More than ten real gaps | All written as questions (Q4) and listed in the report, most important first. A sitting, if asked for, offers ten at a time (Q5). Nothing found is left unwritten |
+| A human already answered or rejected rows in the UI and also wants a sitting | Q1 takes those moves as given; only rows still `Open` and unanswered reach Q5 |
 | A human rejects everything | A legitimate outcome. Every marker disposition still runs, and the report says what was left carried |
 | A proposal duplicates a rejected row | Not proposed again unless new source material bears on it — then once, citing the rejection |
 | The Blueprint is locked | Runs normally — proposals and marker links are the question layer, not product intent, so they owe no change-log entry. **Defaults and doc-fixes are product intent**: a sitting that lands any appends one change-log entry ([`lock.md`](lock.md) L4) |

@@ -1,6 +1,6 @@
 ---
 name: blueprint
-description: Build a well-rounded product definition — "the Blueprint" — before development starts, from whatever exists: a client's material, a team's notes, or just your own head and an idea. Turns notes, decks, transcripts and interviews into an overview, feature specs with numbered failable requirements, explicit exclusions, and a gated list of open questions. Adversarially grills every draft — gaps, contradictions, ambiguity, missing edge cases and scope boundaries — into proposed questions; a human approves, edits or rejects every one before it becomes real; approved answers are then written back into the feature specs. Lock it when it is settled; after that every change is recorded in a human-readable change log with the ask in the requester's own words. Stores the result in Notion (preferred) or as markdown files in a folder. Six commands — init, add, questions, resolve, lock, status. Trigger phrases "set up the Blueprint", "blueprint init", "turn these notes into a spec", "I have an app idea, help me spec it", "what questions should we be asking", "grill this spec", "generate open questions", "blueprint review", "apply the answers", "resolve questions", "lock the Blueprint", "blueprint status", "what have we not decided yet", "what changed since we locked this", "what are we deliberately not doing". Not a maintenance tool — it does not track implementation or read code; the document records intent, and after the lock every change to it is deliberate and logged. Works per project only; nothing is ever shared across projects.
+description: Build a well-rounded product definition — "the Blueprint" — before development starts, from whatever exists: a client's material, a team's notes, or just your own head and an idea. Turns notes, decks, transcripts and interviews into an overview, feature specs with numbered failable requirements, explicit exclusions, and a gated list of open questions. Adversarially grills every draft — gaps, contradictions, ambiguity, missing edge cases and scope boundaries — into open questions; a human answers, edits or rejects each one, and decides which go into the client packet that gets sent; answered questions are then written back into the feature specs. Lock it when it is settled; after that every change is recorded in a human-readable change log with the ask in the requester's own words. Stores the result in Notion (preferred) or as markdown files in a folder. Six commands — init, add, questions, resolve, lock, status. Trigger phrases "set up the Blueprint", "blueprint init", "turn these notes into a spec", "I have an app idea, help me spec it", "what questions should we be asking", "grill this spec", "generate open questions", "blueprint review", "apply the answers", "resolve questions", "lock the Blueprint", "blueprint status", "what have we not decided yet", "what changed since we locked this", "what are we deliberately not doing". Not a maintenance tool — it does not track implementation or read code; the document records intent, and after the lock every change to it is deliberate and logged. Works per project only; nothing is ever shared across projects.
 ---
 
 # blueprint
@@ -18,8 +18,7 @@ ask in the words of whoever asked. *What moved since we settled this* is always 
 **The one thing it will not do is guess.** Every sentence is in exactly one of three states: it traces to
 a source somebody can point at; it is a **labeled convention default** awaiting ratification (rule 4's
 carve-out — `Default (standard practice — ratify on review)`, visible, vetoable, blocking until a human
-ratifies it); or it is an admitted gap carrying a `[NEEDS CLARIFICATION]` marker and a question with a
-named owner. An unsupported, unlabeled sentence in a specification is worse than an admitted gap: a gap
+ratifies it); or it is an admitted gap carrying a `[NEEDS CLARIFICATION]` marker and a written question. An unsupported, unlabeled sentence in a specification is worse than an admitted gap: a gap
 gets asked about, a guess gets built. A labeled default is neither — it is a convention adopted in the
 open, priced at one veto.
 
@@ -29,7 +28,7 @@ open, priced at one veto.
 |---|---|---|
 | `/blueprint init` | [`init.md`](init.md) | Loose sources → source record → a proposed skeleton that **stops until a human confirms** → creates the structure → writes features, then the overview → an independent faithfulness check → proposes questions |
 | `/blueprint add` | [`add.md`](add.md) | More material into new or existing features. Same spine, same stop, no structure creation |
-| `/blueprint questions` | [`questions.md`](questions.md) | The **grilling** — always the full battery: five lenses at two scopes, whole-document absence sweeps, one repeat round. Every survivor **disposed, not just written**: client-only gaps become proposed questions, convention-settled gaps become labeled defaults for batch ratification, corrections become doc-fixes — and reported, **no interrogation**: a human reviews in the UI at their own pace, or asks for a sitting |
+| `/blueprint questions` | [`questions.md`](questions.md) | The **grilling** — always the full battery: five lenses at two scopes, whole-document absence sweeps, one repeat round. Every survivor **disposed, not just written**: client-only gaps become written questions, convention-settled gaps become labeled defaults for batch ratification, corrections become doc-fixes — and reported, **no interrogation**: a human reviews in the UI at their own pace, or asks for a sitting |
 | `/blueprint resolve` | [`resolve.md`](resolve.md) | The one write seam for answers. Takes questions a human answered **and vetted**, writes each into the feature it touches, removes the marker. (The questions run's labeled defaults and doc-fixes are the one other write into feature bodies — same serial commit path, same gates, rule 4) |
 | `/blueprint lock` | [`lock.md`](lock.md) | Readiness report and one final grilling → a human acknowledges what is still unsettled → the document is locked and the change log begins |
 | `/blueprint status` | [`status.md`](status.md) | Reads everything, runs ten checks, prints one screen worst first. **Writes nothing, ever** |
@@ -103,11 +102,13 @@ into a code repo.**
 
 ## The rules that outrank everything
 
-1. **A human approves, always.** A run **never** sets `Intent = Agreed`, never approves its own question
-   proposals, and never records an answer no human gave — it may only transcribe a human's words
+1. **A human approves, always.** A run **never locks a Blueprint** — the lock is the one act that says
+   a human is satisfied — never sends a client packet it
+   assembled ([`questions.md`](questions.md) Q6 — writing a question is a run's act, putting it to a
+   client is not), and never records an answer no human gave — it may only transcribe a human's words
    **verbatim** and record the human's own move ([`spec/databases.md`](spec/databases.md) §5). **This bars
    clearing or blanking a human-set field exactly as much as it bars setting one** — a run that finds
-   `Intent = Agreed` or a human-set status already populated in a way that looks premature does
+   a human-set status already populated in a way that looks premature does
    not erase it to force a state the row's other fields haven't earned; it reports the discrepancy and
    works around it. A simulated run once reasoned its way to
    exactly this erasure, in these words, on a field the text above already named absolute; the rule is
@@ -159,10 +160,20 @@ into a code repo.**
    removes (they restate the list's own hardest clauses where project staff will actually read them). A default never overrides existing text (that collision
    is a contradiction finding), and never clears a marker by itself: the marker is patched to cite the
    default's ledger line and removed only when a human ratifies the defaults batch
-   ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 6) — until then it blocks `Intent = Agreed` like
-   any marker.
-5. **A proposal is not a question.** Generated questions land at `Status = Proposed` and are invisible to
-   every open-questions view until a person approves them one at a time.
+   ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 6) — until then it is counted and reported like
+   any marker. **A marker blocks nothing** (v13): it is an admitted gap, named at the lock and
+   acknowledged there, never a gate.
+5. **A generated question is a question, and the client packet is where a human still stands.**
+   Generated questions land at `Status = Open` — live and readable from the moment they pass the Q4
+   admission gate, with no approval ceremony in between *(v13; the retired approval state and its per-row
+   approval were retired at the owner's direction, on the same logic that retired `Key`: the gate now
+   refuses at the cause, so a downstream compensator for over-generation buys nothing. Measured on the
+   run that prompted it — 43 of 43 standing rows re-admitted correctly, 0 of 7 carried markers admitted,
+   two independent passes)*. **What that moves, rather than removes, is the boundary that mattered:**
+   the client packet is **sent only by a human, who decides what is in it** ([`questions.md`](questions.md)
+   Q6): a run may print every `Open` row as candidates, but a candidate list is not a packet, and no run
+   ever puts one to a client — so no run's own output reaches a client because a run wrote it. A run still
+   never answers, never vets, and never decides a question is not worth asking.
 6. **An independent check is a separate dispatch, not a separate paragraph.** Wherever a phase requires a
    fresh context or a different model for a check ([`init.md`](init.md) I6, [`resolve.md`](resolve.md)
    R3.2, and anything citing this rule), that means an actual second agent call — never the same turn

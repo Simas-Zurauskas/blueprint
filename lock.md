@@ -4,7 +4,7 @@
 building from. It is the moment the document stops being a draft.
 
 Locking does not stop the document changing. It changes **how** it changes: after the lock, every change
-still goes through the same gates as before — sources, proposals, vetted answers, the independent check —
+still goes through the same gates as before — sources, the admission gate, vetted answers, the independent check —
 and **every change that lands is recorded in the change log**, so *what moved since we settled this* is
 always one page, readable in a minute, with the reason in the words of whoever asked for it.
 
@@ -27,18 +27,17 @@ check 5). Seven questions, each answered with names and counts, never a score:
 
 | # | What it asks | Why it matters |
 |---|---|---|
-| 1 | **Which features are not `Agreed`?** | `Draft` means nobody has signed off on that text |
-| 2 | **Which features carry an open `[NEEDS CLARIFICATION]` marker?** | A marker blocks `Intent = Agreed`, so these cannot be agreed until it clears — carried and broken counted apart |
-| 3 | **Which questions are `Open`, `Answered` or `Flagged`?** | `Open` = nobody has decided. `Answered` = decided but not yet written in — run `/blueprint resolve` first. `Flagged` = a run could not write it honestly and a person has not looked |
-| 4 | **Which features' `Behaviour` blocks hold no numbered requirement?** | A feature with no failable requirement is a title, not a spec |
-| 5 | **Which `Not doing` lines have no `revisit if:`?** | A refusal with no reopening condition becomes dogma |
-| 6 | **How many rows sit at `Proposed`?** | Unreviewed grill output — not questions yet, invisible to every open-questions view. Locking over a backlog is allowed, acknowledged at L2 like everything else, never silent |
-| 7 | **Which convention defaults are adopted but unratified?** | Labeled machine text nobody has ratified ([`SKILL.md`](SKILL.md) rule 4) — each batch named by run id and line count. Their patched markers block `Intent = Agreed` like any marker, and locking over them is acknowledged at L2 item by item, never silent |
+| 1 | **Which features carry an open `[NEEDS CLARIFICATION]` marker?** | Each is an admitted gap in the text about to be locked — carried and broken counted apart. A marker blocks nothing (v13); it is acknowledged at L2, never passed silently |
+| 2 | **Which questions are `Open`, `Answered` or `Flagged`?** | `Open` = nobody has decided. `Answered` = decided but not yet written in — run `/blueprint resolve` first. `Flagged` = a run could not write it honestly and a person has not looked |
+| 3 | **Which features' `Behaviour` blocks hold no numbered requirement?** | A feature with no failable requirement is a title, not a spec |
+| 4 | **Which `Not doing` lines have no `revisit if:`?** | A refusal with no reopening condition becomes dogma |
+| 5 | **How many `Open` questions are unanswered, and how old is the oldest?** | Run-written questions nobody has answered or rejected. Nothing records whether a row has been read or carried into a packet, so this counts the live backlog and infers no read-state (v13 — [`spec/databases.md`](spec/databases.md) §3). Locking over a backlog is allowed, acknowledged at L2 like everything else, never silent |
+| 6 | **Which convention defaults are adopted but unratified?** | Labeled machine text nobody has ratified ([`SKILL.md`](SKILL.md) rule 4) — each batch named by run id and line count. Their patched markers are counted like any marker, and locking over them is acknowledged at L2 item by item, never silent |
 
 **Then the final grilling.** Before anything is locked, run the adversarial battery of
 [`questions.md`](questions.md) Q2 — the lenses live there and are not restated here — over the whole
 document, one last time. A document about to become the thing people build from deserves one full attempt
-to break it. What the grilling finds becomes proposals through the ordinary gate, or is acknowledged at
+to break it. What the grilling finds becomes live questions through the ordinary gate, or is acknowledged at
 L2 with everything else; **an empty grilling result is not evidence the document is complete**, and the
 report says so. **Every discard and every "already decided" or "duplicate" citation this pass produces
 answers to [`questions.md`](questions.md) Q3's quote-must-answer rule exactly as any other sitting does —
@@ -96,7 +95,7 @@ LOCK «Golden Crumb» — nothing is written yet.
        Run /blueprint resolve first and it is in the document you lock.
        [r]esolve first (recommended) · [i]nclude anyway · [h]old
 
-  4/4  The final grilling found 2 new gaps (proposed, waiting on review).
+  4/4  The final grilling found 2 new gaps (written as live questions, unanswered).
        Locking now means they are next sitting's questions, inside a locked document.
        [l]ock anyway · [h]old and review them first
 ```
@@ -127,7 +126,7 @@ the lock real:
 ```
 2026-08-14 16:20 · lock · run 4d1e9a · skill v2
 LOCKED — 10 features (7 Agreed, 3 Draft) · 9 questions (4 Open, 5 Applied)
-GRILLED    full battery run · 2 new proposals minted, waiting on review
+GRILLED    full battery run · 2 new questions written to Open, unanswered
 ACKNOWLEDGED  3 Draft features · 4 open questions · 2 grilling finds — by Ana
 CLOSED 16:22
 ```
@@ -169,7 +168,7 @@ count, with no stripped view anywhere for the people the document is for.)*
 
 **Every run that writes into a locked Blueprint appends one change-log entry per sitting, as part of its
 write-back.** This is an obligation on [`add.md`](add.md) A4–A5, [`resolve.md`](resolve.md) R5 **and any
-[`questions.md`](questions.md) Q4 sitting that lands defaults or doc-fixes** — proposals and marker links
+[`questions.md`](questions.md) Q4 sitting that lands defaults or doc-fixes** — written questions and marker links
 alone still owe none — not a separate command, and a write run that ends without its entry has not
 finished ([`status.md`](status.md) C7 names the gap).
 

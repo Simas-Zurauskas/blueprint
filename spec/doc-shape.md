@@ -33,7 +33,7 @@ unknown.
 graph TD
   R["OVERVIEW page — the front door, constant size<br/>TL;DR · What this product is · Who it's for · One picture<br/>⟳ Where things are · ⟳ Open questions (grouped)<br/>Links · Operating"]
   C["Chapter page — optional. A human writes it"]
-  F["FEATURES — the row IS the spec<br/>Intent: Draft → Agreed, by a human"]
+  F["FEATURES — the row IS the spec<br/>settled as a whole by the lock"]
   Q["OPEN QUESTIONS — one row = one question and its answer"]
   L["Run log — machine-owned, append-only"]
   BL["Change log — starts at the lock, append-only"]
@@ -60,7 +60,7 @@ prose; a **`⟳` heading** is a saved view. One rule: ***never type under a `⟳
 | **Who it's for** | **Real user kinds — never "users"** — one line each: the kind, the job they hire this product for, and (where a source says) what they use for that job today. May close with one **`Not for:`** line naming who this product deliberately does not serve — sourced, like any exclusion, never invented | 3 lines + one optional `Not for:` line |
 | **How it works, in one picture** | One mermaid diagram | ≤9 nodes |
 | **`## ⟳ Where things are`** | Features grouped by `Area` — a view | — |
-| **`## ⟳ Open questions`** | Approved questions and their answers — a view **grouped by `Status`, the groups collapsible** (the owner's 2026-08-06 layout ask: the section stays open, the groups collapse). The `Proposed — needs review` view is a database tab only, never embedded — proposals reach people through that tab, the questions report, and `status` | — |
+| **`## ⟳ Open questions`** | Live questions and their answers — a view **grouped by `Status`, the groups collapsible** (the owner's 2026-08-06 layout ask: the section stays open, the groups collapse). Since v13 a run writes questions straight to `Open`, so this view carries rows a person may not have read yet; the `Unsent — packet candidates` view is the reading screen and is a database tab only, never embedded | — |
 | **Links** | Source material, design files, whoever's original documents. Links only | — |
 | **Operating** | The run-log link · the change-log link once locked · any widening of the content rule (§6) · a ratified vocabulary line, where one exists — the canonical term, its superseded aliases, dated | 4 lines |
 
@@ -127,7 +127,7 @@ it), or any count of anything.
 The `⟳` views, and the local-markdown target's equivalent generated lists
 ([`targets.md`](targets.md) §3), are never edited in place — they are **thrown away and rebuilt from a
 fresh scan of the actual current rows**, every time a write-back touches a feature's
-`Intent`/`Area`/`What it does` or a question's `Status`. Patching a view's existing text forward from what
+`Area`/`What it does` or a question's `Status`. Patching a view's existing text forward from what
 it said last time is exactly how a reader ends up trusting a count that was true an hour ago.
 
 **This is why no number is ever carried into the TL;DR**, restated here because a simulated run's TL;DR
@@ -192,9 +192,9 @@ cannot staff two clients; revisit if a customer asks and will pay for it."* The 
 argument and has to be on the same screen as the refusal. The **revisit if** is what stops a refusal
 becoming dogma: the answer to a proposal becomes *"no, and here is exactly what would change our mind"*.
 A run **never invents** a `revisit if:` — where one is missing it proposes a question. **A question row
-and no marker**, and this is the one place that distinction is load-bearing: a marker blocks
-`Intent = Agreed` (§9), and a `Not doing` line whose *refusal and reason are both sourced* is a decision
-that has been made, not an unknown. Marking it would block a feature for as long as nobody supplies a
+and no marker**, and this is the one place that distinction is load-bearing: a marker is an admitted
+unknown (§9), and a `Not doing` line whose *refusal and reason are both sourced* is a decision
+that has been made, not an unknown. Marking it would misreport a settled refusal as open for as long as nobody supplies a
 reopening condition — permanently, for the exclusions nobody intends to revisit.
 
 **Scope is where the line is written**, and it needs no field: the overview's NOT-clause binds the whole
@@ -249,8 +249,8 @@ is just as failable.
 
 **One standing exemption, because the design mandates the thing the rule bars.** The rule is about the
 *product being described*, never about the people running the process. So: **the people-typed `Owner`
-property** is outside this rule and is never a finding — naming who owns a question is the record the
-provenance design rests on, and a check that always fires is a check nobody reads. (Until 2026-08-06 the
+property** is outside this rule and is never a finding — who is carrying a question is an informal label a
+human may set ([`databases.md`](databases.md) §2), and a check that always fires is a check nobody reads. (Until 2026-08-06 the
 `Operating` block also carried a named owner under this exemption; the owner had it removed, so the
 overview names nobody and per-question `Owner` is the only named-person surface.)
 **Everything else about a person still falls under the rule**, including a person named in prose in a
@@ -294,7 +294,7 @@ it never gets a field nobody defined.
 ## 7. Single home per fact — with one exception
 
 Every fact lives in exactly one place; everywhere else links to it. The `Area` property is the list of
-areas; `Intent` is the state of a feature; the applied and closed question rows are the decision log. None
+areas; the applied and closed question rows are the decision log. None
 gets a prose copy. **Never restate a number that first appeared somewhere else** — a sibling system in
 this org shipped one page saying "33 endpoints" beside another saying "32".
 
@@ -342,14 +342,16 @@ makes them guess*, so the document has to carry the question.
   or record — not only the doubt. Target ambiguity moves Wrong Target from 9.6% to **75.1%** (Ji et al.).
   *"Is this right?"* is not a marker; the example above is.
 - Every marker points at one question row whose `Touches` points back — **or is `carried`, and says so**.
-- **An open marker blocks `Intent = Agreed`,** and a feature that is not `Agreed` is named in every
-  readiness report ([`../lock.md`](../lock.md) L1). That is the only thing that blocks anything.
+- **An open marker is an admitted gap, and it blocks nothing** (v13). It is counted by
+  [`../status.md`](../status.md) C5, named in every readiness report ([`../lock.md`](../lock.md) L1),
+  and acknowledged item by item at L2 before `LOCKED` is written — consistent with `lock.md`'s
+  standing rule that locking over an unsettled item is allowed, but never silently.
 - **A marker is scoped to what it names, not to the page it sits on.**
 - **Carried is a legitimate state, and it is not the same as broken — and it is a state between
   sittings, never a parking lot.** Write runs mint markers between questions sittings — a resolve run's
   narrower marker, an init gap — and a marker whose question has not been proposed yet reads
-  `→ Question: carried`, blocks `Intent = Agreed` like any other, and waits for the next questions run.
-  **That run writes a `Proposed` row for every carried marker** ([`../questions.md`](../questions.md)
+  `→ Question: carried`, is counted like any other, and waits for the next questions run.
+  **That run writes a question row for every carried marker** ([`../questions.md`](../questions.md)
   Q2 sweep item 1, Q4), so after any questions sitting the carried count reads zero. On one measured
   project the old per-sitting cap let this backlog grow silently to ~80 known gaps with no row behind
   them — more than every question ever asked — which is the failure this rule now forbids. **A carried marker born from a
@@ -387,7 +389,7 @@ in the third.
 5. **It was decided outside the system and recorded here — a gate rather than a shortcut.** A decision
    made out loud, in a meeting, in a message clears a marker only by becoming an ordinary answer
    first. The run drafts the row: `Question` = the marker's own text; `Answer & why` =
-   the human's words **verbatim**, never a paraphrase; `Owner` = the person who said them. **Where the
+   the human's words **verbatim**, never a paraphrase; `Owner` is left alone — no run writes it ([`databases.md`](databases.md) §2). **Where the
    words were given to the run directly — at a review, in the working conversation — the row is recorded
    at `Status = Answered` as that human's own move, and the next resolve run writes it in. Where the
    decision is second-hand — a relayed meeting, a message quoted by somebody else — the row lands at
@@ -397,7 +399,7 @@ in the third.
 6. **Its gap was adopted as a convention default and the defaults batch was ratified.** When a questions
    run routes a marker's gap to the DEFAULT channel ([`../questions.md`](../questions.md) Q4), the default
    is written labeled and the marker is **patched** to cite the default's ledger line —
-   `→ Default: ledger <run id> #<n>, awaiting ratification` — still blocking `Intent = Agreed` like any
+   `→ Default: ledger <run id> #<n>, awaiting ratification` — still counted and still reported like any
    marker. **The marker is removed only by a human's explicit ratification of that defaults batch**
    ([`../questions.md`](../questions.md) Q6), the removal citing the ledger line and the ratifying act. A
    veto on that line converts it back to `→ Question: carried` plus a proposed question. Ratification is
@@ -413,9 +415,9 @@ Contradictions between sources are surfaced, never silently resolved.
 
 | I want to… | Where I look |
 |---|---|
-| **Settle the scope — with a client, a team, or yourself** | The overview's NOT-clause, then the feature rows at `Intent = Agreed` and their `Not doing` lines |
+| **Settle the scope — with a client, a team, or yourself** | The overview's NOT-clause, then the feature rows and their `Not doing` lines |
 | **Build the first thing** | Feature rows at `Agreed`: requirements, `Not doing` lines, rabbit holes. Every requirement can fail, so it is both the build brief and the test list |
-| **Know what is still undecided** | Open Questions. A question with a named owner is the honest form of "we do not know yet" |
+| **Know what is still undecided** | Open Questions. A question written down — owned or not — is the honest form of "we do not know yet" |
 | **Judge whether a proposed feature fits** | The NOT-clause, then the `Not doing` lines of the features it touches. A citation with an argument attached |
 
 The acceptance test: hand the Blueprint to somebody who has never seen the project and ask what the

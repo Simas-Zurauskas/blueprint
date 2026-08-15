@@ -1,6 +1,6 @@
 # Run — resolve
 
-Write vetted answers into the feature specs they belong to: read the queue of answered, human-approved
+Write vetted answers into the feature specs they belong to: read the queue of answered, human-vetted
 questions, rewrite the sections each one changes, have an **independent** check re-derive the change from
 the answer itself, remove the marker, record every result.
 
@@ -65,7 +65,6 @@ non-empty ([`spec/databases.md`](spec/databases.md) §4).
 
 | Excluded | Because |
 |---|---|
-| `Proposed` | It is not a question yet. Nobody has approved it |
 | `Open` | Nobody has answered it |
 | `Flagged` | A run already tried and could not write it honestly. Re-running a writer and a checker on it reproduces the same verdict for four sub-agent dispatches, and it needs a person, not another attempt |
 | `Applied` | Already written in |
@@ -360,8 +359,8 @@ does not land in the room does not get made.
 item. **Silence is not a decline:** it is re-offered next run and recorded `unanswered` in the log. **A
 seed body is shown verbatim and whole**, never summarised.
 
-**A decline is told what it leaves**, here and not in the report afterwards — *the marker stays and blocks
-`Intent = Agreed` on that feature*, which is honest.
+**A decline is told what it leaves**, here and not in the report afterwards — *the marker stays on that
+feature and is reported at every readiness check*, which is honest.
 
 **Nothing is auto-inserted, and no marker is removed to tidy up a decline.**
 
@@ -430,11 +429,7 @@ unchanged for interactive sittings** — anywhere a human is reviewing items in 
 may span a human gate: R4 items accumulate and are put to their human at the tranche boundary or the
 run's end, one at a time as always.
 
-**Three obligations on the write-back, each one line in the entry.** (1) **A `STALE AGREEMENT «feature»`
-line for every `Agreed` feature this run wrote into** — [`add.md`](add.md) A5 owns the shape and
-[`status.md`](status.md) C6 reads only logged lines, so a resolve write into an `Agreed` body with no
-line is invisible to every later check; the string appeared in `add` and `status` and zero times in this
-file until a measured project proved the gap. (2) **A carried marker for every `Not doing` line this run
+**Two obligations on the write-back, each one line in the entry.** (1) **A carried marker for every `Not doing` line this run
 wrote without a `revisit if:`** — the line's own "a question is to be proposed" note is otherwise a
 promise no phase owns, and in a measured project it silently killed the owner's only legitimate scope
 growth. (3) **The report names every row whose quoted text this sitting's writes invalidated** — a
@@ -532,7 +527,7 @@ a flag always carries its evidence.
       carries its dated provenance line.
 - [ ] Every write was read back; no write spanned more than one named block; **nothing was written to the
       overview except a block a human accepted verbatim**; the `Untouched:` line was checked.
-- [ ] No `Intent` was written by this run; no human-set status was reversed; no barred value reached a
+- [ ] No human-set status was reversed; no barred value reached a
       row, the report or the log.
 - [ ] Every marker removed names a row ID in the log entry; every marker still open reads `carried` or
       points at a real row.

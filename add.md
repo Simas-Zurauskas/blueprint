@@ -15,7 +15,7 @@ changed, and the ask in the words of whoever asked ([`lock.md`](lock.md) L4). A 
 has not finished.
 
 **What add never does.** Never invents content. Never resolves a contradiction on its own. Never reads a
-code repo. Never overwrites a requirement a human wrote. Never touches `Intent`.
+code repo. Never overwrites a requirement a human wrote.
 Never re-opens a `Not doing` line by writing a feature that contradicts it —
 that is a contradiction, and it goes to a person.
 
@@ -59,20 +59,9 @@ Four lists again, and a fifth that only `add` has.
    requirement, an `Edge cases` line, a `Not doing` line or the NOT-clause. Both are listed with both
    quotes and both origins, numbered into the same `CON-k` inventory as [`init.md`](init.md) I2, every
    one shown at A3's stop, and accounted for by the same conservation check before the run-log entry
-   closes ([`init.md`](init.md) I7). **Neither is resolved by this run.** A contradiction against an
-   `Intent = Agreed` feature is listed first and marked as such: somebody agreed that text, and material
-   that undoes it is a decision a person makes, never a rewrite a run performs.
-4. **Every `Agreed` feature this delta would write into — because agreement goes stale.** Adding a
-   requirement to a feature somebody agreed leaves that feature reading `Agreed` over text nobody agreed,
-   which is a quieter version of the laundering this whole design exists to prevent: the label still says
-   a person signed this off, and now it covers a sentence they never saw. **No run may write `Intent`**,
-   so a run cannot re-agree it and cannot demote it either.
-
-   So it is **asked at A3, by name**, and the answer is one of: *add it and I will re-agree the feature*
-   · *hold this item until the feature is re-agreed* · *drop it*. Whatever the answer, the written
-   requirement carries a provenance line saying the agreement was stale when it landed, the report names
-   the feature under **RE-AGREE THESE**, and [`status.md`](status.md) C6 counts it every run until a
-   person acts. Adding to a `Draft` feature raises none of this.
+   closes ([`init.md`](init.md) I7). **Neither is resolved by this run.** A contradiction against
+   text already locked is listed first and marked as such: material that undoes a locked decision is a
+   decision a person makes, never a rewrite a run performs.
 5. **Gaps** — anything the new material needs and no source supplies. Each becomes a marker plus a
    proposed question.
 6. **Exclusions** the new material carries, in the one shape, with the *why* the source gives.
@@ -94,7 +83,6 @@ source: «Client call 2026-08-11 transcript» (1) · target: Notion
 
 CHANGES 3 existing features
   «Checkout»        FR-2 changes — retry on a failed payment is now in scope
-                    ← transcript 14:20  ·  Intent = Agreed  ← a person agreed this text
   «Browse the menu» + 1 edge case — empty menu outside opening hours   ← transcript 09:05
   «Loyalty»         + Not doing: no point expiry — «we're not policing that»; revisit if
                     the finance team asks   ← transcript 31:40
@@ -126,7 +114,7 @@ source record survives for the next attempt.
    **write nothing**, report the conflict, quote both texts, and move on. A re-read only *after* the push
    reports success over an overwrite.
 2. **Write it.** New features get the full body skeleton at creation time
-   ([`spec/doc-shape.md`](spec/doc-shape.md) §5), `Intent: Draft`. Changed
+   ([`spec/doc-shape.md`](spec/doc-shape.md) §5). Changed
    requirements keep their number — **`FR-3` means `FR-3` forever** — and a withdrawn one leaves a
    tombstone. Every change carries a dated provenance line under the requirement it touched, citing the
    source.
@@ -179,11 +167,6 @@ claims, and every new `Not doing` line with no `revisit if:`.
 verbatim, and what changed by feature and requirement number ([`lock.md`](lock.md) L4 owns the shape).
 Part of the write-back, not an extra step; ending without it is ending unfinished.
 
-**Write a `STALE AGREEMENT «feature»` line into the run-log entry for every `Agreed` feature this run
-wrote into** (A2 item 4). The printed `RE-AGREE THESE` block is not persisted, and
-[`status.md`](status.md) C6 reads that logged line — nothing anywhere records *when* a feature was
-agreed, so there is no other way for a later run to know.
-
 **Regenerate every `⟳` view this delta touched** ([`spec/doc-shape.md`](spec/doc-shape.md) §3's single
 home) as part of this same write-back, before printing the screen — never patch a view's existing text
 forward, and never leave a count in it that this sitting's writes have already made false. Then print
@@ -198,11 +181,8 @@ DID NOT WRITE (1)
   «Checkout» FR-5 — the transcript contradicts it. Both marked, one question proposed.
   Nothing was overwritten; FR-5 says what it said this morning.
 Check      5 Clean · 1 narrowed · 0 Flagged · independence: writer <a>, checker <b>
-Questions  8 written as Proposed — review them in the Proposed tab, or ask for a sitting
-Markers    3 new — «Checkout» ×2, «Refunds» ×1. Each blocks Intent = Agreed on its feature
-RE-AGREE THESE (1)
-  «Checkout» was Agreed before FR-2 changed under this run. It still reads Agreed over a
-  sentence nobody agreed. Ana re-agrees it — no run can, and status names it until somebody does.
+Questions  8 written, live at Open — read them in the Unsent tab, or ask for a sitting
+Markers    3 new — «Checkout» ×2, «Refunds» ×1. Each an admitted gap on its feature
 Not used   transcript 00:00–07:30 (asked: Ana)
 
 Untouched: every other feature, every other block, every agreed requirement.

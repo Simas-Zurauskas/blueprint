@@ -472,10 +472,7 @@
           you.
         </p>
 
-        <h3>5 &middot; You agree the features</h3>
-        <p><code>Intent = Agreed</code>, set by you. No run ever does.</p>
-
-        <h3>6 &middot; <code>/blueprint lock</code> &mdash; settle it</h3>
+        <h3>5 &middot; <code>/blueprint lock</code> &mdash; settle it</h3>
         <p>
           A readiness report, one final grilling, your item-by-item
           acknowledgment on the record.
@@ -538,7 +535,7 @@
 
         <p>
           <strong
-            >Everything found is written as <code>Proposed</code> rows, and the
+            >Everything found is written straight in as live questions, and the
             run never interrogates you</strong
           >
           &mdash; it writes, prints a report, and stops. Each row carries:
@@ -563,11 +560,10 @@
         </ul>
 
         <p>
-          Review in the <em>Proposed &mdash; needs review</em> tab at your own
-          pace: approve, reject with a reason, or write the answer straight in
-          &mdash; answering a <code>Proposed</code> row directly counts as
-          approving and answering in one move. Prefer doing it together? Ask
-          for a sitting and proposals come one at a time, ten per round:
+          Read them in the <em>Unsent &mdash; packet candidates</em> tab at your
+          own pace: write the answer straight in, or reject with a reason.
+          Prefer doing it together? Ask for a sitting and they come one at a
+          time, ten per round:
         </p>
 
         <pre><code>1/6  «Can a customer retry a failed payment?»
@@ -577,9 +573,9 @@
      [a]pprove · a[n]swer now · [e]dit · [r]eject · already [d]ecided · [s]kip</code></pre>
 
         <p>
-          <strong>Only what you approve becomes a real question.</strong>
-          Skipping is not rejecting &mdash; a skipped proposal stays
-          <code>Proposed</code>, and the ten bounds what a sitting
+          <strong>Nothing reaches a client until you send it.</strong>
+          Skipping is not rejecting &mdash; a skipped row stays
+          <code>Open</code> and unanswered, and the ten bounds what a sitting
           <em>offers</em>, never what the run writes.
         </p>
 
@@ -1053,11 +1049,10 @@
         <h3>The life of a question</h3>
 
         <p>
-          Seven states. A run only ever moves a row along the middle path;
-          everything else belongs to a person &mdash; including one shortcut
-          the diagram does not draw: you may move
-          <code>Proposed &rarr; Answered</code> directly, approving and
-          answering in one move.
+          Six states. A run writes a row at <code>Open</code> and only ever
+          moves it along the middle path; everything else belongs to a person
+          &mdash; you answer a row in the UI at your own pace, and that move is
+          your sign-off.
         </p>
 
         <figure>
@@ -1106,7 +1101,7 @@
                   stroke-dasharray="4 3"
                 />
                 <text x="60" y="76" text-anchor="middle" fill="var(--muted)">
-                  Proposed
+                  written
                 </text>
                 <text
                   x="60"
@@ -1386,11 +1381,11 @@
         <h2>Who decides what</h2>
 
         <p>
-          A run never sets <code>Intent = Agreed</code>, never approves its own
-          proposals, never records an answer no human gave &mdash; and never
+          A run never locks a Blueprint, never sends a client packet it
+          assembled, never records an answer no human gave &mdash; and never
           edits a human-set field, whatever the reasoning. Only a person can
-          approve a proposal, move a row to <code>Answered</code>, agree a
-          feature, or <strong>author</strong> a new numbered requirement (a run
+          lock a Blueprint, move a row to <code>Answered</code>, send a
+          packet, or <strong>author</strong> a new numbered requirement (a run
           may draft a seed <code>FR-1</code> shown verbatim, split a
           requirement whose "and" hides two, or write text you vetted &mdash;
           never invent one).
@@ -1453,10 +1448,11 @@
 
         <p>
           <strong
-            >An open marker blocks <code>Intent = Agreed</code> on its
+            >An open marker is an admitted gap on its
             feature</strong
           >
-          &mdash; the only thing in the whole system that blocks anything. It
+          &mdash; counted by <code>status</code> and acknowledged item by item at
+          the lock, it blocks nothing. It
           exists because builders do not ask: measured agents raised a
           clarifying question on only <strong>24%</strong> of underspecified
           tasks. Underspecification does not make them fail &mdash; it makes

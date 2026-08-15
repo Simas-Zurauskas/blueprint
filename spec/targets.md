@@ -13,7 +13,7 @@ feature this skill does not have; say so rather than improvising a tenth.
 | # | Operation | Contract |
 |---|---|---|
 | 1 | **resolve target** | Given the workspace, return the target kind and its address, or ask a human once and record it |
-| 2 | **create structure** | Create the two databases with every property and **every option verbatim**, the five views, and the run log. Idempotent: an existing structure is reused, never clobbered, and differences are printed as a checklist |
+| 2 | **create structure** | Create the two databases with every property and **every option verbatim**, the four views, and the run log. Idempotent: an existing structure is reused, never clobbered, and differences are printed as a checklist |
 | 3 | **read entity** | Fetch one feature or question **whole** — properties and body — and **prepend the read-out line** (§4) before handing it to any sub-agent |
 | 4 | **list by status** | Return every row matching a filter, **with an explicit completeness signal.** A truncated read is never returned as a complete one |
 | 5 | **write one named block** | Replace exactly one named block of one entity. Never more than one block per call, never a wholesale replace of a page that has children |
@@ -93,7 +93,7 @@ created: 2026-08-04
 
 ```markdown
 ### q-04 · Can a customer change a pickup slot after paying?
-- **Status:** Proposed
+- **Status:** Open
 - **Owner:**
 - **Touches:** Checkout
 - **Why asked:** The deck says slots are "flexible"; no source says whether that survives payment.
@@ -112,7 +112,7 @@ Mapping the contract onto files:
   errored. Never report a partial read as complete anyway.
 - **"Fetch and diff"** (operation 9) compares the block's current text against the text read when the item
   started. A file edited by a human in between wins, exactly as on Notion.
-- **The five views do not exist here.** Their filters become sections of the reports instead, and the
+- **The four views do not exist here.** Their filters become sections of the reports instead, and the
   overview's `⟳` headings become short generated lists — the one place a local Blueprint is written by a
   run without a per-block prompt, because a list of links is not prose and rewriting it invents nothing.
   It is regenerated whole, and a human who types under a `⟳` heading loses it — the heading says so.
@@ -149,7 +149,7 @@ reading a row out — a sub-agent brief, a build packet, an export — **prepend
 «Checkout» · Ordering · Draft
 ```
 
-`title · Area · Intent`, in that order, ahead of `## Why`. A projection assembled at read time, never
+`title · Area`, in that order, ahead of `## Why`. A projection assembled at read time, never
 typed into a body and never written back. Context@5 rose from 33.33% with no metadata to 63.33% with it,
 separability from Cohen's *d* 0.450 to 2.25 (Yousuf et al., ECIR 2026). Without the prefix every consumer
 of a body is in the 33% condition.
