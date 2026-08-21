@@ -348,7 +348,7 @@
           </li>
           <li>
             <a href="#loop">How to use it</a>
-            <span class="gloss">Six steps, six commands</span>
+            <span class="gloss">Five steps, five commands</span>
           </li>
           <li>
             <a href="#proposals">The questions</a>
@@ -369,8 +369,7 @@
               >What a machine may never do, and the gaps it admits</span
             >
           </li>
-          <li><a href="#freeze">Locking, and the change log</a></li>
-          <li><a href="#storage">Where it stores things</a></li>
+                    <li><a href="#storage">Where it stores things</a></li>
           <li><a href="#limits">Limits, honestly</a></li>
         </ol>
       </nav>
@@ -390,8 +389,8 @@
         <p>
           The Blueprint turns that pile &mdash; or just the idea in your head
           &mdash; into one definition you can hand to whoever builds it, human
-          or coding agent. When it is settled, you <strong>lock</strong> it;
-          from then on every change is one readable entry in a change log.
+          or coding agent. Nothing ever declares it finished &mdash;
+          <code>status</code> says how much is still open, whenever you ask.
         </p>
 
         <div class="callout">
@@ -405,7 +404,7 @@
           </p>
         </div>
 
-        <p>When it is done:</p>
+        <p>What you get &mdash; nothing ever declares it finished:</p>
 
         <ul>
           <li>
@@ -418,8 +417,9 @@
           </li>
           <li><strong>A new idea is settled by citation</strong>, not argument.</li>
           <li>
-            <strong>What changed since settling is one page</strong>, in the
-            words of whoever asked.
+            <strong>Every change carries its provenance on the line</strong> &mdash;
+            a dated note under the requirement it touched, quoting what it replaced
+            and naming the answer or source that did it.
           </li>
         </ul>
 
@@ -451,7 +451,7 @@
         <h3>2 &middot; It grills the draft; you review the finds</h3>
         <p>
           The grilling runs at <code>init</code>, at every <code>add</code>,
-          before a lock, and any time you ask with
+          and any time you ask with
           <code>/blueprint questions</code>. Every gap it finds is disposed &mdash; most
           settled on the spot, the rest written in as live questions for you. The whole
           next section.
@@ -474,17 +474,17 @@
           you.
         </p>
 
-        <h3>5 &middot; <code>/blueprint lock</code> &mdash; settle it</h3>
+        <h3>5 &middot; Keep extending it</h3>
         <p>
-          A readiness report, one final grilling, your item-by-item
-          acknowledgment on the record.
-        </p>
-
-        <h3>6 &middot; Keep extending it</h3>
-        <p>
-          Locking halts nothing &mdash; <code>add</code>,
+          <code>add</code>,
           <code>questions</code> and <code>resolve</code> keep working through
-          the same gates; every change now also lands in the change log. Lost?
+          the same gates. One thing to know about <code>add</code>: by default a
+          new source <strong>supersedes</strong> document text it contradicts
+          &mdash; the requirement is rewritten in place and the replaced text is
+          quoted on it, reported, never asked about; hand-written requirements are
+          superseded too, reported first. <code>add soft</code> keeps every
+          contradiction as a question instead, for material you do not yet trust.
+          Lost?
           <code>/blueprint status</code> reads everything, writes nothing, and
           every line ends with what to do next.
         </p>
@@ -496,7 +496,7 @@
 
         <p>
           <strong
-            >Nothing is written or locked without being adversarially attacked
+            >Nothing is written without being adversarially attacked
             first.</strong
           >
           Five hostile lenses, each its own pass:
@@ -573,7 +573,8 @@
         </ul>
 
         <p>
-          Read them in the <em>Unsent &mdash; packet candidates</em> tab at your
+          Read them in the <em>Unsent &mdash; packet candidates</em> tab (on a
+          local folder, in <code>questions.md</code>) at your
           own pace: write the answer straight in, or reject with a reason.
           Prefer doing it together? Ask for a sitting and they come one at a
           time, ten per round:
@@ -650,8 +651,8 @@
         <h2>The document</h2>
 
         <p>
-          An overview page, two databases, an append-only run log, and &mdash;
-          once locked &mdash; the change log. Nothing tracks work.
+          An overview page, two databases, and an append-only run log kept with the
+          project's local files. Nothing tracks work.
         </p>
 
         <figure>
@@ -875,16 +876,6 @@
                 stroke-width="1.4"
                 marker-end="url(#ahA)"
               />
-              <text
-                x="310"
-                y="231"
-                font-family="var(--sans)"
-                font-size="8.5"
-                font-weight="600"
-                fill="var(--accent)"
-              >
-                after the lock
-              </text>
 
               <rect
                 x="150"
@@ -898,24 +889,13 @@
               />
               <text
                 x="300"
-                y="260"
-                text-anchor="middle"
-                font-family="var(--sans)"
-                font-size="11.5"
-                font-weight="650"
-                fill="var(--accent)"
-              >
-                Change log
-              </text>
-              <text
-                x="300"
                 y="276"
                 text-anchor="middle"
                 font-family="var(--sans)"
                 font-size="9.5"
                 fill="var(--muted)"
               >
-                every change, with the ask verbatim &mdash; append-only
+                every mechanical act, one line each &mdash; append-only, and local
               </text>
 
               <rect
@@ -961,8 +941,7 @@
           <figcaption>
             One destination per project, never merged with another. The run log
             records what every run did, as a closed list of one-line facts rather
-            than prose &mdash; and is the only place that says whether the
-            Blueprint is locked.
+            than prose &mdash; and is the only place that says what the Blueprint says.
           </figcaption>
         </figure>
 
@@ -978,7 +957,10 @@
           who it's for &middot; how it works in one picture &middot; two live views
           (the features; the open questions by status) &middot; a links block
           &middot; and an <em>Operating</em> block with
-          the log links and the project's <strong>vocabulary line</strong>
+          the path of the local run record, the <strong>always-ask register</strong>
+          (the topics no convention default may ever settle &mdash; seeded with
+          minors' data and regulatory applicability, widened only by you) and the
+          project's <strong>vocabulary line</strong>
           &mdash; one canonical name for each thing, its superseded aliases,
           dated.
         </p>
@@ -1058,8 +1040,9 @@
           >
           The <strong>why</strong> sits beside the refusal, and the
           <strong>revisit if</strong> stops it becoming dogma. A run never
-          invents the reopening condition &mdash; where one is missing, it
-          asks.
+          invents the reopening condition &mdash; and it does not ask for one
+          either: where a source states none, the line stands without it and the
+          report says so, once.
         </p>
 
         <h3>The life of a question</h3>
@@ -1383,8 +1366,9 @@
 
         <p>
           <strong><code>Flagged</code> is a real state, not a failure</strong>
-          &mdash; <em>we tried and could not write this honestly</em>, the
-          objection on the row; a person clears it back. A bad question has an
+          &mdash; <em>we tried and could not write this honestly</em>; the
+          objection lives in the local run record and <code>status</code> prints
+          it; a person clears it back. A bad question has an
           exit too: a person sets <code>Closed (not applied)</code> with a
           reason &mdash; no run ever proposes that. And an answered question is
           never edited: changing your mind is a new row, which is what makes
@@ -1397,12 +1381,13 @@
         <h2>Who decides what</h2>
 
         <p>
-          A run never locks a Blueprint, never sends a client packet it
+          A run never sends a client packet it
           assembled, never records an answer no human gave &mdash; and never
           edits a human-set field, whatever the reasoning. Only a person can
-          lock a Blueprint, move a row to <code>Answered</code>, send a
+          move a row to <code>Answered</code>, send a
           packet, or <strong>author</strong> a new numbered requirement (a run
-          may draft a seed <code>FR-1</code> shown verbatim, split a
+          may write a seed <code>FR-1</code> from your own vetted answer or a
+          named source &mdash; reported with its text &mdash; split a
           requirement whose "and" hides two, or write text you vetted &mdash;
           never invent one).
         </p>
@@ -1467,8 +1452,8 @@
             >An open marker is an admitted gap on its
             feature</strong
           >
-          &mdash; counted by <code>status</code> and acknowledged item by item at
-          the lock, it blocks nothing. It
+          &mdash; counted by <code>status</code> and named in its
+          <em>What is still unsettled</em> block; it blocks nothing. It
           exists because builders do not ask: measured agents raised a
           clarifying question on only <strong>24%</strong> of underspecified
           tasks. Underspecification does not make them fail &mdash; it makes
@@ -1476,62 +1461,18 @@
           <strong
             >a decision made out loud clears a marker only by becoming a vetted
             answer first</strong
-          >: the run drafts the row in your words, you move it to
-          <code>Answered</code>, the next <code>resolve</code> writes it in.
+          >: the run drafts the row in your words and &mdash; where you gave
+          them to it directly, or relayed a client's answer &mdash; records it at
+          <code>Answered</code> as your move; the next <code>resolve</code>
+          writes it in. A decision nobody put to the document stays
+          <code>Open</code> until its person answers.
         </p>
       </section>
 
-      <section id="freeze">
-        <p class="sec-num">Six</p>
-        <h2>Locking, and the change log</h2>
-
-        <p>
-          <code>/blueprint lock</code> prints a readiness report &mdash; six
-          named lists, never a score: features carrying an open marker &middot;
-          questions open, answered-but-unapplied, or flagged &middot; bodies with no
-          requirement &middot; refusals with no reopening condition &middot; the
-          unanswered backlog and its age &middot; convention defaults adopted but not
-          yet ratified. Then one final
-          grilling.
-        </p>
-
-        <p>
-          <strong>None of it blocks the lock</strong> &mdash; a definition
-          settled with nine open questions is honest, and better than one whose
-          questions were quietly closed to look clean. What is required: you
-          see every item and acknowledge it, one numbered choice per row.
-        </p>
-
-        <h3>Locking halts nothing. It starts the record</h3>
-        <p>
-          The document stays live through the same gates. What changes:
-          <strong
-            >every change to product intent now lands as one change-log
-            entry</strong
-          >
-          &mdash; the date, what changed, and
-          <strong>the ask in the words of whoever asked, verbatim</strong>. Six
-          weeks later,
-          <em>"why does the document say something different?"</em> is answered
-          by that text and nothing else.
-        </p>
-
-        <pre><code>## 2026-08-20 · via add · asked by Kate
-
-> "The hall has told us we can have the room until 2pm from September.
->  So that's two more slots per fixer. Worth doing."
-
-- «Book a repair slot» — FR-6 added: sessions run 10:00–14:00, eight slots per fixer</code></pre>
-
-        <p>
-          Want a frozen copy for a signature moment? Page history, or your own
-          version control, at the date the entry names &mdash; a second
-          document is a second thing to keep true.
-        </p>
-      </section>
+      
 
       <section id="storage">
-        <p class="sec-num">Seven</p>
+        <p class="sec-num">Six</p>
         <h2>Where it stores things</h2>
 
         <p>
@@ -1552,7 +1493,7 @@
       </section>
 
       <section id="limits">
-        <p class="sec-num">Eight</p>
+        <p class="sec-num">Seven</p>
         <h2>Limits, honestly</h2>
 
         <ol>
@@ -1566,8 +1507,10 @@
             <strong>What it finds, measured.</strong> The full battery ran a
             five-project lab against 77 planted defects:
             <strong>~86% caught outright, ~97% at least detected</strong>, zero
-            hallucinated contradictions. (The old ~44%
-            single-pass ceiling is why the battery replaced the single pass.)
+            hallucinated contradictions. (The battery replaced the single pass
+            because one pass of anything finds less than half of what is there on
+            the nearest published benchmark &mdash; 44.4% recall, an external
+            figure and not a measurement of this tool.)
             Still: an empty question list is never evidence the document is
             complete.
           </li>

@@ -41,7 +41,7 @@ If this file and a run file ever disagree, the run file wins and this file is wr
 - A run-log entry is a closed list of line kinds, not prose; explanations go in the report
   (→ resolve.md R5).
 
-## When it is settled
+## How you know where it stands
 
-9. Say `/blueprint lock` — readiness report, one acknowledgement per open item, then the change log
-   begins and the **handoff set** is generated for the delivery team (→ lock.md L1–L4).
+9. Nothing ever declares it finished — say `/blueprint status` and its `What is still unsettled`
+   block names every gap by row (→ status.md S3).

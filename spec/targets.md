@@ -5,24 +5,23 @@ The Blueprint's shape ([`doc-shape.md`](doc-shape.md)) and its two databases
 Notion and a local markdown folder.** Notion is the default and the one to prefer. Every run resolves its
 target first and speaks to it only through the contract below.
 
-## 1. The contract — nine operations
+## 1. The contract — eight operations
 
 Everything any run does is one of these. A run that needs something not on this list is describing a
-feature this skill does not have; say so rather than improvising a tenth.
+feature this skill does not have; say so rather than improvising a ninth.
 
 | # | Operation | Contract |
 |---|---|---|
 | 1 | **resolve target** | Given the workspace, return the target kind and its address, or ask a human once and record it |
-| 2 | **create structure** | Create the two databases with every property and **every option verbatim**, the four views, and the run log. Idempotent: an existing structure is reused, never clobbered, and differences are printed as a checklist |
+| 2 | **create structure** | Create the two databases with every property and **every option verbatim**, and the four views. **No run log is created on the target** (v16, §5) — it is a local file. Idempotent: an existing structure is reused, never clobbered, and differences are printed as a checklist |
 | 3 | **read entity** | Fetch one feature or question **whole** — properties and body — and **prepend the read-out line** (§4) before handing it to any sub-agent |
 | 4 | **list by status** | Return every row matching a filter, **with an explicit completeness signal.** A truncated read is never returned as a complete one |
 | 5 | **write one named block** | Replace exactly one named block of one entity. Never more than one block per call, never a wholesale replace of a page that has children |
 | 6 | **write property** | Set one property value **and read it back to confirm it landed.** A write that silently did nothing is worse than one that failed loudly |
-| 7 | **append to the run log** | Append-only, newest first, never rewritten, never summarised away |
-| 8 | **append to the change log** | One human-readable entry per sitting on a locked Blueprint ([`../lock.md`](../lock.md) L4). Append-only, newest first, never rewritten |
-| 9 | **fetch-and-diff before writing** | Re-read the exact block immediately before overwriting it, and compare against what was read at the start of the item |
+| 7 | **append to the run log** | Append-only, newest first, never rewritten, never summarised away. **It is a local file — `record/run-log.md` in the working folder (§5), never a page or file on the target** (v16). Write atomically, temp file plus rename |
+| 8 | **fetch-and-diff before writing** | Re-read the exact block immediately before overwriting it, and compare against what was read at the start of the item |
 
-### Operation 9 is the one that must never be skipped
+### Operation 8 is the one that must never be skipped
 
 **An edit this run did not make always wins** — a human's, or another run's. Fetch and diff **immediately
 before** overwriting, not only after the push. Any difference is somebody else's: report the conflict,
@@ -66,10 +65,9 @@ rehearsing a run without touching a live workspace.
   features/
     01-browse-the-menu.md
     02-checkout.md       one file per feature: front matter, then the body
-  questions.md           one section per question, in Status order
-  run-log.md             append-only, newest entry at the top
-  changelog.md           starts at the lock — what changed and why, newest first
-  internal/              the working folder (§5) — the skill's cache, not part of the document
+  questions.md           one section per question, in q-NN order (never re-sorted by Status)
+  internal/              the working folder (§5) — holds the run log and the source records.
+                         Its `record/` half is durable and committed; only `cache/` is disposable
 ```
 
 **A feature file** carries its properties as YAML front matter and its body below, exactly as
@@ -109,7 +107,7 @@ Mapping the contract onto files:
 - **"Read it back"** (operation 6) means re-read the file after writing and confirm the value.
 - **"Completeness signal"** (operation 4) is trivially satisfied: a directory read is complete or it
   errored. Never report a partial read as complete anyway.
-- **"Fetch and diff"** (operation 9) compares the block's current text against the text read when the item
+- **"Fetch and diff"** (operation 8) compares the block's current text against the text read when the item
   started. A file edited by a human in between wins, exactly as on Notion.
 - **The four views do not exist here.** Their filters become sections of the reports instead, and the
   overview's `⟳` headings become short generated lists — the one place a local Blueprint is written by a
@@ -131,8 +129,16 @@ entire failure catalogue)
   file is the local equivalent of the half-written page nothing can read back.
 - **Case-insensitive filesystems** (macOS default, Windows): `Checkout.md` and `checkout.md` are one
   file; slugs must be case-unique or collisions overwrite silently.
-- **No version history unless git is there.** Where the folder is a repo, commit after each run's
-  write-back with the run id as the message — that is the local analogue of the append-only run log's
+- **Commit `record/` after each run's write-back, on either target** — with the run id as the message,
+  and **only after the content-rule sweep has passed over everything this run put there**
+  ([`../resolve.md`](../resolve.md) R2.5, [`../init.md`](../init.md) I7, [`../add.md`](../add.md) A5,
+  [`../questions.md`](../questions.md) Q6): a finding holds the commit until a human has resolved it,
+  because a commit publishes (v19). The commit stages `record/` and nothing else, on whatever branch is
+  checked out, and says so.
+  On Notion the working folder sits in the workspace, which is usually a repo; where it is not, the
+  record lives on one machine and `status` says so rather than guessing. **No version history unless
+  git is there.** Where the folder is a repo, commit after each run's write-back with the run id as
+  the message — that is the local analogue of the append-only run log's
   provenance. Where it is not, say so in the read-out line: nothing here can prove an edit's author.
 - **Line endings and encoding**: write UTF-8 with `\n`; a CRLF editor pass makes every anchor
   comparison miss exactly like Notion's silent-skip trap.
@@ -153,7 +159,7 @@ typed into a body and never written back. Context@5 rose from 33.33% with no met
 separability from Cohen's *d* 0.450 to 2.25 (Yousuf et al., ECIR 2026). Without the prefix every consumer
 of a body is in the 33% condition.
 
-## 5. The working folder is a rebuildable cache
+## 5. The working folder — two halves, one disposable
 
 **This section is the single home of where the working folder lives.** Every run file says "the working
 folder" and resolves it here:
@@ -161,35 +167,76 @@ folder" and resolves it here:
 | Target | The working folder |
 |---|---|
 | **Local markdown folder** | **`<blueprint-dir>/internal/`** — inside the Blueprint, so a project holds one directory, not two siblings |
-| **Notion** | **`.blueprint/` in the workspace** — there is no local Blueprint folder to nest into, and a hidden folder is right for a cache that stands alone |
+| **Notion** | **`.blueprint/` in the workspace** — there is no local Blueprint folder to nest into, and a hidden folder is right for something that stands alone beside the code |
 
 It holds:
 
 ```
 <working-folder>/
-  README.md              two paragraphs saying what this folder is and is not — written at creation,
-                         because "internal" sits beside files people read
-  target.md              the target kind and its address — the one thing not reconstructible
-  mapping.md             entity IDs, parents, child order, a content hash per entity
-  sources/<run-id>/      the source record: every ingested source, verbatim
-  runs/<run-id>.md       what a run proposed and what became of each proposal
+  README.md              two paragraphs saying what this folder is and is not, and which half of it
+                         may be deleted — written at creation, because "internal" sits beside files
+                         people read
+  target.md              DURABLE — the target kind and its address. Not reconstructible
+  record/                DURABLE — never deleted, never rebuilt. Committed with the project
+    run-log.md             the run log: append-only, newest entry at the top
+    runs/<run-id>.md       that run's operational detail
+  sources/               DURABLE — never deleted. NEVER committed: client material, verbatim
+    <run-id>/              the source record for one run
+  cache/                 REBUILDABLE — delete it freely; the next run rebuilds it
+    mapping.md             entity IDs, parents, child order, a content hash per entity
 ```
 
+**Two halves, and the split is the point** (v16). Until v16 this whole folder was declared a
+rebuildable cache and the run log lived on the target. Both moved: **the run log is a local file**,
+and **`record/` and `sources/` are not rebuildable from anything.** Deleting them destroys the only
+copy of what every run did. Only `cache/` is safe to delete.
+
+**Committed, or not, and they are different questions from durable.**
+`record/` **is committed with the project** — the owner's direction, and it is what makes the record
+travel to anybody else on the team. `sources/` is **never** committed: it holds client material
+*verbatim*, which is exactly the customer names, contract dates, penalties and prices the content
+rule keeps out of the Blueprint ([`doc-shape.md`](doc-shape.md) §6). `cache/` is not worth
+committing. So the version-control entry names `sources/` and `cache/`, **not** the whole folder —
+which is the change from v15, where ignoring everything was the only rule.
+
+**Because `record/` is committed, it is swept like any other surface.** Its `CON-k` quotes and its
+verbatim non-`Clean` verdicts are lifted from client sources, so the content rule reaches them and
+[`../status.md`](../status.md) C9 reports a barred specific there exactly as it does in a feature
+body. That sweep is the reason committing the record is safe rather than merely permitted.
+
 - **Nothing secret, no token, ever.** Outside this folder the skill never writes into a code repo.
-- **Keep it out of version control either way** — `sources/` holds material *verbatim*, which is exactly
-  the specifics the content rule keeps out of the Blueprint. On a local target the entry is
-  `<blueprint-dir>/internal/`; on Notion it is `.blueprint/`. A human who deliberately commits the
-  rendered Blueprint itself commits `internal/` only by choosing to.
-- **Everything except the target address is reconstructible** from the target itself. Delete the folder
-  and the next run rebuilds it.
-- **Therefore no check may treat it as the record of anything that must survive.** In particular
-  **locked-ness is never read from here** — it is derived from the target's own run log
-  ([`../lock.md`](../lock.md) L3). A marker kept in a rebuildable cache disappears on another machine,
-  and the next change to a settled document goes unrecorded.
-- **If the cache and the target disagree, the target is right.**
-- **A sibling `.blueprint/` beside a local-target Blueprint is the earlier layout of this skill.** Treat
-  finding one as a rename, not a fork: move it to `<blueprint-dir>/internal/`, move the ignore entry
-  with it, note the move in the run log, and say that you did. Never read from both — two working
+- **Ignore `sources/` and `cache/`; commit `record/`** (v16). The entries are
+  `<blueprint-dir>/internal/sources/` and `<blueprint-dir>/internal/cache/` on a local target,
+  `.blueprint/sources/` and `.blueprint/cache/` on Notion. **Never ignore the whole folder** — that was
+  the v15 rule and it takes `record/` out of version control with everything else, which strands the
+  run log on one machine.
+- **`cache/` is reconstructible from the target. Nothing else here is.** Delete `cache/` and the next
+  run rebuilds it; delete `record/` or `sources/` and what a run did is gone.
+- **`record/` is the record of things that must survive**, which is why it is durable and committed
+  rather than ignored. A check may rely on it — and where it is missing, a check says so plainly
+  rather than guessing ([`../status.md`](../status.md) S1).
+- **If `cache/` and the target disagree, the target is right.**
+- **Hashing — one rule for every hash this skill writes** (v19; until then no file named an algorithm,
+  and two runs could honestly disagree about what a hash was over). **SHA-256 over UTF-8 bytes**, written
+  in full in the source record and in `cache/mapping.md`, and as the first 12 hex characters in run-log
+  lines (`9f2c…41d` is the samples' elision). **What is hashed:** a file source — its bytes exactly as
+  captured into `sources/<run-id>/`; a message-shaped source — the captured text exactly as stored there;
+  a feature body — the body text **as the target returns it on a fresh read**, from `## Why` to its end,
+  line endings normalised to `\n`, trailing whitespace on each line stripped, **never** including the
+  read-out line (§4 — a projection, not body text); a block — the same rule over that block only.
+  Escapes a target adds on the round trip (`\[NEEDS CLARIFICATION`, [`notion-mechanics.md`](notion-mechanics.md)
+  §3) are hashed as returned, consistently, on both sides of every comparison.
+- **What the local run log costs, stated rather than discovered.** Two runs on two machines against the
+  same Notion target cannot see each other's run-log entry, so the concurrent-run check
+  ([`../resolve.md`](../resolve.md) R1) is **same-machine only**. The cross-machine guarantee is
+  operation 8 — fetch and diff immediately before writing — which this file already rates the stronger
+  check, and which is unaffected. **And `record/` only travels if it is committed**; on a machine that
+  has not pulled it, `status` reports what it could not compute instead of inventing it.
+- **A sibling `.blueprint/` beside a local-target Blueprint — whose `target.md` names this very
+  folder — is the earlier layout of this skill.** Treat finding one as a rename, not a fork: move it to
+  `<blueprint-dir>/internal/`, move the ignore entry with it, note the move in the run log, and say that
+  you did. A `.blueprint/` whose `target.md` names anything else is another project's live working folder
+  (the Notion layout above): leave it untouched and say so (v19). Never read from both — two working
   folders is exactly the two-places state this section exists to prevent.
 
 ## 6. Anything else

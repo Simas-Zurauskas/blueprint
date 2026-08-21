@@ -7,7 +7,7 @@ and two empty databases; that is a valid Blueprint. Companions: [`databases.md`]
 
 ## 1. What this document is, and what it is not
 
-1. **The Blueprint is the settled statement of product intent** — what the product should do, why, and
+1. **The Blueprint is the current statement of product intent** — what the product should do, why, and
    what it deliberately will not do. It is built **before** development, from whatever exists: a client's
    material, a team's notes, or one person's head and an idea.
 2. **It is a specification, not a contract and not a status report.** It records decisions and their
@@ -16,10 +16,11 @@ and two empty databases; that is a valid Blueprint. Companions: [`databases.md`]
 3. **Only a human's approved decision changes it.** Sources are evidence; a run's draft is a proposal;
    an approved answer is agreed intent. Nothing skips a step.
 
-**Once it is settled, you lock it** ([`../lock.md`](../lock.md) L3). Locking halts nothing; it obliges:
-from that moment every change to product intent is recorded in the **change log**, with the ask in the
-words of whoever asked — so *what moved since we settled this* is always one readable page, and never a
-silent edit to what was agreed. The document records intent; it never tracks what has been built.
+**Nothing ever declares it finished** (v16 — the lock and the change log were removed at the owner's
+direction, for simplicity). The document stays live and current, every change runs the same gates it
+always did, and [`../status.md`](../status.md) answers *how much of this is still open?* fresh
+whenever it is asked rather than the document carrying a settled state. The document records intent;
+it never tracks what has been built.
 
 **The one thing this shape refuses to do is guess.** An unsupported, unlabeled sentence in a
 specification is worse than an admitted gap, because a gap gets asked about and a guess gets built. A
@@ -33,15 +34,13 @@ unknown.
 graph TD
   R["OVERVIEW page — the front door, constant size<br/>TL;DR · What this product is · Who it's for · One picture<br/>⟳ Where things are · ⟳ Open questions (grouped)<br/>Links · Operating"]
   C["Chapter page — optional. A human writes it"]
-  F["FEATURES — the row IS the spec<br/>settled as a whole by the lock"]
+  F["FEATURES — the row IS the spec"]
   Q["OPEN QUESTIONS — one row = one question and its answer"]
-  L["Run log — machine-owned, append-only"]
-  BL["Change log — starts at the lock, append-only"]
+  L["Run log — machine-owned, append-only, a local file"]
   R --> C
   R --> F
   R --> Q
-  R --> L
-  R --> BL
+  R -.-> L
   Q -. "Touches" .-> F
 ```
 
@@ -62,7 +61,7 @@ prose; a **`⟳` heading** is a saved view. One rule: ***never type under a `⟳
 | **`## ⟳ Where things are`** | Features grouped by `Area` — a view | — |
 | **`## ⟳ Open questions`** | Live questions and their answers — a view **grouped by `Status`, the groups collapsible** (the owner's 2026-08-06 layout ask: the section stays open, the groups collapse). Since v13 a run writes questions straight to `Open`, so this view carries rows a person may not have read yet; the `Unsent — packet candidates` view is the reading screen and is a database tab only, never embedded | — |
 | **Links** | Source material, design files, whoever's original documents. Links only | — |
-| **Operating** | The run-log link · the change-log link once locked · the **always-ask register** — the dated list of topics no convention default may settle, seeded at `init` with its two mandatory entries and widened only by a human ([`../SKILL.md`](../SKILL.md) rule 4), kept to **one line, topics comma-separated** · any widening of the content rule (§6) · a ratified vocabulary line, where one exists — the canonical term, its superseded aliases, dated | 6 lines |
+| **Operating** | The run record's **path** in the working folder — `record/run-log.md`, a local file since v16, so a path rather than a link ([`targets.md`](targets.md) §5) · the **always-ask register** — the dated list of topics no convention default may settle, seeded at `init` with its two mandatory entries and widened only by a human ([`../SKILL.md`](../SKILL.md) rule 4), kept to **one line, topics comma-separated** · any widening of the content rule (§6) · a ratified vocabulary line, where one exists — the canonical term, its superseded aliases, dated | 6 lines |
 
 **The front page is the same size at 200 features as on day 1** — every human block is capped and every
 index on it is a view. That is what keeps a front door readable rather than turning it into the document.
@@ -82,8 +81,11 @@ than a filing decision is that **the whole question machinery serves this level 
 feature row**: a product-level unknown is a marker on the block where it bites; its question is a
 **project-level row** — `Touches` empty ([`databases.md`](databases.md) §2) — proposed, gated, owned and
 answered like any other; lens 5 grills these blocks against the features every sitting; and a vetted
-project-level answer comes back as a verbatim block proposal at the resolve checkpoint
-([`../resolve.md`](../resolve.md) R3.1, R4), which a human accepts before it lands. **The essence gets the
+project-level answer lands through [`../resolve.md`](../resolve.md) R3.1's **overview route**: the run
+drafts the block into the row's `Why asked` and flags it; a person accepts those words or writes their
+own into `Answer & why`; the next run writes exactly that text. **The human still sees the exact words
+before they land** — that is what this rule protects, and the route satisfies it in one round trip
+instead of through a checkpoint that no longer exists. **The essence gets the
 same rigor the features get** — sourced, grilled, marked, resolved — it just gets it through the front
 door's own gate rather than a body write, because the front door is the one page every reader trusts
 without cross-checking.
@@ -92,6 +94,21 @@ without cross-checking.
 
 A run may write an overview block **only as a verbatim proposal a human accepts**, one named block per
 write call. Never silently, never as a side effect of applying an answer, never a wholesale page replace.
+
+**One carve-out, and it is the first write only** (v16). At [`../init.md`](../init.md) I5 the overview
+does not exist yet: there is no block to replace and no text for a human to accept instead, and I5
+calls it *"the largest single write the overview ever receives."* That write is sanctioned — **but the
+skeleton a human confirms at I3 must carry the block text itself, not only the block names**, or the
+acceptance is of a table of contents rather than of prose. *Measured: a run whose I3 screen listed
+block names shipped a contract term — "thirty-day terms" — into the front door, where §6 bars it and
+where this rule then forbade fixing it in place; the same phrase in a feature body was correctly
+narrowed, so the document contradicted itself with no route to repair.*
+
+**And after the first write, a barred specific in an overview block has a route** — it is not stranded.
+The run reports it and proposes the corrected block text verbatim, exactly as any other overview
+change; where no acceptance arrives, [`../resolve.md`](../resolve.md) R3.1's overview route carries it
+as a project-level row. **What is never allowed is leaving it unreported because no route seemed to
+exist.**
 
 This differs from the system this skill replaced, deliberately. There, the front door was human-only
 because the document was already agreed and a machine editing it could only degrade it. Here the overview
@@ -135,7 +152,7 @@ grew past its own cap and quoted a live question tally — both already barred b
 above — and nothing caught it, because nothing re-derives the TL;DR's own claims against the rows before
 publishing them. **Regenerating every view it touches is part of the same write-back**, not a follow-up
 step: [`../add.md`](../add.md) A5, [`../resolve.md`](../resolve.md) R5, [`../questions.md`](../questions.md)
-Q6 and [`../lock.md`](../lock.md) L3 each point here rather than restating it.
+and Q6 each point here rather than restating it.
 [`../status.md`](../status.md) C8 is the mechanical backstop — it recomputes the same counts from the same
 rows and names any view whose printed state disagrees with them.
 
@@ -184,18 +201,24 @@ is the laundering this system exists to prevent.
 **One exception, and it is the only machine route into an empty body.** A feature row a human created by
 hand has no body at all, and a row with no numbered requirement can never receive an answer — every delta
 that would mint one is refused. So where the `Behaviour` block holds **no numbered requirement at all**,
-a run may *propose* `## Why` and **`FR-1` only**, derived from a named source and shown verbatim at the
-checkpoint, and a person accepts, edits or declines it. **Everything after `FR-1` is a human's to write.**
+a run **writes** `## Why` and **`FR-1` only** where a **vetted answer** or a **named source** supplies
+it ([`../resolve.md`](../resolve.md) R4, [`../add.md`](../add.md) A4 step 6) — the content is a human's
+own answer or a source's own words, so writing it invents nothing, and its text goes in the report.
+Where **neither** supplies it, nothing is written at all. **Everything after `FR-1` is a human's to
+write.**
 
 **`Not doing` — how to write the line. All three parts, one line.** *"No native mobile app — the team
 cannot staff two clients; revisit if a customer asks and will pay for it."* The **why** carries the
 argument and has to be on the same screen as the refusal. The **revisit if** is what stops a refusal
 becoming dogma: the answer to a proposal becomes *"no, and here is exactly what would change our mind"*.
-A run **never invents** a `revisit if:` — where one is missing it proposes a question. **A question row
-and no marker**, and this is the one place that distinction is load-bearing: a marker is an admitted
-unknown (§9), and a `Not doing` line whose *refusal and reason are both sourced* is a decision
-that has been made, not an unknown. Marking it would misreport a settled refusal as open for as long as nobody supplies a
-reopening condition — permanently, for the exclusions nobody intends to revisit.
+A run **never invents** a `revisit if:`, and since v16 it does not ask for one either: a missing
+reopening condition is **one line in the report and nothing else**
+([`../questions.md`](../questions.md) Q2 sweep item 4 is the single home). **No question and no
+marker** — a marker is an admitted unknown (§9), and a `Not doing` line whose *refusal and reason are
+both sourced* is a decision that has been made. Marking it would misreport a settled refusal as open
+for as long as nobody supplies a reopening condition — permanently, for the exclusions nobody intends
+to revisit — and asking about it turns a made decision into a strategy conversation the client did
+not need to have.
 
 **Scope is where the line is written**, and it needs no field: the overview's NOT-clause binds the whole
 product, a `Not doing` line binds the feature it sits on, and a numbered requirement binds its own
@@ -233,8 +256,9 @@ under the requirement they touched, because a reader who stops at the row never 
 other — `Default (standard practice — ratify on review): reset links are single-use and expire.
 (run 9f2c1a · 2026-08-14)` or `Default (adopted from the ratified design, frame 298:9042 — ratify on
 review): …` — written only under [`../SKILL.md`](../SKILL.md) rule 4's four conditions, listed on its
-run's defaults ledger, and re-labeled `(standard practice — ratified <date>)` when its batch is ratified.
-A vetoed default is removed the same sitting and becomes a marker plus a question. **The label is the
+run's defaults ledger, and re-labeled `(standard practice — ratified <date>)` when its batch is ratified —
+[`../questions.md`](../questions.md) Q1 performs the re-label, on the human's named act, and logs it.
+A vetoed default is removed by the same procedure and becomes a marker plus a question. **The label is the
 provenance**: an unlabeled sentence claiming convention status is exactly the laundering §9 exists to
 prevent.
 
@@ -321,10 +345,11 @@ solutions** (Mäder & Egyed, EMSE 2015).
   `FR-3 of «Claim a swap»`; machine form `<feature id>#FR-3`.
 - **Deleting a requirement leaves a tombstone**, never a gap that gets refilled:
   > FR-4 — *withdrawn 2026-08-04, replaced by FR-7. No behaviour here.*
-- **Splitting a feature is a human's decision, not a run's proposal.** When a human asks for it: the new
+- **Splitting a feature is a human's decision, not a run's proposal.** When a human asks for it — the
+  ask is a source handed to `add`, the one write seam for material ([`../add.md`](../add.md) A3) — the new
   row starts at `FR-1`, every requirement that moved leaves a tombstone pointing at the new ID and
-  number, relations are **re-pointed rather than retyped**, and the run then verifies **every non-empty
-  line of the source resolves to a line on a destination**, mechanically, *after* the write. Any line that
+  number, relations are **re-pointed rather than retyped**, and that `add` run then verifies **every
+  non-empty line of the source resolves to a line on a destination**, mechanically, *after* the write. Any line that
   does not halts the split and is named; nothing is deleted to make the check pass.
 
 ## 9. `[NEEDS CLARIFICATION]` markers
@@ -343,9 +368,8 @@ makes them guess*, so the document has to carry the question.
   *"Is this right?"* is not a marker; the example above is.
 - Every marker points at one question row whose `Touches` points back — **or is `carried`, and says so**.
 - **An open marker is an admitted gap, and it blocks nothing** (v13). It is counted by
-  [`../status.md`](../status.md) C5, named in every readiness report ([`../lock.md`](../lock.md) L1),
-  and acknowledged item by item at L2 before `LOCKED` is written — consistent with `lock.md`'s
-  standing rule that locking over an unsettled item is allowed, but never silently.
+  [`../status.md`](../status.md) C5 and named in its `What is still unsettled` block. Nothing blocks
+  on it and nothing ever has to be cleared before the document can be used.
 - **A marker is scoped to what it names, not to the page it sits on.**
 - **Carried is a legitimate state, and it is not the same as broken — and it is a state between
   sittings, never a parking lot.** Write runs mint markers between questions sittings — a resolve run's
@@ -358,7 +382,7 @@ makes them guess*, so the document has to carry the question.
   project the old per-sitting cap let this backlog grow silently to ~80 known gaps with no row behind
   them — more than every question ever asked — which is the failure this rule now forbids. **A carried marker born from a
   contradiction between sources also cites its inventory id and the run-log entry holding both verbatim
-  quotes** — `→ Question: carried (CON-7 · run-log 2026-08-04-init-1)` — so the sitting that finally
+  quotes** — `→ Question: carried (CON-7 · run-log 2026-08-04-init-1)`, resolved against `record/run-log.md` ([`targets.md`](targets.md) §5) — so the sitting that finally
   proposes it dereferences the quotes rather than re-paraphrasing a compact marker
   ([`../init.md`](../init.md) I7 owns the inventory). A marker pointing at a row that no
   longer exists is **broken** and is a fault. [`../status.md`](../status.md) C5 prints the two apart,
@@ -393,22 +417,39 @@ in the third.
    first. The run drafts the row: `Question` = the marker's own text; `Answer & why` =
    the human's words **verbatim**, never a paraphrase; `Owner` is left alone — no run writes it ([`databases.md`](databases.md) §2). **Where the
    words were given to the run directly — at a review, in the working conversation — the row is recorded
-   at `Status = Answered` as that human's own move, and the next resolve run writes it in. Where the
-   decision is second-hand — a relayed meeting, a message quoted by somebody else — the row lands at
-   `Open`, and the person who decided moves it to `Answered` themselves. If they do not, nothing enters
-   the document:** the row sits `Open`, [`../status.md`](../status.md) C7 names it as it ages, and the
-   marker stands. That is the honest failure, and it is strictly better than a claim entering ungated.
+   at `Status = Answered` as that human's own move, and the next resolve run writes it in.**
+
+   **A relayed client answer is also `Answered`, and this is the arbitration** (v17). Where a person at
+   the keyboard relays an answer **the client gave to a question this document asked** — the packet loop
+   [`../questions.md`](../questions.md) Q6 defines, which is how client answers are *designed* to
+   arrive — the row is recorded at `Answered` with the answer **verbatim** and one clause naming who
+   relayed it and when. The relayer is the human of record: they are vouching for the words exactly as
+   a checkpoint transcription vouches for spoken ones, and [`../SKILL.md`](../SKILL.md) rule 1 is
+   satisfied because a human did give the answer and a human did put it here. *This branch said `Open`
+   until v17, and the consequence was structural rather than cautious: **every** client answer arrives
+   relayed, so no answer obtained through the skill's own packet loop could ever reach `Answered`. A
+   measured run offered the sitting, was answered, and stranded seven verbatim client decisions at
+   `Open`, where no `status` check could see them either.*
+
+   **What stays `Open` is a decision nobody put to this document** — overheard, mentioned in passing,
+   quoted from a meeting that was not answering a row here. That person can be asked properly, so the
+   row waits for them, and **if they never move it, nothing enters the document:** the row sits `Open`,
+   [`../status.md`](../status.md) C7 names it as it ages, and the marker stands. That is the honest
+   failure, and it is strictly better than a claim entering ungated.
 6. **Its gap was adopted as a convention default and the defaults batch was ratified.** When a questions
    run routes a marker's gap to the DEFAULT channel ([`../questions.md`](../questions.md) Q4), the default
    is written labeled and the marker is **patched** to cite the default's ledger line —
    `→ Default: ledger <run id> #<n>, awaiting ratification` — still counted and still reported like any
    marker. **The marker is removed only by a human's explicit ratification of that defaults batch**
-   ([`../questions.md`](../questions.md) Q6), the removal citing the ledger line and the ratifying act. A
+   ([`../questions.md`](../questions.md) Q6 puts it to them; **Q1 executes the act** — given in that
+   conversation or named to a later run, since no field carries it), the removal citing the ledger line
+   and the `RATIFIED` line that records the ratifying act. A
    veto on that line converts it back to `→ Question: carried` plus a proposed question. Ratification is
    never inferred from silence or from time passing.
 
 **None of the six is a bypass of another.** A run may never write an answer straight in, and never
-without a row. **A marker removal with no row ID in the run-log entry is a bug, not a tidy-up.**
+without a row. **A marker removal with no row ID in the run-log entry is a bug, not a tidy-up** — route
+6's removal cites its ledger line and the `RATIFIED` line instead, which is the row ID that route has.
 
 **Never invent the missing content.** A guess written as prose launders a guess into the source of truth.
 Contradictions between sources are surfaced, never silently resolved.
@@ -431,7 +472,7 @@ page. They are handed a packet assembled at that moment, from the rows, so it ca
 no second artifact to maintain.
 
 ```
-BUILD PACKET — «Claim a swap»           assembled 2026-08-04 from the locked Blueprint
+BUILD PACKET — «Claim a swap»           assembled 2026-08-04 from the Blueprint
 
 WHAT THIS PRODUCT IS NOT       the overview's NOT-clause, verbatim
 NOT DOING, HERE                this feature's Not doing lines, each with its why
