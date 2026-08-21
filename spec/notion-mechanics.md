@@ -5,7 +5,6 @@ the claims were date-stamped but nothing said when a date is too old, so a reuse
 nor cheaply distrust them). The pinned API version is part of this: before adopting a newer one, re-run
 the probes this file's dates record.
 
-
 Every rule here was paid for by a real failure or checked against Notion's own documentation, most of it
 live on 2026-08-03. Nobody using the Blueprint reads this file; every run that writes to the Notion target
 does. The short version: markdown tools for content, read every property write back, re-fetch after every
@@ -84,8 +83,7 @@ The sharpest edges in the API surface. All of them are silent.
   than taken verbatim from the fetched text. **So: simulate the whole set of edits against the fetched
   body first, apply them in order, and compare the result's hash to the text you intended to end up with.
   Commit only if they match, and read back after.** Prefer patching only the blocks that actually changed,
-  matched by block id, over replacing a page's content wholesale. *(Measured repeatedly in one 580-row
-  drain; every instance was caught by the simulate-and-compare step and none by the API.)*
+  matched by block id, over replacing a page's content wholesale.
 
 - **The child-deletion trap.** A page block inside a parent's content **is that parent's child list.** A
   content replace that omits one of those blocks is asking for that child to be deleted. Any content

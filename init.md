@@ -37,11 +37,8 @@ Task list: `I1` collect · `I2` draft and grill · `I3` propose · `I4` create s
 
 ---
 
-
 **The closed set of blocking stops this command may make.** Anything else is a `DEVIATIONS` line
-([`resolve.md`](resolve.md) R5), not a stop. *Added v18: two independent runs of one fixture stopped
-a different number of times because no file said which stops were sanctioned — the least reproducible
-behaviour a measured campaign found.*
+([`resolve.md`](resolve.md) R5), not a stop.
 
 | # | Where | Why it is sanctioned |
 |---|---|---|
@@ -63,7 +60,7 @@ not wait.
 **First, settle the target** if the working folder's `target.md`
 ([`spec/targets.md`](spec/targets.md) §5) does not already name one. Ask once:
 
-> Where should this live? **Notion** — I will need the URL of a page you have created and connected —
+> Where should this live? **Notion** — I will need the URL of a page you have created and connected
 > or **a folder of markdown files**, in which case just name the folder.
 
 Record it before anything else ([`spec/targets.md`](spec/targets.md) §5). An answer naming somewhere else
@@ -73,12 +70,7 @@ gets §6's reply: say what it would take, and do not improvise it.
 command that logs only when it finishes leaves nothing for a concurrent run to see, and
 [`SKILL.md`](SKILL.md) pre-flight check 4 has nothing to detect ([`resolve.md`](resolve.md) R1 owns that
 check). **The first write of an `init` is usually the source record at I1, not the target** — so the
-entry opens then, in the working folder, which exists before the Blueprint does. *(v20: a second
-sentence here used to tie the entry's birth to the structure's instead, which contradicts the rule
-above at every run that stops at I3 — the structure is created at I4, and a run that halts earlier has
-already written sources, hashes and a target address with no entry open. A measured campaign hit
-exactly that, and one run wrote its whole Blueprint across two sittings with no entry open at all.
-`lint.sh` now forbids that sentence returning.)*
+entry opens then, in the working folder, which exists before the Blueprint does.
 
 **Take each source however it is offered.** Do not ask anyone to reformat anything. A Notion page: fetch
 it, keep the link and a snapshot. An uploaded or pasted file: read it whole, keep it verbatim. A meeting
@@ -240,9 +232,7 @@ on the screen while they are looking at them — and at this moment nothing exis
 capture), and the answers in it become rows at I7 the same way every other gap does — a row whose
 `Answer & why` carries those words and whose `Status` is what
 [`spec/doc-shape.md`](spec/doc-shape.md) §9 route 5 says it is. **Nothing is lost and nothing waits for
-the human to repeat themselves.** *Measured: an operator answered three questions at this stop, found
-there was nowhere to record them, and hand-authored the questions file herself — "I had three answers
-in hand and nowhere to put them."*
+the human to repeat themselves.**
 
 **The overview names nobody.** The `Operating` block carried a named owner until 2026-08-06, when the
 owner had it removed ([`spec/doc-shape.md`](spec/doc-shape.md) §3, §6) — so this stop confirms no owner
@@ -299,10 +289,7 @@ bites, **naming the entity it is about**, carrying `→ Question: carried` until
 leaves it carried. **That holds for every gap this phase meets, convention-settled ones included: I5
 adopts no convention defaults** (v20). The DEFAULT channel is [`questions.md`](questions.md) Q4's, with
 its four attestations and its disposition check, and this run reaches it at I7's handoff — a few
-minutes later, through the gate. *Measured: I5 named no default channel at all while
-[`SKILL.md`](SKILL.md) rule 4 plainly permits a labeled default sentence, and a run resolved the
-silence by writing four defaults here and back-fitting them to the ledger at I7, outside the check that
-exists to catch a bad one.* A **contradiction is marked in both places**, gets one blocking question, and says
+minutes later, through the gate. A **contradiction is marked in both places**, gets one blocking question, and says
 plainly that the two sources disagree; never averaged, never split, never quietly resolved in favour of
 the newer source. A **decided exclusion is a `Not doing` line**, never a question. **Every requirement
 must be able to fail.** And **sparse sources produce a sparse Blueprint, which is a success**: a
@@ -345,8 +332,7 @@ Recorded as `independence: available but not dispatched — Q4 took it`, and the
 the same reasons as the line below. **`Unverified — no second dispatch available`** — the zero-dispatch case
 ([`SKILL.md`](SKILL.md) rule 6): no check ran, so no other verdict on this list has been earned. The
 claim stands as written, it is **never counted `Clean`**, and I7's summary line states the total
-separately. *Named here because a measured run found no verdict on this list that fitted and invented
-one — "unverified, no finding" — for 34 items.* `Clean` — faithful, it stands. `Patched — narrowed` — overreached slightly, the claim is
+separately. `Clean` — faithful, it stands. `Patched — narrowed` — overreached slightly, the claim is
 narrowed back to what the source says; fixed in place, **no marker**, because the claim is still there,
 just smaller — **feature bodies only: a narrowing of an overview block is a proposal a human accepts,
 never an in-place fix** ([`spec/doc-shape.md`](spec/doc-shape.md) §3). `Patched — removed` and `Flagged` — the claim had no support at all, or a contradiction was
@@ -377,9 +363,7 @@ honest gap, not a stalled run.
 repetitions of the word are worth less than the number. I7's summary
 still carries the counts, but a verdict's durable home is the entry, and an entry is only closed at the
 end of a long phase — so a run cut between here and there leaves no evidence the check ran at all,
-having already stamped an `independence` line saying it did. *Measured in a campaign where several runs
-were interrupted: an entry carrying a real independence line and not one verdict, beside four feature
-bodies that had demonstrably been checked.* Same discipline as the per-item hash ([`resolve.md`](resolve.md) R2.3): record the fact where it happens, roll it up at the close.
+having already stamped an `independence` line saying it did. Same discipline as the per-item hash ([`resolve.md`](resolve.md) R2.3): record the fact where it happens, roll it up at the close.
 
 ---
 
@@ -403,10 +387,7 @@ committed** ([`spec/targets.md`](spec/targets.md) §5), so a customer name, a co
 that reaches it is **published**, not merely stored — and this phase is the one that puts them there,
 because the conservation check below requires `CON-k` quotes **verbatim** from client sources. A
 finding is reported and the material is written as the role, never the specific; a quote that cannot
-survive the rule is cited by `CON-k` and origin instead of reproduced. *Added v16: a measured campaign
-left individual names in three of five committed records, twice after a check had certified that
-surface clean, because `init` and `add` had no sweep at all and `status` C9's scope did not reach
-`record/runs/`.*
+survive the rule is cited by `CON-k` and origin instead of reproduced.
 
 **Regenerate every `⟳` view from the rows just written** ([`spec/doc-shape.md`](spec/doc-shape.md) §3's
 single home) before printing the closing screen — the first write of the overview already builds them
@@ -420,12 +401,7 @@ closed by the human's answer at I3 · discarded at [`questions.md`](questions.md
 logged, its counter-case in the report ([`questions.md`](questions.md) Q6). **Any orphan halts the close
 and is named.**
 
-*The supersession disposition was added v16 and without it the **default `add` path cannot close at
-all**: `add.md` A4 routes a source-vs-document contradiction into this same inventory, a supersession
-is not a question row, a marker, an I3 answer or a Q3 discard, so every one of them is an orphan and
-this check halts the run. Measured on the first live default-mode `add`: four supersessions, four
-orphans, and the run closed only by naming the defect. It sits directly on the owner's ask 2, and
-`soft` never reaches it because `soft` routes every contradiction to a marker plus a row.* The entry then carries one line per
+ The entry then carries one line per
 `CON-k`: a pointer where a gated home exists (`CON-3 → q-03`), and **both verbatim quotes** where the
 only home is a carried marker or a discard — because a deleted cache must not take the evidence with it.
 Every line is a dated, past-tense process statement ("routed to q-03 at this sitting"), never a
@@ -442,8 +418,7 @@ content is that nothing was wrong, the count carries it exactly, and a later rea
 the number as from thirty-nine repetitions of the word.
 
 Then close the run-log entry this run opened at I1 — the counts, the `HASHES` roll-up and the closing
-line — and print **one screen. Not three.** *(v20: the older wording here read as opening the entry
-at this phase, which contradicted I1.)*
+line — and print **one screen. Not three.**
 
 ```
 BLUEPRINT INIT — «Golden Crumb» · 2026-08-04 · target: Notion

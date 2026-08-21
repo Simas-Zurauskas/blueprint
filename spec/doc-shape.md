@@ -99,10 +99,7 @@ write call. Never silently, never as a side effect of applying an answer, never 
 does not exist yet: there is no block to replace and no text for a human to accept instead, and I5
 calls it *"the largest single write the overview ever receives."* That write is sanctioned — **but the
 skeleton a human confirms at I3 must carry the block text itself, not only the block names**, or the
-acceptance is of a table of contents rather than of prose. *Measured: a run whose I3 screen listed
-block names shipped a contract term — "thirty-day terms" — into the front door, where §6 bars it and
-where this rule then forbade fixing it in place; the same phrase in a feature body was correctly
-narrowed, so the document contradicted itself with no route to repair.*
+acceptance is of a table of contents rather than of prose.
 
 **And after the first write, a barred specific in an overview block has a route** — it is not stranded.
 The run reports it and proposes the corrected block text verbatim, exactly as any other overview
@@ -215,9 +212,7 @@ for the same reason** (v20): a run never invents an argument for somebody else's
 restatement of the refusal dressed as a because is worse than an honest gap. **A refusal whose why the
 source *did* give never goes somewhere with no room for it**: the overview's NOT-clause names the kind
 of thing the product refuses and has no why slot, so an exclusion that carries an argument is written
-as a `Not doing` line on the feature it binds, and the NOT-clause names the kind. *Measured: an
-exclusion with a stated why — "the partners voted against it in June" — was routed to the NOT-clause,
-and the argument left the document entirely with nothing reporting that it had.* The **revisit if** is what stops a refusal
+as a `Not doing` line on the feature it binds, and the NOT-clause names the kind. The **revisit if** is what stops a refusal
 becoming dogma: the answer to a proposal becomes *"no, and here is exactly what would change our mind"*.
 A run **never invents** a `revisit if:`, and since v16 it does not ask for one either: a missing
 reopening condition is **one line in the report and nothing else**
@@ -236,7 +231,7 @@ negation naming a **scope or artifact boundary** — *"this feature does not tou
 does work (stripping scope language raised out-of-scope agent actions by 11.9–17.2pp). So prefer boundary
 wording and do not build a formatting standard.
 
-**How to write one requirement.** Three tests applied to a sentence. **Not a form and not a grammar** —
+**How to write one requirement.** Three tests applied to a sentence. **Not a form and not a grammar**
 seven requirement formats spanned ~2.4 points and one model scored identically across all seven. Syntactic
 *ambiguity* is what costs: up to **−31.10 points** of pass@1, doubling intra-model output conflict from
 14.09% to 28.29%. That is why this skill mandates **no** requirement syntax — not EARS, not Gherkin, not
@@ -270,7 +265,7 @@ under the requirement they touched, because a reader who stops at the row never 
 other — `Default (standard practice — ratify on review): reset links are single-use and expire.
 (run 9f2c1a · 2026-08-14)` or `Default (adopted from the ratified design, frame 298:9042 — ratify on
 review): …` — written only under [`../SKILL.md`](../SKILL.md) rule 4's four conditions, listed on its
-run's defaults ledger, and re-labeled `(standard practice — ratified <date>)` when its batch is ratified —
+run's defaults ledger, and re-labeled `(standard practice — ratified <date>)` when its batch is ratified
 [`../questions.md`](../questions.md) Q1 performs the re-label, on the human's named act, and logs it.
 A vetoed default is removed by the same procedure and becomes a marker plus a question. **The label is the
 provenance**: an unlabeled sentence claiming convention status is exactly the laundering §9 exists to
@@ -284,9 +279,7 @@ third-party names, no individuals' names, no contract terms or dates, no penalti
 `"Northgate Retail Park — P1 4 hours, £250 penalty, contract to 2028-03-31"` is written as *"a site on the
 enterprise contract has a contracted response target for P1 faults, with a penalty for missing it"* — and
 the requirement is just as failable, because what makes it failable is the target existing and being
-missable, not its length. *(v20: this example used to keep "four-hour", which is a contract term the
-sentence above bars — the rule's own worked answer broke the rule, and a reader copying it would leak
-the one figure it was demonstrating how to remove.)*
+missable, not its length.
 
 **One standing exemption, because the design mandates the thing the rule bars.** The rule is about the
 *product being described*, never about the people running the process. So: **the people-typed `Owner`
@@ -440,13 +433,7 @@ in the third.
    text, matching on normalised whitespace. **Text that is not there is not theirs**: the run does not
    write it, does not set `Answered`, and says which row it could not record and why. A run may
    summarise nothing into a human's mouth, compose nothing in their voice, and sign nothing with their
-   name. *Measured, and it is the reason this paragraph exists: a run wrote a ten-line first-person
-   answer — reasoning, a supporting fact and a closing "so I am comfortable saying it" — signed with
-   the human's name, at `Status = Answered`, on a question that human had never been asked, in a
-   session where they had said "do not take a guess from me". A second row recorded them accepting a
-   proposal that did not exist when they last spoke. Both were plausible, both were in character, and
-   neither was said. This is the laundering the whole document exists to prevent, arriving through the
-   one route that is allowed to write a human's words.* **Where the
+   name. **Where the
    words were given to the run directly — at a review, in the working conversation — the row is recorded
    at `Status = Answered` as that human's own move, and the next resolve run writes it in.**
 
@@ -456,11 +443,7 @@ in the third.
    arrive — the row is recorded at `Answered` with the answer **verbatim** and one clause naming who
    relayed it and when. The relayer is the human of record: they are vouching for the words exactly as
    a checkpoint transcription vouches for spoken ones, and [`../SKILL.md`](../SKILL.md) rule 1 is
-   satisfied because a human did give the answer and a human did put it here. *This branch said `Open`
-   until v17, and the consequence was structural rather than cautious: **every** client answer arrives
-   relayed, so no answer obtained through the skill's own packet loop could ever reach `Answered`. A
-   measured run offered the sitting, was answered, and stranded seven verbatim client decisions at
-   `Open`, where no `status` check could see them either.*
+   satisfied because a human did give the answer and a human did put it here.
 
    **What stays `Open` is a decision nobody put to this document** — overheard, mentioned in passing,
    quoted from a meeting that was not answering a row here. That person can be asked properly, so the
@@ -469,7 +452,7 @@ in the third.
    failure, and it is strictly better than a claim entering ungated.
 6. **Its gap was adopted as a convention default and the defaults batch was ratified.** When a questions
    run routes a marker's gap to the DEFAULT channel ([`../questions.md`](../questions.md) Q4), the default
-   is written labeled and the marker is **patched** to cite the default's ledger line —
+   is written labeled and the marker is **patched** to cite the default's ledger line
    `→ Default: ledger <run id> #<n>, awaiting ratification` — still counted and still reported like any
    marker. **The marker is removed only by a human's explicit ratification of that defaults batch**
    ([`../questions.md`](../questions.md) Q6 puts it to them; **Q1 executes the act** — given in that

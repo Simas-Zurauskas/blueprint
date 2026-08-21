@@ -31,6 +31,14 @@ consumer session, so there is none.
 | `lint.sh` | its header: no multibyte in an assertion regex, no backslash-backtick, never `IFS=⋮ read`; add a FORBIDDEN row for every retired phrase you remove |
 | `README.md`, `QUICKSTART.md`, `blueprint-explained.html` | the run file the sentence describes — these are readings of the files and drift silently; QUICKSTART is pointer-only by lint |
 
+## Where the "why" lives
+
+`HISTORY.md` holds the rationale — the version notes and the measured incidents that produced each
+rule. It was moved out of the run and spec files so a **run** loads rules only; it is deliberately
+outside `lint.sh`'s manifest for the same reason. When you change a rule, put the reason there, not
+inline. Inline changelog notes are what made the run files unreadable and what tripped the gate five
+times in one session (a note quoting the sentence a FORBIDDEN row bans).
+
 ## What lint cannot see (check by hand)
 
 A count restated in prose · a sample contradicting the rule beside it · a citation without an

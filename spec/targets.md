@@ -114,7 +114,7 @@ Mapping the contract onto files:
   run without a per-block prompt, because a list of links is not prose and rewriting it invents nothing.
   It is regenerated whole, and a human who types under a `⟳` heading loses it — the heading says so.
 
-**Ordering is deterministic** — features by their numeric prefix, questions by `q-NN`, log newest-first —
+**Ordering is deterministic** — features by their numeric prefix, questions by `q-NN`, log newest-first
 or every run looks like a change. **Never interpolate a timestamp into content** that is not a dated
 provenance line: a "last synced" line re-hashes every file on every run and turns a no-op into a rewrite.
 
@@ -132,7 +132,7 @@ entire failure catalogue)
 - **Commit `record/` after each run's write-back, on either target** — with the run id as the message,
   and **only after the content-rule sweep has passed over everything this run put there**
   ([`../resolve.md`](../resolve.md) R2.5, [`../init.md`](../init.md) I7, [`../add.md`](../add.md) A5,
-  [`../questions.md`](../questions.md) Q6 step 10). That sweep runs **before** the lines are appended —
+  [`../questions.md`](../questions.md) Q6 step 10). That sweep runs **before** the lines are appended
   a line that cannot survive the rule is written as the role, never the specific — so a finding that
   somehow reaches commit time is a defect in the run: it holds the commit and is reported, because a
   commit publishes (v19). The commit stages `record/` and nothing else, on whatever branch is
@@ -144,7 +144,7 @@ entire failure catalogue)
   provenance. Where it is not, say so in the read-out line: nothing here can prove an edit's author.
 - **Line endings and encoding**: write UTF-8 with `\n`; a CRLF editor pass makes every anchor
   comparison miss exactly like Notion's silent-skip trap.
-- **The read-back rule survives the target swap**: after every write, re-read the file and compare —
+- **The read-back rule survives the target swap**: after every write, re-read the file and compare
   disks and sync clients fail quieter than APIs.
 
 ## 4. The read-out line — every read path prepends it
@@ -198,7 +198,7 @@ copy of what every run did. Only `cache/` is safe to delete.
 travel to anybody else on the team. `sources/` is **never** committed: it holds client material
 *verbatim*, which is exactly the customer names, contract dates, penalties and prices the content
 rule keeps out of the Blueprint ([`doc-shape.md`](doc-shape.md) §6). `cache/` is not worth
-committing. So the version-control entry names `sources/` and `cache/`, **not** the whole folder —
+committing. So the version-control entry names `sources/` and `cache/`, **not** the whole folder
 which is the change from v15, where ignoring everything was the only rule.
 
 **Because `record/` is committed, it is swept like any other surface.** Its `CON-k` quotes and its

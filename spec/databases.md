@@ -135,7 +135,7 @@ holds at least one numbered requirement. [`../status.md`](../status.md)'s
 feature short of either is a normal, reported state.
 
 **`Answered` is the gate, and it is a human's move.** A run may record it only as a transcription of a
-human's own words given at a checkpoint — verbatim, never a paraphrase, never on its own initiative —
+human's own words given at a checkpoint — verbatim, never a paraphrase, never on its own initiative
 so the queue holds only human-sanctioned answers by construction. Neither *who* answered beyond `Owner`
 nor *who drafted a row* is recorded anywhere (§8), and no run may claim to know either — the platform
 keeps no queryable per-property history ([`notion-mechanics.md`](notion-mechanics.md) §5).

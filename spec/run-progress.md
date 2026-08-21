@@ -11,7 +11,7 @@ its nine phases looks exactly like one that did nine.
 ## 1. The block
 
 Printed at run start, at every phase boundary, and at every sitting boundary. **Every count in it is
-re-derived from the current state at the moment of printing** ([`../SKILL.md`](../SKILL.md) rule 7) —
+re-derived from the current state at the moment of printing** ([`../SKILL.md`](../SKILL.md) rule 7)
 never carried forward from the last time the block was printed, which is the whole failure this
 skill's rule 7 exists to prevent and it applies here like anywhere else.
 
@@ -38,8 +38,7 @@ BLUEPRINT resolve · run 7f3a2c · sitting 2 · mode: default
 when a phase cannot proceed and names what is in the way on the same line. **`skipped`** is for a
 phase that legitimately did not run — [`../questions.md`](../questions.md) Q5 without a request is the
 standing case — and it exists because writing `done` against a phase that never ran is a lie a reader
-cannot detect *(v16: a measured run printed `done Q5 sitting, on request · 0 rows offered`, which reads
-as ran-and-found-nothing)*. There is deliberately no state meaning *started but not finished* — a phase
+cannot detect. There is deliberately no state meaning *started but not finished* — a phase
 is running or it is not, and that fifth state is where a run hides that it stopped.
 
 ## 1a. An embedded run — whose task list governs

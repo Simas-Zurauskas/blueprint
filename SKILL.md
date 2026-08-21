@@ -7,12 +7,12 @@ description: Build a well-rounded product definition — "the Blueprint" — bef
 
 One product definition per project, built **before** development from whatever exists — a client's
 material, a team's notes, or your own head and an idea. Its job is to be well-rounded before anybody
-builds: what the product does, why, what it deliberately will not do, and — named rather than guessed —
+builds: what the product does, why, what it deliberately will not do, and — named rather than guessed
 what nobody has decided yet. Every draft is **adversarially grilled** before it is written, because the
 gray areas a builder silently fills in are where products go wrong.
 
 **Nothing ever declares it finished.** There is no lock and no sign-off on the document as a whole
-*(v16, at the owner's direction — the lock was removed for simplicity)*. The only human sign-off left
+. The only human sign-off left
 is per question: moving a row to `Answered`. What is still open is a question for
 [`status.md`](status.md), answered fresh every time it is asked, rather than a state the document
 carries.
@@ -48,10 +48,7 @@ honestly rather than aspirationally: no rule in these files rests on a research 
 rule stands on its own reasoning and on the measured campaigns; a citation is supporting colour until
 it carries a verifiable identifier; a figure older than **~18 months** is
 **re-verified before a run relies on it** — or, until somebody does, treated as unverified — and a
-figure nobody can re-verify is to be struck along with any weight it was given — not quietly kept. *This file has already misread one of
-its own: the 44.4% figure was cited as precision when it is recall, and it shaped design decisions
-before v13 caught it. Platform facts were given an expiry and the evidence base was not; v19 stops
-claiming the evidence base has one until it does.*
+figure nobody can re-verify is to be struck along with any weight it was given — not quietly kept.
 
 **Skill version.** The single integer in `VERSION`. Read it at run start, stamp it into the run log entry,
 and bump it — there and nowhere else — when these files change materially. **No bump without `./lint.sh`
@@ -78,9 +75,7 @@ version identically.
 phases, reports and log-line kinds only (v19 added the `RATIFIED`/`VETOED` kinds and the `HASHES`
 obligation to the local log; v20 added the `directive` kind, moved the body hash onto the `item` line
 and widened `discard` to `init` — all of which are the local record's shape, never a property, option,
-database or file layout on the target). *Added v17 after a measured campaign where a behaviour-only bump halted every run that had a
-prior log, or forced a run to violate a mandated halt to get anything done: the check could not tell
-the two kinds of gap apart, so it treated the harmless one as the dangerous one.*
+database or file layout on the target).
 
 ## Two roots — read this first
 
@@ -102,7 +97,7 @@ both are announced.
 ## Before any run — six checks
 
 1. **Which project, and which target?** One Blueprint per project. Resolve the target from the working
-   folder's `target.md` ([`spec/targets.md`](spec/targets.md) §5), or ask the human once and record it —
+   folder's `target.md` ([`spec/targets.md`](spec/targets.md) §5), or ask the human once and record it
    *`status` may ask, but records nothing, because it never writes.* Never work across two projects in
    one run.
 2. **Is the target reachable?** On Notion, fetch the overview page; a permissions failure is fixed by a
@@ -201,7 +196,7 @@ both are announced.
    figures · **brand copy — meaning final user-visible wording in the product's voice**: a default may
    fix a message's existence, trigger and content requirements, with neutral wording labeled
    *illustrative*, but never settles final copy, which is the client's one batched sign-off rather than a
-   per-string question · contractual scope · **dates and calendar commitments however phrased** —
+   per-string question · contractual scope · **dates and calendar commitments however phrased**
    deadlines, seasons, windows, durations, unlock cadences · terms the client coined ·
    **retention or deletion windows for user-provided media** · and **anything touching children's or
    minors' data**. The ledger line ends with one clause naming what client-owned thing the default does
@@ -210,7 +205,7 @@ both are announced.
    material is not reversible**, however adjustable its window. An external authority's
    mandate is adoptable **only** where the requirement is mechanical with exactly one published compliant
    behavior; which regime applies, or what duties it triggers, is always a question. A project's
-   **always-ask register** — a dated `Operating`-block list a human widens and only a human widens —
+   **always-ask register** — a dated `Operating`-block list a human widens and only a human widens
    excludes its topics from defaulting entirely; **every register starts with two mandatory entries**,
    *minors' data protection and child-recording consent* and *regulatory applicability*, which no human
    removes (they restate the list's own hardest clauses where project staff will actually read them). A default never overrides existing text (that collision
@@ -220,11 +215,7 @@ both are announced.
    any marker. **A marker blocks nothing** (v13): it is an admitted gap, named in every `status` report, never a gate.
 5. **A generated question is a question, and the client packet is where a human still stands.**
    Generated questions land at `Status = Open` — live and readable from the moment they pass the Q4
-   admission gate, with no approval ceremony in between *(v13; the retired approval state and its per-row
-   approval were retired at the owner's direction, on the same logic that retired `Key`: the gate now
-   refuses at the cause, so a downstream compensator for over-generation buys nothing. Measured on the
-   run that prompted it — 43 of 43 standing rows re-admitted correctly, 0 of 7 carried markers admitted,
-   two independent passes)*. **What that moves, rather than removes, is the boundary that mattered:**
+   admission gate, with no approval ceremony in between. **What that moves, rather than removes, is the boundary that mattered:**
    the client packet is **sent only by a human, who decides what is in it** ([`questions.md`](questions.md)
    Q6): a run may print every `Open` row as candidates, but a candidate list is not a packet, and no run
    ever puts one to a client — so no run's own output reaches a client because a run wrote it. A run still
@@ -233,18 +224,13 @@ both are announced.
    fresh context or a different model for a check ([`init.md`](init.md) I6, [`resolve.md`](resolve.md)
    R3.2, and anything citing this rule), that means an actual second agent call — never the same turn
    narrating a second persona and calling it a check. **If nothing can dispatch a second agent, the check
-   has not happened:** say so in exactly those words —
+   has not happened:** say so in exactly those words
    `independence: could not be performed — no second dispatch available` — and treat the item as
    unverified, never as `Clean` or `Patched` off a self-review. **That string is earned by an attempt,
    never by a glance at a tool list** (v20). Before writing it, actually **try**: dispatch one
-   throwaway agent with a trivial prompt and see whether a reply comes back. Say which you did —
+   throwaway agent with a trivial prompt and see whether a reply comes back. Say which you did
    `dispatch probe: attempted, no mechanism` or `dispatch probe: attempted, failed — <the error>` — on
-   the same line. *Measured: in a five-project campaign where dispatch demonstrably worked and the runs
-   were told so, three of five runs read their tool surface, concluded no mechanism existed, and wrote
-   the unavailability string into the committed record; one of them then counted 46 items `Clean` off a
-   checker that never ran. The rule warned about claiming independence that did not happen and said
-   nothing about conceding it when it could — so a run could skip the skill's one structural defence
-   against a rubber stamp and be honest by its own lights while doing it.* A same-context self-review is the precise
+   the same line. A same-context self-review is the precise
    configuration these checks exist to catch, evidenced by a simulated run that certified a required
    clause as present and traced when the same context had itself left it out. **Two more strings for the
    states between:** `independence: separate dispatch, writer model not captured` — a real second
@@ -272,7 +258,7 @@ both are announced.
    fixture the two readings differ by **18 question rows out of 10 written**. So, decided:
 
    **(a) A routing with no second verdict keeps its first routing and is marked `unverified`.** It is
-   not promoted to a question. *"Fails open to asking"* governs a **divergence between two verdicts** —
+   not promoted to a question. *"Fails open to asking"* governs a **divergence between two verdicts**
    it needs two — and says nothing about having none. Promoting every unverified routing would convert
    the whole convention channel into review work on every dispatch-less run, which is the volume
    failure rule 5's gate exists to prevent.
@@ -293,16 +279,10 @@ both are announced.
    that one field, and a measured campaign's only stop-ship was a fabricated citation in `Why asked`,
    which the check could not see). A citation of document text in any run-written field is checkable
    **mechanically, with no second agent at all**: search the cited entity for the quoted string, **matching on normalised whitespace** — collapse runs
-   of spaces, newlines and tabs to one space on both sides before comparing. *A literal match keeps 5
-   of 19 quotations on a measured run, because a document wraps its lines and a quotation does not;
-   the run that got this right invented the normalisation itself, which means the rule was underwritten.*
+   of spaces, newlines and tabs to one space on both sides before comparing.
    Found at the cited place → the quotation stands, and the run records `citation: matched <entity> <block>`. Not found → the
    direction is written **without the quotation**, saying so, and the mismatch is reported.
-   *v17 narrowed this. Written unconditionally it stripped **every** grounding quotation from every
-   direction on every dispatch-less run — one measured project went from 7 verified quotations to 0
-   of 26 — to prevent the single fabricated citation that a string match would have caught outright:
-   a sentence attributed to the overview that only ever existed in a pitch deck. Fabricated citations
-   1 → 0 is worth having; grounded citations n → 0 is not the way to get it.*
+
 7. **Every count is counted fresh, never carried forward.** A number written into a run-log entry, a
    report, or a generated view — how many markers, how many rows in a status, how many features
    carry an open marker — is produced by counting the actual current state at the moment of writing, never copied
@@ -317,7 +297,7 @@ both are announced.
    measured sitting had two before this line was standing. The orchestrator's own reads run no more
    than three in flight — the per-connection limit
    ([`spec/notion-mechanics.md`](spec/notion-mechanics.md) §4) — honouring `Retry-After`, backing off
-   together. **(ii) Every content write goes through one serial commit path, in commit order** —
+   together. **(ii) Every content write goes through one serial commit path, in commit order**
    fetch-diff, write, read-back, log line — so the run log's append order is the commit order.
    **Property writes are not part of the commit**: they stay where each run file puts them
    ([`resolve.md`](resolve.md) R5), which is what keeps a crash before the property writes leaving
@@ -335,11 +315,11 @@ from what people said, not from what somebody already built; where a project is 
 describes the behaviour as a source like any other. **Never tracks implementation** — no work items, no
 progress, no comparison against a running app. **Never runs on a schedule** — authentication is
 interactive, so every run is invoked by a human on purpose. **Never writes the overview silently**
-([`spec/doc-shape.md`](spec/doc-shape.md) §3). **Never rewrites the run log** — it is append-only. **Nothing crosses projects** —
+([`spec/doc-shape.md`](spec/doc-shape.md) §3). **Never rewrites the run log** — it is append-only. **Nothing crosses projects**
 merging two breaks the access control that teamspace membership provides.
 
 **And between runs it has no eyes at all.** Only three things reach the Blueprint: a source a human gave
-it, an answer a human vetted, and a labeled convention default a human ratifies in batch (rule 4 —
+it, an answer a human vetted, and a labeled convention default a human ratifies in batch (rule 4
 machine-labeled and reported until they do). A decision made in a meeting, an email, a thing somebody
 noticed — none of it enters unless a person puts it into one of those shapes. That gap is real and nothing in these
 files repairs it; the honest limit written down is worth more than a mechanism nobody would use.
