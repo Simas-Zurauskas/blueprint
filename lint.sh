@@ -345,7 +345,24 @@ status.md⋮the generated lists under the README⋮v19-c8-points-at-readme
 add.md⋮never the whole working folder⋮v19-add-ignore-entries
 resolve.md⋮RATIFIED. line that cleared it⋮v19-markers-cite-ratified
 status.md⋮ratified means the log carries a .RATIFIED. line⋮v19-c5-reads-ratified
-AGENTS.md⋮LC_ALL=C ./lint.sh⋮v19-agents-md-gate'
+AGENTS.md⋮LC_ALL=C ./lint.sh⋮v19-agents-md-gate
+SKILL.md⋮earned by an attempt⋮v20-dispatch-probe-required
+SKILL.md⋮dispatch probe: attempted⋮v20-probe-strings
+resolve.md⋮goes on the .item. line, at the moment that item⋮v20-hash-per-item
+resolve.md⋮^\| \*\*directive\*\*⋮v20-directive-kind
+resolve.md⋮A ratification or veto is not this run.s to execute⋮v20-resolve-redirects-ratification
+resolve.md⋮dispatch-unavailable⋮v20-deviation-class
+resolve.md⋮\*\*discard\*\* lines, for a candidate⋮v20-init-discard-kind
+init.md⋮An answer given at this stop has a home⋮v20-i3-stop-answers
+init.md⋮adopts no convention defaults⋮v20-i5-no-defaults
+init.md⋮Write each verdict that is not .Clean. into the run-log entry⋮v20-verdicts-appended
+init.md⋮wherever that write lands⋮v20-entry-opens-at-first-write
+questions.md⋮recorded .unverified.⋮v20-q4-unverified
+questions.md⋮verbatim check this step owes⋮v20-q6-verbatim-check
+spec/doc-shape.md⋮Verbatim is checked, not intended⋮v20-route5-verbatim-check
+spec/doc-shape.md⋮the line stands without one and is named in the report⋮v20-notdoing-missing-why
+spec/doc-shape.md⋮A body never cites this skill.s own machinery⋮v20-no-skill-paths-in-body
+spec/databases.md⋮first finds the words in the captured reply by string match⋮v20-databases-verbatim-check'
 
 FORBIDDEN='SKILL.md⋮^## The six commands|^## The seven commands⋮skill-command-count
 resolve.md⋮asked one at a time⋮r4-apparatus-one-act
@@ -405,7 +422,9 @@ spec/targets.md⋮in Status order⋮v19-no-status-order
 questions.md⋮distribution printed in the (run-log )?entry⋮v19-distribution-not-in-entry
 SKILL.md⋮v3.{1,3}v18⋮v19-legacy-range-restored
 blueprint-explained.html⋮When it is done:|since settling|objection on the row|missing, it$|shown verbatim|the log links|acknowledged item by item at⋮v19-html-drift
-README.md⋮A single grilling pass manages⋮v19-readme-no-reframed-44'
+README.md⋮A single grilling pass manages⋮v19-readme-no-reframed-44
+spec/doc-shape.md⋮four-hour response target⋮v20-content-rule-example-clean
+init.md⋮the entry is the first thing written after the structure exists⋮v20-no-contradictory-ordering'
 
 SINGLE_HOME='single home of where the working folder lives⋮1
 single home of the progress block⋮1

@@ -209,13 +209,21 @@ write.**
 
 **`Not doing` — how to write the line. All three parts, one line.** *"No native mobile app — the team
 cannot staff two clients; revisit if a customer asks and will pay for it."* The **why** carries the
-argument and has to be on the same screen as the refusal. The **revisit if** is what stops a refusal
+argument and has to be on the same screen as the refusal. **Where the source gives a refusal but no
+why, the line stands without one and is named in the report — the same rule the `revisit if:` gets, and
+for the same reason** (v20): a run never invents an argument for somebody else's decision, and a
+restatement of the refusal dressed as a because is worse than an honest gap. **A refusal whose why the
+source *did* give never goes somewhere with no room for it**: the overview's NOT-clause names the kind
+of thing the product refuses and has no why slot, so an exclusion that carries an argument is written
+as a `Not doing` line on the feature it binds, and the NOT-clause names the kind. *Measured: an
+exclusion with a stated why — "the partners voted against it in June" — was routed to the NOT-clause,
+and the argument left the document entirely with nothing reporting that it had.* The **revisit if** is what stops a refusal
 becoming dogma: the answer to a proposal becomes *"no, and here is exactly what would change our mind"*.
 A run **never invents** a `revisit if:`, and since v16 it does not ask for one either: a missing
 reopening condition is **one line in the report and nothing else**
 ([`../questions.md`](../questions.md) Q2 sweep item 4 is the single home). **No question and no
-marker** — a marker is an admitted unknown (§9), and a `Not doing` line whose *refusal and reason are
-both sourced* is a decision that has been made. Marking it would misreport a settled refusal as open
+marker** — a marker is an admitted unknown (§9), and a `Not doing` line whose *refusal is sourced* is a
+decision that has been made, whether or not the source also gave its reason. Marking it would misreport a settled refusal as open
 for as long as nobody supplies a reopening condition — permanently, for the exclusions nobody intends
 to revisit — and asking about it turns a made decision into a strategy conversation the client did
 not need to have.
@@ -241,6 +249,12 @@ YAML. Format is a ~2-point lever; content completeness is a 12–29 point one.
 
 **The rest of the rules.** **Ten minutes to fill** — longer means the feature is too big, so split it;
 never a licence to leave blocks as placeholders, which is how the −0.9% condition becomes the −11.8% one.
+**A body never cites this skill's own machinery** (v20) — no `spec/…` path, no rule number, no phase
+identifier like `I6` or `Q4`. Naming an act in plain words is fine, and the provenance lines below do
+it (*"by the faithfulness check"*). The
+Blueprint is read by people building a product, and a machine's own filing system in a requirement is
+the two-roots confusion ([`../SKILL.md`](../SKILL.md)) leaking into the front of the house; where a
+constraint is derived from another feature, cite **that feature**.
 **Behaviour describes what the product does, never how it is built.** **A rabbit hole is a negative
 constraint about *how***, in its own block, never mixed into the numbered requirements where
 mechanism-flavoured wording primes a memorised wrong solution. **A decided exclusion is a `Not doing`
@@ -268,8 +282,11 @@ Sources arrive full of things that are true and that nobody meant to publish int
 teamspace reads. **The default, on every project, is: write the role, never the specific.** No customer or
 third-party names, no individuals' names, no contract terms or dates, no penalties, no prices. So
 `"Northgate Retail Park — P1 4 hours, £250 penalty, contract to 2028-03-31"` is written as *"a site on the
-enterprise contract has a four-hour response target for P1 faults, with a penalty"* — and the requirement
-is just as failable.
+enterprise contract has a contracted response target for P1 faults, with a penalty for missing it"* — and
+the requirement is just as failable, because what makes it failable is the target existing and being
+missable, not its length. *(v20: this example used to keep "four-hour", which is a contract term the
+sentence above bars — the rule's own worked answer broke the rule, and a reader copying it would leak
+the one figure it was demonstrating how to remove.)*
 
 **One standing exemption, because the design mandates the thing the rule bars.** The rule is about the
 *product being described*, never about the people running the process. So: **the people-typed `Owner`
@@ -415,7 +432,21 @@ in the third.
 5. **It was decided outside the system and recorded here — a gate rather than a shortcut.** A decision
    made out loud, in a meeting, in a message clears a marker only by becoming an ordinary answer
    first. The run drafts the row: `Question` = the marker's own text; `Answer & why` =
-   the human's words **verbatim**, never a paraphrase; `Owner` is left alone — no run writes it ([`databases.md`](databases.md) §2). **Where the
+   the human's words **verbatim**, never a paraphrase; `Owner` is left alone — no run writes it ([`databases.md`](databases.md) §2).
+
+   **Verbatim is checked, not intended** (v20). Before a run may record any of this, the words it is
+   about to write must be **found in the captured reply** — the same mechanical test
+   [`../SKILL.md`](../SKILL.md) rule 6(d) applies to a quotation: search the stored capture for the
+   text, matching on normalised whitespace. **Text that is not there is not theirs**: the run does not
+   write it, does not set `Answered`, and says which row it could not record and why. A run may
+   summarise nothing into a human's mouth, compose nothing in their voice, and sign nothing with their
+   name. *Measured, and it is the reason this paragraph exists: a run wrote a ten-line first-person
+   answer — reasoning, a supporting fact and a closing "so I am comfortable saying it" — signed with
+   the human's name, at `Status = Answered`, on a question that human had never been asked, in a
+   session where they had said "do not take a guess from me". A second row recorded them accepting a
+   proposal that did not exist when they last spoke. Both were plausible, both were in character, and
+   neither was said. This is the laundering the whole document exists to prevent, arriving through the
+   one route that is allowed to write a human's words.* **Where the
    words were given to the run directly — at a review, in the working conversation — the row is recorded
    at `Status = Answered` as that human's own move, and the next resolve run writes it in.**
 

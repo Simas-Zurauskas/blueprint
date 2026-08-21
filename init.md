@@ -69,10 +69,16 @@ not wait.
 Record it before anything else ([`spec/targets.md`](spec/targets.md) §5). An answer naming somewhere else
 gets §6's reply: say what it would take, and do not improvise it.
 
-**Open the run-log entry before the first write**, and close it at the end. A command that logs only when
-it finishes leaves nothing for a concurrent run to see, and [`SKILL.md`](SKILL.md) pre-flight check 4
-has nothing to detect ([`resolve.md`](resolve.md) R1 owns that check). On a Blueprint with no log yet,
-the entry is the first thing written after the structure exists.
+**Open the run-log entry before the first write, wherever that write lands**, and close it at the end. A
+command that logs only when it finishes leaves nothing for a concurrent run to see, and
+[`SKILL.md`](SKILL.md) pre-flight check 4 has nothing to detect ([`resolve.md`](resolve.md) R1 owns that
+check). **The first write of an `init` is usually the source record at I1, not the target** — so the
+entry opens then, in the working folder, which exists before the Blueprint does. *(v20: a second
+sentence here used to tie the entry's birth to the structure's instead, which contradicts the rule
+above at every run that stops at I3 — the structure is created at I4, and a run that halts earlier has
+already written sources, hashes and a target address with no entry open. A measured campaign hit
+exactly that, and one run wrote its whole Blueprint across two sittings with no entry open at all.
+`lint.sh` now forbids that sentence returning.)*
 
 **Take each source however it is offered.** Do not ask anyone to reformat anything. A Notion page: fetch
 it, keep the link and a snapshot. An uploaded or pasted file: read it whole, keep it verbatim. A meeting
@@ -227,6 +233,17 @@ The human may confirm, change any line, add or cut features, or decline the whol
 normal outcome** — the source record survives and the next run starts from it. A confirmation arriving
 with edits is re-presented once, briefly, so nobody confirms a skeleton they have not seen.
 
+**An answer given at this stop has a home, and it is the source record** (v20). People answer the gaps
+on the screen while they are looking at them — and at this moment nothing exists to put an answer in:
+`questions.md` and the databases are created at I4, after the confirm. So the reply is captured
+**verbatim** as a message-shaped source like any other ([I1](#i1--collect-the-sources), hashed at
+capture), and the answers in it become rows at I7 the same way every other gap does — a row whose
+`Answer & why` carries those words and whose `Status` is what
+[`spec/doc-shape.md`](spec/doc-shape.md) §9 route 5 says it is. **Nothing is lost and nothing waits for
+the human to repeat themselves.** *Measured: an operator answered three questions at this stop, found
+there was nowhere to record them, and hand-authored the questions file herself — "I had three answers
+in hand and nowhere to put them."*
+
 **The overview names nobody.** The `Operating` block carried a named owner until 2026-08-06, when the
 owner had it removed ([`spec/doc-shape.md`](spec/doc-shape.md) §3, §6) — so this stop confirms no owner
 line, and per-question `Owner` is the only place a person is ever named. `Owner` is an informal label a human sets when it helps them and leaves empty when it does not — no run
@@ -279,7 +296,13 @@ change is one block at a time, as a proposal a human accepted
 
 **The never-guess rules.** A gap is a **marker, not a sentence** — inline, exactly where the unknown
 bites, **naming the entity it is about**, carrying `→ Question: carried` until I7 links it to a row or
-leaves it carried. A **contradiction is marked in both places**, gets one blocking question, and says
+leaves it carried. **That holds for every gap this phase meets, convention-settled ones included: I5
+adopts no convention defaults** (v20). The DEFAULT channel is [`questions.md`](questions.md) Q4's, with
+its four attestations and its disposition check, and this run reaches it at I7's handoff — a few
+minutes later, through the gate. *Measured: I5 named no default channel at all while
+[`SKILL.md`](SKILL.md) rule 4 plainly permits a labeled default sentence, and a run resolved the
+silence by writing four defaults here and back-fitting them to the ledger at I7, outside the check that
+exists to catch a bad one.* A **contradiction is marked in both places**, gets one blocking question, and says
 plainly that the two sources disagree; never averaged, never split, never quietly resolved in favour of
 the newer source. A **decided exclusion is a `Not doing` line**, never a question. **Every requirement
 must be able to fail.** And **sparse sources produce a sparse Blueprint, which is a success**: a
@@ -296,8 +319,9 @@ home of what "separate" requires and its fallback). The measured variable is mod
 a model recognises its own generations at 73.5% and prefers them. Record `independence: writer <a>,
 checker <b>`, or `independence: same model, fresh context only` where a genuine second dispatch happened
 in a fresh context, and do not call either one independence if it did not. **If no second dispatch is
-possible, say `independence: could not be performed — no second dispatch available` and treat every
-verdict below as unverified** — never write `Clean` off a check that never left the writer's own turn.
+possible — **and rule 6 makes that a probe's verdict, not a tool list's** — say
+`independence: could not be performed — no second dispatch available`, put the probe's result on the
+same line, and treat every verdict below as unverified** — never write `Clean` off a check that never left the writer's own turn.
 
 The brief gets exactly three things, each wrapped as data: the source record, the Blueprint **read back
 from the target** — never the draft that was pushed — and **the human's stop and checkpoint replies**,
@@ -347,6 +371,15 @@ unknown unknown, which is the one thing it exists to prevent.
 **One automatic retry per item**, then it goes to the human. No third pass, no debate. Nothing here is a
 blocker: nothing here is ever declared settled, so a `Flagged` item costs a line in the summary and an
 honest gap, not a stalled run.
+
+**Write each verdict that is not `Clean` into the run-log entry as it is reached, not at the close**
+(v20). `Clean` stays a count, closed at I7 — a count cannot be written incrementally and thirty-nine
+repetitions of the word are worth less than the number. I7's summary
+still carries the counts, but a verdict's durable home is the entry, and an entry is only closed at the
+end of a long phase — so a run cut between here and there leaves no evidence the check ran at all,
+having already stamped an `independence` line saying it did. *Measured in a campaign where several runs
+were interrupted: an entry carrying a real independence line and not one verdict, beside four feature
+bodies that had demonstrably been checked.* Same discipline as the per-item hash ([`resolve.md`](resolve.md) R2.3): record the fact where it happens, roll it up at the close.
 
 ---
 
@@ -408,7 +441,9 @@ summary line as well. **`Clean` is a count** (`I6 42 checked · 39 Clean`): a `C
 content is that nothing was wrong, the count carries it exactly, and a later reader learns as much from
 the number as from thirty-nine repetitions of the word.
 
-Then write the first run-log entry and print **one screen. Not three.**
+Then close the run-log entry this run opened at I1 — the counts, the `HASHES` roll-up and the closing
+line — and print **one screen. Not three.** *(v20: the older wording here read as opening the entry
+at this phase, which contradicted I1.)*
 
 ```
 BLUEPRINT INIT — «Golden Crumb» · 2026-08-04 · target: Notion
@@ -431,7 +466,10 @@ WHAT HAPPENS NEXT — read this once; nothing else says it
      answer and why directly and set Status = Answered — that move is your sign-off — or
      reject with a reason. Nothing reaches a client until you assemble and send the packet.
   3. Run /blueprint resolve. It writes each answer in and removes that marker.
-  4. Run /blueprint status any time — it prints what is still unsettled and what to
+  4. Ratifying or vetoing anything this run printed — the defaults ledger, the fixes
+     batch, the content manifest — is /blueprint questions, not resolve: say
+     "ratify <run id>" or "veto <run id> #n" to that command. Nothing else executes it.
+  5. Run /blueprint status any time — it prints what is still unsettled and what to
      do next. Nothing ever declares the document finished; that call is yours.
 
 Next       /blueprint status

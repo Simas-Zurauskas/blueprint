@@ -497,7 +497,14 @@ paragraph, leaving the operator's behaviour undetermined between two readings wi
 - **Both verdicts are non-question but differ** (DEFAULT vs DOC-FIX vs CONTENT SLOT): the two agree the
   client is not needed — that agreement stands. Route to **DEFAULT**, the most conservative of the three
   (labeled, ledgered, vetoable), with the disagreement printed on its ledger line.
-Never demoted, regardless of grounding: carried-marker transcriptions of
+**Where no second verdict exists, the routing keeps its first routing and is recorded `unverified`**
+([`SKILL.md`](SKILL.md) rule 6(a)–(c)) — the token goes on the candidate's own line: its ledger line
+for a default, its manifest line for a slot, its batch line for a fix, and the run's report states the
+unverified total **on its own line**, in rule 6(c)'s words — *"n items written unverified — no second
+dispatch was available."* **Rule 6 says every phase that verifies must carry the token; this is Q4
+carrying it** (v20: rule 6 named only [`resolve.md`](resolve.md) R3.3 and [`init.md`](init.md) I6, so
+this phase had no outcome vocabulary and a measured run recorded six defaults and sixteen routings with
+no verification state at all). Never demoted, regardless of grounding: carried-marker transcriptions of
 client-bound gaps, anything the document records as awaiting client sign-off or ratification, and a
 gap whose default a human vetoed (Q1). Every
 demotion is logged with its grounding quote, and the run-log entry prints the funnel fresh: drafted →
@@ -681,7 +688,9 @@ UI or spoken at the review — makes it `Answered`.
    `Status: Answered` where the words were given to the run directly — recorded as the human's own move —
    **and equally where a person relays an answer the client gave to a row this document asked**, the
    relayer named (v17). `Status: Open` only for a decision nobody put to this document.
-   [`spec/doc-shape.md`](spec/doc-shape.md) §9 route 5 is the single home of that split.
+   [`spec/doc-shape.md`](spec/doc-shape.md) §9 route 5 is the single home of that split — **and of the
+   verbatim check this step owes before it writes anything**: the words must be findable in the captured
+   reply by string match, and words that are not there are not written and no row is moved (v20).
 8. **Put the defaults ledger, the fixes batch and the content manifest to their human — one explicit act each, never
    ratification by silence.** The ledger prints risk-sorted (always-ask-adjacent and irreversible items
    first) with each line vetoable by number; the fixes batch prints each replacement beside what it

@@ -74,9 +74,11 @@ version identically.
 | **v13** | Removed the `Intent` select and the question-approval status. On a Blueprint built before v13 both survive in the schema and no run touches either ([`spec/databases.md`](spec/databases.md) §8) |
 | **v16** | **The run log moved off the target into `record/run-log.md`** ([`spec/targets.md`](spec/targets.md) §5), and the change log and its page were removed. A pre-v16 Blueprint keeps its Notion run log where it is — read for history, never rewritten — and new entries go to the local file, with one dated crossover line saying so |
 
-**Nothing else is on this list, and v17, v18 and v19 are deliberately not** — each changed rules,
+**Nothing else is on this list, and v17, v18, v19 and v20 are deliberately not** — each changed rules,
 phases, reports and log-line kinds only (v19 added the `RATIFIED`/`VETOED` kinds and the `HASHES`
-obligation to the local log, which is no property, option, database or file layout on the target). *Added v17 after a measured campaign where a behaviour-only bump halted every run that had a
+obligation to the local log; v20 added the `directive` kind, moved the body hash onto the `item` line
+and widened `discard` to `init` — all of which are the local record's shape, never a property, option,
+database or file layout on the target). *Added v17 after a measured campaign where a behaviour-only bump halted every run that had a
 prior log, or forced a run to violate a mandated halt to get anything done: the check could not tell
 the two kinds of gap apart, so it treated the harmless one as the dangerous one.*
 
@@ -233,7 +235,16 @@ both are announced.
    narrating a second persona and calling it a check. **If nothing can dispatch a second agent, the check
    has not happened:** say so in exactly those words —
    `independence: could not be performed — no second dispatch available` — and treat the item as
-   unverified, never as `Clean` or `Patched` off a self-review. A same-context self-review is the precise
+   unverified, never as `Clean` or `Patched` off a self-review. **That string is earned by an attempt,
+   never by a glance at a tool list** (v20). Before writing it, actually **try**: dispatch one
+   throwaway agent with a trivial prompt and see whether a reply comes back. Say which you did —
+   `dispatch probe: attempted, no mechanism` or `dispatch probe: attempted, failed — <the error>` — on
+   the same line. *Measured: in a five-project campaign where dispatch demonstrably worked and the runs
+   were told so, three of five runs read their tool surface, concluded no mechanism existed, and wrote
+   the unavailability string into the committed record; one of them then counted 46 items `Clean` off a
+   checker that never ran. The rule warned about claiming independence that did not happen and said
+   nothing about conceding it when it could — so a run could skip the skill's one structural defence
+   against a rubber stamp and be honest by its own lights while doing it.* A same-context self-review is the precise
    configuration these checks exist to catch, evidenced by a simulated run that certified a required
    clause as present and traced when the same context had itself left it out. **Two more strings for the
    states between:** `independence: separate dispatch, writer model not captured` — a real second
