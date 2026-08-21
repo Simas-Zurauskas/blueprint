@@ -152,8 +152,10 @@ since the last run — in the UI, at their own pace, without this skill.
 - **A ratification or veto given since the last run — this is the executor, and there is no other**
   (v19). A defaults ledger, a fixes batch or a content manifest is put to its human at Q6 step 8, and
   the human answers it **to a run** — in the conversation that closed that run (Q6 step 8 then calls
-  this procedure before closing) or to this one, by naming the batch (`ratify <run id>`, `veto
-  <run id> #3 #7`, `ratify the rest`). There is deliberately no field for it — the schema carries no
+  this procedure before closing) or to this one, by naming the batch — `ratify <run id>` ratifies all
+  three of that run's batches; `ratify <run id> defaults|fixes|slots` names one; `veto <run id> #3 #7`
+  names ledger lines (the numbered batch — a fix or a slot is vetoed by quoting its line); `ratify the
+  rest` after vetoes. There is deliberately no field for it — the schema carries no
   ratification state ([`spec/databases.md`](spec/databases.md) §8) — so a batch nobody has named to a
   run is unratified, however long it has stood, and [`status.md`](status.md) C5 says so. **Per ledger
   line, ratified:** the default is re-labeled `(standard practice — ratified <date>)` in the body, and
@@ -343,7 +345,7 @@ backlog no human could review.
 
 | Filter | Discard when | Instead |
 |---|---|---|
-| **Already answered** | A requirement, an `Edge cases` line, a `Not doing` line or the NOT-clause answers it — **and you can quote the sentence**. **An unratified `Default (… — ratify on review)` line that adopts the same behaviour counts here too** (v19): the gap is already on a ledger awaiting its human; it is neither a second default nor a question | Link to the answer, quoting it — for a default, the ledger line |
+| **Already answered** | A requirement, an `Edge cases` line, a `Not doing` line or the NOT-clause answers it — **and you can quote the sentence**. **An unratified `Default (… — ratify on review)` line that adopts the same behaviour counts here too** (v19): the gap is already on a ledger awaiting its human; it is neither a second default nor a question — a duplicate of a disposition already made, not a demotion (Q4's never-demoted clause governs candidates that would become a *new* default). **A candidate that contests the default's behaviour** is not a duplicate: it goes to Q6 step 8 as a veto candidate on that ledger line, never as a second default | Link to the answer, quoting it — for a default, the ledger line |
 | **Shown by the ratified design** | A ratified frame on the design-source record plainly shows it, **and following the drawing is safe, lawful and consistent with the document** | **Never a silent discard**: a frame-cited `adopted from design` entry on the defaults ledger, vetoable like any default. A drawing that itself embodies a risk — a child-operable consent control was the measured case — is a fork put to the client, not an adoption |
 | **Settled by convention** | [`SKILL.md`](SKILL.md) rule 4's four conditions all hold, each attested, and nothing on the never-defaultable list or the always-ask register is touched | Route to the **DEFAULT** channel (Q4) |
 | **Correction, not question** | Existing text is wrong in a way with a mechanically checkable winner (Q4's DOC-FIX admission) | Route to the **DOC-FIX** channel (Q4) |
@@ -496,7 +498,8 @@ paragraph, leaving the operator's behaviour undetermined between two readings wi
   client is not needed — that agreement stands. Route to **DEFAULT**, the most conservative of the three
   (labeled, ledgered, vetoable), with the disagreement printed on its ledger line.
 Never demoted, regardless of grounding: carried-marker transcriptions of
-client-bound gaps, and anything the document records as awaiting client sign-off or ratification. Every
+client-bound gaps, anything the document records as awaiting client sign-off or ratification, and a
+gap whose default a human vetoed (Q1). Every
 demotion is logged with its grounding quote, and the run-log entry prints the funnel fresh: drafted →
 routed default → routed fix → routed slot → written as a question. **The run records the same
 cost-and-outcome line resolve's R5 requires** — dispatches · tokens · wall-clock, marked self-reported —
@@ -590,7 +593,7 @@ promotion.)*
 | **Edit the wording** | stays `Open`, **the human's wording verbatim**, no status change | unchanged |
 | **Reject — not a real gap** | `Status: Rejected`, reason in `Answer & why` | **removed**, citing the rejected row ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 4) |
 | **Already decided** | `Status: Rejected`, pointing at what answers it | **removed**, citing the requirement or `Not doing` line that answers it |
-| **Reject — ask it better** | `Status: Rejected`, reason names the reword expected | **stays `carried`** — the gap is real, only the wording was wrong |
+| **Reject — ask it better** | `Status: Rejected`, reason names the reword expected | **returned to `carried`** (Q6 step 2) — the gap is real, only the wording was wrong |
 | **Skip / no answer** | stays `Open`, unanswered | stays `carried`, re-offered next sitting |
 
 **Rejecting requires a reason, and the reason is what decides the marker.** Without that split, rejecting
@@ -633,8 +636,9 @@ UI or spoken at the review — makes it `Answered`.
 1. **Verify every written row's marker was patched at Q4** — a marker still reading `carried` with a row
    written for it is a miss; patch it now, citing the row.
 2. **Execute every removal a human's rejection decided** — at a sitting (Q5), or in the UI since the last
-   run (Q1) — one at a time, each citing the row that justified it. **A marker
-   removal with no row ID in the log entry is a bug, not a tidy-up.** **And before step 3 runs, re-point
+   run (Q1) — one at a time, each citing the row that justified it — [`spec/doc-shape.md`](spec/doc-shape.md)
+   §9's closing line governs: a removal with no row ID (or, for route 6, no ledger line and `RATIFIED`
+   line) is a bug, not a tidy-up. **And before step 3 runs, re-point
    every marker whose row a human rejected *ask it better* back to `→ Question: carried`** (v19) — Q5's
    table and [`spec/doc-shape.md`](spec/doc-shape.md) §9 route 4 say that gap is real, but at this
    moment the marker still reads the row link, and step 3 would sweep it with the rest.
@@ -709,11 +713,14 @@ UI or spoken at the review — makes it `Answered`.
    as questions, with per-pass candidate counts and their distribution — numbers, not an account of them.
 10. **Regenerate every `⟳` view this sitting touched** ([`spec/doc-shape.md`](spec/doc-shape.md) §3's
    single home) — a fresh count from the rows as they now stand, never the prior view patched forward.
-   **And sweep the content rule** over every field this run wrote — `Why asked`, `Suggested directions`,
-   every default, fix and slot line, every `Question` title — and over every line it put into `record/`,
-   the entry and `record/runs/<run-id>.md` alike ([`resolve.md`](resolve.md) R2.5's list is the scope);
-   a finding is reported and the line is written as the role, never the specific, before the entry closes
-   and before `record/` is committed (v19: a standalone `questions` run had no sweep step at all).
+   **And sweep the content rule** over every in-scope field written since the last logged sweep, by a
+   human or by a run — [`resolve.md`](resolve.md) R2.5's predicate and field list, which this run's
+   `Why asked`, `Suggested directions`, default, fix and slot lines and `Question` titles all fall under —
+   and over every line this run is about to put into `record/`, the entry and `record/runs/<run-id>.md`
+   alike. **The sweep of the record runs before the lines are appended**: a line that cannot survive the
+   rule is written as the role, never the specific; a finding in a target field is reported, never
+   repaired (§6); and the entry's `SWEEP-NOTE` line carries both ranges so the next sweep starts from
+   here (v19: a standalone `questions` run had no sweep step at all).
 11. **Report** — every count in it freshly derived at the moment of printing ([`SKILL.md`](SKILL.md)
    rule 7), never carried from an earlier sitting's tally. It opens with the
    **funnel line** — candidates drafted → routed default → routed fix → routed slot → written as

@@ -132,8 +132,10 @@ entire failure catalogue)
 - **Commit `record/` after each run's write-back, on either target** — with the run id as the message,
   and **only after the content-rule sweep has passed over everything this run put there**
   ([`../resolve.md`](../resolve.md) R2.5, [`../init.md`](../init.md) I7, [`../add.md`](../add.md) A5,
-  [`../questions.md`](../questions.md) Q6): a finding holds the commit until a human has resolved it,
-  because a commit publishes (v19). The commit stages `record/` and nothing else, on whatever branch is
+  [`../questions.md`](../questions.md) Q6 step 10). That sweep runs **before** the lines are appended —
+  a line that cannot survive the rule is written as the role, never the specific — so a finding that
+  somehow reaches commit time is a defect in the run: it holds the commit and is reported, because a
+  commit publishes (v19). The commit stages `record/` and nothing else, on whatever branch is
   checked out, and says so.
   On Notion the working folder sits in the workspace, which is usually a repo; where it is not, the
   record lives on one machine and `status` says so rather than guessing. **No version history unless
@@ -223,7 +225,9 @@ body. That sweep is the reason committing the record is safe rather than merely 
   captured into `sources/<run-id>/`; a message-shaped source — the captured text exactly as stored there;
   a feature body — the body text **as the target returns it on a fresh read**, from `## Why` to its end,
   line endings normalised to `\n`, trailing whitespace on each line stripped, **never** including the
-  read-out line (§4 — a projection, not body text); a block — the same rule over that block only.
+  read-out line (§4 — a projection, not body text); a block — the same rule over that block only; a
+  property (`Answer & why` on the overview route, [`../resolve.md`](../resolve.md) R3.1) — its text as
+  the target returns it, same normalisation.
   Escapes a target adds on the round trip (`\[NEEDS CLARIFICATION`, [`notion-mechanics.md`](notion-mechanics.md)
   §3) are hashed as returned, consistently, on both sides of every comparison.
 - **What the local run log costs, stated rather than discovered.** Two runs on two machines against the

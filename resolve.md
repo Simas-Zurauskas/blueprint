@@ -103,7 +103,10 @@ compare — the check is vacuous there.
 **Capture-integrity check.** For every source record this Blueprint's runs have written, re-derive the
 hash of **the record's own stored copy** — the text under `sources/<run-id>/` that I6 and A5 actually
 checked the Blueprint against ([`init.md`](init.md) I1; the hash rule is
-[`spec/targets.md`](spec/targets.md) §5) — and compare it with the hash the record states. A mismatch
+[`spec/targets.md`](spec/targets.md) §5) — and compare it with the hash the record states, or with the
+newest R1 `NOTE` re-baseline naming that source where one exists. **A record whose stored copy is not
+on this machine** (`sources/` is never committed) **is reported as uncheckable — [`status.md`](status.md)
+S1's pattern — never as a mismatch, and the run proceeds.** A mismatch
 means the record was altered after capture — **report and halt**, because every faithfulness verdict
 downstream rests on the record being what it claims to copy. A measured lab's worst yardstick
 corruption — four persona files rewritten under their captured records — was exactly this shape, and
@@ -347,7 +350,9 @@ own block text there, and set this back to `Answered`."*
 the verbatim acceptance [`spec/doc-shape.md`](spec/doc-shape.md) §3 requires — a person saw the exact
 words and chose them — so the run **writes the block** and the row goes `Applied`. Nothing further is
 asked. **The test is mechanical** (v19): `Answer & why` differs from what it held when round one
-flagged the row (the `HASHES`-style comparison R2.3 makes, over the property). A row set back to
+flagged the row — round one's `FLAGGED` line records the property's hash at the flag
+([`spec/targets.md`](spec/targets.md) §5's rule, over the property text as returned), and round two
+compares against it. A row set back to
 `Answered` with `Answer & why` unchanged is **not** an acceptance — a status flip carries no words —
 and it ends `Flagged` again with the same objection, once, named by R4; it is never written off the
 flip, and [`spec/databases.md`](spec/databases.md) §3's *"an answered question is never edited"* does
@@ -554,7 +559,7 @@ not a failure state.** It means *this one needs you, and here is exactly what fo
 | An edit this seam did not make (R2.3) | both texts, quoted. **Vouching for it is moving the row back to `Answered`** — there is no other channel and no run vouches for anybody |
 | The row fails R2.1 — a `Touches` naming a feature that is not there, an answer that is only a link | the one-line fix, in the owner's own words |
 | The feature body is not a spec any more (R2.4) — a `Behaviour` block with no numbered requirement | which named block is missing. **The run still writes none of it** |
-| A project-level answer whose home is an overview block (R3.1) | the proposed block text **verbatim**, for a person to accept in the UI. The front door is never written without that acceptance ([`spec/doc-shape.md`](spec/doc-shape.md) §3) |
+| A project-level answer whose home is an overview block (R3.1) | the proposed block text **verbatim**, for a person to accept — by copying it into `Answer & why` (or writing their own words there) and setting the row back to `Answered`; a status flip alone is not an acceptance (R3.1). The front door is never written without that acceptance ([`spec/doc-shape.md`](spec/doc-shape.md) §3) |
 | An answer whose home is outside the Blueprint (R3.5) | the counter-case in one line, and that `Closed (not applied)` is a human's move |
 
 **A seed `FR-1` is written, not proposed.** Where a vetted answer is the only content a body has, it
@@ -573,7 +578,8 @@ NEEDS YOU (3) — every one of these is Flagged; nothing is waiting silently
   «What is the refund window?»     the answer is only a link. Write the decision in a
       sentence and set the row back to Answered.
   «What does success look like?»   project-level; its home is the overview's product
-      paragraph. Proposed text, verbatim — accept it in the UI and the next run writes it:
+      paragraph. Proposed text, verbatim — copy it into Answer & why (or write your own),
+      set the row back to Answered, and the next run writes it:
       "Success in month one is …"
 ```
 
@@ -799,7 +805,7 @@ read it.*
 | **check** *(→ `runs/`)* | one line per named check — R1's pre-flight halts, R2's per-check lines. **One exception stays in the log: R1's dated version-reconciliation line**, because a later run's version check reads it back and `runs/` files are not indexed (v17 — R1 and this table disagreed about that one line) |
 | **item** | one per item: row · verdict · feature ID · the delta as a **pointer** — `«Feature» FR-n`, never a recap of what it says, which the body's own provenance line already carries. On `init` and `add`, where a commit has no queue row, the item is its feature ID with the source segment or `CON-k` it came from |
 | **group heading** *(→ `runs/`)* | the `APPLIED` · `NOT APPLIED` · `FLAGGED` headers, and the blank line between blocks. Layout, carrying no fact of its own |
-| **FLAGGED** | one per row: the row and its objection. The database has no field for it and [`status.md`](status.md) C1 reads it here, so this one explanation is deliberately durable. **The content rule binds this line** ([`spec/doc-shape.md`](spec/doc-shape.md) §6): an objection quotes an answer's words as the role, never the specific — this file is committed, and a barred specific written here is published, not stored (v19) |
+| **FLAGGED** | one per row: the row and its objection — and, on R3.1's overview route, the hash of `Answer & why` at the flag, which round two compares against. The database has no field for it and [`status.md`](status.md) C1 reads it here, so this one explanation is deliberately durable. **The content rule binds this line** ([`spec/doc-shape.md`](spec/doc-shape.md) §6): an objection quotes an answer's words as the role, never the specific — this file is committed, and a barred specific written here is published, not stored (v19) |
 | **MARKERS** | removed, each citing its row ID — or, for a route-6 removal, the ledger line and the `RATIFIED` line that cleared it · carried · deliberate holds |
 | **GATE** | applied · returned · `overturns n` — and a miss rate **only** where a sitting exceeded the threshold or the brake fired |
 | **SWEEP** | the closing sweep's three numbers |
@@ -826,7 +832,6 @@ manifest**, one line per **demotion** and one per **discard**, and the **funnel*
 2026-08-12 09:14 · resolve · run 7f3a2c · skill v1 · sitting 1 · 6 of 18 queued
 independence: writer <a>, checker <b>
 SWEEP-NOTE   content rule swept rows 1–18 · 0 findings
-
 item         «Can a customer retry a failed…»   Clean      3afc…b75  «Checkout» FR-2, FR-5
 item         «Do slots roll over at midnight?»  Patched    04ab…4ef  «Pickup slots» FR-3
 item         «Should menus show sold-out items?» no change 9c31…2ab  already carries it: «Menu» FR-4
@@ -842,7 +847,7 @@ COUNTS       Answered 13 · Applied 47 · Flagged 2 · Open 26 = 88
 PAUSED — sitting 1 of a continuing run, 12 rows still queued
 ```
 
-**Seventeen lines for six items, and every one of them is read by something.** *(v19: the two flagged
+**Sixteen lines for six items, and every one of them is read by something.** *(v19: the two flagged
 rows used to read `not applied` and `contradicts «Checkout» FR-5` — a third state R4 abolished, and the
 contradiction R3.2 now supersedes; both were pre-v16 residue a run would have copied.)* *(v17: this sample used
 to print `APPLIED` / `NOT APPLIED` / `FLAGGED` group headings inside the entry — layout the kind
@@ -879,7 +884,7 @@ review's true length**, bounded by changes rather than document size. **The flag
 always.**
 
 ```
-RESOLVE — 2026-08-12 · run 7f3a2c · 4 changes · 3 need you
+RESOLVE — 2026-08-13 · run 3e9d1b · 4 changes · 3 need you
 independence: writer <a>, checker <b>
 
 ► NEEDS YOU (3) — every one of these is Flagged

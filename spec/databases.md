@@ -247,4 +247,8 @@ Reintroducing one needs a better reason than "it would be nice to know".
   creation by stated criteria — nobody fills a form — binary rather than a graded ladder, and needed by
   the write-all design's own volume; a 70-row batch without triage is a list nobody reads. The bar
   otherwise stands: no tiers, no scores, no dates.*
+- **A ratification state — on a default, a fix, a slot or a row.** The act lives in the run log's
+  `RATIFIED`/`VETOED` line ([`../resolve.md`](../resolve.md) R5), named to a run
+  ([`../questions.md`](../questions.md) Q1). A field would be a second thing to keep in step and a place
+  for ratification by click without the words that make it a human's act (v19).
 - **Any cross-project database.** Ever.

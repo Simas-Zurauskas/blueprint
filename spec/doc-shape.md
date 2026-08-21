@@ -410,7 +410,7 @@ in the third.
    what decides this ([`../questions.md`](../questions.md) Q4): those two reasons say the marker was
    raised over nothing, so it goes, citing the rejected row or the requirement that answers it.
    **A rejection reading *ask it better* removes nothing** — the gap is real and only the wording was
-   wrong, so the marker stays `carried`. Without this split, rejecting a badly-worded proposal either
+   wrong, so the marker is returned to `carried` ([`../questions.md`](../questions.md) Q6 step 2). Without this split, rejecting a badly-worded proposal either
    stranded the marker forever or silently converted a known unknown into an unknown unknown.
 5. **It was decided outside the system and recorded here — a gate rather than a shortcut.** A decision
    made out loud, in a meeting, in a message clears a marker only by becoming an ordinary answer
