@@ -180,7 +180,14 @@ putting one back costs a sentence too.
    tombstone. Every change carries a dated provenance line under the requirement it touched, citing the
    source.
 3. **Read it back and confirm it landed** — nothing dropped, no cross-link degraded.
-4. **A source-vs-document contradiction is written — the source supersedes.** In the default mode the
+4. **Append the `item` line before the next write** ([`resolve.md`](resolve.md) R5), carrying the body
+   hash taken at step 3's read-back. **One per body write, not one per feature** (v21) — a marker mint,
+   a default line, a fixes-batch amendment and a post-A5 content-rule correction each take their own, in
+   addition to any ledger, batch or `MARKERS` line they also owe ([`SKILL.md`](SKILL.md) rule 8(ii));
+   R5's `HASHES` roll-up is a roll-up of these lines, never a substitute for them. A measured run turned
+   seven body writes into four `item` lines, wrote one body with no line at all, and wrote two others
+   twice under one line each.
+5. **A source-vs-document contradiction is written — the source supersedes.** In the default mode the
    requirement, `Edge cases` line or `Not doing` line is **rewritten in place, keeping its number**,
    and gains a dated provenance line quoting what it replaced
    ([`spec/doc-shape.md`](spec/doc-shape.md) §5):
@@ -188,14 +195,23 @@ putting one back costs a sentence too.
    > *(Superseded 2026-08-11 from «Client call transcript 22:10» — previously: "a paid order cannot
    > be changed".)*
 
+   **Where the superseded fact is also restated outside a body line** (v21) — a feature's
+   `What it does` property, or a `[NEEDS CLARIFICATION]` marker quoting the old text — **that
+   restatement is superseded with it**, and because provenance lines live only in the body under a
+   requirement ([`spec/doc-shape.md`](spec/doc-shape.md) §5), its replaced text is quoted in the
+   provenance line of the requirement carrying the same fact. Every such site is named on the `CON-k`
+   run-log line and counted in the report's supersession total. **A written question row is never
+   edited** — its stale quotation is one `CARRIED-FORWARD` line owed to a person.
+
    **Not a tombstone.** §8's tombstone is for a *withdrawn* requirement and its slot is never refilled;
    a superseded requirement stays live. **A tombstoned requirement is never superseded** — new
    behaviour there takes a new number.
 
-   **Four things a supersession never touches**, and they are the whole guard set:
+   **Four things a supersession never touches**, and they are the whole guard set of things it may not
+   rewrite:
    **(a)** a block that changed **since this run read it** — that is a foreign edit, step 1 applies,
    operation 8 unchanged; **(b)** any **human-authored field** (rule 1); **(c)** the **overview,
-   including the NOT-clause** — it is an overview block, so it goes down step 5's route and is never
+   including the NOT-clause** — it is an overview block, so it goes down step 6's route and is never
    overwritten; **(d)** anything reached by an **instruction** rather than by what the source says the
    product does (rule 2).
 
@@ -208,7 +224,7 @@ putting one back costs a sentence too.
    **In `soft` mode none of this happens**: a marker at both places, one question, the existing text
    untouched. Where one side is a human-authored field a marker cannot sit on, the marker goes on the
    feature the row's `Touches` names and the entry records the substitution.
-5. **An overview block is never written by this run.** The front door is the one page every reader
+6. **An overview block is never written by this run.** The front door is the one page every reader
    trusts without cross-checking, and [`spec/doc-shape.md`](spec/doc-shape.md) §3 lets a run write one
    only as text a human accepted verbatim. With no stop there is no acceptance channel here, so the
    draft goes down [`resolve.md`](resolve.md) R3.1's **overview route** instead: a project-level
@@ -219,7 +235,7 @@ putting one back costs a sentence too.
    **The same route carries a `soft`-mode contradiction whose only side is the overview** — a contested
    NOT-clause gets a home instead of being dropped, which is the measured incident
    [`spec/doc-shape.md`](spec/doc-shape.md) §3 records.
-6. **A seed `FR-1`** is written where a feature's `Behaviour` block holds **no numbered requirement at
+7. **A seed `FR-1`** is written where a feature's `Behaviour` block holds **no numbered requirement at
    all** *and a source supports it* — that is ordinary sourced writing, not invention, and it is the
    same rule [`resolve.md`](resolve.md) R4 applies to a seed derived from a vetted answer. It is
    reported with its text. **`FR-2` onward is never minted**, and a seed with no source behind it is

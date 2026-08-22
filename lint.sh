@@ -322,12 +322,30 @@ spec/doc-shape.md⋮A relayed client answer is also .Answered.⋮v17-relayed-ans
 status.md⋮whose .Answer & why. is NOT empty⋮v17-status-sees-answered-open
 SKILL.md⋮verified. here is a string match, not a dispatch⋮v17-citation-string-match
 resolve.md⋮record/runs/<run-id>.md. alike⋮v17-sweep-covers-runs
-status.md⋮FUNNEL. line against the .DISCARD. lines⋮v17-c10-checks-funnel
+status.md⋮FUNNEL. line against the .discard. lines⋮v17-c10-checks-funnel
 resolve.md⋮stamped < n⋮v18-crosses-defined
 resolve.md⋮^\| \*\*citation\*\*⋮v18-citation-kind-exists
 SKILL.md⋮no bump without a register decision⋮v18-bump-obliges-register
 SKILL.md⋮matching on normalised whitespace⋮v18-citation-whitespace
 spec/databases.md⋮checked mechanically by string match⋮v18-directions-field-matches-rule6d
+init.md⋮i3-skeleton.md. before printing it⋮v21-i3-screen-persisted
+spec/targets.md⋮i3-skeleton.md⋮v21-i3-skeleton-in-layout
+spec/doc-shape.md⋮this carve-out does not apply⋮v21-carveout-needs-stored-text
+SKILL.md⋮Try three rungs before⋮v21-dispatch-ladder
+SKILL.md⋮succeeded via⋮v21-probe-records-route
+SKILL.md⋮or from an earlier sitting of the same run⋮v21-probe-guard-crosses-sittings
+resolve.md⋮repeats, character for character⋮v21-hashes-rollup-repeats
+resolve.md⋮The content rule binds every line of this print⋮v21-r4-print-bound
+resolve.md⋮each carrying its addends⋮v21-counts-show-addends
+spec/doc-shape.md⋮name of the product being described is not exempt⋮v21-product-name-not-exempt
+init.md⋮no defaults-ledger line and no marker is never⋮v21-uncited-fr-not-clean
+add.md⋮One per body write, not one per feature⋮v21-item-line-per-body-write
+add.md⋮restatement is superseded with it⋮v21-supersession-reaches-restatements
+questions.md⋮you can quote the row.s own words⋮v21-duplicate-needs-quote
+questions.md⋮counted as it emitted them and before deduplication⋮v21-repeat-round-emit-time
+questions.md⋮fresh random sample of the named ledger⋮v21-ratify-spot-check
+spec/databases.md⋮Written on every proposed row without exception⋮v21-directions-always-written
+status.md⋮SWEEP-NOTE. field counts⋮v21-c10-scope-widened
 spec/databases.md⋮The relayer is the human of record⋮v18-databases-admits-relayer
 questions.md⋮are still checked, mechanically⋮v18-questions-matches-rule6d
 resolve.md⋮^\| \*\*RATIFIED\*\* .{1,2} \*\*VETOED\*\*⋮v19-ratified-vetoed-kinds

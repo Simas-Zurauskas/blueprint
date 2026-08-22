@@ -186,6 +186,12 @@ block names** ([`spec/doc-shape.md`](spec/doc-shape.md) §3 is the single home o
 overview write is sanctioned only because these words were seen here, and a measured run whose I3
 screen listed block names shipped a contract term into the front door).
 
+**Write the screen verbatim to `sources/<run-id>/i3-skeleton.md` before printing it** (v21), hashed at
+capture like any other source ([I1](#i1--collect-the-sources)). It is the **referent of the reply**
+captured below, and [`spec/doc-shape.md`](spec/doc-shape.md) §3's sanction attaches to *these exact
+words* — so a sitting that ends at this stop leaves the confirmed text on disk for the sitting that
+resumes, which has no other way to know what the human actually saw.
+
 ```
 BLUEPRINT SKELETON — proposed. Nothing has been created.
 target: Notion · «Golden Crumb» teamspace
@@ -347,6 +353,11 @@ why. **`Noted — not a claim defect`** — an advisory about the run's own reco
 not a claim; it **must appear on the summary line**, never only in prose, because a reader of the
 verdict line alone must see it. And a zero-write check audits the zero: what did not move, what did not
 leak, and the run's own log entry.
+
+**A numbered requirement with no cited source segment, no defaults-ledger line and no marker is never
+counted `Clean`** (v21) — it is `Unverifiable — outside this brief` at worst. The test is mechanical
+against the `citation` lines the run already writes, and a measured run returned `28 checked · 28 Clean`
+over a body carrying a requirement no source supported.
 
 **Why deleting a claim must leave a gap behind.** *"A closed incident cannot be reopened"* was written from
 nothing and correctly deleted — and with it went the only trace that **nobody knows whether a closed

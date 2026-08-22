@@ -184,6 +184,7 @@ It holds:
     runs/<run-id>.md       that run's operational detail
   sources/               DURABLE — never deleted. NEVER committed: client material, verbatim
     <run-id>/              the source record for one run
+      i3-skeleton.md       the confirmed skeleton, verbatim — the referent of the I3 reply (v21)
   cache/                 REBUILDABLE — delete it freely; the next run rebuilds it
     mapping.md             entity IDs, parents, child order, a content hash per entity
 ```

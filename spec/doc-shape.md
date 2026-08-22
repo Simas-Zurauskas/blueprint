@@ -101,6 +101,14 @@ calls it *"the largest single write the overview ever receives."* That write is 
 skeleton a human confirms at I3 must carry the block text itself, not only the block names**, or the
 acceptance is of a table of contents rather than of prose.
 
+**The sanction attaches to the words on disk, not to the memory of them** (v21). I3 writes the screen
+to `sources/<run-id>/i3-skeleton.md` before printing it ([`../init.md`](../init.md) I3), so a resuming
+sitting writes the blocks **the human actually confirmed**. **Where that text is not on disk to compare
+against, this carve-out does not apply**: the run re-derives the skeleton, re-presents it at I3, and
+waits — it does not write the front door off a confirmation whose object it cannot see. A measured
+campaign found every project's resuming sitting re-deriving the overview silently, and one of them
+changed a numbered requirement's meaning in the process.
+
 **And after the first write, a barred specific in an overview block has a route** — it is not stranded.
 The run reports it and proposes the corrected block text verbatim, exactly as any other overview
 change; where no acceptance arrives, [`../resolve.md`](../resolve.md) R3.1's overview route carries it
@@ -295,6 +303,13 @@ line in the overview's `Operating` block**, which every run already reads. Where
 load-bearing and the default forbids it, that is a question row with an owner, not a judgement call inside
 a draft. Every writing sub-agent is briefed with this rule, a delta breaking it is refused, and
 [`../status.md`](../status.md) C9 sweeps for it after the fact.
+
+**The name of the product being described is not exempt** (v21). Where no source names the product, the
+document writes *the product* and the name is a question row: **a client's or any organisation's name
+used as the product's name is a customer name wherever it stands**, the page title included. A measured
+run wrote a practice's own name as the product's on every occurrence in the overview and in twelve
+question rows, and both the dispatched faithfulness check and the `init` content-rule sweep returned
+clean over it — the next run's checker caught it.
 
 **Where this rule collides with [`../SKILL.md`](../SKILL.md) rule 1 — a barred specific inside a
 human's verbatim field — there is one route and no other: a run never edits the field.** It reports the

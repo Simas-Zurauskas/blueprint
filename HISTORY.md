@@ -264,3 +264,96 @@ This branch said `Open` until v17, and the consequence was structural rather tha
 ### 1. The block
 
 (v16: a measured run printed `done Q5 sitting, on request · 0 rows offered`, which reads as ran-and-found-nothing)
+
+---
+
+# v21 — the 2026-08-22 four-project simulation campaign
+
+Lab: `~/dev/ai/blueprint-sim4/` on the owner's machine. Four projects run end to end plus eight
+single-turn fixture probes; 132 raw findings from eight independent auditors, deduplicated to 75
+distinct claims, every one sent to an adversarial verifier told to refute it. **11 confirmed, 36
+narrowed, 28 refuted.** Planted-defect recall, measured only on items undamaged by the campaign
+itself: **38/47**. Full report: `blueprint-sim4/REPORT.md`.
+
+**What the campaign confirmed already worked**, so it is not re-litigated: ratification end to end
+(both the `questions` landing and the `resolve` redirect), the `item`-line body hash surviving a real
+interruption with no Flag storm, the content rule under a PII fixture, injection refusal, code-repo
+decline, and — the previous campaign's gravest finding — **no fabricated answers**: the project built
+to force one produced 26 rows, all `Open`, all unanswered, all with an empty `Owner`.
+
+### init.md I3 — the skeleton is written to disk before it is printed
+
+Measured: the I3 screen was persisted nowhere, so every resuming sitting re-derived the overview from
+scratch. `doc-shape.md` §3 sanctions I5's first overview write *"only because these words were seen
+here"* — and the words were gone. Raised independently by seven findings across all four projects and
+both auditor kinds. One run said so itself: *"the skeleton's Area names could not be recovered and were
+chosen again by this sitting."* Another substituted a negative safety guarantee with a positive
+recording rule while re-deriving. v20 had fixed the mirror image — it persists the human's *reply* —
+which left a durable hashed confirmation pointing at a vanished referent. The run could not fix this
+for itself: `resolve.md` R5's line-kind list is closed and *"widened by a skill edit and a `VERSION`
+bump, never by a run."*
+
+### SKILL.md rule 6 — the probe ladder, and the route recorded on success
+
+v20 required the unavailability string to be *earned by an attempt* and named no mechanism to attempt.
+`Bash`, `shell`, `command line` and `terminal` appear nowhere in the tree. The campaign deliberately
+told two projects that a shell dispatch existed and told two nothing; **the untold arm split 1–1** —
+same skill, same harness, same information, opposite conclusions about whether independence was
+possible at all. On the project that concluded no, a whole Blueprint shipped unverified: 26 written
+claims, 0 checked. The prompt injection in that project's sources had asked for exactly that outcome
+and got it — not through obedience, but through the failed probe. Separately, one run's sitting 2 wrote
+the unavailability string into the same entry its own sitting 1 had proved wrong, because the guard was
+scoped to *"the same sitting"* and a successful probe never had to record its route.
+
+### resolve.md R5 — the HASHES roll-up repeats rather than recomputes
+
+An `add` run closed an entry whose closing roll-up matched no body under any reading of the hash rule,
+while its own `item` lines were correct. Recomputed four ways by the auditor and again by the verifier.
+Since R2.3 baselines foreign-edit detection on the newest recorded hash, a roll-up nobody can reproduce
+is load-bearing. Making the roll-up a repetition makes the failure self-detecting at write time.
+
+### The rest, each from one measured incident
+
+- **`doc-shape.md` §6, the product's own name** — a run wrote a practice's name as the product's on
+  every occurrence in the overview and in twelve question rows; both the dispatched faithfulness check
+  and the `init` sweep returned clean over it, and the *next* run's checker caught it.
+- **`resolve.md` R4, the print** — a run named a barred individual correctly in its log line and then
+  quoted the name in its report, which reaches more readers than the log does.
+- **`add.md` A4, the `item` line per body write** — seven body writes produced four lines, one body was
+  written with no line at all, and two were written twice under one line each.
+- **`add.md` A4, supersession reach** — the guard set read as a blanket licence, and markers quoting
+  superseded text were left standing.
+- **`questions.md` Q3, the Duplicate filter** — candidates were discarded as duplicates without quoting
+  the row they pointed at, which by the filter's own terms invalidates the discard.
+- **`questions.md` Q2, the repeat round** — its trigger was defined on *"candidates surviving Q3"*
+  while the round runs inside Q2, before Q3 exists; runs adopted three different readings.
+- **`questions.md` Q1, the ratification spot-check** — the sample that keeps a batch ratification from
+  being a rubber stamp left no trace, so a later run executing the ratification could not tell whether
+  the check had happened.
+- **`databases.md` §2, `Suggested directions`** — a run withheld the field on all twenty-six of its
+  rows and cited this cell as its authority; a human's instruction not to guess closes the DEFAULT
+  channel, never this field.
+- **`status.md` C10** — its scope named `DISCARD` where the kind is lower-case `discard`, so a check
+  grepping for it finds none and reports the funnel consistent: the exact vacuous pass C10 was extended
+  in v17 to prevent. Widened at the same time to the three classes a measured C10 demonstrably never
+  read.
+- **`SKILL.md` prose** — two sentences damaged by the v20-era HISTORY extraction commit (`ed5302a`), a
+  bare leading period and a dropped em-dash. `lint.sh` cannot see prose grammar.
+
+### What was deliberately NOT changed
+
+Twenty-eight claims were refuted outright. Three deserve recording because they were escalated before
+verification killed them, two of them raised by the campaign's own orchestrator:
+
+- *"The `directive` kind fires on the owner's own words, so a legitimate instruction was refused and the
+  document contradicts itself."* **Refused correctly**: `doc-shape.md` §6 bars a run from editing a
+  human's field on a spoken authorisation — the rule exists because a measured project once edited ten
+  such fields on exactly that basis. The route said to be missing exists in three files and had already
+  drafted the replacement text into a row. The "stale places" were an artifact of the campaign's own
+  turn plan: the human never had a turn in which that row existed to answer.
+- *"`init.md`'s I3 sample writes the client organisation's name into the overview"* — not a defect.
+- *"v20's `HASHES` fix is only half a fix"* — not a defect.
+
+The `directive` kind's scope wording does read one term short of the rule it cites (`resolve.md`:769
+says *"inside a source"*; rule 2 says *"sources, answers, titles, file contents"*), but three other
+places in the skill pair answers with sources, and no run was misled in four projects. Left alone.

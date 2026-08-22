@@ -7,12 +7,12 @@ description: Build a well-rounded product definition — "the Blueprint" — bef
 
 One product definition per project, built **before** development from whatever exists — a client's
 material, a team's notes, or your own head and an idea. Its job is to be well-rounded before anybody
-builds: what the product does, why, what it deliberately will not do, and — named rather than guessed
+builds: what the product does, why, what it deliberately will not do, and — named rather than guessed —
 what nobody has decided yet. Every draft is **adversarially grilled** before it is written, because the
 gray areas a builder silently fills in are where products go wrong.
 
-**Nothing ever declares it finished.** There is no lock and no sign-off on the document as a whole
-. The only human sign-off left
+**Nothing ever declares it finished.** There is no lock and no sign-off on the document as a whole.
+The only human sign-off left
 is per question: moving a row to `Answered`. What is still open is a question for
 [`status.md`](status.md), answered fresh every time it is asked, rather than a state the document
 carries.
@@ -71,11 +71,11 @@ version identically.
 | **v13** | Removed the `Intent` select and the question-approval status. On a Blueprint built before v13 both survive in the schema and no run touches either ([`spec/databases.md`](spec/databases.md) §8) |
 | **v16** | **The run log moved off the target into `record/run-log.md`** ([`spec/targets.md`](spec/targets.md) §5), and the change log and its page were removed. A pre-v16 Blueprint keeps its Notion run log where it is — read for history, never rewritten — and new entries go to the local file, with one dated crossover line saying so |
 
-**Nothing else is on this list, and v17, v18, v19 and v20 are deliberately not** — each changed rules,
+**Nothing else is on this list, and v17, v18, v19, v20 and v21 are deliberately not** — each changed rules,
 phases, reports and log-line kinds only (v19 added the `RATIFIED`/`VETOED` kinds and the `HASHES`
 obligation to the local log; v20 added the `directive` kind, moved the body hash onto the `item` line
 and widened `discard` to `init` — all of which are the local record's shape, never a property, option,
-database or file layout on the target).
+database or file layout on the target; v21 added a dispatch-probe ladder and its route, an I3 skeleton capture under `sources/<run-id>/`, and clauses on existing log-line kinds — the working folder is not the target, so no target shape changed).
 
 ## Two roots — read this first
 
@@ -228,16 +228,33 @@ both are announced.
    `independence: could not be performed — no second dispatch available` — and treat the item as
    unverified, never as `Clean` or `Patched` off a self-review. **That string is earned by an attempt,
    never by a glance at a tool list** (v20). Before writing it, actually **try**: dispatch one
-   throwaway agent with a trivial prompt and see whether a reply comes back. Say which you did
-   `dispatch probe: attempted, no mechanism` or `dispatch probe: attempted, failed — <the error>` — on
-   the same line. A same-context self-review is the precise
+   throwaway agent with a trivial prompt and see whether a reply comes back.
+
+   **Try three rungs before `no mechanism`, in order, and name the ones you tried** (v21) — *"try" was
+   an instruction with no referent, and a measured campaign split 1–1 on it: two runs given identical
+   information reached opposite conclusions about whether independence was possible at all.*
+   **(i)** an agent-spawn tool, where the harness exposes one; **(ii) the shell** — a harness that can
+   run commands can almost always run this agent's own CLI, e.g.
+   `claude -p '<trivial prompt>' --model <a different model>`; **(iii)** any messaging route the harness
+   permits **to a non-human addressee** — never a person's own live session, which is somebody's work
+   and not a throwaway agent. **`attempted, no mechanism` is true only when every rung was tried**; a
+   rung that was refused is `attempted, failed — <the error>` **for that rung**, not for the probe.
+
+   Say which you did — `dispatch probe: attempted, no mechanism` or
+   `dispatch probe: attempted, failed — <the error>` — on the same line. **On a success, record the
+   route and not merely the verdict**: `dispatch probe: attempted, succeeded via <the literal call>`
+   (v21), because a later sitting of the same run cannot see this turn and has only the log to inherit
+   the working command from. A same-context self-review is the precise
    configuration these checks exist to catch, evidenced by a simulated run that certified a required
    clause as present and traced when the same context had itself left it out. **Two more strings for the
    states between:** `independence: separate dispatch, writer model not captured` — a real second
    dispatch happened but the writer's identity is missing, which is not the same as no dispatch — and
    `independence: available but not dispatched — <phase> took it` — the mechanism exists and another
    check consumed it; never write `could not be performed` in a log that sits beside real dispatch
-   verdicts from the same sitting, which a measured lab did seven times. **Every write run stamps its
+   verdicts **from the same sitting, or from an earlier sitting of the same run** (v21) — which a
+   measured lab did seven times, and once wrote the opposite verdict into the same entry its own
+   sitting 1 had proved wrong. **Where an earlier entry names a route that worked, re-run the probe by
+   that route before writing any unavailability string, and record that you did.** **Every write run stamps its
    own writing model into its run-log entry**, so `writer <a>` is derivable at all. **And one precedence
    where a single dispatch is available: pre-write verification of machine-drafted material
    ([`questions.md`](questions.md) Q4's suggested directions) outranks post-write faithfulness

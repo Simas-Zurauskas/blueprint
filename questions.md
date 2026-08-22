@@ -146,7 +146,12 @@ since the last run — in the UI, at their own pace, without this skill.
 - **A ratification or veto given since the last run — this is the executor, and there is no other**
   (v19). A defaults ledger, a fixes batch or a content manifest is put to its human at Q6 step 8, and
   the human answers it **to a run** — in the conversation that closed that run (Q6 step 8 then calls
-  this procedure before closing) or to this one, by naming the batch — `ratify <run id>` ratifies all
+  this procedure before closing) or to this one, by naming the batch. **A ratification named to a LATER
+  run is not executed until that run hands the human a fresh random sample of the named ledger's lines**
+  (v21) — read back from `record/run-log.md`, where those lines are already durable — **and has their
+  answer**; a ratification arriving in the same conversation keeps the sample Q6 step 8 has just handed
+  over. The spot-check is what keeps a batch ratification from being a rubber stamp, and it left no
+  trace a later run could see. `ratify <run id>` ratifies all
   three of that run's batches; `ratify <run id> defaults|fixes|slots` names one; `veto <run id> #3 #7`
   names ledger lines (the numbered batch — a fix or a slot is vetoed by quoting its line); `ratify the
   rest` after vetoes. There is deliberately no field for it — the schema carries no
@@ -271,8 +276,11 @@ success means — every other lens reads the features, and only this one reads t
    detected, zero hallucinated contradictions** — a different yardstick from the preamble's external
    44.4% one-pass recall (planted defects, graded in-house; no single-pass arm was run, so the two are
    not a before/after), and still never a completeness certificate.
-3. **One repeat round, budget-stated.** Any pass that surfaced two or more candidates surviving Q3 **in
-   any disposition — question, default, or fix alike** — is dispatched once more, fresh. (Counting only
+3. **One repeat round, budget-stated.** Any pass that surfaced **two or more candidates of its own,
+   counted as it emitted them and before deduplication** (v21 — the trigger used to read *"surviving
+   Q3"*, which is a phase this round runs before, so runs read it three different ways) — **in
+   any disposition — question, default, or fix alike** — is dispatched once more, fresh, **still inside
+   Q2; the round's findings join the merge and enter Q3 with the rest.** (Counting only
    written questions would starve the round exactly when the disposition channels are doing their job,
    and the round's measured yield includes real client questions.) **Two rounds is the budget, not a
    completeness claim** — a round finding nothing new means this generator is dry, never that no gaps
@@ -341,7 +349,7 @@ backlog no human could review.
 | **Shown by the ratified design** | A ratified frame on the design-source record plainly shows it, **and following the drawing is safe, lawful and consistent with the document** | **Never a silent discard**: a frame-cited `adopted from design` entry on the defaults ledger, vetoable like any default. A drawing that itself embodies a risk — a child-operable consent control was the measured case — is a fork put to the client, not an adoption |
 | **Settled by convention** | [`SKILL.md`](SKILL.md) rule 4's four conditions all hold, each attested, and nothing on the never-defaultable list or the always-ask register is touched | Route to the **DEFAULT** channel (Q4) |
 | **Correction, not question** | Existing text is wrong in a way with a mechanically checkable winner (Q4's DOC-FIX admission) | Route to the **DOC-FIX** channel (Q4) |
-| **Duplicate** | A question row already asks it, in **any** status | Point at that row |
+| **Duplicate** | A question row already asks it, in **any** status — **and you can quote the row's own words** (v21). If the quote cannot be produced the discard is invalid and the candidate is proposed | Point at that row, **quoting it verbatim** |
 | **Not a specification question** | The answer changes no requirement statement in this document. Business strategy, mission and goals, the business model, the client's **own internal process or operating policy**, and any *"under what conditions would we reconsider this"* — a different document's content, named in the scope statement above. **Two exemptions, both project-level and both asked once, ever**: *what one or two observable things would tell you this worked* and *who is this for* — [`spec/doc-shape.md`](spec/doc-shape.md) §3 makes both required overview content, so they are specification questions despite sounding strategic | Named in the report under its own heading; no row, no marker |
 | **Implementation, not intent** | The answer changes how it is built, not what the feature is — **unless materiality holds**: the choice (M1) alters a promise a user or the client can observe, (M2) sits on a project-specific, **historically expensive failure** this project has named, or (M3) is externally mandated. **And even then it is only a question if the decision must be taken outside the technical department** *(v16, owner's words)*: a choice a designer, a product lead or the client must make is admissible; one the engineers can settle among themselves is theirs, whatever it costs. Where it is admissible the document records the observable constraint in one sentence, never the mechanism; retry counts, teardown ordering, storage housekeeping and their kin are the builders' to decide. **M2 survives this tightening** — a failure this project has named is a standing constraint, not a fresh engineering choice | A `Rabbit holes` line, or nothing |
 | **Unanswerable here** | It turns on a party outside this project, or nobody can decide yet | Name it in the report; no row |
@@ -688,7 +696,7 @@ UI or spoken at the review — makes it `Answered`.
    conversation, this run executes it before it closes** — the Q1 procedure, run late: relabel, remove
    or revert per line, one `RATIFIED`/`VETOED` line each (v19: step 8 described the act and named no
    phase that performed it).
-9. **Every candidate's disposition is recorded, and every one that is not a question is a line in the log**
+9. **Every candidate's disposition is recorded, and every one that is not a question is a line in the log, **and every Q-phase write into a feature body also takes its own `item` line carrying the post-write body hash** (v21)**
    ([`resolve.md`](resolve.md) R5's closed list is the shape).
    A candidate that became a question is carried by its row and counted in the funnel — never re-listed
    line by line, which would put the whole backlog back in the log · a default is its **one**
