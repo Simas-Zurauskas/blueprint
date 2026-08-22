@@ -101,9 +101,25 @@
       nav.toc li { margin: 0.2rem 0; }
       nav.toc a { text-decoration: none; color: inherit; }
       nav.toc a:hover { color: var(--accent); }
-      .flow { font-family: var(--mono); font-size: 0.84rem; line-height: 1.9;
-              background: var(--panel); border: 1px solid var(--rule);
-              border-radius: 6px; padding: 1rem 1.2rem; margin: 1.3rem 0; overflow-x: auto; }
+      .fig { margin: 1.6rem 0; padding: 0; }
+      .fig svg { width: 100%; height: auto; display: block; overflow: visible; }
+      .fig .node { fill: var(--panel); stroke: var(--rule); stroke-width: 1.5; }
+      .fig .node.you { stroke: var(--accent); stroke-width: 2; }
+      .fig .node.run { stroke: var(--muted); stroke-width: 1.5; }
+      .fig .node.flag { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 5 3; }
+      .fig .node.soft { fill: var(--soft); stroke: none; }
+      .fig .node.sw { stroke-width: 2; }
+      .fig text { font-family: var(--sans); fill: var(--fg); }
+      .fig .st { font-size: 16px; font-weight: 650; }
+      .fig .stx { font-size: 14.5px; font-weight: 600; }
+      .fig .lbl { font-size: 12.5px; fill: var(--muted); font-style: italic; }
+      .fig .cap { font-size: 12px; fill: var(--muted); }
+      .fig .mid { text-anchor: middle; }
+      .fig .end { text-anchor: end; }
+      .fig .arrow { stroke: var(--muted); stroke-width: 1.5; fill: none; }
+      .fig .arrow.dash { stroke-dasharray: 4 3; }
+      .fig .ahd { fill: var(--muted); }
+      .fig .hr { stroke: var(--rule); stroke-width: 1; }
       .muted { color: var(--muted); }
       .yes { color: var(--ok); font-weight: 650; }
       .no { color: var(--accent); font-weight: 650; }
@@ -291,15 +307,82 @@
 
       <h2 id="question"><span class="n">5</span>The life of a question</h2>
 
-      <div class="flow">
-        marker minted  →  question written  →  <span class="muted">you answer, or reject with a reason</span>
-             ↓                                          ↓
-        Open  ─────────────────────────────────→  Answered
-                                                        ↓  <span class="muted">/blueprint resolve</span>
-                                          ┌─────────────┴─────────────┐
-                                     Applied                      Flagged
-                            <span class="muted">written in, marker gone</span>      <span class="muted">nothing derivable — an objection</span>
-      </div>
+      <figure class="fig">
+        <svg viewBox="0 0 700 452" role="img" aria-labelledby="lcTitle lcDesc">
+          <title id="lcTitle">The life of a question</title>
+          <desc id="lcDesc">
+            A gap becomes a marker and a written question at Open. You either answer it, moving it to
+            Answered, or reject it with a reason. A resolve run takes an Answered row and ends it either
+            Applied — written into the feature, marker removed — or Flagged, where nothing could be
+            derived from the answer. A Flagged row waits for you and returns to Answered once the
+            disagreement is resolved.
+          </desc>
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ahd" />
+            </marker>
+          </defs>
+
+          <!-- origin -->
+          <rect class="node soft" x="150" y="14" width="400" height="34" rx="17" />
+          <text class="cap mid" x="350" y="36">a gap nobody decided → a marker where it bites, and a question</text>
+          <path class="arrow" d="M350,48 L350,74" marker-end="url(#ah)" />
+
+          <!-- Open -->
+          <rect class="node run" x="278" y="74" width="144" height="46" rx="8" />
+          <text class="st mid" x="350" y="103">Open</text>
+
+          <!-- Open -> Answered -->
+          <path class="arrow" d="M350,120 L350,178" marker-end="url(#ah)" />
+          <text class="lbl" x="362" y="145">you answer it</text>
+          <text class="cap" x="362" y="162">in your own words</text>
+
+          <!-- Open -> Rejected -->
+          <path class="arrow" d="M422,97 C500,97 520,120 548,172" marker-end="url(#ah)" />
+          <text class="cap end" x="690" y="110">you reject it,</text>
+          <text class="cap end" x="690" y="126">with a reason</text>
+
+          <rect class="node you" x="500" y="178" width="128" height="42" rx="8" />
+          <text class="stx mid" x="564" y="204">Rejected</text>
+          <text class="cap mid" x="564" y="240">the reason decides</text>
+          <text class="cap mid" x="564" y="255">the marker’s fate</text>
+
+          <!-- Answered -->
+          <rect class="node you" x="270" y="178" width="160" height="46" rx="8" />
+          <text class="st mid" x="350" y="207">Answered</text>
+
+          <!-- resolve -->
+          <path class="arrow" d="M350,224 L350,276" />
+          <text class="lbl" x="364" y="252">/blueprint resolve</text>
+
+          <!-- split -->
+          <path class="arrow" d="M350,276 L150,276 L150,300" marker-end="url(#ah)" />
+          <path class="arrow" d="M350,276 L350,300" marker-end="url(#ah)" />
+
+          <rect class="node run" x="74" y="300" width="152" height="46" rx="8" />
+          <text class="st mid" x="150" y="329">Applied</text>
+          <text class="cap mid" x="150" y="366">written into the feature</text>
+          <text class="cap mid" x="150" y="381">it touches; marker gone</text>
+
+          <rect class="node flag" x="274" y="300" width="152" height="46" rx="8" />
+          <text class="st mid" x="350" y="329">Flagged</text>
+          <text class="cap mid" x="350" y="366">nothing could be derived —</text>
+          <text class="cap mid" x="350" y="381">the objection says why</text>
+
+          <!-- Flagged loops back to Answered -->
+          <path class="arrow dash" d="M426,318 C470,318 474,250 452,213 L436,201" marker-end="url(#ah)" />
+          <text class="cap" x="470" y="300">you resolve it</text>
+          <text class="cap" x="470" y="316">→ back to Answered</text>
+
+          <!-- legend -->
+          <line class="hr" x1="0" y1="412" x2="700" y2="412" />
+          <rect class="node you sw" x="0" y="426" width="22" height="14" rx="4" />
+          <text class="cap" x="30" y="437">you set it</text>
+          <rect class="node run sw" x="112" y="426" width="22" height="14" rx="4" />
+          <text class="cap" x="142" y="437">a run sets it</text>
+          <text class="cap" x="255" y="437">·  a marker blocks nothing — it is an admission, not a gate</text>
+        </svg>
+      </figure>
 
       <div class="scroll">
         <table>
