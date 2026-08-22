@@ -120,6 +120,26 @@
       .fig .arrow.dash { stroke-dasharray: 4 3; }
       .fig .ahd { fill: var(--muted); }
       .fig .hr { stroke: var(--rule); stroke-width: 1; }
+      .fig .cd { fill: var(--panel); stroke: var(--rule); stroke-width: 1.5; }
+      .fig .cdh { fill: var(--soft); stroke: none; }
+      .fig .hd { font-family: var(--sans); font-size: 9.5px; font-weight: 700;
+                 letter-spacing: 0.07em; fill: var(--muted); }
+      .fig .bk { font-family: var(--mono); font-size: 11.5px; fill: var(--fg); font-weight: 600; }
+      .fig .bk.ac { fill: var(--accent); }
+      .fig .dt { font-family: var(--sans); font-size: 10.5px; fill: var(--muted); }
+      .fig .pv { font-family: var(--sans); font-size: 10px; fill: var(--muted); font-style: italic; }
+      .fig .sep { stroke: var(--rule); stroke-width: 1; }
+      .fig .chip { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+      .fig .cn { font-family: var(--mono); font-size: 10px; fill: var(--fg);
+                 text-anchor: middle; font-weight: 600; }
+      .fig .mk { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 4 3; }
+      .fig .mkt { font-family: var(--mono); font-size: 10px; fill: var(--accent); }
+      .fig .dot { fill: var(--accent); }
+      .fig .lk { font-family: var(--sans); font-size: 10.5px; font-weight: 650; fill: var(--accent); }
+      .fig .stc { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+      .fig .stt { font-family: var(--mono); font-size: 10px; fill: var(--fg); text-anchor: middle; }
+      .fig .arrow.acc { stroke: var(--accent); }
+      .fig .ahd.acc { fill: var(--accent); }
       .muted { color: var(--muted); }
       .yes { color: var(--ok); font-weight: 650; }
       .no { color: var(--accent); font-weight: 650; }
@@ -303,6 +323,100 @@
         Each carries why it was asked, what it touches, and machine-drafted directions with their
         counter-cases to argue against. Those directions are decision support for you, never an input
         the tool consumes.
+      </p>
+
+      <p>
+        Those last two are one mechanism, not two. A gap is admitted <em>in the feature body where it
+        bites</em> and asked <em>on its own row</em>, and the two point at each other — which is what
+        keeps an open question from being a note nobody connects to anything.
+      </p>
+
+      <figure class="fig">
+        <svg viewBox="0 0 700 372" role="img" aria-labelledby="anT anD">
+          <title id="anT">How a feature row and a question row fit together</title>
+          <desc id="anD">
+            A feature row holds properties, a Why block, numbered requirements that can each fail, dated
+            provenance lines, and a NEEDS CLARIFICATION marker naming question q-08. The question row
+            holds the question, why it was asked, suggested directions with counter-cases, a Touches
+            field naming the feature back, a status, and your answer. The marker and the Touches field
+            point at each other.
+          </desc>
+          <defs>
+            <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ahd" />
+            </marker>
+            <marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="ahd acc" />
+            </marker>
+          </defs>
+
+          <rect class="cd" x="0" y="18" width="280" height="336" rx="9" />
+          <path class="cdh" d="M0,27 a9,9 0 0 1 9,-9 h262 a9,9 0 0 1 9,9 v17 h-280 z" />
+          <text class="hd" x="14" y="37">FEATURE ROW — THE ROW IS THE SPEC</text>
+
+          <text class="bk" x="14" y="68">Name · What it does · Area</text>
+          <text class="dt" x="14" y="83">properties — the views group on Area</text>
+          <line class="sep" x1="14" y1="96" x2="266" y2="96" />
+
+          <text class="bk" x="14" y="116">## Why</text>
+          <text class="dt" x="14" y="131">the reason it exists, from a source</text>
+
+          <text class="bk" x="14" y="159">## Behaviour</text>
+          <rect class="chip" x="14" y="168" width="36" height="17" rx="4" />
+          <text class="cn" x="32" y="180">FR-1</text>
+          <text class="dt" x="58" y="180">one trigger, one actor, one outcome</text>
+          <rect class="chip" x="14" y="192" width="36" height="17" rx="4" />
+          <text class="cn" x="32" y="204">FR-2</text>
+          <text class="dt" x="58" y="204">…and each one can fail</text>
+          <text class="pv" x="14" y="224">(Superseded 2026-08-20 — previously “7 days”.)</text>
+
+          <rect class="mk" x="14" y="234" width="252" height="32" rx="5" />
+          <text class="mkt" x="24" y="247">[NEEDS CLARIFICATION: calendar days</text>
+          <text class="mkt" x="24" y="260">or working days? → q-08]</text>
+          <circle class="dot" cx="268" cy="250" r="3.5" />
+
+          <line class="sep" x1="14" y1="284" x2="266" y2="284" />
+          <text class="bk" x="14" y="303">## Edge cases · ## Rabbit holes</text>
+          <text class="bk" x="14" y="327">## Not doing</text>
+          <text class="dt" x="14" y="342">No X — because Y; revisit if Z</text>
+
+          <path class="arrow acc" d="M268,250 L284,250 L284,192 L410,192" marker-end="url(#ah3)" />
+          <text class="lk mid" x="355" y="184">names q-08</text>
+          <path class="arrow" d="M418,240 L300,240" marker-end="url(#ah2)" />
+          <text class="dt mid" x="355" y="258">Touches names it back</text>
+
+          <rect class="cd" x="420" y="46" width="280" height="280" rx="9" />
+          <path class="cdh" d="M420,55 a9,9 0 0 1 9,-9 h262 a9,9 0 0 1 9,9 v17 h-280 z" />
+          <text class="hd" x="434" y="65">QUESTION ROW · q-08</text>
+
+          <text class="bk" x="434" y="96">Question</text>
+          <text class="dt" x="434" y="111">what nobody has decided</text>
+
+          <text class="bk" x="434" y="139">Why asked</text>
+          <text class="dt" x="434" y="154">why it earns a row at all</text>
+
+          <text class="bk" x="434" y="182">Suggested directions</text>
+          <text class="dt" x="434" y="197">(1) … (2) … each with its counter-case</text>
+          <text class="dt" x="434" y="210">decision support — never an input</text>
+
+          <text class="bk ac" x="434" y="238">Touches</text>
+          <text class="dt" x="434" y="253">«Issue a quote» — the link back</text>
+
+          <text class="bk" x="434" y="283">Status</text>
+          <rect class="stc" x="492" y="272" width="42" height="16" rx="4" />
+          <text class="stt" x="513" y="283">Open</text>
+          <text class="dt" x="542" y="283">→ Answered → Applied</text>
+
+          <text class="bk ac" x="434" y="311">Answer &amp; why</text>
+          <text class="dt" x="530" y="311">yours alone</text>
+        </svg>
+      </figure>
+
+      <p>
+        When you answer it, <code>resolve</code> writes the decision into <code>FR-2</code>, removes
+        that marker as <strong>one act</strong>, and leaves a dated line saying which row did it. The
+        gap, the question, the answer and the change are one traceable chain — and if the answer turns
+        out to name no behaviour, the row ends <code>Flagged</code> instead and the marker stays.
       </p>
 
       <h2 id="question"><span class="n">5</span>The life of a question</h2>
