@@ -244,11 +244,52 @@ resolve.md⋮never waits for anybody⋮resolve-never-waits
 add.md⋮the incoming source wins⋮add-source-supersedes
 add.md⋮`/blueprint add soft`⋮add-soft-mode
 add.md⋮force. is the default⋮add-force-is-default
+add.md⋮governs both write seams that have modes⋮modes-govern-both-seams
+add.md⋮says the word it did not recognise⋮modes-name-the-bad-modifier
+questions.md⋮Derived past the bound⋮q3-depth-filter
+questions.md⋮Depth is stamped by the channel that writes⋮depth-is-stamped-not-traced
+questions.md⋮surveyed no-requirement finding⋮q4-third-demotion-evidence
+questions.md⋮is not a routing⋮q4-demotion-is-mandatory
+questions.md⋮Rotation, not skipping⋮regrill-rotates-not-skips
+questions.md⋮whole-document snapshot stays the brief⋮regrill-keeps-the-brief
+questions.md⋮full battery on a first grill⋮battery-scoped-to-first-grill
+questions.md⋮converged: yes⋮convergence-verdict-is-written
+questions.md⋮depth 3 or deeper⋮q3-depth-threshold
+questions.md⋮never capped, since each costs one⋮q3-depth-spares-cheap-channels
+questions.md⋮inherits the depth of its own provenance line⋮requirement-inherits-depth
+questions.md⋮no run in the last three⋮rotation-clock-is-three-runs
+questions.md⋮never discards are exempt from every filter in this phase⋮q3-exemptions-are-general
+questions.md⋮.Open. or .Answered. row standing⋮convergence-counts-standing-rows
+questions.md⋮A two-value vocabulary would be a defect⋮depth-vocabulary-is-open
+questions.md⋮What corroboration is, stated as a test⋮depth-corroboration-has-a-test
+questions.md⋮and no others.*lens 4⋮grill-names-lenses-1-3-only
+questions.md⋮text, not the whole changed body⋮shared-entity-is-the-changed-text
+questions.md⋮That re-routing is the exit, and it is bounded at one⋮routing-refusal-is-bounded
+questions.md⋮quotes each one.s own sentence⋮survey-quotes-are-checkable
+questions.md⋮defeats the finding⋮blind-side-has-a-lever
+questions.md⋮entry standing in .record/run-log.md. newer⋮convergence-source-condition-has-a-read
+resolve.md⋮own kind and the one thing that reads it back⋮grill-kind-exists
+status.md⋮newest write entry of any command⋮status-convergence-not-stale
+resolve.md⋮carries the row.s derivation depth⋮resolve-stamps-depth
+add.md⋮the line carries .*depth n⋮add-supersession-carries-depth
+spec/doc-shape.md⋮the derivation depth⋮docshape-provenance-carries-depth
+status.md⋮omits its questions step on a read⋮status-reads-convergence-verdict
+SKILL.md⋮full battery on a first grill⋮skill-battery-scoped
 add.md⋮two sources disagree|source contradicts itself⋮add-source-vs-source-still-a-question
 add.md⋮operation 8⋮add-keeps-operation-8
 add.md⋮Superseded⋮add-supersession-provenance
 add.md⋮not optional and it is not deferrable⋮add-handoff-unconditional
 resolve.md⋮supersedes it, quoting⋮resolve-supersedes
+resolve.md⋮`/blueprint resolve soft`⋮resolve-soft-mode
+resolve.md⋮Neither mode stops⋮resolve-modes-never-stop
+resolve.md⋮The seven things that end⋮resolve-seven-flag-routes
+spec/databases.md⋮it covers seven routes⋮databases-seven-flag-routes
+resolve.md⋮R4.s seven routes⋮resolve-seven-routes-one-attempt
+resolve.md⋮### R3.3 Six outcomes⋮resolve-six-outcomes-heading
+README.md⋮`resolve soft` flags that row⋮readme-names-resolve-soft
+status.md⋮supersession in the default mode⋮status-supersession-mode-conditional
+blueprint-explained.html⋮<code>resolve soft</code>⋮html-names-resolve-soft
+resolve.md⋮is still never retried: R3.3.s .Kept.⋮resolve-soft-flag-not-retried
 questions.md⋮document is and is not⋮questions-scope-statement
 questions.md⋮Not a specification question⋮questions-not-a-spec-filter
 questions.md⋮outside the technical department⋮questions-technical-department
@@ -413,6 +454,11 @@ add.md⋮Nothing was overwritten⋮add-old-14-report-claim
 add.md⋮Named at A3 with both candidates⋮add-old-15-human-picks
 add.md⋮Their edit wins \(A4 step 1\)⋮add-old-16-edit-wins
 resolve.md⋮Contradiction is the hard stop⋮resolve-old-hard-stop
+resolve.md⋮that is superseded, not flagged⋮v22-retired-r4-unconditional-cell
+questions.md⋮full battery, every time⋮v23-retired-unconditional-battery
+SKILL.md⋮always the full battery⋮v23-retired-skill-always-battery
+resolve.md⋮is the default and a bare .resolve. is it⋮v22-grammar-not-restated-in-resolve
+resolve.md⋮### R3.3 Five outcomes⋮v22-retired-five-outcomes
 resolve.md⋮does not return .Clean. or .Patched.⋮f1-r34-stale-trigger
 resolve.md⋮It then and ends the row⋮f1-broken-sentence
 resolve.md⋮objection goes on the row⋮f7-objection-on-row
@@ -445,6 +491,7 @@ spec/doc-shape.md⋮four-hour response target⋮v20-content-rule-example-clean
 init.md⋮the entry is the first thing written after the structure exists⋮v20-no-contradictory-ordering'
 
 SINGLE_HOME='single home of where the working folder lives⋮1
+`force` is the default⋮1
 single home of the progress block⋮1
 single home of the entry⋮1
 re-gates the whole⋮1

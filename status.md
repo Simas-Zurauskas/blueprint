@@ -67,7 +67,7 @@ it does not chase anybody, and it never writes.
 
 | # | Check | What it looks for |
 |---|---|---|
-| **C1** | **Could not apply** | Every question at `Flagged`, with the objection the run recorded and the flag's age from the log. These are the decisions a run tried to write and could not write honestly. A human who resolves the disagreement moves the row back to `Answered`; nothing here chases them. Where the target's last-edited time shows the row's own `Answer & why`, or the body the objection named, was edited **after** the flag while the row has not moved, add the one line *this one looks fixed* |
+| **C1** | **Could not apply** | Every question at `Flagged`, with the objection the run recorded and the flag's age from the log. These are the decisions a run tried to write and could not write honestly — **or, on the `resolve soft` route, was told not to write** (v22), which a human clears by moving the row back to `Answered` and running the default mode. A human who resolves the disagreement moves the row back to `Answered`; nothing here chases them. Where the target's last-edited time shows the row's own `Answer & why`, or the body the objection named, was edited **after** the flag while the row has not moved, add the one line *this one looks fixed* |
 | **C2** | **Unsent questions** | **First, on its own line: every `Open` row whose `Answer & why` is NOT empty** (v17) — somebody has answered it and it is invisible to every other check here, because C3 reads only the queue and C7's `Open` clause needs 14 days while a freshly-answered row is 0d old. Name each row and the one move that lands it: set it to `Answered`. Then every row at `Status = Open` and unanswered, counted, with the oldest few named and their `Why asked`. Since v13 these are written straight to `Open` by a run, so **the line counts what is actually derivable — rows live and unanswered. Nothing records whether anybody has read one** — the packet a human assembles from them is the send boundary ([`questions.md`](questions.md) Q6), and a pile nobody ever reads is the rot this design still creates on purpose. **After a bulk write — an exhaustive sitting, a backlog drain — count the pace, not just the pile:** print how many were answered or rejected since that write beside how many wait; a backlog cleared in tens is the design working, and only a pace of zero is rot. Where any is missing a `Why asked`, say so — it cannot be judged cold. **End this section with the running count of `Rejected` rows**, which is the only place that number is printed |
 | **C3** | **Will not be applied, and will be `Flagged`** | Queued rows that fail [`resolve.md`](resolve.md) R2.1. **Since v16 the next resolve run does not leave these at `Answered` — it ends each one `Flagged` with the fix as its objection** (R4), so this names what is about to move, never what will sit still. One line each: `Touches` naming a feature that does not exist (empty and multi-feature are **not** failures — both go down the project-level serial path, [`resolve.md`](resolve.md) R2.1) · an answer that is only a link · a target feature whose body has no numbered requirement and no seed possible.  Nothing is written for any of them; each ends `Flagged` and waits for a person, not for another attempt |
 | **C4** | **State nothing wrote, and state nothing reconciled** | **First: any `Applied` row carrying an unreconciled late verdict** — a `CARRIED-FORWARD` line recording a check that returned after the write ([`resolve.md`](resolve.md) R5). The row says the answer is in; a dispatch disagreed and nothing consumed it. Name the row, the verdict and the disagreement; a human either accepts the text or moves the row back to `Answered`. Then: any question at `Applied` that no run-log entry names — **scoped to rows created after the log's crossover line where one exists** ([`resolve.md`](resolve.md) R1: a pre-v16 Blueprint's history stays on its Notion run-log page, which this check does not read). `Applied` is a resolve run's write and nothing else's, so that row was moved by hand: nothing wrote the answer into any feature, nothing checked it, and the document does not say what the row claims it says. Name each with the one drag that mends it — back to `Answered` |
@@ -106,8 +106,8 @@ score — *"78% ready"* is a number nobody can act on:
 1. **Which features carry an open `[NEEDS CLARIFICATION]` marker?** Each is an admitted gap in the
    text as it stands, carried and broken counted apart.
 2. **Which questions are `Open`, `Answered` or `Flagged`?** `Open` = nobody has decided. `Answered` =
-   decided but not yet written in — run `/blueprint resolve`. `Flagged` = a run could not write it and
-   a person has not looked.
+   decided but not yet written in — run `/blueprint resolve`. `Flagged` = a run could not write it,
+   or `resolve soft` was told not to, and a person has not looked.
 3. **Which features' `Behaviour` blocks hold no numbered requirement?** A feature with no failable
    requirement is a title, not a spec.
 4. **How many `Open` questions are unanswered, and how old is the oldest?**
@@ -126,7 +126,7 @@ view that shows the rest, whole report under about 40 lines. **Every line ends i
 BLUEPRINT STATUS · Golden Crumb · 2026-08-14
 Last run 2026-08-12 (2d) · 3 questions answered and waiting · 6 open, unanswered
 
-COULD NOT APPLY (1) — a run tried and could not write this honestly
+COULD NOT APPLY (1) — a run tried and could not, or soft mode was told not to
   ! «Can a customer cancel after paying?»   Flagged 2d · Ana
       the answer is "as agreed with ops on the call" — nothing in it says what the
       product does. Write the behaviour in a sentence, then set the row back to Answered
@@ -169,11 +169,22 @@ invented worry.
 - **This run owns the `What is still unsettled` definition** and is its only home; nothing else states it.
 - **Never predict what the next run will do.** A check that guesses the answer prints a prediction the run
   then refuses.
+  **So the `NEXT` line omits its questions step on a read, never on a guess** (v23): it is dropped only
+  where the newest `questions` entry's `GRILL` line carries `converged: yes` **and that entry is also
+  the newest write entry of any command** — `resolve` has no handoff to `questions`, so without the
+  second half a `converged: yes` written before a drain would still be read as current after it, which
+  is a stale verdict wearing a citation
+  ([`questions.md`](questions.md) Q6 writes it). A document with an empty delta but a carried marker, a
+  contradiction or an unratified batch is **not** converged, its own entry says so, and `NEXT` still
+  names the run — so C5 and the `NEXT` line cannot disagree, because both read the same clause.
 - **Never imply a question has been put to anyone until a human has sent the packet carrying it** (v13:
   a run writes questions straight to `Open`, so `Open` means live and readable, not asked).
 - **Never claim a written `Not doing` line constrains a build.** It is for the reader and the fit
   judgement; what a vetted answer that contradicts it does is [`resolve.md`](resolve.md) R3.2's
-  supersession — the line is rewritten, the replaced text quoted, and it is reported — never a refusal.
+  supersession in the default mode — the line is rewritten, the replaced text quoted, and it is
+  reported — never a refusal. Under `resolve soft` the line stands and the row is flagged carrying
+  both texts: that is the mode the human chose, and reporting it as a judgement about the line is the
+  same error the other way.
 - **Never print a value the content rule bars.** C9 names the row and the class of thing it found — a
   customer name, a contract date — never the thing itself. A report that quotes the leak spreads it to
   everyone who reads the report.

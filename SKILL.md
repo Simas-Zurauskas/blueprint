@@ -1,6 +1,6 @@
 ---
 name: blueprint
-description: Build a well-rounded product definition — "the Blueprint" — before development starts, from whatever exists: a client's material, a team's notes, or just your own head and an idea. Turns notes, decks, transcripts and interviews into an overview, feature specs with numbered failable requirements, explicit exclusions, and a gated list of open questions. Adversarially grills every draft — gaps, contradictions, ambiguity, missing edge cases and scope boundaries — into open questions; a human answers, edits or rejects each one, and decides which go into the client packet that gets sent; answered questions are then written back into the feature specs. Stores the result in Notion (preferred) or as markdown files in a folder. Five commands — init, add, questions, resolve, status. Trigger phrases "set up the Blueprint", "blueprint init", "turn these notes into a spec", "add this to the blueprint", "the client confirmed this change", "blueprint add soft", "I have an app idea, help me spec it", "what questions should we be asking", "grill this spec", "generate open questions", "blueprint review", "apply the answers", "resolve questions", "blueprint status", "what have we not decided yet", "what are we deliberately not doing". Not a maintenance tool — it does not track implementation or read code; the document records intent. Works per project only; nothing is ever shared across projects.
+description: Build a well-rounded product definition — "the Blueprint" — before development starts, from whatever exists: a client's material, a team's notes, or just your own head and an idea. Turns notes, decks, transcripts and interviews into an overview, feature specs with numbered failable requirements, explicit exclusions, and a gated list of open questions. Adversarially grills every draft — gaps, contradictions, ambiguity, missing edge cases and scope boundaries — into open questions; a human answers, edits or rejects each one, and decides which go into the client packet that gets sent; answered questions are then written back into the feature specs. Stores the result in Notion (preferred) or as markdown files in a folder. Five commands — init, add, questions, resolve, status. Trigger phrases "set up the Blueprint", "blueprint init", "turn these notes into a spec", "add this to the blueprint", "the client confirmed this change", "blueprint add soft", "blueprint resolve soft", "I have an app idea, help me spec it", "what questions should we be asking", "grill this spec", "generate open questions", "blueprint review", "apply the answers", "resolve questions", "blueprint status", "what have we not decided yet", "what are we deliberately not doing". Not a maintenance tool — it does not track implementation or read code; the document records intent. Works per project only; nothing is ever shared across projects.
 ---
 
 # blueprint
@@ -30,8 +30,8 @@ open, priced at one veto.
 |---|---|---|
 | `/blueprint init` | [`init.md`](init.md) | Loose sources → source record → a proposed skeleton that **stops until a human confirms** → creates the structure → writes features, then the overview → an independent faithfulness check → proposes questions. **`init` keeps its stop; `add` does not** — creating a structure is the one act worth confirming |
 | `/blueprint add` | [`add.md`](add.md) | More material into new or existing features. **Runs to the end without stopping**, and by default **new source material supersedes document text it contradicts**; `add soft` keeps every contradiction as a question instead |
-| `/blueprint questions` | [`questions.md`](questions.md) | The **grilling** — always the full battery: five lenses at two scopes, whole-document absence sweeps, one repeat round. Every survivor **disposed, not just written**: client-only gaps become written questions, convention-settled gaps become labeled defaults for batch ratification, corrections become doc-fixes — and reported, **no interrogation**: a human reviews in the UI at their own pace, or asks for a sitting |
-| `/blueprint resolve` | [`resolve.md`](resolve.md) | The one write seam for answers. Takes questions a human answered **and vetted**, writes each into the feature it touches, removes the marker. (The questions run's labeled defaults and doc-fixes are the one other write into feature bodies — same serial commit path, same gates, rule 4) |
+| `/blueprint questions` | [`questions.md`](questions.md) | The **grilling** — the full battery on a first grill: five lenses at two scopes, whole-document absence sweeps, one repeat round; a re-grill narrows the attack surface and rotates back to every body, never the brief. Every survivor **disposed, not just written**: client-only gaps become written questions, convention-settled gaps become labeled defaults for batch ratification, corrections become doc-fixes — and reported, **no interrogation**: a human reviews in the UI at their own pace, or asks for a sitting |
+| `/blueprint resolve` | [`resolve.md`](resolve.md) | The one write seam for answers. Takes questions a human answered **and vetted**, writes each into the feature it touches, removes the marker. **Runs to the end without stopping**, and by default **a vetted answer supersedes document text it contradicts**; `resolve soft` ends that row `Flagged` with both texts instead, writing nothing. (The questions run's labeled defaults and doc-fixes are the one other write into feature bodies — same serial commit path, same gates, rule 4) |
 | `/blueprint status` | [`status.md`](status.md) | Reads everything, runs ten checks, prints one screen worst first. **Writes nothing, ever** |
 
 **To execute a command:** read its file and follow its phases end to end. Do not summarise a run file and
@@ -71,11 +71,11 @@ version identically.
 | **v13** | Removed the `Intent` select and the question-approval status. On a Blueprint built before v13 both survive in the schema and no run touches either ([`spec/databases.md`](spec/databases.md) §8) |
 | **v16** | **The run log moved off the target into `record/run-log.md`** ([`spec/targets.md`](spec/targets.md) §5), and the change log and its page were removed. A pre-v16 Blueprint keeps its Notion run log where it is — read for history, never rewritten — and new entries go to the local file, with one dated crossover line saying so |
 
-**Nothing else is on this list, and v17, v18, v19, v20 and v21 are deliberately not** — each changed rules,
+**Nothing else is on this list, and v17, v18, v19, v20, v21, v22 and v23 are deliberately not** — each changed rules,
 phases, reports and log-line kinds only (v19 added the `RATIFIED`/`VETOED` kinds and the `HASHES`
 obligation to the local log; v20 added the `directive` kind, moved the body hash onto the `item` line
 and widened `discard` to `init` — all of which are the local record's shape, never a property, option,
-database or file layout on the target; v21 added a dispatch-probe ladder and its route, an I3 skeleton capture under `sources/<run-id>/`, and clauses on existing log-line kinds — the working folder is not the target, so no target shape changed).
+database or file layout on the target; v21 added a dispatch-probe ladder and its route, an I3 skeleton capture under `sources/<run-id>/`, and clauses on existing log-line kinds — the working folder is not the target, so no target shape changed; v23 bounded the grilling's derivation depth and closed a fail-open in its disposition check, adding a `· depth n` token to run-written body lines and **one new log-line kind, `GRILL`** ([`resolve.md`](resolve.md) R5) — the local record's shape, as v20's `directive` was, and no property, option, database or file layout on the target; v22 gave `resolve` the two modes `add` already had and added a seventh route to `Flagged` — a mode is read from the invocation and `Flagged` is an existing select option, so no property, option, database or file layout on the target moved).
 
 ## Two roots — read this first
 
@@ -169,7 +169,8 @@ both are announced.
    edit — text that changed between this run reading a block and writing it. It does **not** govern a
    **stale document** — the Blueprint being older than the evidence a source carries. Where new source
    material contradicts what the document says, [`add.md`](add.md) A4 step 4 and
-   [`resolve.md`](resolve.md) R3.2 supersede it, quoting the replaced text; a requirement somebody
+   [`resolve.md`](resolve.md) R3.2 supersede it **in each command's default mode**, quoting the
+   replaced text — `add soft` and `resolve soft` write nothing there instead; a requirement somebody
    wrote by hand is superseded like any other but is **reported first**, old and new. The fetch-and-diff
    half of this rule is untouched and still stops every concurrent edit.
 4. **Never invent — but adopting a labeled convention is not inventing.** An unknown is a marker plus a
@@ -178,7 +179,8 @@ both are announced.
    one.** That bar is about **two pieces of evidence**, where no winner exists to pick, and it is
    unchanged. **It does not govern a source against the document** (v16): the Blueprint is derived
    *from* evidence, so a source contradicting it is not a tie — the source wins and the replaced text
-   is quoted where it stood ([`add.md`](add.md) A4 step 4, [`resolve.md`](resolve.md) R3.2). Writing a
+   is quoted where it stood ([`add.md`](add.md) A4 step 4, [`resolve.md`](resolve.md) R3.2, **each in
+   its default mode**). Writing a
    sourced sentence over a derived one is not inventing; it is the opposite. A decided exclusion is a
    `Not doing` line, never a question. **The Convention carve-out** (added v12 at the owner's direction,
    after a measured 693-row backlog of which 4.8% needed a client): a gap may instead be written into a

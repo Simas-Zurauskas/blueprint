@@ -262,12 +262,21 @@ constraint is derived from another feature, cite **that feature**.
 constraint about *how***, in its own block, never mixed into the numbered requirements where
 mechanism-flavoured wording primes a memorised wrong solution. **A decided exclusion is a `Not doing`
 line; a marker is for unknowns** — never mix them. **Provenance lines live here and only here**, dated,
-under the requirement they touched, because a reader who stops at the row never opens the log:
+under the requirement they touched, because a reader who stops at the row never opens the log. **Two
+things every run-written body line carries** (v23): **the row's entity ID beside its title** — §8 says
+everything binds to IDs and titles get edited, and this sample cited a title alone until v23 — and
+**`· depth n`, the derivation depth [`../questions.md`](../questions.md) Q3's depth filter reads back**.
+A `Default (…)`, a doc-fix replacement and a `Content slot — client-supplied:` line carry the depth too;
+a line with no token is depth 1 to every later reader:
 
-> *(Applied 2026-08-04 from «Can a customer change a pickup slot after paying?» — answer and reasoning
-> on that row.)*
+> *(Applied 2026-08-04 from «Can a customer change a pickup slot after paying?» `q-04` · depth 1 —
+> answer and reasoning on that row.)*
 >
-> *(Narrowed 2026-08-04 by the faithfulness check: the source says "most orders", not "all orders".)*
+> *(Narrowed 2026-08-04 by the faithfulness check · depth 1 — the source says "most orders", not
+> "all orders".)*
+>
+> *A check's narrowing has no row, so it carries a depth and no entity ID — the ID clause binds a line
+> that cites a row, which this one does not.*
 
 **A convention default is one labeled sentence in the block where it bites**, in one of two shapes and no
 other — `Default (standard practice — ratify on review): reset links are single-use and expire.

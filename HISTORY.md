@@ -77,6 +77,10 @@ The supersession disposition was added v16 and without it the **default `add` pa
 
 ## add.md
 
+### Two modes
+
+v22 made this section the single home of the mode grammar for **both** write seams rather than for `add` alone, and `resolve.md`'s table now cites it. Nothing about `add`'s behaviour changed; the grammar was already right, and the alternative — a new shared section in `SKILL.md` — bought one indirection on a file `spec/run-progress.md` already points at for *"the mode, where the command has one"*.
+
 ### Run — add
 
 (v16, at the owner's direction: client-confirmed changes were being turned back into questions)
@@ -102,6 +106,67 @@ Added v16: one measured `add` left ten individual names in its own committed `re
 (v16: the deferral branch was removed at the owner's direction — "it has to complete all the flow including then generating questions for that add input material scope, all by itself, to the end")
 
 ## questions.md
+
+### Q3 — the depth filter, and Q4's third demotion evidence
+
+Both added v23, from one complaint: *"we dont want it to be keep creating questions after answering some, its okay, but in the previous versions it was infinite loop making imposible for teamn to use it, it is also making too many meaninglless questions or meaning is too small, like what about this and that text, or text in the privacy policy."*
+
+**The loop.** No convergence rule existed anywhere: the battery ran whole-document every run, `resolve` wrote answers **into feature bodies**, and `status`'s NEXT line prescribed another run — so answering enlarged the surface the next grilling attacked. The first fix drafted was delta-scoping by body hash, and an adversarial pass killed it: the bodies `resolve` writes into are exactly the bodies whose hash changed, so it would have saved the cost of untouched features and left the branching factor untouched. What was missing was a bound on **derivation**, not on surface.
+
+**Why depth is stamped rather than traced.** The second draft traced depth through `(Applied … from «row»)`. That line exists on `Clean` and `Patched` only: a `Superseded` verdict writes `add.md` A4 step 5's shape, whose «…» held a source segment, and DEFAULT, DOC-FIX, CONTENT SLOT and every overview write carry no row at all. On this file's own funnel sample — 14 defaults, 2 fixes, 1 slot, 3 questions — a traced cap would have been inert on seventeen dispositions in twenty. So every channel that writes body text stamps `· depth n` as it writes, and `spec/doc-shape.md` §5 gained the row's entity ID beside its title in the same edit, because §8 says everything binds to IDs and that sample had cited a title alone since it was written.
+
+**Why the cap is a Q3 filter and not a Q4 cap.** As a Q4 cap it had no durable home — a suppression is not a discard, so nothing read it back and it would have been re-derived and re-printed every run, the complaint surviving in report form. As Q3's eleventh filter it is an ordinary discard with a filter and a counter-case; it is also disposed *before* the convergence test counts survivors, which the Q4 placement would have blocked forever. And it answers the parking objection on this file's own scoping: *"no found gap is parked"* governs candidates that **survive Q3**.
+
+**The meaningless questions were not a missing rule.** Three filters already name that class — **Deliverable content** names *"copy"*, **Client-internal** names *"legal operations"*, **Not a specification question** is the general form — and Q3 runs on every candidate before Q4. They were written anyway because Q4's disposition check **fails open to asking** unless the non-question side produced *"full demotion evidence"*, defined as a verbatim quote or four attested conditions. A routing to any of those three filters produces neither, so the blind model's QUESTION verdict won over the top of a correct discard. The third evidence class closes that, and it is an obligation on the routing side in a citable form — the router names the two or three requirements it surveyed, and the blind side is given that list — because the blind model sees *"the candidate and its grounding alone"* and cannot survey what it is asked to find empty.
+
+**The trade, recorded because it was made knowingly.** A depth-3 candidate can be a real gap, and capping it is a gap found and not written. It is disposed as a discard with a counter-case rather than in silence, and the owner chose the bound after being shown the trade.
+
+### What the v23 simulation campaign changed, and it changed a lot
+
+`blueprint-sim5/` ran v23 against a pre-written key with a **v21 control arm**, an operator agent
+forbidden the key, write-protected snapshots, and an executed harness probe. **The mechanisms bound
+where the key said they must** — a depth-3 question was discarded, a contradiction at depth 3 was
+written anyway, the copy question routed to a content slot where v21 wrote it as a row, and convergence
+correctly refused to fire with rows standing. The control confirmed the diagnosis independently, having
+been told nothing about it: *"Is there ANY bound on derivation chains? There is none"*, and — the
+sentence that explains the whole complaint — *"no Q3 scope filter can produce either evidence form, by
+construction, so any blind QUESTION verdict beats any scope discard, always."*
+
+**Five ways to turn the fix off silently were found, all of them in the first draft of it, and the fix
+round after the campaign is what this section records.**
+
+- **The stamping vocabulary could not express the value the cap tests for.** It said *"`· depth 1` on a
+  question grounded in original material, `· depth 2` on one derived from answer-written text"* — a
+  closed pair. The filter tests *depth 3 or deeper*, so read literally **it could never fire on
+  anything**. The vocabulary is now open in `n`.
+- **The corroboration guard had no test.** *"A depth is read only from a line this Blueprint's own run
+  log corroborates"* named a threat and never said what corroboration was; under the strict reading a
+  probe found nothing in the log corroborated anything and **every depth fell to 1**. It now states the
+  test, and — the part that matters — **fails toward trusting an old line**, because a cap that quietly
+  stops applying on a rotated log is worse than no cap.
+- **The fail-open closure looped.** A silent routing became *"not a routing"* and went back through the
+  gate — whose own disposal for that class is one of the three filters requiring a survey. A probe
+  traced it: *"silence from the router can produce the exact row v23 was written to prevent."* The
+  re-routing is now bounded at one, and a second refusal writes the row **and names the refusal in the
+  report**, because a router that will not say what it surveyed is a fact a person should see.
+- **The survey was checkable on form and unfalsifiable on fact.** A probe produced a compliant survey
+  whose supporting clause named a requirement **that did not exist in the document**, and nothing caught
+  it, because rule 6(d)'s check is a string match and the record quoted nothing. The survey now quotes
+  each requirement's own sentence, which puts it back inside 6(d) unchanged.
+- **The blind side held the evidence and had no lever.** It was given the surveyed text expressly so it
+  could check a claim, and the ordering then said the finding wins whenever produced — so *"the blind
+  side read the surveyed text, disagreed, and the demotion was taken anyway."* A QUESTION verdict from a
+  side that held the sentences now defeats the finding.
+
+Also from the campaign: the shared-entity clause read so widely that *"the narrowed attack surface is
+identical to the full battery"* on a small coherent document, so it now keys on the **changed text**
+rather than the whole changed body; the `GRILL` line counted every lens, which would have left the
+rotation clock permanently vacuous, so it counts lenses 1–3 and records **how** each body got there;
+and convergence condition two — *"no source was added"* — was the only one of four with no stated read.
+
+### Q2 — the re-grill's attack surface
+
+Delta-scoping survived v23 only as a **cost** measure, with rotation: a body outside the delta is attacked anyway if no run in the last three has attacked it. The battery measures ~86% caught outright on a first grill, so repetition is the only compensator for the ~14% it misses, and the owner had chosen completeness over a cheap sampler on 2026-08-07. Skipping outright would have made a once-grilled body's misses permanent. The delta and the rotation age were first taken from the `HASHES` line every write command already writes, on the reasoning that no log kind was then needed. **A final-review dispatch showed that was wrong, and the error is worth keeping here because it is subtle:** `HASHES` records the hash of a body a run **wrote or read back**, so a `resolve` run that applies six answers leaves those bodies matching their newest recorded hash — a delta taken there is empty for exactly the answer-written text the next grill exists to attack, and the fix would have turned the grill off rather than bounding it. The rotation clock had the same hole from the other side: a hash cannot tell a body a default was written into from one three lenses tore apart. So `GRILL` was added after all, carrying what the **lenses** last saw, which is a different fact from what a writer last wrote.
 
 ### Run — questions
 
@@ -132,6 +197,24 @@ Measured: a run wrote ten rows and stopped while the human sitting in front of i
 (v13: `approve` and `edit-then-approve` left this table when the approval state was retired — a row is already `Open`, so there is nothing to promote. Editing the wording survives on its own, as an edit rather than a promotion.)
 
 ## resolve.md
+
+### Two modes
+
+Added v22 at the owner's direction. `resolve` had `add`'s default behaviour hard-wired since v16 — a vetted answer superseded the document text it contradicted — with no name for it and no way to ask for the other behaviour. The owner's line was that both write seams should overwrite by default and both should have a `soft` mode, and that **no mode of any command may stop, ask the user, or wait**: *"must proceed always all to the end in any command/mode."* So `add` did not change at all — its two modes already were that — and the work was `resolve`'s missing half.
+
+`soft` here ends the row `Flagged` rather than minting a marker and a question the way `add soft` does, and that asymmetry is deliberate: `add` mints markers and question rows, this seam mints neither, and R4's two terminal states are the whole disposal rule. A `Flagged` row already carries its objection, `status.md` C1 already prints it, and the round trip back is one drag to `Answered` plus a default-mode run.
+
+**What was planned and dropped, recorded so it is not reinvented.** Between the ask and this, a design was written in which both commands *stopped and asked* a human at each contradiction, with a `force` mode to override. It went through two adversarial dispatches. It died on its own findings rather than on taste: an unanswered checkpoint had to leave the row in a state `resolve.md` R4 forbids (`Applied` or `Flagged`, no third), or leave it queued in a way the sitting loop would re-offer forever; `force`'s two proposed extra powers turned out to be one that `spec/doc-shape.md` §3 bars by name — *"never as a side effect of applying an answer"* — and one that R2.4's seed exemption already granted; and `add.md`'s own measured record says the last halt in `add` survived a campaign only because a scripted operator had pre-written the answers, while *"a live session had no channel at all"*. The owner ended it, and the reasoning is kept here because the same idea is the obvious next thing anyone will propose.
+
+### R3.6 Writing the delta
+
+The mode gate is at R3.6 rather than in R3.2's verdict, decided v22 after five independent reads of the first draft found the same hole from three directions. In that draft `soft` was enforced by the checker returning `Kept`. But R3.1's and R3.2's briefs are closed enumerations, neither carries the mode, and both sub-agents receive data and never read the invocation — so `Kept` was a verdict with no executor. Worse, on a run with **no second dispatch** — which `SKILL.md` rule 6 calls "the common case rather than the exotic one" — no check runs at all, `Unverified` fires, and the writer's in-place rewrite is **written**: `soft` was silently a no-op in exactly the state it was most needed. `add soft` never had that hole because `add` builds its own `CON-k` inventory at A2 before any checker exists; `resolve` has no equivalent seam.
+
+Putting the gate in the run fixes all three at once and needs no new brief, no fifth writer output and no widened list: the run knows the mode, already holds R3.1 output 1's block-before and block's-full-new-text, and can therefore answer *does this replace or remove existing text?* mechanically, with no second agent. It also sharpens what `soft` means — nothing is **overwritten**, which is not the same as nothing is applied; a purely additive delta still lands in `soft`.
+
+### R3.3 Six outcomes
+
+`Kept` was added v22 with the `soft` mode. It is the seventh route to `Flagged` and the second one that ever saw a writer's delta, which is why R3.4 had to name it: it matches that phase's retry trigger word for word, and an unnamed new outcome falling through R3.4's predicate is the v18 defect below, arrived at from the opposite direction — there by a negation that grew, here by a positive match.
 
 ### Progress
 

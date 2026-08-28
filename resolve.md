@@ -29,6 +29,28 @@ Blueprint. Do not rewrite anything you were not asked to touch.** Specs obeyed, 
 
 ---
 
+## Two modes
+
+The grammar — the modifiers, which one a bare command is, what an unrecognised one does, and the
+header line — lives in [`add.md`](add.md)'s `## Two modes` and is **read there, not repeated here**.
+What differs on this seam is the collision, because it consumes a **vetted answer** rather than a
+source, and what `soft` does with one.
+
+| Invocation | What an **answer-vs-document** contradiction does |
+|---|---|
+| `/blueprint resolve` — and `/blueprint resolve force`, the same thing said explicitly | The answer **supersedes** the text it contradicts, quoting the replaced text (R3.2). The row goes `Applied` |
+| `/blueprint resolve soft` | Nothing is overwritten. The row ends `Flagged` carrying both texts, and the marker the answer would have removed **stays where it is** |
+
+**`soft` ends the row rather than writing a question, and that is a difference from `add soft` rather
+than an oversight** (v22): `add` mints markers and questions; this seam mints neither, and its two
+terminal states are `Applied` and `Flagged` (R4). A `Flagged` row carries its objection,
+[`status.md`](status.md) C1 prints it, and a human who wants the answer in moves the row back to
+`Answered` and runs the default mode, which supersedes it.
+
+**Neither mode stops.** R4 prints what a person still owns and the run closes, in both.
+
+---
+
 ### Progress
 
 Print the standard progress block ([`spec/run-progress.md`](spec/run-progress.md)) at run start, at
@@ -130,7 +152,7 @@ non-empty ([`spec/databases.md`](spec/databases.md) §4).
 | Excluded | Because |
 |---|---|
 | `Open` | Nobody has answered it |
-| `Flagged` | A run already tried and could not write it honestly. Re-running a writer and a checker on it reproduces the same verdict for four sub-agent dispatches, and it needs a person, not another attempt |
+| `Flagged` | A run already tried and could not write it honestly. Re-running a writer and a checker on it reproduces the same verdict for four sub-agent dispatches, and it needs a person, not another attempt. **One route is different and the difference is the point** (v22): a `Kept` row was refused by the mode, so re-running it **in the default mode** does produce a different verdict — which is why R4's objection tells the human exactly that, and why it still waits for them rather than for another attempt |
 | `Applied` | Already written in |
 | `Closed (not applied)`, `Rejected` | Terminal by a human's decision |
 
@@ -324,7 +346,11 @@ names the kind of grounding, and the set of kinds is closed at the start of the 
 or a long drain would re-open it once per sitting and drift exactly as below — and enforced by the
 check — a writer never composes a new one.** What the kinds are is the Blueprint's own vocabulary, not this
 skill's: one project's set was *standard practice, adopted, not client-specific* · *design-confirmed* ·
-*answer and reasoning on that row*. **An answer about a `Not doing` line is
+*answer and reasoning on that row*.
+**Every provenance line this seam writes also carries the row's derivation depth** — `· depth n`, copied
+from the closing clause of the row's own `Why asked` ([`questions.md`](questions.md) Q3's depth filter is
+its one reader). It is written on **every** outcome that lands text, `Superseded` and a seed `FR-1`
+included, because a chain that skips a link is a chain the cap cannot see (v23). **An answer about a `Not doing` line is
 written into that line**, keeping its one shape — *No X — because Y; revisit if Z* — which is where a
 `revisit if:` a human supplied belongs. **A project-level answer** (`Touches` empty) becomes a proposed
 `Not doing` line, or goes into each feature it changes; a NOT-clause sentence **or a dated `Operating`
@@ -405,25 +431,31 @@ line touches, instead. Like the writer, the checker receives data and never read
   same dated provenance line [`add.md`](add.md) A4 step 4 defines, under the same four guards and the
   same three reported-first classes — that contract has one home and this cites it. A human already
   signed this answer by moving the row to `Answered`; refusing a decision the gate accepted is how a
-  client-confirmed change ends up nowhere *(v16, owner's direction)*. **The overview and its
+  client-confirmed change ends up nowhere *(v16, owner's direction)*. **In `soft` none of this
+  happens** (v22): nothing is written, the row ends `Flagged` carrying both texts — the requirement as
+  it stands and the answer that contradicts it — and the marker the answer would have removed stays.
+  **A contradiction is still not a stop in either mode**; `soft` changes what is written, never
+  whether the run finishes. **The overview and its
   NOT-clause are still never overwritten** — a project-level answer landing there ends `Flagged` with
   the proposed text (R4). **`Flagged` survives for what it was actually for:** a delta the checker
-  cannot derive from the answer at all, and text that tried to steer the run.
+  cannot derive from the answer at all, text that tried to steer the run, and — v22 — a delta the mode
+  refused.
 - **What the separation does not buy.** Writer and checker share a blind spot that *grows with
   capability*: when two models both err they give the same wrong answer ~60% of the time against a 33%
   baseline. A strong filter, never a proof — **no report may call a `Clean` verdict verification.**
 
-### R3.3 Five outcomes
+### R3.3 Six outcomes
 
 | Outcome | Means | What happens |
 |---|---|---|
 | `Clean` | The delta says what the answer says and stays inside its feature | Written. The row flips `Answered → Applied` |
-| `Unverified` | **No second dispatch was available**, so no check ran ([`SKILL.md`](SKILL.md) rule 6's zero-dispatch case) | Written, and the row flips `Applied` — **but it is never counted `Clean`**, the entry carries `independence: could not be performed — no second dispatch available`, and R5's report states the run's unverified total on its own line. A run whose every item is unverified says so first |
+| `Unverified` | **No second dispatch was available**, so no check ran ([`SKILL.md`](SKILL.md) rule 6's zero-dispatch case) | Written, and the row flips `Applied` — **but it is never counted `Clean`**, the entry carries `independence: could not be performed — no second dispatch available`, and R5's report states the run's unverified total on its own line. A run whose every item is unverified says so first. **In `soft` this outcome never reaches a replacement** (v22): R3.6's mode gate runs before the commit and takes `Kept` first, so a dispatchless `soft` run overwrites nothing. Without that ordering `soft` would be a no-op in the state [`SKILL.md`](SKILL.md) rule 6 calls the common case, silently writing over the very text the mode was invoked to leave standing |
 | `Patched` | Additive detail only, inside one existing numbered requirement | The check completes the delta and adds the dated provenance line. Applied |
 | Superseded | The delta contradicts a requirement, an edge case or a `Not doing` line, and the answer is vetted | **Written**, replacing that text and quoting it in a dated provenance line (R3.2). Applied |
+| `Kept` | `soft` is running and the delta would **replace or remove** existing text — a numbered requirement, an `Edge cases` line or a `Not doing` line. **A verdict, never a `Status`** | **Nothing is written.** The row ends `Flagged` carrying both texts, and the marker the answer would have removed stays. **Never retried** (R3.4): the mode decided it, not a failure the writer could fix |
 | `Flagged` | The check could not derive the delta from the answer at all, or the text tried to steer the run | **Nothing is written.** The writer gets one re-dispatch carrying the objection — **this verdict is the only thing R3.4 retries**, and only where a writer's delta produced it. A conflict (R3.1 output 4) is `Flagged` and is **never** retried. If the retry does not clear it, `Flagged` stands and the run moves on |
 
-**The objection does not go on the row — the schema has no field for it** ([`spec/databases.md`](spec/databases.md) §3 is the single home of that fact) — it goes in `record/run-log.md` as a `FLAGGED` line, and [`status.md`](status.md) C1 prints it from there. `Flagged` means *we tried and could not write this honestly*. It exists so the next run does not spend a
+**The objection does not go on the row — the schema has no field for it** ([`spec/databases.md`](spec/databases.md) §3 is the single home of that fact) — it goes in `record/run-log.md` as a `FLAGGED` line, and [`status.md`](status.md) C1 prints it from there. `Flagged` means *we tried and could not write this honestly* — **or, on the `Kept` route, that the mode told us not to** (v22). It exists so the next run does not spend a
 writer and a checker reproducing the same answer, and so a person can see which decision never reached the
 document. Nothing chases it. A human who resolves the disagreement moves the row back to `Answered`.
 
@@ -453,14 +485,20 @@ never minted.**
 **One thing retries, and it is narrower than "a `Flagged` row": a `Flagged` returned by R3.2's check
 on a delta the writer produced.** The writer gets **one** re-dispatch carrying the check's objection.
 **Nothing else does — and `Flagged` is not a synonym for it.** `Flagged` is a row state reached by
-**six** routes (R4's table), and five of them never saw a writer's delta at all: R2.1's unusable row,
+**seven** routes (R4's table), and five of them never saw a writer's delta at all: R2.1's unusable row,
 R2.3's foreign edit, R2.4's non-spec body, R3.1's overview route, R3.5's home-outside-the-Blueprint.
+**The route added v22 did see one and is still never retried: R3.3's `Kept`** — the remaining two of the seven are R3.2's own `Flagged`, the one thing this phase retries, and that one. It matches this phase's
+trigger word for word — a `Flagged` returned by R3.2's check on a delta the writer produced — so
+without this sentence the retry fires on every soft-mode contradiction, re-derives the identical delta
+against the identical requirement, and lands the row `Flagged` a second time for the same reason. The
+mode refused the write; no objection a writer can act on exists.
 Re-dispatching those re-runs a writer against a row no writer failed on — and on the overview route it
 would loop the very round trip R3.1 says *"terminates in one round trip rather than looping"*. Still not clear after the retry →
 `Flagged` stands, terminal.
 
-**The other four verdicts never retry, each for its own reason:** `Clean` and `Patched` are written ·
-`Unverified` has nothing to re-dispatch to · `Superseded` is written and its replaced text quoted.
+**The other five verdicts never retry, each for its own reason:** `Clean` and `Patched` are written ·
+`Unverified` has nothing to re-dispatch to · `Superseded` is written and its replaced text quoted ·
+`Kept` is the mode's decision rather than a failure, so there is no objection a writer could act on.
 **One case is not an exception to this and is easy to read as one:** a `Patched` whose anchor does not
 resolve is re-dispatched at R3.3 — but that is the **checker** being sent back to repair its own
 output, not the writer's retry, and it neither consumes this one nor turns `Patched` into a retrying
@@ -498,6 +536,20 @@ question is a bad question.
 
 ### R3.6 Writing the delta
 
+**The mode gate is here, and the run performs it — not a sub-agent** (v22). **Neither the writer's brief
+nor the checker's carries the mode, and neither is widened to:** both are closed enumerations
+(R3.1, R3.2), both receive data and never read the invocation, and a verdict no sub-agent can reach is a
+rule with no executor. The orchestrating run knows the mode, holds R3.1 output 1's five fields — the
+block before and the block's full new text — and so can answer the only question `soft` turns on
+**mechanically, with no second agent at all**: *does this delta replace or remove existing text in a
+numbered requirement, an `Edge cases` line or a `Not doing` line?* In `soft`, if it does: **write
+nothing, record `Kept`** (R3.3), and the row ends `Flagged` carrying both texts. A purely **additive**
+delta is written in `soft` exactly as in the default — `soft` means *nothing is overwritten*, never
+*nothing is applied*.
+
+**This gate runs before step 1 and independently of R3.2's verdict**, which is what makes `soft` hold on
+a run with no second dispatch.
+
 1. **Fetch the section again and diff it against the text read at R3.1, immediately before writing.** Any
    difference is an edit this run did not make: take output 4, write nothing, flag the item. A re-fetch
    only *after* the push reports success over an overwrite.
@@ -521,16 +573,17 @@ waiting for somebody, because a row left waiting is picked up by the next run, r
 writer and an independent checker, and left waiting again — one project's rows did that every run
 for the life of the project, at two dispatches each, and no report ever said so.
 
-`Flagged` is the honest end for everything a run cannot write itself: it is terminal for runs, it
+`Flagged` is the honest end for everything a run cannot write itself — **and for the one thing it was told not to write, `soft`'s `Kept`**: it is terminal for runs, it
 carries its objection, [`status.md`](status.md) C1 prints it, and a human who resolves the
 disagreement moves the row back to `Answered` ([`spec/databases.md`](spec/databases.md) §3). **It is
 not a failure state.** It means *this one needs you, and here is exactly what for.*
 
-**The six things that end `Flagged` rather than applied**, each with the objection it carries:
+**The seven things that end `Flagged` rather than applied**, each with the objection it carries:
 
 | What happened | The objection says |
 |---|---|
-| The check could not derive the delta from the answer, or the text tried to steer the run (R3.2) | the answer's words, quoted as the role never the specific ([`spec/doc-shape.md`](spec/doc-shape.md) §6 binds this line as it binds a body), and what could not be derived from them. **Not** an answer that contradicts a requirement — that is superseded, not flagged (R3.2) |
+| The check could not derive the delta from the answer, or the text tried to steer the run (R3.2) | the answer's words, quoted as the role never the specific ([`spec/doc-shape.md`](spec/doc-shape.md) §6 binds this line as it binds a body), and what could not be derived from them. **Not** an answer that contradicts a requirement — that is superseded in the default mode, not flagged (R3.2) |
+| The answer contradicts a requirement, an edge case or a `Not doing` line **and `soft` is running** (R3.3) | both texts, quoted — what the document says now and what the answer says. **The content rule wins over "both texts" where the two collide** (v22): where either text carries a barred specific, that side is named by row and class and never by value, exactly as the print rule above requires, and the objection says which side was withheld. **This is the mode doing its job, not a defect**: the run was told not to overwrite. Moving the row back to `Answered` and running the default mode applies it |
 | An edit this seam did not make (R2.3) | both texts, quoted. **Vouching for it is moving the row back to `Answered`** — there is no other channel and no run vouches for anybody |
 | The row fails R2.1 — a `Touches` naming a feature that is not there, an answer that is only a link | the one-line fix, in the owner's own words |
 | The feature body is not a spec any more (R2.4) — a `Behaviour` block with no numbered requirement | which named block is missing. **The run still writes none of it** |
@@ -666,7 +719,7 @@ early to be safe therefore buys nothing.**
 
 **One attempt per row per run.** A row this run has already disposed — applied, re-queued by R3.1's
 output 3, returned to `Answered` by a reconciliation gate or the closing
-sweep, **or ended `Flagged` by any of R4's six routes** — is **not
+sweep, **or ended `Flagged` by any of R4's seven routes** — is **not
 picked up again by a later sitting of the same run**, and is named in the report. **A `Flagged` row is
 not merely undisposed — it is out of the queue** ([`spec/databases.md`](spec/databases.md) §4), so no
 later run re-dispatches it either; it waits for a person, not for another attempt. That is the
@@ -704,7 +757,10 @@ and no record anywhere of why.*
 
 **`DEGRADED` is measured on outcomes, not effort.** A sitting's **miss rate** is the rows it `Flagged`
 plus the rows its reconciliation gate returned, over the items in that sitting — **each row counted once,
-so the rate can never exceed one.** *Retries are deliberately not in it: R3.4 grants one, and a retry that
+so the rate can never exceed one.** **A `Kept` row is excluded from both halves by name** (v22): it is
+the mode doing what it was invoked to do, and counting it would drive a `soft` drain over a stale
+document toward a rate of one **by construction** and halt the run for working correctly. That is the
+same argument the retry carve-out below makes, applied to the other verdict nothing failed at. *Retries are deliberately not in it: R3.4 grants one, and a retry that
 comes back `Clean` is a success, not a miss — counting it would stop a healthy run, which is the failure
 this whole section exists to remove.* The run stops when **two consecutive full sittings each exceed one
 half**. Every sitting computes its rate; **a rate goes on the `GATE` line only where it exceeded the half
@@ -761,13 +817,13 @@ report, where a person actually reads it; the log carries the fact, not the acco
 
 | Kind | What it carries |
 |---|---|
-| **header** | date · time · command · run id · version · sitting · queue |
+| **header** | date · time · command · run id · version · sitting · queue · **the mode, on a command that has one** ([`add.md`](add.md) is its single home) — a later reader cannot tell a supersession that was refused from one that never arose without it (v22) |
 | **independence** | the writer and checker models ([`SKILL.md`](SKILL.md) rule 6) — and that rule's **dispatch-probe result on the same line, on both branches** (v21, widening v20's write-it-only-on-failure): on a success the **route**, `succeeded via <the literal call>`, so a later sitting of the same run inherits the working command instead of re-deriving it |
 | **check** *(→ `runs/`)* | one line per named check — R1's pre-flight halts, R2's per-check lines. **One exception stays in the log: R1's dated version-reconciliation line**, because a later run's version check reads it back and `runs/` files are not indexed (v17 — R1 and this table disagreed about that one line) |
 | **item** | one per item: row · verdict · feature ID · the delta as a **pointer** — `«Feature» FR-n`, never a recap of what it says, which the body's own provenance line already carries — **and, where the item wrote or read back a body, that body's hash** (v20: recorded here rather than only at the close, so an interrupted run leaves a usable baseline; R2.3). On `init` and `add`, where a commit has no queue row, the item is its feature ID with the source segment or `CON-k` it came from |
 | **group heading** *(→ `runs/`)* | the `APPLIED` · `NOT APPLIED` · `FLAGGED` headers, and the blank line between blocks. Layout, carrying no fact of its own |
 | **FLAGGED** | one per row: the row and its objection — and, on R3.1's overview route, the hash of `Answer & why` at the flag, which round two compares against. The database has no field for it and [`status.md`](status.md) C1 reads it here, so this one explanation is deliberately durable. **The content rule binds this line** ([`spec/doc-shape.md`](spec/doc-shape.md) §6): an objection quotes an answer's words as the role, never the specific — this file is committed, and a barred specific written here is published, not stored (v19) |
-| **MARKERS** | removed, each citing its row ID — or, for a route-6 removal, the ledger line and the `RATIFIED` line that cleared it · carried · deliberate holds |
+| **MARKERS** | removed, each citing its row ID — or, for a route-6 removal, the ledger line and the `RATIFIED` line that cleared it · carried · deliberate holds · **left standing**, the v22 slot for a marker a `Kept` row did not clear: it is neither removed nor `carried` ([`spec/doc-shape.md`](spec/doc-shape.md) §9 reserves `carried` for a marker with no row behind it, and this one points at a live row), and without its own word a run has to misreport it as one of the other three |
 | **GATE** | applied · returned · `overturns n` — and a miss rate **only** where a sitting exceeded the threshold or the brake fired |
 | **SWEEP** | the closing sweep's three numbers |
 | **SWEEP-NOTE** | the content-rule sweep with its row range — R2.5 and [`add.md`](add.md) A5 scope the next sweep from this line, so it is read, not filed |
@@ -788,13 +844,25 @@ verdict that is not `Clean`, verbatim, `Clean` as a count ([`init.md`](init.md) 
 stated filter (v20: `discard` used to belong to `questions` alone, so an `init` grill's discards had
 nowhere legal to go and [`init.md`](init.md) I7 forbids `cache/` being their only home).
 `questions`: the **defaults ledger**, the **fixes batch**, the **content
-manifest**, one line per **demotion** and one per **discard**, and the **funnel**
-([`questions.md`](questions.md) Q4, Q6).
+manifest**, one line per **demotion** and one per **discard**, the **funnel**, and — added v23 — a
+**GRILL** line ([`questions.md`](questions.md) Q2, Q4, Q6).
+
+**`GRILL` is `questions`' own kind and the one thing that reads it back is the next `questions` run**
+(v23): `bodies attacked · each with the hash it carried when the lenses ran · converged: yes | no`.
+Three things needed it and none of them had a substrate before. **(i)** The re-grill delta cannot be
+computed from `HASHES`: that line records the hash of a body a run **wrote or read back**, so a
+`resolve` run that applies six answers leaves those bodies matching their newest recorded hash, and a
+delta taken against it would be **empty for exactly the answer-written text the next grill exists to
+attack**. `GRILL` records what the **lenses** last saw, which is a different fact. **(ii)** The
+rotation clock — *no run in the last three has attacked it* — is uncountable without a record of
+attacks; a hash cannot tell a body a default was written into from one three lenses tore apart.
+**(iii)** The convergence verdict needs a legal home, and the funnel's working goes to
+`record/runs/<run-id>.md`, which nothing reads back.
 
 **The samples below are the cap, not an illustration.**
 
 ```
-2026-08-12 09:14 · resolve · run 7f3a2c · skill v1 · sitting 1 · 6 of 18 queued
+2026-08-12 09:14 · resolve · run 7f3a2c · skill v1 · sitting 1 · 6 of 18 queued · mode: force
 independence: writer <a>, checker <b>
 SWEEP-NOTE   content rule swept rows 1–18 · 0 findings
 item         «Can a customer retry a failed…»   Clean      3afc…b75  «Checkout» FR-2, FR-5      body 9f2c…41d
@@ -802,6 +870,7 @@ item         «Do slots roll over at midnight?»  Patched    04ab…4ef  «Picku
 item         «Should menus show sold-out items?» no change 9c31…2ab  already carries it: «Menu» FR-4   body 77c0…e19
 item         «Should the menu cache?»           re-queued  9c31…2ab  belongs to «Offline behaviour»    body —
 item         «What is the refund window?»       Flagged    —         R2.1: answer is only a link      body —
+item         «Can a customer cancel after…»     Kept       3afc…b75  soft: would replace «Checkout» FR-5   body —
 item         «Can a customer cancel after…»     Flagged    3afc…b75  R3.2: no behaviour derivable     body —
 FLAGGED      «What is the refund window?»  the answer is only a link — write the decision in a sentence
 FLAGGED      «Can a customer cancel after paying?»  answer "as agreed with ops on the call" — nothing derivable  3afc…b75
@@ -822,7 +891,7 @@ The next sitting opens its own entry under the same run id, and only the last on
 the reason, the run totals, and the closing sweep's own number beside the sittings' own:
 
 ```
-2026-08-12 12:41 · resolve · run 7f3a2c · skill v1 · sitting 3 · 4 of 4 queued
+2026-08-12 12:41 · resolve · run 7f3a2c · skill v1 · sitting 3 · 4 of 4 queued · mode: force
 …
 GATE         4 applied, 0 returned
 SWEEP        14 applied this run · 1 suspect read · 0 returned
@@ -837,6 +906,9 @@ flagged rows wait on a person — `DRAINED` would claim nobody is owed anything 
 above). *A closing line whose applied count silently swallows the flagged rows is the
 `Applied`-means-nothing failure this seam exists to prevent, and a sample is what a run copies.*
 
+**The report's second line names the mode this run actually ran in**, never the sample's — a `soft`
+run that prints `mode: force` has told the reader the opposite of what it did.
+
 **The report is one screen.** Mechanical results are **pre-applied and shown for information** — gating them
 just trains people to rubber-stamp the ones that matter — **and the count of `► NEEDS YOU` lines is the
 review's true length**, bounded by changes rather than document size. **The flagged list prints first,
@@ -844,6 +916,7 @@ always.**
 
 ```
 RESOLVE — 2026-08-13 · run 3e9d1b · 4 changes · 3 need you
+mode: force (the default) — an answer-vs-document contradiction supersedes; soft would flag it
 independence: writer <a>, checker <b>
 
 ► NEEDS YOU (3) — every one of these is Flagged
@@ -908,6 +981,9 @@ single largest source of narrative there, and the log has no reader for it.)*
 - [ ] Every marker removed names a row ID in the log entry; every marker still open reads `carried` or
       points at a real row.
 - [ ] Every entry opened at the top of R2, ends in `CLOSED hh:mm` or `PAUSED …`, and contains no token.
+- [ ] **Every entry's header names the mode this run ran in, and the report's second line names the same
+      one.** A `Kept` row is unreadable later without it — a supersession that was refused looks exactly
+      like one that never arose.
 - [ ] **Every line in every entry is one of R5's line kinds, and none of them is a paragraph.** A verdict's
       reasoning, an overturn's story and a delta's content are in the report; the log has the fact.
 - [ ] **The run ended on a reason from R5's closed list, named in the last entry's closing line** — or

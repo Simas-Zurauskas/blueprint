@@ -104,8 +104,8 @@ again → `/blueprint questions`. Apply new answers → `/blueprint resolve`. As
 |---|---|---|
 | `/blueprint init` | Sources or interview → grilled skeleton → your confirm → the Blueprint | After your confirm |
 | `/blueprint add` | New material into existing/new features. **Runs to the end without stopping**, and by default **new source material supersedes document text it contradicts** — `add soft` keeps every contradiction as a question instead | Immediately, and the report names every change |
-| `/blueprint questions` | The full grilling battery — every find disposed: questions written, convention settled as labeled defaults, content as slots, wrong text as doc-fixes — and given guidance | Live questions at `Open` + guidance; labeled default, fix and slot lines in feature bodies, awaiting your batch ratification |
-| `/blueprint resolve` | Write vetted answers into the feature specs | The answers |
+| `/blueprint questions` | The full grilling battery on a first grill, a narrowed attack surface on a re-grill — every find disposed: questions written, convention settled as labeled defaults, content as slots, wrong text as doc-fixes — and given guidance | Live questions at `Open` + guidance; labeled default, fix and slot lines in feature bodies, awaiting your batch ratification |
+| `/blueprint resolve` | Write vetted answers into the feature specs. **Runs to the end without stopping**, and by default **a vetted answer supersedes document text it contradicts** — `resolve soft` flags that row with both texts instead, and writes nothing | The answers |
 | `/blueprint status` | One screen: what's flagged, what's waiting on you, what's still unsettled | **Never** |
 
 `status` is always safe to run. When lost, run it — every line ends with what to do next.
@@ -124,7 +124,7 @@ months.
 
 ## Honest limits
 
-- The full grilling battery caught **~86% outright and detected ~97%** — **in one in-house lab, n=1:
+- A first grill's full battery caught **~86% outright and detected ~97%** — **in one in-house lab, n=1:
   77 defects planted by us, graded by us, plausibly by the same model family that wrote the answers.
   Treat it as a smoke test we ran, not as a measurement anyone independent reproduced.** (The battery
   is the only mode that ships because one pass of anything finds less than half of what is there on the

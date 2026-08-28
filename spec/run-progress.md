@@ -16,7 +16,7 @@ never carried forward from the last time the block was printed, which is the who
 skill's rule 7 exists to prevent and it applies here like anywhere else.
 
 ```
-BLUEPRINT resolve · run 7f3a2c · sitting 2 · mode: default
+BLUEPRINT resolve · run 7f3a2c · sitting 2 · mode: force
   done   R1 load the queue          18 eligible
   done   R2 pre-write checks        4 bases hashed · 0 blockers
   now    R3 write, item 7 of 10     4 applied · 1 flagged · 2 superseded
@@ -28,7 +28,7 @@ BLUEPRINT resolve · run 7f3a2c · sitting 2 · mode: default
 
 | Part | What it carries |
 |---|---|
-| **header** | command · run id · sitting number · the mode, where the command has one ([`../add.md`](../add.md)) |
+| **header** | command · run id · sitting number · the mode, where the command has one ([`../add.md`](../add.md) is its single home). **Printed as the modifier a human types — `force` or `soft`, never `default`** (v22): `default` names which one is default, it is not a third mode, and a reader grepping one token must not miss entries written under the other |
 | **`done`** | one line per finished phase, with the one number that phase produced |
 | **`now`** | exactly one line. Where the phase is per-item, it carries `item n of m` |
 | **`next`** | the phases not started. Named, never counted — *"3 phases remain"* tells nobody what is coming |

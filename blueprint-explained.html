@@ -264,7 +264,7 @@
             </tr>
             <tr>
               <td><code>questions</code></td>
-              <td>The grilling — five adversarial lenses at two scopes, absence sweeps over the whole
+              <td>The grilling — five adversarial lenses at two scopes on a first pass, a narrowed attack surface on a re-run, absence sweeps over the whole
                 document, one repeat round. Every survivor is <em>disposed</em>, not just written: a
                 question, a labeled default, or a correction.</td>
               <td>No, unless you ask for a working sitting.</td>
@@ -272,7 +272,9 @@
             <tr>
               <td><code>resolve</code></td>
               <td>The one seam that writes answers. Takes questions you answered, writes each into the
-                feature it touches, removes the marker.</td>
+                feature it touches, removes the marker. By default a vetted answer overwrites document
+                text it contradicts, keeping a quote of what it replaced; <code>resolve soft</code>
+                writes nothing there and flags the row with both texts.</td>
               <td>No. Every row ends <code>Applied</code> or <code>Flagged</code> — never silently
                 nothing.</td>
             </tr>
@@ -428,7 +430,8 @@
             A gap becomes a marker and a written question at Open. You either answer it, moving it to
             Answered, or reject it with a reason. A resolve run takes an Answered row and ends it either
             Applied — written into the feature, marker removed — or Flagged, where nothing could be
-            derived from the answer. A Flagged row waits for you and returns to Answered once the
+            derived from the answer, or where soft mode refused to overwrite text the answer
+            contradicts. A Flagged row waits for you and returns to Answered once the
             disagreement is resolved.
           </desc>
           <defs>

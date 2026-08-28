@@ -20,6 +20,17 @@ this run was rebuilt to remove.
 
 **An unrecognised modifier runs `soft`** — the safe mode — and the progress block's header line says
 which mode is running, every time. It never halts to ask: halting is the thing this run does not do.
+**It also says the word it did not recognise, on that same line** (v22): a mistyped `force` becomes
+`soft` and gets the opposite of what was asked for, and a mode token the reader has to notice and
+interpret is not being told. `mode: soft — "fource" is not a modifier` costs one clause and no stop.
+
+**This grammar governs both write seams that have modes, and this section is its single home**
+(v22): the two modifiers and their names, `force` as the default a bare command is, an unrecognised
+modifier running `soft`, the header line naming the mode, and **no mode of either command ever
+stopping to ask** — a run finishes, in every mode. [`resolve.md`](resolve.md)'s own table cites this
+one and states only what is different there: its contradiction is between a **vetted answer** and the
+document rather than a source and the document, and `soft` there ends the row `Flagged` because
+`resolve` mints no markers and no question rows.
 
 **A contradiction between two sources is not affected by the mode.** Where two sources disagree, or a
 source contradicts itself, there is no winner to pick: both quotes, both origins, one question, in
@@ -135,7 +146,7 @@ material and a human's statement of what the product does is a source like any o
 received the word before; nothing now claims one does).
 
 ```
-BLUEPRINT ADD — mode: default (source wins) · about to write
+BLUEPRINT ADD — mode: force (the default; source wins) · about to write
 source: «Client call 2026-08-11 transcript» (1) · target: Notion
 
 CHANGES 3 existing features
@@ -194,6 +205,11 @@ putting one back costs a sentence too.
 
    > *(Superseded 2026-08-11 from «Client call transcript 22:10» — previously: "a paid order cannot
    > be changed".)*
+
+   **Where a [`resolve.md`](resolve.md) run originates the supersession, the «…» names the question row
+   rather than a source segment, and the line carries `· depth n`** (v23) — this shape is the single
+   home of the provenance line and both seams write it, so a chain of derived questions is readable off
+   the body text instead of being reconstructed from a title.
 
    **Where the superseded fact is also restated outside a body line** (v21) — a feature's
    `What it does` property, or a `[NEEDS CLARIFICATION]` marker quoting the old text — **that
