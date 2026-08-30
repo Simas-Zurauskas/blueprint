@@ -100,7 +100,7 @@ state the record describes.
 
 **Then the `What is still unsettled` block**, last — **this run is its single home** (v16; it lived in
 the command removed in v16 until then). It is a summary of everything above rather than a fault of its own,
-and it answers one question: *how much of this is still open?* Five lines, each naming rows and never a
+and it answers one question: *how much of this is still open?* Six lines, each naming rows and never a
 score — *"78% ready"* is a number nobody can act on:
 
 1. **Which features carry an open `[NEEDS CLARIFICATION]` marker?** Each is an admitted gap in the
@@ -112,8 +112,16 @@ score — *"78% ready"* is a number nobody can act on:
    requirement is a title, not a spec.
 4. **How many `Open` questions are unanswered, and how old is the oldest?**
 5. **Which convention defaults are adopted but unratified?** Each batch by run id and line count.
+6. **Which `Content slot — client-supplied:` lines stand in the feature bodies?** (v30) Each is a
+   thing this document has defined and **somebody outside still owes** — named with its feature and
+   who the line says supplies it. **Nothing records whether the content has arrived**, so this counts
+   the standing commitments rather than the missing ones, exactly as line 5 counts adopted defaults
+   rather than unread ones. *It exists because `doc-shape.md` §9 route 7 removes a slot's marker when
+   the slot line is written (v30) — which is right, since a gap with a named owner is no longer an
+   admitted unknown — but without this line the removal would take the gap off every screen a human
+   reads, and a slot nobody ever fills would be invisible.*
 
-*(A sixth line asked which `Not doing` lines had no `revisit if:`. It went with the question class it
+*(An earlier line asked which `Not doing` lines had no `revisit if:`. It went with the question class it
 fed — [`questions.md`](questions.md) Q2 sweep item 4 — since carrying it here as a deficiency while
 refusing to ask about it would be the same manufactured work, reported instead of asked.)*
 

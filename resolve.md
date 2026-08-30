@@ -8,7 +8,8 @@ This is the one write seam for answers. Questions reach `Applied` only here. **D
 Blueprint. Do not rewrite anything you were not asked to touch.** Specs obeyed, not restated:
 [`spec/doc-shape.md`](spec/doc-shape.md) · [`spec/databases.md`](spec/databases.md) ·
 [`spec/targets.md`](spec/targets.md) · [`spec/notion-mechanics.md`](spec/notion-mechanics.md) ·
-[`spec/run-progress.md`](spec/run-progress.md).
+[`spec/run-progress.md`](spec/run-progress.md) ·
+[`spec/prd-scope.md`](spec/prd-scope.md).
 
 **Run the six pre-flight checks in [`SKILL.md`](SKILL.md) first.**
 
@@ -42,8 +43,15 @@ source, and what `soft` does with one.
 | `/blueprint resolve soft` | Nothing is overwritten. The row ends `Flagged` carrying both texts, and the marker the answer would have removed **stays where it is** |
 
 **`soft` ends the row rather than writing a question, and that is a difference from `add soft` rather
-than an oversight** (v22): `add` mints markers and questions; this seam mints neither, and its two
-terminal states are `Applied` and `Flagged` (R4). A `Flagged` row carries its objection,
+than an oversight** (v22): `add` mints markers and questions; **this seam mints no question row, ever**,
+and its two terminal states are `Applied` and `Flagged` (R4). **It does mint one kind of marker and
+only one — the narrowing** ([`spec/doc-shape.md`](spec/doc-shape.md) §9): where an applied answer
+settles part of what a marker names, the settled part is written and **a narrower marker keeps the
+rest admitted**. That is not a new gap, it is the old one with less of it, and refusing to write it
+would convert a known unknown into an unknown unknown — the one thing I6's deletion rule exists to
+prevent. *(v30: this sentence read "mints neither" and `doc-shape.md` §9 read "a resolve run's
+narrower marker" in the same breath. Two measured runs on different projects hit the contradiction
+and split on it; one recorded that "three items turned on which I believed".)* A `Flagged` row carries its objection,
 [`status.md`](status.md) C1 prints it, and a human who wants the answer in moves the row back to
 `Answered` and runs the default mode, which supersedes it.
 
@@ -220,6 +228,19 @@ re-baseline the comparison is against a hash nothing ever updates, and one hand-
 answered row on that feature on every run for the life of the project. *No run vouches for anybody;
 the re-baseline records what is there, it does not approve it.*
 
+**And there is a second clearing route, because the per-row one is the wrong shape for the case that
+actually produces these** (v30). A crash between a body write and its `item` line leaves **every**
+body that run touched unattributable at once — [`SKILL.md`](SKILL.md) rule 8 fixes the commit order
+as write-then-log, so the window is real and the damage is per-run rather than per-row. **A human may
+vouch for a named set of bodies in one act, exactly as R1's capture-integrity check already lets them
+vouch for a stored source:** they confirm to the run which bodies they stand behind and why; the run
+records a dated `NOTE` line carrying the ask verbatim and each body's current hash, **which becomes
+the baseline**, and proceeds. Until then the per-row route stands and nothing is assumed.
+
+*Measured: one interrupted run left sixteen rows flagged on this check, each needing its own manual
+move, while R1's analogous situation on the same seam costs one sentence. The asymmetry was
+unintended — R1 had the route and R2.3 did not.*
+
 **The baseline, stated rather than implied** (v19). **Every write command** — `init`, `add`,
 `questions` and this one — records the hash of every feature body it writes or checks, using the
 algorithm and the hashed bytes [`spec/targets.md`](spec/targets.md) §5 gives. R2.3 compares a body
@@ -347,6 +368,13 @@ or a long drain would re-open it once per sitting and drift exactly as below —
 check — a writer never composes a new one.** What the kinds are is the Blueprint's own vocabulary, not this
 skill's: one project's set was *standard practice, adopted, not client-specific* · *design-confirmed* ·
 *answer and reasoning on that row*.
+**Every requirement this seam creates or changes gets its OWN provenance line** (v24) — one per
+requirement, never one line covering two. A measured run wrote a single line under `FR-4` for a delta
+that created both `FR-3` and `FR-4`, so `FR-3` carried no token and read depth 1 to the cap: *"a chain
+that skips a link is a chain the cap cannot see"*, happening in practice rather than in principle.
+**A requirement carrying no line of its own is depth 1 to every later reader**, which is why the line
+is owed rather than optional.
+
 **Every provenance line this seam writes also carries the row's derivation depth** — `· depth n`, copied
 from the closing clause of the row's own `Why asked` ([`questions.md`](questions.md) Q3's depth filter is
 its one reader). It is written on **every** outcome that lands text, `Superseded` and a seed `FR-1`
@@ -428,7 +456,7 @@ line touches, instead. Like the writer, the checker receives data and never read
   problem. This is the measured dominant false-positive class (*DocPrism*).
 - **A contradiction is not a stop — it is a supersession.** A delta contradicting a numbered
   requirement, an edge case or a `Not doing` line **supersedes it, quoting the replaced text** in the
-  same dated provenance line [`add.md`](add.md) A4 step 4 defines, under the same four guards and the
+  same dated provenance line [`add.md`](add.md) A4 step 5 defines, under the same four guards and the
   same three reported-first classes — that contract has one home and this cites it. A human already
   signed this answer by moving the row to `Answered`; refusing a decision the gate accepted is how a
   client-confirmed change ends up nowhere *(v16, owner's direction)*. **In `soft` none of this
@@ -567,11 +595,24 @@ continues.** There is no
 checkpoint, no round of items, and nothing here waits for a reply — a run that pauses here has
 stopped, and stopping is what this phase was rebuilt to remove.
 
-**Every row this run touched ends `Applied` or `Flagged`, and there is no third state.** That is the
-whole disposal rule and it is the single home of it. A row is never left sitting at `Answered`
-waiting for somebody, because a row left waiting is picked up by the next run, re-dispatched to a
+**Every row this run touched ends `Applied` or `Flagged`, and there is no third state — with one
+named exception, and it is R5's own** (v30). A row is never left sitting at `Answered` *waiting for
+somebody*, because a row left waiting is picked up by the next run, re-dispatched to a
 writer and an independent checker, and left waiting again — one project's rows did that every run
 for the life of the project, at two dispatches each, and no report ever said so.
+
+**The exception: a row R5's reconciliation gate or its closing sweep returned to `Answered`.** That
+row was **never applied** — the document does not carry its answer — so `Applied` would be a lie and
+`Flagged` would claim a person is needed when what is needed is another attempt. It is **disposed for
+this run** (R5's *one attempt per row per run* names it in exactly those words) and **eligible again
+on the next run**, which is the difference between it and a row left waiting. **The count falling is
+the correction, not a regression.**
+
+*This is stated because it was not. Until v30 this paragraph said "no third state" while R5's gate
+created one, and the completion checklist sided with this paragraph — so a run whose gate ever fired
+could not pass its own checklist. Two measured runs hit it; one traced the consequence and found the
+readings differ by whether a client's vetted answer survives at all: under the strict reading its
+q-21 would have been dropped permanently, and under this one it applied cleanly on the next run.*
 
 `Flagged` is the honest end for everything a run cannot write itself — **and for the one thing it was told not to write, `soft`'s `Kept`**: it is terminal for runs, it
 carries its objection, [`status.md`](status.md) C1 prints it, and a human who resolves the
@@ -808,7 +849,7 @@ dereferences a ledger line, so those stay too.
 COST · the per-pass candidate distribution · the funnel's working**. Nothing reads any of them back;
 they are the run's own account of itself, kept because it is cheap to keep and useless to search.
 
-**The closed list of line kinds — this is the single home of the entry's shape, for every write command.
+**The closed list of line kinds — this is the single home of the entry's shape, for every write command.**
 A kind marked *(→ `runs/`)* goes to `record/runs/<run-id>.md` and **not** into `record/run-log.md`; the
 split paragraph above is the rule and this column is the same rule, said where a run copying the table
 will see it. **A kind on neither list does not go in either file**, and the list is widened by a skill edit and a `VERSION`
@@ -848,7 +889,7 @@ manifest**, one line per **demotion** and one per **discard**, the **funnel**, a
 **GRILL** line ([`questions.md`](questions.md) Q2, Q4, Q6).
 
 **`GRILL` is `questions`' own kind and the one thing that reads it back is the next `questions` run**
-(v23): `bodies attacked · each with the hash it carried when the lenses ran · converged: yes | no`.
+(v23): `bodies attacked · each with the hash the body carries when this run finishes with it · converged: yes | no` — the **post-write** hash (v24), since this run writes into the bodies it attacks and a pre-write baseline would put every body in the next run's delta forever.
 Three things needed it and none of them had a substrate before. **(i)** The re-grill delta cannot be
 computed from `HASHES`: that line records the hash of a body a run **wrote or read back**, so a
 `resolve` run that applies six answers leaves those bodies matching their newest recorded hash, and a
@@ -966,8 +1007,10 @@ single largest source of narrative there, and the log has no reader for it.)*
 - [ ] No `Patched` minted a new numbered requirement or edge case beyond a seed `FR-1` derived from a
       vetted answer; every row R2 refused ends `Flagged`, named with its one-line reason **and the act that
       applies it** — nothing is left at `Answered`.
-- [ ] **Every row this run touched ends `Applied` or `Flagged`** (R4), and no row was left at
-      `Answered` waiting for somebody. Everything eligible at R2 went through R3 once, with no item
+- [ ] **Every row this run touched ends `Applied` or `Flagged`** (R4) — **except a row a
+      reconciliation gate or the closing sweep returned to `Answered`, which is disposed for this run
+      and eligible on the next** (R4's named exception). No row was left at `Answered` *waiting for
+      somebody*. Everything eligible at R2 went through R3 once, with no item
       going through it twice.
 - [ ] **R5's reconciliation gate ran over this sitting's applies, and its two numbers are in the entry**
       rows applied, rows returned to `Answered`. Every row this sitting flipped `Applied` is carried by

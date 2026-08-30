@@ -11,7 +11,8 @@ stays live and current, and `status` is what says how much of it is still open. 
 restated:
 [`spec/doc-shape.md`](spec/doc-shape.md) · [`spec/databases.md`](spec/databases.md) ·
 [`spec/targets.md`](spec/targets.md) · [`spec/notion-mechanics.md`](spec/notion-mechanics.md) ·
-[`spec/run-progress.md`](spec/run-progress.md).
+[`spec/run-progress.md`](spec/run-progress.md) ·
+[`spec/prd-scope.md`](spec/prd-scope.md).
 
 **Run the six pre-flight checks in [`SKILL.md`](SKILL.md) first.** On the Notion target, **HALT if there
 is no connected overview page** — print the human-setup checklist ([`spec/databases.md`](spec/databases.md) §7) and stop. Never create a substitute overview page:
@@ -50,7 +51,7 @@ Task list: `I1` collect · `I2` draft and grill · `I3` propose · `I4` create s
 
 **These are halts rather than stops, and are not on the list above:** the no-connected-overview-page
 halt at the top of this file, and I7's conservation-check halt. A halt ends the run; a stop pauses it.
-**Nothing else in `init` blocks.** I2's *"because"* asks and does not wait; Q6 step 8 prints and does
+**Nothing else in `init` blocks.** I2's *"because"* asks and does not wait; Q6 step 9 prints and does
 not wait.
 
 ---
@@ -395,10 +396,29 @@ straight from client material — and over everything this run wrote into `recor
 `record/runs/<run-id>.md`, every character ([`spec/doc-shape.md`](spec/doc-shape.md) §6,
 [`resolve.md`](resolve.md) R2.5 is the same obligation on the resolve seam). **That folder is
 committed** ([`spec/targets.md`](spec/targets.md) §5), so a customer name, a contract date or a price
-that reaches it is **published**, not merely stored — and this phase is the one that puts them there,
-because the conservation check below requires `CON-k` quotes **verbatim** from client sources. A
-finding is reported and the material is written as the role, never the specific; a quote that cannot
-survive the rule is cited by `CON-k` and origin instead of reproduced.
+that reaches it is **published**, not merely stored. A finding is reported and the material is written
+as the role, never the specific.
+
+**And the collision between that rule and the verbatim obligation is resolved by where the quote
+lives, not by destroying it** (v30). **The verbatim `CON-k` quotes are written to the run's source
+record — `sources/<run-id>/contradictions.md` — which is durable, never deleted and never committed**
+([`spec/targets.md`](spec/targets.md) §5). **`record/` carries the citation, the
+origin and the source-record path**, never the client's words. So the conservation check still
+dereferences a real quote, [`spec/doc-shape.md`](spec/doc-shape.md) §9's carried marker still resolves
+to one, and nothing a run writes into a committed file can carry a name, a price or a contract date.
+
+*This replaces an escape hatch that could not work. It read "a quote that cannot survive the rule is
+cited by `CON-k` and origin instead of reproduced" — which removed the evidence the quote existed for,
+on exactly the contradictions that matter most, since disagreements are usually between named people.
+All three runs of a measured campaign hit the collision independently. Two caught themselves in time;
+**the third wrote an individual's name into its committed run log, and there was no route by which it
+could ever be removed** — the log is append-only and the only sanctioned exception is a human writing
+`CLOSED (crashed)`. A mandatory write of content another mandatory rule bars, into a file nothing can
+fix, is not a rule a run can obey.*
+
+**What this costs, stated rather than discovered:** `sources/` is not committed, so on a machine that
+has not got it a `CON-k` quote is unreadable — the same cost §5 already names for `record/`, moved to
+the half that is allowed to hold client words.
 
 **Regenerate every `⟳` view from the rows just written** ([`spec/doc-shape.md`](spec/doc-shape.md) §3's
 single home) before printing the closing screen — the first write of the overview already builds them
@@ -407,14 +427,16 @@ fresh at I5, so this is a check that they still match what Q1–Q6 just changed,
 **Before the run-log entry closes, run the contradiction conservation check** — the same mechanical
 discipline as [`spec/doc-shape.md`](spec/doc-shape.md) §8's split verification: every `CON-k` from I2
 resolves to **exactly one** disposition — a question row `q-NN` · a carried marker citing its `CON-k` ·
-**superseded at [`add.md`](add.md) A4 step 4, citing the requirement and the source segment that won** ·
+**superseded at [`add.md`](add.md) A4 step 5, citing the requirement and the source segment that won** ·
 closed by the human's answer at I3 · discarded at [`questions.md`](questions.md) Q3 with the quote
 logged, its counter-case in the report ([`questions.md`](questions.md) Q6). **Any orphan halts the close
 and is named.**
 
  The entry then carries one line per
-`CON-k`: a pointer where a gated home exists (`CON-3 → q-03`), and **both verbatim quotes** where the
-only home is a carried marker or a discard — because a deleted cache must not take the evidence with it.
+`CON-k`: a pointer where a gated home exists (`CON-3 → q-03`), and **the citation, origin and
+source-record path** where the only home is a carried marker or a discard — the quotes themselves are
+in `sources/<run-id>/contradictions.md`, which is durable and never deleted (v30). A deleted *cache*
+still must not take the evidence with it, and does not: `sources/` is not `cache/`.
 Every line is a dated, past-tense process statement ("routed to q-03 at this sitting"), never a
 live-status claim that goes stale when the row is answered. **And no *rebuildable* file is ever the only home of a verdict or a quote** — `cache/` is disposable,
 and a verdict living only there is a verdict a later reader never learns happened. **`record/` is a

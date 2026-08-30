@@ -132,7 +132,7 @@ entire failure catalogue)
 - **Commit `record/` after each run's write-back, on either target** — with the run id as the message,
   and **only after the content-rule sweep has passed over everything this run put there**
   ([`../resolve.md`](../resolve.md) R2.5, [`../init.md`](../init.md) I7, [`../add.md`](../add.md) A5,
-  [`../questions.md`](../questions.md) Q6 step 10). That sweep runs **before** the lines are appended
+  [`../questions.md`](../questions.md) Q6 step 11). That sweep runs **before** the lines are appended
   a line that cannot survive the rule is written as the role, never the specific — so a finding that
   somehow reaches commit time is a defect in the run: it holds the commit and is reported, because a
   commit publishes (v19). The commit stages `record/` and nothing else, on whatever branch is
@@ -185,6 +185,8 @@ It holds:
   sources/               DURABLE — never deleted. NEVER committed: client material, verbatim
     <run-id>/              the source record for one run
       i3-skeleton.md       the confirmed skeleton, verbatim — the referent of the I3 reply (v21)
+      contradictions.md    the CON-k verbatim spans (v30) — client words, so never committed;
+                           `record/` carries only their citation, origin and this path
   cache/                 REBUILDABLE — delete it freely; the next run rebuilds it
     mapping.md             entity IDs, parents, child order, a content hash per entity
 ```
@@ -202,7 +204,9 @@ rule keeps out of the Blueprint ([`doc-shape.md`](doc-shape.md) §6). `cache/` i
 committing. So the version-control entry names `sources/` and `cache/`, **not** the whole folder
 which is the change from v15, where ignoring everything was the only rule.
 
-**Because `record/` is committed, it is swept like any other surface.** Its `CON-k` quotes and its
+**Because `record/` is committed, it is swept like any other surface.** Since v30 it carries **no
+client quote at all** — `CON-k` verbatim spans live in `sources/<run-id>/contradictions.md`, which is
+durable and never committed ([`../init.md`](../init.md) I7) — but the sweep still runs, because its
 verbatim non-`Clean` verdicts are lifted from client sources, so the content rule reaches them and
 [`../status.md`](../status.md) C9 reports a barred specific there exactly as it does in a feature
 body. That sweep is the reason committing the record is safe rather than merely permitted.

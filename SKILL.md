@@ -35,10 +35,11 @@ open, priced at one veto.
 | `/blueprint status` | [`status.md`](status.md) | Reads everything, runs ten checks, prints one screen worst first. **Writes nothing, ever** |
 
 **To execute a command:** read its file and follow its phases end to end. Do not summarise a run file and
-improvise from the summary. The five specs those files lean on are read on demand:
+improvise from the summary. The six specs those files lean on are read on demand:
 [`spec/doc-shape.md`](spec/doc-shape.md) · [`spec/databases.md`](spec/databases.md) ·
 [`spec/targets.md`](spec/targets.md) · [`spec/notion-mechanics.md`](spec/notion-mechanics.md) ·
-[`spec/run-progress.md`](spec/run-progress.md).
+[`spec/run-progress.md`](spec/run-progress.md) ·
+[`spec/prd-scope.md`](spec/prd-scope.md).
 
 **Every research citation in these files is meant to carry a venue and year or an identifier, as
 every platform claim carries a verification date** ([`spec/notion-mechanics.md`](spec/notion-mechanics.md)'s
@@ -71,11 +72,11 @@ version identically.
 | **v13** | Removed the `Intent` select and the question-approval status. On a Blueprint built before v13 both survive in the schema and no run touches either ([`spec/databases.md`](spec/databases.md) §8) |
 | **v16** | **The run log moved off the target into `record/run-log.md`** ([`spec/targets.md`](spec/targets.md) §5), and the change log and its page were removed. A pre-v16 Blueprint keeps its Notion run log where it is — read for history, never rewritten — and new entries go to the local file, with one dated crossover line saying so |
 
-**Nothing else is on this list, and v17, v18, v19, v20, v21, v22 and v23 are deliberately not** — each changed rules,
+**Nothing else is on this list, and v17 through v30 are deliberately not** — each changed rules,
 phases, reports and log-line kinds only (v19 added the `RATIFIED`/`VETOED` kinds and the `HASHES`
 obligation to the local log; v20 added the `directive` kind, moved the body hash onto the `item` line
 and widened `discard` to `init` — all of which are the local record's shape, never a property, option,
-database or file layout on the target; v21 added a dispatch-probe ladder and its route, an I3 skeleton capture under `sources/<run-id>/`, and clauses on existing log-line kinds — the working folder is not the target, so no target shape changed; v23 bounded the grilling's derivation depth and closed a fail-open in its disposition check, adding a `· depth n` token to run-written body lines and **one new log-line kind, `GRILL`** ([`resolve.md`](resolve.md) R5) — the local record's shape, as v20's `directive` was, and no property, option, database or file layout on the target; v22 gave `resolve` the two modes `add` already had and added a seventh route to `Flagged` — a mode is read from the invocation and `Flagged` is an existing select option, so no property, option, database or file layout on the target moved).
+database or file layout on the target; v21 added a dispatch-probe ladder and its route, an I3 skeleton capture under `sources/<run-id>/`, and clauses on existing log-line kinds — the working folder is not the target, so no target shape changed; v23 bounded the grilling's derivation depth and closed a fail-open in its disposition check, adding a `· depth n` token to run-written body lines and **one new log-line kind, `GRILL`** ([`resolve.md`](resolve.md) R5) — the local record's shape, as v20's `directive` was, and no property, option, database or file layout on the target; v24 moved the `GRILL` line's hash from pre-write to post-write after a measured cycle showed the pre-write reading put every body in the next run's delta forever — a clause on an existing log-line kind, and the local record is not the target; v25 folded a three-cycle live campaign — depth taken as the deepest grounding, one provenance line per requirement, the repeat round fired on Q3 survivors, one standing defaults ledger instead of a batch per run, and a gate that closes with a dispatch outstanding must say so — all rules and report shape, no property, option, database or file layout on the target; v26 added `spec/prd-scope.md`, a sixth spec read at question-generation time, and v27 folded five simulated evaluation rounds into it — a skill file, not a target artefact, so nothing on the target moved; v28 corrected how that evidence is described in `spec/prd-scope.md`, `questions.md` and `HISTORY.md` — prose and provenance only, no rule changed and nothing on the target moved; v29 bounded §2's PROPOSE route with a second test and guarded §5's mechanism route, after a measured run found them the two largest sources of missed questions — rules inside a spec file, so no property, option, database or file layout on the target moved; v22 gave `resolve` the two modes `add` already had and added a seventh route to `Flagged` — a mode is read from the invocation and `Flagged` is an existing select option, so no property, option, database or file layout on the target moved; **v30** wired [`spec/prd-scope.md`](spec/prd-scope.md) §8's blocking rule and §5's principle row into Q3 as two named filters, added a `Why asked` read-back gate to Q4, added **routes 7 and 8** to [`spec/doc-shape.md`](spec/doc-shape.md) §9's marker-removal list, settled three contradictions ([`resolve.md`](resolve.md) R4 against R5's gate, `resolve.md`:46 against §9 on narrowing markers, and the depth cap's Q3/Q4 ordering), gave R2.3 a one-act vouch route, made a veto's numbering resolve by content, gave a project-level default a home in the overview's `Operating` block, and **moved the verbatim `CON-k` spans out of the committed `record/` into `sources/<run-id>/contradictions.md`** — all of which are rules, phases, reports and **working-folder** layout. **The working folder is not the target** ([`spec/targets.md`](spec/targets.md) §5), so no property, select option, database or file layout on the target moved).
 
 ## Two roots — read this first
 
@@ -168,7 +169,7 @@ both are announced.
    **One bounded exception, added v16 with the supersession seam.** This rule governs a **concurrent**
    edit — text that changed between this run reading a block and writing it. It does **not** govern a
    **stale document** — the Blueprint being older than the evidence a source carries. Where new source
-   material contradicts what the document says, [`add.md`](add.md) A4 step 4 and
+   material contradicts what the document says, [`add.md`](add.md) A4 step 5 and
    [`resolve.md`](resolve.md) R3.2 supersede it **in each command's default mode**, quoting the
    replaced text — `add soft` and `resolve soft` write nothing there instead; a requirement somebody
    wrote by hand is superseded like any other but is **reported first**, old and new. The fetch-and-diff
@@ -179,7 +180,7 @@ both are announced.
    one.** That bar is about **two pieces of evidence**, where no winner exists to pick, and it is
    unchanged. **It does not govern a source against the document** (v16): the Blueprint is derived
    *from* evidence, so a source contradicting it is not a tie — the source wins and the replaced text
-   is quoted where it stood ([`add.md`](add.md) A4 step 4, [`resolve.md`](resolve.md) R3.2, **each in
+   is quoted where it stood ([`add.md`](add.md) A4 step 5, [`resolve.md`](resolve.md) R3.2, **each in
    its default mode**). Writing a
    sourced sentence over a derived one is not inventing; it is the opposite. A decided exclusion is a
    `Not doing` line, never a question. **The Convention carve-out** (added v12 at the owner's direction,
@@ -321,7 +322,12 @@ both are announced.
    **Property writes are not part of the commit**: they stay where each run file puts them
    ([`resolve.md`](resolve.md) R5), which is what keeps a crash before the property writes leaving
    every row in the queue. **(iii) A phase's human gate opens only after every dispatched pipeline,
-   retries included, has reached a terminal verdict.** Stopping earlier — a pause, an abort — discards
+   retries included, has reached a terminal verdict.** **A gate that closes with a dispatch still out
+   names it, and the phase's own counts are not final** (v24): a measured sitting closed nine minutes
+   before its disposition batch returned, and **sixteen candidates that batch routed as questions had
+   no row to land in** — the funnel and the report were already shut. A run in that state says which
+   dispatches were outstanding, carries their returns to the next run's first phase, and does not print
+   a funnel as though it counted them. Stopping earlier — a pause, an abort — discards
    in-flight model work unwritten; those items stay queued and the entry says `PAUSED`. Dispatch no
    more pipelines than the sitting's own cap, and no more than the harness comfortably sustains — the
    cap is the document's, not the harness's. A pipeline silent past ten minutes is named in the log

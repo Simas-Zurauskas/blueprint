@@ -279,8 +279,10 @@ by a run** — the field list, the two ranges and the run-written route all live
 and log it ([`resolve.md`](resolve.md) R2.5 is the same obligation on the resolve seam) — **and sweep
 everything this run wrote into `record/`**, the entry and `record/runs/<run-id>.md`, every character.
 That folder is committed ([`spec/targets.md`](spec/targets.md) §5), so a breach there is published
-rather than stored, and this run writes `CON-k` quotes **verbatim** from client sources into it. A
-quote that cannot survive the rule is cited by `CON-k` and origin instead of reproduced.
+rather than stored. **This run writes no client quote into `record/` at all** (v30): its `CON-k`
+verbatim quotes go to `sources/<run-id>/contradictions.md`, which is durable and never committed, and
+the entry carries the citation, the origin and that path ([`init.md`](init.md) I7 is the single home
+of this split).
 
 One addition `add` needs: **the check also reads the affected feature's other requirements and its
 `Not doing` lines.** A delta that contradicts one **and is not a sanctioned supersession** is
@@ -344,5 +346,5 @@ wrong once never reads it again.
 | A new `Area` appears | Created, and **named first in the report** — Areas are a vocabulary shared with the chapter pages, so a new one is worth seeing. One word to the next `add` renames it |
 | The source is a code repo | Declined at A1. Ask for the behaviour in words |
 | No Blueprint exists yet | Say so and point at `/blueprint init` |
-| A human edited a body since the last run | In `soft`, their edit stands. In the default mode the source supersedes it like any other text, but the line is **reported first**, old and new quoted (A4 step 4). An edit made **since this run read the block** is a foreign edit either way — step 1, nothing written |
+| A human edited a body since the last run | In `soft`, their edit stands. In the default mode the source supersedes it like any other text, but the line is **reported first**, old and new quoted (A4 step 5). An edit made **since this run read the block** is a foreign edit either way — step 1, nothing written |
 | The run dies halfway | Re-run it. Nothing is marked written until its delta is confirmed and logged |

@@ -1,3 +1,145 @@
+# v30 — the re-elicitation fixes, from a three-round live campaign
+
+**What produced this.** `blueprint-sim6`, 2026-08-29/30: three projects, three source forms, ten
+turns each — `init → questions → answer → resolve → add → questions → answer → resolve → questions`
+with a **fresh runner dispatch at every step**, so each round had to rebuild its state from the files.
+Operator personas played the clients, were forbidden the skill files and the key, and were never told
+what was being measured. Thresholds were fixed in writing before the first dispatch.
+
+**The headline measurement.** Question rows per round, re-derived from `questions.md`:
+kiln **45 → 8 → 7**, locum **26 → 11 → 7**, tuckbox **18 → 12 → 4**. No project triggered a fail
+condition. **The loop terminates**, the depth cap fired for real (8 candidates capped at depth 3 on
+kiln's third round), and every `resolve` run in the campaign minted **zero** question rows.
+
+**What it did not do is stop re-asking settled things**, and all three clients said so unprompted, in
+three vocabularies: *"three questions that exist because an answer I already gave wasn't applied"* ·
+*"it's 48 wearing a different hat — if I give you an hour rule once, apply it to every message the
+thing sends and don't come back per feature"* · *"four separate questions about a retention period
+that does not exist and that nobody can tell me. That is a treadmill and I'm getting off it."*
+Measured: five rows on one blocked topic, four of them in one round.
+
+## The fixes
+
+- **Q3 gains two filters** — `Consequence of an open question` and `Answered by a principle the client
+  stated`. Both rules already existed in `spec/prd-scope.md` (§8 and §5) and **neither was reachable**:
+  §8 was imported by nothing and matched none of Q3's twelve filters, and §5's row sat behind a survey
+  the router may decline. This is the direct fix for the complaint above.
+- **Q4 gains a `Why asked` read-back gate.** The tests that would catch a misdirected row run on the
+  *candidate*, while `Why asked` is composed *after* the routing — so the sentence proving the routing
+  wrong is written after the only gate that could use it. Four rows in the campaign carried that
+  evidence in their own text and **the clients rejected four of four**.
+- **`doc-shape.md` §9 gains routes 7 and 8** — a marker held by a written content slot, and a marker a
+  source answered. Without them `carried` could never read zero, which made **convergence unreachable
+  by construction** on any project using the slot channel; six markers stood at `carried` on a
+  finished run, and the grill re-detected them as **33 of 145 candidates** the next round.
+- **`resolve.md` R4's "no third state" gains its named exception** — a row R5's reconciliation gate
+  returned to `Answered`. R5 created the state, R4 and the completion checklist denied it, so a run
+  whose gate fired could not pass its own checklist. The two readings differ by whether a vetted
+  answer survives: one measured run's row applied cleanly under this reading and would have been lost
+  under the other.
+- **`resolve.md`:46 settled against §9** — this seam mints **no question row, ever**, and **one** kind
+  of marker: the narrowing. Two runs on different projects split on the old contradiction; one
+  recorded that *"three items turned on which I believed"*.
+- **The depth cap is re-tested once** where Q4's blind check changes a disposition to QUESTION, on the
+  file's own principle that *"a cap that a pass ordering can flip is not a cap."*
+- **R2.3 gains R1's vouch route.** A crash between a body write and its `item` line strands every body
+  a run touched; the only clearing channel was per row. One interruption cost **16 manual moves**
+  where R1's analogous check, on the same seam, costs one sentence.
+- **A veto's numbering resolves by content, not position.** The report prints risk-sorted, the ledger
+  is numbered in write order. A run mapped *"number 5"* onto ledger #5; her words named #6, and #5 was
+  a default she had approved — **acting on it would have removed one she approved and kept one she
+  rejected.**
+- **A project-level convention default has a home** — a dated line in the overview's `Operating`
+  block, through §3's acceptance route. It had none, so a candidate passing all four of rule 4's
+  conditions was discarded on a filter that did not fit. *"The channel failed, not the candidate."*
+- **The verbatim `CON-k` spans move to `sources/<run-id>/contradictions.md`.** I7 required them
+  verbatim in `record/`; `targets.md` §5 makes `record/` committed and in scope for the content rule;
+  R5 makes the log append-only. All three `init` runs hit the collision independently. Two caught
+  themselves; **the third wrote an individual's name into its committed log and no route existed to
+  remove it.** A mandatory write of content another mandatory rule bars, into a file nothing can fix,
+  is not a rule a run can obey. `record/` now carries the citation, origin and path.
+- **Five broken cross-references fixed** — every citation of the supersession contract pointed at
+  `add.md` A4 **step 4** (the `item`-line rule) instead of **step 5**, including `add.md` mis-citing
+  its own phase and `resolve.md` saying step 4 *"defines the dated provenance line"*. `doc-shape.md`
+  cited step 6 for the seed `FR-1`, which is step 7. **`lint.sh` was pinning the wrong citation**,
+  which is why it survived; the assertion was corrected with it.
+- **Two unbalanced bold spans repaired**, one pre-existing at `HEAD`.
+
+### The question budget was retired, and what replaced it
+
+**What it was.** A stated target for how many rows one run writes — an absolute **20** on a first
+`init`, about one per feature thereafter. Over it, the run re-gated the whole batch through Q4's two
+axes and discarded what failed.
+
+**Why it could not work.** On an `init` every gap becomes a marker and every marker with no row
+behind it is transcribed into a row at Q4 — so nearly every row *is* a carried-marker transcription,
+and those may never be discarded to meet a threshold (rightly: a budget that could eat a client-bound
+gap would silently drop a real question). The re-gate therefore ran over a batch in which almost
+nothing was eligible for removal. Measured on kiln: **68 gaps → 51 markers → 44 transcriptions → 45
+rows written against a cap of 20, and the re-gate removed none of them.** In the same project's third
+round the number did not engage at all — 7 rows written against a target of ~13 — while the *filters*
+took **145 candidates to 7**.
+
+**v18 had already tried.** It changed transcriptions from budget-exempt to budget-counted, and its own
+note records the prior evidence as *"30, 46, 49 and 45 rows against a 14–22 target."* The campaign that
+retired the number wrote **45**. **Counting a row you are forbidden to discard changes the report, not
+the row count.**
+
+**And the file pre-forgave its own breach** — *"a first `init` over 20 rows whose overage is all
+carried-marker transcriptions is not a routing failure and the report says so."* A threshold whose
+violation is sanctioned in advance is decoration.
+
+**No client asked for fewer questions.** All three asked for *different* ones: *"send me the ones that
+actually stop you"* · *"bring me the ones that actually change what I get in November and leave the
+rest"* · *"apply what I've told you… only come back when you genuinely can't work it out from what
+I've said."* Their own fair/unfair splits make the point — tuckbox called **6 of 13 fair and wanted
+them**, objecting only to the 3 that re-asked settled things. **A row count cannot tell those apart; it
+discards by position in a queue.** A cap of the same family, the depth cap, was measured discarding a
+real gap that five independent passes found and two requirements' pass/fail conditions hung on.
+
+**What replaced it.** The re-gate stays — re-scrutiny of the whole batch is genuinely useful — but it
+now fires on **Q6's per-feature routing diagnostic**, a feature carrying more than roughly one open
+question, which that step already names as *"a routing check, not thoroughness"* and which reports the
+channel that leaked. A feature with six open questions is evidence of a channel failing; a document
+with sixty is evidence of nothing but a large document. **The funnel line carries the whole volume
+story**, so a regression to question-flooding is still visible on its face, per run, without a number
+to breach. **The sitting cap is untouched** — Q5's ten rows at a time paces one person's attention and
+discards nothing. *Cap the sitting, never the document.*
+
+**What is not established.** Three projects, one interrupted campaign, no refutation pass. That the
+filters did all the work here does not establish the number was never load-bearing historically — only
+that it was not here, on runs where the gate was already strong.
+
+## What was measured and not fixed
+
+- **The budget still cannot bind on a first `init`** (45 rows against a cap of 20; the re-gate removed
+  none). Row count is set by how many markers I5 mints, and nothing bounds that. v18 changed
+  transcriptions from budget-exempt to budget-counted and the measured output did not move — its own
+  note records *"30, 46, 49 and 45 rows against a 14–22 target"*, and this campaign wrote 45. **Left
+  alone deliberately: the honest fix is either bounding marker minting at I5 or admitting the budget
+  is advisory, and both are design calls for the owner rather than repairs.**
+- **Per-item independence produces documents that differ from themselves** — three identical deltas,
+  two `Clean` and one flagged, so two features carry a provenance line and one does not. The run
+  refused to tidy it and was right: *"overriding independent per-item verdicts for uniformity is the
+  rubber stamp the seam exists to prevent."* The trade-off is real and is still unnamed in the files.
+- **`doc-shape.md` §3 and §9 deadlock on an overview marker** — removing it requires writing a block
+  only a human may write. Two runs hit the same wall.
+- **Q2's fan-out is not determined by its own text**: 15, 26 and 32 grill passes from the same
+  instruction at the same phase.
+
+## What the campaign could not establish
+
+No refutation pass ran — a weekly provider limit ended it, and the previous campaign refuted **28 of
+its own 75 claims**. Findings above are marked in the campaign register as mechanically verified,
+cross-run, or single-run-reported. **No blind yield audit ran**, so the share of written rows passing
+the delta test is unmeasured; what stands in its place is the clients' own 18% rejection rate and
+their fair/unfair splits (kiln 3 of 4 fair; tuckbox 6 of 13 fair, 3 treadmill). The operators are LLM
+personas and are not evidence about what a paying client wants.
+
+Report and evidence: `~/dev/ai/blueprint-sim6/REPORT.md` and `results/findings/REGISTER.md`.
+
+---
+
 # HISTORY — why the rules in this skill say what they say
 
 Every passage here was moved out of a run or spec file. **No run loads this file**; it is for whoever
@@ -163,6 +305,102 @@ identical to the full battery"* on a small coherent document, so it now keys on 
 rather than the whole changed body; the `GRILL` line counted every lens, which would have left the
 rotation clock permanently vacuous, so it counts lenses 1–3 and records **how** each body got there;
 and convergence condition two — *"no source was added"* — was the only one of four with no stated read.
+
+### v29 — the suppressing rules were over-firing, and it was measurable
+
+A pre-registered run on two unseen domains (a community pharmacy, a children's performing arts school)
+graded this file against a one-sentence control, three graders per arm, with the ground truth fixed
+before any grading call. **The file discriminates**: mean per-grader Cohen's kappa 0.443 against 0.163,
+delta +0.280, 95% CI [+0.110, +0.446], all three graders excluding zero, permutation p = 0.00005, and
+every computed null at kappa 0.000. When it says ASK it is right 81-87% against a base rate of 52%.
+
+**And it was set at the wrong operating point.** Recall 0.54-0.62: it missed 38-46% of what the client
+persona wanted asked. Of 47 wrong dispositions, **34 were `ASK -> PROPOSE`** — §2's route sending a
+real question to a draft. §5's mechanism route was the second-largest source. §3 and §4, the admitting
+rules, were where the correct asks came from: 32 and 10 citations on true positives against 2 for §2.
+
+The cause was structural rather than a wording slip. §2's test read *"does the material describe the
+client's own handling of this situation? Then draft, do not ask"* — **unconditional**, and satisfied by
+almost any discovery material, because describing how the work is done now is what a discovery call is.
+Eleven of the twenty missed questions were missed by all three graders, so this was systematic.
+
+v29 adds the second half of the test: the description must supply the draft's **content**, not merely
+its topic. Four classes of invention are named — a closed list never enumerated, a threshold never
+given, what must survive as a record, an exception to the described flow — because a draft that guesses
+one of those is not something a client corrects in a sentence. §5 gains a matching guard: two answers
+do not both deliver a stated outcome if they differ in what is recorded, who may act, or what happens
+when the flow fails.
+
+**What this version has NOT re-established.** The corpora that produced the finding are burned by it.
+v29's effect is reasoned from a measured failure and is itself **unmeasured** until it runs on domains
+that do not yet exist. Also unchanged: no human has labelled anything, in this campaign or the last.
+
+### v28 — the evidence was described as something it was not
+
+An adversarial audit of the evaluation harness that produced v26–v27 returned three independent
+verdicts, and they agreed: **no human ever labelled any of it.** The corpus was generated by this tool,
+labelled by an LLM persona written by the same author, and graded by the same model family. The files
+nonetheless described that persona as *"the client who commissioned the product"* who *"rated 9 of 36
+worth her time"*, and this file described the campaign as three live cycles with a
+person taking part — which none of them were — and quoted the persona endorsing the tool's
+trustworthiness. Someone reading those sentences before a
+client meeting would have believed a real client had been asked. **That is the defect this version
+fixes**, and it is a correctness defect in a deliverable, not a wording preference.
+
+What changed: every evidence claim now names the persona, quotations carry `[persona-generated]`, the
+confabulated testimonial is deleted, and `spec/prd-scope.md` §9 states plainly that nothing here is
+validated against what a paying client wants. §8a additionally records that the marina and haulage
+corpora are **burned as measurement corpora** — their text is quoted in the spec, so a score against
+either would be measuring the spec's overlap with its own examples.
+
+**No rule changed.** Every test in `spec/prd-scope.md` stands exactly as v27 left it; only the account
+of where it came from is corrected. The audit's substantive findings about the *numbers* — that the
+ask-nothing null scores 75% on the marina corpus and 70% on the haulage one, which the reported 64% and
+70% do not beat — are recorded against the evaluation record, not against these files, because they
+condemn the measurement rather than the spec. Whether the spec beats a one-sentence placebo is, as of
+v28, **unmeasured**.
+
+### v25 — what three simulated cycles changed
+
+`blueprint-sim5/` ran `init → questions → resolve → questions → resolve → questions` on «Harbourline», a
+40-berth marina, with a separate **LLM operator persona** — no human — forbidden the skill files and
+the answer key and instructed to say *"I have not decided"* rather than invent. It said so six times in
+round one and three in round two, and no run pushed it.
+
+**A trust testimonial the persona volunteered here has been deleted** (v28). It was persona output
+being quoted inside a deliverable as though a client had said it, and a persona instructed to hold
+undecided positions cannot corroborate that holding them is trustworthy. The behavioural fact — no run
+pushed a persona off *"I have not decided"* — is retained; the endorsement is not evidence.
+
+**The depth cap fired, once, exactly where it was designed to**, with the whole chain readable off the
+document: q-14 at depth 1 → its applied text grounded q-22 at depth 2 → q-22's applied text created
+`FR-6` → a question grounded in `FR-6` is depth 3 → discarded on `Derived past the bound`. The
+derivative branch is bounded, and it is bounded on a live document rather than a fixture.
+
+**What the campaign found, and every one of these is now fixed here:**
+
+- **Depth was non-deterministic.** One question was emitted by two passes — grounded in `FR-5`, which
+  carried no token, and in `FR-6` at depth 2 — so it was depth 1 or depth 3 depending on which return
+  the dedup kept. A cap a pass ordering can flip is not a cap. Depth is now the **deepest** grounding,
+  and every pass reports every grounding it used.
+- **A chain skipped a link in practice.** The resolve writer put one provenance line under `FR-4` for a
+  delta that created both `FR-3` and `FR-4`, so `FR-3` carried no token and read depth 1. Every
+  requirement now gets its own line.
+- **A phase gate closed nine minutes before its dispatch returned**, and sixteen candidates that batch
+  routed as questions had no row to land in — the budget and report were already shut. A gate that
+  closes with a dispatch outstanding now names it and may not print its funnel as final.
+- **The repeat round was skipped by all three runners, independently.** Its trigger counted raw
+  emissions, so it fired on nearly every pass and cost more than any run would pay. **A mandated step
+  every competent runner declines is priced wrong, not three lapses.** It now fires on passes whose
+  candidates *survived Q3*.
+- **The real client-facing problem turned out not to be questions at all.** Across three cycles the
+  question count behaved — 16, 9, 11, one depth-3 cut — while **defaults reached 63 across nine
+  unratified batches** and nobody had held a sitting. Nine separate acts of ratification are nine
+  reasons to hold none. A run no longer opens a new batch while one stands: defaults join the oldest
+  standing ledger, and the report leads with that debt ahead of the funnel.
+
+*Recorded because it is the campaign's most useful finding and the least expected: fixing the question
+loop did not reduce the human's workload, it revealed where the workload actually was.*
 
 ### Q2 — the re-grill's attack surface
 

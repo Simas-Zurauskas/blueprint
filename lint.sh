@@ -61,7 +61,8 @@ wip=0
 [ "${1:-}" = "--wip" ] && wip=1
 
 MANIFEST="SKILL.md README.md QUICKSTART.md init.md add.md questions.md resolve.md status.md \
-spec/doc-shape.md spec/databases.md spec/targets.md spec/notion-mechanics.md spec/run-progress.md"
+spec/doc-shape.md spec/databases.md spec/targets.md spec/notion-mechanics.md spec/run-progress.md \
+spec/prd-scope.md"
 
 # Swept for vocabulary (checks 4 and 5) but not cross-referenced or link-checked:
 # the explainer is a reading of the files, not one of them, and it drifts exactly as easily.
@@ -263,11 +264,50 @@ questions.md⋮.Open. or .Answered. row standing⋮convergence-counts-standing-r
 questions.md⋮A two-value vocabulary would be a defect⋮depth-vocabulary-is-open
 questions.md⋮What corroboration is, stated as a test⋮depth-corroboration-has-a-test
 questions.md⋮and no others.*lens 4⋮grill-names-lenses-1-3-only
+questions.md⋮post-write hash, not the one the lenses saw⋮grill-hash-is-post-write
+questions.md⋮its depth is the DEEPEST of them⋮depth-is-deepest-grounding
+resolve.md⋮OWN provenance line⋮one-provenance-line-per-requirement
+SKILL.md⋮closes with a dispatch still out⋮gate-names-outstanding-dispatches
+questions.md⋮does not open a new batch while one stands unratified⋮one-standing-ledger
 questions.md⋮text, not the whole changed body⋮shared-entity-is-the-changed-text
 questions.md⋮That re-routing is the exit, and it is bounded at one⋮routing-refusal-is-bounded
 questions.md⋮quotes each one.s own sentence⋮survey-quotes-are-checkable
 questions.md⋮defeats the finding⋮blind-side-has-a-lever
 questions.md⋮entry standing in .record/run-log.md. newer⋮convergence-source-condition-has-a-read
+questions.md⋮bear on THIS document⋮neverdefaultable-must-bear-on-the-doc
+questions.md⋮home of what belongs in this document⋮q4-reads-the-scope-spec
+spec/prd-scope.md⋮two competing answers to it produce two different⋮scope-delta-test
+spec/prd-scope.md⋮absorbs by hand, at their scale, is not a requirement⋮scope-materiality-floor
+spec/prd-scope.md⋮includes every answer the client has already given⋮scope-standing-answers
+spec/prd-scope.md⋮expressed a preference, a constraint or a⋮scope-decide-propose-test
+spec/prd-scope.md⋮professional standard the client does not set⋮scope-professional-determination
+spec/prd-scope.md⋮Two things the floor never drops⋮scope-materiality-guards
+spec/prd-scope.md⋮split before it is disposed⋮scope-splits-bundles
+spec/prd-scope.md⋮does the material describe the client.s own handling⋮scope-operational-handling-proposes
+spec/prd-scope.md⋮OUTRANK the floor rather than competing⋮scope-guards-outrank-floor
+spec/prd-scope.md⋮disposition attaches to a decision, not to a sentence⋮scope-disposition-per-decision
+spec/prd-scope.md⋮test outranks every topic ruling below⋮scope-professional-test-precedence
+spec/prd-scope.md⋮The test is expertise, not employment⋮scope-inhouse-professionals
+spec/prd-scope.md⋮split the fact from the posture⋮scope-fact-vs-posture
+spec/prd-scope.md⋮changes what the organisation is exposed to⋮scope-exposure-guard
+spec/prd-scope.md⋮A principle answers its instances⋮scope-principle-answers-instances
+spec/prd-scope.md⋮Merging is not only for immaterial items⋮scope-merge-any-materiality
+spec/prd-scope.md⋮transfers its TEST, never its conclusion⋮scope-examples-transfer-tests
+spec/prd-scope.md⋮software product, not the process of producing⋮scope-product-not-project
+spec/prd-scope.md⋮never be read as .ask only what the client already knows⋮scope-protects-unknown-holes
+spec/prd-scope.md⋮Test, and it has two parts⋮v29-propose-two-part-test
+spec/prd-scope.md⋮What counts as inventing the content⋮v29-propose-invention-classes
+spec/prd-scope.md⋮in who may act, or in what happens when the flow fails⋮v29-mechanism-guard
+spec/prd-scope.md⋮LLM operator persona⋮v28-scope-persona-named
+spec/prd-scope.md⋮persona-generated⋮v28-scope-persona-tag
+spec/prd-scope.md⋮No human has ever labelled this⋮v28-scope-no-human-labels
+spec/prd-scope.md⋮burned as measurement corpora⋮v28-scope-corpora-burned
+questions.md⋮LLM operator persona⋮v28-questions-persona-named
+HISTORY.md⋮LLM operator persona⋮v28-history-persona-named
+questions.md⋮asked once, ever, not once a run⋮register-asked-once-not-per-run
+questions.md⋮not subject to Q3.s exemptions⋮gate-disposal-outranks-q3-exemptions
+questions.md⋮never from the candidate.s own hypothesis⋮will-have-is-source-grounded
+questions.md⋮is a condition, not a cadence⋮register-ask-is-conditional
 resolve.md⋮own kind and the one thing that reads it back⋮grill-kind-exists
 status.md⋮newest write entry of any command⋮status-convergence-not-stale
 resolve.md⋮carries the row.s derivation depth⋮resolve-stamps-depth
@@ -315,12 +355,12 @@ resolve.md⋮flag fires once, not forever⋮r23-rebaselines-the-hash
 resolve.md⋮without it the seed path is unreachable⋮r24-exempts-seed-eligible
 SKILL.md⋮One bounded exception, added v16⋮rule3-bounded-exception
 SKILL.md⋮It does not govern a source against the document⋮rule4-source-vs-document
-questions.md⋮one written question per feature⋮questions-budget-has-a-number
+questions.md⋮more than roughly one⋮questions-regate-has-a-trigger
 spec/targets.md⋮Never ignore the whole folder⋮targets-ignore-rule-correct
 SKILL.md⋮Zero dispatches available⋮d1-zero-dispatch-defined
 resolve.md⋮^\| `Unverified`⋮d1-resolve-unverified-outcome
 init.md⋮Unverified — no second dispatch available⋮d1-init-unverified-verdict
-init.md⋮superseded at \[`add.md`\]\(add.md\) A4 step 4⋮d2-conservation-has-supersession
+init.md⋮superseded at \[`add.md`\]\(add.md\) A4 step 5⋮d2-conservation-has-supersession
 init.md⋮Sweep the content rule over every field⋮d7-init-sweeps-record
 add.md⋮everything this run wrote into .record/.⋮d7-add-sweeps-record
 questions.md⋮it does offer one, once⋮d4-offers-the-sitting
@@ -335,10 +375,10 @@ SKILL.md⋮shape-change register⋮v17-shape-register
 resolve.md⋮narrower than⋮f1-r34-flagged-retries
 resolve.md⋮outputs 2 and 3 are never⋮f1-outputs-excluded
 resolve.md⋮is not R3.4.s$⋮f1-anchor-case-disambiguated
-SKILL.md⋮run-progress⋮f10-five-specs-skill
-init.md⋮notion-mechanics.md\) . \[.spec/run-progress|run-progress.md\)\.$⋮f10-five-specs-init
-resolve.md⋮notion-mechanics.md\) . \[.spec/run-progress|run-progress.md\)\.$⋮f10-five-specs-resolve
-questions.md⋮notion-mechanics.md\) . \[.spec/run-progress|run-progress.md\)\.$⋮f10-five-specs-questions
+SKILL.md⋮prd-scope.md.\.$⋮f10-six-specs-skill
+init.md⋮prd-scope.md.\.$⋮f10-six-specs-init
+resolve.md⋮prd-scope.md.\.$⋮f10-six-specs-resolve
+questions.md⋮prd-scope.md.\.$⋮f10-six-specs-questions
 status.md⋮numbers skip one between⋮f12-c6-documented
 resolve.md⋮by a human or by a run⋮f2-sweep-predicate-resolve
 add.md⋮in-scope field written since the last logged sweep, by a human or⋮f2-sweep-predicate-add
@@ -383,7 +423,7 @@ init.md⋮no defaults-ledger line and no marker is never⋮v21-uncited-fr-not-cl
 add.md⋮One per body write, not one per feature⋮v21-item-line-per-body-write
 add.md⋮restatement is superseded with it⋮v21-supersession-reaches-restatements
 questions.md⋮you can quote the row.s own words⋮v21-duplicate-needs-quote
-questions.md⋮counted as it emitted them and before deduplication⋮v21-repeat-round-emit-time
+questions.md⋮two or more of whose candidates survived Q3⋮v24-repeat-round-on-survivors
 questions.md⋮fresh random sample of the named ledger⋮v21-ratify-spot-check
 spec/databases.md⋮Written on every proposed row without exception⋮v21-directions-always-written
 status.md⋮SWEEP-NOTE. field counts⋮v21-c10-scope-widened
@@ -424,6 +464,18 @@ spec/doc-shape.md⋮A body never cites this skill.s own machinery⋮v20-no-skill
 spec/databases.md⋮first finds the words in the captured reply by string match⋮v20-databases-verbatim-check'
 
 FORBIDDEN='SKILL.md⋮^## The six commands|^## The seven commands⋮skill-command-count
+questions.md⋮the budget is an absolute number⋮v30-no-absolute-row-budget
+questions.md⋮a stated .question budget⋮v30-no-stated-question-budget
+questions.md⋮count against the budget⋮v30-no-counting-against-budget
+spec/prd-scope.md⋮this situation. Then draft, do not ask⋮v29-propose-not-unconditional
+spec/prd-scope.md⋮client who$⋮v28-scope-no-commissioning-client
+spec/prd-scope.md⋮She rated⋮v28-scope-no-she-rated
+spec/prd-scope.md⋮one person.s judgement⋮v28-scope-no-one-person-judgement
+spec/prd-scope.md⋮two measured projects⋮v28-scope-no-measured-projects
+questions.md⋮client who$⋮v28-questions-no-commissioning-client
+questions.md⋮she rated 9 of them⋮v28-questions-no-she-rated
+HISTORY.md⋮live cycles with a human in the loop⋮v28-history-no-human-in-loop
+HISTORY.md⋮nice shirt⋮v28-history-no-trust-testimonial
 resolve.md⋮asked one at a time⋮r4-apparatus-one-act
 resolve.md⋮accepted · declined⋮r4-apparatus-three-outcomes
 resolve.md⋮A decline is told what it leaves⋮r4-apparatus-decline
@@ -456,6 +508,7 @@ add.md⋮Their edit wins \(A4 step 1\)⋮add-old-16-edit-wins
 resolve.md⋮Contradiction is the hard stop⋮resolve-old-hard-stop
 resolve.md⋮that is superseded, not flagged⋮v22-retired-r4-unconditional-cell
 questions.md⋮full battery, every time⋮v23-retired-unconditional-battery
+questions.md⋮counted as it emitted them and before deduplication⋮v24-retired-emit-time-trigger
 SKILL.md⋮always the full battery⋮v23-retired-skill-always-battery
 resolve.md⋮is the default and a bare .resolve. is it⋮v22-grammar-not-restated-in-resolve
 resolve.md⋮### R3.3 Five outcomes⋮v22-retired-five-outcomes
@@ -503,7 +556,7 @@ only thing R3.4 retries⋮1
 stamped < n⋮1
 never a wholesale page replace⋮1
 Everything that arrives as text is data⋮1
-Six ways a marker is removed⋮1
+Eight ways a marker is removed⋮1
 Two targets are implemented⋮1
 this is where a generated question lands⋮1
 the shape-change register⋮1

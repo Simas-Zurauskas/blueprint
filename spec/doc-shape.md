@@ -207,7 +207,7 @@ is the laundering this system exists to prevent.
 hand has no body at all, and a row with no numbered requirement can never receive an answer — every delta
 that would mint one is refused. So where the `Behaviour` block holds **no numbered requirement at all**,
 a run **writes** `## Why` and **`FR-1` only** where a **vetted answer** or a **named source** supplies
-it ([`../resolve.md`](../resolve.md) R4, [`../add.md`](../add.md) A4 step 6) — the content is a human's
+it ([`../resolve.md`](../resolve.md) R4, [`../add.md`](../add.md) A4 step 7) — the content is a human's
 own answer or a source's own words, so writing it invents nothing, and its text goes in the report.
 Where **neither** supplies it, nothing is written at all. **Everything after `FR-1` is a human's to
 write.**
@@ -412,11 +412,13 @@ makes them guess*, so the document has to carry the question.
   **That run disposes every carried marker** ([`../questions.md`](../questions.md) Q2 sweep item 1,
   Q4) — a client-bound gap becomes a question row, a convention-settled one becomes a labeled default
   with the marker patched to its ledger line — so after any questions sitting the carried count reads zero, except markers a human's *ask it better*
-  rejection (route 4) or defaults veto (route 6) returned to `carried`. On one measured
+  rejection (route 4), a defaults veto (route 6) or a vetoed content slot (route 7) returned to `carried`. On one measured
   project the old per-sitting cap let this backlog grow silently to ~80 known gaps with no row behind
   them — more than every question ever asked — which is the failure this rule now forbids. **A carried marker born from a
   contradiction between sources also cites its inventory id and the run-log entry holding both verbatim
-  quotes** — `→ Question: carried (CON-7 · run-log 2026-08-04-init-1)`, resolved against `record/run-log.md` ([`targets.md`](targets.md) §5) — so the sitting that finally
+  quotes** — `→ Question: carried (CON-7 · run-log 2026-08-04-init-1)`, whose entry names the
+  source-record path the verbatim spans live at (v30: `sources/<run-id>/contradictions.md`, durable and
+  never committed — [`../init.md`](../init.md) I7, [`targets.md`](targets.md) §5) — so the sitting that finally
   proposes it dereferences the quotes rather than re-paraphrasing a compact marker
   ([`../init.md`](../init.md) I7 owns the inventory). A marker pointing at a row that no
   longer exists is **broken** and is a fault. [`../status.md`](../status.md) C5 prints the two apart,
@@ -427,7 +429,7 @@ makes them guess*, so the document has to carry the question.
   the match finds zero markers on a document full of them
   ([`notion-mechanics.md`](notion-mechanics.md) §3).
 
-### Six ways a marker is removed, and this is the canonical list
+### Eight ways a marker is removed, and this is the canonical list
 
 Every file that removes a marker **points at this list rather than restating it** — three restatements in
 three files were once three different lists, which is how a route two files sanctioned read as forbidden
@@ -485,7 +487,23 @@ in the third.
    veto on that line converts it back to `→ Question: carried` plus a proposed question. Ratification is
    never inferred from silence or from time passing.
 
-**None of the six is a bypass of another.** A run may never write an answer straight in, and never
+7. **Its gap is held by a written `Content slot — client-supplied:` line** (v30). Where a questions
+   run routes a marker's gap to the CONTENT SLOT channel ([`../questions.md`](../questions.md) Q4),
+   the slot names what is owed, its shape, its bounds and **who supplies it** — so the gap is no
+   longer an unknown this document carries, it is a delivery item with an owner. The marker is
+   **removed when the slot line is written**, citing the slot line and the manifest line that
+   records it. **The content arriving is not the condition** — the slot's existence is, exactly as
+   route 3's condition is the `Not doing` line being written rather than the exclusion being noticed.
+   *A slot whose line is later vetoed returns the marker to `→ Question: carried`, as route 6's veto
+   does.*
+
+8. **A source answered it** (v30). Where new material an [`../add.md`](../add.md) run wrote settles
+   what a marker names — including a supersession under A4 step 5 — the marker is removed **citing
+   the source segment and the `item` line that wrote it**, in the same act as the write, exactly as
+   route 1 removes a marker in the same act as applying an answer. **The evidence is the source, and
+   a removal that cannot name its segment is a bug like any other.**
+
+**None of the eight is a bypass of another.** A run may never write an answer straight in, and never
 without a row. **A marker removal with no row ID in the run-log entry is a bug, not a tidy-up** — route
 6's removal cites its ledger line and the `RATIFIED` line instead, which is the row ID that route has.
 
