@@ -1,7 +1,8 @@
 #!/bin/bash
 # lint.sh — cross-reference and vocabulary lint for the blueprint skill files.
 #
-# Eleven checks (the header said "Seven" until v19, while 1–10 were listed and 11 implemented):
+# Sixteen checks (the header said "Seven" until v19, while 1–10 were listed and 11 implemented;
+# 12–16 were added v31 and are structural, adding nothing to ASSERTIONS):
 #   1  every manifest file exists            (--wip: report and skip, still exit 0)
 #   2  every In / An / Qn / Rn / Ln / Cn / Sn reference resolves to a definition
 #   3  every relative markdown link resolves on disk
@@ -31,6 +32,15 @@
 #      and the row's job is to make an unnoticed N+1 fail. Do not read a want>1 row as enforcement.
 #      Measured before claimed: every N here was counted off the tree, never assumed.
 #  11  SHAPE REGISTER — VERSION has a register row in SKILL.md or is named in the exclusion line.
+#  12  SECTION CITATION — every "](file.md) §N" resolves to a "## N." heading there.
+#  13  STEP CITATION — every "PHASE step N" is inside that phase's own numbered list.
+#  14  ROUTE CITATION — every "route N" is inside doc-shape §9's marker-removal list.
+#  15  DECLARED COUNT — a heading naming its own length matches the list beneath it.
+#  16  VERSION STAMP — a sample's "skill vN" equals VERSION; a stale stamp is what a run
+#      copies, and a copied stale stamp halts the next run at R1.
+#      12-14 read a DE-WRAPPED copy of each file: a citation wrapping across a
+#      newline is invisible to a line-based grep, which is how add.md's
+#      "(A4\n step 4)" survived four versions of green assertions.
 #
 # NEVER put a MULTIBYTE character in an assertion regex, and never use . to stand in for one:
 # `.` matches one BYTE under LC_ALL=C, so a regex spanning a 3-byte character (a curly quote, an
@@ -47,6 +57,19 @@
 # then matches every line — every REQUIRED assertion passes and every FORBIDDEN one
 # fails, silently, while ASSERTIONS prints green. The self-test below is what stops a
 # future edit reintroducing that.
+#
+# THE INVARIANT PINS (v31). Each hard invariant gets a PAIR of rows, and it needs both:
+#   - a REQUIRED pin running from the invariant sentence THROUGH THE FOLLOWING CLAUSE
+#     (inv-human-approves, inv-no-code-repo, inv-append-only). Catches an in-place rewrite,
+#     and — because it spans the sentence boundary — an appended clause too.
+#   - a FORBIDDEN row banning a weakener token on the invariant's OWN LINE
+#     (*-no-weakener). Catches the append shape directly and names it as what it is.
+# A pin that merely ends in `\.` is NOT enough, which the first draft of this got wrong: a
+# substring pin still matches when a weakening clause is appended after the pinned text.
+# Measured on a scratch copy: the append shape fires both rows, the in-place rewrite fires
+# the REQUIRED row, and neither fires on the other two invariants.
+# Any future invariant pin takes both rows, and bridges an em dash with [^a-z]* rather
+# than a multibyte literal or a dot.
 #
 # Run it — and get LINT PASS — before bumping VERSION.
 #
@@ -230,6 +253,9 @@ fi
 # Each row: file ⋮ regex ⋮ name.  Parsed with parameter expansion (see header).
 
 REQUIRED='SKILL.md⋮^## The rules that outrank everything⋮skill-has-rules
+SKILL.md⋮\*\*A human approves, always\.\*\* A run never sends⋮inv-human-approves
+SKILL.md⋮\*\*Never reads a code repo\*\*[^a-z]*not as a source, not to check anything\. What the product⋮inv-no-code-repo
+SKILL.md⋮\*\*Never rewrites the run log\*\*[^a-z]*it is append-only\. \*\*Nothing crosses projects\*\*⋮inv-append-only
 resolve.md⋮^## R4⋮resolve-has-R4
 questions.md⋮^## Q4⋮questions-has-Q4
 spec/databases.md⋮the placement rule, and it is⋮databases-placement-rule
@@ -442,7 +468,7 @@ init.md⋮carries the overview.s block text itself⋮v19-i3-carries-block-text
 spec/targets.md⋮in q-NN order⋮v19-local-questions-order
 status.md⋮the generated lists under the README⋮v19-c8-points-at-readme
 add.md⋮never the whole working folder⋮v19-add-ignore-entries
-resolve.md⋮RATIFIED. line that cleared it⋮v19-markers-cite-ratified
+spec/doc-shape.md⋮RATIFIED. line that cleared it⋮v19-markers-cite-ratified
 status.md⋮ratified means the log carries a .RATIFIED. line⋮v19-c5-reads-ratified
 AGENTS.md⋮LC_ALL=C ./lint.sh⋮v19-agents-md-gate
 SKILL.md⋮earned by an attempt⋮v20-dispatch-probe-required
@@ -463,7 +489,12 @@ spec/doc-shape.md⋮the line stands without one and is named in the report⋮v20
 spec/doc-shape.md⋮A body never cites this skill.s own machinery⋮v20-no-skill-paths-in-body
 spec/databases.md⋮first finds the words in the captured reply by string match⋮v20-databases-verbatim-check'
 
-FORBIDDEN='SKILL.md⋮^## The six commands|^## The seven commands⋮skill-command-count
+FORBIDDEN='SKILL.md⋮A human approves, always.*([Ee]xcept|[Uu]nless)⋮inv-human-approves-no-weakener
+SKILL.md⋮code repo.*([Ee]xcept|[Uu]nless|[Pp]refer|[Gg]enerally)⋮inv-no-code-repo-no-weakener
+SKILL.md⋮append-only.*([Ee]xcept|[Uu]nless|rewrit|compact)⋮inv-append-only-no-weakener
+spec/doc-shape.md⋮A marker removal with no row ID⋮v31-retired-row-id-only
+questions.md⋮\[e\]dit · \[r\]eject · already⋮v31-retired-q5-five-keys
+SKILL.md⋮^## The six commands|^## The seven commands⋮skill-command-count
 questions.md⋮the budget is an absolute number⋮v30-no-absolute-row-budget
 questions.md⋮a stated .question budget⋮v30-no-stated-question-budget
 questions.md⋮count against the budget⋮v30-no-counting-against-budget
@@ -549,7 +580,7 @@ single home of the progress block⋮1
 single home of the entry⋮1
 re-gates the whole⋮1
 single home of the sweep⋮1
-A marker removal with no row ID⋮1
+A marker removal that names no evidence⋮1
 Past ten items in one sitting the sitting ends⋮1
 One trigger, one actor, one observable outcome⋮1
 only thing R3.4 retries⋮1
@@ -638,6 +669,104 @@ while IFS= read -r row; do
 done <<EOF_HOME
 $SINGLE_HOME
 EOF_HOME
+
+# ------------------------------------------------- 12-15. citation resolution
+# Four generic families, added v31. Each covers a whole class rather than one
+# sentence: 12 resolves every "§N" citation, 13 every "PHASE step N", 14 every
+# "route N", 15 every numbered list whose heading declares its own length.
+# They set fail directly and add nothing to ASSERTIONS — they are structural
+# checks like 1-7 and 11, not pinned assertions.
+#
+# Every one runs over a DE-WRAPPED copy of each file. A citation that wraps
+# across a newline is invisible to a line-based grep, which is exactly how
+# `add.md`'s "(A4\n step 4)" survived 340 green assertions for four versions.
+#
+# Known limit, stated rather than discovered: 13 and 14 check that a cited
+# ordinal EXISTS, never that it is the RIGHT one, and 15 reads numbered lists
+# and not tables. A citation to a real-but-wrong step still needs a human.
+
+flat() { tr '\n' ' ' < "$1" | tr -s ' '; }
+
+# --- 12. every "](file.md) §N" resolves to a "## N." heading in that file
+hits=$(for f in $PRESENT; do
+  d=$(dirname "$f")
+  flat "$f" | grep -oE '\]\([^)]*\.md\) §+[0-9]+' | sort -u | while read -r c; do
+    rel=$(echo "$c" | sed -E 's/^\]\(([^)]*)\).*/\1/')
+    n=$(echo "$c" | grep -oE '[0-9]+$')
+    tgt=$(echo "$d/$rel" | sed 's#/\./#/#g')
+    while echo "$tgt" | grep -q '[^/]*/\.\./'; do tgt=$(echo "$tgt" | sed 's#[^/]*/\.\./##'); done
+    [ -f "$tgt" ] || continue          # check 3 owns missing targets
+    grep -qE "^#{2,3} $n\. " "$tgt" || echo "  $f cites $rel §$n — that file has no section $n"
+  done
+done)
+[ -n "$hits" ] && { echo "CITATION FAILED (section):"; echo "$hits"; fail=1; }
+
+# --- 13. every "PHASE step N" is within that phase's own numbered list
+hits=$(for f in $PRESENT; do
+  flat "$f" | grep -oE '\b[IAQRS][0-9]+ step [0-9]+' | sort -u | while read -r c; do
+    ph=$(echo "$c" | grep -oE '^[IAQRS][0-9]+'); n=$(echo "$c" | grep -oE '[0-9]+$')
+    o=""
+    [ "${ph#I}" != "$ph" ] && o=init.md
+    [ "${ph#A}" != "$ph" ] && o=add.md
+    [ "${ph#Q}" != "$ph" ] && o=questions.md
+    [ "${ph#R}" != "$ph" ] && o=resolve.md
+    [ "${ph#S}" != "$ph" ] && o=status.md
+    [ -f "$o" ] || continue
+    max=$(awk -v ph="$ph" '
+      $0 ~ "^#{2,3} " ph "( |$|—)" { inp=1; next }
+      inp && /^#{2,3} [IAQRS][0-9]+/ { inp=0 }
+      inp && /^[0-9]+\. / { c=$0; sub(/\..*/,"",c); if (c+0>m) m=c+0 }
+      END { print m+0 }' "$o")
+    [ "$n" -le "$max" ] 2>/dev/null || echo "  $f cites $ph step $n — $o's $ph enumerates $max steps"
+  done
+done)
+[ -n "$hits" ] && { echo "CITATION FAILED (step):"; echo "$hits"; fail=1; }
+
+# --- 14. every "route N" is within doc-shape §9's marker-removal list
+if [ -f spec/doc-shape.md ]; then
+  RMAX=$(awk '/^### Eight ways a marker is removed/{inp=1;next} inp&&/^## /{inp=0}
+              inp&&/^[0-9]+\. /{c=$0; sub(/\..*/,"",c); if(c+0>m)m=c+0} END{print m+0}' spec/doc-shape.md)
+  hits=$(for f in $PRESENT; do
+    flat "$f" | grep -oE 'routes? [0-9]+(([,/] ?| and | or )[0-9]+)*' | sort -u | while read -r c; do
+      for n in $(echo "$c" | grep -oE '[0-9]+'); do
+        { [ "$n" -ge 1 ] && [ "$n" -le "$RMAX" ]; } 2>/dev/null || \
+          echo "  $f cites route $n — doc-shape §9 lists 1..$RMAX"
+      done
+    done
+  done)
+  [ -n "$hits" ] && { echo "CITATION FAILED (route):"; echo "$hits"; fail=1; }
+fi
+
+# --- 15. a heading declaring its own count matches the numbered list under it
+hits=$(for f in $PRESENT; do
+  awk -v F="$f" '
+    function w2n(s){return (s=="two")?2:(s=="three")?3:(s=="four")?4:(s=="five")?5:(s=="six")?6:(s=="seven")?7:(s=="eight")?8:(s=="nine")?9:(s=="ten")?10:(s=="eleven")?11:(s=="twelve")?12:0}
+    /^#{2,4} /{
+      if (pend && cnt>0 && cnt!=want) printf "  %s:%d %s — heading says %d, list ends at %d\n",F,hl,htxt,want,cnt
+      pend=0; cnt=0; tr=0; n=0
+      low=tolower($0); gsub(/[^a-z0-9]+/," ",low); m=split(low,W," ")
+      for (i=1;i<=m;i++) { v=w2n(W[i]); if (v>0) { n=v; break } }
+      if (n>0) { pend=1; want=n; hl=NR; htxt=substr($0,1,52) }
+      next
+    }
+    pend && /^[0-9]+\. / { c=$0; sub(/\..*/,"",c); if (c+0>cnt) cnt=c+0 }
+    pend && /^\|/ && !/^\|[-: |]*\|[-: |]*$/ { tr++; if (tr-1>cnt) cnt=tr-1 }
+    END { if (pend && cnt>0 && cnt!=want) printf "  %s:%d %s — heading says %d, list ends at %d\n",F,hl,htxt,want,cnt }
+  ' "$f"
+done)
+[ -n "$hits" ] && { echo "CITATION FAILED (declared count):"; echo "$hits"; fail=1; }
+
+# --- 16. a sample's "skill vN" stamp equals VERSION (v31)
+# resolve.md's two run-log samples carried `skill v1` from v1 to v30. A run copying one writes a
+# stamp that makes the NEXT run's R1 version check halt. The header field is mandatory
+# (SKILL.md pre-flight 4), so it cannot be dropped — it is pinned to VERSION instead.
+if [ -f VERSION ]; then
+  V=$(tr -d '[:space:]' < VERSION)
+  hits=$(for f in $PRESENT; do
+    grep -nE 'skill v[0-9]+' "$f" | grep -vE "skill v${V}([^0-9]|\$)" | sed "s#^#  $f:#"
+  done)
+  [ -n "$hits" ] && { echo "CITATION FAILED (version stamp — VERSION is $V):"; echo "$hits"; fail=1; }
+fi
 
 # ---------------------------------------------------------------------- report
 if [ $fail -eq 0 ]; then

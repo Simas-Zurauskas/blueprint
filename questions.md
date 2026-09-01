@@ -365,8 +365,9 @@ All passes are read-only over the same snapshot and dispatch concurrently, in wa
    agreed was a gap.
 2. **Contradictions** carried in from [`init.md`](init.md) I2 or [`add.md`](add.md) A2 — between two
    sources, or between a source and what the Blueprint says. Each gets **one blocking question** naming
-   both sides. Where the marker cites a `CON-k`, **dereference the run-log entry it names and work from
-   the verbatim quotes there**, never from the marker's compressed wording alone.
+   both sides. Where the marker cites a `CON-k`, **dereference the run-log entry it names — which carries the
+   citation, the origins and the source-record path — and work from the verbatim quotes at
+   `sources/<run-id>/contradictions.md`**, never from the marker's compressed wording alone.
 3. **A `Behaviour` block with no numbered requirement**, or a feature whose body is still the empty
    skeleton.
 4. **A `Not doing` line with no `revisit if:` is one report line, and nothing else**. The `revisit if:` stays **sourced-only and
@@ -376,6 +377,14 @@ All passes are read-only over the same snapshot and dispatch concurrently, in wa
 5. **A decided exclusion still sitting loose in prose**, which is a `Not doing` line waiting to be
    written, **never a question** — turning a made decision back into a question is how settled things come
    unstuck.
+6. **The operating-volume question, where no source and no standing row has answered it** — order of
+   magnitude, peak, and who fixes a wrong outcome by hand
+   ([`spec/prd-scope.md`](spec/prd-scope.md) §3). It is **one project-level question asked once,
+   ever**, exactly as the two Q3's `Not a specification question` filter exempts by name are — and exempt from every filter in Q3 for the same reason, and this sweep **confirms it exists**
+   rather than testing any candidate against it. *Nothing generated it before v31, and
+   [`spec/prd-scope.md`](spec/prd-scope.md) §4 makes it the precondition for the materiality floor —
+   "a run that has not asked the volume question has no floor and must not apply this rule" — so that
+   floor was inert in every run this skill had ever executed.*
 
 **Why lens 1 leads.** Target ambiguity is the axis that turns a wrong guess into a wrong-*target* action
 Wrong Target moves from 9.6% to **75.1%** when the target is unstated (Ji et al.) — and whoever builds
@@ -402,7 +411,10 @@ second row does not fix a vetting problem, it hides it. Offer a merge instead of
 
 **And against every prior run's `discard` lines, under the same quote discipline** (v23). Dedup against
 rows alone cannot see a candidate that was *never written*, so a candidate this run discards is
-regenerated, re-dispatched and re-printed under `NOT PROPOSED, AND WHY` on every run for the life of the
+regenerated, re-dispatched and re-printed under `DISPOSED WITH NO CHANNEL (1 of the 11 discards) — the document cannot write these; their owner can
+  «Where does a cancellation notice appear?»  PROPOSE — a drafted screen the client corrects.
+                                  No channel writes a draft; put it to her as one.
+NOT PROPOSED, AND WHY` on every run for the life of the
 project — the complaint surviving in report form rather than row form. A candidate matching a prior
 discard is discarded on **the original filter, re-cited and re-tested** — never on the bare fact that a
 previous run discarded it, which would make a discard evidence for its own repetition and put a wrong
@@ -440,7 +452,7 @@ backlog no human could review.
 
 | Filter | Discard when | Instead |
 |---|---|---|
-| **Already answered** | A requirement, an `Edge cases` line, a `Not doing` line, the NOT-clause **or a `Content slot — client-supplied:` line** (v23 — the slot channel's own output was on no filter's list, so a slot-routed candidate was re-routed and re-slotted every run) answers it — **and you can quote the sentence**. **An unratified `Default (… — ratify on review)` line that adopts the same behaviour counts here too** (v19): the gap is already on a ledger awaiting its human; it is neither a second default nor a question — a duplicate of a disposition already made, not a demotion (Q4's never-demoted clause governs candidates that would become a *new* default). **A candidate that contests the default's behaviour** is not a duplicate: it goes to Q6 step 8 as a veto candidate on that ledger line, never as a second default | Link to the answer, quoting it — for a default, the ledger line |
+| **Already answered** | A requirement, an `Edge cases` line, a `Not doing` line, the NOT-clause **or a `Content slot — client-supplied:` line** (v23 — the slot channel's own output was on no filter's list, so a slot-routed candidate was re-routed and re-slotted every run) answers it — **and you can quote the sentence**. **An unratified `Default (… — ratify on review)` line that adopts the same behaviour counts here too** (v19): the gap is already on a ledger awaiting its human; it is neither a second default nor a question — a duplicate of a disposition already made, not a demotion (Q4's never-demoted clause governs candidates that would become a *new* default). **A candidate that contests the default's behaviour** is not a duplicate: it goes to Q6 step 9 as a veto candidate on that ledger line, never as a second default | Link to the answer, quoting it — for a default, the ledger line |
 | **Shown by the ratified design** | A ratified frame on the design-source record plainly shows it, **and following the drawing is safe, lawful and consistent with the document** | **Never a silent discard**: a frame-cited `adopted from design` entry on the defaults ledger, vetoable like any default. A drawing that itself embodies a risk — a child-operable consent control was the measured case — is a fork put to the client, not an adoption |
 | **Settled by convention** | [`SKILL.md`](SKILL.md) rule 4's four conditions all hold, each attested, and nothing on the never-defaultable list or the always-ask register is touched | Route to the **DEFAULT** channel (Q4) |
 | **Correction, not question** | Existing text is wrong in a way with a mechanically checkable winner (Q4's DOC-FIX admission) | Route to the **DOC-FIX** channel (Q4) |
@@ -482,9 +494,24 @@ home of what belongs in this document**, and it is read and applied to every can
 else in this phase. It supplies what no axis here ever did: **the delta test** — two competing answers
 must produce two different specification sentences, and no topic is exempt from it however client-owned
 or undefaultable — **the five dispositions** a candidate may take, **the materiality floor** set by the
-project's own scale, and **the categories with the test that admits or refuses each**. A candidate that
+project's own scale, and **the categories with the test that admits or refuses each**. **Every
+numbered section of that file is imported here, and this list is the whole of it** (v31): §1 the delta
+test · §2 the dispositions · §3 the in-scope categories · §4 materiality · §5 the out-of-scope rows ·
+**§6 the boundaries that decide the hard cases** · §7 and §7a — **a candidate carrying two decisions
+is split before it is disposed** · **§8 phrasing, including that a candidate blocked by an open
+question is not a second question** · §8a how to read its examples · §9 what it does not settle.
+*§6, §7a and §8 were imported by nothing until v31 — a rule with no executor, which is the defect
+class this skill keeps paying for.* A candidate that
 the scope spec disposes as `DECIDE`, `PROPOSE`, `RECORD` or `DROP` does not reach the axes below; only
-an `ASK` does. *It exists because a simulation put 36 generated rows to an LLM operator persona
+an `ASK` does. **Three of those four have a writer here and two do not** (v31): `DECIDE` is written by
+the DEFAULT channel, the content half of `RECORD` by the CONTENT SLOT channel, and `DROP` is a Q3
+discard — but **a `PROPOSE`, and a `RECORD` that is a professional's determination, reach no channel
+this phase has** ([`spec/prd-scope.md`](spec/prd-scope.md) §9 is the single home of why). Each is
+**named in the report under *"disposed with no channel"*, with its disposition and what it would need
+from whoever owns it, and counted in the funnel's `discarded` term** — the same shape Q3's
+**Client-internal** and **Not a specification question** filters already take, so no funnel term is
+added and its arithmetic is unchanged. Never written as a question it did not earn, and never dropped
+silently, which is the state that made the gap invisible until v31. *It exists because a simulation put 36 generated rows to an LLM operator persona
 standing in for the client, and the persona kept 9 — the generator had no model of its own subject
 matter, so it could not tell a question that changes a requirement from one that merely sounds
 important. No human labelled that corpus; it justifies the tests, it certifies no result.*
@@ -867,10 +894,13 @@ UNANSWERED (6) — ordered by how much the answer changes.
        why asked: «Checkout» FR-2 says payment succeeds or fails; no source says what
                   happens next, and no edge case covers it
        a marker on «Checkout» is waiting on this — rejecting it decides the marker too
-       a[n]swer now · [e]dit · [r]eject · already [d]ecided · [s]kip
+       a[n]swer now · [e]dit the wording · [r]eject — not a real gap · already [d]ecided
+       · ask it [b]etter (the gap is real, the wording is not) · [s]kip
 ```
 
-**Six outcomes, and *answer now* is the one the design turns on**
+**Six outcomes, and *answer now* is the one the design turns on.** **Six keys, not five** — the two
+rejections have **opposite** consequences for the marker (removed against returned to `carried`), so
+collapsing them into one key hands the reviewer a choice whose effect they cannot see.
 
 | Outcome | The row becomes | The marker waiting on it |
 |---|---|---|
@@ -922,15 +952,17 @@ UI or spoken at the review — makes it `Answered`.
    written for it is a miss; patch it now, citing the row.
 2. **Execute every removal a human's rejection decided** — at a sitting (Q5), or in the UI since the last
    run (Q1) — one at a time, each citing the row that justified it — [`spec/doc-shape.md`](spec/doc-shape.md)
-   §9's closing line governs: a removal with no row ID (or, for route 6, no ledger line and `RATIFIED`
-   line) is a bug, not a tidy-up. **And before step 3 runs, re-point
+   §9's closing line governs: a removal citing no evidence is a bug, not a tidy-up — a row ID on most
+   routes, and elsewhere **the evidence §9 gives that route**, which is not restated here. **And before step 3 runs, re-point
    every marker whose row a human rejected *ask it better* back to `→ Question: carried`** (v19) — Q5's
    table and [`spec/doc-shape.md`](spec/doc-shape.md) §9 route 4 say that gap is real, but at this
    moment the marker still reads the row link, and step 3 would sweep it with the rest.
 3. **Sweep for markers pointing at a row that reached a terminal state, and remove them
    mechanically, with no review slot.** This is [`spec/doc-shape.md`](spec/doc-shape.md) §9 **route 2**,
-   and it is the only marker removal nobody is asked about, because the decision was already theirs when
-   they closed the row. A marker pointing at a `Closed (not applied)` or `Rejected` row can never be
+   and it is the only marker removal **decided by a human's own closing of a row** that nobody is
+   asked about again, because the decision was already theirs when they closed the row. *(Routes 7
+   and 8 also remove without asking — they turn on a slot line or a source segment being written,
+   not on a decision anybody is owed a second time.)* A marker pointing at a `Closed (not applied)` or `Rejected` row can never be
    answered, so it blocks for nothing.
 
    It has a step because [`status.md`](status.md) C5 promises a reader that *the next questions run
@@ -943,12 +975,19 @@ UI or spoken at the review — makes it `Answered`.
    reported, never quietly removed — the difference is that a closed row still carries a reason and a
    deleted one carries nothing.
 
-4. **Sweep for markers pointing at an `Applied` row — route 1's stragglers.** Removal and write are one
-   act at the resolve seam, but a marker on feature A whose answer was applied into feature B is outside
+4. **Sweep for markers pointing at an `Applied` row — route 1's stragglers, and route 8's.** Removal
+   and write are one act at the resolve seam, and at [`add.md`](add.md) A4 step 8, but a marker on
+   feature A whose answer was applied — or whose gap a source settled — into feature B is outside
    that act's reach, and a measured drain left sixteen of them each wrongly reported as open.
-   For each: one dispatch checks whether the applied answer settles what the marker names — settled,
-   remove it citing the row; not settled, or the run log records the marker as a **deliberate hold**,
-   it stays and is named in the report with the reason. Never removed blind: a deliberate hold is a
+   **Route 8's stragglers are swept the same way, against the segments this sitting's `add` wrote**,
+   and a removal here cites the segment and its `item` line rather than a row (§9 route 8).
+   **Two populations, each with its own test.** *(a)* A marker pointing at an `Applied` row: one
+   dispatch checks whether **the applied answer** settles what it names — settled, remove it
+   **citing the row**. *(b)* A marker in any state, tested against **the segments this sitting's
+   `add` wrote**: settled, remove it **citing the segment and its `item` line** (§9 route 8); such a
+   marker often points at no row at all, so a row ID is not what it cites. In both, not settled — or
+   the run log records the marker as a **deliberate hold** — and it stays, named in the report with
+   the reason. Never removed blind: a deliberate hold is a
    human-visible flag on a real residual concern, and this sweep must not eat it.
 5. **Where Q2's standing sweep item 5 turned a decided exclusion loose in prose into a `Not doing` line, remove any marker
    that line now answers, citing the line.** This is [`spec/doc-shape.md`](spec/doc-shape.md) §9
@@ -1006,7 +1045,9 @@ UI or spoken at the review — makes it `Answered`.
    rejection is answerable later without being an open question now; a discard that exists only on the
    sitting's screen is the silent loss the `CON-k` inventory closes for contradictions
    ([`init.md`](init.md) I7). **The one discard that carries more is a `CON-k`-backed one**, which keeps
-   both verbatim quotes because the conservation check dereferences them (I7). The counter-case belongs to
+   its `CON-k` citation, both origins and the source-record path, so the conservation check can
+   dereference them (I7) — **the verbatim spans themselves live at `sources/<run-id>/contradictions.md`
+   and never in `record/`**, which is committed (v30). The counter-case belongs to
    the report. Then the funnel line, fresh: drafted → routed default → routed fix → routed slot → written
    as questions, with per-pass candidate counts and their distribution — numbers, not an account of them.
 11. **Regenerate every `⟳` view this sitting touched** ([`spec/doc-shape.md`](spec/doc-shape.md) §3's
@@ -1101,6 +1142,9 @@ DEFAULTS ADOPTED (14) — ratify or veto by number; risk-sorted, spot-check samp
 FIXES APPLIED (2) — ratify below
    «Loyalty» FR-3 under-enumerated its own list (quote → replacement, applied)
    «Checkout» stale line superseded by the applied answer on q-04 (quote → replacement)
+CONTENT SLOTS (1) — one batched sign-off; the document defines the slot, the client fills it
+   «Browse the menu»  Content slot — client-supplied: the pastry list · name + price + allergens
+      · 20–60 items · supplied by the client. Illustrative examples in the body are labelled.
 WRITTEN    3 → Open, each naming its client-only act. No sitting asked — they wait in
            the Unsent tab (questions.md on a local folder): answer directly, reject with a
            reason, or carry into a packet.
@@ -1128,7 +1172,7 @@ NOT PROPOSED, AND WHY
 
 An empty question list is not evidence this Blueprint is complete.
 
-Untouched: every feature body except the 14 default lines, 2 fixes and 15 markers named
+Untouched: every feature body except the 14 default lines, 2 fixes, 1 content-slot line and 15 markers named
 above, every other block.
 ```
 

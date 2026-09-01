@@ -838,7 +838,7 @@ in the log.
 local file now ([`spec/targets.md`](spec/targets.md) §5), and it is read by later runs and by
 [`status.md`](status.md). So **`record/run-log.md` keeps only the kinds something reads back**:
 **header · independence · item · FLAGGED · MARKERS · GATE · SWEEP · SWEEP-NOTE · COUNTS · HASHES ·
-citation · directive · CARRIED-FORWARD · RATIFIED · VETOED · NOTE · closing**, plus the command-specific **`CON-k` quotes · every non-`Clean`
+citation · directive · CARRIED-FORWARD · RATIFIED · VETOED · NOTE · closing**, plus the command-specific **`CON-k` lines — the citation, the origins and the source-record path, never the client's words (v30) · every non-`Clean`
 verdict · the defaults ledger · the content manifest · the fixes batch · demotions · discards**.
 `independence` is not optional there — [`SKILL.md`](SKILL.md) rule 6 requires every write run to stamp
 its writing model — and `NOTE` is the only audit trail for a destructive act
@@ -864,7 +864,7 @@ report, where a person actually reads it; the log carries the fact, not the acco
 | **item** | one per item: row · verdict · feature ID · the delta as a **pointer** — `«Feature» FR-n`, never a recap of what it says, which the body's own provenance line already carries — **and, where the item wrote or read back a body, that body's hash** (v20: recorded here rather than only at the close, so an interrupted run leaves a usable baseline; R2.3). On `init` and `add`, where a commit has no queue row, the item is its feature ID with the source segment or `CON-k` it came from |
 | **group heading** *(→ `runs/`)* | the `APPLIED` · `NOT APPLIED` · `FLAGGED` headers, and the blank line between blocks. Layout, carrying no fact of its own |
 | **FLAGGED** | one per row: the row and its objection — and, on R3.1's overview route, the hash of `Answer & why` at the flag, which round two compares against. The database has no field for it and [`status.md`](status.md) C1 reads it here, so this one explanation is deliberately durable. **The content rule binds this line** ([`spec/doc-shape.md`](spec/doc-shape.md) §6): an objection quotes an answer's words as the role, never the specific — this file is committed, and a barred specific written here is published, not stored (v19) |
-| **MARKERS** | removed, each citing its row ID — or, for a route-6 removal, the ledger line and the `RATIFIED` line that cleared it · carried · deliberate holds · **left standing**, the v22 slot for a marker a `Kept` row did not clear: it is neither removed nor `carried` ([`spec/doc-shape.md`](spec/doc-shape.md) §9 reserves `carried` for a marker with no row behind it, and this one points at a live row), and without its own word a run has to misreport it as one of the other three |
+| **MARKERS** | removed, each citing its row ID — or, where the route cites something else, **the evidence [`spec/doc-shape.md`](spec/doc-shape.md) §9 gives that route**, which is that list's single home and is not copied here · carried · deliberate holds · **left standing**, the v22 slot for a marker a `Kept` row did not clear: it is neither removed nor `carried` ([`spec/doc-shape.md`](spec/doc-shape.md) §9 reserves `carried` for a marker with no row behind it, and this one points at a live row), and without its own word a run has to misreport it as one of the other three |
 | **GATE** | applied · returned · `overturns n` — and a miss rate **only** where a sitting exceeded the threshold or the brake fired |
 | **SWEEP** | the closing sweep's three numbers |
 | **SWEEP-NOTE** | the content-rule sweep with its row range — R2.5 and [`add.md`](add.md) A5 scope the next sweep from this line, so it is read, not filed |
@@ -903,7 +903,7 @@ attacks; a hash cannot tell a body a default was written into from one three len
 **The samples below are the cap, not an illustration.**
 
 ```
-2026-08-12 09:14 · resolve · run 7f3a2c · skill v1 · sitting 1 · 6 of 18 queued · mode: force
+2026-08-12 09:14 · resolve · run 7f3a2c · skill v31 · sitting 1 · 6 of 18 queued · mode: force
 independence: writer <a>, checker <b>
 SWEEP-NOTE   content rule swept rows 1–18 · 0 findings
 item         «Can a customer retry a failed…»   Clean      3afc…b75  «Checkout» FR-2, FR-5      body 9f2c…41d
@@ -911,7 +911,6 @@ item         «Do slots roll over at midnight?»  Patched    04ab…4ef  «Picku
 item         «Should menus show sold-out items?» no change 9c31…2ab  already carries it: «Menu» FR-4   body 77c0…e19
 item         «Should the menu cache?»           re-queued  9c31…2ab  belongs to «Offline behaviour»    body —
 item         «What is the refund window?»       Flagged    —         R2.1: answer is only a link      body —
-item         «Can a customer cancel after…»     Kept       3afc…b75  soft: would replace «Checkout» FR-5   body —
 item         «Can a customer cancel after…»     Flagged    3afc…b75  R3.2: no behaviour derivable     body —
 FLAGGED      «What is the refund window?»  the answer is only a link — write the decision in a sentence
 FLAGGED      «Can a customer cancel after paying?»  answer "as agreed with ops on the call" — nothing derivable  3afc…b75
@@ -932,7 +931,7 @@ The next sitting opens its own entry under the same run id, and only the last on
 the reason, the run totals, and the closing sweep's own number beside the sittings' own:
 
 ```
-2026-08-12 12:41 · resolve · run 7f3a2c · skill v1 · sitting 3 · 4 of 4 queued · mode: force
+2026-08-12 12:41 · resolve · run 7f3a2c · skill v31 · sitting 3 · 4 of 4 queued · mode: force
 …
 GATE         4 applied, 0 returned
 SWEEP        14 applied this run · 1 suspect read · 0 returned
@@ -1021,8 +1020,9 @@ single largest source of narrative there, and the log has no reader for it.)*
       overview except a block a human accepted verbatim**; the `Untouched:` line was checked.
 - [ ] No human-set status was reversed; no barred value reached a
       row, the report or the log.
-- [ ] Every marker removed names a row ID in the log entry; every marker still open reads `carried` or
-      points at a real row.
+- [ ] Every marker removed names its evidence in the log entry — a row ID, or what its route cites
+      instead ([`spec/doc-shape.md`](spec/doc-shape.md) §9); every marker still open reads one of the
+      three legitimate forms ([`questions.md`](questions.md) Q6 step 7).
 - [ ] Every entry opened at the top of R2, ends in `CLOSED hh:mm` or `PAUSED …`, and contains no token.
 - [ ] **Every entry's header names the mode this run ran in, and the report's second line names the same
       one.** A `Kept` row is unreadable later without it — a supersession that was refused looks exactly

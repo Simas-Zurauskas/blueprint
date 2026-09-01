@@ -442,8 +442,9 @@ live-status claim that goes stale when the row is answered. **And no *rebuildabl
 and a verdict living only there is a verdict a later reader never learns happened. **`record/` is a
 legitimate home** since v16: it is durable, committed, and swept by the content rule like any other
 surface ([`spec/targets.md`](spec/targets.md) §5). *What that costs, said plainly: the evidence no
-longer travels inside the Blueprint itself. On a machine that has not pulled `record/`, a `CON-k`
-quote is not there to read.* **What that costs the entry is bounded: every
+longer travels inside the Blueprint itself — and since v30 the quotes are not in `record/` either.
+The cost is the one stated above: `sources/` is never committed, so on a machine that has not got it
+a `CON-k` quote is unreadable.* **What that costs the entry is bounded: every
 I6 verdict that is not `Clean` lands in it verbatim** — narrowed, removed, `Flagged`,
 `Unverifiable — outside this brief`, and `Noted — not a claim defect`, which keeps its place on the
 summary line as well. **`Clean` is a count** (`I6 42 checked · 39 Clean`): a `Clean` verdict's whole

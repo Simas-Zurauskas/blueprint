@@ -1,3 +1,128 @@
+# v31 — a gate that checks citations, and the executors v30 promised
+
+**What produced this.** A read-only survey of v30 (2026-09-01): nine independent lenses over the
+tree, five competing improvement plans scored by three judges, then nine adversarial refuters and
+three critics against the synthesis. Nothing was run; every claim below was re-derived from the files
+or from a mutation on a scratch copy. **The plan's own central proposal was refuted by that pass and
+is not in this version** — see *What was refused* below.
+
+**The measurement that decided the shape.** On a scratch copy at `LINT PASS 340/340`:
+
+| mutation | destroys | old gate |
+|---|---|---|
+| `Never reads a code repo` → `Prefers not to read a code repo` | never reads a repo | **PASS 340/340** |
+| run log `append-only` → `rewritable in place` | append-only record | **PASS 340/340** |
+| rule 1 + `— except where the answer is obvious from the source` | a human approves | **PASS 340/340** |
+| `## R4 — What a person still owns` → `## R4 — What is left for a person` | **nothing** | **FAIL 339/340** |
+
+Three mutations that gut hard invariants passed; one that changed no behaviour failed. An independent
+mutation run over a wider corpus put the gate at **8 of 21** behavioural regressions caught and
+**8 of 8** harmless edits caught. The assertion table was doing the opposite of its job.
+
+## What changed
+
+**Five structural checks, 12–16.** Section citations (172 sites), `PHASE step N` citations (27),
+`route N` citations (50, plural forms included), headings that declare their own list length (14
+tracked, all covered — numbered lists and tables alike), and a sample's `skill vN` stamp against
+`VERSION`. Each returns zero on the clean tree and fails on a real mutation. **12–14 read a de-wrapped copy of each file**, because `add.md`'s bad citation wrapped across a
+newline — `(A4\n     step 4)` — and was invisible to every line-based grep for four versions.
+**15 and 16 are line-structural by construction** — a heading-to-list relation and a log-entry
+header are line constructs — so they read the file as written and are blind to a wrapped instance. They set `fail`
+directly and add nothing to `ASSERTIONS`; they are structural like 1–7 and 11.
+
+**Three invariant pins — and the first version of them did not work.** `inv-human-approves`,
+`inv-no-code-repo`, `inv-append-only` were written to pin a whole sentence **including its terminal
+punctuation**, on the theory that a pin ending in `\.` breaks the moment anyone appends. **It does
+not.** A substring pin still matches when a weakening clause is appended *after* the pinned text, and
+the verification pass demonstrated it on all three: `**A human approves, always.** — except where the
+answer is obvious from the source.` passed at `343/343`. The author's own test had been weaker than
+the defect — it *replaced* the pinned string instead of appending after it, so it failed for the
+wrong reason and read as a pass for the design.
+
+**What shipped instead is a pair per invariant.** The REQUIRED pin extends **through the following
+clause**, so an appended sentence breaks it; and a FORBIDDEN row bans a weakener token
+(`except`, `unless`, `prefer`, `rewrit`, `compact`) **on the invariant's own line**. Measured on a
+scratch copy: the append shape now fires *both* rows, the in-place rewrite fires the REQUIRED row,
+and the clean tree passes at `348/348` in both locales. *A
+seven-row "anchor plus forbidden weakener" scheme was designed first and killed by the refutation
+pass: it failed on the clean tree at `SKILL.md`'s own `**Never invent — but adopting a labeled
+convention is not inventing.**`, and four evasions passed the tuned version, one of them by merely
+re-wrapping the paragraph. "Same line" is not a semantic unit in a hard-wrapped file.*
+
+**Route 8 got its executor — [`add.md`](add.md) A4 step 8.** v30 added the route and named `add.md`
+as its performer; `add.md` had no such step, so a marker a source answered could never be removed
+and `carried` could not reach zero. **Appended as step 8 rather than inserted**, so every standing
+`A4 step n` citation still resolves — inserting would have renumbered the overview and seed steps and
+silently broken `doc-shape.md`'s `A4 step 7`, which is the same mis-citation class this version
+exists to close, and check 13 does not catch a citation to a real-but-wrong step. Its stragglers —
+a marker on a feature the run did not write — join route 1's at Q6 step 4. In `soft` nothing is
+written, so nothing is removed.
+
+**What a removal must cite, widened to every route that cites something other than a row.** §9's
+closing rule exempted only route 6, so a compliant route-3, route-7 or route-8 removal read as a bug.
+R5's `MARKERS` kind now admits each route's own evidence. Q6 step 3's claim to be *"the only marker
+removal nobody is asked about"* was narrowed: routes 7 and 8 also remove without asking.
+
+**The `CON-k` residue.** v30 moved the verbatim client spans to `sources/<run-id>/contradictions.md`
+and **five** live instructions still put them in committed `record/` — `questions.md` Q2 and Q6
+step 10, `init.md`'s cost paragraph (which contradicted I7 twenty-five lines above it),
+`status.md` C9's own justification, and — found only by the verification pass — **`resolve.md` R5's
+own list of the kinds `record/run-log.md` keeps**, in the file that owns the log's shape. The original defect put an individual's name in an append-only committed log with
+no removal route.
+
+**Two mis-citations, four samples.** `add.md`'s `A4 step 4` → step 5, the sixth instance of a class
+v30 recorded as closed, in the file that owns the contract. `questions.md`'s `Q6 step 8` → step 9;
+step 8 writes rows, step 9 is the ledger. The `resolve` log sample carried a `Kept` verdict under
+`mode: force` (`Kept` fires only in `soft`), the same row twice with two verdicts, and `skill v1` —
+a stamp that halts the next run at R1. Removing the illegal line also made *"sixteen lines for six
+items"* true, which it was not. Q5's prompt offered **five keys for six outcomes**, collapsing
+*not a real gap* and *ask it better* — whose consequences for the marker are opposite.
+
+**`spec/prd-scope.md`'s reader, and two limits it did not state.** The file said it was *"read at
+question-generation time"*; its readers are Q3 and Q4. Every rule addressed to the generating side
+therefore had none, including the **operating-volume question** that §4 makes the precondition for
+the materiality floor — *"a run that has not asked the volume question has no floor and must not
+apply this rule."* Nothing asked it, so **§4 was inert in every run this skill has executed.** Q2's
+standing sweep now confirms it exists (item 6). Q4's import now enumerates every numbered section,
+because §6, §7a and §8 were imported by nothing.
+
+## What was refused
+
+**Deleting the second vocabulary.** The plan's central move was to delete §2's five dispositions and
+its four destination artefacts — `dependency register`, `constraint register`, `assumptions log`,
+`Later list`, each of which appears in `prd-scope.md` and in no other file — keeping every test
+verbatim. The refutation killed it on three counts. Twenty-six lines carry a disposition name **as
+the test's operative verdict** (*"the legal fact is the profession's, RECORD; the posture is the
+client's, ASK"*), so "verbatim" is impossible. The names also live at `questions.md` Q4's pivot and
+inside v30's own `Why asked` gate, so it is not confined to one spec. And the acceptance test — a
+grep returning zero — cannot pass without editing this file's own record of what v29 measured.
+
+**So the seam was wired rather than renamed**, and the two dispositions with no writing channel are
+**named as having none** (§9) instead of being re-pointed at a channel that does not admit them:
+a `PROPOSE` is not a DEFAULT — rule 4(a) wants one dominant convention and §2 wants a client
+preference, the opposite thing — and a professional's determination is not a CONTENT SLOT, which
+refuses decisions about behaviour. **Adding a fifth channel is the alternative and it is a real
+change to the phase with the measured determinacy problem; it is not made here.**
+
+**Two safe re-points were taken:** §5's *assumptions log* → the DEFAULT channel's defaults ledger,
+and *constraint register* → §3's own externally-imposed-constraints test.
+
+**Not attempted:** the run-record extraction and the per-target split (every per-command token figure
+in circulation is method-dependent, and under a consistent closure rule the ranking that motivated
+them changes); the assertion-table rewrite; a campaign. Nothing in the do-not-propose register was
+re-proposed.
+
+## What this version does not know
+
+The survey's findings are overwhelmingly single-reader. `blueprint-sim4` — the only campaign that
+ever ran a refutation pass — **refuted 28 of its own 75 claims and 8 of 11 HIGHs**. The items above
+are the ones that survived an adversarial pass or were re-derived on a scratch copy; the rest of that
+survey is leads, not facts. Checks 13 and 14 verify a cited ordinal **exists**, never that it is the
+**right** one — nothing catches a citation to a real-but-wrong step, which is the defect `add.md`
+actually had. Check 16 and check 15 are line-based and blind to a wrapped instance. `soft` mode is still unexercised by
+any campaign. And **nothing here was run**: whether the skill behaves better is a question only a
+campaign answers.
+
 # v30 — the re-elicitation fixes, from a three-round live campaign
 
 **What produced this.** `blueprint-sim6`, 2026-08-29/30: three projects, three source forms, ten

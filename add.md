@@ -125,7 +125,7 @@ Four lists again, and a fifth that only `add` has.
      bars from being averaged or settled in favour of the newer source, and that bar is unchanged.
    - **Between a new source and what the Blueprint says** — a numbered requirement, an `Edge cases`
      line, a `Not doing` line or the NOT-clause. In the default mode the source supersedes it (A4
-     step 4). In `soft` it becomes a marker plus one question and nothing is written.
+     step 5). In `soft` it becomes a marker plus one question and nothing is written.
 4. **Gaps** — anything the new material needs and no source supplies. Each becomes a marker plus a
    proposed question.
 5. **Exclusions** the new material carries, in the one shape, with the *why* the source gives.
@@ -256,6 +256,24 @@ putting one back costs a sentence too.
    same rule [`resolve.md`](resolve.md) R4 applies to a seed derived from a vetted answer. It is
    reported with its text. **`FR-2` onward is never minted**, and a seed with no source behind it is
    never written.
+8. **A marker this run's own material answers is removed, in the same act as the write.** Where a
+   segment written at step 2, or a supersession written at step 5, settles what a
+   `[NEEDS CLARIFICATION]` marker names, that marker goes —
+   [`spec/doc-shape.md`](spec/doc-shape.md) §9 **route 8**, and this step is its only executor.
+   **The removal cites the source segment and the `item` line that wrote it**; a removal that cannot
+   name its segment is a bug, exactly as one with no row ID is. It is the same one-act shape route 1
+   has at the resolve seam: the evidence is the source, and the write and the removal are not two
+   steps a crash can separate.
+
+   **A marker on a feature this run did not write is outside this act's reach** — the answer landed
+   on one feature and the marker sits on another. Those are swept at
+   [`questions.md`](questions.md) Q6 step 4, which A5's handoff reaches in the same sitting.
+
+   **In `soft` mode a marker is never removed against a supersession**, because none was written —
+   the mode's whole rule is that existing text stands, and clearing a marker against a supersession
+   that never happened is the one write `soft` cannot take back. **A marker that a segment written at
+   step 2 answers is removed exactly as in the default mode**: `soft` refuses overwrites, not
+   additions, so that material is on the page and the gap it closes is genuinely closed.
 
 ---
 

@@ -500,12 +500,18 @@ in the third.
 8. **A source answered it** (v30). Where new material an [`../add.md`](../add.md) run wrote settles
    what a marker names — including a supersession under A4 step 5 — the marker is removed **citing
    the source segment and the `item` line that wrote it**, in the same act as the write, exactly as
-   route 1 removes a marker in the same act as applying an answer. **The evidence is the source, and
+   route 1 removes a marker in the same act as applying an answer. **[`../add.md`](../add.md) A4
+   step 8 is its executor**, and a marker on a feature that run did not write is swept at
+   [`../questions.md`](../questions.md) Q6 step 4 with route 1's stragglers. **The evidence is the source, and
    a removal that cannot name its segment is a bug like any other.**
 
 **None of the eight is a bypass of another.** A run may never write an answer straight in, and never
-without a row. **A marker removal with no row ID in the run-log entry is a bug, not a tidy-up** — route
-6's removal cites its ledger line and the `RATIFIED` line instead, which is the row ID that route has.
+without a row. **A marker removal that names no evidence in the run-log entry is a bug, not a tidy-up.** Most
+routes cite a **row ID**; five cite what they have instead, and each is as binding: route 3 the
+`Not doing` line it wrote, **route 4's *already decided* branch the requirement or `Not doing` line
+that answers it**, route 6 its ledger line and the `RATIFIED` line that cleared it, route 7 its slot
+line and its manifest line, route 8 the source segment and the `item` line that wrote it.
+**What is barred is a removal citing nothing**, whichever route it took.
 
 **Never invent the missing content.** A guess written as prose launders a guess into the source of truth.
 Contradictions between sources are surfaced, never silently resolved.
