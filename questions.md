@@ -31,7 +31,10 @@ wording, an under-counted list, an internal contradiction with a mechanically ch
 **DOC-FIX**, applied through the serial commit path and ratified as one batch. Everything else is
 discarded on a stated filter, and **an engineering discard is a record, not a disappearance**: the
 builders'-call discards are grouped under their own report heading so a reviewer can veto any of them
-back into the pipeline with one word. One diagnostic belongs to the report, never to any pass: **a feature exceeding roughly one open
+back into the pipeline with one word. **And a QUESTION is read once more before it exists** (v32): one
+fresh dispatch per drafted row, given the whole document and nothing about how the row was made, returns
+one of five verdicts — it stands, it is already answered, it is not this document's, it needs
+simplifying, it needs widening — each demoting nothing without its evidence (Q4's cold read). One diagnostic belongs to the report, never to any pass: **a feature exceeding roughly one open
 question is a routing check, not thoroughness** — the Q6 report names which channel leaked; legal- and
 compliance-heavy features legitimately exceed it.
 
@@ -133,6 +136,10 @@ since the last run — in the UI, at their own pace, without this skill.
   revived ten such rows in one sitting — decisions that had sat unreachable behind a `Rejected` status
   since the pass that misfiled them. The report line makes that a routine glance instead of an
   archaeology dig.
+- **A `CARRIED-FORWARD` line naming a drafted row whose cold read was still out when the last run
+  closed** (Q4, v32): the row was never written. Where the read's return is on file, Q4 executes it
+  first; where it is not, Q4 dispatches that read before any new candidate's. Never written unread on
+  the strength of having waited.
 - `Open → Answered`, moved in the UI with an answer written: **a human answered it at their own pace, in
   their own tool** — the act at its strongest. Accept it: patch any marker waiting on it with the row
   link. Do not chase `Owner`; an empty one is normal ([`spec/databases.md`](spec/databases.md) §2). The row is
@@ -411,10 +418,7 @@ second row does not fix a vetting problem, it hides it. Offer a merge instead of
 
 **And against every prior run's `discard` lines, under the same quote discipline** (v23). Dedup against
 rows alone cannot see a candidate that was *never written*, so a candidate this run discards is
-regenerated, re-dispatched and re-printed under `DISPOSED WITH NO CHANNEL (1 of the 11 discards) — the document cannot write these; their owner can
-  «Where does a cancellation notice appear?»  PROPOSE — a drafted screen the client corrects.
-                                  No channel writes a draft; put it to her as one.
-NOT PROPOSED, AND WHY` on every run for the life of the
+regenerated, re-dispatched and re-printed under `NOT PROPOSED, AND WHY` on every run for the life of the
 project — the complaint surviving in report form rather than row form. A candidate matching a prior
 discard is discarded on **the original filter, re-cited and re-tested** — never on the bare fact that a
 previous run discarded it, which would make a discard evidence for its own repetition and put a wrong
@@ -855,7 +859,7 @@ a paraphrase: the reviewer judges the disagreement itself, not the run's summary
 and never a precondition for anything ([`spec/databases.md`](spec/databases.md) §2); a name in `Why asked` prose would be a
 content-rule finding ([`spec/doc-shape.md`](spec/doc-shape.md) §6).
 
-**The last gate, and it reads the row's own words back** (v30). **Before a drafted row is written,
+**The read-back gate — the row's own words, before any dispatch is spent on it** (v30). **Before a drafted row is written,
 re-read the `Why asked` this run has just composed. Where it says, in any words, that the person this
 row is going to cannot answer it — *they said to ask somebody else · they do not know · it is not
 theirs · it turns on an outside adviser* — the row is not written.** It routes to **RECORD with that
@@ -873,6 +877,69 @@ mechanical, costs no dispatch, and is the cheapest gate in this file.*
 **It never fires on the three undiscardable classes** — a contradiction-backed row, a client-bound
 carried-marker transcription, and the two project-level questions are written whatever their
 `Why asked` says, because for those the client not knowing is the point rather than the defect.
+
+**The cold read — one fresh dispatch per drafted question, after every gate above and before the
+write** (v32). **This is the single home of the cold read.** Every gate above tests the *candidate* —
+its grounding, its routing, its depth — and neither check that verifies it sees the whole document:
+the disposition check is blind by design, and the read-back gate reads one field. Nothing
+yet reads the finished row the way its reader will — cold, against the whole document, never having
+watched it being made — and *"the document already answers this"* has so far been tested only by the
+context that generated the candidate, which is the configuration the preamble names as biased toward
+over-predicting ambiguity and the one the derivative-round bound above names as unable to
+self-correct. **So before any drafted row is
+written, a separate dispatch ([`SKILL.md`](SKILL.md) rule 6) is briefed with the row as it would be
+written** — `Question`, `Why asked`, `Touches` and the draft `Suggested directions` — **together with
+the whole-document snapshot Q2 briefs its passes with, every standing question row by title and
+status with its `Answer & why` where one exists, the standing defaults ledger, and the other rows
+this run has drafted**, all supplied by the orchestrator under rule 8(i) and wrapped as data under
+rule 2's standing line; the reader reads no file and is told nothing about how the row was routed.
+**It is briefed as the person who must answer it, not as a hunter of gaps** — the generator was told
+to find gaps; a reader handed one question and the document it came from is that bias run the other
+way. It returns exactly one of five verdicts, and **a verdict without its evidence is not a verdict —
+the row stands, a `check` line records `cold read: no evidence — stands`, and the report names it.**
+There is no second dispatch for a reader that offered none: one read per drafted row, and no more.
+
+| Verdict | What it claims | The evidence it must carry, or it is `stands` | What the run does |
+|---|---|---|---|
+| `stands` | The gap is real and the wording is the decision's own size | nothing | Writes the row as drafted |
+| `answered` | The document, a standing row, a ledger line or a principle the client stated already settles it | **the verbatim settling text and where it sits** — a feature and block, a row, a ledger line — checked by rule 6(d)'s string match on normalised whitespace; an unmatched quote is not evidence, and the mismatch is reported | Q3's **Already answered**, **Duplicate** or **Answered by a principle the client stated** filter, applied late: one `discard` line naming the filter, the quote and `cold read`, with its counter-case in the report |
+| `irrelevant` | No answer to it changes any requirement statement in this document, or nobody here could answer it today | **a Q3 filter by name and the evidence that filter's row demands** — the surveyed requirements with their quoted sentences for the three survey filters, the blocking row's quoted sentence for **Consequence of an open question**, and so on down the table; a filter named without its evidence is a discard on taste, which Q3 forbids | A Q3 discard, one `discard` line tagged `cold read`, filter and counter-case in the report |
+| `simplify` | The question is real and carries more than it should — two decisions in one sentence, the run's reasoning wrapped round the ask, or a mechanism asked where the client owns only the outcome | **the rewording**, one sentence and one decision — or, for a bundle, the split ([`spec/prd-scope.md`](spec/prd-scope.md) §7a, which the routing should have applied and did not) | Adopts the rewording in `Question` alone; `Why asked` is untouched, and a rewording that no longer names the client-only act or the blank `Why asked` cites is not adopted. A split's halves each pass the read-back gate and are written; **they are not read cold again** |
+| `extend` | The question is a slice of a wider decision — the same decision recurs across features, or across this batch's other drafts ([`spec/prd-scope.md`](spec/prd-scope.md) §4's merge) | **the widened wording and the drafted siblings it absorbs, each by title** | Adopts the widened wording, with `Touches` re-derived from it; each absorbed sibling is discarded **Duplicate** of the widened row, quoting it. Where the widening reaches a **standing** row, the draft is the duplicate — discarded quoting that row — and the widening goes to the report as a merge proposal, because a standing row is a human's to edit (Q1) |
+
+**What a verdict may not do.** The four classes this file never discards — a contradiction-backed
+candidate, a client-bound carried-marker transcription, the two project-level questions, and anything
+on the always-ask register — take `stands` or a wording verdict only: `answered` and `irrelevant` do
+not fire on them, exactly as the re-gate and the read-back gate do not; a rewording of a
+contradiction-backed row that drops either verbatim quote is not adopted; and a sibling in one of
+those classes is never absorbed — the widening is adopted without it. **`extend` widens the decision,
+never anticipates the answer**: *"they will say X, so also ask Y"* is a candidate grounded in the
+reader's own hypothesis, which nothing in this file admits — that gap surfaces as the derivative batch
+the report already promises, at its own depth. **A convention is not an answer here**: the disposition
+check decided the channel, blind, on four attested conditions, and the cold read does not re-open it —
+two dispatches voting on one question is what this ordering exists to avoid, so a reader that thinks
+a convention settles the row says `stands`. **It runs on a drafted row and never on a standing one** —
+a written row is a human's to close or reword, and Q3's reverse dedup already recommends and closes
+none. **Where two reads each absorb the other**, neither widening is adopted, both rows stand, and the
+report names the pair as a merge for a person.
+
+**Ordering, cost and the record.** The cold read is the last dispatch before the write — after the
+disposition check and the read-back gate, so a dispatch is never spent on a row a free mechanical gate
+would drop. **One row per dispatch, concurrent in waves of no more than ten** (rule 8): a reader
+given ten rows conditions on its own earlier verdicts, the self-conditioning [`resolve.md`](resolve.md)
+R5 caps sittings for, and the ninth row is then read by a context that has already decided eight.
+**No dispatch, no read** — rule 6 governs: with no second dispatch the read has not happened, the row
+is written carrying `unverified` and is counted on the run's unverified line, never re-read by the
+context that drafted it and called a read. A read still out when the phase would close is rule
+8(iii)'s outstanding dispatch, and the row it holds is **not written to make the gate close** — a
+written row has no route back this side of a human — it is named, carried as a `CARRIED-FORWARD`
+line, and the next `questions` run picks it up at Q1 and reads that row at Q4 before any new
+candidate. **The record:** the entry's `independence`
+line names the cold reader beside the writer and checker; each demotion is a `discard` line, so the
+funnel's `discarded` term and [`status.md`](status.md) C10's arithmetic take it with no new term;
+each rewording, and each read that offered no evidence, is one `check` line in
+`record/runs/<run-id>.md` — the drafted wording beside the adopted one; `stands` is a count. The
+report carries the **`COLD READ`** block (Q6 step 12).
 
 ---
 
@@ -1042,7 +1109,9 @@ UI or spoken at the review — makes it `Answered`.
    line by line, which would put the whole backlog back in the log · a default is its **one**
    ledger line · a slot is its manifest line · a fix is its batch line · a demotion is one line with its
    grounding quote. **A Q3 discard is one line too — its filter and a short quote of the candidate**, so a
-   rejection is answerable later without being an open question now; a discard that exists only on the
+   rejection is answerable later without being an open question now — **and a cold-read demotion is a
+   Q3 discard and takes the same line, tagged `cold read`, while a cold-read rewording goes to
+   `record/runs/<run-id>.md` as a `check` line** (v32); a discard that exists only on the
    sitting's screen is the silent loss the `CON-k` inventory closes for contradictions
    ([`init.md`](init.md) I7). **The one discard that carries more is a `CON-k`-backed one**, which keeps
    its `CON-k` citation, both origins and the source-record path, so the conservation check can
@@ -1086,7 +1155,9 @@ UI or spoken at the review — makes it `Answered`.
    the one it missed — **in the report, not the log**, since R5's kinds admit no line for it and none
    is paragraph-shaped. Then the report carries the
    **`DEFAULTS ADOPTED (n) — ratify or veto by number`**, **`FIXES APPLIED (n) — ratify below`** and
-   **`CONTENT SLOTS (n) — one batched sign-off`** blocks, the **suggested directions**
+   **`CONTENT SLOTS (n) — one batched sign-off`** blocks, the **`COLD READ`** block — rows read, the
+   five verdict tallies, the rows absorbed by an extension and the unverified count, then one line per row that did not stand as
+   drafted, the drafted wording beside the adopted one and every demotion's quote (v32) — the **suggested directions**
    block (below) for the top proposals, and the per-feature routing diagnostic — a feature carrying more
    than about one open question is named with which channel leaked, never used as a generation target
    and **it ends with the client packet — a candidate list, not a send.** The report proposes every
@@ -1130,9 +1201,9 @@ verification pass and the standing label — not denied.* The report still print
 ```
 QUESTIONS — «Golden Crumb» · 2026-08-11
 
-FUNNEL     31 candidates drafted → 14 routed default · 2 routed fix · 1 routed slot · 3 written as questions
-           (1 transcribed from a carried marker) · 11 discarded on a filter (listed with
-           their counter-case). Per-pass counts logged; distribution in record/runs/.
+FUNNEL     33 candidates drafted → 14 routed default · 2 routed fix · 1 routed slot · 3 written as questions
+           (1 transcribed from a carried marker) · 13 discarded on a filter (2 by the cold read;
+           listed with their counter-case). Per-pass counts logged; distribution in record/runs/.
 DEFAULTS ADOPTED (14) — ratify or veto by number; risk-sorted, spot-check sample: #3, #11
    1. «Checkout»  Default (standard practice — ratify on review): reset links are
       single-use and expire — does not decide: any legal promise about erasure timing
@@ -1145,6 +1216,14 @@ FIXES APPLIED (2) — ratify below
 CONTENT SLOTS (1) — one batched sign-off; the document defines the slot, the client fills it
    «Browse the menu»  Content slot — client-supplied: the pastry list · name + price + allergens
       · 20–60 items · supplied by the client. Illustrative examples in the body are labelled.
+COLD READ  5 drafted rows read, one dispatch each · 1 stands · 1 answered · 0 irrelevant
+           · 1 simplified · 1 extended · 1 absorbed by that extension · 0 unverified
+  «Are reset links single-use?»        answered — ledger #1 already adopts it: "reset links are
+                                       single-use and expire" (citation: matched)
+  «Given FR-2 isolates payment as its own step and no source covers what follows, can a
+   customer retry a failed payment?»   simplified → «Can a customer retry a failed payment?»
+  «What does success look like in month one?»
+                                       extended — absorbs «How many orders a day would be good?»
 WRITTEN    3 → Open, each naming its client-only act. No sitting asked — they wait in
            the Unsent tab (questions.md on a local folder): answer directly, reject with a
            reason, or carry into a packet.
@@ -1169,6 +1248,13 @@ NOT PROPOSED, AND WHY
   «Should the menu cache?»        implementation, not intent, no materiality — a Rabbit
                                   holes line instead
   «What is the refund window?»    duplicate of q-07, already Open and owned by Tom
+  «Are reset links single-use?»   cold read: already answered — ledger #1, quoted above
+  «How many orders a day would be good?»
+                                  cold read: duplicate of the extended «What does success look
+                                  like in month one?», quoting it
+DISPOSED WITH NO CHANNEL (1 of the 13 discards) — the document cannot write these; their owner can
+  «Where does a cancellation notice appear?»  PROPOSE — a drafted screen the client corrects.
+                                  No channel writes a draft; put it to them as one.
 
 An empty question list is not evidence this Blueprint is complete.
 
@@ -1190,3 +1276,5 @@ above, every other block.
 | A proposal duplicates a rejected row | Not proposed again unless new source material bears on it — then once, citing the rejection |
 | A marker names no entity | Reported as broken, never guessed at. *"Is this right?"* is not a marker and cannot be turned into a question honestly |
 | Two markers on the same requirement | Both listed; one question may resolve both, and it says so |
+| A cold read returns a verdict with no evidence | The row stands as drafted, a `check` line records `cold read: no evidence — stands`, and the report names it. No second read (Q4) |
+| Two cold reads each absorb the other's row | Neither widening is adopted; both rows stand and the report names the pair as a merge for a person (Q4) |

@@ -58,7 +58,11 @@ you: it writes everything it found, prints the report, and stops.** You read the
 (say why), or carry them into the packet you send the client — the next run picks up every move. **Nothing goes to a client until you send it**: the run
 proposes the packet, a person decides what is actually in it. Every row that reaches you already passed the admission
 gate — a decision only the client can make, without which a named part of the document cannot be
-written — so the list is short by construction. Each row carries **suggested directions**:
+written — so the list is short by construction. **And before any row is written, a fresh dispatch
+reads it cold** — one reader per drafted question, given the whole document and nothing about how the
+row was made: a question the document already answers, or that no answer would change a requirement
+for, is discarded on a quoted filter; one carrying two decisions is simplified; one that is a slice of
+a wider decision is widened. A reader's opinion demotes nothing — its quote does. Each row carries **suggested directions**:
 machine-drafted options with their trade-offs, grounded in your own document, verified by a second
 model before writing where one can be dispatched — otherwise written unverified, every quotation
 string-checked against the document and the unverified count reported — and always labeled *not a
@@ -104,7 +108,7 @@ again → `/blueprint questions`. Apply new answers → `/blueprint resolve`. As
 |---|---|---|
 | `/blueprint init` | Sources or interview → grilled skeleton → your confirm → the Blueprint | After your confirm |
 | `/blueprint add` | New material into existing/new features. **Runs to the end without stopping**, and by default **new source material supersedes document text it contradicts** — `add soft` keeps every contradiction as a question instead | Immediately, and the report names every change |
-| `/blueprint questions` | The full grilling battery on a first grill, a narrowed attack surface on a re-grill — every find disposed: questions written, convention settled as labeled defaults, content as slots, wrong text as doc-fixes — and given guidance | Live questions at `Open` + guidance; labeled default, fix and slot lines in feature bodies, awaiting your batch ratification |
+| `/blueprint questions` | The full grilling battery on a first grill, a narrowed attack surface on a re-grill — every find disposed: questions written, convention settled as labeled defaults, content as slots, wrong text as doc-fixes — every drafted question read cold by a fresh dispatch before it is written, and given guidance | Live questions at `Open` + guidance; labeled default, fix and slot lines in feature bodies, awaiting your batch ratification |
 | `/blueprint resolve` | Write vetted answers into the feature specs. **Runs to the end without stopping**, and by default **a vetted answer supersedes document text it contradicts** — `resolve soft` flags that row with both texts instead, and writes nothing | The answers |
 | `/blueprint status` | One screen: what's flagged, what's waiting on you, what's still unsettled | **Never** |
 

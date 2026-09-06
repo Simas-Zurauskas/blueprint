@@ -859,8 +859,8 @@ report, where a person actually reads it; the log carries the fact, not the acco
 | Kind | What it carries |
 |---|---|
 | **header** | date · time · command · run id · version · sitting · queue · **the mode, on a command that has one** ([`add.md`](add.md) is its single home) — a later reader cannot tell a supersession that was refused from one that never arose without it (v22) |
-| **independence** | the writer and checker models ([`SKILL.md`](SKILL.md) rule 6) — and that rule's **dispatch-probe result on the same line, on both branches** (v21, widening v20's write-it-only-on-failure): on a success the **route**, `succeeded via <the literal call>`, so a later sitting of the same run inherits the working command instead of re-deriving it |
-| **check** *(→ `runs/`)* | one line per named check — R1's pre-flight halts, R2's per-check lines. **One exception stays in the log: R1's dated version-reconciliation line**, because a later run's version check reads it back and `runs/` files are not indexed (v17 — R1 and this table disagreed about that one line) |
+| **independence** | the writer and checker models ([`SKILL.md`](SKILL.md) rule 6) — **and, on `questions`, the cold reader** ([`questions.md`](questions.md) Q4, v32), or `cold read: not dispatched` on the same line where none ran — and that rule's **dispatch-probe result on the same line, on both branches** (v21, widening v20's write-it-only-on-failure): on a success the **route**, `succeeded via <the literal call>`, so a later sitting of the same run inherits the working command instead of re-deriving it |
+| **check** *(→ `runs/`)* | one line per named check — R1's pre-flight halts, R2's per-check lines, **and on `questions` one per cold-read verdict that reworded a row or offered no evidence, carrying the drafted wording beside the adopted one** ([`questions.md`](questions.md) Q4, v32). **One exception stays in the log: R1's dated version-reconciliation line**, because a later run's version check reads it back and `runs/` files are not indexed (v17 — R1 and this table disagreed about that one line) |
 | **item** | one per item: row · verdict · feature ID · the delta as a **pointer** — `«Feature» FR-n`, never a recap of what it says, which the body's own provenance line already carries — **and, where the item wrote or read back a body, that body's hash** (v20: recorded here rather than only at the close, so an interrupted run leaves a usable baseline; R2.3). On `init` and `add`, where a commit has no queue row, the item is its feature ID with the source segment or `CON-k` it came from |
 | **group heading** *(→ `runs/`)* | the `APPLIED` · `NOT APPLIED` · `FLAGGED` headers, and the blank line between blocks. Layout, carrying no fact of its own |
 | **FLAGGED** | one per row: the row and its objection — and, on R3.1's overview route, the hash of `Answer & why` at the flag, which round two compares against. The database has no field for it and [`status.md`](status.md) C1 reads it here, so this one explanation is deliberately durable. **The content rule binds this line** ([`spec/doc-shape.md`](spec/doc-shape.md) §6): an objection quotes an answer's words as the role, never the specific — this file is committed, and a barred specific written here is published, not stored (v19) |
@@ -885,7 +885,8 @@ verdict that is not `Clean`, verbatim, `Clean` as a count ([`init.md`](init.md) 
 stated filter (v20: `discard` used to belong to `questions` alone, so an `init` grill's discards had
 nowhere legal to go and [`init.md`](init.md) I7 forbids `cache/` being their only home).
 `questions`: the **defaults ledger**, the **fixes batch**, the **content
-manifest**, one line per **demotion** and one per **discard**, the **funnel**, and — added v23 — a
+manifest**, one line per **demotion** and one per **discard** — a cold-read demotion is a `discard`
+line tagged `cold read`, not a kind of its own (v32) — the **funnel**, and — added v23 — a
 **GRILL** line ([`questions.md`](questions.md) Q2, Q4, Q6).
 
 **`GRILL` is `questions`' own kind and the one thing that reads it back is the next `questions` run**
@@ -903,7 +904,7 @@ attacks; a hash cannot tell a body a default was written into from one three len
 **The samples below are the cap, not an illustration.**
 
 ```
-2026-08-12 09:14 · resolve · run 7f3a2c · skill v31 · sitting 1 · 6 of 18 queued · mode: force
+2026-08-12 09:14 · resolve · run 7f3a2c · skill v32 · sitting 1 · 6 of 18 queued · mode: force
 independence: writer <a>, checker <b>
 SWEEP-NOTE   content rule swept rows 1–18 · 0 findings
 item         «Can a customer retry a failed…»   Clean      3afc…b75  «Checkout» FR-2, FR-5      body 9f2c…41d
@@ -931,7 +932,7 @@ The next sitting opens its own entry under the same run id, and only the last on
 the reason, the run totals, and the closing sweep's own number beside the sittings' own:
 
 ```
-2026-08-12 12:41 · resolve · run 7f3a2c · skill v31 · sitting 3 · 4 of 4 queued · mode: force
+2026-08-12 12:41 · resolve · run 7f3a2c · skill v32 · sitting 3 · 4 of 4 queued · mode: force
 …
 GATE         4 applied, 0 returned
 SWEEP        14 applied this run · 1 suspect read · 0 returned

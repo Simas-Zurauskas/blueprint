@@ -487,7 +487,23 @@ questions.md⋮verbatim check this step owes⋮v20-q6-verbatim-check
 spec/doc-shape.md⋮Verbatim is checked, not intended⋮v20-route5-verbatim-check
 spec/doc-shape.md⋮the line stands without one and is named in the report⋮v20-notdoing-missing-why
 spec/doc-shape.md⋮A body never cites this skill.s own machinery⋮v20-no-skill-paths-in-body
-spec/databases.md⋮first finds the words in the captured reply by string match⋮v20-databases-verbatim-check'
+spec/databases.md⋮first finds the words in the captured reply by string match⋮v20-databases-verbatim-check
+questions.md⋮single home of the cold read⋮v32-coldread-single-home
+questions.md⋮one fresh dispatch per drafted question⋮v32-coldread-one-per-row
+questions.md⋮a verdict without its evidence is not a verdict⋮v32-coldread-evidence-or-stands
+questions.md⋮never on a standing one⋮v32-coldread-prewrite-only
+questions.md⋮never anticipates the answer⋮v32-coldread-extend-is-width
+questions.md⋮A convention is not an answer here⋮v32-coldread-no-channel-reopen
+questions.md⋮not written to make the gate close⋮v32-coldread-outstanding-not-written
+questions.md⋮^\| .stands. \| The gap is real⋮v32-coldread-verdict-stands
+questions.md⋮^\| .answered. \| The document⋮v32-coldread-verdict-answered
+questions.md⋮^\| .irrelevant. \| No answer to it⋮v32-coldread-verdict-irrelevant
+questions.md⋮^\| .simplify. \| The question is real⋮v32-coldread-verdict-simplify
+questions.md⋮^\| .extend. \| The question is a slice⋮v32-coldread-verdict-extend
+questions.md⋮they are not read cold again⋮v32-coldread-split-not-reread
+SKILL.md⋮cold read⋮v32-skill-names-coldread
+resolve.md⋮the cold reader⋮v32-independence-names-reader
+README.md⋮reads it cold⋮v32-readme-names-coldread'
 
 FORBIDDEN='SKILL.md⋮A human approves, always.*([Ee]xcept|[Uu]nless)⋮inv-human-approves-no-weakener
 SKILL.md⋮code repo.*([Ee]xcept|[Uu]nless|[Pp]refer|[Gg]enerally)⋮inv-no-code-repo-no-weakener
@@ -572,7 +588,9 @@ SKILL.md⋮v3.{1,3}v18⋮v19-legacy-range-restored
 blueprint-explained.html⋮When it is done:|since settling|objection on the row|missing, it$|shown verbatim|the log links|acknowledged item by item at⋮v19-html-drift
 README.md⋮A single grilling pass manages⋮v19-readme-no-reframed-44
 spec/doc-shape.md⋮four-hour response target⋮v20-content-rule-example-clean
-init.md⋮the entry is the first thing written after the structure exists⋮v20-no-contradictory-ordering'
+init.md⋮the entry is the first thing written after the structure exists⋮v20-no-contradictory-ordering
+questions.md⋮The last gate, and it reads⋮v32-readback-gate-not-last
+questions.md⋮DISPOSED WITH NO CHANNEL \(1 of the 11⋮v32-q3-paste-not-restored'
 
 SINGLE_HOME='single home of where the working folder lives⋮1
 `force` is the default⋮1
@@ -595,6 +613,7 @@ no bump without a register decision⋮1
 this list is the single home of the sweep⋮1
 Ratifying the defaults batch is the human act⋮1
 the only machine route into an empty body⋮1
+single home of the cold read⋮1
 the read-out line⋮2
 an empty question list is never evidence⋮2
 could not be performed — no second dispatch available⋮3

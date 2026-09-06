@@ -1,3 +1,82 @@
+# v32 — the cold read: a fresh reader on every drafted question
+
+**What produced this.** The owner, 2026-09-06: *"this blueprint still generates too many questions,
+it's not careful enough. i think we need to add the step when questions are generated to run a fresh
+context subagent reality check on each question to see maybe this question is irrelevant, already no
+need answer, maybe needs simplifying or maybe even extending."* No campaign ran; this is a design
+change at the owner's direction, and the measurement is owed (below). The name in the files is **the
+cold read** rather than the owner's phrase, because the superseded skill's machine-written axis is on
+`lint.sh`'s banned-vocabulary list and a sentence-initial capital would trip it.
+
+## Why a new dispatch rather than a stronger filter
+
+Every gate in Q3 and Q4 tests the **candidate** — its grounding, its routing, its depth — and the two
+checks that verify it are built not to see the document. The disposition check is **blind by design**:
+v23's ordering depends on it never being anchored by the first routing, so it sees *"the candidate and
+its grounding alone"*. The v30 read-back gate reads one field. So *"the document already answers
+this"* was, until v32, tested only by the context that generated the candidate — the configuration
+`questions.md`'s own preamble names as biased toward over-predicting ambiguity (arXiv:2605.25284) and
+the one ICLR 2024 says cannot self-correct (arXiv:2310.01798). **The disposition check's QUESTION
+verdict is the absence of demotion evidence, not the presence of a gap**: its blind side cannot say
+*answered* because it cannot see what would answer it.
+
+The cold read is the opposite configuration on every axis: the whole document, one row, no history of
+how it was made, and a brief to **answer** rather than to hunt. Widening the disposition check instead
+was considered and refused — give it the document and it becomes a second cold read and the blind
+verdict is lost.
+
+## Why the verdicts carry evidence or nothing
+
+v23's lesson, twice: a demotion on silence produced the row it was written to prevent, and a fail-open
+with no bound looped. So `answered` is Q3's three quote filters applied late and checked by rule 6(d)'s
+string match; `irrelevant` is a named Q3 filter carrying the evidence that filter's own row demands;
+and a verdict with neither is `stands` — recorded, reported, and never re-dispatched. **The reader's
+opinion demotes nothing; its quote does.** That is also what keeps the cold read inside rule 5 — a run
+never decides a question is not worth asking — because what it does is find the sentence that already
+answers it, on a filter Q3 already owned.
+
+`simplify` and `extend` adopt a rewording, and the guard is the gate's own two axes: `Why asked` is
+the run's and is untouched, and a rewording that no longer names the client-only act or the blank it
+cites is not adopted. `extend` is **width, never anticipation** — the v30 clients' *"if I give you an
+hour rule once, apply it to every message"* is the width case (§4's merge); *"they will say X so also
+ask Y"* is a hypothesis-grounded candidate, which the v23 never-defaultable branch already refuses.
+
+## Why one row per dispatch
+
+The owner asked for each question. Independently, the file's own evidence on self-conditioning — the
+reason R5 caps a sitting at ten — applies to a reader given ten rows: the ninth is read by a context
+that has already decided eight. The cost is stated rather than hidden: one dispatch per drafted
+question, each carrying the whole document, in waves of ten under rule 8. On a first `init` that is
+the row count — 45 on the measured kiln project.
+
+## What was refused
+
+A batched read (above). A same-context *"second look"* — rule 6 has a name for that and it is not a
+check. A row budget — v30 retired it and nothing here restores one; the cold read discards on quoted
+filters, never by position. Rewording standing rows — Q1 accepts a human's wording and the cold read
+runs before a row exists. A fifth verdict for *"convention settles it"* — that is the disposition
+check's decision, made blind on four attestations, and two dispatches voting on one question is the
+determinacy problem this phase already pays for.
+
+## Also in this version
+
+`questions.md` Q3 carried a report block — `DISPOSED WITH NO CHANNEL …` — pasted into the middle of a
+backtick span, so the sentence *"re-printed under `NOT PROPOSED, AND WHY` on every run"* read as
+nonsense and the block was in no sample. The sentence is restored and the block moved to the Q6 sample
+where v31 said it belonged. The v30 *"last gate"* is renamed the read-back gate, since it is no longer
+last; `lint.sh` forbids the old heading returning.
+
+## What this version does not know
+
+**Nothing was run.** The mirror risk is under-prediction: a reader briefed to answer may read a
+sentence as settling what it only touches. The string match checks that the quote **exists**, not
+that it **answers** — that judgment is the reader's, which is why every `answered` prints its quote
+in the report where a person sees it, and why a partial answer is Q3's *"half an answer is not an
+answer"*. The measurement owed: rows written per run before and after on a fixed project, and a blind
+yield audit of the demotions — what share of `answered` and `irrelevant` a client persona would have
+wanted asked anyway. Until then the cold read's effect on volume is the owner's reasoning, not a
+number.
+
 # v31 — a gate that checks citations, and the executors v30 promised
 
 **What produced this.** A read-only survey of v30 (2026-09-01): nine independent lenses over the
