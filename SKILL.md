@@ -95,8 +95,8 @@ audits — and `.blueprint/` in the workspace only where the project has no wiki
 a hidden folder beside the code, which in every measured workspace was under no version control at
 all). Nothing secret goes in it, no token, ever. **Outside that folder it never writes
 into a code repo** — the two version-control acts [`spec/targets.md`](spec/targets.md) §5 names, the
-ignore file seeded inside the folder and the commit of `record/` into the repository holding it, are
-the whole exception, and both are announced.
+ignore file seeded inside the folder and the commit of what that file leaves unignored — the record
+and the target address — into the repository holding it, are the whole exception, and both are announced.
 
 ## Before any run — six checks
 

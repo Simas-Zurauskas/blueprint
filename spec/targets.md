@@ -142,9 +142,11 @@ entire failure catalogue)
   commit publishes (v19). **And only after `git check-ignore -q sources cache`, run inside the working
   folder, succeeds** (v33): the ignore file is the one control between client material and a pushed
   repository, and an ignore file that is not in force is a leak waiting for the next `git add -A` — the
-  commit holds and the run reports which entry is missing. The commit stages `record/` — and, on a
-  local target, the document where it sits in the same repository — and nothing else, on whatever
-  branch is checked out, and says so.
+  commit holds and the run reports which entry is missing. The commit stages the working folder as
+  the ignore file leaves it — `record/`, `target.md`, the README, the ignore file itself and, on a
+  local target, the document where it sits in the same repository — and nothing outside the folder,
+  on whatever branch is checked out, and says so. `target.md` is durable and not reconstructible, and
+  a record that travels without its address is a record nobody can act on (v33).
   The working folder sits in the project's wiki folder (§5), which is its own repository; where the
   resolved folder is under no repository, the record lives on one machine and `status` says so rather
   than guessing. **No version history unless git is there.** Where the folder is a repo, commit after
@@ -208,7 +210,8 @@ It holds:
                          and rewritten only by a working-folder move, because this folder sits beside
                          files people read
   .gitignore             seeded when absent, never rewritten: `sources/` and `cache/`
-  target.md              DURABLE — the target kind and its address. Not reconstructible
+  target.md              DURABLE — the target kind and its address. Not reconstructible; committed
+                         with `record/` (§3), because a record without its address is unusable
   record/                DURABLE — never deleted, never rebuilt. Committed with the project
     run-log.md             the run log: append-only, newest entry at the top
     runs/<run-id>.md       that run's operational detail

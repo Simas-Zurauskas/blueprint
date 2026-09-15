@@ -40,6 +40,10 @@ has learned one has learned both.
   location while `<home>` is empty.
 - **The folder README names the target** — on Notion the page's title, ID and URL at recording time —
   so the one file a browser of the wiki opens first says where the Blueprint actually is.
+- **The run's commit stages the folder as the ignore file leaves it** — `record/`, `target.md`, the
+  README and the ignore file — not `record/` alone, which is what §3 said until a cold read of the
+  explainer against the files caught it the same day: a committed record whose address stayed on one
+  machine would defeat the move.
 - `lint.sh` pins each of these and bans the retired sentences — the `internal/` tree line, the
   hidden-folder rationale, the workspace-level ignore entries.
 
