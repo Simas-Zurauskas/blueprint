@@ -1,3 +1,66 @@
+# v33 — the working folder moves into the project wiki
+
+**What produced this.** The owner, 2026-09-15, looking at a live project's `.blueprint/`: *"i think it
+shoudl store to wiki folder/blueprint. same way like ai/SKILLS/eng-rulebook does. shoudl separate
+properly how its storing stuff, process, incoming data, notion page is exists, all the required good
+stuff, so can be traced later and properly stored."* No campaign ran; this is a relocation at the
+owner's direction, and the reason it is right was already written in the files it changes.
+
+## Why the wiki
+
+`targets.md` §5 has said since v16 that `record/` *"is committed with the project — the owner's
+direction, and it is what makes the record travel to anybody else on the team."* On Notion the folder
+sat at `.blueprint/` in the workspace, and the workspace, in every project this skill has run on, is
+by design not a repository: the code repos and the docs repo sit inside it as siblings. Each project's
+own folder README said so — *"this workspace is not a git repository, so nothing here is under version
+control at all — the record lives on this machine only."* The rule and the layout contradicted each
+other, and the layout won every time.
+
+eng-rulebook met the identical problem and answered it with `<home>` — `wiki-{project}/eng-rulebook/`,
+the project's one shared repository, in the part of the docs root that wiki-system contractually
+never writes, deletes or walks. v33 adopts the same resolution order, the same folder-name pattern
+and the same fallback semantics, so that a project's skills write beside each other and a reader who
+has learned one has learned both.
+
+## What changed
+
+- **One `<home>`, one layout, both targets.** Resolution: a path the human names · the project wiki
+  (`wiki-*/`, disambiguated by `.internal/plan.yaml`, exactly as eng-rulebook does) · else
+  `.blueprint/` in the workspace, the pre-v33 location. The local target's `<blueprint-dir>/internal/`
+  is gone: the working folder is never inside the document, and the document defaults to
+  `<home>/document/`.
+- **The ignore file lives inside the folder** — `<home>/.gitignore`, seeded when absent, never
+  rewritten — so it travels with the folder and covers a wiki that becomes a repository later. Every
+  commit of `record/` is preceded by `git check-ignore -q sources cache`, because the ignore file is
+  the only control between client material and a pushed repository.
+- **A pre-v33 working folder is a rename, not a fork**, generalising v19's sibling rule: the folder
+  is created and its ignore file seeded *before* anything moves, the four durable pieces move whole,
+  the README is rewritten, a `NOTE` line names both paths — the occasion R5 already admitted — and the
+  overview's `Operating` block is reported, never rewritten. `status` moves nothing and reads the old
+  location while `<home>` is empty.
+- **The folder README names the target** — on Notion the page's title, ID and URL at recording time —
+  so the one file a browser of the wiki opens first says where the Blueprint actually is.
+- `lint.sh` pins each of these and bans the retired sentences — the `internal/` tree line, the
+  hidden-folder rationale, the workspace-level ignore entries.
+
+## What was refused
+
+A register row. The working folder is not the target — v21 and v30 established that when they moved
+files inside it — and a row would halt every existing Blueprint at its next write run for a human to
+confirm a move the run can make safely and announce. v12's nesting, the working folder inside the
+local document, was refused because it makes the record's location depend on where a human happened
+to put the files, which is the defect this version exists to remove; the nesting is inverted instead,
+and the document sits beside the record by default. Committing `sources/` because the wiki is private
+was refused without discussion: the content rule's whole reason to exist is that a private repository
+is one `git remote add` from not being one.
+
+## What this version does not know
+
+Nothing was run. The move is a `mv` of four paths and a seeded ignore file, and the one hazard — a
+move ahead of the ignore file — is ordered out rather than measured out. The first live relocation is
+the owner's own project; whether the next `status` and `add` on it find everything where §5 now says
+it is, is the measurement owed.
+
 # v32 — the cold read: a fresh reader on every drafted question
 
 **What produced this.** The owner, 2026-09-06: *"this blueprint still generates too many questions,

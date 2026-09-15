@@ -101,13 +101,14 @@ diverged from the words actually given, precisely because nothing hashed it.
 stored copies, never the origin files — at every later `resolve` run, and names how a human clears a
 mismatch. The algorithm and the hashed bytes are [`spec/targets.md`](spec/targets.md) §5's one rule.
 
-**Before writing the first source record, make sure `sources/` and `cache/` are ignored by the
-workspace's version control** — the entries [`spec/targets.md`](spec/targets.md) §5 gives for this
-target, added if absent, and say that you did. **`record/` is deliberately not ignored**: it is
+**Before writing the first source record, resolve the working folder — [`spec/targets.md`](spec/targets.md)
+§5's order, normally `wiki-{project}/blueprint/`, moving a pre-v33 one by §5's rename route — and make
+sure it carries its ignore file**: `<home>/.gitignore` naming `sources/` and `cache/`, seeded if absent
+and never rewritten (§5), and say that you did. **`record/` is deliberately not ignored**: it is
 durable and committed, which is what carries the run log to anybody else on the team (§5).
 `sources/` holds client material *verbatim*, which is exactly the customer names, contract dates,
 penalties and prices the content rule keeps out of the Blueprint itself
-([`spec/doc-shape.md`](spec/doc-shape.md) §6); a workspace that is a code repo will otherwise commit
+([`spec/doc-shape.md`](spec/doc-shape.md) §6); the repository holding the folder will otherwise commit
 them on the next `git add -A`. **A run that restructures material before recording it has nothing
 left to be checked against.**
 

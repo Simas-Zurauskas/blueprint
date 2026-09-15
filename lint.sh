@@ -503,7 +503,23 @@ questions.md⋮^\| .extend. \| The question is a slice⋮v32-coldread-verdict-ex
 questions.md⋮they are not read cold again⋮v32-coldread-split-not-reread
 SKILL.md⋮cold read⋮v32-skill-names-coldread
 resolve.md⋮the cold reader⋮v32-independence-names-reader
-README.md⋮reads it cold⋮v32-readme-names-coldread'
+README.md⋮reads it cold⋮v32-readme-names-coldread
+spec/targets.md⋮wiki-.project./blueprint/⋮v33-home-is-wiki-blueprint
+spec/targets.md⋮laid out the same on both targets⋮v33-one-layout-both-targets
+spec/targets.md⋮^  \.gitignore +seeded when absent, never rewritten⋮v33-ignore-seeded-once-tree
+spec/targets.md⋮<home>/\.gitignore., seeded when absent, never rewritten⋮v33-ignore-seeded-once-rule
+spec/targets.md⋮git check-ignore -q sources cache⋮v33-commit-proves-ignore
+spec/targets.md⋮finding one is a rename, not a fork⋮v33-legacy-location-is-a-rename
+spec/targets.md⋮seed its .\.gitignore. \*\*first\*\*⋮v33-ignore-before-move
+spec/targets.md⋮never runs .git init. on the⋮v33-no-git-init
+SKILL.md⋮wiki-.project./blueprint/⋮v33-skill-names-home
+SKILL.md⋮its rename route where a write command finds one⋮v33-preflight-resolves-folder
+init.md⋮<home>/\.gitignore⋮v33-init-seeds-ignore
+add.md⋮carries its ignore file naming⋮v33-add-checks-ignore
+status.md⋮say a write run will move it⋮v33-status-never-moves
+README.md⋮wiki-.project./blueprint/⋮v33-readme-names-home
+QUICKSTART.md⋮wiki-.project./blueprint/⋮v33-quickstart-names-home
+HISTORY.md⋮^# v33⋮v33-history-entry'
 
 FORBIDDEN='SKILL.md⋮A human approves, always.*([Ee]xcept|[Uu]nless)⋮inv-human-approves-no-weakener
 SKILL.md⋮code repo.*([Ee]xcept|[Uu]nless|[Pp]refer|[Gg]enerally)⋮inv-no-code-repo-no-weakener
@@ -590,7 +606,13 @@ README.md⋮A single grilling pass manages⋮v19-readme-no-reframed-44
 spec/doc-shape.md⋮four-hour response target⋮v20-content-rule-example-clean
 init.md⋮the entry is the first thing written after the structure exists⋮v20-no-contradictory-ordering
 questions.md⋮The last gate, and it reads⋮v32-readback-gate-not-last
-questions.md⋮DISPOSED WITH NO CHANNEL \(1 of the 11⋮v32-q3-paste-not-restored'
+questions.md⋮DISPOSED WITH NO CHANNEL \(1 of the 11⋮v32-q3-paste-not-restored
+SKILL.md⋮internal/. on a local target⋮v33-retired-internal-home
+spec/targets.md⋮hidden folder is right for something that stands alone⋮v33-retired-hidden-folder
+spec/targets.md⋮so a project holds one directory, not two siblings⋮v33-retired-nested-internal
+spec/targets.md⋮^  internal/⋮v33-retired-internal-in-local-tree
+spec/targets.md⋮Ignore .sources/. and .cache/.; commit .record/.\*\* \(v16\)⋮v33-retired-ignore-entries-bullet
+init.md⋮workspace.s version control⋮v33-retired-workspace-ignore'
 
 SINGLE_HOME='single home of where the working folder lives⋮1
 `force` is the default⋮1
@@ -620,7 +642,8 @@ could not be performed — no second dispatch available⋮3
 write the role, never the specific⋮3
 the client packet⋮3
 always-ask register⋮4
-Run the six pre-flight checks⋮4'
+Run the six pre-flight checks⋮4
+Resolve `<home>`, in this order⋮1'
 
 a_pass=0; a_total=0
 

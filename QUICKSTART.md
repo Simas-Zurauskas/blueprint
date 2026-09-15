@@ -7,6 +7,9 @@ If this file and a run file ever disagree, the run file wins and this file is wr
 
 - Confirm no Blueprint already exists for this project — one per project, ever (→ SKILL.md pre-flight 1).
 - Know your target: a Notion teamspace page a human made, or a folder (→ spec/targets.md §2–3).
+- Know where the machinery lives: `wiki-{project}/blueprint/` when the project has a wiki folder,
+  `.blueprint/` in the workspace otherwise — `record/` is committed, `sources/` never
+  (→ spec/targets.md §5).
 - The one prohibition that catches first-timers: the skill **never reads a code repo** — what the
   product *should* do comes from people, not from what somebody already built (→ SKILL.md "What this
   skill does NOT do").

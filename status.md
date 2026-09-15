@@ -26,8 +26,10 @@ Task list: `S1` read · `S2` ten checks · `S3` print one screen.
 ## S1 — Read the state
 
 1. **Resolve the target** from the working folder's `target.md`
-   ([`spec/targets.md`](spec/targets.md) §5), or from an address the human gives you. Never
-   create anything to find it.
+   ([`spec/targets.md`](spec/targets.md) §5 — the folder is resolved in §5's order, normally
+   `wiki-{project}/blueprint/`; where `<home>` holds no `target.md` but a pre-v33 location does, read
+   that one and say a write run will move it), or from an address the human gives you. Never
+   create anything to find it, and never move anything.
 2. **Read both databases in full**, with the target's built-in created and last-edited times, which are
    where every age comes from. **On Notion, check `request_status.type` on every page of every query:**
    `"incomplete"` means the database was **not** read, and a count from a truncated read is a confident

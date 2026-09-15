@@ -116,6 +116,23 @@ again → `/blueprint questions`. Apply new answers → `/blueprint resolve`. As
 
 ---
 
+## Where it keeps its record
+
+The Blueprint itself lives at the target — Notion, or your folder of markdown files. Everything the
+tool needs to be traceable later lives beside the project's docs, in **`wiki-{project}/blueprint/`**
+(the same place `eng-rulebook` keeps a project's profiles and audits; `.blueprint/` in the workspace
+only when the project has no wiki folder):
+
+- `target.md` — where the Blueprint is: the Notion page's ID, or the document's path
+- `record/` — the append-only run log and each run's detail; committed with the wiki
+- `sources/` — every source a run read, verbatim and hashed; never committed
+- `cache/` — rebuildable; delete it freely
+
+The folder's own `README.md` names the Notion page. A project that used the earlier hidden
+`.blueprint/` folder is moved there by its next write run, which says so.
+
+---
+
 ## What only you can do
 
 The tool drafts; you decide. It will never: send a client packet it assembled, record an answer no

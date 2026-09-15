@@ -66,9 +66,13 @@ rehearsing a run without touching a live workspace.
     01-browse-the-menu.md
     02-checkout.md       one file per feature: front matter, then the body
   questions.md           one section per question, in q-NN order (never re-sorted by Status)
-  internal/              the working folder (§5) — holds the run log and the source records.
-                         Its `record/` half is durable and committed; only `cache/` is disposable
 ```
+
+**Where `<blueprint-dir>` is.** A folder the human names — and where they name none, `<home>/document/`,
+inside the working folder §5 resolves, so the document and its record travel together in the project's
+docs repo. **The working folder is never inside the document** (v33): until then it was
+`<blueprint-dir>/internal/`, which put the run record wherever the human happened to put the files, and
+outside version control whenever that was outside a repository. `target.md` records the document's path.
 
 **A feature file** carries its properties as YAML front matter and its body below, exactly as
 [`doc-shape.md`](doc-shape.md) §5 defines it:
@@ -135,13 +139,18 @@ entire failure catalogue)
   [`../questions.md`](../questions.md) Q6 step 11). That sweep runs **before** the lines are appended
   a line that cannot survive the rule is written as the role, never the specific — so a finding that
   somehow reaches commit time is a defect in the run: it holds the commit and is reported, because a
-  commit publishes (v19). The commit stages `record/` and nothing else, on whatever branch is
-  checked out, and says so.
-  On Notion the working folder sits in the workspace, which is usually a repo; where it is not, the
-  record lives on one machine and `status` says so rather than guessing. **No version history unless
-  git is there.** Where the folder is a repo, commit after each run's write-back with the run id as
-  the message — that is the local analogue of the append-only run log's
-  provenance. Where it is not, say so in the read-out line: nothing here can prove an edit's author.
+  commit publishes (v19). **And only after `git check-ignore -q sources cache`, run inside the working
+  folder, succeeds** (v33): the ignore file is the one control between client material and a pushed
+  repository, and an ignore file that is not in force is a leak waiting for the next `git add -A` — the
+  commit holds and the run reports which entry is missing. The commit stages `record/` — and, on a
+  local target, the document where it sits in the same repository — and nothing else, on whatever
+  branch is checked out, and says so.
+  The working folder sits in the project's wiki folder (§5), which is its own repository; where the
+  resolved folder is under no repository, the record lives on one machine and `status` says so rather
+  than guessing. **No version history unless git is there.** Where the folder is a repo, commit after
+  each run's write-back with the run id as the message — that is the local analogue of the append-only
+  run log's provenance. Where it is not, say so in the read-out line: nothing here can prove an edit's
+  author.
 - **Line endings and encoding**: write UTF-8 with `\n`; a CRLF editor pass makes every anchor
   comparison miss exactly like Notion's silent-skip trap.
 - **The read-back rule survives the target swap**: after every write, re-read the file and compare
@@ -161,23 +170,44 @@ typed into a body and never written back. Context@5 rose from 33.33% with no met
 separability from Cohen's *d* 0.450 to 2.25 (Yousuf et al., ECIR 2026). Without the prefix every consumer
 of a body is in the 33% condition.
 
-## 5. The working folder — two halves, one disposable
+## 5. The working folder — where it lives, and which half is disposable
 
 **This section is the single home of where the working folder lives.** Every run file says "the working
-folder" and resolves it here:
+folder" and resolves it here. It is **one place, `<home>`, laid out the same on both targets** (v33).
+Until v33 it was `<blueprint-dir>/internal/` beside a local Blueprint and a hidden `.blueprint/` in the
+workspace on Notion — and every measured Notion workspace was, by design, not a repository, so the half
+of this folder the rule below says is committed was committed nowhere, and each project's own folder
+README said so. The project's wiki folder is its one shared repository; this folder now lives in it,
+beside the profiles and audits eng-rulebook keeps there for the same reason, in a part of the docs root
+that wiki-system names user territory — never written, deleted or walked by a `recheck`.
 
-| Target | The working folder |
-|---|---|
-| **Local markdown folder** | **`<blueprint-dir>/internal/`** — inside the Blueprint, so a project holds one directory, not two siblings |
-| **Notion** | **`.blueprint/` in the workspace** — there is no local Blueprint folder to nest into, and a hidden folder is right for something that stands alone beside the code |
+**Resolve `<home>`, in this order, from the workspace the command was run in:**
+
+1. **A path the human names for this project** — wins outright. Create only the leaf they named, never
+   an implicit tree.
+2. **The project wiki.** Candidates are the `wiki-*/` directories in the workspace; the
+   `.internal/plan.yaml` marker is what makes one a real wiki-system wiki. Exactly one candidate →
+   `<that>/blueprint/` — with no marker, use it anyway and say it is not a wiki-system wiki yet.
+   Several, exactly one marked → the marked one. Several, two or more marked → **stop and ask**; never
+   pick between two real wikis silently. Several, none marked → fall through, naming the folders found.
+3. **Otherwise `.blueprint/` in the workspace** — the standalone, no-wiki case, and the location every
+   Notion-target Blueprint used before v33.
+
+So: `wiki-{project}/blueprint/` wherever the project has a wiki folder. Being a repository is not part
+of resolution — a wiki folder that is not yet one is still used, the run never runs `git init` on the
+project's behalf, and `status` says the record lives on this machine only. `status` resolves the folder
+the same way and creates nothing.
 
 It holds:
 
 ```
-<working-folder>/
-  README.md              two paragraphs saying what this folder is and is not, and which half of it
-                         may be deleted — written at creation, because "internal" sits beside files
-                         people read
+<home>/                  normally wiki-{project}/blueprint/
+  README.md              what this folder is and is not, which half may be deleted, and where the
+                         Blueprint itself is — on Notion the overview's title, page ID and its URL at
+                         recording time; on a local target the document's path — written at creation
+                         and rewritten only by a working-folder move, because this folder sits beside
+                         files people read
+  .gitignore             seeded when absent, never rewritten: `sources/` and `cache/`
   target.md              DURABLE — the target kind and its address. Not reconstructible
   record/                DURABLE — never deleted, never rebuilt. Committed with the project
     run-log.md             the run log: append-only, newest entry at the top
@@ -189,6 +219,8 @@ It holds:
                            `record/` carries only their citation, origin and this path
   cache/                 REBUILDABLE — delete it freely; the next run rebuilds it
     mapping.md             entity IDs, parents, child order, a content hash per entity
+  document/              LOCAL TARGET ONLY — the Blueprint itself (§3), where the human named no
+                         other folder for it
 ```
 
 **Two halves, and the split is the point** (v16). Until v16 this whole folder was declared a
@@ -201,7 +233,7 @@ copy of what every run did. Only `cache/` is safe to delete.
 travel to anybody else on the team. `sources/` is **never** committed: it holds client material
 *verbatim*, which is exactly the customer names, contract dates, penalties and prices the content
 rule keeps out of the Blueprint ([`doc-shape.md`](doc-shape.md) §6). `cache/` is not worth
-committing. So the version-control entry names `sources/` and `cache/`, **not** the whole folder
+committing. So the ignore file names `sources/` and `cache/`, **not** the whole folder —
 which is the change from v15, where ignoring everything was the only rule.
 
 **Because `record/` is committed, it is swept like any other surface.** Since v30 it carries **no
@@ -212,11 +244,12 @@ verbatim non-`Clean` verdicts are lifted from client sources, so the content rul
 body. That sweep is the reason committing the record is safe rather than merely permitted.
 
 - **Nothing secret, no token, ever.** Outside this folder the skill never writes into a code repo.
-- **Ignore `sources/` and `cache/`; commit `record/`** (v16). The entries are
-  `<blueprint-dir>/internal/sources/` and `<blueprint-dir>/internal/cache/` on a local target,
-  `.blueprint/sources/` and `.blueprint/cache/` on Notion. **Never ignore the whole folder** — that was
-  the v15 rule and it takes `record/` out of version control with everything else, which strands the
-  run log on one machine.
+- **The ignore file lives inside the folder** (v33): `<home>/.gitignore`, seeded when absent, never rewritten
+  — whatever a project adds to it stands. It travels with the folder, so a move (below) cannot leave
+  it behind, and a wiki folder that becomes a repository later is covered from its first `git add -A`.
+  **Never ignore the whole folder** — that was the v15 rule and it takes `record/` out of version
+  control with everything else, which strands the run log on one machine. Before every commit of
+  `record/`, §3's `git check-ignore` test proves the file is in force.
 - **`cache/` is reconstructible from the target. Nothing else here is.** Delete `cache/` and the next
   run rebuilds it; delete `record/` or `sources/` and what a run did is gone.
 - **`record/` is the record of things that must survive**, which is why it is durable and committed
@@ -241,12 +274,22 @@ body. That sweep is the reason committing the record is safe rather than merely 
   operation 8 — fetch and diff immediately before writing — which this file already rates the stronger
   check, and which is unaffected. **And `record/` only travels if it is committed**; on a machine that
   has not pulled it, `status` reports what it could not compute instead of inventing it.
-- **A sibling `.blueprint/` beside a local-target Blueprint — whose `target.md` names this very
-  folder — is the earlier layout of this skill.** Treat finding one as a rename, not a fork: move it to
-  `<blueprint-dir>/internal/`, move the ignore entry with it, note the move in the run log, and say that
-  you did. A `.blueprint/` whose `target.md` names anything else is another project's live working folder
-  (the Notion layout above): leave it untouched and say so (v19). Never read from both — two working
-  folders is exactly the two-places state this section exists to prevent.
+- **A working folder at a pre-v33 location is the earlier layout of this skill, and finding one is a rename, not a fork**
+  (v19 for the sibling case, v33 for both). The two earlier locations: `.blueprint/` in the workspace
+  when `<home>` resolves elsewhere, and `<blueprint-dir>/internal/` beside a local Blueprint. A write
+  command moves it, **in this order and no other**: create `<home>` and seed its `.gitignore` **first**
+  — a move into a repository ahead of the ignore file is one `git add -A` from publishing `sources/`;
+  then move `target.md`, `record/`, `sources/` and `cache/` whole, never file by file; rewrite the folder
+  README, the one file a move may rewrite; write a `NOTE` line in the entry naming both paths
+  ([`../resolve.md`](../resolve.md) R5 admits the occasion); and say that you did. Where the old
+  location was tracked by another repository, its deletion is left for a human to commit — the run
+  commits only into the repository holding `<home>`. Where the overview's `Operating` block names the
+  old path, report it for a human to edit — the overview is never rewritten silently
+  ([`doc-shape.md`](doc-shape.md) §3). A folder at a pre-v33 location whose `target.md` names another
+  project's Blueprint is that project's live working folder: leave it untouched and say so. **Never
+  read from both** — two working folders is exactly the two-places state this section exists to
+  prevent. `status`, which creates and moves nothing, reads the pre-v33 location when `<home>` holds
+  no `target.md`, and says a write run will move it.
 
 ## 6. Anything else
 
