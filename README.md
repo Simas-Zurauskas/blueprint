@@ -66,7 +66,9 @@ a wider decision is widened. A reader's opinion demotes nothing — its quote do
 machine-drafted options with their trade-offs, grounded in your own document, verified by a second
 model before writing where one can be dispatched — otherwise written unverified, every quotation
 string-checked against the document and the unverified count reported — and always labeled *not a
-source — your answer in your own words is what counts*.
+source — answer in your own words, or name one direction by its number*: since v34 an answer that names
+one direction is applied through it, and an answer that states a new behaviour may add a numbered
+requirement.
 
 Prefer going through them together? Ask for a review sitting and they come one at a time, ten per round:
 

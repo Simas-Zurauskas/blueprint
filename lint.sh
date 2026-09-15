@@ -395,7 +395,6 @@ questions.md⋮Printing is the run.s act; ratifying is the human.s⋮d14-ratific
 resolve.md⋮§5.s tests win over the cap⋮d5-split-wins-over-cap
 spec/run-progress.md⋮whose task list governs⋮d6-embedded-run-rule
 spec/run-progress.md⋮skipped⋮d16-skipped-state
-resolve.md⋮The objection does not go on the row⋮d11-objection-home
 spec/doc-shape.md⋮One carve-out, and it is the first write only⋮d9-first-overview-write
 SKILL.md⋮shape-change register⋮v17-shape-register
 resolve.md⋮narrower than⋮f1-r34-flagged-retries
@@ -519,7 +518,18 @@ add.md⋮carries its ignore file naming⋮v33-add-checks-ignore
 status.md⋮say a write run will move it⋮v33-status-never-moves
 README.md⋮wiki-.project./blueprint/⋮v33-readme-names-home
 QUICKSTART.md⋮wiki-.project./blueprint/⋮v33-quickstart-names-home
-HISTORY.md⋮^# v33⋮v33-history-entry'
+HISTORY.md⋮^# v33⋮v33-history-entry
+resolve.md⋮the run \*\*dereferences\*\* it⋮v34-pointer-dereferenced
+resolve.md⋮answer states a behaviour no existing requirement can carry⋮v34-new-fr-from-answer
+resolve.md⋮checked against the answer alone⋮v34-checker-tests-new-fr
+resolve.md⋮direction n on that row, chosen by the answer⋮v34-direction-label
+spec/databases.md⋮^\| .Why flagged. \| rich text \|⋮v34-why-flagged-property
+spec/databases.md⋮drafted to be pointable⋮v34-directions-pointable-spec
+questions.md⋮drafted to be pointable⋮v34-directions-pointable
+spec/doc-shape.md⋮may add a numbered requirement⋮v34-doc-shape-new-fr
+status.md⋮Why flagged⋮v34-status-reads-why-flagged
+SKILL.md⋮^\| \*\*v34\*\* \|⋮v34-register-row
+HISTORY.md⋮^# v34⋮v34-history-entry'
 
 FORBIDDEN='SKILL.md⋮A human approves, always.*([Ee]xcept|[Uu]nless)⋮inv-human-approves-no-weakener
 SKILL.md⋮code repo.*([Ee]xcept|[Uu]nless|[Pp]refer|[Gg]enerally)⋮inv-no-code-repo-no-weakener
@@ -577,7 +587,6 @@ resolve.md⋮is the default and a bare .resolve. is it⋮v22-grammar-not-restate
 resolve.md⋮### R3.3 Five outcomes⋮v22-retired-five-outcomes
 resolve.md⋮does not return .Clean. or .Patched.⋮f1-r34-stale-trigger
 resolve.md⋮It then and ends the row⋮f1-broken-sentence
-resolve.md⋮objection goes on the row⋮f7-objection-on-row
 resolve.md⋮### R3.3 Three outcomes⋮f8-three-outcomes
 README.md⋮same stop⋮f9-readme-add-stop
 questions.md⋮reopening condition becomes dogma⋮revisitif-q-questions
@@ -612,7 +621,14 @@ spec/targets.md⋮hidden folder is right for something that stands alone⋮v33-r
 spec/targets.md⋮so a project holds one directory, not two siblings⋮v33-retired-nested-internal
 spec/targets.md⋮^  internal/⋮v33-retired-internal-in-local-tree
 spec/targets.md⋮Ignore .sources/. and .cache/.; commit .record/.\*\* \(v16\)⋮v33-retired-ignore-entries-bullet
-init.md⋮workspace.s version control⋮v33-retired-workspace-ignore'
+init.md⋮workspace.s version control⋮v33-retired-workspace-ignore
+spec/databases.md⋮consumed by no run⋮v34-retired-consumed-by-no-run
+questions.md⋮consumed by no (later )?run⋮v34-retired-consumed-by-no-run-q
+spec/databases.md⋮no field for it and none is being added⋮v34-retired-no-objection-field
+resolve.md⋮the schema has no field for it⋮v34-retired-no-objection-field-r
+resolve.md⋮FR-2. onward is⋮v34-retired-fr2-never-minted
+resolve.md⋮no new .FR-n. or variant label⋮v34-retired-no-new-fr-cap
+spec/doc-shape.md⋮Everything after .FR-1. is a human.s to write⋮v34-retired-after-fr1-human'
 
 SINGLE_HOME='single home of where the working folder lives⋮1
 `force` is the default⋮1

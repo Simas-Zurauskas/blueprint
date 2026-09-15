@@ -1170,26 +1170,35 @@ UI or spoken at the review — makes it `Answered`.
    selection awaiting a person's. Beside it, the honest line: applied answers create new attackable text,
    so expect one smaller derivative batch after these are resolved.
 
-**Suggested directions — decision support on the row, machine-labeled, consumed by no run.** The run
+**Suggested directions — decision support on the row, machine-labeled, and since v34 answerable by pointing at one.** The run
 that writes a question row also drafts its `Suggested directions` field
 ([`spec/databases.md`](spec/databases.md) §2): 1–3 candidate directions, each one line — the
 direction, a why grounded in the document (**quoting the requirement or principle it leans on, with
 the requirement's id and the date the quote was taken** — quoted text outlives the text it quotes, and
 an undated quote decays invisibly), and
 its main counter-case; simplicity and general practice may argue too, **labeled as such**
-(*"general practice, not a source"*). (The Q4 disposition check evaluates each **draft** direction before
-any row exists — a direction that wholly answers its candidate is the signal the candidate was never a
-question; the written field on a surviving row is still consumed by no later run.) Dated, and closed with the standing line: *machine-drafted
-decision support — not a source; your answer in your own words is what counts.* **A separate dispatch
-on a different model verifies every batch before it is written** — a quote that does not exist in the
-document is struck ([`SKILL.md`](SKILL.md) rules 6 and 8). **With no dispatch available the quotations
+(*"general practice, not a source"*). **Every direction is drafted to be pointable** (v34): its first
+clause states a decision a writer could carry into the feature as it stands — the behaviour, in the
+shape a requirement takes, naming the requirement or block it lands on — and where that decision needs
+a value only the client owns (a duration, a threshold, a count, final copy) the direction states the
+shape and leaves an explicit `<value>` slot for the pointer to fill, never a suggested figure. A
+direction that could not be written into the feature without inventing is not a direction; the
+verifying dispatch below rewrites or strikes it before the row exists. (The Q4 disposition check
+evaluates each **draft** direction before any row exists — a direction that wholly answers its
+candidate is the signal the candidate was never a question; the written field on a surviving row is
+read back only through a human's pointer, [`resolve.md`](resolve.md) R2.1.) Dated, and closed with the
+standing line: *machine-drafted decision support — not a source; answer in your own words, or name one
+direction by its number.* **A separate dispatch on a different model verifies every batch before it is
+written** — a quote that does not exist in the document is struck, and a direction that could not be
+written into its feature as it stands is rewritten or struck (the pointability test above) ([`SKILL.md`](SKILL.md) rules 6 and 8). **With no dispatch available the quotations
 are still checked, mechanically**: rule 6(d)'s string match on normalised whitespace, one `citation`
 line each in the log, a quotation that does not match dropped and the mismatch reported. **The
 directions are still written** — it is the unmatched quotation that is withheld, never the whole
-field. The field is for the reviewing human only:
-no run reads it back, nothing from it is ever copied into `Answer & why`, and an answer that only
-points at an option (*"go with 2"*) is an answer that is only a link — [`resolve.md`](resolve.md)
-R2.1: it ends `Flagged`, named with the one-line fix. A choice made **in conversation** — at a checkpoint,
+field. No run copies anything from it into `Answer & why`, and one run reads it: an answer that names exactly
+one direction by number (*"2"*, *"1, but keep it quiet"*) is dereferenced by [`resolve.md`](resolve.md)
+R2.1 — the direction's decision clause becomes the answer's content, labelled as chosen rather than
+authored, with the human's own words riding along — while a pointer naming no single direction, or
+leaving a `<value>` slot unfilled, ends `Flagged` with the one-line fix. A choice made **in conversation** — at a checkpoint,
 or after asking *"suggest directions for q-12"*, which drafts one fresh under the same rules — is
 transcribed with the chosen option's content as the human's own move
 ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 5). *Decided by the owner 2026-08-07, overriding

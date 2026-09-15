@@ -1,3 +1,55 @@
+# v34 — an answer may point at a direction, add a requirement, and say why it was flagged
+
+**What produced this.** The owner, 2026-09-15, after a live `resolve` run on a 34-row queue flagged 32
+of them: *"human shoudl be easily be aable to answers with suggested directions. this is the reason
+these suggested directions be generated for this use case, and should be perfectly abl eto anser. also
+when generating suggested directions, there shoudl extra care shoudl be taken that these would satisfy
+the case and be a valid answer"* · *"we shoudl be perfectly able to add new requiremens from answers"* ·
+*"when flagged, we shoudl note per quastion why flagged. need new optional field along question … this
+property shoudl be filled by ai on flagging"*. Three rules changed at the owner's direction; the measured
+run is the evidence.
+
+## What the run showed
+
+- **24 of 34 answers named a numbered direction** — *"1"*, *"2 DOUBLE"*, *"answer 1"* — and every one
+  ended `Flagged`, because `databases.md` §2 said the field was *"consumed by no run"* and R2.1 read a
+  pointer as a link. The directions were drafted as numbered options; the owner picked one; the skill
+  refused the pick. The rule protected against machine text entering the spec unread, and the cost was
+  that the field's one purpose — being answerable — was barred.
+- **2 answers stated a behaviour no existing requirement could carry** — *"Agreement at signup"*,
+  *"Implement minimal report button with a reason"* — and R3.1's cap barred a new `FR-n`, so the writer,
+  correctly under the rule, wrote nothing. A vetted answer stating a behaviour is exactly the content a
+  requirement is made of; the cap was guarding against invention and caught the opposite.
+- **32 objections lived only in `record/run-log.md`.** A person reading a `Flagged` row in the UI saw a
+  status and nothing else, and `status` had never been run on the project.
+
+## What changed
+
+- **A pointer at one direction is an answer** (`resolve.md` R2.1, `databases.md` §2, `questions.md`
+  Q4). The pointer is dereferenced to the direction's decision clause — never its why or counter-case —
+  labelled *direction n on that row, chosen by the answer*, the human's own words riding along. An
+  ambiguous pointer, or an unfilled `<value>` slot, still flags. Directions are now drafted to be
+  pointable — a decision a writer could carry into the feature as it stands, client-owned values as
+  explicit slots — and the verifying dispatch checks that before the row exists.
+- **A vetted answer may add a numbered requirement** (R3.1, R3.2, R3.3, `doc-shape.md` §5). The next
+  free number, appended, its own provenance line, every clause derivable from the answer; the checker
+  flags a clause the answer does not state. The v16 split exemption becomes one case of this. The
+  `Patched` cap stays as a cap on authorship: a checker patches, it does not author.
+- **`Why flagged`** — a tenth Open Questions property, written by `resolve` with the status: the
+  objection on `Flagged`, blank on `Applied`. The `FLAGGED` log line stays the durable, committed home
+  `status` C1 prints; the property is its copy for the UI, and the log wins where they differ. A shape
+  change, so v34 has a register row — and its migration is additive and performed by the run, which
+  R1 now admits for a crossed row that names one.
+
+## What was refused
+
+- Reading a direction's why or counter-case as part of the answer — only the decision clause is
+  dereferenced, and the label says it was chosen, not written.
+- Letting the checker mint a requirement while completing a delta — authorship stays with the writer,
+  from the answer, and the checker's patch stays inside one existing requirement.
+- A run moving a `Flagged` row back to `Answered` after the rule change — still a human's move, exactly
+  as before. The 24 rows this run flagged wait for that move, and the next run reads their pointers.
+
 # v33 — the working folder moves into the project wiki
 
 **What produced this.** The owner, 2026-09-15, looking at a live project's `.blueprint/`: *"i think it

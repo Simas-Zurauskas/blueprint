@@ -204,13 +204,16 @@ that is missing and **never writes the missing content**, because it has no sour
 is the laundering this system exists to prevent.
 
 **One exception, and it is the only machine route into an empty body.** A feature row a human created by
-hand has no body at all, and a row with no numbered requirement can never receive an answer — every delta
-that would mint one is refused. So where the `Behaviour` block holds **no numbered requirement at all**,
-a run **writes** `## Why` and **`FR-1` only** where a **vetted answer** or a **named source** supplies
-it ([`../resolve.md`](../resolve.md) R4, [`../add.md`](../add.md) A4 step 7) — the content is a human's
-own answer or a source's own words, so writing it invents nothing, and its text goes in the report.
-Where **neither** supplies it, nothing is written at all. **Everything after `FR-1` is a human's to
-write.**
+hand has no body at all, and until v34 a row with no numbered requirement could never receive an answer,
+because every delta that would mint one was refused. So where the `Behaviour` block holds **no numbered
+requirement at all**, a run **writes** `## Why` and `FR-1` where a **named source** supplies it
+([`../add.md`](../add.md) A4 step 7), or, from a **vetted answer**, `FR-1` and a further number only for
+a further behaviour the answer itself states ([`../resolve.md`](../resolve.md) R4, R3.1's derivation
+test) — the content is a human's own answer or a source's own words, so writing it invents nothing, and
+its text goes in the report. Where **neither** supplies it, nothing is written at all. **Everything the
+answer does not state is a human's to write** — and a later vetted answer may add a numbered requirement
+to any body by the same test (v34): the next free number, appended, every clause derivable from the
+answer, its own provenance line, and never a renumbering.
 
 **`Not doing` — how to write the line. All three parts, one line.** *"No native mobile app — the team
 cannot staff two clients; revisit if a customer asks and will pay for it."* The **why** carries the
