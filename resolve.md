@@ -413,25 +413,45 @@ row takes the **overview route**, and it terminates in one round trip rather tha
 the row's `Why asked` under a `Proposed block text:` line — **appends, never replaces**: whatever is
 already there is the only context an `Open` row carries to somebody who was not in the room
 ([`spec/databases.md`](spec/databases.md) §2), and overwriting it leaves that context alive only in
-`record/runs/`. It then ends the row `Flagged` with the objection
-*"the front door needs your words: copy the draft from `Why asked` into `Answer & why`, or write your
-own block text there, and set this back to `Answered`."*
+`record/runs/`. **It then pins the proposal**: the `FLAGGED` line records the hash of the appended block
+text itself ([`spec/targets.md`](spec/targets.md) §5's rule, over the proposal span as written), which
+is the object any later acceptance is an acceptance *of*. It ends the row `Flagged` with the objection
+*"the front door needs your acceptance: set this row back to `Answered` to accept the proposed block
+text in `Why asked` as it stands, or write your own block text into `Answer & why` and set it back to
+`Answered`."*
 
-**Round two — the row's `Answer & why` now carries block text a human wrote or accepted.** That **is**
-the verbatim acceptance [`spec/doc-shape.md`](spec/doc-shape.md) §3 requires — a person saw the exact
-words and chose them — so the run **writes the block** and the row goes `Applied`. Nothing further is
-asked. **The test is mechanical** (v19): `Answer & why` differs from what it held when round one
-flagged the row — round one's `FLAGGED` line records the property's hash at the flag
-([`spec/targets.md`](spec/targets.md) §5's rule, over the property text as returned), and round two
-compares against it. A row set back to
-`Answered` with `Answer & why` unchanged is **not** an acceptance — a status flip carries no words
-and it ends `Flagged` again with the same objection, once, named by R4; it is never written off the
-flip, and [`spec/databases.md`](spec/databases.md) §3's *"an answered question is never edited"* does
-not bar completing an acceptance the run asked for.
+**Round two — the row is back at `Answered`, and either channel is an acceptance.** **The first is the
+move itself** (v35): the row is `Answered` and the proposal in `Why asked` still hashes to what round
+one pinned, so the words a person accepted are the words still on the row, re-verified rather than
+remembered. That **is** the verbatim acceptance [`spec/doc-shape.md`](spec/doc-shape.md) §3 requires —
+the proposal is verbatim and the move is the acceptance — and recording a human's own move is what
+[`spec/databases.md`](spec/databases.md) §5 permits. The run **writes the pinned proposal**, the row
+goes `Applied`, and `Answer & why` is left exactly as the human wrote it. **The second is
+substitution:** `Answer & why` differs from what it held at the flag and carries block text of its own,
+and the run writes that text instead — [`spec/databases.md`](spec/databases.md) §3's *"an answered
+question is never edited"* does not bar completing an acceptance the run asked for. Nothing further is
+asked on either channel.
 
-*Round two is what stops this looping. Without it the run flags, the human moves the row back to
-`Answered`, the run flags again on the same clause, and the overview becomes unwritable by any command
-for the life of the project — which is what this route replaced.* **Scope is the row's own feature** — a delta touching anything
+**The pin is what makes the move safe, and the one failure it catches is the proposal moving under it.**
+Where the row is `Answered`, `Answer & why` is unchanged, and the proposal no longer hashes to what
+round one pinned, the object of the acceptance is not the text that was accepted: the run
+**re-proposes** — re-drafts, appends again, pins the new hash — and flags once more, naming that the
+proposal changed. It is never written off a hash it cannot match. **And no run pastes its own draft into
+`Answer & why` to manufacture an acceptance** — that field holds a human's words
+([`SKILL.md`](SKILL.md) rule 1), and a run writing prose there and reading it back as an acceptance is
+the same-context self-review rule 6 exists to bar.
+
+*Two rounds is what stops this looping: round one proposes and pins, round two accepts. Why the pin
+sits on the proposal rather than on the answer property is recorded in `HISTORY.md` under v35.*
+
+**One transition, and it fires once** (v35): a row flagged by a pre-v35 run carries the hash of
+`Answer & why` rather than of the proposal, so there is no pin to compare against. The first v35 run to
+reach it **pins the proposal as it stands** and records a dated `NOTE` line naming the row and that
+hash; where the row is already at `Answered`, that standing move **is** the acceptance and the run
+writes — the objection on the row named the text to accept, and `Why asked` is append-only, so the
+proposal it pointed at is still there. Where the row is still `Flagged`, round two applies unchanged.
+
+**Scope is the row's own feature** — a delta touching anything
 else is described, not written, and handed to the check.
 
 **Four permitted outputs, no fifth. The first is typed, not prose:**
@@ -658,7 +678,7 @@ not a failure state.** It means *this one needs you, and here is exactly what fo
 | An edit this seam did not make (R2.3) | both texts, quoted. **Vouching for it is moving the row back to `Answered`** — there is no other channel and no run vouches for anybody |
 | The row fails R2.1 — a `Touches` naming a feature that is not there, an answer that is only a link, a pointer naming no single direction or leaving a direction's `<value>` slot unfilled | the one-line fix, in the owner's own words |
 | The feature body is not a spec any more (R2.4) — a `Behaviour` block with no numbered requirement | which named block is missing. **The run still writes none of it** |
-| A project-level answer whose home is an overview block (R3.1) | the proposed block text **verbatim**, for a person to accept — by copying it into `Answer & why` (or writing their own words there) and setting the row back to `Answered`; a status flip alone is not an acceptance (R3.1). The front door is never written without that acceptance ([`spec/doc-shape.md`](spec/doc-shape.md) §3) |
+| A project-level answer whose home is an overview block (R3.1) | the proposed block text **verbatim**, pinned by its hash, for a person to accept — by setting the row back to `Answered`, which accepts the proposal as pinned, or by writing their own block text into `Answer & why` and setting it back to `Answered` (R3.1). The front door is never written without that acceptance ([`spec/doc-shape.md`](spec/doc-shape.md) §3) |
 | An answer whose home is outside the Blueprint (R3.5) | the counter-case in one line, and that `Closed (not applied)` is a human's move |
 
 **A seed `FR-1` is written, not proposed.** Where a vetted answer is the only content a body has, it
@@ -893,7 +913,7 @@ report, where a person actually reads it; the log carries the fact, not the acco
 | **check** *(→ `runs/`)* | one line per named check — R1's pre-flight halts, R2's per-check lines, **and on `questions` one per cold-read verdict that reworded a row or offered no evidence, carrying the drafted wording beside the adopted one** ([`questions.md`](questions.md) Q4, v32). **One exception stays in the log: R1's dated version-reconciliation line**, because a later run's version check reads it back and `runs/` files are not indexed (v17 — R1 and this table disagreed about that one line) |
 | **item** | one per item: row · verdict · feature ID · the delta as a **pointer** — `«Feature» FR-n`, never a recap of what it says, which the body's own provenance line already carries — **and, where the item wrote or read back a body, that body's hash** (v20: recorded here rather than only at the close, so an interrupted run leaves a usable baseline; R2.3). On `init` and `add`, where a commit has no queue row, the item is its feature ID with the source segment or `CON-k` it came from |
 | **group heading** *(→ `runs/`)* | the `APPLIED` · `NOT APPLIED` · `FLAGGED` headers, and the blank line between blocks. Layout, carrying no fact of its own |
-| **FLAGGED** | one per row: the row and its objection — and, on R3.1's overview route, the hash of `Answer & why` at the flag, which round two compares against. Since v34 the row's `Why flagged` property carries the same objection for the UI; this line is the durable, committed copy [`status.md`](status.md) C1 reads, and where the two differ this one wins. **The content rule binds this line** ([`spec/doc-shape.md`](spec/doc-shape.md) §6): an objection quotes an answer's words as the role, never the specific — this file is committed, and a barred specific written here is published, not stored (v19) |
+| **FLAGGED** | one per row: the row and its objection — and, on R3.1's overview route, the hash of the proposed block text at the flag, which round two compares against. Since v34 the row's `Why flagged` property carries the same objection for the UI; this line is the durable, committed copy [`status.md`](status.md) C1 reads, and where the two differ this one wins. **The content rule binds this line** ([`spec/doc-shape.md`](spec/doc-shape.md) §6): an objection quotes an answer's words as the role, never the specific — this file is committed, and a barred specific written here is published, not stored (v19) |
 | **MARKERS** | removed, each citing its row ID — or, where the route cites something else, **the evidence [`spec/doc-shape.md`](spec/doc-shape.md) §9 gives that route**, which is that list's single home and is not copied here · carried · deliberate holds · **left standing**, the v22 slot for a marker a `Kept` row did not clear: it is neither removed nor `carried` ([`spec/doc-shape.md`](spec/doc-shape.md) §9 reserves `carried` for a marker with no row behind it, and this one points at a live row), and without its own word a run has to misreport it as one of the other three |
 | **GATE** | applied · returned · `overturns n` — and a miss rate **only** where a sitting exceeded the threshold or the brake fired |
 | **SWEEP** | the closing sweep's three numbers |
@@ -934,7 +954,7 @@ attacks; a hash cannot tell a body a default was written into from one three len
 **The samples below are the cap, not an illustration.**
 
 ```
-2026-08-12 09:14 · resolve · run 7f3a2c · skill v34 · sitting 1 · 6 of 18 queued · mode: force
+2026-08-12 09:14 · resolve · run 7f3a2c · skill v35 · sitting 1 · 6 of 18 queued · mode: force
 independence: writer <a>, checker <b>
 SWEEP-NOTE   content rule swept rows 1–18 · 0 findings
 item         «Can a customer retry a failed…»   Clean      3afc…b75  «Checkout» FR-2, FR-5      body 9f2c…41d
@@ -962,7 +982,7 @@ The next sitting opens its own entry under the same run id, and only the last on
 the reason, the run totals, and the closing sweep's own number beside the sittings' own:
 
 ```
-2026-08-12 12:41 · resolve · run 7f3a2c · skill v34 · sitting 3 · 4 of 4 queued · mode: force
+2026-08-12 12:41 · resolve · run 7f3a2c · skill v35 · sitting 3 · 4 of 4 queued · mode: force
 …
 GATE         4 applied, 0 returned
 SWEEP        14 applied this run · 1 suspect read · 0 returned

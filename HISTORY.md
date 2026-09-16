@@ -1,3 +1,64 @@
+# v35 — the overview route pins the proposal, and moving the row back to `Answered` is the acceptance
+
+**What produced this.** The owner, 2026-09-16, reading a `status`-style report on the «Cyclical Tasks»
+Blueprint's eight `Flagged` rows: *"on group a, is this skills issue? if the answers are sufficilnet,
+why flag and dont apply?"* Three of the eight were project-level rows whose answers were sufficient —
+`answer 1`, `Up to 200 people and 50 challenges`, `No age gate…` — and which R3.1's overview route had
+flagged anyway, twice, across two sittings.
+
+## What the measured project showed
+
+- **The test was a change detector standing in for an acceptance detector.** R3.1 round two read
+  *"`Answer & why` differs from what it held when round one flagged the row"*. Any keystroke passed it,
+  and round two then treated whatever was there as *"block text a human wrote or accepted … the
+  verbatim acceptance §3 requires"*. So the mechanism was simultaneously too strict — it rejected a
+  deliberate move back to `Answered` — and too loose — a typo read as ratification of the front door.
+  It did not establish the property it claimed.
+- **The remedy it asked for was a provenance regression.** The route told the human to paste the run's
+  own draft into `Answer & why`, overwriting the words they actually wrote, in the one field `SKILL.md`
+  rule 1 reserves for a human's words. It had to carve an exception to `databases.md` §3's *"an answered
+  question is never edited"* to work at all. And it bought nothing epistemically: the proposal was
+  already verbatim in `Why asked`, on the same row, in the same UI — the retyping existed only to move
+  a hash.
+- **It contradicted its own neighbour in R4's table.** One row: *"Vouching for it is moving the row back
+  to `Answered`"*. The next row: a move back to `Answered` *"alone is not an acceptance"*. The same
+  gesture, opposite meanings, adjacent lines.
+- **The owner had already made the gesture the skill rejected.** Run `f19481` sitting 3 re-flagged the
+  minors row with *"Answer & why unchanged since the flag (hash fa77ebd27fbb)"*. Two sittings, three
+  rows, still unwritten.
+
+## What changed
+
+- **Round one pins the proposal, not the answer** (`resolve.md` R3.1). The `FLAGGED` line records the
+  hash of the appended block text itself. That is the object a later acceptance is an acceptance *of*.
+- **Round two takes either channel.** The row at `Answered` with the proposal still hashing to its pin
+  is the acceptance — `doc-shape.md` §3 asks for *"a verbatim proposal a human accepts"*, and the
+  channel was never specified there. `Answer & why` is left exactly as the human wrote it. Writing
+  their own block text into `Answer & why` remains the second channel, unchanged.
+- **The one failure the pin catches is the proposal moving under the acceptance** — the run re-proposes
+  and flags once, rather than writing off a hash it cannot match. And no run pastes its own draft into
+  `Answer & why` to manufacture an acceptance; that is the same-context self-review rule 6 bars.
+- **One transition, firing once.** A row flagged before v35 carries an `Answer & why` hash and has no
+  pin. The first v35 run pins the proposal as it stands, records a dated `NOTE`, and — where the row is
+  already at `Answered` — treats that standing move as the acceptance and writes.
+
+**The honest limit on that transition.** It accepts a proposal whose integrity was not pinned when it
+was proposed; the run can only confirm the text is there now, not that it is the text round one wrote.
+It was preferred to a second round trip because `Why asked` is append-only on this route, the objection
+on the row named the text to accept, and the alternative was to bounce exactly the rows whose bouncing
+produced this version. It fires once per row and the `NOTE` line makes it visible.
+
+**Why this is not on the shape-change register.** No property, select option, database or file layout on
+the target moved. `Why flagged`, added in v34, is untouched. What changed is a phase's rules, one
+existing log-line kind's clause, and one `NOTE` line — the same class as v24's and v32's.
+
+## Precedent this follows rather than invents
+
+`init` I3 faces the identical gate and already solves it correctly: *"The sanction attaches to the words
+on disk, not to the memory of them"* — I3 writes the skeleton to `sources/<run-id>/i3-skeleton.md`
+before printing it, so a resuming sitting writes the blocks the human actually confirmed. Nobody
+retypes the skeleton. Pin the proposal, take the confirmation. R3.1 had reinvented that seam worse.
+
 # v34 — an answer may point at a direction, add a requirement, and say why it was flagged
 
 **What produced this.** The owner, 2026-09-15, after a live `resolve` run on a 34-row queue flagged 32

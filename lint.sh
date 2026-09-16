@@ -462,7 +462,9 @@ resolve.md⋮How a human clears it⋮v19-capture-clearing-route
 spec/targets.md⋮SHA-256 over UTF-8 bytes⋮v19-hash-algorithm
 spec/targets.md⋮only after the content-rule sweep⋮v19-commit-after-sweep
 questions.md⋮re-point⋮v19-ask-it-better-repointed
-resolve.md⋮a status flip carries no words⋮v19-round-two-mechanical
+resolve.md⋮the move is the acceptance⋮v35-round-two-move-is-acceptance
+resolve.md⋮records the hash of the appended block⋮v35-round-one-pins-proposal
+resolve.md⋮One transition, and it fires once⋮v35-pre-v35-transition
 init.md⋮carries the overview.s block text itself⋮v19-i3-carries-block-text
 spec/targets.md⋮in q-NN order⋮v19-local-questions-order
 status.md⋮the generated lists under the README⋮v19-c8-points-at-readme
@@ -628,7 +630,11 @@ spec/databases.md⋮no field for it and none is being added⋮v34-retired-no-obj
 resolve.md⋮the schema has no field for it⋮v34-retired-no-objection-field-r
 resolve.md⋮FR-2. onward is⋮v34-retired-fr2-never-minted
 resolve.md⋮no new .FR-n. or variant label⋮v34-retired-no-new-fr-cap
-spec/doc-shape.md⋮Everything after .FR-1. is a human.s to write⋮v34-retired-after-fr1-human'
+spec/doc-shape.md⋮Everything after .FR-1. is a human.s to write⋮v34-retired-after-fr1-human
+resolve.md⋮a status flip carries no words⋮v35-retired-status-flip-no-words
+resolve.md⋮a status flip alone is not an acceptance⋮v35-retired-status-flip-not-acceptance
+resolve.md⋮the front door needs your words⋮v35-retired-front-door-your-words
+resolve.md⋮hash of .Answer & why. at the flag⋮v35-retired-answer-why-hash-at-flag'
 
 SINGLE_HOME='single home of where the working folder lives⋮1
 `force` is the default⋮1
