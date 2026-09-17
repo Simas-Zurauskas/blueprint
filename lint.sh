@@ -278,8 +278,8 @@ questions.md⋮Depth is stamped by the channel that writes⋮depth-is-stamped-no
 questions.md⋮surveyed no-requirement finding⋮q4-third-demotion-evidence
 questions.md⋮is not a routing⋮q4-demotion-is-mandatory
 questions.md⋮Rotation, not skipping⋮regrill-rotates-not-skips
-questions.md⋮whole-document snapshot stays the brief⋮regrill-keeps-the-brief
-questions.md⋮full battery on a first grill⋮battery-scoped-to-first-grill
+questions.md⋮as the requirement index, not as every body verbatim⋮v36-brief-is-the-index
+questions.md⋮sized to what changed⋮v36-grill-sized-to-change
 questions.md⋮converged: yes⋮convergence-verdict-is-written
 questions.md⋮depth 3 or deeper⋮q3-depth-threshold
 questions.md⋮never capped, since each costs one⋮q3-depth-spares-cheap-channels
@@ -340,7 +340,7 @@ resolve.md⋮carries the row.s derivation depth⋮resolve-stamps-depth
 add.md⋮the line carries .*depth n⋮add-supersession-carries-depth
 spec/doc-shape.md⋮the derivation depth⋮docshape-provenance-carries-depth
 status.md⋮omits its questions step on a read⋮status-reads-convergence-verdict
-SKILL.md⋮full battery on a first grill⋮skill-battery-scoped
+SKILL.md⋮single home of what a run may spend⋮v36-skill-cost-section
 add.md⋮two sources disagree|source contradicts itself⋮add-source-vs-source-still-a-question
 add.md⋮operation 8⋮add-keeps-operation-8
 add.md⋮Superseded⋮add-supersession-provenance
@@ -490,7 +490,19 @@ spec/doc-shape.md⋮the line stands without one and is named in the report⋮v20
 spec/doc-shape.md⋮A body never cites this skill.s own machinery⋮v20-no-skill-paths-in-body
 spec/databases.md⋮first finds the words in the captured reply by string match⋮v20-databases-verbatim-check
 questions.md⋮single home of the cold read⋮v32-coldread-single-home
-questions.md⋮one fresh dispatch per drafted question⋮v32-coldread-one-per-row
+questions.md⋮Up to ten rows per reader⋮v36-coldread-batched
+questions.md⋮twenty-five candidates to a dispatch⋮v36-disposition-batch-cap
+questions.md⋮carried-marker transcription is not read cold⋮v36-transcription-not-read-cold
+questions.md⋮line as .queued.⋮v36-cap-queues
+questions.md⋮no body left⋮v36-queued-blocks-convergence
+SKILL.md⋮A pause is ended only by a human⋮v36-pause-human-only
+SKILL.md⋮the one file it may read is a brief the orchestrator froze⋮v36-frozen-brief
+SKILL.md⋮at most four dispatches⋮v36-skill-delta-cap
+add.md⋮at Q2.s delta scale⋮v36-add-handoff-delta
+add.md⋮attacked once, after it is written⋮v36-add-no-prewrite-grill
+add.md⋮that read-back is this fetch⋮v36-one-read-per-block
+init.md⋮Q2 at its delta scale⋮v36-init-handoff-delta
+resolve.md⋮queued when the cap left it unattacked⋮v36-grill-kind-queued
 questions.md⋮a verdict without its evidence is not a verdict⋮v32-coldread-evidence-or-stands
 questions.md⋮never on a standing one⋮v32-coldread-prewrite-only
 questions.md⋮never anticipates the answer⋮v32-coldread-extend-is-width
@@ -583,6 +595,19 @@ add.md⋮Their edit wins \(A4 step 1\)⋮add-old-16-edit-wins
 resolve.md⋮Contradiction is the hard stop⋮resolve-old-hard-stop
 resolve.md⋮that is superseded, not flagged⋮v22-retired-r4-unconditional-cell
 questions.md⋮full battery, every time⋮v23-retired-unconditional-battery
+questions.md⋮full battery on a first grill⋮v36-retired-first-grill-battery
+SKILL.md⋮full battery on a first grill⋮v36-retired-skill-first-grill-battery
+questions.md⋮there is no light mode⋮v36-retired-no-light-mode
+questions.md⋮one fresh dispatch per drafted question⋮v36-retired-coldread-one-per-row
+questions.md⋮whole-document snapshot stays the brief⋮v36-retired-snapshot-brief
+questions.md⋮are dispatched once per .Area. as well as once whole-document⋮v36-retired-lens-scope-matrix
+questions.md⋮Lens 4 runs once per⋮v36-retired-pairwise-lens4
+questions.md⋮One row per dispatch⋮v36-retired-one-row-per-dispatch
+add.md⋮Grill the delta⋮v36-retired-a2-prewrite-grill
+SKILL.md⋮one fresh reader per drafted question⋮v36-retired-skill-one-reader
+README.md⋮one reader per drafted question⋮v36-retired-readme-one-reader
+README.md⋮The full grilling battery on a first grill⋮v36-retired-readme-first-grill
+QUICKSTART.md⋮read cold by a fresh dispatch⋮v36-retired-quickstart-fresh-dispatch
 questions.md⋮counted as it emitted them and before deduplication⋮v24-retired-emit-time-trigger
 SKILL.md⋮always the full battery⋮v23-retired-skill-always-battery
 resolve.md⋮is the default and a bare .resolve. is it⋮v22-grammar-not-restated-in-resolve
@@ -658,6 +683,7 @@ this list is the single home of the sweep⋮1
 Ratifying the defaults batch is the human act⋮1
 the only machine route into an empty body⋮1
 single home of the cold read⋮1
+single home of what a run may spend⋮1
 the read-out line⋮2
 an empty question list is never evidence⋮2
 could not be performed — no second dispatch available⋮3

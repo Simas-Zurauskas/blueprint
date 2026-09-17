@@ -169,12 +169,12 @@ Read the whole source record, then produce four lists. Nothing reaches the targe
    nobody stated is a decision nobody made, and asking for one is a strategy question rather than a
    specification question ([`questions.md`](questions.md) Q2 sweep item 4 is the single home of this).
 
-**Then grill the draft before anybody sees it.** Run the adversarial lenses of
-[`questions.md`](questions.md) Q2 — they live there and are not restated here — over the drafted skeleton
-itself: the features as sketched, the exclusions, the requirements that will be written. What the
+**Then grill the draft before anybody sees it.** Run [`questions.md`](questions.md) Q2 at its full
+scale — the lenses live there and are not restated here — over the drafted skeleton itself: the features as sketched, the exclusions, the requirements that will be written. What the
 grilling finds lands in the three lists above as more gaps and contradictions, so the skeleton the human
 confirms at I3 is one that has already been attacked, not a first draft wearing a confident tone. **No
-planned change is ever presented ungrilled** — that holds here and in [`add.md`](add.md) A2.
+planned change is ever presented ungrilled for a human to confirm** — that holds here, where the skeleton
+waits at I3; [`add.md`](add.md) has no such stop and attacks its changes once, after writing (A2).
 
 ---
 
@@ -385,7 +385,8 @@ having already stamped an `independence` line saying it did. Same discipline as 
 Gaps are not a failure of the run; they are its most useful output.
 
 **Hand off to [`questions.md`](questions.md) Q1–Q6 and run it now**, in this same sitting, over the
-Blueprint this run just wrote. That file owns proposing, deduplicating, the review and every marker
+Blueprint this run just wrote — Q2 at its delta scale (v36), attacking only the bodies whose written text
+departs from the skeleton I3 confirmed, since I2 already ran the full battery over the rest. That file owns proposing, deduplicating, the review and every marker
 disposition; **none of it is restated here**, so there is one description of the question flow and not
 two. What `init` contributes is its own findings as inputs: I2's contradictions and gaps, I6's flagged
 claims. *(A `Not doing` line with no `revisit if:` is **not** an input — v16

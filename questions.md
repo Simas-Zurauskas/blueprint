@@ -8,8 +8,8 @@ gray area a builder would have filled in silently becomes a decision somebody ac
 
 Run on demand — *"grill this spec"*, *"what should we be asking?"* — and automatically at the end of
 [`init.md`](init.md) I7 and [`add.md`](add.md) A5. Either way it is these six phases, in this order.
-The battery costs what completeness costs, and **an embedding run does not get to skip it or put it
-off** — v16 removed the deferral branch on both embedding paths at the owner's direction, because a
+**An embedding run does not get to skip it or put it off**, and it runs at the size Q2 sets and
+[`SKILL.md`](SKILL.md)'s cost section caps — v16 removed the deferral branch on both embedding paths at the owner's direction, because a
 run that writes material and stops before its questions exist leaves markers `carried` with nothing
 coming for them ([`status.md`](status.md) C5 would name them forever).
 
@@ -209,17 +209,20 @@ the end ([`SKILL.md`](SKILL.md) pre-flight check 4).
 ## Q2 — The grilling
 
 Over the Blueprint **as it stands now**, not as some earlier run left it. This is not a checklist pass
-it is an attack, and it is **the full battery on a first grill — there is no light mode.** On a
-re-grill the same battery runs with a narrowed attack surface and a rotation that returns to every
-body (below); what never narrows is the brief. A single
-whole-document pass per lens is a sampler — the nearest published benchmark's best agent finds 44.4% of
-real gaps in one pass (the preamble's figure; an external number, not a measurement of this tool) — and
-every re-run to catch its
-misses costs a round of answers collected twice; the owner chose completeness over a cheap sampler
-(2026-08-07). **Five adversarial lenses, each run as its own pass with its own framing**, because a
-reader looking for everything finds the average of it; a reader trying to break one thing finds it. This
-phase is the single home of the lenses — [`init.md`](init.md) I2 and [`add.md`](add.md) A2 both point
-here and restate nothing.
+it is an attack, **sized to what changed** (v36 — the reason is in `HISTORY.md`). **Two scales, and the
+run names which one on the progress line it prints before the first dispatch:**
+
+| Scale | When | Dispatches |
+|---|---|---|
+| **Delta** | **The default**: every `add` handoff, `init`'s closing handoff ([`init.md`](init.md) I7), and every `/blueprint questions` without `full` | **At most four.** Each dispatch attacks up to four bodies from the attack surface below and works lenses 1–4 over them in one pass; lens 5 joins only where the overview changed; the absence sweeps run only as far as the changed text touches their checklists, inside those same dispatches |
+| **Full** | `init`'s skeleton grill ([`init.md`](init.md) I2), and `/blueprint questions full` when a human asks for it by name | **One per `Area`** working lenses 1–3 over its bodies, **one whole-document** dispatch working lenses 4 and 5, and **one** dispatch running the ten absence sweeps as a single checklist |
+
+[`SKILL.md`](SKILL.md)'s cost section is the single home of the caps and of what happens past them; a
+run never raises the scale on its own judgement. **Five adversarial lenses, each framed separately and
+worked one at a time inside the pass that applies them** — a reader looking for everything finds the
+average of it, a reader trying to break one thing finds it, and a pass reports which lens found each
+candidate. This phase is the single home of the lenses — [`init.md`](init.md) I2 and
+[`add.md`](add.md) A5 both point here and restate nothing.
 
 **Lens 1 — the builder who must not guess at what the client owns.** Walk each feature as if implementing
 it tomorrow, forbidden from silently deciding anything **the client owns** — money, legal posture, brand,
@@ -264,105 +267,112 @@ is the proposal**: ask who this is for, never invent a persona to fill the silen
 because a document can hold ten well-grilled features and still not say who the product is for or what
 success means — every other lens reads the features, and only this one reads the front door against them.
 
-**The lenses run at two scopes, and absence gets its own passes:**
+**How each scale's passes are briefed, and what every pass owes:**
 
-1. **Per-Area passes.** Lenses 1–3 are dispatched once per `Area` as well as once whole-document, each
-   Area pass briefed with that Area's full feature bodies, the overview's NOT-clause, **the whole-document
-   snapshot, and the ratified-design survey where one is on record** — a pass that cannot see the rest of
-   the document generates candidates the document already answers, and a pass that cannot see the design
-   asks for what a drawn screen plainly shows (measured: 94 doc-answered and 50 design-answered rows in
-   one backlog, none catchable by the pass that minted them). The design survey enters as a **recorded
+1. **The brief.** A pass is briefed with the bodies it attacks, in full; the overview; **the
+   requirement index** — every other feature's name, `What it does`, numbered requirements, `Edge cases`
+   leads and `Not doing` lines, with provenance lines stripped; the standing question rows by title and
+   status, with their answers; and the ratified-design survey where one is on record. It is written once
+   as a frozen brief file ([`SKILL.md`](SKILL.md) rule 8(i)) and read by path. A pass that cannot see the
+   rest of the document generates candidates the document already answers, and a pass that cannot see
+   the design asks for what a drawn screen plainly shows (measured: 94 doc-answered and 50
+   design-answered rows in one backlog, none catchable by the pass that minted them) — the index keeps
+   the rest in view without paying for every body, verbatim, in every dispatch. The design survey enters as a **recorded
    source artifact**: a working-folder source record naming the file, version, capture date and who
    ratified it — cited like any source, frame references and all; with no such record on file, no
-   design-grounded disposition is available and nothing pretends otherwise. Lens 4 runs once per
-   Area-pair where two Areas share records or actors; lens 5 stays whole-document, once — it is
-   definitionally the front door against everything. **Every pass disposes before it emits:** it first
+   design-grounded disposition is available and nothing pretends otherwise. **Every pass disposes before it emits:** it first
    tries to answer each of its own candidates from its brief — the document, the design record, or one
    dominant convention — and an answered candidate is emitted tagged `default` or `fix` with its
    grounding, not as a question candidate. **An empty pass is a reported success, never a failure to
    compensate for.** Per-pass candidate counts are logged and the distribution written to
    `record/runs/<run-id>.md` — the half of the record [`resolve.md`](resolve.md) R5 sends it to — so a
    quota-shaped fingerprint is a visible anomaly rather than an invisible norm.
-2. **Absence sweeps — whole-document, checklist-framed.** A pass over existing text can only interrogate
-   what is written; these ask the opposite question: *which of these does NO feature cover?* One dispatch
-   per checklist: account lifecycle (sign-up · sign-in · sign-out · credential change · deletion) · data
+2. **Absence sweeps — checklist-framed.** A pass over existing text can only interrogate what is
+   written; these ask the opposite question: *which of these does NO feature cover?* The ten
+   checklists: account lifecycle (sign-up · sign-in · sign-out · credential change · deletion) · data
    lifecycle (creation · visibility · export · retention · deletion) · platform matrix and versioning,
    including forced upgrade · permissions and roles, per actor · money, anywhere priced, refunded or
    limited · notifications, including opt-out and quiet failure · legal, privacy and accessibility ·
    empty and first-run states · **trust and integrity** — per claim the product accepts on faith: what a
    bad-faith actor gains by lying to it, and what if anything is checked · **timing and commitment
    windows** — per event the document says happens: how far ahead, how long after, what counts as late.
-   The one measured catch of this shape — a product with no sign-out anywhere
-   in its document — was found by an improvised sweep of exactly this kind, not by the lenses; and the
-   only two outright misses in a five-project measured lab both fell exactly where the last two classes
-   now stand — a fakeable one-tap log nobody questioned, and a publish deadline nobody asked. That lab
-   (2026-08-07, 77 planted defects) measured **a first grill's** full battery at **~86% caught outright, ~97% at least
-   detected, zero hallucinated contradictions** — a different yardstick from the preamble's external
-   44.4% one-pass recall (planted defects, graded in-house; no single-pass arm was run, so the two are
-   not a before/after), and still never a completeness certificate.
-3. **One repeat round, budget-stated.** Any pass **two or more of whose candidates survived Q3**
-   (v24 — the trigger counted raw emissions until then, which fired it on nearly every pass and made
-   the round cost more than a run would pay: **three independent measured cycles each skipped it
-   outright**, three runners judging the same mandated step not worth the dispatches. A step every
-   competent runner declines is a step priced wrong, not three lapses. Counting survivors fires it
-   where a pass is actually productive and makes the round small enough to run.) Note this moves the
-   round after Q3 rather than before it; its findings re-enter Q3 for dedup and disposal like any
-   other, and a candidate cannot survive twice (v21 — the trigger used to read *"surviving
-   Q3"*, which is a phase this round runs before, so runs read it three different ways) — **in
-   any disposition — question, default, or fix alike** — is dispatched once more, fresh, **still inside
-   Q2; the round's findings join the merge and enter Q3 with the rest.** (Counting only
-   written questions would starve the round exactly when the disposition channels are doing their job,
-   and the round's measured yield includes real client questions.) **Two rounds is the budget, not a
-   completeness claim** — a round finding nothing new means this generator is dry, never that no gaps
-   remain.
+   **At the full scale they are one dispatch, worked checklist by checklist; at the delta scale a pass
+   works only the checklists the changed text touches** — a change to sign-in is an account-lifecycle
+   change, a new notification trigger is a notifications change — and there is no sweep dispatch of its
+   own. The one measured catch of this shape — a product with no sign-out anywhere in its document — was
+   found by an improvised sweep of exactly this kind, not by the lenses; and the only two outright misses
+   in a five-project measured lab both fell exactly where the last two classes now stand — a fakeable
+   one-tap log nobody questioned, and a publish deadline nobody asked. That lab (2026-08-07, 77 planted
+   defects) measured the pre-v36 battery — one dispatch per lens, scope and checklist — at **~86%
+   caught outright, ~97% at least detected, zero hallucinated contradictions**, a different yardstick
+   from the preamble's external 44.4% one-pass recall and never a completeness certificate. **No lab
+   has measured the batched shape**; a lower yield there is the price the owner chose for a run that
+   costs what its change is worth (`HISTORY.md` v36).
+3. **The repeat round runs only when a human asks for it** (v36), at the full scale, in the same words
+   as the request. Then any pass **two or more of whose candidates survived Q3**, in any disposition —
+   question, default, or fix alike — is dispatched once more, fresh, after Q3; its findings re-enter
+   Q3 for dedup and disposal with the rest, and a candidate cannot survive twice. **Two rounds is the
+   budget, not a completeness claim** — a round finding nothing new means this generator is dry, never
+   that no gaps remain.
 
-**Lenses 1–3's attack surface on a re-grill, and only the surface** (v23). A first grill — an `init`, **an
-[`add.md`](add.md) A2 delta**, and any body no `GRILL` line has ever named — is the full battery,
-unchanged. A2 grills material that is not written yet, so it has no body and no hash; without this
-clause the one thing that pass exists to attack would sit outside the attack surface, against its own
-guarantee that *"no planned change is ever presented ungrilled"*. On a **re-grill**, lenses 1–3
-attack: every body whose current hash differs from the one **the last `GRILL` line recorded for it**
-([`resolve.md`](resolve.md) R5) — **not** the newest hash any entry recorded, which is R2.3's
-foreign-edit baseline and a different fact: every write command records a post-write hash, so a
-`resolve` run that applies six answers leaves those bodies matching it, and a delta taken there would
-be empty for exactly the text the answers produced · **plus every body naming a record, state
-or actor that the **changed text itself** names** — lens 4's own criterion, computed per body rather
-than per `Area`, because a feature two Areas away can share the record that changed. **The changed
-text, not the whole changed body** (v23): read the wide way, every feature sharing one domain noun is
-pulled in, the narrowed surface comes out identical to the full battery, and the delta saves nothing on
-exactly the small coherent documents this skill is for · **plus every body, where the
-overview or a ratified design record changed**, since both are briefing inputs to every pass.
+**The delta scale's attack surface, in the order it fills the cap** (v23; v36 for the order and the
+baseline). The full scale attacks every body. The delta scale attacks:
+
+- **every body this run wrote** — an `add` handoff's own writes come first and are never queued behind
+  an older body;
+- **every body an `item` line names in a write entry of any command newer than the newest `GRILL`
+  line** — the log says what changed without a hash comparison, so a body the last `GRILL` line named
+  with no hash is not thereby changed (v36: a measured `init` recorded no hashes, and every body then
+  read as changed on every later run);
+- **every body whose current hash differs from the one the last `GRILL` line recorded for it**
+  ([`resolve.md`](resolve.md) R5) — **not** the newest hash any entry recorded, which is R2.3's
+  foreign-edit baseline and a different fact: every write command records a post-write hash, so a
+  `resolve` run that applies six answers leaves those bodies matching it, and a delta taken there would
+  be empty for exactly the text the answers produced;
+- **every body naming a record, state or actor that the changed text itself names** — lens 4's own
+  criterion, computed per body rather than per `Area`, because a feature two Areas away can share the
+  record that changed. **The changed text, not the whole changed body** (v23): read the wide way, every
+  feature sharing one domain noun is pulled in, the narrowed surface comes out identical to the full
+  battery, and the delta saves nothing on exactly the small coherent documents this skill is for;
+- **every body, where the overview or a ratified design record changed** — ranked last, since both are
+  already in every pass's brief.
+
+**Where the cap is reached, the rest are named on the `GRILL` line as `queued`**, and the next run's
+delta starts with them ([`SKILL.md`](SKILL.md)'s cost section is the single home of the cap).
 
 **Rotation, not skipping.** A body outside that set is attacked anyway if **no run in the last three
-`GRILL` lines names it as `delta` or `rotation`** — a `shared` mark is not an attack for this purpose.
-**Where fewer than three `GRILL` lines exist**, the clock has not run and rotation forces nothing; the
-first-grill branch has already covered every body once. The battery measures ~86% caught outright, so ~14% is missed per pass and repetition
-across runs is that miss's only compensator — the owner chose completeness over a cheap sampler on
-2026-08-07, and a body grilled once and never edited would otherwise keep its misses forever.
+`GRILL` lines names it as `delta` or `rotation`** — a `shared` or `queued` mark is not an attack for
+this purpose — **in whatever room the delta leaves inside the cap**; an overdue body that does not fit
+is `queued`. **Where fewer than three `GRILL` lines exist**, the clock has not run and rotation forces
+nothing. The battery misses some of what is there on every pass, and repetition across runs is that
+miss's only compensator — a body grilled once and never edited would otherwise keep its misses forever.
 
-**The whole-document snapshot stays the brief on every pass.** Only the attack surface narrows. A pass
-briefed with the delta alone is *"a pass that cannot see the rest of the document"*, which is the
-configuration this phase already records as having minted 94 doc-answered rows.
+**The whole document stays in every brief — as the requirement index, not as every body verbatim**
+(v36). Only the attack surface narrows. A pass briefed with the delta alone is *"a pass that cannot see
+the rest of the document"*, which is the configuration this phase already records as having minted 94
+doc-answered rows.
 
-**Every body attacked by lenses 1–3 is named on this run's `GRILL` line with the hash it carries when
+**Every body a pass attacked is named on this run's `GRILL` line with the hash it carries when
 this run finishes with it — the post-write hash, not the one the lenses saw** (v24), written whether or
 not anything was written into it. **The pre-write hash was tried and it made the delta vacuous**: this
 same run writes defaults, doc-fixes and content slots into the bodies it just attacked, so a pre-write
 baseline differs from the next run's reading of **every** body, every time, and a measured cycle
 attacked all seven features including two no `resolve` run had ever touched. **Recording the post-write
 hash parks nothing**, because the lines this run added to a body are the ones Q4's disposition check has
-already re-derived blind — they arrive disposed, not unexamined — **lenses 1–3 and no others**: lens 4,
-lens 5 and the absence sweeps are whole-document, so counting them would name every body on every line
-and leave the rotation clock permanently vacuous. **And each name says how it got there** — `delta`,
-`shared`, or `rotation` — because a body pulled in by the shared-entity clause was read against a
+already re-derived blind — they arrive disposed, not unexamined.
+**The bodies a pass attacked, and no others: a whole-document lens 4 or lens 5 pass**, and the absence
+sweeps, attack no body in particular, so counting them would name every body on every line and leave
+the rotation clock permanently vacuous. **And each name says how it got there** — `delta`,
+`shared`, `rotation`, or `queued` for a body the cap left unattacked — because a body pulled in by the shared-entity clause was read against a
 neighbour rather than attacked on its own, and three consecutive `shared` marks must not read as three
 attacks and leave it never overdue — the delta, the rotation clock and the
 resume all read it, and a grill that yields nothing would otherwise leave no trace that it happened.
 
-**Lens 4, lens 5 and the ten absence sweeps are never scoped** — they are about the whole by
-construction, and an absence-sweep candidate has no grounding text and so no depth.
+**Lens 5 and the ten absence sweeps are never scoped to a body** — they are about the whole by
+construction, and an absence-sweep candidate has no grounding text and so no depth. Lens 4 at the delta
+scale reads the attacked bodies against the index.
 
-All passes are read-only over the same snapshot and dispatch concurrently, in waves of no more than ten
+All passes are read-only over the same frozen brief and dispatch concurrently
 ([`SKILL.md`](SKILL.md) rule 8); their findings merge before the standing sweep and Q3.
 
 **And the standing sweep, after the lenses** — the mechanical part:
@@ -725,7 +735,9 @@ exists at all, whether content is moderated, who may see it — passes the gate 
 
 **The disposition check — the same pre-write dispatch, wider verdict.** The second-model dispatch that
 verifies suggested directions ([`SKILL.md`](SKILL.md) rule 6) **re-derives every candidate's
-disposition blind** — from the candidate and its grounding alone, never shown the first routing. **What a
+disposition blind** — from the candidate and its grounding alone, never shown the first routing — **at
+most twenty-five candidates to a dispatch** (v36; a larger batch splits, after a measured check handed
+eighty-eight ran out of output before it answered any). **What a
 divergence does is decided by what the two verdicts are, and this ordering is exact**:
 - **Either verdict is QUESTION** → the candidate is written as a question — **the pipeline fails open to
   asking, never to silence** — *unless* the non-question verdict produced the full demotion evidence (a
@@ -878,8 +890,8 @@ mechanical, costs no dispatch, and is the cheapest gate in this file.*
 carried-marker transcription, and the two project-level questions are written whatever their
 `Why asked` says, because for those the client not knowing is the point rather than the defect.
 
-**The cold read — one fresh dispatch per drafted question, after every gate above and before the
-write** (v32). **This is the single home of the cold read.** Every gate above tests the *candidate* —
+**The cold read — fresh readers, up to ten drafted rows each, after every gate above and before the
+write** (v32; batched v36). **This is the single home of the cold read.** Every gate above tests the *candidate* —
 its grounding, its routing, its depth — and neither check that verifies it sees the whole document:
 the disposition check is blind by design, and the read-back gate reads one field. Nothing
 yet reads the finished row the way its reader will — cold, against the whole document, never having
@@ -887,15 +899,16 @@ watched it being made — and *"the document already answers this"* has so far b
 context that generated the candidate, which is the configuration the preamble names as biased toward
 over-predicting ambiguity and the one the derivative-round bound above names as unable to
 self-correct. **So before any drafted row is
-written, a separate dispatch ([`SKILL.md`](SKILL.md) rule 6) is briefed with the row as it would be
-written** — `Question`, `Why asked`, `Touches` and the draft `Suggested directions` — **together with
-the whole-document snapshot Q2 briefs its passes with, every standing question row by title and
-status with its `Answer & why` where one exists, the standing defaults ledger, and the other rows
-this run has drafted**, all supplied by the orchestrator under rule 8(i) and wrapped as data under
-rule 2's standing line; the reader reads no file and is told nothing about how the row was routed.
+written, a separate dispatch ([`SKILL.md`](SKILL.md) rule 6) is briefed with the rows as they would be
+written** — `Question`, `Why asked`, `Touches` and the draft `Suggested directions`, up to ten rows —
+**together with Q2's brief — the requirement index, with every body those rows touch in full — every
+standing question row by title and status with its `Answer & why` where one exists, the standing
+defaults ledger, and the titles of the other rows this run has drafted**, all frozen by the
+orchestrator under rule 8(i) and wrapped as data under rule 2's standing line; the reader reads nothing
+else and is told nothing about how the rows were routed.
 **It is briefed as the person who must answer it, not as a hunter of gaps** — the generator was told
 to find gaps; a reader handed one question and the document it came from is that bias run the other
-way. It returns exactly one of five verdicts, and **a verdict without its evidence is not a verdict —
+way. It returns exactly one of five verdicts **for each row, judged on its own**, and **a verdict without its evidence is not a verdict —
 the row stands, a `check` line records `cold read: no evidence — stands`, and the report names it.**
 There is no second dispatch for a reader that offered none: one read per drafted row, and no more.
 
@@ -925,9 +938,12 @@ report names the pair as a merge for a person.
 
 **Ordering, cost and the record.** The cold read is the last dispatch before the write — after the
 disposition check and the read-back gate, so a dispatch is never spent on a row a free mechanical gate
-would drop. **One row per dispatch, concurrent in waves of no more than ten** (rule 8): a reader
-given ten rows conditions on its own earlier verdicts, the self-conditioning [`resolve.md`](resolve.md)
-R5 caps sittings for, and the ninth row is then read by a context that has already decided eight.
+would drop. **Up to ten rows per reader** (v36), readers concurrent (rule 8), and a batch over ten
+splits by `Area`. A reader given ten rows can condition on its own earlier verdicts — the
+self-conditioning [`resolve.md`](resolve.md) R5 caps sittings for — so it is told to judge each row
+alone, and ten is the same bound R5 uses; a reader per row cost a dispatch per question, which the
+owner ruled out (`HISTORY.md` v36). **A client-bound carried-marker transcription is not read cold**:
+its wording is the marker's own, and no verdict could demote it.
 **No dispatch, no read** — rule 6 governs: with no second dispatch the read has not happened, the row
 is written carrying `unverified` and is counted on the run's unverified line, never re-read by the
 context that drafted it and called a read. A read still out when the phase would close is rule
@@ -1133,7 +1149,9 @@ UI or spoken at the review — makes it `Answered`.
    rule 7), never carried from an earlier sitting's tally. It opens with the
    **funnel line** — candidates drafted → routed default → routed fix → routed slot → written as
    questions — printed
-   fresh every run so a silent regression to question-flooding is visible on its face. **Then the
+   fresh every run so a silent regression to question-flooding is visible on its face — and beside it
+the **scale line**: delta or full, dispatches spent against the cap, and every body left `queued` (v36).
+**Then the
    convergence line, when all four conditions hold** (v23) — after the funnel, which keeps its fixed
    first position because [`status.md`](status.md) C10 checks it against the discard lines beneath it.
    The four, and all of them: **no feature body changed** since the last grill · **no source was added**
@@ -1142,7 +1160,8 @@ UI or spoken at the review — makes it `Answered`.
    condition each run invents for itself). An `add` handoff is unconditional, so new material must
    never be announced as *"nothing has changed"* · **no candidate survived Q3** from any pass, per-`Area` and
    rotation passes included — a run that wrote three rows out of a rotation pass has not converged ·
-   **nothing is outstanding**, meaning no carried marker, no `CON-k`, no unratified batch, **and no
+   **nothing is outstanding**, meaning no carried marker, no `CON-k`, no unratified batch, no body left
+   `queued` by the cap, **and no
    `Open` or `Answered` row standing** — the line ends *"nothing is waiting on anybody"*, and forty
    unanswered rows are forty people-shaped things waiting. Then:
 
@@ -1225,7 +1244,7 @@ FIXES APPLIED (2) — ratify below
 CONTENT SLOTS (1) — one batched sign-off; the document defines the slot, the client fills it
    «Browse the menu»  Content slot — client-supplied: the pastry list · name + price + allergens
       · 20–60 items · supplied by the client. Illustrative examples in the body are labelled.
-COLD READ  5 drafted rows read, one dispatch each · 1 stands · 1 answered · 0 irrelevant
+COLD READ  5 drafted rows read by 1 reader · 1 stands · 1 answered · 0 irrelevant
            · 1 simplified · 1 extended · 1 absorbed by that extension · 0 unverified
   «Are reset links single-use?»        answered — ledger #1 already adopts it: "reset links are
                                        single-use and expire" (citation: matched)

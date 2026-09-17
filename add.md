@@ -131,10 +131,11 @@ Four lists again, and a fifth that only `add` has.
 4. **Gaps** — anything the new material needs and no source supplies. Each becomes a marker plus a
    proposed question.
 5. **Exclusions** the new material carries, in the one shape, with the *why* the source gives.
-6. **Grill the delta.** Run the adversarial lenses of [`questions.md`](questions.md) Q2 — single home,
-   not restated — over the planned changes *and the features they land in*: what does the new requirement
-   not decide, what does it collide with, what would its builder have to guess. Findings join lists 3 and 4, so A3 presents a delta that has already been attacked. **No planned change is ever presented
-   ungrilled.**
+6. **The delta is attacked once, after it is written** (v36). A2 dispatches no grill of its own: A3
+   prints and does not wait, so a pre-write battery protects no human decision, and A5's handoff runs
+   [`questions.md`](questions.md) Q2 at its delta scale over exactly these changes, with this run's
+   writes first. What drafting itself turns up — what a new requirement does not decide, what it
+   collides with — still joins lists 3 and 4 here.
 
 ---
 
@@ -186,7 +187,9 @@ putting one back costs a sentence too.
 1. **Fetch the block again and diff it against the text read at A1, immediately before writing**
    ([`spec/targets.md`](spec/targets.md) operation 8). Any difference is an edit this run did not make:
    **write nothing**, report the conflict, quote both texts, and move on. A re-read only *after* the push
-   reports success over an overwrite.
+   reports success over an overwrite. **Where the previous block this run wrote was on the same page and
+   its read-back is the last thing that touched the page, that read-back is this fetch** (v36) — a page
+   is read once per block, not twice.
 2. **Write it.** New features get the full body skeleton at creation time
    ([`spec/doc-shape.md`](spec/doc-shape.md) §5). Changed
    requirements keep their number — **`FR-3` means `FR-3` forever** — and a withdrawn one leaves a
@@ -318,7 +321,7 @@ plainly: a false but plausible sentence inside a genuine source. That sentence i
 it passes, and nothing here can tell it from a true one.*
 
 **Then hand off to [`questions.md`](questions.md) Q1–Q6**, in this same sitting, over the updated
-Blueprint. **This is not optional and it is not deferrable** — a run that writes material and stops
+Blueprint, at Q2's delta scale with this run's writes first. **This is not optional and it is not deferrable** — a run that writes material and stops
 before its questions exist has done half the job, and the markers it minted sit `carried` with
 nothing coming for them. That file owns the proposal
 flow, the review and every marker disposition; none of it is

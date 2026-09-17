@@ -940,7 +940,7 @@ line tagged `cold read`, not a kind of its own (v32) — the **funnel**, and —
 **GRILL** line ([`questions.md`](questions.md) Q2, Q4, Q6).
 
 **`GRILL` is `questions`' own kind and the one thing that reads it back is the next `questions` run**
-(v23): `bodies attacked · each with the hash the body carries when this run finishes with it · converged: yes | no` — the **post-write** hash (v24), since this run writes into the bodies it attacks and a pre-write baseline would put every body in the next run's delta forever.
+(v23): `scale · bodies attacked · each with the hash the body carries when this run finishes with it and how it got there (delta, shared, rotation, or queued when the cap left it unattacked — v36) · converged: yes | no` — the **post-write** hash (v24), since this run writes into the bodies it attacks and a pre-write baseline would put every body in the next run's delta forever.
 Three things needed it and none of them had a substrate before. **(i)** The re-grill delta cannot be
 computed from `HASHES`: that line records the hash of a body a run **wrote or read back**, so a
 `resolve` run that applies six answers leaves those bodies matching their newest recorded hash, and a
@@ -954,7 +954,7 @@ attacks; a hash cannot tell a body a default was written into from one three len
 **The samples below are the cap, not an illustration.**
 
 ```
-2026-08-12 09:14 · resolve · run 7f3a2c · skill v35 · sitting 1 · 6 of 18 queued · mode: force
+2026-08-12 09:14 · resolve · run 7f3a2c · skill v36 · sitting 1 · 6 of 18 queued · mode: force
 independence: writer <a>, checker <b>
 SWEEP-NOTE   content rule swept rows 1–18 · 0 findings
 item         «Can a customer retry a failed…»   Clean      3afc…b75  «Checkout» FR-2, FR-5      body 9f2c…41d
@@ -982,7 +982,7 @@ The next sitting opens its own entry under the same run id, and only the last on
 the reason, the run totals, and the closing sweep's own number beside the sittings' own:
 
 ```
-2026-08-12 12:41 · resolve · run 7f3a2c · skill v35 · sitting 3 · 4 of 4 queued · mode: force
+2026-08-12 12:41 · resolve · run 7f3a2c · skill v36 · sitting 3 · 4 of 4 queued · mode: force
 …
 GATE         4 applied, 0 returned
 SWEEP        14 applied this run · 1 suspect read · 0 returned

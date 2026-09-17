@@ -59,8 +59,8 @@ you: it writes everything it found, prints the report, and stops.** You read the
 proposes the packet, a person decides what is actually in it. Every row that reaches you already passed the admission
 gate — a decision only the client can make, without which a named part of the document cannot be
 written — so the list is short by construction. **And before any row is written, a fresh dispatch
-reads it cold** — one reader per drafted question, given the whole document and nothing about how the
-row was made: a question the document already answers, or that no answer would change a requirement
+reads it cold** — up to ten drafted rows to a reader, given the document and nothing about how the
+rows were made, each row judged on its own: a question the document already answers, or that no answer would change a requirement
 for, is discarded on a quoted filter; one carrying two decisions is simplified; one that is a slice of
 a wider decision is widened. A reader's opinion demotes nothing — its quote does. Each row carries **suggested directions**:
 machine-drafted options with their trade-offs, grounded in your own document, verified by a second
@@ -110,7 +110,7 @@ again → `/blueprint questions`. Apply new answers → `/blueprint resolve`. As
 |---|---|---|
 | `/blueprint init` | Sources or interview → grilled skeleton → your confirm → the Blueprint | After your confirm |
 | `/blueprint add` | New material into existing/new features. **Runs to the end without stopping**, and by default **new source material supersedes document text it contradicts** — `add soft` keeps every contradiction as a question instead | Immediately, and the report names every change |
-| `/blueprint questions` | The full grilling battery on a first grill, a narrowed attack surface on a re-grill — every find disposed: questions written, convention settled as labeled defaults, content as slots, wrong text as doc-fixes — every drafted question read cold by a fresh dispatch before it is written, and given guidance | Live questions at `Open` + guidance; labeled default, fix and slot lines in feature bodies, awaiting your batch ratification |
+| `/blueprint questions` | A grilling sized to what changed — the whole-document battery only when you ask for `/blueprint questions full` — every find disposed: questions written, convention settled as labeled defaults, content as slots, wrong text as doc-fixes — every drafted question read cold before it is written, ten to a reader, and given guidance | Live questions at `Open` + guidance; labeled default, fix and slot lines in feature bodies, awaiting your batch ratification |
 | `/blueprint resolve` | Write vetted answers into the feature specs. **Runs to the end without stopping**, and by default **a vetted answer supersedes document text it contradicts** — `resolve soft` flags that row with both texts instead, and writes nothing | The answers |
 | `/blueprint status` | One screen: what's flagged, what's waiting on you, what's still unsettled | **Never** |
 
@@ -147,12 +147,15 @@ months.
 
 ## Honest limits
 
-- A first grill's full battery caught **~86% outright and detected ~97%** — **in one in-house lab, n=1:
+- A run's cost follows what changed: an `add` grills in at most four dispatches, and the whole-document
+  battery runs only when you say `/blueprint questions full` (since v36, after one small `add` spent five
+  million tokens re-grilling everything).
+- The pre-v36 whole-document battery caught **~86% outright and detected ~97%** — **in one in-house lab, n=1:
   77 defects planted by us, graded by us, plausibly by the same model family that wrote the answers.
-  Treat it as a smoke test we ran, not as a measurement anyone independent reproduced.** (The battery
-  is the only mode that ships because one pass of anything finds less than half of what is there on the
-  nearest published benchmark — 44.4% recall, an external figure whose source we have not re-traced, not
-  a measurement of this tool.) Still: an empty question list never means
+  Treat it as a smoke test we ran, not as a measurement anyone independent reproduced.** The batched,
+  change-sized grilling that replaced it has not been measured, and one pass of anything finds less than
+  half of what is there on the nearest published benchmark — 44.4% recall, an external figure whose
+  source we have not re-traced, not a measurement of this tool. Still: an empty question list never means
   the spec is complete.
 - Between runs it has no eyes. Decisions made in meetings or chats reach the document only when you put
   them in as a source or an answer.

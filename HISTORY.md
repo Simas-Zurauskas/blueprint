@@ -1,3 +1,67 @@
+# v36 — the grilling is sized to the change, and the run says what it will spend before it spends it
+
+**What produced this.** The owner, 2026-09-17, after an `add` run on the «Cyclical Tasks» Blueprint that
+wrote six owner decisions and then spent two hours grilling: *"this was taking way too long, what wa sthe
+process? we nee dto fix this, this much token and time usage is not acceptable. see what the skill is
+saying"* — and, after the diagnosis, *"do th efix"*.
+
+## What the measured run showed
+
+- **Six decisions, a whole-document battery.** `add` A5 hands off to `questions`, and Q2 was *"the full
+  battery on a first grill — there is no light mode"*: lenses 1–3 once per `Area` and once
+  whole-document, lens 4 once per `Area` pair, lens 5 once, and one dispatch per absence checklist.
+  On a five-`Area` document that is 38 dispatches. Each was briefed with the whole-document snapshot
+  (~150 KB), so each cost ~133k tokens: **5.06M tokens for the grill alone, ~5.4M with the checks,
+  ~2h10m of wall-clock for 15 block writes**, before a single question was written.
+- **The narrowing never engaged.** The re-grill delta compared each body with the hash the last `GRILL`
+  line recorded, and the `init` run had recorded none — so every body read as changed, on this run and
+  on every run after it.
+- **The yield did not justify the matrix.** 132 raw candidates collapsed to 39 drafted questions; the
+  same gap was found five, six, ten times by different lens-and-scope pairs; 17 of the 39 were
+  transcriptions of markers earlier `resolve` runs had left, which needed no grilling at all.
+- **The verification that remained would have doubled it.** The cold read was one dispatch per drafted
+  question — 39 more, each given the whole document, roughly four million tokens more. The one blind
+  disposition dispatch, handed all 88 candidates, ran out of output before it answered any.
+- **A pause did not hold.** The orchestrator had scheduled itself a wake-up as a fallback heartbeat; it
+  fired after the owner paused and the run resumed on its own. That was the run's act, not a rule's —
+  and no rule forbade it.
+
+## What changed
+
+- **Two scales** (`questions.md` Q2). **Delta** is the default for every `add` handoff, `init`'s closing
+  handoff and a bare `/blueprint questions`: at most four dispatches, each attacking up to four bodies
+  with lenses 1–4 in one pass, sweeps only as far as the changed text reaches them. **Full** runs on
+  `init`'s skeleton grill and on `/blueprint questions full`, asked for by name: one dispatch per
+  `Area`, one whole-document dispatch for lenses 4 and 5, one for all ten sweeps — never the matrix.
+- **The attack surface fills the cap in order** — this run's writes, then bodies any write entry newer
+  than the last `GRILL` line names, then hash differences, shared records, and the overview last — and
+  what does not fit is written on the `GRILL` line as `queued` for the next run. The log decides what
+  changed, so a missing hash no longer makes every body new.
+- **Briefs are the requirement index plus the attacked bodies**, written once as a frozen file each
+  dispatch reads by path (`SKILL.md` rule 8(i)), instead of the full snapshot pasted into every prompt.
+- **The repeat round runs only when a human asks for it.**
+- **The cold read is batched**, ten rows to a reader, each row judged alone; a carried-marker
+  transcription is not read cold. **The disposition check takes at most twenty-five candidates.**
+- **`add` A2 no longer grills before writing.** A3 does not wait, so the pre-write battery protected no
+  human decision; A5's handoff attacks the same changes once, after writing. `init` I2 keeps its
+  pre-write grill because I3 does stop.
+- **A page is read once per block** (`add.md` A4 step 1): the last read-back is the next pre-write fetch.
+- **`SKILL.md` gains a cost section** — the single home of the caps, the rule that a run prints its
+  dispatch plan before spending it, that it shrinks the work rather than exceeding the plan, and that a
+  pause is ended only by a human.
+
+## The honest limit
+
+**Nothing here has been measured.** The ~86% lab figure was the matrix; working several lenses in one
+pass, reading the rest of the document as an index, and batching the cold read all plausibly lower
+recall, and a capped delta can leave overdue bodies `queued` for a run or two. The owner chose a run
+that costs what its change is worth over a completeness nobody could afford to run; the `full` command
+is there for the occasions that warrant it, and the report's scale line says which one ran.
+
+**Why this is not on the shape-change register.** No property, select option, database or file layout on
+the target moved. What changed is phases, rules, a report line and one existing log-line kind's clause
+(`GRILL`'s `queued` mark) — the same class as v24's and v32's.
+
 # v35 — the overview route pins the proposal, and moving the row back to `Answered` is the acceptance
 
 **What produced this.** The owner, 2026-09-16, reading a `status`-style report on the «Cyclical Tasks»
