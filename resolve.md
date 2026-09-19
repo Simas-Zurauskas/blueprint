@@ -954,7 +954,7 @@ attacks; a hash cannot tell a body a default was written into from one three len
 **The samples below are the cap, not an illustration.**
 
 ```
-2026-08-12 09:14 · resolve · run 7f3a2c · skill v36 · sitting 1 · 6 of 18 queued · mode: force
+2026-08-12 09:14 · resolve · run 7f3a2c · skill v37 · sitting 1 · 6 of 18 queued · mode: force
 independence: writer <a>, checker <b>
 SWEEP-NOTE   content rule swept rows 1–18 · 0 findings
 item         «Can a customer retry a failed…»   Clean      3afc…b75  «Checkout» FR-2, FR-5      body 9f2c…41d
@@ -982,7 +982,7 @@ The next sitting opens its own entry under the same run id, and only the last on
 the reason, the run totals, and the closing sweep's own number beside the sittings' own:
 
 ```
-2026-08-12 12:41 · resolve · run 7f3a2c · skill v36 · sitting 3 · 4 of 4 queued · mode: force
+2026-08-12 12:41 · resolve · run 7f3a2c · skill v37 · sitting 3 · 4 of 4 queued · mode: force
 …
 GATE         4 applied, 0 returned
 SWEEP        14 applied this run · 1 suspect read · 0 returned

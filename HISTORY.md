@@ -1,3 +1,65 @@
+# v37 — the overview's `Links` and `Operating` blocks carry only what a reader of the target can open
+
+**What produced this.** The owner, 2026-09-19, reading the live «Cyclical Tasks» overview in Notion:
+
+> there are in notion some references that are broght from local ssytem, must have be notion ready, like stugg lik e"Source material, captured verbatim and hashed: .blueprint/sources/8c1f4a/ in this workspace, from DATA/" and all the references like wiki-cyclical-tasks/blueprint/record/run-log.md, committed to the wiki-cyclical-tasks shoud probably point to git
+
+## What the live page showed
+
+- **`Links`**, as `init` wrote it: *"Source material, captured verbatim and hashed:
+  `.blueprint/sources/8c1f4a/` in this workspace, from `DATA/`"*. Two paths that open only on the
+  machine that ran the command — one of them into `sources/`, which is never committed and so has no
+  address anywhere else. The row already said *"Links only"*; nothing said what a link is, and nothing
+  checked the block.
+- **`Operating`**: *"**Run record:** `wiki-cyclical-tasks/blueprint/record/run-log.md`, committed to the
+  `wiki-cyclical-tasks` repository."* That line obeyed the rule exactly: `doc-shape.md` §3's row asked
+  for *"The run record's **path** in the working folder — `record/run-log.md`, a local file since v16,
+  so a path rather than a link"*, and `init.md` I5 restated it as *"the run record's path
+  (`record/run-log.md`, a local file)"*.
+
+## Why the rule was wrong
+
+It was right when it was written. v16 moved the run log off the target into a local file, and until
+v33 the working folder was a hidden `.blueprint/` that was under no version control in any measured
+workspace — there was nothing to link to, so a path was the only honest reference. **v33 moved the
+working folder into the project's wiki repository and commits `record/`**, so the run log now has a
+web address, and the rule went on describing the world before it. A reader of a Notion page cannot
+open a path on somebody else's machine; on the front door, a path is a reference that works for
+exactly one person.
+
+## What changed
+
+- **`Operating` — the run record is a link** (`spec/doc-shape.md` §3): the web URL of
+  `record/run-log.md` on the default branch of the repository holding `<home>`, derived from its
+  `origin` remote. Where `<home>` is in no repository, or the repository has no remote a reader can
+  open, the line says the run record is not yet published and names no path. The link replaces that
+  line later the way every other overview change lands — a human's edit, or a verbatim proposal a
+  human accepts — never silently. No new write path.
+- **`Links` — only what a reader of the target can open**: a web URL or a target page, never a
+  machine-local path. Material held only in the source record is named — what it is, when it was
+  captured, that it is held outside version control — never pathed.
+- **`status.md` C8 reports** a machine-local path in either block, and a not-yet-published line once
+  a remote exists — reported, never repaired, like the rest of C8.
+- `init.md` I5 points at the two rows instead of restating the old one; I3's sample `LINKS` line,
+  which a run copies, now shows a linked page beside named material. `spec/targets.md` §5's rename
+  route also reports an `Operating` link into the old location.
+- `lint.sh` forbids the retired sentences and pins the new ones.
+
+## The honest limit
+
+**The link names where the record is published, not whether it has been pushed.** A run commits
+`record/` and does not push, so the link fails to open until somebody pushes — and, where the commit
+was made on another branch, merges. That was preferred to deciding "published" from the push state,
+which would flip the line back and forth between runs. The rule gives GitHub's URL form as its
+example; another host has its own, and a remote with no web form at all — a file-path remote — counts
+as no remote a reader can open, since its URL would be a machine-local path by another name. A
+Blueprint written before v37 keeps its old lines until a human edits them or accepts a proposal;
+`status` C8 now names them.
+
+**Why this is not on the shape-change register.** No property, select option, database or file layout
+on the target moved. What changed is the rule for two overview blocks' text and one `status` check —
+the same class as v35's.
+
 # v36 — the grilling is sized to the change, and the run says what it will spend before it spends it
 
 **What produced this.** The owner, 2026-09-17, after an `add` run on the «Cyclical Tasks» Blueprint that

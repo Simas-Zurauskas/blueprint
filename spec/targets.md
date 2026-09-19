@@ -287,7 +287,7 @@ body. That sweep is the reason committing the record is safe rather than merely 
   ([`../resolve.md`](../resolve.md) R5 admits the occasion); and say that you did. Where the old
   location was tracked by another repository, its deletion is left for a human to commit — the run
   commits only into the repository holding `<home>`. Where the overview's `Operating` block names the
-  old path, report it for a human to edit — the overview is never rewritten silently
+  old path or links the old location, report it for a human to edit — the overview is never rewritten silently
   ([`doc-shape.md`](doc-shape.md) §3). A folder at a pre-v33 location whose `target.md` names another
   project's Blueprint is that project's live working folder: leave it untouched and say so. **Never
   read from both** — two working folders is exactly the two-places state this section exists to

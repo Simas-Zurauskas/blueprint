@@ -209,7 +209,8 @@ OVERVIEW   «Golden Crumb» — the human blocks, verbatim as they will be writt
            different business"). One kind the requirements name that no source does:
            «staff fulfilling orders» — proposed as a question, not invented into the block
   PICTURE  customer → menu → basket → pay → pickup slot → collect   (6 nodes)
-  LINKS    deck · ordering notes · call transcript
+  LINKS    «Ordering notes» (linked) · pitch deck and call transcript, captured
+           2026-08-04 and held outside version control   ← named, never a path
 AREAS      Ordering (5 features) · Loyalty (2) · Admin (3)
 FEATURES   10 rows
            Ordering · Browse the menu   ← pitch deck p.2 + interview Q1
@@ -280,7 +281,7 @@ capped human blocks — TL;DR (written first, rewritten last), **What this produ
 closing in a one-sentence NOT-clause naming the *kind* of thing this product refuses; it does not try to
 be the list), **Who it's for**, **How it works, in one picture**. **Embed the two `⟳` views** — «Where things are», and «Open questions» grouped
 by `Status` with the groups collapsible; «Unsent — packet candidates» stays a database tab, never embedded — and **type
-nothing under a `⟳` heading**, now or ever. Write **Links** and the **Operating** block — the run record's path (`record/run-log.md`, a local file), the always-ask register seeded with
+nothing under a `⟳` heading**, now or ever. Write **Links** and the **Operating** block as [`spec/doc-shape.md`](spec/doc-shape.md) §3's two rows define them — the run record's link, or the line saying it is not yet published, the always-ask register seeded with
 its two mandatory entries (*minors' data protection and child-recording consent*, *regulatory
 applicability* — [`SKILL.md`](SKILL.md) rule 4; a human widens it thereafter),
 and any widening of the content rule. **No owner line**: the overview names nobody

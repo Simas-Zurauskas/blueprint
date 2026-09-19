@@ -543,7 +543,14 @@ questions.md⋮drafted to be pointable⋮v34-directions-pointable
 spec/doc-shape.md⋮may add a numbered requirement⋮v34-doc-shape-new-fr
 status.md⋮Why flagged⋮v34-status-reads-why-flagged
 SKILL.md⋮^\| \*\*v34\*\* \|⋮v34-register-row
-HISTORY.md⋮^# v34⋮v34-history-entry'
+HISTORY.md⋮^# v34⋮v34-history-entry
+spec/doc-shape.md⋮The run record as a \*\*link\*\*⋮v37-operating-run-record-is-a-link
+spec/doc-shape.md⋮the run record is not yet published and names no path⋮v37-operating-unpublished-names-no-path
+spec/doc-shape.md⋮Never a machine-local path⋮v37-links-never-local-path
+spec/doc-shape.md⋮named, not linked⋮v37-links-source-record-named
+init.md⋮the run record.s link, or the line saying it is not yet published⋮v37-init-writes-the-link
+status.md⋮machine-local path in .Links. or .Operating.⋮v37-c8-reports-local-path
+HISTORY.md⋮^# v37⋮v37-history-entry'
 
 FORBIDDEN='SKILL.md⋮A human approves, always.*([Ee]xcept|[Uu]nless)⋮inv-human-approves-no-weakener
 SKILL.md⋮code repo.*([Ee]xcept|[Uu]nless|[Pp]refer|[Gg]enerally)⋮inv-no-code-repo-no-weakener
@@ -659,7 +666,14 @@ spec/doc-shape.md⋮Everything after .FR-1. is a human.s to write⋮v34-retired-
 resolve.md⋮a status flip carries no words⋮v35-retired-status-flip-no-words
 resolve.md⋮a status flip alone is not an acceptance⋮v35-retired-status-flip-not-acceptance
 resolve.md⋮the front door needs your words⋮v35-retired-front-door-your-words
-resolve.md⋮hash of .Answer & why. at the flag⋮v35-retired-answer-why-hash-at-flag'
+resolve.md⋮hash of .Answer & why. at the flag⋮v35-retired-answer-why-hash-at-flag
+spec/doc-shape.md⋮path rather than a link⋮v37-retired-operating-path-not-link
+spec/doc-shape.md⋮run record.s \*\*path\*\*⋮v37-retired-operating-run-record-path
+spec/doc-shape.md⋮original documents. Links only⋮v37-retired-links-only
+init.md⋮path rather than a link⋮v37-retired-init-path-not-link
+init.md⋮run record.s path⋮v37-retired-init-run-record-path
+init.md⋮LINKS +deck ⋮v37-retired-i3-links-sample
+spec/targets.md⋮^  old path, report it for a human⋮v37-retired-rename-path-only'
 
 SINGLE_HOME='single home of where the working folder lives⋮1
 `force` is the default⋮1
@@ -691,7 +705,8 @@ write the role, never the specific⋮3
 the client packet⋮3
 always-ask register⋮4
 Run the six pre-flight checks⋮4
-Resolve `<home>`, in this order⋮1'
+Resolve `<home>`, in this order⋮1
+the web URL of `record/run-log.md`⋮1'
 
 a_pass=0; a_total=0
 
