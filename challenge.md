@@ -1,4 +1,4 @@
-# Run — questions
+# Run — challenge
 
 **Grill the Blueprint**: adversarial passes over the whole document write **questions** for what it cannot
 answer yet; a human answers them, rejects them, or carries them into a client packet — in the UI at their
@@ -96,6 +96,25 @@ Specs obeyed, not restated: [`spec/doc-shape.md`](spec/doc-shape.md) ·
 [`spec/prd-scope.md`](spec/prd-scope.md).
 
 **Run the six pre-flight checks in [`SKILL.md`](SKILL.md) first.**
+
+## How it runs (v40) — `bp challenge` executes Q1–Q6
+
+**Run `<skill>/bp/bp challenge`** (`--full` only when a human asks for the full scale by name), then do exactly what it
+prints and run it again until it prints the report; `add` and `init` run the same machine inside their own entry. It
+plans Q2's attack surface from the `GRILL` and `HASHES` lines and prints the scale line before the first dispatch;
+freezes each pass's brief; runs the standing sweep by code; numbers every candidate and reads its depth from the
+provenance tokens; checks every quote a discard or a direction rests on where it says it is; applies Q4's ordering
+exactly — the blind check, the four undiscardable classes, the survey exception, the depth cap, the read-back gate;
+applies the cold read's verdicts only with their evidence; writes every channel through the serial commit path —
+rows at `Open` with their markers patched in the same act, defaults on the standing ledger, fixes, slots with route 7,
+Rabbit holes lines — and logs Q6's lines, the funnel and the `GRILL` line. **The judgment is the tasks'**: the grill
+passes (`rubrics/grill-pass.md`), the disposer (`rubrics/disposer.md`), the blind check (`rubrics/blind-check.md`, a
+different model where one is available), and the cold readers (`rubrics/cold-reader.md`) — each prompt given verbatim
+to its own subagent. **A batch act a human names to this run** — *"ratify 9f2c1a"*, *"veto 9f2c1a #3"* — is
+`bp challenge --act "<their words, verbatim>"`; for a batch another run printed, `bp` hands over the spot-check sample
+and takes the answer as `--sample-answer "<their words>"` before anything is executed. Q5's sitting stays the
+conversation's own; what is decided there is recorded as the human's move. Everything below remains the rule `bp`
+executes.
 
 ---
 
@@ -214,8 +233,8 @@ run names which one on the progress line it prints before the first dispatch:**
 
 | Scale | When | Dispatches |
 |---|---|---|
-| **Delta** | **The default**: every `add` handoff, `init`'s closing handoff ([`init.md`](init.md) I7), and every `/blueprint questions` without `full` | **At most four.** Each dispatch attacks up to four bodies from the attack surface below and works lenses 1–4 over them in one pass; lens 5 joins only where the overview changed; the absence sweeps run only as far as the changed text touches their checklists, inside those same dispatches |
-| **Full** | `init`'s skeleton grill ([`init.md`](init.md) I2), and `/blueprint questions full` when a human asks for it by name | **One per `Area`** working lenses 1–3 over its bodies, **one whole-document** dispatch working lenses 4 and 5, and **one** dispatch running the ten absence sweeps as a single checklist |
+| **Delta** | **The default**: every `add` handoff, `init`'s closing handoff ([`init.md`](init.md) I7), and every `/blueprint challenge` without `full` | **At most four.** Each dispatch attacks up to four bodies from the attack surface below and works lenses 1–4 over them in one pass; lens 5 joins only where the overview changed; the absence sweeps run only as far as the changed text touches their checklists, inside those same dispatches |
+| **Full** | `init`'s skeleton grill ([`init.md`](init.md) I2), and `/blueprint challenge full` when a human asks for it by name | **One per `Area`** working lenses 1–3 over its bodies, **one whole-document** dispatch working lenses 4 and 5, and **one** dispatch running the ten absence sweeps as a single checklist |
 
 [`SKILL.md`](SKILL.md)'s cost section is the single home of the caps and of what happens past them; a
 run never raises the scale on its own judgement. **Five adversarial lenses, each framed separately and
@@ -949,7 +968,7 @@ is written carrying `unverified` and is counted on the run's unverified line, ne
 context that drafted it and called a read. A read still out when the phase would close is rule
 8(iii)'s outstanding dispatch, and the row it holds is **not written to make the gate close** — a
 written row has no route back this side of a human — it is named, carried as a `CARRIED-FORWARD`
-line, and the next `questions` run picks it up at Q1 and reads that row at Q4 before any new
+line, and the next `challenge` run picks it up at Q1 and reads that row at Q4 before any new
 candidate. **The record:** the entry's `independence`
 line names the cold reader beside the writer and checker; each demotion is a `discard` line, so the
 funnel's `discarded` term and [`status.md`](status.md) C10's arithmetic take it with no new term;
@@ -1048,7 +1067,7 @@ UI or spoken at the review — makes it `Answered`.
    not on a decision anybody is owed a second time.)* A marker pointing at a `Closed (not applied)` or `Rejected` row can never be
    answered, so it blocks for nothing.
 
-   It has a step because [`status.md`](status.md) C5 promises a reader that *the next questions run
+   It has a step because [`status.md`](status.md) C5 promises a reader that *the next challenge run
    removes it and nobody need do anything* — and a promise with no phase behind it is how a marker sits
    standing forever while every report says it is about to clear. Cite the closed row's
    ID on every removal, and **name each one in the report**: a marker vanishing with no line is a decision
@@ -1144,7 +1163,7 @@ UI or spoken at the review — makes it `Answered`.
    alike. **The sweep of the record runs before the lines are appended**: a line that cannot survive the
    rule is written as the role, never the specific; a finding in a target field is reported, never
    repaired (§6); and the entry's `SWEEP-NOTE` line carries both ranges so the next sweep starts from
-   here (v19: a standalone `questions` run had no sweep step at all).
+   here (v19: a standalone `challenge` run had no sweep step at all).
 12. **Report** — every count in it freshly derived at the moment of printing ([`SKILL.md`](SKILL.md)
    rule 7), never carried from an earlier sitting's tally. It opens with the
    **funnel line** — candidates drafted → routed default → routed fix → routed slot → written as

@@ -67,7 +67,7 @@ prose; a **`⟳` heading** is a saved view. One rule: ***never type under a `⟳
 index on it is a view. That is what keeps a front door readable rather than turning it into the document.
 
 **`Who it's for` is load-bearing, not decoration.** It is the block every grilling reconciles the
-features against ([`../questions.md`](../questions.md) Q2, lens 5): a named user kind no feature serves,
+features against ([`../challenge.md`](../challenge.md) Q2, lens 5): a named user kind no feature serves,
 an actor the requirements keep naming that this block never does, and a job no requirement delivers are
 all findings. Where the sources name no audience at all, **the audience itself is the gap** — a marker on
 this block and a proposed question, never an invented persona: a made-up user kind is the same laundering
@@ -156,7 +156,7 @@ it said last time is exactly how a reader ends up trusting a count that was true
 grew past its own cap and quoted a live question tally — both already barred by "what does not go on it"
 above — and nothing caught it, because nothing re-derives the TL;DR's own claims against the rows before
 publishing them. **Regenerating every view it touches is part of the same write-back**, not a follow-up
-step: [`../add.md`](../add.md) A5, [`../resolve.md`](../resolve.md) R5, [`../questions.md`](../questions.md)
+step: [`../add.md`](../add.md) A5, [`../resolve.md`](../resolve.md) R5, [`../challenge.md`](../challenge.md)
 and Q6 each point here rather than restating it.
 [`../status.md`](../status.md) C8 is the mechanical backstop — it recomputes the same counts from the same
 rows and names any view whose printed state disagrees with them.
@@ -227,7 +227,7 @@ as a `Not doing` line on the feature it binds, and the NOT-clause names the kind
 becoming dogma: the answer to a proposal becomes *"no, and here is exactly what would change our mind"*.
 A run **never invents** a `revisit if:`, and since v16 it does not ask for one either: a missing
 reopening condition is **one line in the report and nothing else**
-([`../questions.md`](../questions.md) Q2 sweep item 4 is the single home). **No question and no
+([`../challenge.md`](../challenge.md) Q2 sweep item 4 is the single home). **No question and no
 marker** — a marker is an admitted unknown (§9), and a `Not doing` line whose *refusal is sourced* is a
 decision that has been made, whether or not the source also gave its reason. Marking it would misreport a settled refusal as open
 for as long as nobody supplies a reopening condition — permanently, for the exclusions nobody intends
@@ -268,7 +268,7 @@ line; a marker is for unknowns** — never mix them. **Provenance lines live her
 under the requirement they touched, because a reader who stops at the row never opens the log. **Two
 things every run-written body line carries** (v23): **the row's entity ID beside its title** — §8 says
 everything binds to IDs and titles get edited, and this sample cited a title alone until v23 — and
-**`· depth n`, the derivation depth [`../questions.md`](../questions.md) Q3's depth filter reads back**.
+**`· depth n`, the derivation depth [`../challenge.md`](../challenge.md) Q3's depth filter reads back**.
 A `Default (…)`, a doc-fix replacement and a `Content slot — client-supplied:` line carry the depth too;
 a line with no token is depth 1 to every later reader:
 
@@ -286,7 +286,7 @@ other — `Default (standard practice — ratify on review): reset links are sin
 (run 9f2c1a · 2026-08-14)` or `Default (adopted from the ratified design, frame 298:9042 — ratify on
 review): …` — written only under [`../SKILL.md`](../SKILL.md) rule 4's four conditions, listed on its
 run's defaults ledger, and re-labeled `(standard practice — ratified <date>)` when its batch is ratified
-[`../questions.md`](../questions.md) Q1 performs the re-label, on the human's named act, and logs it.
+[`../challenge.md`](../challenge.md) Q1 performs the re-label, on the human's named act, and logs it.
 A vetoed default is removed by the same procedure and becomes a marker plus a question. **The label is the
 provenance**: an unlabeled sentence claiming convention status is exactly the laundering §9 exists to
 prevent.
@@ -409,12 +409,12 @@ makes them guess*, so the document has to carry the question.
   on it and nothing ever has to be cleared before the document can be used.
 - **A marker is scoped to what it names, not to the page it sits on.**
 - **Carried is a legitimate state, and it is not the same as broken — and it is a state between
-  sittings, never a parking lot.** Write runs mint markers between questions sittings — a resolve run's
+  sittings, never a parking lot.** Write runs mint markers between challenge sittings — a resolve run's
   narrower marker, an init gap — and a marker whose question has not been proposed yet reads
-  `→ Question: carried`, is counted like any other, and waits for the next questions run.
-  **That run disposes every carried marker** ([`../questions.md`](../questions.md) Q2 sweep item 1,
+  `→ Question: carried`, is counted like any other, and waits for the next challenge run.
+  **That run disposes every carried marker** ([`../challenge.md`](../challenge.md) Q2 sweep item 1,
   Q4) — a client-bound gap becomes a question row, a convention-settled one becomes a labeled default
-  with the marker patched to its ledger line — so after any questions sitting the carried count reads zero, except markers a human's *ask it better*
+  with the marker patched to its ledger line — so after any challenge sitting the carried count reads zero, except markers a human's *ask it better*
   rejection (route 4), a defaults veto (route 6) or a vetoed content slot (route 7) returned to `carried`. On one measured
   project the old per-sitting cap let this backlog grow silently to ~80 known gaps with no row behind
   them — more than every question ever asked — which is the failure this rule now forbids. **A carried marker born from a
@@ -446,10 +446,10 @@ in the third.
 3. **The question was a decided exclusion, and becomes a `Not doing` line** in the one shape §5 gives. A
    decision is not an unknown, and a marker is only ever for an unknown.
 4. **A human rejected the proposal as *not a real gap* or *already decided*.** The rejection reason is
-   what decides this ([`../questions.md`](../questions.md) Q4): those two reasons say the marker was
+   what decides this ([`../challenge.md`](../challenge.md) Q4): those two reasons say the marker was
    raised over nothing, so it goes, citing the rejected row or the requirement that answers it.
    **A rejection reading *ask it better* removes nothing** — the gap is real and only the wording was
-   wrong, so the marker is returned to `carried` ([`../questions.md`](../questions.md) Q6 step 2). Without this split, rejecting a badly-worded proposal either
+   wrong, so the marker is returned to `carried` ([`../challenge.md`](../challenge.md) Q6 step 2). Without this split, rejecting a badly-worded proposal either
    stranded the marker forever or silently converted a known unknown into an unknown unknown.
 5. **It was decided outside the system and recorded here — a gate rather than a shortcut.** A decision
    made out loud, in a meeting, in a message clears a marker only by becoming an ordinary answer
@@ -468,7 +468,7 @@ in the third.
 
    **A relayed client answer is also `Answered`, and this is the arbitration** (v17). Where a person at
    the keyboard relays an answer **the client gave to a question this document asked** — the packet loop
-   [`../questions.md`](../questions.md) Q6 defines, which is how client answers are *designed* to
+   [`../challenge.md`](../challenge.md) Q6 defines, which is how client answers are *designed* to
    arrive — the row is recorded at `Answered` with the answer **verbatim** and one clause naming who
    relayed it and when. The relayer is the human of record: they are vouching for the words exactly as
    a checkpoint transcription vouches for spoken ones, and [`../SKILL.md`](../SKILL.md) rule 1 is
@@ -479,19 +479,19 @@ in the third.
    row waits for them, and **if they never move it, nothing enters the document:** the row sits `Open`,
    [`../status.md`](../status.md) C7 names it as it ages, and the marker stands. That is the honest
    failure, and it is strictly better than a claim entering ungated.
-6. **Its gap was adopted as a convention default and the defaults batch was ratified.** When a questions
-   run routes a marker's gap to the DEFAULT channel ([`../questions.md`](../questions.md) Q4), the default
+6. **Its gap was adopted as a convention default and the defaults batch was ratified.** When a challenge
+   run routes a marker's gap to the DEFAULT channel ([`../challenge.md`](../challenge.md) Q4), the default
    is written labeled and the marker is **patched** to cite the default's ledger line
    `→ Default: ledger <run id> #<n>, awaiting ratification` — still counted and still reported like any
    marker. **The marker is removed only by a human's explicit ratification of that defaults batch**
-   ([`../questions.md`](../questions.md) Q6 puts it to them; **Q1 executes the act** — given in that
+   ([`../challenge.md`](../challenge.md) Q6 puts it to them; **Q1 executes the act** — given in that
    conversation or named to a later run, since no field carries it), the removal citing the ledger line
    and the `RATIFIED` line that records the ratifying act. A
    veto on that line converts it back to `→ Question: carried` plus a proposed question. Ratification is
    never inferred from silence or from time passing.
 
-7. **Its gap is held by a written `Content slot — client-supplied:` line** (v30). Where a questions
-   run routes a marker's gap to the CONTENT SLOT channel ([`../questions.md`](../questions.md) Q4),
+7. **Its gap is held by a written `Content slot — client-supplied:` line** (v30). Where a challenge
+   run routes a marker's gap to the CONTENT SLOT channel ([`../challenge.md`](../challenge.md) Q4),
    the slot names what is owed, its shape, its bounds and **who supplies it** — so the gap is no
    longer an unknown this document carries, it is a delivery item with an owner. The marker is
    **removed when the slot line is written**, citing the slot line and the manifest line that
@@ -505,7 +505,7 @@ in the third.
    the source segment and the `item` line that wrote it**, in the same act as the write, exactly as
    route 1 removes a marker in the same act as applying an answer. **[`../add.md`](../add.md) A4
    step 8 is its executor**, and a marker on a feature that run did not write is swept at
-   [`../questions.md`](../questions.md) Q6 step 4 with route 1's stragglers. **The evidence is the source, and
+   [`../challenge.md`](../challenge.md) Q6 step 4 with route 1's stragglers. **The evidence is the source, and
    a removal that cannot name its segment is a bug like any other.**
 
 **None of the eight is a bypass of another.** A run may never write an answer straight in, and never

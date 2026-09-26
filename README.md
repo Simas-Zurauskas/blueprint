@@ -98,7 +98,7 @@ you.
 ### 5 · Keep extending it
 
 Nothing ever declares the document finished. New thinking, new material → `/blueprint add`. Grill it
-again → `/blueprint questions`. Apply new answers → `/blueprint resolve`. Ask
+again → `/blueprint challenge`. Apply new answers → `/blueprint resolve`. Ask
 `/blueprint status` whenever you want to know how much is still open — its
 **What is still unsettled** block names every gap by row, and nothing blocks on any of them.
 
@@ -110,11 +110,24 @@ again → `/blueprint questions`. Apply new answers → `/blueprint resolve`. As
 |---|---|---|
 | `/blueprint init` | Sources or interview → grilled skeleton → your confirm → the Blueprint | After your confirm |
 | `/blueprint add` | New material into existing/new features. **Runs to the end without stopping**, and by default **new source material supersedes document text it contradicts** — `add soft` keeps every contradiction as a question instead | Immediately, and the report names every change |
-| `/blueprint questions` | A grilling sized to what changed — the whole-document battery only when you ask for `/blueprint questions full` — every find disposed: questions written, convention settled as labeled defaults, content as slots, wrong text as doc-fixes — every drafted question read cold before it is written, ten to a reader, and given guidance | Live questions at `Open` + guidance; labeled default, fix and slot lines in feature bodies, awaiting your batch ratification |
+| `/blueprint challenge` | A grilling sized to what changed — the whole-document battery only when you ask for `/blueprint challenge full` — every find disposed: questions written, convention settled as labeled defaults, content as slots, wrong text as doc-fixes — every drafted question read cold before it is written, ten to a reader, and given guidance | Live questions at `Open` + guidance; labeled default, fix and slot lines in feature bodies, awaiting your batch ratification |
 | `/blueprint resolve` | Write vetted answers into the feature specs. **Runs to the end without stopping**, and by default **a vetted answer supersedes document text it contradicts** — `resolve soft` flags that row with both texts instead, and writes nothing | The answers |
 | `/blueprint status` | One screen: what's flagged, what's waiting on you, what's still unsettled | **Never** |
 
 `status` is always safe to run. When lost, run it — every line ends with what to do next.
+
+---
+
+## How it runs
+
+The mechanical half of every run — capturing sources, every hash, count and quotation check, every log line,
+every write and its read-back — is done by **`bp`**, a small program in this skill's folder that Node 22.6 or later
+runs directly: nothing to install, no build, no network of its own. The model does only the judgment, and every
+judgment is a separate task whose answer `bp` checks before anything is written. Your session drives it: run the
+command, do what it prints — Notion calls, sub-agent tasks, or a question for you — and run it again.
+
+**When it stops for you** — the skeleton at `init`, a ratification or a veto — it records your words only if they are
+in a message you actually sent in that session. A summary of what you said is refused.
 
 ---
 
@@ -148,7 +161,7 @@ months.
 ## Honest limits
 
 - A run's cost follows what changed: an `add` grills in at most four dispatches, and the whole-document
-  battery runs only when you say `/blueprint questions full` (since v36, after one small `add` spent five
+  battery runs only when you say `/blueprint challenge full` (since v36, after one small `add` spent five
   million tokens re-grilling everything).
 - The pre-v36 whole-document battery caught **~86% outright and detected ~97%** — **in one in-house lab, n=1:
   77 defects planted by us, graded by us, plausibly by the same model family that wrote the answers.
@@ -165,5 +178,5 @@ months.
 ---
 
 **Want the full picture?** Open [`blueprint-explained.html`](blueprint-explained.html) — the readable
-deep-dive. The run files (`init.md`, `add.md`, `questions.md`, `resolve.md`, `status.md`) and
+deep-dive. The run files (`init.md`, `add.md`, `challenge.md`, `resolve.md`, `status.md`) and
 `spec/` are the source of truth for how every run behaves.

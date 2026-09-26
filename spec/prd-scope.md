@@ -1,11 +1,11 @@
 # Spec — what belongs in this document, and what does not
 
 **This file is the single home of the scope boundary.** **Its readers are
-[`../questions.md`](../questions.md) Q3 and Q4** — the filter and disposition phases — and it is
+[`../challenge.md`](../challenge.md) Q3 and Q4** — the filter and disposition phases — and it is
 applied to one candidate at a time there. *It said "read at question-generation time" until v31,
 which named a phase that never opened it: Q2 generates and cites nothing here, so every rule below
 addressed to the generating side had no reader at all. Of the three marked* **generation-side**,
-*only the volume question has a reader — [`../questions.md`](../questions.md) Q2's standing sweep,
+*only the volume question has a reader — [`../challenge.md`](../challenge.md) Q2's standing sweep,
 item 6, added v31.* **The mass-event sweep in §3 is imported by nothing, and §4's
 collective-materiality merge is imported at Q4 rather than at generation time** — *both are still
 rules with no generating executor, and saying so is the point. The rest are Q3's and Q4's.* Companions: [`doc-shape.md`](doc-shape.md) ·
@@ -198,7 +198,7 @@ software product, not the process of producing the software product."***
 | **Answered by a principle the client stated** | A principle answers its instances (v26.4). *"A driver must never be rostered past the limit"*, *"payroll is not changing"*, *"nothing gets deleted, we are audited"* each settle a family of candidates, and a candidate that merely applies the principle to one case adds a scenario, not a decision. **Test: quote the principle and the candidate side by side — does the principle already decide it?** The exception is where the principle is silent on the *posture*: a rule saying what must never happen does not say whether the system refuses it, warns, or records it afterwards, and that posture is a live question | The spec itself, as a stated consequence |
 | **Answered by consequence of something the client stated** | Where the client stated a rule, a candidate asking what that rule implies in an obvious instance is not a second question. *"An arrival can be undone"* answers *"can an arrival recorded against the wrong reservation be undone?"* — the candidate adds a scenario, not a decision. **Test: write the client's statement and the candidate's answer side by side. If the answer is entailed rather than chosen, drop it** | The spec itself, as a stated consequence |
 | **Mechanism where the outcome is stated** | Locate the stated outcome. **Then write the candidate's two competing answers and check each against that outcome: if BOTH deliver it, the choice between them is the builder's and there is no question.** **Two answers do not both deliver a stated outcome if they differ in what gets recorded, in who may act, or in what happens when the flow fails** (v29) — check those three before concluding the choice is the builder's, because this route was the second-largest source of missed questions. *"Hide the unusable berths or grey them out"* — both deliver *"don't offer a berth a boat can't float in"*, so both are mechanisms | DECIDE or PROPOSE, by the test below |
-| **Conventional default, cheap to reverse** | Name the default. If shipping it wrong changes no stored data, no money taken and no agreement signed — ship it and log it. **Reversibility, not importance** | The **DEFAULT** channel's defaults ledger ([`../questions.md`](../questions.md) Q4) |
+| **Conventional default, cheap to reverse** | Name the default. If shipping it wrong changes no stored data, no money taken and no agreement signed — ship it and log it. **Reversibility, not importance** | The **DEFAULT** channel's defaults ledger ([`../challenge.md`](../challenge.md) Q4) |
 | **Unbounded catch-alls** | Try to write two specific competing answers. *"Anything else we should know?"* buys no decision | Delete. Convert unease into a reachable-state sweep |
 | **Speculative future releases** | Does the answer change something shipping in **this** release? | One line on the Later list, no follow-ups |
 
@@ -333,7 +333,7 @@ tests disagree, the tests win.
 ## 9. What this file does not settle
 
 - **Two of its five dispositions have no writing channel, and this is the honest statement of it**
-  (v31). `questions.md` Q4 writes four channels — QUESTION, DEFAULT, DOC-FIX and CONTENT SLOT — and
+  (v31). `challenge.md` Q4 writes four channels — QUESTION, DEFAULT, DOC-FIX and CONTENT SLOT — and
   **`PROPOSE` and the professional-determination half of `RECORD` map to none of them.** A `PROPOSE`
   is not a DEFAULT: [`../SKILL.md`](../SKILL.md) rule 4(a) admits only *"one dominant convention any
   competent team picks the same way"*, and §2 admits a `PROPOSE` only where the client **has**
@@ -347,18 +347,18 @@ tests disagree, the tests win.
   admit it. *Adding a fifth channel is the alternative and it is a real design change to the phase
   with the measured determinacy problem; it is not made here.*
 - **It judges one candidate at a time.** Nothing here bounds a chain across runs; that is
-  [`../questions.md`](../questions.md) Q3's depth filter, and the two are independent.
+  [`../challenge.md`](../challenge.md) Q3's depth filter, and the two are independent.
 - **It presumes material to test against.** On a thin corpus most tests are unrunnable, and a run in
   that state says so rather than admitting everything by default.
 - **The materiality floor is unusable until the volume question is answered**, and until then this file
   fails toward asking. **No phase has ever asked it** (v31): §3 names it *"exactly one per project,
-  asked early"* and marks it generation-side, and [`../questions.md`](../questions.md) Q2's sweeps are
+  asked early"* and marks it generation-side, and [`../challenge.md`](../challenge.md) Q2's sweeps are
   a closed list that has never contained it — so §4 has been inert in every run this skill has
   executed. Q2's standing sweep now confirms it exists (item 6). **Until any answer is on record §4 does not
   apply at all** (§4); **where only part is on record the floor stands on what is known and the run
   says which part it lacks** (§3). Those are two different cases and this file states both.
 - **It does not rank.** Where more candidates pass than a sitting can carry,
-  [`../questions.md`](../questions.md) Q4's re-gate and its filters decide, not this file (v30: that
+  [`../challenge.md`](../challenge.md) Q4's re-gate and its filters decide, not this file (v30: that
   phase carries no row budget).
 - **No human has ever labelled this.** The tests are grounded in published standards and in two
   simulated corpora whose labels are an LLM persona's, not a client's. The persona has never been

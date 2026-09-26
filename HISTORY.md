@@ -1,3 +1,220 @@
+# v42 — the `questions` command is `challenge`
+
+**What produced this.** The owner's call, 2026-09-26. The command was named for what it leaves behind, not for what it
+does, and read as "show me the questions" — which `status` and the Unsent tab already do — so it blurred with
+`resolve`, the command that writes answers in. `challenge` names the act: attack the document for what it cannot answer
+yet. The owner chose it from a shortlist; `grill` was tried and set aside first.
+
+## What changed
+
+- **The command, its run file and its executor:** `/blueprint questions` is `/blueprint challenge`, the run file
+  `questions.md` is `challenge.md`, and `bp questions` is `bp challenge`; `bp`'s command list, its run-log headings, its
+  status lines ("name it to the next challenge run") and the phase headings and task-list labels that named the command
+  (I7, A5) follow. The phases keep their labels, Q1–Q6, so every `challenge.md Qn` citation still resolves.
+- **The old name still works, and is never rewritten.** An invocation by the old name runs `challenge`; `bp` reads
+  `questions` as `challenge` wherever a command is named — an invocation, a `--command` value, and a run-log heading a
+  v41-or-earlier run wrote — so a Blueprint's standing log keeps its ratification state across the rename.
+- **Kept their names, deliberately:** the target's Open Questions database, the local `questions.md` file, the
+  features' `questions` front-matter key, `bp render --questions`, and the funnel's "written as questions" — those are
+  the questions, not the command.
+- `lint.sh` forbids the retired command phrases in every run file, the two specs that named them, and the two readers.
+
+## What was measured
+
+`./check.sh` green in both lint locales and all four of `bp`'s gates, and a live v41 Blueprint whose newest entry is a
+`questions` run read back by `bp status` and `bp log validate` with the same findings it had before the rename.
+
+**Why this is not on the shape-change register.** A command's name is the skill's own vocabulary and the local record's
+heading; no property, select option, database or file layout on the target moved.
+
+# v41 — `bp init`: a new Blueprint, end to end
+
+**What produced this.** The owner's brief for the executor (v38): machine first, the model doing judgment only. v39 and
+v40 did it for the three commands that change a Blueprint; this version does it for the one that creates it, on the
+engine `add` and `questions` share.
+
+## What changed
+
+- **`bp init`** records the target (`--target notion:<url>` or `local[:<folder>]`), seeds the ignore file before
+  anything else lands in the working folder, captures every source verbatim and hashed, opens the entry, and reads the
+  overview as it stands — halting with the setup checklist where there is no connected page, and pointing at `add`
+  where a Blueprint already exists. **One drafting task** returns the skeleton as typed data — the overview's four
+  human blocks, the features with every requirement cited, the exclusions, the contradictions and the gaps — and
+  **bp checks it before anyone sees it**: every quote string-matched, no two features of one name, no machine-local
+  path in `Links`, nothing the content rule bars; a draft that fails is sent back once, and what a second one still
+  gets wrong is dropped and named on the screen. `CON-k` are numbered once and **kept across every re-draft**, so a
+  contradiction cannot vanish between I2 and the close.
+- **I2's full-scale grill runs over the drafted skeleton**, and its finds are folded back in by one re-draft before the
+  screen. **I3 is one hard stop**: the screen — block text and all — is written to `sources/<run-id>/i3-skeleton.md`
+  before it is printed, and re-running without a reply re-prints it without a second capture. The reply is captured
+  verbatim as a source; `edit` is re-drafted and re-presented once, a contradiction the reply settles is closed at I3
+  in the human's own words, and `decline` ends the run with nothing created.
+- **I4 creates exactly what `spec/databases.md` specifies** — two databases, every property and select option, Touches
+  two-way to Features — then the four views over the API; **a view the API refuses is reported with its filter and
+  the error, never a halt**. A re-read confirms both databases and that no earlier child was lost.
+- **I5 writes the rows, then the overview once**: on Notion a whole-page replace that re-emits both databases under
+  their `⟳` headings and keeps everything the page held below them — **never allowed to delete a child**, so a
+  forgotten child fails the call rather than vanishing — then read back; the write's text is checked against the
+  skeleton on disk first. I6's verdicts are applied; **an overview verdict becomes a proposal row**, never an
+  in-place fix. I7 sweeps the content rule, hands off to the questions run in the same entry, regenerates the local
+  `⟳` lists, and runs the conservation check: every `CON-k` resolves to a row, a carried marker, a discard or the
+  human's answer at I3, or the close halts naming it.
+
+- **A human's act is recorded only in the human's own words, found in a message they sent** (the promise
+  `bp/DESIGN.md` §8 made at v38 and no command kept until now): the I3 reply, a ratification or veto, the spot-check
+  answer and the vouch for an altered source are each checked against the session's human turns — never a tool
+  result, a subagent's thread or a harness reminder — and refused when not found; the log carries a receipt, never the
+  words. Without it, nothing stopped an orchestrator from passing `--decision confirm` on a skeleton nobody confirmed.
+
+## What was measured
+
+End-to-end runs on a local folder (the confirm, an edit that settles a contradiction, a decline, an existing
+Blueprint refused) and on a simulated Notion that creates databases and views, refuses a replace that would drop a
+child, and rejects a view's filter. The two open questions from v40's plan were checked against the connector's own
+documentation: `replace_content` takes `new_str` and fails rather than drop an unreferenced child, and the view
+language accepts `IN (…)` for a status set.
+
+**Why this is not on the shape-change register.** It creates the shape every earlier version specified; no property,
+select option, database or file layout moved.
+
+# v40 — `bp add` and `bp questions`: the two runs that write material and questions, end to end
+
+**What produced this.** The owner's brief for the executor (v38): machine first, the model doing judgment only. v39 did
+it for `resolve`; this version does it for the two commands that write new material and new questions, which share one
+engine and embed each other — `add`'s A5 hands off to the questions run inside its own entry.
+
+## What changed
+
+- **`bp add`** captures the sources verbatim and hashed (a folder file by file, a PDF byte for byte, a code repository
+  refused with the ask), opens the entry, reads the Blueprint, and dispatches **one drafting task** whose typed output
+  says where every segment lands and what every change says. **bp checks the draft before a byte is written**: every
+  quote string-matched against its captured source, every named feature and every superseded text found, nothing the
+  content rule bars — a draft that fails is sent back once, and a second failure drops the failing items, each named on
+  a `citation` line, never written. A3's statement is printed and not waited on; A4 writes one named block at a time,
+  **each write built on the page as the last write left it**, supersessions quoted on the line, new features created
+  with their skeleton and a sourced `FR-1`, gaps and source-vs-source contradictions marked `carried` citing `CON-k`
+  (their verbatim quotes in `sources/<run-id>/contradictions.md`, never `record/`), overview drafts routed to a
+  project-level question row, and route 8's marker removed in the same act. A5's faithfulness check returns one verdict
+  per written item; a narrowing is written in place with its own provenance line, a removal always leaves a marker, a
+  flagged item gets one second look.
+- **`bp questions`** plans the attack surface from the `GRILL` and `HASHES` lines (the delta scale capped at four
+  dispatches of four bodies, the rest `queued`), freezes each pass's brief, runs the standing sweep by code, and reads
+  each candidate's depth from the provenance tokens. One disposer routes every candidate; **bp enforces what is
+  checkable**: a quoted discard must quote text found where it says, a survey filter must quote its surveyed
+  requirements' own sentences, the four undiscardable classes are never demoted, a question at depth 3 or deeper is
+  capped, a Why asked that says its reader cannot answer it is not written. The blind check's verdict is applied by Q4's
+  ordering exactly, and the cold read's only with its evidence. Every channel is written through the serial path —
+  rows at `Open` with their markers patched in the same act, defaults on the oldest standing ledger, fixes, slots with
+  route 7 — and a batch act a human names runs Q1: the spot-check sample for a later run's ratification, and a veto's
+  numbers matched by content to the screen the human read.
+- **One shared engine** for `add`, `questions` and (next) `init`: the run state, the task dispatch (unique id, brief and
+  nonce per dispatch; a content check that sends a task back once), the serial write queue (block writes, row
+  creation, property writes, each read back), and the relay read.
+
+## What was measured
+
+End-to-end runs of both commands on a local Blueprint, and of `add` on a simulated Notion that applies every
+`update_content` and creates every page: every channel written, the Q1 act executed with its spot-check, a veto
+resolved by content. They found three defects before any real run could: a local body hashed with and without its
+trailing newline (every written body then read as changed on the next run), an act's writes held only by the
+invocation that took the spot-check answer, and an add's item line naming a feature by an id the hash roll-up read as a
+question row's.
+
+**Why this is not on the shape-change register.** The skill's own files moved; every row, line and property written is
+one an earlier version already wrote.
+
+# v39 — `bp resolve` executes all of R1–R5, the project-level path and the overview route included
+
+**What produced this.** v38 left `resolve`'s judgment and writes to the model. This version hands `bp resolve` the whole
+run: R1's queue, R2's four checks, R3's writer and check as dispatched tasks it collects from their own transcripts,
+the delta's assembly, R3.6's gate and the commit path, the property writes, and R5's lines — and, since the first
+build left project-level rows at `Answered`, R3.1's project-level path and overview route.
+
+## What changed
+
+- **`bp resolve`** prints what is owed — connector calls, subagent prompts, or the report — and is run again until it
+  prints the report. Each dispatch has its own id, brief and nonce for the whole run, and an answer is read only from
+  a subagent transcript that began after the dispatch was issued (an adversarial review found that ids built from a row
+  id's first eight characters collided on real, time-ordered Notion ids, handing one row's answer to another).
+- **The delta is assembled by code**: new requirements numbered, one provenance line per requirement, a changed line
+  paired with the line it replaced by content, markers carried or removed in the same act, a seed's `## Why` written
+  with its `FR-1` as one span, and every write simulated on the fresh fetch before it is sent. The read-back must
+  show the whole page as the simulation said — a foreign edit elsewhere on the page is a conflict, never absorbed into
+  the new baseline.
+- **Project-level rows** (`Touches` empty or several features) go to a project-level writer
+  (`rubrics/resolve-project-writer.md`) that returns either one delta per feature the answer changes — each checked
+  and committed like a single-feature delta, serially — or a proposed overview block. The proposal is checked,
+  appended to `Why asked`, pinned by hash in the `FLAGGED` line, and printed verbatim; round two writes it on the
+  move back to `Answered`, or writes the human's own block text where `Answer & why` carries one under the block's
+  heading. **A changed answer with no block text accepts nothing** — it never overwrites a block.
+- **R2.3's baseline** is the newest line naming a body, by id or by name, whichever is later; a line that wrote
+  nothing (`re-queued`, `Flagged`, `Kept`, `body —`) leaves the older baseline standing; a re-baseline is recorded
+  only for a body a row was actually flagged for.
+- **The pointer grammar** reads a number only as a whole token (`2.5 seconds`, `3:00 pm`, `1-2 days`, `24/7` are
+  answers, not pointers), refuses only a closed list of one-word non-decisions, and pairs a slot's value with its
+  pointer (`3, 5 days`).
+
+## What was measured
+
+1,700+ tests: every module against the spec by independent writers who were never shown the code's expectations,
+two adversarial reviews (spec fidelity; robustness and security) whose 45 findings were each fixed or answered, and
+end-to-end runs on a local Blueprint and on a simulated Notion that applies every `update_content` edit — which found
+a run that re-planned its v34 migration forever because it waited without saving its state.
+
+**Why this is not on the shape-change register.** The skill's own files moved; the overview proposal sits in the
+`Why asked` property every row already has. No property, select option, database or file layout on the target moved.
+
+# v38 — the mechanical half of a run moves into `bp`, an executor in the skill's own folder
+
+**What produced this.** The owner, 2026-09-25: *"it takes so long to do operations with it … what if we made it like
+structured file, js functions, json files, with flags … so ai needs to do less cognitive work … machine first, need to
+be faster and more correct."* An assessment measured 13 real runs on the «Cyclical Tasks» Blueprint (research
+`blueprint-next/REPORT.md`, 2026-09-25) before anything was built.
+
+## What the measurement showed
+
+- **44% of wall-clock was main-thread model time, and about 80% of that went on bookkeeping-type calls** (a heuristic
+  split): composing run-log lines and hash helpers, the reasoning around every Notion read and write, briefs, string
+  matching, and loading ~500 KB of skill text. The Notion API itself was 1.5%. The other 44% was waiting on subagents
+  doing real judgment, which code does not touch.
+- **The record drifted from its own rules in ways only a machine keeps from happening.** 35 `check:` lines in
+  `run-log.md` where R5 routes them to `runs/`; four `COLD READ:` lines, a report block, used as a log kind; body hashes
+  skipped (the v32 `init` on all 25 bodies, *"no token in the environment, so every read crosses the model context"*);
+  and two transcripts where the model wrote scripts to parse its own session log just to get a body into a file it
+  could hash.
+- **A rule-7 miscount that nothing caught.** Four markers in the early `→ Question: asked 2026-09-08, see this row's
+  Questions` form sat on three feature bodies from at least 2026-09-24, and every run since logged `markers 0` as a
+  fresh count. The first `bp status` found them.
+- **The ignore-file gate never worked as written.** `git check-ignore -q sources cache` exits 128 on every machine —
+  `-q` accepts one pathname — so the command `spec/targets.md` §3 prescribed could only ever hold a commit. Runs had
+  worked around it by hand.
+
+## What changed
+
+- **`bp/`** — a TypeScript command-line program, run by Node with type stripping (no build step, no runtime
+  dependency). It owns every run-log line (kind checked against R5's closed list for the entry's command, routed,
+  appended without touching another byte), every hash, every count's arithmetic, every quotation check, the progress
+  block, the pre-flight facts, `status` end to end, and `render` — the Blueprint as md, txt, json or html, one
+  feature, or a build packet. `SKILL.md`'s new `bp` section is the single place a run learns to drive it.
+- **The relay.** The Notion connector is OAuth-only, so `bp` plans the exact connector calls, the model makes them,
+  and `bp` reads each result back out of the session transcript (subagents' included) — fetched text is never
+  retyped. `bp`'s body hash over the connector's text equals v37's: 305 of 360 historical fetches matched a hash some
+  v37 entry recorded, so no Blueprint needs re-baselining.
+- **The log's samples** in `resolve.md` R5 take the `- kind: text` bullet shape `bp` writes (the shape the live logs
+  already used), and `bp` reads every earlier shape — v37 bullets, v21 column lines, fenced entries.
+- **The ignore-file command** is one path per call, and `lint.sh` forbids the two-path form.
+
+## The honest limit
+
+`init`, `add`, `questions` and `resolve` still compose their judgment and their writes as before; this version gives
+them `bp` for everything mechanical they already did by hand. The relay rests on Claude Code's transcript format,
+which is not a published interface — `bp` reads it defensively and names a fallback (`--file`), but a change there
+breaks the relay loudly rather than silently. Nothing measured the speed change yet; the assessment's estimates stand
+until a timed run replaces them.
+
+**Why this is not on the shape-change register.** No property, select option, database or file layout on the target
+moved; the skill's own folder gained `bp/`, and the local record's line shape is the one the live logs already used.
+
 # v37 — the overview's `Links` and `Operating` blocks carry only what a reader of the target can open
 
 **What produced this.** The owner, 2026-09-19, reading the live «Cyclical Tasks» overview in Notion:
@@ -751,7 +968,7 @@ Added v16: one measured `add` left ten individual names in its own committed `re
 
 ### A5 — Check, then questions, then finish
 
-(v16: a second obligation here minted a carried marker for every `Not doing` line written without a `revisit if:`. Removed with the question class it fed — [`questions.md`](questions.md) Q2 sweep item 4. Such lines are named in the report.)
+(v16: a second obligation here minted a carried marker for every `Not doing` line written without a `revisit if:`. Removed with the question class it fed — [`questions.md`](challenge.md) Q2 sweep item 4. Such lines are named in the report.)
 
 ### A5 — Check, then questions, then finish
 
@@ -1030,11 +1247,11 @@ Measured: obeying the cap literally, one drain left **~15 of 19 edited requireme
 
 ### R5 — Write back, log, report
 
-(v14. The earlier rule ended the run with the sitting and named the remainder "next sitting's", with no sentence anywhere permitting the same invocation to continue: a measured 174-row queue applied ten and reported a complete run, and a 34-row queue cut itself into 10/10/10/4 and closed with the fourth never dispatched and no reason recorded anywhere. What makes back-to-back sittings honest is what the ten's evidence is actually about — self-conditioning across many steps in **one** context. Every item's writer and checker are fresh dispatches with no memory of earlier items (rule 8(i)), the orchestrator's per-item work is mechanical (brief → dispatch → fetch-diff → commit → log), and each sitting re-derives its own counts and gate from the rows as they now stand. This is the construction [`questions.md`](questions.md) Q5 already runs back-to-back, inverted: that round asks a person whether to continue because a person is answering it; here nobody is, so continuing is the default and stopping is what must be justified.)
+(v14. The earlier rule ended the run with the sitting and named the remainder "next sitting's", with no sentence anywhere permitting the same invocation to continue: a measured 174-row queue applied ten and reported a complete run, and a 34-row queue cut itself into 10/10/10/4 and closed with the fourth never dispatched and no reason recorded anywhere. What makes back-to-back sittings honest is what the ten's evidence is actually about — self-conditioning across many steps in **one** context. Every item's writer and checker are fresh dispatches with no memory of earlier items (rule 8(i)), the orchestrator's per-item work is mechanical (brief → dispatch → fetch-diff → commit → log), and each sitting re-derives its own counts and gate from the rows as they now stand. This is the construction [`questions.md`](challenge.md) Q5 already runs back-to-back, inverted: that round asks a person whether to continue because a person is answering it; here nobody is, so continuing is the default and stopping is what must be justified.)
 
 ### R5 — Write back, log, report
 
-(v16: the first of the two was a carried marker for every `Not doing` line written without a `revisit if:`. That obligation is removed with the question class it fed — [`questions.md`](questions.md) Q2 sweep item 4 — because a marker whose only disposition was a question nobody wanted is manufactured work at both ends. Such lines are named in the report instead.)
+(v16: the first of the two was a carried marker for every `Not doing` line written without a `revisit if:`. That obligation is removed with the question class it fed — [`questions.md`](challenge.md) Q2 sweep item 4 — because a marker whose only disposition was a question nobody wanted is manufactured work at both ends. Such lines are named in the report instead.)
 
 ### R5 — Write back, log, report
 

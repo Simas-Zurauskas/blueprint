@@ -2,7 +2,7 @@
 
 `add` takes **more loose material** — a follow-up call, a second deck, a page of notes, a client email
 into a Blueprint that already exists. Same spine as [`init.md`](init.md): capture verbatim, state the
-delta, write what a source supports, check independently, then run the questions flow — **end to end,
+delta, write what a source supports, check independently, then run the challenge flow — **end to end,
 without stopping** ([`spec/run-progress.md`](spec/run-progress.md) shows where the run has got to).
 
 The difference is that the destination already has content, and somebody may have settled some of it.
@@ -38,6 +38,22 @@ both modes ([`SKILL.md`](SKILL.md) rule 4).
 
 **Run the six pre-flight checks in [`SKILL.md`](SKILL.md) first.**
 
+## How it runs (v40) — `bp add` executes A1–A5
+
+**Run `<skill>/bp/bp add --source <file or folder>`** — `--text <file>` for what was said in conversation (save it
+verbatim to a file first), `--text-name` to name it, `--soft` or `--mode <word>` for the mode — then do exactly what it
+prints and run `bp add` again, until it prints its report. It performs the mechanical half of every phase below: A1's
+capture — every source copied verbatim into `sources/<run-id>/`, hashed, a code repository refused with the ask; the
+run-log entry; the Blueprint's read; **every check on the draft** — each quote string-matched against its captured
+source (rule 6(d)), each feature named checked, each superseded text found on the page, nothing the content rule bars;
+the `CON-k` inventory with its quotes kept in `sources/<run-id>/contradictions.md`; A3's statement; A4's writes, one
+named block at a time through the serial commit path, supersession and route 8 included; A5's faithfulness verdicts
+applied and logged; the content sweep; **the challenge handoff, in this same entry**; and the close. **What it prints
+is one of three things:** Notion calls to make as printed; tasks — the **drafter** (A2,
+`rubrics/add-drafter.md`), the **faithfulness check** (A5, `rubrics/faithfulness-checker.md`) and the challenge run's
+own — each prompt given verbatim to its own subagent; or the report. A3's statement is printed once, the first time
+the run speaks after drafting, and the run does not wait on it. Everything below remains the rule `bp` executes.
+
 **What add never does.** Never invents content — a supersession carries the source's words, never the
 run's. Never picks a winner between two sources. Never reads a code repo. Never writes the overview
 silently ([`spec/doc-shape.md`](spec/doc-shape.md) §3). Never overwrites a **human-authored field**
@@ -53,7 +69,7 @@ Print the standard progress block ([`spec/run-progress.md`](spec/run-progress.md
 every phase boundary, and at every sitting boundary. Counts are re-derived from the current state
 each time, never carried forward.
 
-Task list: `A1` collect · `A2` draft the delta · `A3` state the delta · `A4` write · `A5` check, questions, finish.
+Task list: `A1` collect · `A2` draft the delta · `A3` state the delta · `A4` write · `A5` check, challenge, finish.
 
 ---
 
@@ -65,7 +81,7 @@ Task list: `A1` collect · `A2` draft the delta · `A3` state the delta · `A4` 
 | # | Where | Why it is sanctioned |
 |---|---|---|
 | 1 | **A1** — the ask that accompanies a refused code repository ([`init.md`](init.md) I1) | Same reason as `init`: the decline and the ask are one act |
-| 2 | **A5** — the review sitting inside the questions handoff, and only where a person asks for one ([`questions.md`](questions.md) Q5) | It is the human's own request and ends when they stop answering |
+| 2 | **A5** — the review sitting inside the challenge handoff, and only where a person asks for one ([`challenge.md`](challenge.md) Q5) | It is the human's own request and ends when they stop answering |
 
 **Nothing that is `add`'s own blocks** — which is the point of the command
 (*"halting is the thing this run does not do"*). A3 prints and moves on; A2's *"because"* asks
@@ -133,7 +149,7 @@ Four lists again, and a fifth that only `add` has.
 5. **Exclusions** the new material carries, in the one shape, with the *why* the source gives.
 6. **The delta is attacked once, after it is written** (v36). A2 dispatches no grill of its own: A3
    prints and does not wait, so a pre-write battery protects no human decision, and A5's handoff runs
-   [`questions.md`](questions.md) Q2 at its delta scale over exactly these changes, with this run's
+   [`challenge.md`](challenge.md) Q2 at its delta scale over exactly these changes, with this run's
    writes first. What drafting itself turns up — what a new requirement does not decide, what it
    collides with — still joins lists 3 and 4 here.
 
@@ -272,7 +288,7 @@ putting one back costs a sentence too.
 
    **A marker on a feature this run did not write is outside this act's reach** — the answer landed
    on one feature and the marker sits on another. Those are swept at
-   [`questions.md`](questions.md) Q6 step 4, which A5's handoff reaches in the same sitting.
+   [`challenge.md`](challenge.md) Q6 step 4, which A5's handoff reaches in the same sitting.
 
    **In `soft` mode a marker is never removed against a supersession**, because none was written —
    the mode's whole rule is that existing text stands, and clearing a marker against a supersession
@@ -282,7 +298,7 @@ putting one back costs a sentence too.
 
 ---
 
-## A5 — Check, then questions, then finish
+## A5 — Check, then challenge, then finish
 
 **The faithfulness check is [`init.md`](init.md) I6 run over this run's writes only** — a genuinely
 separate dispatch, a different model where two are available, briefed with this run's source record, the
@@ -320,14 +336,14 @@ one — that is `Flagged`, and it is the case this check exists for. *What it do
 plainly: a false but plausible sentence inside a genuine source. That sentence is in the record, so
 it passes, and nothing here can tell it from a true one.*
 
-**Then hand off to [`questions.md`](questions.md) Q1–Q6**, in this same sitting, over the updated
+**Then hand off to [`challenge.md`](challenge.md) Q1–Q6**, in this same sitting, over the updated
 Blueprint, at Q2's delta scale with this run's writes first. **This is not optional and it is not deferrable** — a run that writes material and stops
 before its questions exist has done half the job, and the markers it minted sit `carried` with
 nothing coming for them. That file owns the proposal
 flow, the review and every marker disposition; none of it is
 restated here. `add` contributes its own findings as inputs: A2's contradictions and gaps, A5's flagged
 claims. *(A new `Not doing` line with no `revisit if:` is **not** an input — v16 removed that class;
-it is one report line, [`questions.md`](questions.md) Q2 sweep item 4.)*
+it is one report line, [`challenge.md`](challenge.md) Q2 sweep item 4.)*
 
 **Regenerate every `⟳` view this delta touched** ([`spec/doc-shape.md`](spec/doc-shape.md) §3's single
 home) as part of this same write-back, before printing the screen — never patch a view's existing text

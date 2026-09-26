@@ -1,0 +1,4 @@
+#!/bin/sh
+# bp — the blueprint skill's executor. Node strips the TypeScript types at run time; there is no build step.
+DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+exec node --experimental-strip-types --no-warnings "$DIR/src/bin.ts" "$@"

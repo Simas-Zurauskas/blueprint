@@ -10,7 +10,7 @@ its nine phases looks exactly like one that did nine.
 
 ## 1. The block
 
-Printed at run start, at every phase boundary, and at every sitting boundary. **Every count in it is
+Printed at run start, at every phase boundary, and at every sitting boundary — **rendered by `bp progress`** (v38), which refuses a block whose arithmetic does not add up or that carries two `now` lines. **Every count in it is
 re-derived from the current state at the moment of printing** ([`../SKILL.md`](../SKILL.md) rule 7)
 never carried forward from the last time the block was printed, which is the whole failure this
 skill's rule 7 exists to prevent and it applies here like anywhere else.
@@ -36,14 +36,14 @@ BLUEPRINT resolve · run 7f3a2c · sitting 2 · mode: force
 
 **`done · now · next · blocked · skipped`** are the only five states. **`blocked`** replaces `now`
 when a phase cannot proceed and names what is in the way on the same line. **`skipped`** is for a
-phase that legitimately did not run — [`../questions.md`](../questions.md) Q5 without a request is the
+phase that legitimately did not run — [`../challenge.md`](../challenge.md) Q5 without a request is the
 standing case — and it exists because writing `done` against a phase that never ran is a lie a reader
 cannot detect. There is deliberately no state meaning *started but not finished* — a phase
 is running or it is not, and that fifth state is where a run hides that it stopped.
 
 ## 1a. An embedded run — whose task list governs
 
-`init` I7 and `add` A5 hand off to [`../questions.md`](../questions.md) Q1–Q6, which declares its own
+`init` I7 and `add` A5 hand off to [`../challenge.md`](../challenge.md) Q1–Q6, which declares its own
 six-phase list, **inside one phase of the outer run**. Nothing said which list the block should show,
 and **all five runs of a measured campaign got ask 4 wrong at exactly this seam** — four different
 readings of one sentence: 4 blocks, 1 block, 0 blocks, and one run reprinting `5 phases · 4 done ·
@@ -54,7 +54,7 @@ outer phase stays `now` throughout. The embedded block carries the outer run's h
 task list, so a reader can see both — `resolve · run 7f3a2c` on the header, `Q1…Q6` on the list. When
 the embedded run finishes, the outer block prints once more with that phase `done`.
 
-**Why this way round:** the embedded `questions` run is the largest phase in `init` and `add` — in one
+**Why this way round:** the embedded `challenge` run is the largest phase in `init` and `add` — in one
 measured run it disposed 37 candidates, wrote 10 rows, adopted 4 defaults and patched 11 markers, all
 of it invisible between `now A5` and `5 done · 0 to go`. A phase that big is not a line; it is a run.
 

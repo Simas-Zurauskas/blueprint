@@ -13,6 +13,8 @@ If this file and a run file ever disagree, the run file wins and this file is wr
 - The one prohibition that catches first-timers: the skill **never reads a code repo** — what the
   product *should* do comes from people, not from what somebody already built (→ SKILL.md "What this
   skill does NOT do").
+- Node 22.6 or later on the machine: the `bp` executor in the skill's folder runs every mechanical act, with nothing
+  to install (→ SKILL.md "`bp` — the executor", bp/DESIGN.md §1).
 - Sub-agent dispatches are mandatory for every independent check; know how your harness spawns one
   before starting, or every check will honestly report itself unperformed (→ SKILL.md rule 6).
 
@@ -32,7 +34,7 @@ If this file and a run file ever disagree, the run file wins and this file is wr
    decides the marker's fate (→ spec/doc-shape.md §9 route 4).
 6. Expect few questions: only client-gating build decisions qualify; convention becomes labeled
    defaults you ratify in one batch, content becomes slots on one manifest, and every drafted
-   question is read cold before it is written, ten to a reader (→ questions.md Q4).
+   question is read cold before it is written, ten to a reader (→ challenge.md Q4).
 7. Say `/blueprint resolve` to write vetted answers in. It commits one verified item at a time and
    reads everything back (→ resolve.md R3–R5).
 8. Say `/blueprint status` any time — read-only, tells you what to do next (→ status.md).
@@ -42,7 +44,7 @@ If this file and a run file ever disagree, the run file wins and this file is wr
 - A sitting is ten items; a run keeps opening sittings until a named stop reason fires
   (→ resolve.md R5).
 - A grill is sized to what changed: at most four dispatches, unless you say
-  `/blueprint questions full` (→ SKILL.md, the cost section).
+  `/blueprint challenge full` (→ SKILL.md, the cost section).
 - Every write run logs a cost line — dispatches, tokens, wall-clock (→ resolve.md R5).
 - A run-log entry is a closed list of line kinds, not prose; explanations go in the report
   (→ resolve.md R5).

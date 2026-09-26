@@ -18,7 +18,7 @@ feature this skill does not have; say so rather than improvising a ninth.
 | 4 | **list by status** | Return every row matching a filter, **with an explicit completeness signal.** A truncated read is never returned as a complete one |
 | 5 | **write one named block** | Replace exactly one named block of one entity. Never more than one block per call, never a wholesale replace of a page that has children |
 | 6 | **write property** | Set one property value **and read it back to confirm it landed.** A write that silently did nothing is worse than one that failed loudly |
-| 7 | **append to the run log** | Append-only, newest first, never rewritten, never summarised away. **It is a local file — `record/run-log.md` in the working folder (§5), never a page or file on the target** (v16). Write atomically, temp file plus rename |
+| 7 | **append to the run log** | **Through `bp log` only** (v38). Append-only, newest first, never rewritten, never summarised away. **It is a local file — `record/run-log.md` in the working folder (§5), never a page or file on the target** (v16). Write atomically, temp file plus rename |
 | 8 | **fetch-and-diff before writing** | Re-read the exact block immediately before overwriting it, and compare against what was read at the start of the item |
 
 ### Operation 8 is the one that must never be skipped
@@ -136,10 +136,11 @@ entire failure catalogue)
 - **Commit `record/` after each run's write-back, on either target** — with the run id as the message,
   and **only after the content-rule sweep has passed over everything this run put there**
   ([`../resolve.md`](../resolve.md) R2.5, [`../init.md`](../init.md) I7, [`../add.md`](../add.md) A5,
-  [`../questions.md`](../questions.md) Q6 step 11). That sweep runs **before** the lines are appended
+  [`../challenge.md`](../challenge.md) Q6 step 11). That sweep runs **before** the lines are appended
   a line that cannot survive the rule is written as the role, never the specific — so a finding that
   somehow reaches commit time is a defect in the run: it holds the commit and is reported, because a
-  commit publishes (v19). **And only after `git check-ignore -q sources cache`, run inside the working
+  commit publishes (v19). **And only after `git check-ignore -q sources` and `git check-ignore -q cache` — one path per call, because `-q`
+  accepts a single pathname and the two-path form fails on every machine (v38) — both succeed, run inside the working
   folder, succeeds** (v33): the ignore file is the one control between client material and a pushed
   repository, and an ignore file that is not in force is a leak waiting for the next `git add -A` — the
   commit holds and the run reports which entry is missing. The commit stages the working folder as
@@ -259,7 +260,7 @@ body. That sweep is the reason committing the record is safe rather than merely 
   rather than ignored. A check may rely on it — and where it is missing, a check says so plainly
   rather than guessing ([`../status.md`](../status.md) S1).
 - **If `cache/` and the target disagree, the target is right.**
-- **Hashing — one rule for every hash this skill writes** (v19; until then no file named an algorithm,
+- **Hashing — one rule for every hash this skill writes, computed by `bp hash`** (v38 — never by hand; v19; until then no file named an algorithm,
   and two runs could honestly disagree about what a hash was over). **SHA-256 over UTF-8 bytes**, written
   in full in the source record and in `cache/mapping.md`, and as the first 12 hex characters in run-log
   lines (`9f2c…41d` is the samples' elision). **What is hashed:** a file source — its bytes exactly as
