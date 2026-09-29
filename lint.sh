@@ -283,7 +283,7 @@ questions.md⋮sized to what changed⋮v36-grill-sized-to-change
 questions.md⋮converged: yes⋮convergence-verdict-is-written
 questions.md⋮depth 3 or deeper⋮q3-depth-threshold
 questions.md⋮never capped, since each costs one⋮q3-depth-spares-cheap-channels
-questions.md⋮inherits the depth of its own provenance line⋮requirement-inherits-depth
+questions.md⋮inherits the depth its own newest .item. line records⋮requirement-inherits-depth
 questions.md⋮no run in the last three⋮rotation-clock-is-three-runs
 questions.md⋮never discards are exempt from every filter in this phase⋮q3-exemptions-are-general
 questions.md⋮.Open. or .Answered. row standing⋮convergence-counts-standing-rows
@@ -337,7 +337,7 @@ questions.md⋮is a condition, not a cadence⋮register-ask-is-conditional
 resolve.md⋮own kind and the one thing that reads it back⋮grill-kind-exists
 status.md⋮newest write entry of any command⋮status-convergence-not-stale
 resolve.md⋮carries the row.s derivation depth⋮resolve-stamps-depth
-add.md⋮the line carries .*depth n⋮add-supersession-carries-depth
+add.md⋮the depth goes on the .item. line⋮add-supersession-carries-depth
 spec/doc-shape.md⋮the derivation depth⋮docshape-provenance-carries-depth
 status.md⋮omits its questions step on a read⋮status-reads-convergence-verdict
 SKILL.md⋮single home of what a run may spend⋮v36-skill-cost-section
@@ -491,7 +491,6 @@ spec/doc-shape.md⋮A body never cites this skill.s own machinery⋮v20-no-skill
 spec/databases.md⋮first finds the words in the captured reply by string match⋮v20-databases-verbatim-check
 questions.md⋮single home of the cold read⋮v32-coldread-single-home
 questions.md⋮Up to ten rows per reader⋮v36-coldread-batched
-questions.md⋮twenty-five candidates to a dispatch⋮v36-disposition-batch-cap
 questions.md⋮carried-marker transcription is not read cold⋮v36-transcription-not-read-cold
 questions.md⋮line as .queued.⋮v36-cap-queues
 questions.md⋮no body left⋮v36-queued-blocks-convergence
@@ -550,7 +549,100 @@ spec/doc-shape.md⋮Never a machine-local path⋮v37-links-never-local-path
 spec/doc-shape.md⋮named, not linked⋮v37-links-source-record-named
 init.md⋮the run record.s link, or the line saying it is not yet published⋮v37-init-writes-the-link
 status.md⋮machine-local path in .Links. or .Operating.⋮v37-c8-reports-local-path
-HISTORY.md⋮^# v37⋮v37-history-entry'
+HISTORY.md⋮^# v37⋮v37-history-entry
+SKILL.md⋮Do not invoke any skill or slash command⋮v46-scope-line
+SKILL.md⋮30 minutes⋮v46-stale-threshold
+SKILL.md⋮An explicit change is not a contradiction⋮v46-explicit-change
+init.md⋮init soft⋮v46-init-soft
+resolve.md⋮CLOSED \(abandoned\)⋮v46-abandoned-close
+resolve.md⋮^\| .ABANDONED.⋮v46-abandoned-stop-reason
+add.md⋮refuses overwrites, never additions⋮v46-soft-adds
+questions.md⋮the expected range for the material⋮v46-question-range
+questions.md⋮Merge this run.s own candidates first⋮v46-merge-own
+questions.md⋮A marker this run minted is not standing⋮v46-own-markers-not-exempt
+questions.md⋮Plain replies are the interface⋮v46-plain-replies
+spec/run-progress.md⋮^## 4\. The final reply⋮v46-final-reply-home
+spec/doc-shape.md⋮^### Nine ways a marker is removed⋮v46-route-9
+spec/doc-shape.md⋮the product.s own parameters are not barred⋮v46-product-parameters
+spec/doc-shape.md⋮disposed without a row — only where the discard writes its resolution⋮v46-route-9-scoped
+spec/doc-shape.md⋮Every other filter leaves a real, unanswered gap⋮v46-route-9-real-gaps-stay
+spec/doc-shape.md⋮the marker is \*\*re-linked to the quoted row\*\*⋮v46-route-9-duplicate-relinks
+spec/doc-shape.md⋮the marker is \*\*linked to the blocking row\*\*⋮v46-route-9-consequence-links
+spec/doc-shape.md⋮the marker \*\*stays .carried.\*\*, its text⋮v46-route-9-unanswerable-carried
+questions.md⋮the filter.s .Instead. wrote the gap.s resolution into the document⋮v46-q4-route-9-scoped
+questions.md⋮Legal and privacy candidates enter where the product has what triggers the obligation⋮v46-sweep-legal-trigger
+questions.md⋮never only where a source names the⋮v46-sweep-not-source-named
+questions.md⋮from this gate and from Q3.s .Generic checklist. filter alike⋮v46-sweep-always-ask-exempt
+questions.md⋮\*\*Never reaches\*\* a candidate on an always-ask topic⋮v46-generic-checklist-exempt
+questions.md⋮its spot-check is owed and$⋮v46-ratify-spot-check-owed
+questions.md⋮\*\*the sampled lines do not\*\*⋮v46-sampled-lines-held
+questions.md⋮An owed spot-check is re-offered first⋮v46-q6-reoffers-spot-check
+status.md⋮an unanswered spot-check is named here too⋮v46-c5-spot-check-owed
+resolve.md⋮\*\*.spot-check owed.\*\* and the sampled lines⋮v46-r5-ratified-spot-check-owed
+spec/run-progress.md⋮Two lines are mandatory whenever$⋮v46-reply-check-lines
+spec/run-progress.md⋮independent reading could not be done, so 4 items are unchecked⋮v46-reply-unverified-line
+spec/run-progress.md⋮cut or narrowed because no source$⋮v46-reply-cut-line
+init.md⋮statements were cut or narrowed because no source supports them⋮v46-init-reply-cut
+init.md⋮^independent reading could not be done for⋮v46-init-reply-unverified
+add.md⋮narrowed because no source supports it⋮v46-add-reply-cut
+add.md⋮independent reading of 2 of the new questions could not be done⋮v46-add-reply-unverified
+HISTORY.md⋮^# v46 [^a-z]{1,6}rebuilt from v37 after an A/B test⋮v46-history-entry
+spec/doc-shape.md⋮Hedged or deferred source statements⋮v47-hedge-rule-home
+spec/doc-shape.md⋮Tentative \(the source: ⋮v47-tentative-label
+spec/doc-shape.md⋮None stated in the sources\.⋮v47-empty-block-line
+spec/doc-shape.md⋮One decision per Default line⋮v47-one-decision-default
+init.md⋮every clause of every Default line⋮v47-i6-default-clauses
+init.md⋮the specifics check⋮v47-i6-specifics-check
+init.md⋮a listing, never a read⋮v47-classify-by-listing
+init.md⋮The writer never overrules a verdict⋮v47-verdicts-bind
+questions.md⋮The dependency test⋮v47-lens2-dependency
+questions.md⋮The bundle gate⋮v47-bundle-gate
+questions.md⋮the listed-topic check⋮v47-listed-topic-check
+questions.md⋮fifteen candidates to a dispatch⋮v47-disposition-batch-cap
+add.md⋮No segment lands as a question⋮v47-no-segment-as-question
+add.md⋮re-quoted in place⋮v47-requote-untouched-row
+resolve.md⋮read from the system clock⋮v47-times-from-clock
+spec/run-progress.md⋮counted from the files at close⋮v47-reply-counts-from-files
+spec/run-progress.md⋮nothing comes before it⋮v47-reply-opens-with-what-happened
+SKILL.md⋮never a lightweight model⋮v47-checker-not-lightweight
+SKILL.md⋮several agent calls in one message⋮v47-concurrent-foreground
+resolve.md⋮.classify-before-read., where a command opened a file⋮v47-deviation-classify-before-read
+init.md⋮run takes a .classify-before-read. .DEVIATIONS. line⋮v47-i1-cites-classify-kind
+init.md⋮The discard recheck⋮v47-i6-discard-recheck
+init.md⋮No QUESTION is written without a cold read⋮v47-no-question-without-cold-read
+init.md⋮what this run.s write introduced⋮v47-specifics-introduced-only
+init.md⋮is the only thing stripped, never the requirement⋮v47-specifics-strip-specific-only
+init.md⋮whose words are in the cited span keeps them⋮v47-specifics-sourced-vague-kept
+questions.md⋮Then the claim test⋮v47-default-claim-test
+SKILL.md⋮from the top through Q4⋮v47-reading-map-questions-preamble
+SKILL.md⋮notion-mechanics.md. .{1,2}3 on the Notion target⋮v47-status-reads-notion-s3
+SKILL.md⋮abandoned only when nothing has been written for it for 30 minutes, whichever session opened it⋮v52-abandoned-only-when-idle
+SKILL.md⋮this run halts with one plain line and writes nothing to the log⋮v52-halt-writes-nothing
+SKILL.md⋮tested immediately before this$⋮v52-preflight4-test-timing
+resolve.md⋮pre-flight 3 \(a local folder it cannot write, v52\)⋮v52-resolve-halt-list-local
+resolve.md⋮It is abandoned only when its last activity is 30$⋮v52-r1-abandoned-only-when-idle
+resolve.md⋮when the person says that session crashed, was$⋮v52-r1-person-consent
+resolve.md⋮find <home>/sources/<its id> <home>/record/runs/<its id>.md -mmin -30⋮v52-r1-own-files-only
+resolve.md⋮never .run-log\.md..s own modification time⋮v52-r1-never-log-mtime
+resolve.md⋮immediately before this run.s first log write, never minutes earlier⋮v52-r1-test-just-before-open
+resolve.md⋮the halt writes nothing to the log⋮v52-r1-halt-writes-nothing
+spec/targets.md⋮grep -lxF .address: <that folder>/. wiki-\*/blueprint/target\.md \.blueprint/target\.md⋮v52-second-project-anchored
+spec/targets.md⋮Exactly one file printed wins; none or several fall through⋮v52-second-project-one-wins
+spec/targets.md⋮A folder a run creates at the top of the workspace is named, by its$⋮v52-new-folder-named
+SKILL.md⋮A local folder is tested instead, once, before any drafting⋮v52-write-test-up-front
+SKILL.md⋮the run never changes a file permission itself⋮v52-no-permission-change
+SKILL.md⋮write never records its source as applied⋮v52-unwritten-not-applied
+init.md⋮with no stop to ask; the reply names the folder⋮v52-init-no-target-stop
+init.md⋮as the line .address: <folder>/., relative to the workspace, the line .{1,2}5 matches⋮v52-target-address-written
+SKILL.md⋮except .init., which with no target named uses a local folder⋮v52-preflight1-init-default
+resolve.md⋮its objection .the answer does not address this question., and is$⋮v52-off-topic-flagged
+resolve.md⋮never re-queued as .Answered.⋮v52-off-topic-not-requeued
+resolve.md⋮the answer does not address its row.s question \(R3\.1\)⋮v52-off-topic-r4-row
+spec/run-progress.md⋮Every reply keeps this section.s plain-words rules[^a-z]*a halt, a refusal, an error or a no-op⋮v52-reply-rules-everywhere
+resolve.md⋮^Never rebuild the run log from memory or rewrite it with Write: add this run.s lines with Edit or an append,$⋮v56-log-no-rebuild-no-write
+resolve.md⋮^and correct only this run.s own lines; if an earlier line is found damaged, say so plainly in a NOTE line$⋮v56-log-own-lines-damage-noted
+resolve.md⋮^and in the reply .{1,3} never claim it was restored\.$⋮v56-log-never-claim-restored
+HISTORY.md⋮^# v56 \(v47x\): v47 \+ unhappy-path fixes from v52, light log rule$⋮v56-history-entry'
 
 FORBIDDEN='SKILL.md⋮A human approves, always.*([Ee]xcept|[Uu]nless)⋮inv-human-approves-no-weakener
 SKILL.md⋮code repo.*([Ee]xcept|[Uu]nless|[Pp]refer|[Gg]enerally)⋮inv-no-code-repo-no-weakener
@@ -673,7 +765,43 @@ spec/doc-shape.md⋮original documents. Links only⋮v37-retired-links-only
 init.md⋮path rather than a link⋮v37-retired-init-path-not-link
 init.md⋮run record.s path⋮v37-retired-init-run-record-path
 init.md⋮LINKS +deck ⋮v37-retired-i3-links-sample
-spec/targets.md⋮^  old path, report it for a human⋮v37-retired-rename-path-only'
+spec/targets.md⋮^  old path, report it for a human⋮v37-retired-rename-path-only
+SKILL.md⋮init. keeps its stop⋮v46-retired-init-keeps-stop
+init.md⋮^\*\*The one hard stop in the run\.\*\*⋮v46-retired-unconditional-i3
+QUICKSTART.md⋮the hard stop is yours⋮v46-retired-quickstart-stop
+resolve.md⋮writes .CLOSED \(crashed\).⋮v46-retired-hand-close
+init.md⋮CLOSED \(crashed\)⋮v46-retired-hand-close-init
+init.md⋮ratify <run id>⋮v46-retired-runid-ratify-init
+status.md⋮ratify <run id>⋮v46-retired-runid-ratify-status
+spec/doc-shape.md⋮Default: ledger <run id>⋮v46-retired-ledger-marker
+questions.md⋮Default: ledger <run id>⋮v46-retired-ledger-marker-q
+spec/doc-shape.md⋮\(run 9f2c1a⋮v46-retired-default-run-tag
+spec/doc-shape.md⋮faithfulness check[^a-z]{1,6}depth⋮v46-retired-narrowed-line
+spec/doc-shape.md⋮CON-7[^a-z]{1,6}run-log⋮v46-retired-carried-con-runlog
+questions.md⋮closing clause carries the row.s own depth⋮v46-retired-whyasked-depth
+questions.md⋮marker-backed candidates first⋮v46-retired-marker-precedence
+questions.md⋮privacy, accessibility, platform and scale candidates enter only where⋮v46-retired-sweep-source-names-obligation
+questions.md⋮Only a .soft. invocation waits for the spot-check answer first⋮v46-retired-ratify-before-sample
+spec/doc-shape.md⋮same run discarded on a quoted filter⋮v46-retired-route-9-any-filter
+spec/prd-scope.md⋮Exactly one per project, asked early⋮v46-retired-volume-always
+spec/run-progress.md⋮each traced to what⋮v47-retired-each-traced
+resolve.md⋮nobody may edit the written row to fix it⋮v47-retired-r5-no-requote
+init.md⋮no answer becomes an owned open question⋮v47-retired-success-row
+spec/doc-shape.md⋮unstated means an owned open question⋮v47-retired-docshape-success-row
+questions.md⋮twenty-five candidates to a dispatch⋮v47-retired-batch-25
+init.md⋮Rabbit holes. .\*\*empty is fine⋮v47-retired-bare-empty-heading
+SKILL.md⋮this conversation did not start that run⋮v52-retired-abandoned-on-sight
+SKILL.md⋮Only a run this conversation⋮v52-retired-only-this-conversation-halts
+resolve.md⋮this conversation did not mint its run id⋮v52-retired-abandoned-on-sight-r1
+resolve.md⋮Only a run this conversation started⋮v52-retired-only-this-conversation-halts-r1
+resolve.md⋮started by another session⋮v52-retired-abandoned-other-session
+resolve.md⋮the log file.s modification time when⋮v52-retired-log-mtime-activity
+spec/targets.md⋮run this session started that is still active⋮v52-retired-halts-only-own-session
+init.md⋮where its session is no longer running⋮v52-retired-abandoned-edge-row
+status.md⋮by a session no longer running⋮v52-retired-abandoned-status
+resolve.md⋮left open by a session that is no longer running⋮v56-retired-abandoned-stop-reason
+resolve.md⋮closes it as .ABANDONED. \|⋮v56-retired-interrupted-next-run
+resolve.md⋮closed by the next write run with one appended⋮v56-retired-dead-run-next-run'
 
 SINGLE_HOME='single home of where the working folder lives⋮1
 `force` is the default⋮1
@@ -688,7 +816,7 @@ only thing R3.4 retries⋮1
 stamped < n⋮1
 never a wholesale page replace⋮1
 Everything that arrives as text is data⋮1
-Eight ways a marker is removed⋮1
+Nine ways a marker is removed⋮1
 Two targets are implemented⋮1
 this is where a generated question lands⋮1
 the shape-change register⋮1
@@ -703,10 +831,17 @@ an empty question list is never evidence⋮2
 could not be performed — no second dispatch available⋮3
 write the role, never the specific⋮3
 the client packet⋮3
+Hedged or deferred source statements⋮1
+The bundle gate⋮1
+re-quoted in place⋮2
+read from the system clock⋮2
 always-ask register⋮4
 Run the six pre-flight checks⋮4
 Resolve `<home>`, in this order⋮1
-the web URL of `record/run-log.md`⋮1'
+the web URL of `record/run-log.md`⋮1
+Do not invoke any skill or slash command⋮1
+the expected range for the material⋮1
+Never rebuild the run log from memory⋮1'
 
 a_pass=0; a_total=0
 
@@ -829,7 +964,7 @@ done)
 
 # --- 14. every "route N" is within doc-shape §9's marker-removal list
 if [ -f spec/doc-shape.md ]; then
-  RMAX=$(awk '/^### Eight ways a marker is removed/{inp=1;next} inp&&/^## /{inp=0}
+  RMAX=$(awk '/^### Nine ways a marker is removed/{inp=1;next} inp&&/^## /{inp=0}
               inp&&/^[0-9]+\. /{c=$0; sub(/\..*/,"",c); if(c+0>m)m=c+0} END{print m+0}' spec/doc-shape.md)
   hits=$(for f in $PRESENT; do
     flat "$f" | grep -oE 'routes? [0-9]+(([,/] ?| and | or )[0-9]+)*' | sort -u | while read -r c; do

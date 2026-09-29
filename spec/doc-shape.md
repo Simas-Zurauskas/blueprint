@@ -55,13 +55,13 @@ prose; a **`⟳` heading** is a saved view. One rule: ***never type under a `⟳
 | Block | Content | Cap |
 |---|---|---|
 | **TL;DR** | What this is, who should read it, what to read first | 2–3 sentences |
-| **What this product is** | One paragraph carrying the essence: **the problem, who has it, what this product does about it, and — where a source states it — what observable change means it worked** (one or two things somebody could check, never an invented number; unstated means an owned open question, not a guess) — ending in a one-sentence NOT-clause naming the *kind* of thing this product refuses | 1 paragraph |
+| **What this product is** | One paragraph carrying the essence: **the problem, who has it, what this product does about it, and — where a source states it — what observable change means it worked** (one or two things somebody could check, never an invented number; unstated is left unstated — never guessed, and a question only where [../questions.md](../questions.md) Q3's exemption admits it) — ending in a one-sentence NOT-clause naming the *kind* of thing this product refuses | 1 paragraph |
 | **Who it's for** | **Real user kinds — never "users"** — one line each: the kind, the job they hire this product for, and (where a source says) what they use for that job today. May close with one **`Not for:`** line naming who this product deliberately does not serve — sourced, like any exclusion, never invented | 3 lines + one optional `Not for:` line |
-| **How it works, in one picture** | One mermaid diagram | ≤9 nodes |
+| **How it works, in one picture** | One mermaid diagram — **every node and edge a path the sources describe, and none that presupposes an open question or contradiction**: a branch the sources leave open ends at its own node (*"auto-cancelled"*), never merged into the next step to save a node (v47) | ≤9 nodes |
 | **`## ⟳ Where things are`** | Features grouped by `Area` — a view | — |
 | **`## ⟳ Open questions`** | Live questions and their answers — a view **grouped by `Status`, the groups collapsible** (the owner's 2026-08-06 layout ask: the section stays open, the groups collapse). Since v13 a run writes questions straight to `Open`, so this view carries rows a person may not have read yet; the `Unsent — packet candidates` view is the reading screen and is a database tab only, never embedded | — |
 | **Links** | Source material, design files, whoever's original documents — **only what a reader of the target can open: a web URL or a target page**. **Never a machine-local path** — a filesystem path in any form, relative or absolute: a workspace folder, a `.blueprint/` or `sources/` path, one prefixed with a folder's name — which opens only on the machine that wrote it. Material held only in the source record has nothing to open, because `sources/` is never committed ([`targets.md`](targets.md) §5), so it is **named, not linked**: what it is, when it was captured, and that it is held outside version control — no path, no run-id folder | — |
-| **Operating** | The run record as a **link** — the web URL of `record/run-log.md` on the default branch of the repository holding `<home>` ([`targets.md`](targets.md) §5), derived from its `origin` remote (on GitHub, `https://github.com/<owner>/<repo>/blob/<branch>/<home's path in the repo>/record/run-log.md`); it resolves once the run's commit reaches that branch. **Where `<home>` is in no repository, or its repository has no remote a reader can open, the line says the run record is not yet published and names no path** — the `Links` row says what a path is. Once a remote exists the link replaces that line the way any later overview change lands — a human's edit, or a verbatim proposal a human accepts (*How a run may write it*, below), never silently — and [`../status.md`](../status.md) C8 names the line until it does · the **always-ask register** — the dated list of topics no convention default may settle, seeded at `init` with its two mandatory entries and widened only by a human ([`../SKILL.md`](../SKILL.md) rule 4), kept to **one line, topics comma-separated** · any widening of the content rule (§6) · a ratified vocabulary line, where one exists — the canonical term, its superseded aliases, dated | 6 lines |
+| **Operating** | The run record as a **link** — the web URL of `record/run-log.md` on the default branch of the repository holding `<home>` ([`targets.md`](targets.md) §5), derived from its `origin` remote (on GitHub, `https://github.com/<owner>/<repo>/blob/<branch>/<home's path in the repo>/record/run-log.md`); it resolves once the run's commit reaches that branch. **Where `<home>` is in no repository, or its repository has no remote a reader can open, the line says the run record is not yet published and names no path** — the `Links` row says what a path is. Once a remote exists the link replaces that line the way any later overview change lands — a human's edit, or a verbatim proposal a human accepts (*How a run may write it*, below), never silently — and [`../status.md`](../status.md) C8 names the line until it does · the **always-ask register** — the dated list of topics no convention default may settle, its two mandatory entries in force from `init` on every project and widened only by a human ([`../SKILL.md`](../SKILL.md) rule 4), kept to **one line, topics comma-separated**. **The line is written only once a human widens it or a source touches its topics** (v46), in plain words for a reader (*"Always asked, never assumed: whether any regulation applies"*), and no block says anything about this skill, its rules or the run: until then it is the same boilerplate on every overview, and the entries bind whether or not the line is on the page · any widening of the content rule (§6) · a ratified vocabulary line, where one exists — the canonical term, its superseded aliases, dated | 6 lines |
 
 **The front page is the same size at 200 features as on day 1** — every human block is capped and every
 index on it is a view. That is what keeps a front door readable rather than turning it into the document.
@@ -97,17 +97,29 @@ write call. Never silently, never as a side effect of applying an answer, never 
 
 **One carve-out, and it is the first write only** (v16). At [`../init.md`](../init.md) I5 the overview
 does not exist yet: there is no block to replace and no text for a human to accept instead, and I5
-calls it *"the largest single write the overview ever receives."* That write is sanctioned — **but the
-skeleton a human confirms at I3 must carry the block text itself, not only the block names**, or the
-acceptance is of a table of contents rather than of prose.
+calls it *"the largest single write the overview ever receives."* **That write is sanctioned because it
+is the first** (v46), and **I5 writes exactly the block text I3 printed and saved** — the skeleton
+carries the block text itself, not only the block names, so what landed is what the person was shown,
+prose and all, and not a table of contents. **Under `init soft` it is written only after the
+confirm**, as every version before v46 did. **And the same init run's faithfulness check fixes a block
+it wrote in place** ([`../init.md`](../init.md) I6): on a plain `init` nobody has accepted those words
+yet, so a claim the check confirmed wrong is corrected before anyone relies on it rather than shipped
+as a proposal (v46: the A/B record's overviews went out with claims their own check had caught). Under
+`init soft` the human confirmed the block, and a narrowing of it is a proposal.
 
 **The sanction attaches to the words on disk, not to the memory of them** (v21). I3 writes the screen
 to `sources/<run-id>/i3-skeleton.md` before printing it ([`../init.md`](../init.md) I3), so a resuming
-sitting writes the blocks **the human actually confirmed**. **Where that text is not on disk to compare
-against, this carve-out does not apply**: the run re-derives the skeleton, re-presents it at I3, and
-waits — it does not write the front door off a confirmation whose object it cannot see. A measured
+sitting writes the blocks **that were actually printed** — under `init soft`, the blocks the human
+actually confirmed. **Where that text is not on disk to compare against, this carve-out does not apply**
+to the old print or the old confirmation: the run re-derives the skeleton, saves it, prints it and
+continues — `init soft` waits for a fresh confirm — and it never writes the front door from text
+nobody was shown. A measured
 campaign found every project's resuming sitting re-deriving the overview silently, and one of them
 changed a numbered requirement's meaning in the process.
+
+**A link-only marker patch is not a block rewrite** (v46) — `carried` replaced by a row link, or a
+marker removed on its route (§9) — and it is made directly and logged, like the same patch in a
+feature body. Nothing else about the block changes in that write.
 
 **And after the first write, a barred specific in an overview block has a route** — it is not stranded.
 The run reports it and proposes the corrected block text verbatim, exactly as any other overview
@@ -134,9 +146,9 @@ child block, foreign children included, and re-fetches to confirm nothing was lo
 overview block at the same stop** that proposes overview text — a contradiction whose only side is the
 front door must be markable there, or it has no home at all: in one measured project a contradiction
 contested only on the overview ended with no marker, no row, and a log line falsely claiming otherwise.
-An I6 or A5 **narrowing of an overview block is a proposal, never an in-place fix** — "fixed in place"
-belongs to feature bodies, because the front door is the one page every reader trusts without
-cross-checking. And this section's *"any count of anything"* bar binds **human prose**; the `⟳`
+**An A5 narrowing, or an I6 one on a block a human already accepted, is a proposal; I6's fix of a
+block the same init wrote is in place** (v46) — "fixed in place" otherwise belongs to feature bodies,
+because the front door is the one page every reader trusts without cross-checking. And this section's *"any count of anything"* bar binds **human prose**; the `⟳`
 **generated views are exempt** — they are rebuilt from a fresh scan at every write-back and never
 carried forward, which is the exact property the bar exists to protect.
 
@@ -151,6 +163,8 @@ The `⟳` views, and the local-markdown target's equivalent generated lists
 fresh scan of the actual current rows**, every time a write-back touches a feature's
 `Area`/`What it does` or a question's `Status`. Patching a view's existing text forward from what
 it said last time is exactly how a reader ends up trusting a count that was true an hour ago.
+A generated list copies each row's title **verbatim** from the store, character for character — never
+shortened or reworded (v47).
 
 **This is why no number is ever carried into the TL;DR**, restated here because a simulated run's TL;DR
 grew past its own cap and quoted a live question tally — both already barred by "what does not go on it"
@@ -175,7 +189,7 @@ The row IS the spec. There is no separate feature document.
 
 ```
 ## Why
-2–4 sentences, opening with the situation: the problem, who has it, why now. No solution talk.
+1–4 sentences: the problem, who has it, why now — only as far as a source says it. No solution talk, and no reason the source does not give.
 
 ## Behaviour
 FR-1 …    Each numbered requirement is a thing that can fail. If you cannot picture it
@@ -186,12 +200,15 @@ empty · error · slow · offline · not signed in · which record / whose data 
 ordering — every default is a decision, so write it.
 
 ## Rabbit holes
-The implementation traps and the call already made about each. Empty is fine — never a
-finding. Its reader is whoever builds this.
+The implementation traps, and the call a source or an answer already made about each — never a
+call nobody made. Empty: the one line "None yet." Its reader is whoever builds this.
 
 ## Not doing
-One line each, in one shape:  No X — because Y; revisit if Z.
+One line each, in one shape:  No X — because Y; revisit if Z.  Empty: the one line "None stated in the sources."
 ```
+
+**An empty `Rabbit holes` or `Not doing` block carries its one line, never a bare heading**, and the line
+is replaced, with no provenance, when the first real line lands — it records no decision (v47).
 
 `What it does` is a **property**, not a body line, so every view and read path carries it. The body starts
 at `## Why`.
@@ -253,11 +270,29 @@ YAML. Format is a ~2-point lever; content completeness is a 12–29 point one.
 3. **A requirement must be readable without the requirement above it.** *"FR-4 — the same applies when
    they are offline"* is not a requirement.
 
+**Hedged or deferred source statements** (v47) — never an unqualified requirement. Three cases, and a
+contradiction outranks all three: it is surfaced under [`../SKILL.md`](../SKILL.md) rule 4, never
+labelled.
+*A deferred or undecided choice* — *"split evenly i guess, or maybe by portion (need to think about
+that)"*, *"not sure about onboarding"* — is a gap: a marker to its question, and **no requirement commits
+either option or a mechanism only one option needs**; what every option agrees on is still written, as a
+contradiction's agreed half is.
+*A tentative wish* — *"would be nice if"*, *"maybe track"*, *"ideally"*, *"if we have room"* — is written
+as a requirement carrying the source's own words as its label:
+`FR-4 — Tentative (the source: "maybe track some kind of receipt"): the cook may attach a receipt or photo to the week's record.`
+The quoted words are string-matched against the source like any quotation ([`../SKILL.md`](../SKILL.md)
+rule 6(d)); the reply counts tentative requirements apart.
+*A hedged quantity or frequency* — *mostly*, *usually*, *about* — keeps the hedge word in the sentence;
+a vague one the source itself uses — *a few times*, *shortly* — keeps its words too, and gains a marker
+asking for the number ([`../init.md`](../init.md) I6's specifics check).
+`Tentative` is the one label; no other priority vocabulary is introduced.
+
 **The rest of the rules.** **Ten minutes to fill** — longer means the feature is too big, so split it;
 never a licence to leave blocks as placeholders, which is how the −0.9% condition becomes the −11.8% one.
 **A body never cites this skill's own machinery** (v20) — no `spec/…` path, no rule number, no phase
-identifier like `I6` or `Q4`. Naming an act in plain words is fine, and the provenance lines below do
-it (*"by the faithfulness check"*). The
+identifier like `I6` or `Q4`, and (v46) no run id, ledger number, depth token, `CON-k` id or check
+name — nor any note about the run's own writing (*"this is a placeholder"*, *"no requirement is written
+here yet"*), and the same holds for every overview block. Naming what happened in plain words is fine — *"applied from q-04"*, *"the source says"*. The
 Blueprint is read by people building a product, and a machine's own filing system in a requirement is
 the two-roots confusion ([`../SKILL.md`](../SKILL.md)) leaking into the front of the house; where a
 constraint is derived from another feature, cite **that feature**.
@@ -265,28 +300,29 @@ constraint is derived from another feature, cite **that feature**.
 constraint about *how***, in its own block, never mixed into the numbered requirements where
 mechanism-flavoured wording primes a memorised wrong solution. **A decided exclusion is a `Not doing`
 line; a marker is for unknowns** — never mix them. **Provenance lines live here and only here**, dated,
-under the requirement they touched, because a reader who stops at the row never opens the log. **Two
-things every run-written body line carries** (v23): **the row's entity ID beside its title** — §8 says
-everything binds to IDs and titles get edited, and this sample cited a title alone until v23 — and
-**`· depth n`, the derivation depth [`../questions.md`](../questions.md) Q3's depth filter reads back**.
-A `Default (…)`, a doc-fix replacement and a `Content slot — client-supplied:` line carry the depth too;
-a line with no token is depth 1 to every later reader:
+under the requirement they touched, because a reader who stops at the row never opens the log. **A
+line citing a row carries the row's id beside its title** (v23) — §8 says everything binds to IDs and
+titles get edited; **the derivation depth lives on the run log's `item` line, never in the body** (v46,
+[`../questions.md`](../questions.md) Q4 — until then a `· depth n` token rode on every run-written
+line, a `Default (…)`, a doc-fix and a content slot included, and every reader of the document saw the
+machine's bookkeeping). A legacy token already in a body stands and is still read; no run writes one:
 
-> *(Applied 2026-08-04 from «Can a customer change a pickup slot after paying?» `q-04` · depth 1 —
-> answer and reasoning on that row.)*
->
-> *(Narrowed 2026-08-04 by the faithfulness check · depth 1 — the source says "most orders", not
-> "all orders".)*
->
-> *A check's narrowing has no row, so it carries a depth and no entity ID — the ID clause binds a line
-> that cites a row, which this one does not.*
+> *(Applied 2026-08-04 from q-04 «Can a customer change a pickup slot after paying?» — answer and
+> reasoning on that row.)*
 
-**A convention default is one labeled sentence in the block where it bites**, in one of two shapes and no
-other — `Default (standard practice — ratify on review): reset links are single-use and expire.
-(run 9f2c1a · 2026-08-14)` or `Default (adopted from the ratified design, frame 298:9042 — ratify on
-review): …` — written only under [`../SKILL.md`](../SKILL.md) rule 4's four conditions, listed on its
+**A check's narrowing leaves no line in the body**; its verdict line in the log is the record.
+
+**A convention default is one labeled sentence stating one decision, in the block where it bites**, in one
+of two shapes and no other — `Default (standard practice — ratify on review): reset links are single-use and expire.`
+or `Default (adopted from the ratified design, frame 298:9042 — ratify on
+review): …`. **One decision per Default line**: a second decision is a second Default with its own ledger
+line, or is not adopted; a Default adds no capability, actor, permission or channel beyond the gap it
+fills, states the count or window its convention fixes, and names no standard, version, vendor or figure
+no source gives ([`../SKILL.md`](../SKILL.md) rule 4). **A Default is never numbered and no requirement
+restates one** (v47). Each is written only under [`../SKILL.md`](../SKILL.md) rule 4's four conditions, listed on its
 run's defaults ledger, and re-labeled `(standard practice — ratified <date>)` when its batch is ratified
 [`../questions.md`](../questions.md) Q1 performs the re-label, on the human's named act, and logs it.
+**The sentence carries no run id or date** (v46): those live on its ledger line in the run log.
 A vetoed default is removed by the same procedure and becomes a marker plus a question. **The label is the
 provenance**: an unlabeled sentence claiming convention status is exactly the laundering §9 exists to
 prevent.
@@ -295,11 +331,25 @@ prevent.
 
 Sources arrive full of things that are true and that nobody meant to publish into a document a whole
 teamspace reads. **The default, on every project, is: write the role, never the specific.** No customer or
-third-party names, no individuals' names, no contract terms or dates, no penalties, no prices. So
+third-party names, no individuals' names, no contract terms or dates, no penalties, no contract prices. So
 `"Northgate Retail Park — P1 4 hours, £250 penalty, contract to 2028-03-31"` is written as *"a site on the
 enterprise contract has a contracted response target for P1 faults, with a penalty for missing it"* — and
 the requirement is just as failable, because what makes it failable is the target existing and being
 missable, not its length.
+
+**One class is not the deal's specifics at all: the product's own parameters are not barred** (v46): a price, fee, duration, threshold or count that
+the product itself shows, charges or enforces on its users, as a source states it, is written as
+stated — it is behaviour, and without it the requirement cannot fail. *"A booking can be cancelled free
+up to 24 hours before the slot"* keeps its 24 hours. What stays barred is who and what the deal is:
+customer, third-party and individual names, contract terms and dates, contractual penalties, and what
+the client pays for the work. *The A/B record's untestable requirements came from exactly this
+confusion — a source's own figures and its payments provider dropped with nothing to say so.*
+
+**Every specific the rule withholds is listed in the report's NOT USED block by kind and place, never
+its value** (v46), taken from the actual withheld list rather than from memory — *"a named payments
+provider, «Checkout» FR-2, written as a role"* — so a withheld fact is disclosed rather than lost. A
+named vendor withheld as a role is disclosed like any other. The role is written without a reason the
+source does not give (*"a third-party payouts platform"*, never *"the pilot's implementation choice"*).
 
 **One standing exemption, because the design mandates the thing the rule bars.** The rule is about the
 *product being described*, never about the people running the process. So: **the people-typed `Owner`
@@ -341,7 +391,8 @@ feature-body prose while five separately-signed answers sat uncaught in the same
 field, because the sweep followed the property list rather than reading every character of the fields it
 was already scoped to.
 
-**A source calling its own number a placeholder does not make the number safe to publish.** *"100 points =
+**A source calling its own number a placeholder does not make the number safe to publish** — the
+product-parameter allowance above covers a figure a source states, never one it hedges. *"100 points =
 $5 off, TBD"* is still a specific figure. Write it as *"points redeem at a fixed rate the team has not yet
 set"*, and let an open question carry the real number once one exists — the source's own hedge is not a
 license, it is the tell that the figure was never settled.
@@ -378,8 +429,9 @@ available, 71 subjects across 461 real maintenance tasks were **24% faster and p
 solutions** (Mäder & Egyed, EMSE 2015).
 
 - **Entity IDs key everything** — question → feature, the mapping, every provenance line.
-- **Requirement numbers are per feature and never renumbered.** `FR-3` means `FR-3` forever. Human form
-  `FR-3 of «Claim a swap»`; machine form `<feature id>#FR-3`.
+- **Requirement numbers are per feature and never renumbered.** `FR-3` means `FR-3` forever. They are
+  whole numbers — `FR-1…FR-n`, never a variant label such as `FR-3a` (v47; [`../resolve.md`](../resolve.md)
+  R3.1 already refused one). Human form `FR-3 of «Claim a swap»`; machine form `<feature id>#FR-3`.
 - **Deleting a requirement leaves a tombstone**, never a gap that gets refilled:
   > FR-4 — *withdrawn 2026-08-04, replaced by FR-7. No behaviour here.*
 - **Splitting a feature is a human's decision, not a run's proposal.** When a human asks for it — the
@@ -403,7 +455,8 @@ makes them guess*, so the document has to carry the question.
 - **A marker must name the entity it is about** — the feature, the requirement number, the specific field
   or record — not only the doubt. Target ambiguity moves Wrong Target from 9.6% to **75.1%** (Ji et al.).
   *"Is this right?"* is not a marker; the example above is.
-- Every marker points at one question row whose `Touches` points back — **or is `carried`, and says so**.
+- Every marker points at the question row whose `Touches` points back — at both, where two rows cover
+  its gap ([`../questions.md`](../questions.md) Q6 step 1's link check) — **or is `carried`, and says so**.
 - **An open marker is an admitted gap, and it blocks nothing** (v13). It is counted by
   [`../status.md`](../status.md) C5 and named in its `What is still unsettled` block. Nothing blocks
   on it and nothing ever has to be cleared before the document can be used.
@@ -414,16 +467,22 @@ makes them guess*, so the document has to carry the question.
   `→ Question: carried`, is counted like any other, and waits for the next questions run.
   **That run disposes every carried marker** ([`../questions.md`](../questions.md) Q2 sweep item 1,
   Q4) — a client-bound gap becomes a question row, a convention-settled one becomes a labeled default
-  with the marker patched to its ledger line — so after any questions sitting the carried count reads zero, except markers a human's *ask it better*
-  rejection (route 4), a defaults veto (route 6) or a vetoed content slot (route 7) returned to `carried`. On one measured
+  with its marker shortened onto the Default line (route 6) — so after any questions sitting the carried count reads zero, except markers a human's *ask it better*
+  rejection (route 4), a defaults veto (route 6) or a vetoed content slot (route 7) returned to `carried`,
+  and this run's own markers whose gap waits on a party this document cannot ask or is the client's
+  own (route 9 — each saying why, in plain words). On one measured
   project the old per-sitting cap let this backlog grow silently to ~80 known gaps with no row behind
   them — more than every question ever asked — which is the failure this rule now forbids. **A carried marker born from a
-  contradiction between sources also cites its inventory id and the run-log entry holding both verbatim
-  quotes** — `→ Question: carried (CON-7 · run-log 2026-08-04-init-1)`, whose entry names the
-  source-record path the verbatim spans live at (v30: `sources/<run-id>/contradictions.md`, durable and
-  never committed — [`../init.md`](../init.md) I7, [`targets.md`](targets.md) §5) — so the sitting that finally
-  proposes it dereferences the quotes rather than re-paraphrasing a compact marker
-  ([`../init.md`](../init.md) I7 owns the inventory). A marker pointing at a row that no
+  contradiction between sources names both sources in plain words** — `[NEEDS CLARIFICATION: the deck
+  says slots are fixed and the call says customers can move them — which holds for «Checkout» FR-3?
+  → Question: carried]` — and carries no id (v46: until then it carried the inventory id and a run-log
+  entry id, which every reader of the document saw). **The log's `CON-k` line names the feature and
+  block the marker sits on**, and that is how a later run finds it; the line names the source-record
+  path the verbatim spans live at (v30: `sources/<run-id>/contradictions.md`, durable and never
+  committed — [`../init.md`](../init.md) I7, [`targets.md`](targets.md) §5) — so the sitting that
+  finally proposes it dereferences the quotes rather than re-paraphrasing a compact marker
+  ([`../init.md`](../init.md) I7 owns the inventory). A marker an earlier version wrote with its ids is
+  still read by them. A marker pointing at a row that no
   longer exists is **broken** and is a fault. [`../status.md`](../status.md) C5 prints the two apart,
   because a queue buried in a fault list teaches people to skip the list. **Never write
   `→ Question: pending`**: it names neither state, and a reader cannot tell whether somebody owes an
@@ -432,7 +491,7 @@ makes them guess*, so the document has to carry the question.
   the match finds zero markers on a document full of them
   ([`notion-mechanics.md`](notion-mechanics.md) §3).
 
-### Eight ways a marker is removed, and this is the canonical list
+### Nine ways a marker is removed, and this is the canonical list
 
 Every file that removes a marker **points at this list rather than restating it** — three restatements in
 three files were once three different lists, which is how a route two files sanctioned read as forbidden
@@ -481,9 +540,12 @@ in the third.
    failure, and it is strictly better than a claim entering ungated.
 6. **Its gap was adopted as a convention default and the defaults batch was ratified.** When a questions
    run routes a marker's gap to the DEFAULT channel ([`../questions.md`](../questions.md) Q4), the default
-   is written labeled and the marker is **patched** to cite the default's ledger line
-   `→ Default: ledger <run id> #<n>, awaiting ratification` — still counted and still reported like any
-   marker. **The marker is removed only by a human's explicit ratification of that defaults batch**
+   is written labeled and **its marker is not deleted: it is shortened onto the end of the Default line
+   itself**, naming only its entity —
+   `Default (standard practice — ratify on review): a swap takes effect once the member taking the slot accepts it. [NEEDS CLARIFICATION: «Slot swaps» FR-1 default → Default: awaiting ratification]`
+   (v47: the gap's wording already lives in the Default sentence, and a second copy beside it read as
+   the same fact twice. The ledger line it answers to is found in the run log by the feature and block,
+   and the older forms — v46's marker patched in place, and the ledger-numbered one — are still read) — still counted and still reported like any marker. **The marker is removed only by a human's explicit ratification of that defaults batch**
    ([`../questions.md`](../questions.md) Q6 puts it to them; **Q1 executes the act** — given in that
    conversation or named to a later run, since no field carries it), the removal citing the ledger line
    and the `RATIFIED` line that records the ratifying act. A
@@ -508,12 +570,43 @@ in the third.
    [`../questions.md`](../questions.md) Q6 step 4 with route 1's stragglers. **The evidence is the source, and
    a removal that cannot name its segment is a bug like any other.**
 
-**None of the eight is a bypass of another.** A run may never write an answer straight in, and never
+9. **This run's own marker, disposed without a row — only where the discard writes its resolution
+   into the document** (v46). A marker minted in this run is removed in the same run, citing its
+   `discard` line, **only when its gap was discarded on a filter whose `Instead` column
+   ([`../questions.md`](../questions.md) Q3) settles the gap in the document itself**: *Already
+   answered* (the quoted answer, or the DOC-FIX line that writes a sourced fact in) · *Already decided
+   against* (the `Not doing` line it writes) · *Implementation, not intent* and *Derived past the
+   bound* (the `Rabbit holes` line it writes) · *Not a specification question* and *Generic checklist*
+   (the gap is not one this document carries). A marker a run minted over a gap the document now
+   settles is an orphan, and the A/B record found one standing over a discarded gap with nothing that
+   could ever clear it. **Every other filter leaves a real, unanswered gap, and its marker stays
+   where the gap bites** — an unknown is a marker plus a question, and a feature body that silently
+   stops admitting one reads as complete where it is not:
+   - **Duplicate** — the marker is **re-linked to the quoted row**, and that row's `Touches` is
+     widened to this feature: directly where the row is this run's own draft, and as a merge proposal
+     in the report where it is a standing row, which is a human's to edit
+     ([`../questions.md`](../questions.md) Q1). The link check (Q6 step 1) names that one-way link
+     as awaiting the proposal, never as a miss.
+   - **Consequence of an open question** — the marker is **linked to the blocking row**, its
+     `Touches` handled as for *Duplicate*. When that row's answer is applied, the marker leaves only
+     as far as the answer settles what it names; the rest stays admitted as the narrowing marker
+     [`../resolve.md`](../resolve.md) *Two modes* describes, reading `carried`, and the next
+     questions run disposes it — which is when the waiting gap becomes answerable.
+   - **Unanswerable here** and **Client-internal** — the marker **stays `carried`**, its text
+     patched to say in plain words why no row asks it (*"→ Question: carried — waits on the
+     payment provider, whom this document cannot ask"*). It is counted and named like any carried
+     marker, and it is one of the carried markers a questions sitting legitimately leaves standing.
+
+   **A standing marker never leaves by this route** — one already in the document when the run opened
+   leaves by the other eight.
+
+**None of the nine is a bypass of another.** A run may never write an answer straight in, and never
 without a row. **A marker removal that names no evidence in the run-log entry is a bug, not a tidy-up.** Most
-routes cite a **row ID**; five cite what they have instead, and each is as binding: route 3 the
+routes cite a **row ID**; six cite what they have instead, and each is as binding: route 3 the
 `Not doing` line it wrote, **route 4's *already decided* branch the requirement or `Not doing` line
 that answers it**, route 6 its ledger line and the `RATIFIED` line that cleared it, route 7 its slot
-line and its manifest line, route 8 the source segment and the `item` line that wrote it.
+line and its manifest line, route 8 the source segment and the `item` line that wrote it, route 9 its
+discard line and the text its filter wrote or quoted.
 **What is barred is a removal citing nothing**, whichever route it took.
 
 **Never invent the missing content.** A guess written as prose launders a guess into the source of truth.

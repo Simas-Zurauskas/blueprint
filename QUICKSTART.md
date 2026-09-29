@@ -19,10 +19,11 @@ If this file and a run file ever disagree, the run file wins and this file is wr
 ## First hour — from client material to a draft
 
 1. Gather the material into files; nothing else is needed (→ init.md I1).
-2. Say `/blueprint init`. It will capture sources, propose a skeleton, and **stop for your approval**
-   before creating anything (→ init.md I3 — the hard stop is yours).
-3. Read the NOT-USED list at that stop as carefully as the skeleton — it is where gated commercial
-   material gets parked (→ init.md I3).
+2. Say `/blueprint init`. It captures sources, grills and prints a skeleton, and writes the Blueprint
+   in one go; `/blueprint init soft` stops for your approval first (→ init.md I3).
+3. Read the NOT USED list in the printed skeleton as carefully as the skeleton itself — it is where
+   gated commercial material, and every specific the content rule held back, gets named
+   (→ init.md I3).
 4. Let it write features, then read the questions it ends with — they are live, and yours to answer,
    reject, or carry into a client packet (→ spec/databases.md §3, `Open`).
 

@@ -6,7 +6,7 @@ applied to one candidate at a time there. *It said "read at question-generation 
 which named a phase that never opened it: Q2 generates and cites nothing here, so every rule below
 addressed to the generating side had no reader at all. Of the three marked* **generation-side**,
 *only the volume question has a reader — [`../questions.md`](../questions.md) Q2's standing sweep,
-item 6, added v31.* **The mass-event sweep in §3 is imported by nothing, and §4's
+item 6, added v31, and since v46 asked only when a candidate needs the floor.* **The mass-event sweep in §3 is imported by nothing, and §4's
 collective-materiality merge is imported at Q4 rather than at generation time** — *both are still
 rules with no generating executor, and saying so is the point. The rest are Q3's and Q4's.* Companions: [`doc-shape.md`](doc-shape.md) ·
 [`databases.md`](databases.md) · [`targets.md`](targets.md) ·
@@ -134,7 +134,7 @@ A candidate must land in one of these. Naming the category is not enough; the te
 | **In / out / later** | In only if the answer moves a **named** capability across a line. *"Is X important?"* is not a question; *"is X in this release?"* is |
 | **Assumptions the build rests on** | In only if (a) discovering it false after build forces rework, not a settings change, **and** (b) the client can confirm it in one sentence with no research |
 | **Contradictions between sources** | Quote both spans. Exempt from §1 and from de-duplication by construction — *the topic being already covered is the reason to ask* |
-| **Operating volume and human absorption** | **Exactly one per project, asked early**: order of magnitude, peak, and **who fixes a wrong outcome by hand**. It sets §4's materiality floor for every later candidate. *(Generation-side: a run confirms this question exists rather than testing a candidate against it.)* **Where only part of it is on record — a scale but no peak — the floor stands on what is known and the run says which part it lacks**, rather than refusing to apply the floor at all |
+| **Operating volume and human absorption** | **At most one per project, asked only when a candidate's disposition turns on the floor (§4) — never as a checklist item** (v46): order of magnitude, peak, and **who fixes a wrong outcome by hand**. Once answered it sets §4's materiality floor for every later candidate. *(Generation-side: a run asks it for the candidate that needs the floor, and names that candidate; where none does, it is not asked and §4 fails toward asking.)* **Where only part of it is on record — a scale but no peak — the floor stands on what is known and the run says which part it lacks**, rather than refusing to apply the floor at all |
 
 ## 4. Materiality — the floor, and it is set by the client's scale
 
@@ -257,6 +257,9 @@ one requirement line that differs. *"Who are your users?"* is a persona exercise
 
 **Success metrics.** The **target** is out. The **instrumentation** is in, and only when an event or
 field must be captured that the system would not otherwise emit **and** a named person will look at it.
+So the project-level *what would tell you this worked* question is minted only where a source asks to
+know whether it works (v47, [`../questions.md`](../questions.md) Q3) — until then it was a standing row
+on every project, which this section's own test refused.
 
 **The as-is.** Out as an open question — *"walk me through your current process"* is already in the
 transcripts. In as a targeted one: *"which columns of the current spreadsheet must survive into the new
@@ -306,6 +309,10 @@ output shape carries one verdict per candidate **disposes on the half that would
 the report that the candidate was bundled** — losing a real question to a bundling artefact is the
 worse error of the two.
 
+**A half already settled is trimmed, not re-asked** (v47): where one half of a split is decided by a
+requirement, an `Edge cases` line or an unratified Default line, that half leaves as *Already answered*
+quoting it ([`../questions.md`](../questions.md) Q3), and only the undecided half is disposed.
+
 ## 8. Phrasing — a rejected question and an accepted one can be the same topic
 
 The corpus shows phrasing deciding the outcome. She rejected *"does the late-cancellation charge still
@@ -316,7 +323,10 @@ sideways**"* — the topic was live, the phrasing re-asked a hole she had alread
   arrives after the berth was released, which of the two outcomes applies?"* is a state.
 - **A question whose answer is blocked by an already-open question is not a second question.** It is a
   consequence of the first, and it waits.
-- **One decision per question**, unless one answer genuinely closes both — and then say so.
+- **One decision per question** (v46). Where one answer genuinely settles two things they are one
+  decision: ask it as one choice, never as two asks joined by *and*. A title that joins two
+  interrogatives, or asks about two objects, is split by [`../questions.md`](../questions.md) Q4's
+  bundle gate before any reader sees it.
 
 ## 8a. How to read the worked examples in this file
 
@@ -351,11 +361,11 @@ tests disagree, the tests win.
 - **It presumes material to test against.** On a thin corpus most tests are unrunnable, and a run in
   that state says so rather than admitting everything by default.
 - **The materiality floor is unusable until the volume question is answered**, and until then this file
-  fails toward asking. **No phase has ever asked it** (v31): §3 names it *"exactly one per project,
-  asked early"* and marks it generation-side, and [`../questions.md`](../questions.md) Q2's sweeps are
-  a closed list that has never contained it — so §4 has been inert in every run this skill has
-  executed. Q2's standing sweep now confirms it exists (item 6). **Until any answer is on record §4 does not
-  apply at all** (§4); **where only part is on record the floor stands on what is known and the run
+  fails toward asking. **No phase asked it before v31**, so §4 was inert in every run until then;
+  v31 made it a standing question on every project, which the A/B record showed arriving as one more
+  checklist item where nothing turned on scale. **Since v46 it is asked only when a candidate needs the
+  floor** ([`../questions.md`](../questions.md) Q2's standing sweep, item 6). **Until any answer is on
+  record §4 does not apply at all** (§4) — the run fails toward asking, which is the safe direction; **where only part is on record the floor stands on what is known and the run
   says which part it lacks** (§3). Those are two different cases and this file states both.
 - **It does not rank.** Where more candidates pass than a sitting can carry,
   [`../questions.md`](../questions.md) Q4's re-gate and its filters decide, not this file (v30: that

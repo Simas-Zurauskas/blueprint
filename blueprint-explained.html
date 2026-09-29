@@ -266,9 +266,9 @@
               <td>Captures every source verbatim and hashed, drafts a skeleton, grills it, then writes
                 features and the overview, has a separate agent check every claim against the sources,
                 and ends by proposing questions.</td>
-              <td><strong>Once</strong> — it shows you the skeleton, the overview blocks verbatim and
-                every feature with its source, and creates nothing at the target until you confirm.
-                Creating a structure is the one act worth confirming.</td>
+              <td><strong>No</strong> — it prints the skeleton, with the overview blocks verbatim and
+                every feature with its source, and writes the Blueprint in one go;
+                <code>init soft</code> stops for your confirmation first.</td>
             </tr>
             <tr>
               <td><code>add</code></td>
@@ -605,8 +605,8 @@
       </p>
       <p>
         Labeled defaults are batch business: the report prints a numbered ledger and you settle it by
-        naming it back to a <code>questions</code> run — <code>ratify &lt;run id&gt;</code>, or
-        <code>veto &lt;run id&gt; #2</code> for the one you disagree with, the number matched by the
+        naming it back to a <code>questions</code> run in plain words — <code>ratify all</code>, or
+        <code>veto 2</code> for the one you disagree with, the number matched by the
         line's own content. Only <code>questions</code> can execute that; <code>resolve</code> carries
         it forward. A vetoed default becomes a marker and a question again. The fixes batch and the
         content manifest are ratified the same way, a fix or a slot vetoed by quoting its line, and no

@@ -18,7 +18,7 @@ feature this skill does not have; say so rather than improvising a ninth.
 | 4 | **list by status** | Return every row matching a filter, **with an explicit completeness signal.** A truncated read is never returned as a complete one |
 | 5 | **write one named block** | Replace exactly one named block of one entity. Never more than one block per call, never a wholesale replace of a page that has children |
 | 6 | **write property** | Set one property value **and read it back to confirm it landed.** A write that silently did nothing is worse than one that failed loudly |
-| 7 | **append to the run log** | Append-only, newest first, never rewritten, never summarised away. **It is a local file — `record/run-log.md` in the working folder (§5), never a page or file on the target** (v16). Write atomically, temp file plus rename |
+| 7 | **append to the run log** | Append-only, newest first, never rewritten, never summarised away. **It is a local file — `record/run-log.md` in the working folder (§5), never a page or file on the target** (v16). Write atomically, temp file plus rename. **The open entry's lines are written with one command per phase boundary, and each returned dispatch's non-Clean verdicts in one more — never one edit per line** (v47) |
 | 8 | **fetch-and-diff before writing** | Re-read the exact block immediately before overwriting it, and compare against what was read at the start of the item |
 
 ### Operation 8 is the one that must never be skipped
@@ -90,7 +90,11 @@ created: 2026-08-04
 …
 ```
 
-**A question** is one `###` section in `questions.md`, keyed by a stable `q-NN` that is never reused:
+**A question** is one `###` section in `questions.md`, keyed by a stable `q-NN` that is never reused.
+The file stays in `q-NN` order, and **a `q-NN` is assigned at write time, in the ranked order
+[`../questions.md`](../questions.md) Q4 sets** — never to a draft, which is referred to by its
+candidate id until it is written (v46). **A feature's `questions:` front matter is regenerated from the
+rows' `Touches` at every write-back**, never patched forward, like any generated list:
 
 ```markdown
 ### q-04 · Can a customer change a pickup slot after paying?
@@ -107,7 +111,12 @@ Mapping the contract onto files:
 
 - **A "named block"** (operation 5) is a `##` heading and everything under it, up to the next `##`. A
   numbered requirement is addressed as a line within `## Behaviour`. Writing one block rewrites the file
-  with exactly that block's content replaced — nothing else on the file may differ.
+  with exactly that block's content replaced — nothing else on the file may differ. **On this target,
+  all of one phase's changes to one file land in one write** (v47): the whole file is fetch-diffed
+  against the text the phase read immediately before writing (operation 8 over every block it
+  touches), written atomically, read back, and each changed block takes its own `item` line and hash.
+  Notion keeps one named block per call — its child-deletion trap is the reason, and a file has no
+  children.
 - **"Read it back"** (operation 6) means re-read the file after writing and confirm the value.
 - **"Completeness signal"** (operation 4) is trivially satisfied: a directory read is complete or it
   errored. Never report a partial read as complete anyway.
@@ -117,6 +126,7 @@ Mapping the contract onto files:
   overview's `⟳` headings become short generated lists — the one place a local Blueprint is written by a
   run without a per-block prompt, because a list of links is not prose and rewriting it invents nothing.
   It is regenerated whole, and a human who types under a `⟳` heading loses it — the heading says so.
+  Each title in it is copied verbatim from `questions.md` ([`doc-shape.md`](doc-shape.md) §3).
 
 **Ordering is deterministic** — features by their numeric prefix, questions by `q-NN`, log newest-first
 or every run looks like a change. **Never interpolate a timestamp into content** that is not a dated
@@ -186,7 +196,12 @@ that wiki-system names user territory — never written, deleted or walked by a 
 **Resolve `<home>`, in this order, from the workspace the command was run in:**
 
 1. **A path the human names for this project** — wins outright. Create only the leaf they named, never
-   an implicit tree.
+   an implicit tree. **So does the folder, among the workspace's `wiki-*/blueprint/` and `.blueprint/`,
+   whose `target.md` names the document folder the command gave** — a local target's `target.md`
+   records it on one line, `address: <folder>/`, relative to the workspace — found by
+   `grep -lxF 'address: <that folder>/' wiki-*/blueprint/target.md .blueprint/target.md 2>/dev/null`.
+   **Exactly one file printed wins; none or several fall through** (v52: a second project's unmarked
+   wiki folder made both projects' next command fall through).
 2. **The project wiki.** Candidates are the `wiki-*/` directories in the workspace; the
    `.internal/plan.yaml` marker is what makes one a real wiki-system wiki. Exactly one candidate →
    `<that>/blueprint/` — with no marker, use it anyway and say it is not a wiki-system wiki yet.
@@ -198,7 +213,8 @@ that wiki-system names user territory — never written, deleted or walked by a 
 So: `wiki-{project}/blueprint/` wherever the project has a wiki folder. Being a repository is not part
 of resolution — a wiki folder that is not yet one is still used, the run never runs `git init` on the
 project's behalf, and `status` says the record lives on this machine only. `status` resolves the folder
-the same way and creates nothing.
+the same way and creates nothing. **A folder a run creates at the top of the workspace is named, by its
+plain name, in the reply** (v52: a second project's `wiki-barber/` went unnamed).
 
 It holds:
 
@@ -214,12 +230,15 @@ It holds:
                          with `record/` (§3), because a record without its address is unusable
   record/                DURABLE — never deleted, never rebuilt. Committed with the project
     run-log.md             the run log: append-only, newest entry at the top
-    runs/<run-id>.md       that run's operational detail
+    runs/<run-id>.md       that run's operational detail and its full report
   sources/               DURABLE — never deleted. NEVER committed: client material, verbatim
-    <run-id>/              the source record for one run
-      i3-skeleton.md       the confirmed skeleton, verbatim — the referent of the I3 reply (v21)
+    <run-id>/              the source record for one run — a revised file is written beside the
+                           old one with the next number, never over it (v46)
+      i3-skeleton.md       the skeleton as printed — and, under `init soft`, confirmed — verbatim:
+                           what I5 writes (v21)
       contradictions.md    the CON-k verbatim spans (v30) — client words, so never committed;
-                           `record/` carries only their citation, origin and this path
+                           `record/` carries only their citation, origin and this path. A later
+                           sitting's revision is `contradictions-2.md` beside it, never an overwrite
   cache/                 REBUILDABLE — delete it freely; the next run rebuilds it
     mapping.md             entity IDs, parents, child order, a content hash per entity
   document/              LOCAL TARGET ONLY — the Blueprint itself (§3), where the human named no
@@ -273,7 +292,9 @@ body. That sweep is the reason committing the record is safe rather than merely 
   §3) are hashed as returned, consistently, on both sides of every comparison.
 - **What the local run log costs, stated rather than discovered.** Two runs on two machines against the
   same Notion target cannot see each other's run-log entry, so the concurrent-run check
-  ([`../resolve.md`](../resolve.md) R1) is **same-machine only**. The cross-machine guarantee is
+  ([`../resolve.md`](../resolve.md) R1) is **same-machine only**: it halts a new run for an open entry
+  something was written for in the last 30 minutes, whichever session opened it, and closes an older
+  one as abandoned — never handed to a person to edit (v46; v52 for any session). The cross-session and cross-machine guarantee is
   operation 8 — fetch and diff immediately before writing — which this file already rates the stronger
   check, and which is unaffected. **And `record/` only travels if it is committed**; on a machine that
   has not pulled it, `status` reports what it could not compute instead of inventing it.
