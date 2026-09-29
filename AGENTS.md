@@ -6,14 +6,10 @@ consumer session, so there is none.
 
 ## The gate — every edit, before every commit
 
-0. **`./check.sh`** runs every gate below in one go and exits non-zero on the first failure.
 1. `./lint.sh` **and** `LC_ALL=C ./lint.sh` — both must print `LINT PASS` with the **same**
    `ASSERTIONS n/n` and exit 0. The second run is not optional: the assertion tables are `⋮`-delimited
    and the `.`-for-multibyte rule in the header exists because a regex that passes under UTF-8 has
    failed under C twice in this file's history.
-1a. **`bp`'s four gates** (v38), from `bp/`: `npm run typecheck`, `npm run lint`, `npm run format:check`, `npm test` —
-   each must pass. `npm ci` first on a fresh clone (dev tools only; `bp` itself has no runtime dependency).
-   `bp/DESIGN.md` is `bp`'s specification; the prose files stay the source of truth for what the rules are.
 2. **`VERSION`** is the single integer every run stamps into its log entry. Bump it — there and nowhere
    else — when the files change materially, **and make the register decision in the same edit**:
    either add a row to SKILL.md's shape-change register (the bump changed a property, select option,
@@ -32,7 +28,6 @@ consumer session, so there is none.
 | any run file (`init.md` … `status.md`) | `SKILL.md` rules 1–8 and pre-flight; the run file end to end; `resolve.md` R5 (log-line kinds — a closed list, widened only here with a bump) |
 | `spec/` | the spec's own "single home" claims — every phrase lint's SINGLE_HOME table pins must stay in exactly that many files; restating a rule in different words is the drift lint cannot see |
 | a sample screen or log entry | the rule it illustrates — `resolve.md` says "a sample is what a run copies"; v19 found five samples still teaching pre-v16 behaviour that lint could not see |
-| `bp/src/` | `bp/DESIGN.md`, the rule the code executes (its file is named in the module's header comment), and `bp/test/` for the behaviour pinned; a change to a closed list goes in `bp/src/domain/vocab.ts` **and** the prose, and `test/vocab-drift.test.ts` fails when they disagree |
 | `lint.sh` | its header: no multibyte in an assertion regex, no backslash-backtick, never `IFS=⋮ read`; add a FORBIDDEN row for every retired phrase you remove |
 | `README.md`, `QUICKSTART.md`, `blueprint-explained.html` | the run file the sentence describes — these are readings of the files and drift silently; QUICKSTART is pointer-only by lint |
 

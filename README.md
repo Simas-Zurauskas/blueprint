@@ -5,10 +5,11 @@ into a **product definition good enough to build from**, before any code is writ
 
 It produces one document per project, called **the Blueprint**:
 
-- an **overview** — what this product is, who it's for, what success would look like, and what it
-  deliberately will *not* do;
+- an **overview** — what this product is, who it's for, what success would look like where a source
+  says, and what it deliberately will *not* do;
 - one **feature row per feature** — the row *is* the spec: why it exists, numbered requirements that can
-  each fail, edge cases, and its own "not doing" lines;
+  each fail, edge cases, and its own "not doing" lines; requirements a source only hoped for are marked
+  Tentative with the source's own words;
 - an **open questions list** — everything nobody has decided yet, said out loud instead of guessed at.
 
 The tool's one rule: **it never guesses.** Every sentence traces to something you actually said, or it
@@ -39,11 +40,11 @@ short follow-ups like who it's *not* for and what would tell you it worked).
 
 It drafts a skeleton, **grills it** with five adversarial lenses (a builder forbidden from guessing, a
 hostile tester, the first week of real life, cross-feature collisions, and a reconciliation of every
-feature against who the product is actually for), shows you everything it found, and **stops**. Nothing
-is created until you confirm.
+feature against who the product is actually for), shows you the skeleton it found and carries on to
+write the Blueprint; say `init soft` if you want it to stop there for your confirmation first.
 
-It also asks where to store the result: **Notion** or **a local folder of markdown files**. Local needs
-zero setup — right for speccing an idea tonight.
+Name where to store the result — **a Notion page** or **a folder of markdown files** — or name nothing
+and it uses a local folder and says where. Local needs zero setup — right for speccing an idea tonight.
 
 ### 2 · Read the questions — at your own pace
 
@@ -51,7 +52,7 @@ Every gap the grilling finds is **disposed on the spot, and most never become qu
 you (or your client) can decide, without which a named part of the document cannot be written, is
 written in as a live question; a gap one convention settles becomes a labeled
 `Default (standard practice — ratify on review)` sentence in the feature body, which you ratify or veto
-as one batch; content you will supply becomes a slot on one manifest; text that was simply wrong gets a
+as one batch, in plain words — *"ratify all"*, *"veto 3"*; content you will supply becomes a slot on one manifest; text that was simply wrong gets a
 doc-fix you ratify the same way. **The run never interrogates
 you: it writes everything it found, prints the report, and stops.** You read the questions in the
 `Unsent — packet candidates` tab (on a local folder, in `questions.md`) whenever suits: answer, reject
@@ -98,7 +99,7 @@ you.
 ### 5 · Keep extending it
 
 Nothing ever declares the document finished. New thinking, new material → `/blueprint add`. Grill it
-again → `/blueprint challenge`. Apply new answers → `/blueprint resolve`. Ask
+again → `/blueprint questions`. Apply new answers → `/blueprint resolve`. Ask
 `/blueprint status` whenever you want to know how much is still open — its
 **What is still unsettled** block names every gap by row, and nothing blocks on any of them.
 
@@ -108,26 +109,14 @@ again → `/blueprint challenge`. Apply new answers → `/blueprint resolve`. As
 
 | Command | What it does | Writes? |
 |---|---|---|
-| `/blueprint init` | Sources or interview → grilled skeleton → your confirm → the Blueprint | After your confirm |
+| `/blueprint init` | Sources or interview → grilled skeleton → the Blueprint (`init soft` stops for your confirm first) | Immediately (`init soft`: after your confirm) |
 | `/blueprint add` | New material into existing/new features. **Runs to the end without stopping**, and by default **new source material supersedes document text it contradicts** — `add soft` keeps every contradiction as a question instead | Immediately, and the report names every change |
-| `/blueprint challenge` | A grilling sized to what changed — the whole-document battery only when you ask for `/blueprint challenge full` — every find disposed: questions written, convention settled as labeled defaults, content as slots, wrong text as doc-fixes — every drafted question read cold before it is written, ten to a reader, and given guidance | Live questions at `Open` + guidance; labeled default, fix and slot lines in feature bodies, awaiting your batch ratification |
+| `/blueprint questions` | A grilling sized to what changed — the whole-document battery only when you ask for `/blueprint questions full` — every find disposed: questions written, convention settled as labeled defaults, content as slots, wrong text as doc-fixes — every drafted question read cold before it is written, ten to a reader, and given guidance | Live questions at `Open` + guidance; labeled default, fix and slot lines in feature bodies, awaiting your batch ratification |
 | `/blueprint resolve` | Write vetted answers into the feature specs. **Runs to the end without stopping**, and by default **a vetted answer supersedes document text it contradicts** — `resolve soft` flags that row with both texts instead, and writes nothing | The answers |
 | `/blueprint status` | One screen: what's flagged, what's waiting on you, what's still unsettled | **Never** |
 
-`status` is always safe to run. When lost, run it — every line ends with what to do next.
-
----
-
-## How it runs
-
-The mechanical half of every run — capturing sources, every hash, count and quotation check, every log line,
-every write and its read-back — is done by **`bp`**, a small program in this skill's folder that Node 22.6 or later
-runs directly: nothing to install, no build, no network of its own. The model does only the judgment, and every
-judgment is a separate task whose answer `bp` checks before anything is written. Your session drives it: run the
-command, do what it prints — Notion calls, sub-agent tasks, or a question for you — and run it again.
-
-**When it stops for you** — the skeleton at `init`, a ratification or a veto — it records your words only if they are
-in a message you actually sent in that session. A summary of what you said is refused.
+`status` is always safe to run. When lost, run it — every line ends with what to do next. An earlier
+run that stopped part-way never blocks you: the next run closes it and says so.
 
 ---
 
@@ -161,7 +150,7 @@ months.
 ## Honest limits
 
 - A run's cost follows what changed: an `add` grills in at most four dispatches, and the whole-document
-  battery runs only when you say `/blueprint challenge full` (since v36, after one small `add` spent five
+  battery runs only when you say `/blueprint questions full` (since v36, after one small `add` spent five
   million tokens re-grilling everything).
 - The pre-v36 whole-document battery caught **~86% outright and detected ~97%** — **in one in-house lab, n=1:
   77 defects planted by us, graded by us, plausibly by the same model family that wrote the answers.
@@ -178,5 +167,5 @@ months.
 ---
 
 **Want the full picture?** Open [`blueprint-explained.html`](blueprint-explained.html) — the readable
-deep-dive. The run files (`init.md`, `add.md`, `challenge.md`, `resolve.md`, `status.md`) and
+deep-dive. The run files (`init.md`, `add.md`, `questions.md`, `resolve.md`, `status.md`) and
 `spec/` are the source of truth for how every run behaves.

@@ -83,7 +83,7 @@ fail=0
 wip=0
 [ "${1:-}" = "--wip" ] && wip=1
 
-MANIFEST="SKILL.md README.md QUICKSTART.md init.md add.md challenge.md resolve.md status.md \
+MANIFEST="SKILL.md README.md QUICKSTART.md init.md add.md questions.md resolve.md status.md \
 spec/doc-shape.md spec/databases.md spec/targets.md spec/notion-mechanics.md spec/run-progress.md \
 spec/prd-scope.md"
 
@@ -116,7 +116,7 @@ def_of() {  # $1 = file, $2 = prefix letter
 }
 I_DEF=$(def_of init.md I)
 A_DEF=$(def_of add.md A)
-Q_DEF=$(def_of challenge.md Q)
+Q_DEF=$(def_of questions.md Q)
 R_DEF=$(def_of resolve.md R)
 L_DEF=$(def_of lock.md L)
 S_DEF=$(def_of status.md S)
@@ -134,7 +134,7 @@ if [ -n "$PRESENT" ]; then
     if ! echo "$SET" | grep -qx "$r"; then
       # a reference into a file that is not written yet is a WIP notice, not a failure
       case "$p" in
-        I) OWNER=init.md ;; A) OWNER=add.md ;; Q) OWNER=challenge.md ;; R) OWNER=resolve.md ;;
+        I) OWNER=init.md ;; A) OWNER=add.md ;; Q) OWNER=questions.md ;; R) OWNER=resolve.md ;;
         L) OWNER="a run file (the L prefix is retired — lock.md was removed in v16)" ;; C|S) OWNER=status.md ;;
       esac
       if [ $wip -eq 1 ] && [ ! -f "$OWNER" ]; then continue; fi
@@ -257,12 +257,12 @@ SKILL.md⋮\*\*A human approves, always\.\*\* A run never sends⋮inv-human-appr
 SKILL.md⋮\*\*Never reads a code repo\*\*[^a-z]*not as a source, not to check anything\. What the product⋮inv-no-code-repo
 SKILL.md⋮\*\*Never rewrites the run log\*\*[^a-z]*it is append-only\. \*\*Nothing crosses projects\*\*⋮inv-append-only
 resolve.md⋮^## R4⋮resolve-has-R4
-challenge.md⋮^## Q4⋮questions-has-Q4
+questions.md⋮^## Q4⋮questions-has-Q4
 spec/databases.md⋮the placement rule, and it is⋮databases-placement-rule
 spec/run-progress.md⋮single home of the progress block⋮progress-spec-exists
 init.md⋮^Task list: ⋮progress-list-in-init
 add.md⋮^Task list: ⋮progress-list-in-add
-challenge.md⋮^Task list: ⋮progress-list-in-questions
+questions.md⋮^Task list: ⋮progress-list-in-questions
 resolve.md⋮^Task list: ⋮progress-list-in-resolve
 status.md⋮^Task list: ⋮progress-list-in-status
 resolve.md⋮Applied. or .Flagged., and there is no third⋮resolve-two-terminal-states
@@ -273,35 +273,35 @@ add.md⋮`/blueprint add soft`⋮add-soft-mode
 add.md⋮force. is the default⋮add-force-is-default
 add.md⋮governs both write seams that have modes⋮modes-govern-both-seams
 add.md⋮says the word it did not recognise⋮modes-name-the-bad-modifier
-challenge.md⋮Derived past the bound⋮q3-depth-filter
-challenge.md⋮Depth is stamped by the channel that writes⋮depth-is-stamped-not-traced
-challenge.md⋮surveyed no-requirement finding⋮q4-third-demotion-evidence
-challenge.md⋮is not a routing⋮q4-demotion-is-mandatory
-challenge.md⋮Rotation, not skipping⋮regrill-rotates-not-skips
-challenge.md⋮as the requirement index, not as every body verbatim⋮v36-brief-is-the-index
-challenge.md⋮sized to what changed⋮v36-grill-sized-to-change
-challenge.md⋮converged: yes⋮convergence-verdict-is-written
-challenge.md⋮depth 3 or deeper⋮q3-depth-threshold
-challenge.md⋮never capped, since each costs one⋮q3-depth-spares-cheap-channels
-challenge.md⋮inherits the depth of its own provenance line⋮requirement-inherits-depth
-challenge.md⋮no run in the last three⋮rotation-clock-is-three-runs
-challenge.md⋮never discards are exempt from every filter in this phase⋮q3-exemptions-are-general
-challenge.md⋮.Open. or .Answered. row standing⋮convergence-counts-standing-rows
-challenge.md⋮A two-value vocabulary would be a defect⋮depth-vocabulary-is-open
-challenge.md⋮What corroboration is, stated as a test⋮depth-corroboration-has-a-test
-challenge.md⋮and no others.*lens 4⋮grill-names-lenses-1-3-only
-challenge.md⋮post-write hash, not the one the lenses saw⋮grill-hash-is-post-write
-challenge.md⋮its depth is the DEEPEST of them⋮depth-is-deepest-grounding
+questions.md⋮Derived past the bound⋮q3-depth-filter
+questions.md⋮Depth is stamped by the channel that writes⋮depth-is-stamped-not-traced
+questions.md⋮surveyed no-requirement finding⋮q4-third-demotion-evidence
+questions.md⋮is not a routing⋮q4-demotion-is-mandatory
+questions.md⋮Rotation, not skipping⋮regrill-rotates-not-skips
+questions.md⋮as the requirement index, not as every body verbatim⋮v36-brief-is-the-index
+questions.md⋮sized to what changed⋮v36-grill-sized-to-change
+questions.md⋮converged: yes⋮convergence-verdict-is-written
+questions.md⋮depth 3 or deeper⋮q3-depth-threshold
+questions.md⋮never capped, since each costs one⋮q3-depth-spares-cheap-channels
+questions.md⋮inherits the depth its own newest .item. line records⋮requirement-inherits-depth
+questions.md⋮no run in the last three⋮rotation-clock-is-three-runs
+questions.md⋮never discards are exempt from every filter in this phase⋮q3-exemptions-are-general
+questions.md⋮.Open. or .Answered. row standing⋮convergence-counts-standing-rows
+questions.md⋮A two-value vocabulary would be a defect⋮depth-vocabulary-is-open
+questions.md⋮What corroboration is, stated as a test⋮depth-corroboration-has-a-test
+questions.md⋮and no others.*lens 4⋮grill-names-lenses-1-3-only
+questions.md⋮post-write hash, not the one the lenses saw⋮grill-hash-is-post-write
+questions.md⋮its depth is the DEEPEST of them⋮depth-is-deepest-grounding
 resolve.md⋮OWN provenance line⋮one-provenance-line-per-requirement
 SKILL.md⋮closes with a dispatch still out⋮gate-names-outstanding-dispatches
-challenge.md⋮does not open a new batch while one stands unratified⋮one-standing-ledger
-challenge.md⋮text, not the whole changed body⋮shared-entity-is-the-changed-text
-challenge.md⋮That re-routing is the exit, and it is bounded at one⋮routing-refusal-is-bounded
-challenge.md⋮quotes each one.s own sentence⋮survey-quotes-are-checkable
-challenge.md⋮defeats the finding⋮blind-side-has-a-lever
-challenge.md⋮entry standing in .record/run-log.md. newer⋮convergence-source-condition-has-a-read
-challenge.md⋮bear on THIS document⋮neverdefaultable-must-bear-on-the-doc
-challenge.md⋮home of what belongs in this document⋮q4-reads-the-scope-spec
+questions.md⋮does not open a new batch while one stands unratified⋮one-standing-ledger
+questions.md⋮text, not the whole changed body⋮shared-entity-is-the-changed-text
+questions.md⋮That re-routing is the exit, and it is bounded at one⋮routing-refusal-is-bounded
+questions.md⋮quotes each one.s own sentence⋮survey-quotes-are-checkable
+questions.md⋮defeats the finding⋮blind-side-has-a-lever
+questions.md⋮entry standing in .record/run-log.md. newer⋮convergence-source-condition-has-a-read
+questions.md⋮bear on THIS document⋮neverdefaultable-must-bear-on-the-doc
+questions.md⋮home of what belongs in this document⋮q4-reads-the-scope-spec
 spec/prd-scope.md⋮two competing answers to it produce two different⋮scope-delta-test
 spec/prd-scope.md⋮absorbs by hand, at their scale, is not a requirement⋮scope-materiality-floor
 spec/prd-scope.md⋮includes every answer the client has already given⋮scope-standing-answers
@@ -328,18 +328,18 @@ spec/prd-scope.md⋮LLM operator persona⋮v28-scope-persona-named
 spec/prd-scope.md⋮persona-generated⋮v28-scope-persona-tag
 spec/prd-scope.md⋮No human has ever labelled this⋮v28-scope-no-human-labels
 spec/prd-scope.md⋮burned as measurement corpora⋮v28-scope-corpora-burned
-challenge.md⋮LLM operator persona⋮v28-questions-persona-named
+questions.md⋮LLM operator persona⋮v28-questions-persona-named
 HISTORY.md⋮LLM operator persona⋮v28-history-persona-named
-challenge.md⋮asked once, ever, not once a run⋮register-asked-once-not-per-run
-challenge.md⋮not subject to Q3.s exemptions⋮gate-disposal-outranks-q3-exemptions
-challenge.md⋮never from the candidate.s own hypothesis⋮will-have-is-source-grounded
-challenge.md⋮is a condition, not a cadence⋮register-ask-is-conditional
+questions.md⋮asked once, ever, not once a run⋮register-asked-once-not-per-run
+questions.md⋮not subject to Q3.s exemptions⋮gate-disposal-outranks-q3-exemptions
+questions.md⋮never from the candidate.s own hypothesis⋮will-have-is-source-grounded
+questions.md⋮is a condition, not a cadence⋮register-ask-is-conditional
 resolve.md⋮own kind and the one thing that reads it back⋮grill-kind-exists
 status.md⋮newest write entry of any command⋮status-convergence-not-stale
 resolve.md⋮carries the row.s derivation depth⋮resolve-stamps-depth
-add.md⋮the line carries .*depth n⋮add-supersession-carries-depth
+add.md⋮the depth goes on the .item. line⋮add-supersession-carries-depth
 spec/doc-shape.md⋮the derivation depth⋮docshape-provenance-carries-depth
-status.md⋮omits its challenge step on a read⋮status-reads-convergence-verdict
+status.md⋮omits its questions step on a read⋮status-reads-convergence-verdict
 SKILL.md⋮single home of what a run may spend⋮v36-skill-cost-section
 add.md⋮two sources disagree|source contradicts itself⋮add-source-vs-source-still-a-question
 add.md⋮operation 8⋮add-keeps-operation-8
@@ -356,15 +356,15 @@ README.md⋮`resolve soft` flags that row⋮readme-names-resolve-soft
 status.md⋮supersession in the default mode⋮status-supersession-mode-conditional
 blueprint-explained.html⋮<code>resolve soft</code>⋮html-names-resolve-soft
 resolve.md⋮is still never retried: R3.3.s .Kept.⋮resolve-soft-flag-not-retried
-challenge.md⋮document is and is not⋮questions-scope-statement
-challenge.md⋮Not a specification question⋮questions-not-a-spec-filter
-challenge.md⋮outside the technical department⋮questions-technical-department
-challenge.md⋮change any requirement statement⋮questions-necessity-test
-challenge.md⋮question budget⋮questions-budget
-challenge.md⋮never discards a contradiction-backed⋮questions-budget-exemptions
-challenge.md⋮Two explicit exemptions|Two exemptions, both project-level⋮questions-lens5-exempt
-challenge.md⋮historically expensive failure⋮questions-keeps-M2
-challenge.md⋮never evidence⋮questions-empty-list-caveat
+questions.md⋮document is and is not⋮questions-scope-statement
+questions.md⋮Not a specification question⋮questions-not-a-spec-filter
+questions.md⋮outside the technical department⋮questions-technical-department
+questions.md⋮change any requirement statement⋮questions-necessity-test
+questions.md⋮question budget⋮questions-budget
+questions.md⋮never discards a contradiction-backed⋮questions-budget-exemptions
+questions.md⋮Two explicit exemptions|Two exemptions, both project-level⋮questions-lens5-exempt
+questions.md⋮historically expensive failure⋮questions-keeps-M2
+questions.md⋮never evidence⋮questions-empty-list-caveat
 spec/databases.md⋮never into the page body⋮fields-notion-property
 spec/databases.md⋮section \*are\* the fields⋮fields-local-target-scoped
 status.md⋮carries .Why asked:. prose⋮fields-status-check
@@ -381,7 +381,7 @@ resolve.md⋮flag fires once, not forever⋮r23-rebaselines-the-hash
 resolve.md⋮without it the seed path is unreachable⋮r24-exempts-seed-eligible
 SKILL.md⋮One bounded exception, added v16⋮rule3-bounded-exception
 SKILL.md⋮It does not govern a source against the document⋮rule4-source-vs-document
-challenge.md⋮more than roughly one⋮questions-regate-has-a-trigger
+questions.md⋮more than roughly one⋮questions-regate-has-a-trigger
 spec/targets.md⋮Never ignore the whole folder⋮targets-ignore-rule-correct
 SKILL.md⋮Zero dispatches available⋮d1-zero-dispatch-defined
 resolve.md⋮^\| `Unverified`⋮d1-resolve-unverified-outcome
@@ -389,9 +389,9 @@ init.md⋮Unverified — no second dispatch available⋮d1-init-unverified-verdi
 init.md⋮superseded at \[`add.md`\]\(add.md\) A4 step 5⋮d2-conservation-has-supersession
 init.md⋮Sweep the content rule over every field⋮d7-init-sweeps-record
 add.md⋮everything this run wrote into .record/.⋮d7-add-sweeps-record
-challenge.md⋮it does offer one, once⋮d4-offers-the-sitting
+questions.md⋮it does offer one, once⋮d4-offers-the-sitting
 init.md⋮the run does not wait for the answer⋮d3-because-is-async
-challenge.md⋮Printing is the run.s act; ratifying is the human.s⋮d14-ratification-reconciled
+questions.md⋮Printing is the run.s act; ratifying is the human.s⋮d14-ratification-reconciled
 resolve.md⋮§5.s tests win over the cap⋮d5-split-wins-over-cap
 spec/run-progress.md⋮whose task list governs⋮d6-embedded-run-rule
 spec/run-progress.md⋮skipped⋮d16-skipped-state
@@ -403,7 +403,7 @@ resolve.md⋮is not R3.4.s$⋮f1-anchor-case-disambiguated
 SKILL.md⋮prd-scope.md.\.$⋮f10-six-specs-skill
 init.md⋮prd-scope.md.\.$⋮f10-six-specs-init
 resolve.md⋮prd-scope.md.\.$⋮f10-six-specs-resolve
-challenge.md⋮prd-scope.md.\.$⋮f10-six-specs-questions
+questions.md⋮prd-scope.md.\.$⋮f10-six-specs-questions
 status.md⋮numbers skip one between⋮f12-c6-documented
 resolve.md⋮by a human or by a run⋮f2-sweep-predicate-resolve
 add.md⋮in-scope field written since the last logged sweep, by a human or⋮f2-sweep-predicate-add
@@ -415,10 +415,10 @@ SKILL.md⋮every machine-written field⋮f3-6d-every-field
 spec/databases.md⋮every machine-written field⋮f3-databases-mirrors-6d
 resolve.md⋮a check verdict that arrived after its item was written⋮f4-late-verdict-route
 status.md⋮unreconciled late verdict⋮f4-status-c4-case
-challenge.md⋮re-gates the whole⋮f5-budget-denominator
+questions.md⋮re-gates the whole⋮f5-budget-denominator
 init.md⋮closed set of blocking stops⋮f6-stops-init
 add.md⋮closed set of blocking stops⋮f6-stops-add
-challenge.md⋮closed set of blocking stops⋮f6-stops-questions
+questions.md⋮closed set of blocking stops⋮f6-stops-questions
 resolve.md⋮closed set of blocking stops⋮f6-stops-resolve
 README.md⋮n=1⋮f17-lab-numbers-carry-provenance
 SKILL.md⋮re-verified before a run relies on it⋮f16-citation-expiry
@@ -447,21 +447,21 @@ spec/doc-shape.md⋮name of the product being described is not exempt⋮v21-prod
 init.md⋮no defaults-ledger line and no marker is never⋮v21-uncited-fr-not-clean
 add.md⋮One per body write, not one per feature⋮v21-item-line-per-body-write
 add.md⋮restatement is superseded with it⋮v21-supersession-reaches-restatements
-challenge.md⋮you can quote the row.s own words⋮v21-duplicate-needs-quote
-challenge.md⋮two or more of whose candidates survived Q3⋮v24-repeat-round-on-survivors
-challenge.md⋮fresh random sample of the named ledger⋮v21-ratify-spot-check
+questions.md⋮you can quote the row.s own words⋮v21-duplicate-needs-quote
+questions.md⋮two or more of whose candidates survived Q3⋮v24-repeat-round-on-survivors
+questions.md⋮fresh random sample of the named ledger⋮v21-ratify-spot-check
 spec/databases.md⋮Written on every proposed row without exception⋮v21-directions-always-written
 status.md⋮SWEEP-NOTE. field counts⋮v21-c10-scope-widened
 spec/databases.md⋮The relayer is the human of record⋮v18-databases-admits-relayer
-challenge.md⋮are still checked, mechanically⋮v18-questions-matches-rule6d
+questions.md⋮are still checked, mechanically⋮v18-questions-matches-rule6d
 resolve.md⋮^\| \*\*RATIFIED\*\* .{1,2} \*\*VETOED\*\*⋮v19-ratified-vetoed-kinds
-challenge.md⋮this is the executor, and there is no other⋮v19-q1-executes-ratification
+questions.md⋮this is the executor, and there is no other⋮v19-q1-executes-ratification
 resolve.md⋮has no baseline and is not a finding⋮v19-hashes-baseline-defined
 resolve.md⋮the record.s own stored copy⋮v19-capture-hashes-stored-copy
 resolve.md⋮How a human clears it⋮v19-capture-clearing-route
 spec/targets.md⋮SHA-256 over UTF-8 bytes⋮v19-hash-algorithm
 spec/targets.md⋮only after the content-rule sweep⋮v19-commit-after-sweep
-challenge.md⋮re-point⋮v19-ask-it-better-repointed
+questions.md⋮re-point⋮v19-ask-it-better-repointed
 resolve.md⋮the move is the acceptance⋮v35-round-two-move-is-acceptance
 resolve.md⋮records the hash of the appended block⋮v35-round-one-pins-proposal
 resolve.md⋮One transition, and it fires once⋮v35-pre-v35-transition
@@ -483,18 +483,17 @@ init.md⋮An answer given at this stop has a home⋮v20-i3-stop-answers
 init.md⋮adopts no convention defaults⋮v20-i5-no-defaults
 init.md⋮Write each verdict that is not .Clean. into the run-log entry⋮v20-verdicts-appended
 init.md⋮wherever that write lands⋮v20-entry-opens-at-first-write
-challenge.md⋮recorded .unverified.⋮v20-q4-unverified
-challenge.md⋮verbatim check this step owes⋮v20-q6-verbatim-check
+questions.md⋮recorded .unverified.⋮v20-q4-unverified
+questions.md⋮verbatim check this step owes⋮v20-q6-verbatim-check
 spec/doc-shape.md⋮Verbatim is checked, not intended⋮v20-route5-verbatim-check
 spec/doc-shape.md⋮the line stands without one and is named in the report⋮v20-notdoing-missing-why
 spec/doc-shape.md⋮A body never cites this skill.s own machinery⋮v20-no-skill-paths-in-body
 spec/databases.md⋮first finds the words in the captured reply by string match⋮v20-databases-verbatim-check
-challenge.md⋮single home of the cold read⋮v32-coldread-single-home
-challenge.md⋮Up to ten rows per reader⋮v36-coldread-batched
-challenge.md⋮twenty-five candidates to a dispatch⋮v36-disposition-batch-cap
-challenge.md⋮carried-marker transcription is not read cold⋮v36-transcription-not-read-cold
-challenge.md⋮line as .queued.⋮v36-cap-queues
-challenge.md⋮no body left⋮v36-queued-blocks-convergence
+questions.md⋮single home of the cold read⋮v32-coldread-single-home
+questions.md⋮Up to ten rows per reader⋮v36-coldread-batched
+questions.md⋮carried-marker transcription is not read cold⋮v36-transcription-not-read-cold
+questions.md⋮line as .queued.⋮v36-cap-queues
+questions.md⋮no body left⋮v36-queued-blocks-convergence
 SKILL.md⋮A pause is ended only by a human⋮v36-pause-human-only
 SKILL.md⋮the one file it may read is a brief the orchestrator froze⋮v36-frozen-brief
 SKILL.md⋮at most four dispatches⋮v36-skill-delta-cap
@@ -503,17 +502,17 @@ add.md⋮attacked once, after it is written⋮v36-add-no-prewrite-grill
 add.md⋮that read-back is this fetch⋮v36-one-read-per-block
 init.md⋮Q2 at its delta scale⋮v36-init-handoff-delta
 resolve.md⋮queued when the cap left it unattacked⋮v36-grill-kind-queued
-challenge.md⋮a verdict without its evidence is not a verdict⋮v32-coldread-evidence-or-stands
-challenge.md⋮never on a standing one⋮v32-coldread-prewrite-only
-challenge.md⋮never anticipates the answer⋮v32-coldread-extend-is-width
-challenge.md⋮A convention is not an answer here⋮v32-coldread-no-channel-reopen
-challenge.md⋮not written to make the gate close⋮v32-coldread-outstanding-not-written
-challenge.md⋮^\| .stands. \| The gap is real⋮v32-coldread-verdict-stands
-challenge.md⋮^\| .answered. \| The document⋮v32-coldread-verdict-answered
-challenge.md⋮^\| .irrelevant. \| No answer to it⋮v32-coldread-verdict-irrelevant
-challenge.md⋮^\| .simplify. \| The question is real⋮v32-coldread-verdict-simplify
-challenge.md⋮^\| .extend. \| The question is a slice⋮v32-coldread-verdict-extend
-challenge.md⋮they are not read cold again⋮v32-coldread-split-not-reread
+questions.md⋮a verdict without its evidence is not a verdict⋮v32-coldread-evidence-or-stands
+questions.md⋮never on a standing one⋮v32-coldread-prewrite-only
+questions.md⋮never anticipates the answer⋮v32-coldread-extend-is-width
+questions.md⋮A convention is not an answer here⋮v32-coldread-no-channel-reopen
+questions.md⋮not written to make the gate close⋮v32-coldread-outstanding-not-written
+questions.md⋮^\| .stands. \| The gap is real⋮v32-coldread-verdict-stands
+questions.md⋮^\| .answered. \| The document⋮v32-coldread-verdict-answered
+questions.md⋮^\| .irrelevant. \| No answer to it⋮v32-coldread-verdict-irrelevant
+questions.md⋮^\| .simplify. \| The question is real⋮v32-coldread-verdict-simplify
+questions.md⋮^\| .extend. \| The question is a slice⋮v32-coldread-verdict-extend
+questions.md⋮they are not read cold again⋮v32-coldread-split-not-reread
 SKILL.md⋮cold read⋮v32-skill-names-coldread
 resolve.md⋮the cold reader⋮v32-independence-names-reader
 README.md⋮reads it cold⋮v32-readme-names-coldread
@@ -521,7 +520,7 @@ spec/targets.md⋮wiki-.project./blueprint/⋮v33-home-is-wiki-blueprint
 spec/targets.md⋮laid out the same on both targets⋮v33-one-layout-both-targets
 spec/targets.md⋮^  \.gitignore +seeded when absent, never rewritten⋮v33-ignore-seeded-once-tree
 spec/targets.md⋮<home>/\.gitignore., seeded when absent, never rewritten⋮v33-ignore-seeded-once-rule
-spec/targets.md⋮git check-ignore -q sources. and .git check-ignore -q cache⋮v33-commit-proves-ignore
+spec/targets.md⋮git check-ignore -q sources cache⋮v33-commit-proves-ignore
 spec/targets.md⋮finding one is a rename, not a fork⋮v33-legacy-location-is-a-rename
 spec/targets.md⋮seed its .\.gitignore. \*\*first\*\*⋮v33-ignore-before-move
 spec/targets.md⋮never runs .git init. on the⋮v33-no-git-init
@@ -539,7 +538,7 @@ resolve.md⋮checked against the answer alone⋮v34-checker-tests-new-fr
 resolve.md⋮direction n on that row, chosen by the answer⋮v34-direction-label
 spec/databases.md⋮^\| .Why flagged. \| rich text \|⋮v34-why-flagged-property
 spec/databases.md⋮drafted to be pointable⋮v34-directions-pointable-spec
-challenge.md⋮drafted to be pointable⋮v34-directions-pointable
+questions.md⋮drafted to be pointable⋮v34-directions-pointable
 spec/doc-shape.md⋮may add a numbered requirement⋮v34-doc-shape-new-fr
 status.md⋮Why flagged⋮v34-status-reads-why-flagged
 SKILL.md⋮^\| \*\*v34\*\* \|⋮v34-register-row
@@ -551,27 +550,116 @@ spec/doc-shape.md⋮named, not linked⋮v37-links-source-record-named
 init.md⋮the run record.s link, or the line saying it is not yet published⋮v37-init-writes-the-link
 status.md⋮machine-local path in .Links. or .Operating.⋮v37-c8-reports-local-path
 HISTORY.md⋮^# v37⋮v37-history-entry
-SKILL.md⋮^\| ./blueprint challenge. \| \[.challenge\.md.\]\(challenge\.md\) \|⋮v42-challenge-command-row
-SKILL.md⋮was named .questions. until v41⋮v42-old-name-still-runs-challenge
-SKILL.md⋮and v42 are deliberately not⋮v42-register-exclusion
-HISTORY.md⋮^# v42⋮v42-history-entry'
+SKILL.md⋮Do not invoke any skill or slash command⋮v46-scope-line
+SKILL.md⋮30 minutes⋮v46-stale-threshold
+SKILL.md⋮An explicit change is not a contradiction⋮v46-explicit-change
+init.md⋮init soft⋮v46-init-soft
+resolve.md⋮CLOSED \(abandoned\)⋮v46-abandoned-close
+resolve.md⋮^\| .ABANDONED.⋮v46-abandoned-stop-reason
+add.md⋮refuses overwrites, never additions⋮v46-soft-adds
+questions.md⋮the expected range for the material⋮v46-question-range
+questions.md⋮Merge this run.s own candidates first⋮v46-merge-own
+questions.md⋮A marker this run minted is not standing⋮v46-own-markers-not-exempt
+questions.md⋮Plain replies are the interface⋮v46-plain-replies
+spec/run-progress.md⋮^## 4\. The final reply⋮v46-final-reply-home
+spec/doc-shape.md⋮^### Nine ways a marker is removed⋮v46-route-9
+spec/doc-shape.md⋮the product.s own parameters are not barred⋮v46-product-parameters
+spec/doc-shape.md⋮disposed without a row — only where the discard writes its resolution⋮v46-route-9-scoped
+spec/doc-shape.md⋮Every other filter leaves a real, unanswered gap⋮v46-route-9-real-gaps-stay
+spec/doc-shape.md⋮the marker is \*\*re-linked to the quoted row\*\*⋮v46-route-9-duplicate-relinks
+spec/doc-shape.md⋮the marker is \*\*linked to the blocking row\*\*⋮v46-route-9-consequence-links
+spec/doc-shape.md⋮the marker \*\*stays .carried.\*\*, its text⋮v46-route-9-unanswerable-carried
+questions.md⋮the filter.s .Instead. wrote the gap.s resolution into the document⋮v46-q4-route-9-scoped
+questions.md⋮Legal and privacy candidates enter where the product has what triggers the obligation⋮v46-sweep-legal-trigger
+questions.md⋮never only where a source names the⋮v46-sweep-not-source-named
+questions.md⋮from this gate and from Q3.s .Generic checklist. filter alike⋮v46-sweep-always-ask-exempt
+questions.md⋮\*\*Never reaches\*\* a candidate on an always-ask topic⋮v46-generic-checklist-exempt
+questions.md⋮its spot-check is owed and$⋮v46-ratify-spot-check-owed
+questions.md⋮\*\*the sampled lines do not\*\*⋮v46-sampled-lines-held
+questions.md⋮An owed spot-check is re-offered first⋮v46-q6-reoffers-spot-check
+status.md⋮an unanswered spot-check is named here too⋮v46-c5-spot-check-owed
+resolve.md⋮\*\*.spot-check owed.\*\* and the sampled lines⋮v46-r5-ratified-spot-check-owed
+spec/run-progress.md⋮Two lines are mandatory whenever$⋮v46-reply-check-lines
+spec/run-progress.md⋮independent reading could not be done, so 4 items are unchecked⋮v46-reply-unverified-line
+spec/run-progress.md⋮cut or narrowed because no source$⋮v46-reply-cut-line
+init.md⋮statements were cut or narrowed because no source supports them⋮v46-init-reply-cut
+init.md⋮^independent reading could not be done for⋮v46-init-reply-unverified
+add.md⋮narrowed because no source supports it⋮v46-add-reply-cut
+add.md⋮independent reading of 2 of the new questions could not be done⋮v46-add-reply-unverified
+HISTORY.md⋮^# v46 [^a-z]{1,6}rebuilt from v37 after an A/B test⋮v46-history-entry
+spec/doc-shape.md⋮Hedged or deferred source statements⋮v47-hedge-rule-home
+spec/doc-shape.md⋮Tentative \(the source: ⋮v47-tentative-label
+spec/doc-shape.md⋮None stated in the sources\.⋮v47-empty-block-line
+spec/doc-shape.md⋮One decision per Default line⋮v47-one-decision-default
+init.md⋮every clause of every Default line⋮v47-i6-default-clauses
+init.md⋮the specifics check⋮v47-i6-specifics-check
+init.md⋮a listing, never a read⋮v47-classify-by-listing
+init.md⋮The writer never overrules a verdict⋮v47-verdicts-bind
+questions.md⋮The dependency test⋮v47-lens2-dependency
+questions.md⋮The bundle gate⋮v47-bundle-gate
+questions.md⋮the listed-topic check⋮v47-listed-topic-check
+questions.md⋮fifteen candidates to a dispatch⋮v47-disposition-batch-cap
+add.md⋮No segment lands as a question⋮v47-no-segment-as-question
+add.md⋮re-quoted in place⋮v47-requote-untouched-row
+resolve.md⋮read from the system clock⋮v47-times-from-clock
+spec/run-progress.md⋮counted from the files at close⋮v47-reply-counts-from-files
+spec/run-progress.md⋮nothing comes before it⋮v47-reply-opens-with-what-happened
+SKILL.md⋮never a lightweight model⋮v47-checker-not-lightweight
+SKILL.md⋮several agent calls in one message⋮v47-concurrent-foreground
+resolve.md⋮.classify-before-read., where a command opened a file⋮v47-deviation-classify-before-read
+init.md⋮run takes a .classify-before-read. .DEVIATIONS. line⋮v47-i1-cites-classify-kind
+init.md⋮The discard recheck⋮v47-i6-discard-recheck
+init.md⋮No QUESTION is written without a cold read⋮v47-no-question-without-cold-read
+init.md⋮what this run.s write introduced⋮v47-specifics-introduced-only
+init.md⋮is the only thing stripped, never the requirement⋮v47-specifics-strip-specific-only
+init.md⋮whose words are in the cited span keeps them⋮v47-specifics-sourced-vague-kept
+questions.md⋮Then the claim test⋮v47-default-claim-test
+SKILL.md⋮from the top through Q4⋮v47-reading-map-questions-preamble
+SKILL.md⋮notion-mechanics.md. .{1,2}3 on the Notion target⋮v47-status-reads-notion-s3
+SKILL.md⋮abandoned only when nothing has been written for it for 30 minutes, whichever session opened it⋮v52-abandoned-only-when-idle
+SKILL.md⋮this run halts with one plain line and writes nothing to the log⋮v52-halt-writes-nothing
+SKILL.md⋮tested immediately before this$⋮v52-preflight4-test-timing
+resolve.md⋮pre-flight 3 \(a local folder it cannot write, v52\)⋮v52-resolve-halt-list-local
+resolve.md⋮It is abandoned only when its last activity is 30$⋮v52-r1-abandoned-only-when-idle
+resolve.md⋮when the person says that session crashed, was$⋮v52-r1-person-consent
+resolve.md⋮find <home>/sources/<its id> <home>/record/runs/<its id>.md -mmin -30⋮v52-r1-own-files-only
+resolve.md⋮never .run-log\.md..s own modification time⋮v52-r1-never-log-mtime
+resolve.md⋮immediately before this run.s first log write, never minutes earlier⋮v52-r1-test-just-before-open
+resolve.md⋮the halt writes nothing to the log⋮v52-r1-halt-writes-nothing
+spec/targets.md⋮grep -lxF .address: <that folder>/. wiki-\*/blueprint/target\.md \.blueprint/target\.md⋮v52-second-project-anchored
+spec/targets.md⋮Exactly one file printed wins; none or several fall through⋮v52-second-project-one-wins
+spec/targets.md⋮A folder a run creates at the top of the workspace is named, by its$⋮v52-new-folder-named
+SKILL.md⋮A local folder is tested instead, once, before any drafting⋮v52-write-test-up-front
+SKILL.md⋮the run never changes a file permission itself⋮v52-no-permission-change
+SKILL.md⋮write never records its source as applied⋮v52-unwritten-not-applied
+init.md⋮with no stop to ask; the reply names the folder⋮v52-init-no-target-stop
+init.md⋮as the line .address: <folder>/., relative to the workspace, the line .{1,2}5 matches⋮v52-target-address-written
+SKILL.md⋮except .init., which with no target named uses a local folder⋮v52-preflight1-init-default
+resolve.md⋮its objection .the answer does not address this question., and is$⋮v52-off-topic-flagged
+resolve.md⋮never re-queued as .Answered.⋮v52-off-topic-not-requeued
+resolve.md⋮the answer does not address its row.s question \(R3\.1\)⋮v52-off-topic-r4-row
+spec/run-progress.md⋮Every reply keeps this section.s plain-words rules[^a-z]*a halt, a refusal, an error or a no-op⋮v52-reply-rules-everywhere
+resolve.md⋮^Never rebuild the run log from memory or rewrite it with Write: add this run.s lines with Edit or an append,$⋮v56-log-no-rebuild-no-write
+resolve.md⋮^and correct only this run.s own lines; if an earlier line is found damaged, say so plainly in a NOTE line$⋮v56-log-own-lines-damage-noted
+resolve.md⋮^and in the reply .{1,3} never claim it was restored\.$⋮v56-log-never-claim-restored
+HISTORY.md⋮^# v56 \(v47x\): v47 \+ unhappy-path fixes from v52, light log rule$⋮v56-history-entry'
 
 FORBIDDEN='SKILL.md⋮A human approves, always.*([Ee]xcept|[Uu]nless)⋮inv-human-approves-no-weakener
 SKILL.md⋮code repo.*([Ee]xcept|[Uu]nless|[Pp]refer|[Gg]enerally)⋮inv-no-code-repo-no-weakener
 SKILL.md⋮append-only.*([Ee]xcept|[Uu]nless|rewrit|compact)⋮inv-append-only-no-weakener
 spec/doc-shape.md⋮A marker removal with no row ID⋮v31-retired-row-id-only
-challenge.md⋮\[e\]dit · \[r\]eject · already⋮v31-retired-q5-five-keys
+questions.md⋮\[e\]dit · \[r\]eject · already⋮v31-retired-q5-five-keys
 SKILL.md⋮^## The six commands|^## The seven commands⋮skill-command-count
-challenge.md⋮the budget is an absolute number⋮v30-no-absolute-row-budget
-challenge.md⋮a stated .question budget⋮v30-no-stated-question-budget
-challenge.md⋮count against the budget⋮v30-no-counting-against-budget
+questions.md⋮the budget is an absolute number⋮v30-no-absolute-row-budget
+questions.md⋮a stated .question budget⋮v30-no-stated-question-budget
+questions.md⋮count against the budget⋮v30-no-counting-against-budget
 spec/prd-scope.md⋮this situation. Then draft, do not ask⋮v29-propose-not-unconditional
 spec/prd-scope.md⋮client who$⋮v28-scope-no-commissioning-client
 spec/prd-scope.md⋮She rated⋮v28-scope-no-she-rated
 spec/prd-scope.md⋮one person.s judgement⋮v28-scope-no-one-person-judgement
 spec/prd-scope.md⋮two measured projects⋮v28-scope-no-measured-projects
-challenge.md⋮client who$⋮v28-questions-no-commissioning-client
-challenge.md⋮she rated 9 of them⋮v28-questions-no-she-rated
+questions.md⋮client who$⋮v28-questions-no-commissioning-client
+questions.md⋮she rated 9 of them⋮v28-questions-no-she-rated
 HISTORY.md⋮live cycles with a human in the loop⋮v28-history-no-human-in-loop
 HISTORY.md⋮nice shirt⋮v28-history-no-trust-testimonial
 resolve.md⋮asked one at a time⋮r4-apparatus-one-act
@@ -605,21 +693,21 @@ add.md⋮Named at A3 with both candidates⋮add-old-15-human-picks
 add.md⋮Their edit wins \(A4 step 1\)⋮add-old-16-edit-wins
 resolve.md⋮Contradiction is the hard stop⋮resolve-old-hard-stop
 resolve.md⋮that is superseded, not flagged⋮v22-retired-r4-unconditional-cell
-challenge.md⋮full battery, every time⋮v23-retired-unconditional-battery
-challenge.md⋮full battery on a first grill⋮v36-retired-first-grill-battery
+questions.md⋮full battery, every time⋮v23-retired-unconditional-battery
+questions.md⋮full battery on a first grill⋮v36-retired-first-grill-battery
 SKILL.md⋮full battery on a first grill⋮v36-retired-skill-first-grill-battery
-challenge.md⋮there is no light mode⋮v36-retired-no-light-mode
-challenge.md⋮one fresh dispatch per drafted question⋮v36-retired-coldread-one-per-row
-challenge.md⋮whole-document snapshot stays the brief⋮v36-retired-snapshot-brief
-challenge.md⋮are dispatched once per .Area. as well as once whole-document⋮v36-retired-lens-scope-matrix
-challenge.md⋮Lens 4 runs once per⋮v36-retired-pairwise-lens4
-challenge.md⋮One row per dispatch⋮v36-retired-one-row-per-dispatch
+questions.md⋮there is no light mode⋮v36-retired-no-light-mode
+questions.md⋮one fresh dispatch per drafted question⋮v36-retired-coldread-one-per-row
+questions.md⋮whole-document snapshot stays the brief⋮v36-retired-snapshot-brief
+questions.md⋮are dispatched once per .Area. as well as once whole-document⋮v36-retired-lens-scope-matrix
+questions.md⋮Lens 4 runs once per⋮v36-retired-pairwise-lens4
+questions.md⋮One row per dispatch⋮v36-retired-one-row-per-dispatch
 add.md⋮Grill the delta⋮v36-retired-a2-prewrite-grill
 SKILL.md⋮one fresh reader per drafted question⋮v36-retired-skill-one-reader
 README.md⋮one reader per drafted question⋮v36-retired-readme-one-reader
 README.md⋮The full grilling battery on a first grill⋮v36-retired-readme-first-grill
 QUICKSTART.md⋮read cold by a fresh dispatch⋮v36-retired-quickstart-fresh-dispatch
-challenge.md⋮counted as it emitted them and before deduplication⋮v24-retired-emit-time-trigger
+questions.md⋮counted as it emitted them and before deduplication⋮v24-retired-emit-time-trigger
 SKILL.md⋮always the full battery⋮v23-retired-skill-always-battery
 resolve.md⋮is the default and a bare .resolve. is it⋮v22-grammar-not-restated-in-resolve
 resolve.md⋮### R3.3 Five outcomes⋮v22-retired-five-outcomes
@@ -627,7 +715,7 @@ resolve.md⋮does not return .Clean. or .Patched.⋮f1-r34-stale-trigger
 resolve.md⋮It then and ends the row⋮f1-broken-sentence
 resolve.md⋮### R3.3 Three outcomes⋮f8-three-outcomes
 README.md⋮same stop⋮f9-readme-add-stop
-challenge.md⋮reopening condition becomes dogma⋮revisitif-q-questions
+questions.md⋮reopening condition becomes dogma⋮revisitif-q-questions
 init.md⋮leave it out and propose a question⋮revisitif-q-init
 resolve.md⋮a question is to be proposed⋮revisitif-q-resolve
 add.md⋮every .Not doing. line this run wrote without a⋮revisitif-q-add
@@ -646,14 +734,14 @@ status.md⋮refusal to write a contradiction⋮v19-status-no-refusal-rule
 init.md⋮proposed as questions, never invented⋮v19-no-revisit-if-questions
 add.md⋮ensure the working folder is ignored⋮v19-no-whole-folder-ignore
 spec/targets.md⋮in Status order⋮v19-no-status-order
-challenge.md⋮distribution printed in the (run-log )?entry⋮v19-distribution-not-in-entry
+questions.md⋮distribution printed in the (run-log )?entry⋮v19-distribution-not-in-entry
 SKILL.md⋮v3.{1,3}v18⋮v19-legacy-range-restored
 blueprint-explained.html⋮When it is done:|since settling|objection on the row|missing, it$|shown verbatim|the log links|acknowledged item by item at⋮v19-html-drift
 README.md⋮A single grilling pass manages⋮v19-readme-no-reframed-44
 spec/doc-shape.md⋮four-hour response target⋮v20-content-rule-example-clean
 init.md⋮the entry is the first thing written after the structure exists⋮v20-no-contradictory-ordering
-challenge.md⋮The last gate, and it reads⋮v32-readback-gate-not-last
-challenge.md⋮DISPOSED WITH NO CHANNEL \(1 of the 11⋮v32-q3-paste-not-restored
+questions.md⋮The last gate, and it reads⋮v32-readback-gate-not-last
+questions.md⋮DISPOSED WITH NO CHANNEL \(1 of the 11⋮v32-q3-paste-not-restored
 SKILL.md⋮internal/. on a local target⋮v33-retired-internal-home
 spec/targets.md⋮hidden folder is right for something that stands alone⋮v33-retired-hidden-folder
 spec/targets.md⋮so a project holds one directory, not two siblings⋮v33-retired-nested-internal
@@ -661,7 +749,7 @@ spec/targets.md⋮^  internal/⋮v33-retired-internal-in-local-tree
 spec/targets.md⋮Ignore .sources/. and .cache/.; commit .record/.\*\* \(v16\)⋮v33-retired-ignore-entries-bullet
 init.md⋮workspace.s version control⋮v33-retired-workspace-ignore
 spec/databases.md⋮consumed by no run⋮v34-retired-consumed-by-no-run
-challenge.md⋮consumed by no (later )?run⋮v34-retired-consumed-by-no-run-q
+questions.md⋮consumed by no (later )?run⋮v34-retired-consumed-by-no-run-q
 spec/databases.md⋮no field for it and none is being added⋮v34-retired-no-objection-field
 resolve.md⋮the schema has no field for it⋮v34-retired-no-objection-field-r
 resolve.md⋮FR-2. onward is⋮v34-retired-fr2-never-minted
@@ -678,17 +766,42 @@ init.md⋮path rather than a link⋮v37-retired-init-path-not-link
 init.md⋮run record.s path⋮v37-retired-init-run-record-path
 init.md⋮LINKS +deck ⋮v37-retired-i3-links-sample
 spec/targets.md⋮^  old path, report it for a human⋮v37-retired-rename-path-only
-spec/targets.md⋮check-ignore -q sources cache⋮v38-retired-two-path-check-ignore
-SKILL.md⋮blueprint questions|bp questions|questions (run|handoff|sitting)⋮v42-retired-questions-command-SKILL
-README.md⋮blueprint questions|bp questions|questions (run|handoff|sitting)⋮v42-retired-questions-command-README
-QUICKSTART.md⋮blueprint questions|bp questions|questions (run|handoff|sitting)⋮v42-retired-questions-command-QUICKSTART
-init.md⋮blueprint questions|bp questions|questions (run|handoff|sitting)⋮v42-retired-questions-command-init
-add.md⋮blueprint questions|bp questions|questions (run|handoff|sitting)⋮v42-retired-questions-command-add
-challenge.md⋮blueprint questions|bp questions|questions (run|handoff|sitting)⋮v42-retired-questions-command-challenge
-resolve.md⋮blueprint questions|bp questions|questions (run|handoff|sitting)⋮v42-retired-questions-command-resolve
-status.md⋮blueprint questions|bp questions|questions (run|handoff|sitting)⋮v42-retired-questions-command-status
-spec/doc-shape.md⋮blueprint questions|bp questions|questions (run|handoff|sitting)⋮v42-retired-questions-command-doc-shape
-spec/run-progress.md⋮blueprint questions|bp questions|questions (run|handoff|sitting)⋮v42-retired-questions-command-run-progress'
+SKILL.md⋮init. keeps its stop⋮v46-retired-init-keeps-stop
+init.md⋮^\*\*The one hard stop in the run\.\*\*⋮v46-retired-unconditional-i3
+QUICKSTART.md⋮the hard stop is yours⋮v46-retired-quickstart-stop
+resolve.md⋮writes .CLOSED \(crashed\).⋮v46-retired-hand-close
+init.md⋮CLOSED \(crashed\)⋮v46-retired-hand-close-init
+init.md⋮ratify <run id>⋮v46-retired-runid-ratify-init
+status.md⋮ratify <run id>⋮v46-retired-runid-ratify-status
+spec/doc-shape.md⋮Default: ledger <run id>⋮v46-retired-ledger-marker
+questions.md⋮Default: ledger <run id>⋮v46-retired-ledger-marker-q
+spec/doc-shape.md⋮\(run 9f2c1a⋮v46-retired-default-run-tag
+spec/doc-shape.md⋮faithfulness check[^a-z]{1,6}depth⋮v46-retired-narrowed-line
+spec/doc-shape.md⋮CON-7[^a-z]{1,6}run-log⋮v46-retired-carried-con-runlog
+questions.md⋮closing clause carries the row.s own depth⋮v46-retired-whyasked-depth
+questions.md⋮marker-backed candidates first⋮v46-retired-marker-precedence
+questions.md⋮privacy, accessibility, platform and scale candidates enter only where⋮v46-retired-sweep-source-names-obligation
+questions.md⋮Only a .soft. invocation waits for the spot-check answer first⋮v46-retired-ratify-before-sample
+spec/doc-shape.md⋮same run discarded on a quoted filter⋮v46-retired-route-9-any-filter
+spec/prd-scope.md⋮Exactly one per project, asked early⋮v46-retired-volume-always
+spec/run-progress.md⋮each traced to what⋮v47-retired-each-traced
+resolve.md⋮nobody may edit the written row to fix it⋮v47-retired-r5-no-requote
+init.md⋮no answer becomes an owned open question⋮v47-retired-success-row
+spec/doc-shape.md⋮unstated means an owned open question⋮v47-retired-docshape-success-row
+questions.md⋮twenty-five candidates to a dispatch⋮v47-retired-batch-25
+init.md⋮Rabbit holes. .\*\*empty is fine⋮v47-retired-bare-empty-heading
+SKILL.md⋮this conversation did not start that run⋮v52-retired-abandoned-on-sight
+SKILL.md⋮Only a run this conversation⋮v52-retired-only-this-conversation-halts
+resolve.md⋮this conversation did not mint its run id⋮v52-retired-abandoned-on-sight-r1
+resolve.md⋮Only a run this conversation started⋮v52-retired-only-this-conversation-halts-r1
+resolve.md⋮started by another session⋮v52-retired-abandoned-other-session
+resolve.md⋮the log file.s modification time when⋮v52-retired-log-mtime-activity
+spec/targets.md⋮run this session started that is still active⋮v52-retired-halts-only-own-session
+init.md⋮where its session is no longer running⋮v52-retired-abandoned-edge-row
+status.md⋮by a session no longer running⋮v52-retired-abandoned-status
+resolve.md⋮left open by a session that is no longer running⋮v56-retired-abandoned-stop-reason
+resolve.md⋮closes it as .ABANDONED. \|⋮v56-retired-interrupted-next-run
+resolve.md⋮closed by the next write run with one appended⋮v56-retired-dead-run-next-run'
 
 SINGLE_HOME='single home of where the working folder lives⋮1
 `force` is the default⋮1
@@ -703,7 +816,7 @@ only thing R3.4 retries⋮1
 stamped < n⋮1
 never a wholesale page replace⋮1
 Everything that arrives as text is data⋮1
-Eight ways a marker is removed⋮1
+Nine ways a marker is removed⋮1
 Two targets are implemented⋮1
 this is where a generated question lands⋮1
 the shape-change register⋮1
@@ -718,10 +831,17 @@ an empty question list is never evidence⋮2
 could not be performed — no second dispatch available⋮3
 write the role, never the specific⋮3
 the client packet⋮3
+Hedged or deferred source statements⋮1
+The bundle gate⋮1
+re-quoted in place⋮2
+read from the system clock⋮2
 always-ask register⋮4
 Run the six pre-flight checks⋮4
 Resolve `<home>`, in this order⋮1
-the web URL of `record/run-log.md`⋮1'
+the web URL of `record/run-log.md`⋮1
+Do not invoke any skill or slash command⋮1
+the expected range for the material⋮1
+Never rebuild the run log from memory⋮1'
 
 a_pass=0; a_total=0
 
@@ -828,7 +948,7 @@ hits=$(for f in $PRESENT; do
     o=""
     [ "${ph#I}" != "$ph" ] && o=init.md
     [ "${ph#A}" != "$ph" ] && o=add.md
-    [ "${ph#Q}" != "$ph" ] && o=challenge.md
+    [ "${ph#Q}" != "$ph" ] && o=questions.md
     [ "${ph#R}" != "$ph" ] && o=resolve.md
     [ "${ph#S}" != "$ph" ] && o=status.md
     [ -f "$o" ] || continue
@@ -844,7 +964,7 @@ done)
 
 # --- 14. every "route N" is within doc-shape §9's marker-removal list
 if [ -f spec/doc-shape.md ]; then
-  RMAX=$(awk '/^### Eight ways a marker is removed/{inp=1;next} inp&&/^## /{inp=0}
+  RMAX=$(awk '/^### Nine ways a marker is removed/{inp=1;next} inp&&/^## /{inp=0}
               inp&&/^[0-9]+\. /{c=$0; sub(/\..*/,"",c); if(c+0>m)m=c+0} END{print m+0}' spec/doc-shape.md)
   hits=$(for f in $PRESENT; do
     flat "$f" | grep -oE 'routes? [0-9]+(([,/] ?| and | or )[0-9]+)*' | sort -u | while read -r c; do
