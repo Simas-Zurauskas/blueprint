@@ -116,7 +116,8 @@ folder", the v15 rule).
 Then **read the current Blueprint** — every feature row's properties and body, every question row in any
 status, and the overview's prose. This is the context the mapping in A2 is drawn against, and reading it
 after the sources rather than before is deliberate: a run that reads the existing document first tends to
-file new material into the shape that is already there.
+file new material into the shape that is already there. Preserve the affected pre-change text from
+this read for Q2's source/baseline packet at A5; do not substitute this run's rewritten text for it.
 
 ---
 
@@ -373,7 +374,11 @@ plainly: a false but plausible sentence inside a genuine source. That sentence i
 it passes, and nothing here can tell it from a true one.*
 
 **Then hand off to [`questions.md`](questions.md) Q1–Q6**, in this same sitting, over the updated
-Blueprint, at Q2's delta scale with this run's writes first. **The faithfulness check above dispatches
+Blueprint, at Q2's delta scale with this run's writes first. **Use Q2's source-first review** within
+those same passes: new source evidence and A1's affected pre-change baseline precede the separately
+frozen updated document. Keep the author's conclusions out of the initial dispatch; Q2's applicable
+lenses compare their own source expectations and bad-but-compliant counterexamples with the update.
+**The faithfulness check above dispatches
 in the same message as the handoff's Q2 passes, as several agent calls awaited together
 ([`rules.md`](rules.md) rule 8)** (v46): both read this run's writes as they now stand,
 neither needs the other's output to start, and the check's non-`Clean` verdicts join the handoff's

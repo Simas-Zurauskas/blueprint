@@ -217,7 +217,11 @@ Read the whole source record, then produce four lists. Nothing reaches the targe
 [`execution.md`](execution.md)'s cost section sets for the material — one pass for short material — **and a pass is a dispatch**
 (v47: the orchestrator never grills its own draft in its own context — a measured run did, and its
 grill found nothing the draft had not already listed) — the lenses
-live there and are not restated here — over the drafted skeleton itself: the features as sketched, the exclusions, the requirements that will be written. What the
+live there and are not restated here. **Use Q2's source-first review:** freeze the original source
+packet separately from the skeleton, omit the author's inventory and gap conclusions from the initial
+dispatch, and have each reviewer record expectations before opening the skeleton packet. Its applicable
+lenses then test the sketched features, exclusions and requirements, including Q2's bad-but-compliant
+counterexamples. What the
 grilling finds lands in the three lists above as more gaps and contradictions, and Q3's own-candidate
 merge runs on its finds before they become gaps, so the skeleton I3 prints is one that has already been
 attacked, not a first draft wearing a confident tone. **No

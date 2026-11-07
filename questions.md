@@ -290,13 +290,70 @@ is the proposal**: ask who this is for, never invent a persona to fill the silen
 because a document can hold ten well-grilled features and still not say who the product is for or what
 success means — every other lens reads the features, and only this one reads the front door against them.
 
+**Source-first review, inside each existing Q2 dispatch.** The orchestrator freezes two separately
+readable packets in the existing scratch/cache brief space. The **source/baseline packet** contains
+original material for the pass's scope, any relevant recorded owner answers and ratified design,
+the compiled charter block and governing review rules, and the pre-change baseline where available.
+Include exact owner-supplied settled answers, vetoes and project authority even when recorded in
+question or default rows; preserve origin and status, never recast a delegated proposal or the
+author's verdict as an owner decision. On `questions`, the document under review belongs in the
+second packet, not as a substitute source baseline in the first.
+Select complete relevant source passages by the supplied actors and operations, not only by citations
+in the authored draft; preserve exclusions, uncertainty and conflicting passages. On `init` there is
+no product baseline. On a delta, include the new evidence and affected established contracts plus
+connected source flows, not unrelated history. An unavailable source or baseline is a named limit,
+never replaced by the author's reconstruction or treated as proof that nothing was omitted.
+
+The **initial dispatch contains task instructions and the frozen packet paths, not authored draft
+text, the author's gap list, expected findings or conclusions**. Use rule 6's fresh non-fork context.
+The orchestrator puts the read order in the initial dispatch itself, before either packet is opened:
+**Open ONLY the source/baseline packet; emit your compact expectations; THEN open the draft/context
+packet. Do not read both packets in one tool call.** Do not rely on the reviewer discovering this
+sequence inside a file it may open together with the draft.
+The reviewer opens only the source/baseline packet first and **records expectations before opening
+the draft**: emit a compact pre-draft note in its existing review work/return stream naming the
+source-supported actors, actions, affected records and consequential outcomes, with evidence pointers
+and unresolved source choices. These are evidence-derived expectations, not proposed features; do not
+copy the author's inventory or fill every generic lifecycle category. Keep this note unchanged in the
+final return so read order is assessable. Then open the **draft/context packet**, whose contents are
+listed below, and work the applicable lenses against both the expectations and the draft. Check for
+omitted operations and cross-flow constraints as well as defects in sentences that happen to exist.
+
+This is an order within the same pass, not another stage or agent. Charter scope, source authority,
+delta/rotation caps and no-change behavior stay as written: **an empty attack surface dispatches
+nothing**. A fresh pass never borrows another reviewer's expectations or earlier verdicts. If the
+reviewer already saw the authored draft before recording expectations, report the ordering failure;
+do not claim source-first isolation or rebuild the note after the fact. Keep any valid findings, but
+mark that coverage limitation in the existing report under rule 6; no extra recovery dispatch is
+created by this procedure.
+
+**Bad-but-compliant counterexamples, within the applicable lenses.** After the source-first note,
+lenses 1–4 test consequential in-scope behavior with a concrete actor, operation, reachable state and
+harmful observable outcome. Ask: **could this outcome still satisfy every applicable clause?** Quote
+the exact current clause that prohibits it, including any global or cross-feature rule; a title,
+related happy-path statement or visibility-only rule is not proof of action authority. If no clause
+rules it out, identify the smallest gap and its source grounding, then use the existing Q3/Q4 routes
+(DOC-FIX, DEFAULT, QUESTION or another applicable disposition). A reachable bad outcome is evidence
+to inspect, not permission to invent a capability or an owner question. Test the strongest plausible
+refutation before emitting; distinguish a sourced obligation from an ordinary convention proposed
+under rule 4. Do not turn this into a counterexample quota or an unrelated lifecycle checklist.
+
+- An existing save can fail while the interface claims success: inspect its outcome contract;
+  this does not justify new offline persistence, autosave or retry machinery.
+- A global rule restricting all reads and mutations to an actor's assigned records can settle several
+  features without copied rules; a rule restricting only visibility does not settle mutation rights.
+- A stated owner policy is carried from its source, with conflicts left visible; an ordinary
+  confirmation convention is considered under the default tests, not manufactured into a policy ask.
+
 **How each scale's passes are briefed, and what every pass owes:**
 
-1. **The brief.** A pass is briefed with the bodies it attacks, in full; the overview; **the
+1. **The draft/context packet.** After the source-first note above, a pass reads the bodies it attacks,
+   in full; the overview; **the
    requirement index** — every other feature's name, `What it does`, numbered requirements, `Edge cases`
    leads and `Not doing` lines, with provenance lines stripped; the standing question rows by title and
    status, with their answers; and the ratified-design survey where one is on record. It is written once
-   as a frozen brief file ([`rules.md`](rules.md) rule 8(i)) and read by path, and it **opens with the
+   as the separate frozen draft/context packet ([`rules.md`](rules.md) rule 8(i)) and read by path,
+   only after the source-first note; each packet **opens with the
    scope line ([`rules.md`](rules.md) rule 8)** (v46: a pass that re-entered the skill ran `init` in
    the middle of a run). A pass that cannot see the
    rest of the document generates candidates the document already answers, and a pass that cannot see
@@ -412,7 +469,7 @@ resume all read it, and a grill that yields nothing would otherwise leave no tra
 construction, and an absence-sweep candidate has no grounding text and so no depth. Lens 4 at the delta
 scale reads the attacked bodies against the index.
 
-All passes are read-only over the same frozen brief and dispatch concurrently
+All passes are read-only over their frozen source and draft packets and dispatch concurrently
 ([`rules.md`](rules.md) rule 8); their findings merge before the standing sweep and Q3.
 
 **And the standing sweep, after the lenses** — the mechanical part:
@@ -533,7 +590,7 @@ backlog no human could review.
 
 | Filter | Discard when | Instead |
 |---|---|---|
-| **Already answered** | A requirement, an `Edge cases` line, a `Not doing` line, the NOT-clause **or a `Content slot — client-supplied:` line** (v23 — the slot channel's own output was on no filter's list, so a slot-routed candidate was re-routed and re-slotted every run) answers it — **and you can quote the sentence**. **A `Default (…)` line that adopts the same behaviour counts here too** (v19; v62): the gap is already on the ledger, adopted and vetoable; it is neither a second default nor a question — a duplicate of a disposition already made, not a demotion (Q4's never-demoted clause governs candidates that would become a *new* default). **A candidate that contests the default's behaviour** is not a duplicate: it goes to Q6 step 9 as a veto candidate on that ledger line, never as a second default. **Or a source-record span or a human's reply settles it — quote the span; the sourced fact belongs in the document, so it routes to the DOC-FIX channel with its quote (on `init`, I5 writes it), never to a question** (v46: the A/B record's questions the sources already answered). **The orchestrator runs that search, since passes read only the document** (v57): every candidate grounded in absence, and every project-level one, is searched for over `sources/` (`command grep -rni`, its key terms) before it is disposed | Link to the answer, quoting it — for a default, the ledger line; for a source span, the DOC-FIX line that writes it |
+| **Already answered** | A requirement, an `Edge cases` line, a `Not doing` line, the NOT-clause **or a `Content slot — client-supplied:` line** (v23 — the slot channel's own output was on no filter's list, so a slot-routed candidate was re-routed and re-slotted every run) answers it — **and you can quote the sentence**. **A `Default (…)` line that adopts the same behaviour counts here too** (v19; v62): the gap is already on the ledger, adopted and vetoable; it is neither a second default nor a question — a duplicate of a disposition already made, not a demotion (Q4's never-demoted clause governs candidates that would become a *new* default). **A candidate that contests the default's behaviour** is not a duplicate: it goes to Q6 step 9 as a veto candidate on that ledger line, never as a second default. **Or a source-record span or a human's reply settles it — quote the span; the sourced fact belongs in the document, so it routes to the DOC-FIX channel with its quote (on `init`, I5 writes it), never to a question** (v46: the A/B record's questions the sources already answered). **The orchestrator runs that search, including sources outside a pass's frozen packet**: every candidate grounded in absence, and every project-level one, is searched for over `sources/` (`command grep -rni`, its key terms) before it is disposed | Link to the answer, quoting it — for a default, the ledger line; for a source span, the DOC-FIX line that writes it |
 | **Shown by the ratified design** | A ratified frame on the design-source record plainly shows it, **and following the drawing is safe, lawful and consistent with the document** | **Never a silent discard**: a frame-cited `adopted from design` entry on the defaults ledger, vetoable like any default. A drawing that itself embodies a risk — a child-operable consent control was the measured case — is a fork put to the client, not an adoption |
 | **Settled by convention** | [`rules.md`](rules.md) rule 4's four conditions all hold, each attested, and nothing on the never-defaultable list or the always-ask register is touched | Route to the **DEFAULT** channel (Q4) |
 | **Correction, not question** | Existing text is wrong in a way with a mechanically checkable winner (Q4's DOC-FIX admission) | Route to the **DOC-FIX** channel (Q4) |
@@ -1071,12 +1128,13 @@ over-predicting ambiguity and the one the derivative-round bound above names as 
 self-correct. **So before any drafted row is
 written, a separate dispatch ([`rules.md`](rules.md) rule 6) is briefed with the rows as they would be
 written** — `Question`, `Why asked`, `Touches` and the draft `Suggested directions`, up to ten rows —
-**together with Q2's brief — the requirement index, with every body those rows touch in full — every
+**together with Q2's draft/context packet — the requirement index, with every body those rows touch in full — every
 standing question row by title and status with its `Answer & why` where one exists, the standing
 defaults ledger, and the titles of the other rows this run has drafted**, all frozen by the
 orchestrator under rule 8(i) and wrapped as data under rule 2's standing line, the brief opening with
 the scope line (rule 8); the reader reads nothing else and is told nothing about how the rows were
-routed.
+routed. Do not include Q2's expectation notes, counterexample verdicts or proposed dispositions;
+Q4's blind disposition check and this cold read retain their distinct inputs and tasks.
 **It is briefed as the person who must answer it, not as a hunter of gaps**, and it applies
 [`spec/prd-scope.md`](spec/prd-scope.md) §7a's two-pairs test to every row and compares each row against the standing Default lines by content — the generator was told
 to find gaps; a reader handed one question and the document it came from is that bias run the other
@@ -1335,6 +1393,10 @@ UI or spoken at the review — makes it `Answered`.
    questions — printed
    fresh every run so a silent regression to question-flooding is visible on its face — and beside it
 the **scale line**: delta or full, dispatches spent against the cap, and every body left `queued` (v36).
+Preserve each pass's compact pre-draft expectations and material counterexamples in this existing
+report, with source pointers, the prohibiting clauses or final dispositions, and missing-input or
+read-order limits. Apply the content rule; raw source specifics remain in their source records.
+This is review evidence, not a new project specification or a claim of exhaustive coverage.
 **Then the
    convergence line, when all four conditions hold** (v23) — after the funnel, which keeps its fixed
    first position because [`status.md`](status.md) C10 checks it against the discard lines beneath it.

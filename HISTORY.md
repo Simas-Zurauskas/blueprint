@@ -1,3 +1,53 @@
+# v64 — source-first review expectations and concrete counterexamples
+
+The v63 tree and its Git state are preserved as the comparison baseline. This revision targets a remaining
+review weakness: a reviewer can affirm the authored feature inventory without noticing an operation
+or consequential outcome that the source material supported but the draft omitted. v63's bounded
+lens clarification does not establish general completeness or a causal explanation for those misses.
+
+Each existing Q2 review pass now receives separately readable frozen source/baseline and draft/context
+packets. In a fresh context it records compact source-supported expectations before opening the draft,
+then uses the applicable existing lenses to look for omitted operations and harmful reachable outcomes
+that no current clause prohibits. This is a read-order change inside the existing dispatch, not another
+review stage. `init` and `add` explicitly supply its inputs; delta caps, rotation and empty-surface
+behavior remain. Global rules count without copied per-feature declarations, and a gap still takes the
+existing source/default/question gates. Owner authority, charter scope, the separate blind disposition
+and cold-reader checks, and v63's delegated-answer pilot remain unchanged.
+
+Rules allow only Q2's two named frozen packets as a narrow exception to the single-file brief;
+reviewers still cannot access live targets or records. Expectations and material counterexamples go in
+the existing review return/report, with missing-source and ordering limitations. No project schema,
+command, mandatory document, helper, agent count or model policy changes.
+
+Structural validation and independent behavioral comparisons support bounded adoption. The results
+below distinguish omission detection, valid controls and preserved maintenance behavior; shorter
+reports and fewer questions alone are not success criteria.
+
+### Initial-dispatch bootstrap limitation
+
+The first bounded candidate attempts exposed a setup failure: both reviewers opened source and draft
+packets together before discovering the source-first procedure inside the first packet. They disclosed
+the failed order; those attempts are not source-first evidence. The parent dispatch now explicitly
+instructs source-only read, expectation emission, then draft read before either file is opened, and
+bars reading both in one tool call. This adds no stage or automatic runtime retry. Earlier attempts
+and the prior candidate are preserved; fresh trials, not reconstructed expectations, must establish
+whether the intended procedure helps.
+
+Independent validation accepted the bounded v64 change. Two valid source-first Shiftboard trials
+covered draft-edit failure/unknown feedback; one of two v63 trials did. Both versions found the new
+lending omissions and kept the complete global-rule control clean. Initial creation and worker
+change/retry assessment remain incomplete, and the baseline surfaced a legitimate scheduling issue
+absent from the candidate. These small repeated samples do not establish general superiority.
+
+Full Packlist init plus an explicit owner update preserved the same source-supported final behavior
+as v63; a current-product feature comparison also preserved its owner changes. Actual native Q2 reads
+confirmed source evidence, expectations, then candidate. Faithfulness keeps its separate inputs;
+blind disposition and cold readers were not exercised in those no-question workflows. The first two
+lab candidate review attempts read both packets before discovering the order; they remain recorded
+as invalid source-first evidence. After the explicit initial-dispatch clarification, all five bounded
+candidate passes and the relevant full-workflow reviewers followed the order. Adoption is based on
+observed narrow review consistency and preserved behavior, not a complete-specification certificate.
+
 # v63 — bounded instruction and review improvements
 
 The current uncommitted v62 tree was preserved before this revision. Command names, target shapes,

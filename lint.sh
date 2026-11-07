@@ -674,7 +674,19 @@ questions.md⋮For in-scope saves, sends and responses, check observable success
 questions.md⋮without adding persistence promises, retry machinery or capabilities⋮v63-action-no-mechanism-expansion
 questions.md⋮Route any gap through the existing source/default/gap rules; these checks do not mandate new questions⋮v63-action-existing-dispositions
 questions.md⋮Collective materiality, before final routing⋮v63-collective-executor
-SKILL.md⋮Read \[rules.md\].rules.md. before a run⋮v63-router-rules'
+SKILL.md⋮Read \[rules.md\].rules.md. before a run⋮v63-router-rules
+questions.md⋮records expectations before opening⋮v64-source-before-draft
+questions.md⋮text, the author.s gap list, expected findings or conclusions⋮v64-initial-dispatch-no-author-conclusions
+questions.md⋮Keep this note unchanged in the⋮v64-retain-pre-draft-expectations
+questions.md⋮an empty attack surface dispatches⋮v64-empty-surface-no-dispatch
+questions.md⋮could this outcome still satisfy every applicable clause⋮v64-bad-compliant-test
+questions.md⋮the exact current clause that prohibits it⋮v64-counterexample-refutation
+questions.md⋮not permission to invent a capability or an owner question⋮v64-counterexample-authority-bound
+questions.md⋮Q4.s blind disposition check and this cold read retain their distinct inputs and tasks⋮v64-preserve-independent-checks
+rules.md⋮Q2.s source-first review is the sole multi-file exception⋮v64-frozen-packet-boundary
+init.md⋮Use Q2.s source-first review⋮v64-init-executor
+add.md⋮Use Q2.s source-first review⋮v64-add-executor
+questions.md⋮The orchestrator puts the read order in the initial dispatch itself, before either packet is opened⋮v64-initial-dispatch-read-order'
 
 FORBIDDEN='rules.md⋮A human approves, always.*([Ee]xcept|[Uu]nless)⋮inv-human-approves-no-weakener
 rules.md⋮code repo.*([Ee]xcept|[Uu]nless|[Pp]refer|[Gg]enerally)⋮inv-no-code-repo-no-weakener
@@ -850,7 +862,9 @@ execution.md⋮one drafter per 10 queued rows⋮v63-retired-drafter-cost
 spec/prd-scope.md⋮mass-event sweep in .3 is imported by nothing⋮v63-retired-missing-executor
 README.md⋮One agent drafts each answer|any doubt.*leaves the row open⋮v63-retired-answer-summary
 QUICKSTART.md⋮and leaves money, scope, legal⋮v63-retired-quickstart-authority
-blueprint-explained.html⋮The five commands|three routes and name them⋮v63-retired-html-routing'
+blueprint-explained.html⋮The five commands|three routes and name them⋮v63-retired-html-routing
+questions.md⋮since passes read only the document⋮v64-retired-document-only-review
+questions.md⋮All passes are read-only over the same frozen brief⋮v64-retired-single-packet-review'
 
 SINGLE_HOME='single home of where the working folder lives⋮1
 `force` is the default⋮1

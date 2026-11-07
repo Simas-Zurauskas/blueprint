@@ -253,7 +253,11 @@ and the target address — into the repository holding it, are the whole excepti
    record; **the one file it may read is a brief the orchestrator froze for it** (v36) — written to the
    session's scratch space or the working folder's `cache/`, named in the prompt, never changed while a
    dispatch reads it — so a document is written out once and read by path, not pasted into every
-   prompt. A dispatch that reports having read or written anything else is a deviation, named in the
+   prompt. **Q2's source-first review is the sole multi-file exception:** its two explicitly named
+   frozen packets form one brief, opened in the order [questions.md](questions.md) Q2 requires;
+   neither grants access to live sources, the target or the working folder's record. All other
+   dispatches keep their existing brief boundaries. A dispatch that reports having read or written
+   anything else is a deviation, named in the
    log. **Every dispatched brief opens with
    the scope line, verbatim, ahead of rule 2's data line** (v46): *You are doing one task for another
    agent — only the task below. Do not invoke any skill or slash command, and do not run the Blueprint

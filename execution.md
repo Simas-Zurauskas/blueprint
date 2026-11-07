@@ -29,6 +29,8 @@ never infers it.
 **Briefs are frozen files, not pasted documents** (rule 8(i)). What every pass needs from the whole
 document is written out once — the bodies a pass attacks in full, everything else as
 [`questions.md`](questions.md) Q2's requirement index — and each dispatch reads it by path.
+Q2 alone separates source/baseline and draft/context into two frozen packets and records source-derived
+expectations before opening the draft; this changes read order, not dispatch counts or attack scope.
 
 **What each command reads, and no more** — after [rules.md](rules.md) — plus [`spec/charter.md`](spec/charter.md) wherever a charter exists (pre-flight check 1) — the orchestrator's context is replayed on every turn,
 so an unread section costs nothing and a read one costs every turn after it:
