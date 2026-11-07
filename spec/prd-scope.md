@@ -1,16 +1,11 @@
 # Spec — what belongs in this document, and what does not
 
-**This file is the single home of the scope boundary.** **Its readers are
-[`../questions.md`](../questions.md) Q3 and Q4** — the filter and disposition phases — and it is
-applied to one candidate at a time there. *It said "read at question-generation time" until v31,
-which named a phase that never opened it: Q2 generates and cites nothing here, so every rule below
-addressed to the generating side had no reader at all. Of the three marked* **generation-side**,
-*only the volume question has a reader — [`../questions.md`](../questions.md) Q2's standing sweep,
-item 6, added v31, and since v46 asked only when a candidate needs the floor.* **The mass-event sweep in §3 is imported by nothing, and §4's
-collective-materiality merge is imported at Q4 rather than at generation time** — *both are still
-rules with no generating executor, and saying so is the point. The rest are Q3's and Q4's.* Companions: [`doc-shape.md`](doc-shape.md) ·
-[`databases.md`](databases.md) · [`targets.md`](targets.md) ·
-[`notion-mechanics.md`](notion-mechanics.md) · [`run-progress.md`](run-progress.md).
+**This file is the single home of the scope boundary.** [../questions.md](../questions.md) Q2
+uses §3's reachable bulk-event check in lens 3 and §4's collective-materiality check before pass
+returns; Q3 and Q4 apply the per-candidate filters and reconcile the surviving batch before routing.
+An operational state must be reachable within supplied scope; a combined candidate still takes every
+scope and authority test. Companions: [doc-shape.md](doc-shape.md), [databases.md](databases.md),
+[targets.md](targets.md), [notion-mechanics.md](notion-mechanics.md), [run-progress.md](run-progress.md).
 
 **Why it exists.** A three-cycle simulation put 36 generated questions to an **LLM operator persona**
 standing in for the client. The persona kept **9 of 36**: *"the other twenty-six were you talking to
@@ -165,14 +160,14 @@ absorbing the *booking* by hand says nothing about the *invoice*.
 **One exception, and it is the failure mode of every per-item threshold: individually immaterial items
 that are collectively material.** *(**Generation-side, not a per-candidate test** — it reads across the
 batch; run it once over the surviving set.)* **Merging is not only for immaterial items** (v26.4): where three or more candidates would all be
-settled by one convention **at any materiality**, they merge into that one question and it is asked —
+settled by one convention **at any materiality**, they merge into that one candidate, which is disposed on its own merits —
 a held-out project produced three separate candidates that were one question, *does the system refuse a
 non-compliant assignment, warn, or record it after the fact*, and the merge rule could not reach them
 because it was gated on being individually too small. **Merge on shared convention, then dispose the
 merged question on its own merits.** Where three or more candidates would all be settled by one
 convention
 — date handling, rounding, timezone, name formatting, what a soft delete does — **do not drop them
-individually. Merge them into one project-level convention question and ask that.**
+individually. Merge them into one project-level convention candidate and dispose it under the existing scope and authority tests.**
 
 ## 5. What is out of scope — with the test, and where it goes instead
 
@@ -200,7 +195,7 @@ software product, not the process of producing the software product."***
 | **Mechanism where the outcome is stated** | Locate the stated outcome. **Then write the candidate's two competing answers and check each against that outcome: if BOTH deliver it, the choice between them is the builder's and there is no question.** **Two answers do not both deliver a stated outcome if they differ in what gets recorded, in who may act, or in what happens when the flow fails** (v29) — check those three before concluding the choice is the builder's, because this route was the second-largest source of missed questions. *"Hide the unusable berths or grey them out"* — both deliver *"don't offer a berth a boat can't float in"*, so both are mechanisms | DECIDE or PROPOSE, by the test below |
 | **Conventional default, cheap to reverse** | Name the default. If shipping it wrong changes no stored data, no money taken and no agreement signed — ship it and log it. **Reversibility, not importance** | The **DEFAULT** channel's defaults ledger ([`../questions.md`](../questions.md) Q4) |
 | **Unbounded catch-alls** | Try to write two specific competing answers. *"Anything else we should know?"* buys no decision | Delete. Convert unease into a reachable-state sweep |
-| **Speculative future releases** | Does the answer change something shipping in **this** release? | One line on the Later list, no follow-ups |
+| **Speculative future releases** | Does the answer change something shipping in **this** release? | One `Not doing` line naming the later phase; nothing specified for it ([`doc-shape.md`](doc-shape.md) §5, v57) |
 
 ## 6. The boundaries that actually decide cases
 
@@ -310,7 +305,7 @@ the report that the candidate was bundled** — losing a real question to a bund
 worse error of the two.
 
 **A half already settled is trimmed, not re-asked** (v47): where one half of a split is decided by a
-requirement, an `Edge cases` line or an unratified Default line, that half leaves as *Already answered*
+requirement, an `Edge cases` line or a Default line, that half leaves as *Already answered*
 quoting it ([`../questions.md`](../questions.md) Q3), and only the undecided half is disposed.
 
 ## 8. Phrasing — a rejected question and an accepted one can be the same topic
@@ -345,7 +340,7 @@ tests disagree, the tests win.
 - **Two of its five dispositions have no writing channel, and this is the honest statement of it**
   (v31). `questions.md` Q4 writes four channels — QUESTION, DEFAULT, DOC-FIX and CONTENT SLOT — and
   **`PROPOSE` and the professional-determination half of `RECORD` map to none of them.** A `PROPOSE`
-  is not a DEFAULT: [`../SKILL.md`](../SKILL.md) rule 4(a) admits only *"one dominant convention any
+  is not a DEFAULT: [`../rules.md`](../rules.md) rule 4(a) admits only *"one dominant convention any
   competent team picks the same way"*, and §2 admits a `PROPOSE` only where the client **has**
   expressed a preference this mechanism must honour — the opposite thing — while §6's own worked case
   (cancellation-terms placement) is a fork between live options — a screen the client will react

@@ -13,7 +13,7 @@ feature this skill does not have; say so rather than improvising a ninth.
 | # | Operation | Contract |
 |---|---|---|
 | 1 | **resolve target** | Given the workspace, return the target kind and its address, or ask a human once and record it |
-| 2 | **create structure** | Create the two databases with every property and **every option verbatim**, and the four views. **No run log is created on the target** (v16, §5) — it is a local file. Idempotent: an existing structure is reused, never clobbered, and differences are printed as a checklist |
+| 2 | **create structure** | Create the two databases with every property and **every option verbatim**, and the six views, each database's `Default view` first ([`databases.md`](databases.md) §6). **No run log is created on the target** (v16, §5) — it is a local file. Idempotent: an existing structure is reused, never clobbered, and differences are printed as a checklist |
 | 3 | **read entity** | Fetch one feature or question **whole** — properties and body — and **prepend the read-out line** (§4) before handing it to any sub-agent |
 | 4 | **list by status** | Return every row matching a filter, **with an explicit completeness signal.** A truncated read is never returned as a complete one |
 | 5 | **write one named block** | Replace exactly one named block of one entity. Never more than one block per call, never a wholesale replace of a page that has children |
@@ -122,7 +122,7 @@ Mapping the contract onto files:
   errored. Never report a partial read as complete anyway.
 - **"Fetch and diff"** (operation 8) compares the block's current text against the text read when the item
   started. A file edited by a human in between wins, exactly as on Notion.
-- **The four views do not exist here.** Their filters become sections of the reports instead, and the
+- **The saved views do not exist here.** Their filters become sections of the reports instead, and the
   overview's `⟳` headings become short generated lists — the one place a local Blueprint is written by a
   run without a per-block prompt, because a list of links is not prose and rewriting it invents nothing.
   It is regenerated whole, and a human who types under a `⟳` heading loses it — the heading says so.
@@ -226,11 +226,14 @@ It holds:
                          and rewritten only by a working-folder move, because this folder sits beside
                          files people read
   .gitignore             seeded when absent, never rewritten: `sources/` and `cache/`
+  charter.md             DURABLE, OPTIONAL — how deep this Blueprint goes, written only by a person
+                         (spec/charter.md, v58). Committed with `record/`
   target.md              DURABLE — the target kind and its address. Not reconstructible; committed
                          with `record/` (§3), because a record without its address is unusable
   record/                DURABLE — never deleted, never rebuilt. Committed with the project
     run-log.md             the run log: append-only, newest entry at the top
     runs/<run-id>.md       that run's operational detail and its full report
+    charter/<hash12>.md    each compiled charter a write run stamped; REMOVED-<hash12>.md for a removal (v58)
   sources/               DURABLE — never deleted. NEVER committed: client material, verbatim
     <run-id>/              the source record for one run — a revised file is written beside the
                            old one with the next number, never over it (v46)

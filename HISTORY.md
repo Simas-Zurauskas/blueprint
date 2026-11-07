@@ -1,3 +1,214 @@
+# v63 — bounded instruction and review improvements
+
+The current uncommitted v62 tree was preserved before this revision. Command names, target shapes,
+IDs, source/provenance rules, charter behavior, owner authority and independent review stages remain.
+The entrypoint now routes to rules, execution and compatibility references; the long register
+explanation is retained below. Fresh-context dispatch uses native harness capabilities and one
+permitted fallback, without a mandatory messaging/probe ladder or foreground-only assumption.
+The author drafts delegated answers directly; a fresh challenger still applies the existing grounds,
+limits, cross-answer checks and review window. An independently graded, model-matched delegated-answer
+comparison preserved all ten frozen outcomes with one fewer dispatch (381.5 versus 566.4 seconds).
+This supports the bounded authoring change, not universal savings or equivalent reliability at scale.
+Existing bulk/collective-materiality and testability checks now have explicit
+executors within the applicable lenses. No extra agent or project artifact is required.
+
+Validation and behavioral comparison evidence is recorded in the maintainer's isolated v63/v8 lab.
+Structural checks alone do not certify output quality or savings. Small-product and narrow-feature
+trials were slower in the candidate; those are not evidence of an overall speed gain. Independent
+review corrected an initially incomplete challenger brief before the accepted comparison. No target
+migration is introduced.
+
+### Bounded real-life lens clarification
+
+A multi-area comparison retained venue visibility and send-recovery protections but the candidate
+omitted an own-venue action guard and failed/unconfirmed draft-save feedback that the baseline had
+expressed. This is a definition gap, not proof of an implementation vulnerability. A subsequent
+bounded review of the same frozen candidate product under each version caught response-confirmation
+feedback; neither caught the action-scope or draft-save gaps. The existing permission and error-state
+obligations had not been removed, so these observations do not establish a causal regression or broad
+quality equivalence.
+
+Three sentences in the existing Lens 3 now distinguish read visibility from action authority and
+check observable success, failure and unconfirmed outcomes for operations already in scope. They
+preserve global rules, existing source/default/gap routing and the prohibition on invented capabilities
+or mechanisms. There is no new stage, question quota or workflow. Focused structural pins prevent
+losing either the checks or their bounds; they do not prove semantic detection. Fresh bounded semantic
+validation is required to assess this clarification, including valid shared-rule and outcome controls.
+
+## Historical register explanation moved from the v62 entrypoint
+
+**Nothing else is on this list, and v17 through v33, v35, v36, v37, v46, v47, v56, v57, v58, v59, v60, v61 and v62 are deliberately not** — each changed rules,
+phases, reports and log-line kinds only (v19 added the `RATIFIED`/`VETOED` kinds and the `HASHES`
+obligation to the local log; v20 added the `directive` kind, moved the body hash onto the `item` line
+and widened `discard` to `init` — all of which are the local record's shape, never a property, option,
+database or file layout on the target; v21 added a dispatch-probe ladder and its route, an I3 skeleton capture under `sources/<run-id>/`, and clauses on existing log-line kinds — the working folder is not the target, so no target shape changed; v23 bounded the grilling's derivation depth and closed a fail-open in its disposition check, adding a `· depth n` token to run-written body lines and **one new log-line kind, `GRILL`** ([`resolve.md`](resolve.md) R5) — the local record's shape, as v20's `directive` was, and no property, option, database or file layout on the target; v24 moved the `GRILL` line's hash from pre-write to post-write after a measured cycle showed the pre-write reading put every body in the next run's delta forever — a clause on an existing log-line kind, and the local record is not the target; v25 folded a three-cycle live campaign — depth taken as the deepest grounding, one provenance line per requirement, the repeat round fired on Q3 survivors, one standing defaults ledger instead of a batch per run, and a gate that closes with a dispatch outstanding must say so — all rules and report shape, no property, option, database or file layout on the target; v26 added `spec/prd-scope.md`, a sixth spec read at Q3 and Q4, and v27 folded five simulated evaluation rounds into it — a skill file, not a target artefact, so nothing on the target moved; v28 corrected how that evidence is described in `spec/prd-scope.md`, `questions.md` and `HISTORY.md` — prose and provenance only, no rule changed and nothing on the target moved; v29 bounded §2's PROPOSE route with a second test and guarded §5's mechanism route, after a measured run found them the two largest sources of missed questions — rules inside a spec file, so no property, option, database or file layout on the target moved; v22 gave `resolve` the two modes `add` already had and added a seventh route to `Flagged` — a mode is read from the invocation and `Flagged` is an existing select option, so no property, option, database or file layout on the target moved; **v30** wired [`spec/prd-scope.md`](spec/prd-scope.md) §8's blocking rule and §5's principle row into Q3 as two named filters, added a `Why asked` read-back gate to Q4, added **routes 7 and 8** to [`spec/doc-shape.md`](spec/doc-shape.md) §9's marker-removal list, settled three contradictions ([`resolve.md`](resolve.md) R4 against R5's gate, `resolve.md`:46 against §9 on narrowing markers, and the depth cap's Q3/Q4 ordering), gave R2.3 a one-act vouch route, made a veto's numbering resolve by content, gave a project-level default a home in the overview's `Operating` block, and **moved the verbatim `CON-k` spans out of the committed `record/` into `sources/<run-id>/contradictions.md`** — all of which are rules, phases, reports and **working-folder** layout. **The working folder is not the target** ([`spec/targets.md`](spec/targets.md) §5), so no property, select option, database or file layout on the target moved; **v31** added five structural checks to `lint.sh` — which is outside the manifest and which no run loads — plus three invariant pins; gave [`spec/doc-shape.md`](spec/doc-shape.md) §9 route 8 its executor as [`add.md`](add.md) **A4 step 8**, appended rather than renumbered so every standing `A4 step n` citation still resolves; widened R5's `MARKERS` **line kind** to admit what routes 3, 7 and 8 cite; corrected four `CON-k` sites, two mis-citations and four samples; and stated two limits in [`spec/prd-scope.md`](spec/prd-scope.md) §9 — all of which are rules, phases, reports, samples and one log-line kind's clause, the same class as v20's `directive` and v23's `GRILL`; **v32** added the cold read to [`questions.md`](questions.md) Q4 — one fresh dispatch per drafted question with five evidence-bound verdicts — a `COLD READ` report block, and clauses on the existing `independence` and `check` line kinds, and restored a Q3 sentence a report block had been pasted into — a phase, a report and two kinds' clauses, the same class as v24's, and no property, select option, database or file layout on the target moved; **v33** moved the working folder into the project's wiki folder — `<home>`, [`spec/targets.md`](spec/targets.md) §5: one layout on both targets, the ignore file seeded inside it, and a rename route for the two earlier locations — which is the working-folder layout v21 and v30 already placed outside this register: on a local target the document's own files stay where they are and only the machinery beside them moves, and no property, select option, database or file layout on the target moved; **v35** moved R3.1's overview-route pin off the `Answer & why` property and onto the proposed block text, made the move back to `Answered` an acceptance in its own right, and added a one-firing transition for rows flagged before it — a phase's rules, one existing log-line kind's clause and one `NOTE` line, the same class as v24's and v32's, and no property, select option, database or file layout on the target moved; **v36** sized the grilling to the change — a capped delta scale as the default, the whole-document battery only on `init` or by name, cold reads batched ten to a reader, frozen brief files a dispatch may read, a cost section in this file, and a `queued` mark on the existing `GRILL` line — rules, phases and one log-line kind's clause, the same class as v24's and v32's, and no property, select option, database or file layout on the target moved; **v37** made the overview's `Links` and `Operating` blocks carry only what a reader of the target can open — the run record as a link into the repository holding `<home>`, never a machine-local path ([`spec/doc-shape.md`](spec/doc-shape.md) §3) — and gave [`status.md`](status.md) C8 the finding — the rules for two blocks' text and one report check, the same class as v35's, and no property, select option, database or file layout on the target moved; **v46** rebuilt the skill from v37 after an A/B test (`HISTORY.md` v46): no confirmation stop by default (`init soft` keeps it), abandoned log entries closed by the next run, questions scaled to the material and one decision each, the scope line on every brief, plain replies, derivation depth moved from body text onto the log's `item` lines, a ninth marker-removal route, and the content rule's product-parameter clause — rules, phases, reports, body wording and log-line clauses, the same class as v23's and v32's; no property, select option, database or file layout on the target moved; **v47** made a hedged or deferred source statement a marker or a labelled tentative requirement, put every Why sentence and overview sentence in the faithfulness check and every Default clause through the same claim test before it is written, wrote stated or implied exclusions and a None-stated line for an empty block, took run-log times from the clock, re-quoted a run-written question row a supersession made stale, gated bundled questions, and cut idle waiting and serial dispatches (`HISTORY.md` v47) — rules, phases, reports, body wording and log-line clauses, the same class as v46's; no property, select option, database or file layout on the target moved; **v56** is v47 with six of v52's unhappy-path fixes — an open entry halts a second session unless nothing was written for it for 30 minutes or the person says it stopped, a second project's working folder is found by its `target.md` address line, a local folder's write access is tested up front, `init` with no target named uses a local folder, an answer that does not address its question is flagged, and every reply keeps the plain-words rules — and one sentence on how a run adds and corrects its own log lines (`HISTORY.md` v56) — rules, phases, replies and one line of the working folder's `target.md`, which is not the target; no property, select option, database or file layout on the target moved. **v57** added a sourced `This release` overview block, deferred features as `Not doing` lines, and a source search before disposing an absence-grounded candidate (`HISTORY.md` v57) — rules and block text; no property, select option, database or file layout on the target moved; **v58** added the optional charter — `<home>/charter.md`, a working-folder file, its snapshots under `record/charter/`, the `charter` command and one clause on the log's `header` line (`HISTORY.md` v58) — the working folder is not the target, and no property, select option, database or file layout on the target moved; **v59** made each database's first tab an ungrouped `Default view` with every column and a saved sort, built from the database's initial view (`HISTORY.md` v59) — a view, which is display and not a property, select option, database or file layout, so nothing on the target's shape moved and a Blueprint without it is read and written identically; **v60** added the `answer` command — a person's delegation, written to the existing `Answer & why` and `Status` properties with a fixed label, the existing `Answered` option, and two log-line kinds, `ANSWERED` and `LEFT`, which are the local record's shape — so no property, select option, database or file layout on the target moved; **v61** widened what `answer` may answer — a fifth ground, the owner's list answered and named rather than left, a challenger that leaves only on a grounded objection, and two clauses on the existing `ANSWERED` line kind (`HISTORY.md` v61) — rules and log-line clauses only, and no property, select option, database or file layout on the target moved; **v62** retired the batch ratification of defaults, fixes and slots — each is adopted as it is written, labelled *adopted*, its marker removed at write and vetoable at any later run, with one transition for lines written before it (`HISTORY.md` v62) — rules, body labels and reports only, the `RATIFIED` kind kept for reading old logs, and no property, select option, database or file layout on the target moved; **v38–v45 are not this lineage's numbers** — an engineered line this version was rebuilt away from, whose v44 moved a local folder's questions into `questions.json` — and a Blueprint stamped with one of them is reconciled by [`resolve.md`](resolve.md) R1's discarded-line route).
+
+
+# v62 — defaults, fixes and slots are adopted as written: the batch ratification is retired
+
+**What produced this.** On Kvietimai (2026-10-24) a `questions` run closed with 10 defaults and 5 fixes waiting on
+the owner. The owner said *"keep all"* before reading the report, the run then drew its spot-check sample (#354,
+#359) and kept those two at `— ratify on review` until a second reply, *"keep both"*, cleared them. The owner's
+verdict: *"modify skill that it would be done automatically … no need to ask user"*, and *"its just making noise for
+user, we trust tool to do it"*. Over the project's life every batch had been answered with *"keep them"* or *"keep
+all"*; the spot-check, added in v21 to stop exactly that rubber stamp, cost one more round trip per run and caught
+nothing on this project.
+
+**What changed.** `questions.md` Q4 gains *Adoption on write*, the single home: a default, a fix or a slot is
+adopted as it is written. The label reads `Default (standard practice — adopted <date>)` (`, unverified` where no
+second dispatch checked it), never *ratified*, so a later reader knows no person read it. A marker the default
+settles is removed in the same commit, citing the ledger line (`doc-shape.md` §9 route 6). Q1 becomes the veto
+executor only: *"drop #n"* at any later run removes or reverts a line, and a vetoed gap is never demoted again;
+*"keep them"* changes nothing and is answered in one line. Q6 step 9 shows the ledger for information. The reply,
+`status.md` C5 and the convergence line no longer name an unratified batch as a debt. One standing ledger per run
+replaces the grow-the-oldest-ledger rule (v24), which existed only to make ratification payable. `RATIFIED` stays
+a log kind for reading old logs and is no longer written. **One transition**: a Blueprint written before v62 can
+carry `— ratify on review` lines and `→ Default: awaiting ratification` markers; the first questions run adopts
+them with one `NOTE` line.
+
+**What was kept, and why.** Everything upstream that made the defaults trustworthy in the first place: rule 4's
+four conditions and never-defaultable list (money, legal posture, brand copy, scope, dates, user-media retention,
+minors' data and the always-ask register still become questions), the listed-topic check, the blind second-model
+routing and the claim test. The veto, because a human must still be able to undo a machine's choice. The honest
+label, because adoption without a reader is a fact the document should state.
+
+# v61 — `answer` gets more power: it answers by default and leaves only the hard limits
+
+**What produced this.** On Kvietimai (2026-10-21) the first v60 `answer` run left 19 of 20 open rows for the owner:
+money 4, scope 5, legal posture 2, minors' data 1, users' data 1, sources disagree 2, needs another answer first 1,
+hesitation 3. The owner's reaction was *"we need to soften the skill to give answer more power"*, and then, declining a
+separate `bold` mode, *"just simply update simple answer to be like bold"*.
+
+**What changed.** `answer.md` only, plus its description in `SKILL.md`. A fifth ground, *simplest for the owner* — the
+option that commits the owner to the least (least to build, fewest new promises, least ongoing responsibility), where no
+source or answered row asks for another. The owner's list no longer leaves a row by itself: money, scope, legal posture,
+brand voice, users' data windows, the owner's world and topics the owner raised are answered on any ground and **named
+on the `ANSWERED` line**, and the reply lists them first, marked *check this one*. **Hard limits kept:** minors' data and
+the always-ask register (ground 1 only), any figure nobody gave (left, class *needs a figure only you have*), a legal
+answer states product behaviour never what a law requires, contradictions between sources, answers that would replace
+document text, and answers resting on another open row. The size test leaves only a row whose every option adds a
+screen, email or the like; a safety trade-off keeps what the document already says; a fork is settled by ground 5 unless
+every option commits the owner equally. The drafter answers by default; the challenger is a checker, and a `leave` that
+names only an owner's-list class or no reason is not a leave — the answer is written and the doubt goes on its line and
+into the report. The label, `Answered` as the stopping point and the owner's review window before `resolve` are unchanged,
+and `resolve` still puts every delegated answer through `soft`'s gate. `answer soft` is unchanged.
+
+**What it costs.** More answers reach `Answered` that the owner would have decided differently; the label, the
+*check this one* ordering and the review window before `resolve` are what keep that cheap. No target shape changed.
+
+# v60 — `answer`: the owner delegates the questions too basic to need them
+
+**What produced this.** On Kvietimai (2026-10-20) the owner found the grilling's open questions full of rows a careful
+product lead could settle alone, and asked an agent by hand to "answer the safe ones and flip them to Answered". About
+sixty were answered that way, labelled *Answered by Claude at the owner's request (…, safe answers only)*, and applied. The
+practice worked and was unprincipled: no rule said what "safe" meant, nothing checked an answer before it was written, and
+a read of those rows afterwards found the three shapes this version is built around — answers entailed by the document
+(*until the wedding day starts — the same cut-off the product already uses*), single safe conventions (*a sign-in link
+works once, for an hour*) and the more protective option (*the answer email carries no guest names*) were good; but one
+chose *one text for every household* while the feature list said *grammar follows the household* (the smaller option
+over a source asking for the larger one), and several set money and retention figures from the research's suggestion
+(commission and discount percentages, a deletion window) that `SKILL.md` rule 4 bars even a labelled default from setting.
+The owner asked for the practice to become a command with a careful, explicit balance between what an AI may answer and
+what only the owner decides.
+
+**What changed.** New run file `answer.md` (phases W1–W6) and command `/blueprint answer` (`answer soft`: only answers the
+owner's own document or sources already give). An answer stands on exactly one of four grounds with its evidence —
+*settled* (entailed by the document, a source or a person's answer; quotes string-matched), *sourced* (the owner's sources
+recommend exactly one option, none argues another), *convention* (rule 4's four conditions, or a single mechanical
+mandate), *safer and smaller* (less personal data, no more access, nothing destroyed, no promise broken, less to build, and
+no source asking for the other). The owner's list — money, legal posture, scope, brand voice, what happens to what users
+gave, minors' data and the always-ask register, what only the owner's world knows, a topic the owner raised — is answered
+only on the first ground. Never answered: contradictions, a row whose answer would replace document text, a row resting on
+an open row or an unapplied delegated answer. Six tests on every draft (one failable decision; size; safety; consistency
+with the document, sources, answered rows and the batch; no invention; no hesitation). A drafter per ten rows, then a
+separate challenger per ten drafts briefed as the owner's sceptic; **a `leave` always wins** and there is no debate or
+retry; with no second dispatch only matched ground-1 answers are written. Answers open with a fixed delegation label, stop at
+`Answered`, and are the owner's to overrule before `resolve`. `resolve` reads the label (R1), gives it its own provenance
+kind (R3.1), and puts every delegated answer through `soft`'s gate in every mode (R3.6) — a delegated answer never
+supersedes. Rule 1 and rule 5 in `SKILL.md`, `spec/databases.md` §3–§5 and `status.md` S3 name the delegation; `resolve.md`
+R5 gains the `ANSWERED` and `LEFT` kinds; the cost and reads tables gain a row. No property, select option, database or file
+layout changed — the register's exclusion line names v60.
+
+**Evidence** (one simulated run of the draft over all 71 Kvietimai rows, the 2026-10-20 answers hidden, Opus reader). About
+19 of 71 answered; all 11 rows the owner had kept `Open` stayed left; it left every research-figure money and retention
+answer, the contradiction row, the grammar row, two answers that contradicted the brief's literal definitions (a cancelled
+paid event; an expired partner code) and three invented specifics (a second sign-in factor, demo dates six months out, a
+statutory email). Nine findings were folded in before release: the keyword triage became a flag the agents rule on, whole
+words, rather than a restriction (it had blocked five safe rows on *keep* inside *keepsake*, *refund*, *name*); test 6 no
+longer forbids every ground-4 answer; ground 1 got a falsifiable entailment test and definitions are read literally; a
+convention carries a value only where practice fixes that value (the draft's own sample, *a sign-in link lasts an hour*,
+failed it); dependency is defined and same-queue dependants wait; a mandate on a money row stays the owner's; ground 4 is
+*no worse on each, better on one*; the source search adds edge words; left-row classes are closed. Estimated after the fixes:
+about 20–24 of 71 answered. Not yet measured on a live run.
+
+# v59 — every database opens on an ungrouped Default view
+
+**What produced this.** On Kvietimai (2026-10-20) the owner opened the Open Questions database and found it opening on the
+grouped «Open questions» view: rows stopped at each group's "Load more" instead of loading on scroll, and its columns and
+sort differed from Repperoni's, whose databases open on a flat `Default view` with every column and a saved sort. The owner
+asked for the same everywhere and for the skill to know the rule.
+
+**What changed.** `spec/databases.md` §6 is now six saved views: each database's first tab is a `Default view` — ungrouped,
+every property shown, sort saved on the view (Features oldest first; Open Questions by `Status`, then newest first). Because
+Notion appends new views as the last tab and the API cannot reorder tabs, the `Default view` is made from the database's
+initial view and every other view comes after it; a grouped view is never first. `init.md` I4, `spec/targets.md` operation 2
+and §7 of `databases.md` say six views; `spec/notion-mechanics.md` records the append-only tab order and the grouped-table
+"Load more" behaviour. No property, select option, database or file layout changed, so the shape-change register is untouched.
+
+# v58 — the optional charter: how deep this Blueprint goes
+
+**What produced this.** Owners and clients found the PRD's depth unpredictable from project to project: the skill's
+definition of a PRD (`spec/prd-scope.md`) is generic and the same everywhere. On Repperoni and Ket the owner asked on the
+same day for *"a full release, a solid mvp for production, but we dont need any accessibility or analytics"*; Ket's cut
+withdrew 893 requirements, ~104 of them accessibility and analytics, and Repperoni's owner had patched the wish into the
+overview's `Operating` block by hand. A five-lens review of a first draft found ten blockers (rule 2 would treat the
+file as data; the blind disposition check and cold read would undo it; widening re-grilled nothing; a closed row could
+never return; deleting the file silently widened to full depth) — all designed out here.
+
+**What changed.** `<home>/charter.md`, optional and written only by a person: `stage` (idea · prototype · mvp-private ·
+mvp-public), `Release`, `Go deep`, `Leave out` (closed topic words), `Notes`. `spec/charter.md` is its single home and is
+read only where a charter exists (pre-flight check 1), so a project without one runs exactly as before. A floor no charter
+lowers (always-ask register, never-defaultable list, the legal trigger test as project-level rows, retention, contradictions,
+client-raised topics, sourced content, every check). The compiled charter goes into every judging brief and is demotion
+evidence, never for a floor item. Q3 gains `Outside the charter`; held markers stay carried with a plain reason and no
+Blueprint text names the charter. Changes stamp a hash on the log `header`, snapshot under `record/charter/`, narrowings list
+rows to close (the run closes none), widenings add one charter-delta dispatch the person's edit authorises; a missing file
+halts write runs until restored or removed. New command `/blueprint charter <plain words>` drafts the file, asks one round of
+at most five questions, and writes on yes; `charter off` removes it. `charter-guide.md` and `templates/charter.md` for
+people. Also: an answer that defers a feature lists that feature's open rows as *recommend closing* (v57 follow-up).
+
+**Evidence** (`~/dev/ai/bp-sim`, Sonnet runs, two blind Sonnet graders). Round c58 (v58 vs v57): the interview 28/28 checks;
+soft without a charter 7.28 vs 6.94 (no regression); charter scenarios showed the first cut not yet lean (per-feature
+retention at prototype, defaults at idea, the charter named in a marker). Round d58 (v58b — those three fixed — vs v57):
+**6.84 vs 6.11**; idea-charter 6.91 vs 6.06 with checks 20/20 vs 13/20 and fewer questions (9.5 vs 12.5); scope-charter
+6.78 vs 6.16, the minors' consent question kept every run. v58b differs from v58 only in `spec/charter.md`, so c58's
+no-charter and interview results carry over. Open: at `prototype` the floor may ask one project-level row per legal trigger
+(two on a product with minors and stored data); merging them into one is a candidate for a later round.
+
+# v57 — the release a source describes is written down, deferred features are not specified
+
+**What produced this.** On a live project (Repperoni) the skill asked *"Which languages does the app come in for this
+release?"* although a roadmap source said *"English-only copy at MVP"*, and kept a deferred feature's ~38 requirements and
+clauses in fourteen other features *"as the design for the phase it follows in"*. A trace found one mechanism: release-scope
+facts never reached the document, and every pass, the disposition check and the cold read are told to read the document
+alone, so a sweep found "no rule" for a fact only the sources held; the Q3 *Already answered* clause for source spans had no
+executor; and `prd-scope.md`'s *Later list* existed in no other file.
+
+**What changed.** (1) A sourced `This release` overview block (doc-shape §3): who the release reaches and how, languages,
+platforms, what a source places in a later phase — absent when no source states any; its lines are written like feature
+lines, so `add` and `resolve` keep it current. (2) A *deferred feature* (doc-shape §5) is one `Not doing` line naming the
+phase, no requirements and no "if it ships" clause; undecided inclusion is one marker to one question. (3) init I2 list 4
+and add A2 list 5 write both. (4) Q3: the orchestrator searches `sources/` for every absence-grounded or project-level
+candidate before disposing it. (5) resolve R3.1 and add: an answer or source that defers a feature removes it, quoting what
+it removes. (6) prd-scope §5's *Later list* row now points at the `Not doing` line. 372 words added.
+
+**Evidence.** Rebuilt harness at `~/dev/ai/bp-sim` (blind, anonymised, Sonnet runs and graders). Round a57 (v57 first cut vs
+v56, five scenarios × 2): 6.69 vs 6.87 — not shipped; its scope fixture did not discriminate and its `This release` block
+went stale under `add`. Round b57 (v57b vs v56; scope2 — a Repperoni-shaped fixture — client, soft × 2): **6.43 vs 6.05**;
+scope2 6.03 vs 4.91 with scenario checks 36/36 vs 30/36 (v56 kept the deferred features' requirements both times); client
+6.44 vs 6.22; soft 6.81 vs 7.03 (noise-sized, defaults channel untouched); 16% cheaper per run. Known shared weakness: after a
+supersession the overview's prose and picture stay stale on both versions (never-write-silently rule).
+
 # v56 (v47x): v47 + unhappy-path fixes from v52, light log rule
 
 # v47 — hedges kept as hedges, every sentence a checked claim, honest logs, one-decision questions, and no idle waiting
@@ -1494,3 +1705,29 @@ verification killed them, two of them raised by the campaign's own orchestrator:
 The `directive` kind's scope wording does read one term short of the rule it cites (`resolve.md`:769
 says *"inside a source"*; rule 2 says *"sources, answers, titles, file contents"*), but three other
 places in the skill pair answers with sources, and no run was misled in four projects. Left alone.
+
+## Prior research-citation limitations
+
+**Every research citation in these files is meant to carry a venue and year or an identifier, as
+every platform claim carries a verification date** ([`spec/notion-mechanics.md`](spec/notion-mechanics.md)'s
+90-day rule) — **and as of v19 many do not** (a 2026-08-21 audit found roughly twenty figures cited by
+a bare name or nothing, and one — the 44.4% recall — with no source recorded at all). **So, stated
+honestly rather than aspirationally: no rule in these files rests on a research citation alone.** Every
+rule stands on its own reasoning and on the measured campaigns; a citation is supporting colour until
+it carries a verifiable identifier; a figure older than **~18 months** is
+**re-verified before a run relies on it** — or, until somebody does, treated as unverified — and a
+figure nobody can re-verify is to be struck along with any weight it was given — not quietly kept.
+
+
+## Verification rationale moved from run procedures in v63
+
+The previous I6 and R3.2 procedures said that model identity, rather than context isolation, was the
+measured variable and cited 73.5% self-recognition without an identifier there. That historical rationale
+is not runtime evidence. The actual policy remains: a real fresh dispatch, a different peer where
+available, and an accurately labelled same-model fallback. No new research claim replaces it.
+
+The follow-up is now independently graded: the clarified lens detected the missing venue-action
+boundary, and a source-backed global-rule control produced no false findings or required duplication.
+Neither earlier review nor the clarified review recovered the specific failed/unconfirmed draft-save
+feedback gap. This is partial improvement, not a complete repair or proof of general effectiveness;
+the full init workflow was not rerun after these three sentences. No extra review stage was added.

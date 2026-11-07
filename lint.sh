@@ -83,9 +83,9 @@ fail=0
 wip=0
 [ "${1:-}" = "--wip" ] && wip=1
 
-MANIFEST="SKILL.md README.md QUICKSTART.md init.md add.md questions.md resolve.md status.md \
+MANIFEST="SKILL.md rules.md execution.md compatibility.md README.md QUICKSTART.md init.md add.md questions.md answer.md resolve.md status.md \
 spec/doc-shape.md spec/databases.md spec/targets.md spec/notion-mechanics.md spec/run-progress.md \
-spec/prd-scope.md"
+spec/prd-scope.md spec/charter.md charter.md charter-guide.md"
 
 # Swept for vocabulary (checks 4 and 5) but not cross-referenced or link-checked:
 # the explainer is a reading of the files, not one of them, and it drifts exactly as easily.
@@ -120,22 +120,23 @@ Q_DEF=$(def_of questions.md Q)
 R_DEF=$(def_of resolve.md R)
 L_DEF=$(def_of lock.md L)
 S_DEF=$(def_of status.md S)
+W_DEF=$(def_of answer.md W)
 C_DEF=$( [ -f status.md ] && grep -hoE '^\| \*\*C[0-9]+\*\*' status.md | grep -oE 'C[0-9]+' | sort -u )
 
 if [ -n "$PRESENT" ]; then
   REFS=$(for f in $PRESENT; do strip_legacy "$f"; done \
-    | grep -hoE '\b[IAQRLCS][0-9]+(\.[0-9]+)?\b' | sort -u)
+    | grep -hoE '\b[IAQRLCSW][0-9]+(\.[0-9]+)?\b' | sort -u)
   for r in $REFS; do
     p=$(echo "$r" | cut -c1)
     case "$p" in
       I) SET="$I_DEF" ;; A) SET="$A_DEF" ;; Q) SET="$Q_DEF" ;; R) SET="$R_DEF" ;;
-      L) SET="$L_DEF" ;; C) SET="$C_DEF" ;; S) SET="$S_DEF" ;;
+      L) SET="$L_DEF" ;; C) SET="$C_DEF" ;; S) SET="$S_DEF" ;; W) SET="$W_DEF" ;;
     esac
     if ! echo "$SET" | grep -qx "$r"; then
       # a reference into a file that is not written yet is a WIP notice, not a failure
       case "$p" in
         I) OWNER=init.md ;; A) OWNER=add.md ;; Q) OWNER=questions.md ;; R) OWNER=resolve.md ;;
-        L) OWNER="a run file (the L prefix is retired — lock.md was removed in v16)" ;; C|S) OWNER=status.md ;;
+        L) OWNER="a run file (the L prefix is retired — lock.md was removed in v16)" ;; C|S) OWNER=status.md ;; W) OWNER=answer.md ;;
       esac
       if [ $wip -eq 1 ] && [ ! -f "$OWNER" ]; then continue; fi
       echo "DANGLING reference: $r (nothing in $OWNER defines it)"
@@ -233,15 +234,15 @@ fi
 # register's completeness is a safety property, not documentation. A bump that neither adds
 # its row nor is named in the exclusion line leaves R1 reconciling across a shape change it
 # cannot see. Check 8 can only prove the register EXISTS; this proves it mentions this version.
-if [ -f VERSION ] && [ -f SKILL.md ]; then
+if [ -f VERSION ] && [ -f compatibility.md ]; then
   v=$(cat VERSION)
-  if grep -q "shape-change register" SKILL.md; then
-    if grep -qE "^\| \*\*v${v}\*\* \|" SKILL.md; then
+  if grep -q "shape-change register" compatibility.md; then
+    if grep -qE "^\| \*\*v${v}\*\* \|" compatibility.md; then
       : # this version has its own register row
-    elif grep -qE "v${v}( and v[0-9]+)? (are|is) deliberately not|and v${v} are deliberately not" SKILL.md; then
+    elif grep -qE "v${v}( and v[0-9]+)? (are|is) deliberately not|and v${v} are deliberately not" compatibility.md; then
       : # this version is named in the exclusion line
     else
-      echo "SHAPE REGISTER: VERSION is $v but SKILL.md's shape-change register neither lists v$v"
+      echo "SHAPE REGISTER: VERSION is $v but compatibility.md's shape-change register neither lists v$v"
       echo "    nor names it in the exclusion line. resolve.md R1 reconciles across unlisted gaps,"
       echo "    so an unaccounted bump is a silent fail-open. Add the row, or name it as excluded."
       fail=1
@@ -252,10 +253,10 @@ fi
 # ================= checks 8, 9, 10 — requirement assertions ==================
 # Each row: file ⋮ regex ⋮ name.  Parsed with parameter expansion (see header).
 
-REQUIRED='SKILL.md⋮^## The rules that outrank everything⋮skill-has-rules
-SKILL.md⋮\*\*A human approves, always\.\*\* A run never sends⋮inv-human-approves
-SKILL.md⋮\*\*Never reads a code repo\*\*[^a-z]*not as a source, not to check anything\. What the product⋮inv-no-code-repo
-SKILL.md⋮\*\*Never rewrites the run log\*\*[^a-z]*it is append-only\. \*\*Nothing crosses projects\*\*⋮inv-append-only
+REQUIRED='rules.md⋮^## The rules that outrank everything⋮skill-has-rules
+rules.md⋮\*\*A human approves, always\.\*\* A run never sends⋮inv-human-approves
+rules.md⋮\*\*Never reads a code repo\*\*[^a-z]*not as a source, not to check anything\. What the product⋮inv-no-code-repo
+rules.md⋮\*\*Never rewrites the run log\*\*[^a-z]*it is append-only\. \*\*Nothing crosses projects\*\*⋮inv-append-only
 resolve.md⋮^## R4⋮resolve-has-R4
 questions.md⋮^## Q4⋮questions-has-Q4
 spec/databases.md⋮the placement rule, and it is⋮databases-placement-rule
@@ -293,8 +294,8 @@ questions.md⋮and no others.*lens 4⋮grill-names-lenses-1-3-only
 questions.md⋮post-write hash, not the one the lenses saw⋮grill-hash-is-post-write
 questions.md⋮its depth is the DEEPEST of them⋮depth-is-deepest-grounding
 resolve.md⋮OWN provenance line⋮one-provenance-line-per-requirement
-SKILL.md⋮closes with a dispatch still out⋮gate-names-outstanding-dispatches
-questions.md⋮does not open a new batch while one stands unratified⋮one-standing-ledger
+rules.md⋮closes with a dispatch still out⋮gate-names-outstanding-dispatches
+questions.md⋮each run.s defaults are \*\*its own ledger\*\*⋮v62-one-ledger-per-run
 questions.md⋮text, not the whole changed body⋮shared-entity-is-the-changed-text
 questions.md⋮That re-routing is the exit, and it is bounded at one⋮routing-refusal-is-bounded
 questions.md⋮quotes each one.s own sentence⋮survey-quotes-are-checkable
@@ -340,7 +341,7 @@ resolve.md⋮carries the row.s derivation depth⋮resolve-stamps-depth
 add.md⋮the depth goes on the .item. line⋮add-supersession-carries-depth
 spec/doc-shape.md⋮the derivation depth⋮docshape-provenance-carries-depth
 status.md⋮omits its questions step on a read⋮status-reads-convergence-verdict
-SKILL.md⋮single home of what a run may spend⋮v36-skill-cost-section
+execution.md⋮single home of what a run may spend⋮v36-skill-cost-section
 add.md⋮two sources disagree|source contradicts itself⋮add-source-vs-source-still-a-question
 add.md⋮operation 8⋮add-keeps-operation-8
 add.md⋮Superseded⋮add-supersession-provenance
@@ -373,17 +374,17 @@ spec/targets.md⋮  cache/⋮working-folder-cache
 spec/targets.md⋮never deleted, never rebuilt⋮record-is-durable
 spec/targets.md⋮record/run-log.md⋮run-log-is-local
 resolve.md⋮keeps only the kinds something reads back⋮independence-kind-kept
-SKILL.md⋮## Before any run — six checks⋮preflight-six-checks
+rules.md⋮## Before any run — six checks⋮preflight-six-checks
 status.md⋮What is still unsettled⋮status-owns-readiness
 status.md⋮since v16, everything under .record/.⋮c9-sweeps-the-record
 resolve.md⋮overview route⋮resolve-overview-route-terminates
 resolve.md⋮flag fires once, not forever⋮r23-rebaselines-the-hash
 resolve.md⋮without it the seed path is unreachable⋮r24-exempts-seed-eligible
-SKILL.md⋮One bounded exception, added v16⋮rule3-bounded-exception
-SKILL.md⋮It does not govern a source against the document⋮rule4-source-vs-document
+rules.md⋮One bounded exception, added v16⋮rule3-bounded-exception
+rules.md⋮It does not govern a source against the document⋮rule4-source-vs-document
 questions.md⋮more than roughly one⋮questions-regate-has-a-trigger
 spec/targets.md⋮Never ignore the whole folder⋮targets-ignore-rule-correct
-SKILL.md⋮Zero dispatches available⋮d1-zero-dispatch-defined
+rules.md⋮Zero dispatches available⋮d1-zero-dispatch-defined
 resolve.md⋮^\| `Unverified`⋮d1-resolve-unverified-outcome
 init.md⋮Unverified — no second dispatch available⋮d1-init-unverified-verdict
 init.md⋮superseded at \[`add.md`\]\(add.md\) A4 step 5⋮d2-conservation-has-supersession
@@ -391,16 +392,16 @@ init.md⋮Sweep the content rule over every field⋮d7-init-sweeps-record
 add.md⋮everything this run wrote into .record/.⋮d7-add-sweeps-record
 questions.md⋮it does offer one, once⋮d4-offers-the-sitting
 init.md⋮the run does not wait for the answer⋮d3-because-is-async
-questions.md⋮Printing is the run.s act; ratifying is the human.s⋮d14-ratification-reconciled
+questions.md⋮Nothing waits on them and no later⋮v62-q6-informs-only
 resolve.md⋮§5.s tests win over the cap⋮d5-split-wins-over-cap
 spec/run-progress.md⋮whose task list governs⋮d6-embedded-run-rule
 spec/run-progress.md⋮skipped⋮d16-skipped-state
 spec/doc-shape.md⋮One carve-out, and it is the first write only⋮d9-first-overview-write
-SKILL.md⋮shape-change register⋮v17-shape-register
+compatibility.md⋮shape-change register⋮v17-shape-register
 resolve.md⋮narrower than⋮f1-r34-flagged-retries
 resolve.md⋮outputs 2 and 3 are never⋮f1-outputs-excluded
 resolve.md⋮is not R3.4.s$⋮f1-anchor-case-disambiguated
-SKILL.md⋮prd-scope.md.\.$⋮f10-six-specs-skill
+execution.md⋮spec/prd-scope.md⋮f10-six-specs-skill
 init.md⋮prd-scope.md.\.$⋮f10-six-specs-init
 resolve.md⋮prd-scope.md.\.$⋮f10-six-specs-resolve
 questions.md⋮prd-scope.md.\.$⋮f10-six-specs-questions
@@ -411,7 +412,7 @@ status.md⋮by a human or by a run⋮f2-sweep-predicate-status
 resolve.md⋮refused — never silently rewritten⋮f2-refuse-not-rewrite
 resolve.md⋮R5, when the entry closes⋮f2-first-run-window
 resolve.md⋮Swept at one point⋮f2-single-sweep-point
-SKILL.md⋮every machine-written field⋮f3-6d-every-field
+rules.md⋮every machine-written field⋮f3-6d-every-field
 spec/databases.md⋮every machine-written field⋮f3-databases-mirrors-6d
 resolve.md⋮a check verdict that arrived after its item was written⋮f4-late-verdict-route
 status.md⋮unreconciled late verdict⋮f4-status-c4-case
@@ -421,25 +422,25 @@ add.md⋮closed set of blocking stops⋮f6-stops-add
 questions.md⋮closed set of blocking stops⋮f6-stops-questions
 resolve.md⋮closed set of blocking stops⋮f6-stops-resolve
 README.md⋮n=1⋮f17-lab-numbers-carry-provenance
-SKILL.md⋮re-verified before a run relies on it⋮f16-citation-expiry
+rules.md⋮re-verified before a run relies on it⋮f16-citation-expiry
 init.md⋮available but not dispatched⋮f11-i6-orphan-states
 resolve.md⋮crosses no version on that register⋮v17-version-gate-reconciles
 spec/doc-shape.md⋮A relayed client answer is also .Answered.⋮v17-relayed-answer-arbitrated
 status.md⋮whose .Answer & why. is NOT empty⋮v17-status-sees-answered-open
-SKILL.md⋮verified. here is a string match, not a dispatch⋮v17-citation-string-match
+rules.md⋮string match, not a dispatch⋮v17-citation-string-match
 resolve.md⋮record/runs/<run-id>.md. alike⋮v17-sweep-covers-runs
 status.md⋮FUNNEL. line against the .discard. lines⋮v17-c10-checks-funnel
 resolve.md⋮stamped < n⋮v18-crosses-defined
 resolve.md⋮^\| \*\*citation\*\*⋮v18-citation-kind-exists
-SKILL.md⋮no bump without a register decision⋮v18-bump-obliges-register
-SKILL.md⋮matching on normalised whitespace⋮v18-citation-whitespace
+compatibility.md⋮no bump without a register decision⋮v18-bump-obliges-register
+rules.md⋮matching on normalised whitespace⋮v18-citation-whitespace
 spec/databases.md⋮checked mechanically by string match⋮v18-directions-field-matches-rule6d
 init.md⋮i3-skeleton.md. before printing it⋮v21-i3-screen-persisted
 spec/targets.md⋮i3-skeleton.md⋮v21-i3-skeleton-in-layout
 spec/doc-shape.md⋮this carve-out does not apply⋮v21-carveout-needs-stored-text
-SKILL.md⋮Try three rungs before⋮v21-dispatch-ladder
-SKILL.md⋮succeeded via⋮v21-probe-records-route
-SKILL.md⋮or from an earlier sitting of the same run⋮v21-probe-guard-crosses-sittings
+rules.md⋮at most one permitted installed CLI fallback⋮v21-dispatch-ladder
+rules.md⋮succeeded via⋮v21-probe-records-route
+rules.md⋮or from an earlier sitting of the same run⋮v21-probe-guard-crosses-sittings
 resolve.md⋮repeats, character for character⋮v21-hashes-rollup-repeats
 resolve.md⋮The content rule binds every line of this print⋮v21-r4-print-bound
 resolve.md⋮each carrying its addends⋮v21-counts-show-addends
@@ -449,7 +450,7 @@ add.md⋮One per body write, not one per feature⋮v21-item-line-per-body-write
 add.md⋮restatement is superseded with it⋮v21-supersession-reaches-restatements
 questions.md⋮you can quote the row.s own words⋮v21-duplicate-needs-quote
 questions.md⋮two or more of whose candidates survived Q3⋮v24-repeat-round-on-survivors
-questions.md⋮fresh random sample of the named ledger⋮v21-ratify-spot-check
+questions.md⋮Adoption on write [^a-z]{1,8}the single home⋮v62-adoption-single-home
 spec/databases.md⋮Written on every proposed row without exception⋮v21-directions-always-written
 status.md⋮SWEEP-NOTE. field counts⋮v21-c10-scope-widened
 spec/databases.md⋮The relayer is the human of record⋮v18-databases-admits-relayer
@@ -469,14 +470,14 @@ init.md⋮carries the overview.s block text itself⋮v19-i3-carries-block-text
 spec/targets.md⋮in q-NN order⋮v19-local-questions-order
 status.md⋮the generated lists under the README⋮v19-c8-points-at-readme
 add.md⋮never the whole working folder⋮v19-add-ignore-entries
-spec/doc-shape.md⋮RATIFIED. line that cleared it⋮v19-markers-cite-ratified
-status.md⋮ratified means the log carries a .RATIFIED. line⋮v19-c5-reads-ratified
+spec/doc-shape.md⋮its marker is removed in the same commit⋮v62-route6-removes-at-write
+status.md⋮no .RATIFIED. line is needed⋮v62-c5-no-ratified-needed
 AGENTS.md⋮LC_ALL=C ./lint.sh⋮v19-agents-md-gate
-SKILL.md⋮earned by an attempt⋮v20-dispatch-probe-required
-SKILL.md⋮dispatch probe: attempted⋮v20-probe-strings
+rules.md⋮earned by an attempt⋮v20-dispatch-probe-required
+rules.md⋮dispatch probe: attempted⋮v20-probe-strings
 resolve.md⋮goes on the .item. line, at the moment that item⋮v20-hash-per-item
 resolve.md⋮^\| \*\*directive\*\*⋮v20-directive-kind
-resolve.md⋮A ratification or veto is not this run.s to execute⋮v20-resolve-redirects-ratification
+resolve.md⋮A veto is not this run.s to execute⋮v62-resolve-redirects-veto
 resolve.md⋮dispatch-unavailable⋮v20-deviation-class
 resolve.md⋮\*\*discard\*\* lines, for a candidate⋮v20-init-discard-kind
 init.md⋮An answer given at this stop has a home⋮v20-i3-stop-answers
@@ -494,9 +495,9 @@ questions.md⋮Up to ten rows per reader⋮v36-coldread-batched
 questions.md⋮carried-marker transcription is not read cold⋮v36-transcription-not-read-cold
 questions.md⋮line as .queued.⋮v36-cap-queues
 questions.md⋮no body left⋮v36-queued-blocks-convergence
-SKILL.md⋮A pause is ended only by a human⋮v36-pause-human-only
-SKILL.md⋮the one file it may read is a brief the orchestrator froze⋮v36-frozen-brief
-SKILL.md⋮at most four dispatches⋮v36-skill-delta-cap
+execution.md⋮A pause is ended only by a human⋮v36-pause-human-only
+rules.md⋮the one file it may read is a brief the orchestrator froze⋮v36-frozen-brief
+execution.md⋮at most four dispatches⋮v36-skill-delta-cap
 add.md⋮at Q2.s delta scale⋮v36-add-handoff-delta
 add.md⋮attacked once, after it is written⋮v36-add-no-prewrite-grill
 add.md⋮that read-back is this fetch⋮v36-one-read-per-block
@@ -513,7 +514,7 @@ questions.md⋮^\| .irrelevant. \| No answer to it⋮v32-coldread-verdict-irrele
 questions.md⋮^\| .simplify. \| The question is real⋮v32-coldread-verdict-simplify
 questions.md⋮^\| .extend. \| The question is a slice⋮v32-coldread-verdict-extend
 questions.md⋮they are not read cold again⋮v32-coldread-split-not-reread
-SKILL.md⋮cold read⋮v32-skill-names-coldread
+rules.md⋮cold read⋮v32-skill-names-coldread
 resolve.md⋮the cold reader⋮v32-independence-names-reader
 README.md⋮reads it cold⋮v32-readme-names-coldread
 spec/targets.md⋮wiki-.project./blueprint/⋮v33-home-is-wiki-blueprint
@@ -524,8 +525,8 @@ spec/targets.md⋮git check-ignore -q sources cache⋮v33-commit-proves-ignore
 spec/targets.md⋮finding one is a rename, not a fork⋮v33-legacy-location-is-a-rename
 spec/targets.md⋮seed its .\.gitignore. \*\*first\*\*⋮v33-ignore-before-move
 spec/targets.md⋮never runs .git init. on the⋮v33-no-git-init
-SKILL.md⋮wiki-.project./blueprint/⋮v33-skill-names-home
-SKILL.md⋮its rename route where a write command finds one⋮v33-preflight-resolves-folder
+rules.md⋮wiki-.project./blueprint/⋮v33-skill-names-home
+rules.md⋮its rename route where a write command finds one⋮v33-preflight-resolves-folder
 init.md⋮<home>/\.gitignore⋮v33-init-seeds-ignore
 add.md⋮carries its ignore file naming⋮v33-add-checks-ignore
 status.md⋮say a write run will move it⋮v33-status-never-moves
@@ -541,7 +542,7 @@ spec/databases.md⋮drafted to be pointable⋮v34-directions-pointable-spec
 questions.md⋮drafted to be pointable⋮v34-directions-pointable
 spec/doc-shape.md⋮may add a numbered requirement⋮v34-doc-shape-new-fr
 status.md⋮Why flagged⋮v34-status-reads-why-flagged
-SKILL.md⋮^\| \*\*v34\*\* \|⋮v34-register-row
+compatibility.md⋮^\| \*\*v34\*\* \|⋮v34-register-row
 HISTORY.md⋮^# v34⋮v34-history-entry
 spec/doc-shape.md⋮The run record as a \*\*link\*\*⋮v37-operating-run-record-is-a-link
 spec/doc-shape.md⋮the run record is not yet published and names no path⋮v37-operating-unpublished-names-no-path
@@ -550,9 +551,9 @@ spec/doc-shape.md⋮named, not linked⋮v37-links-source-record-named
 init.md⋮the run record.s link, or the line saying it is not yet published⋮v37-init-writes-the-link
 status.md⋮machine-local path in .Links. or .Operating.⋮v37-c8-reports-local-path
 HISTORY.md⋮^# v37⋮v37-history-entry
-SKILL.md⋮Do not invoke any skill or slash command⋮v46-scope-line
-SKILL.md⋮30 minutes⋮v46-stale-threshold
-SKILL.md⋮An explicit change is not a contradiction⋮v46-explicit-change
+rules.md⋮Do not invoke any skill or slash command⋮v46-scope-line
+rules.md⋮30 minutes⋮v46-stale-threshold
+rules.md⋮An explicit change is not a contradiction⋮v46-explicit-change
 init.md⋮init soft⋮v46-init-soft
 resolve.md⋮CLOSED \(abandoned\)⋮v46-abandoned-close
 resolve.md⋮^\| .ABANDONED.⋮v46-abandoned-stop-reason
@@ -574,11 +575,11 @@ questions.md⋮Legal and privacy candidates enter where the product has what tri
 questions.md⋮never only where a source names the⋮v46-sweep-not-source-named
 questions.md⋮from this gate and from Q3.s .Generic checklist. filter alike⋮v46-sweep-always-ask-exempt
 questions.md⋮\*\*Never reaches\*\* a candidate on an always-ask topic⋮v46-generic-checklist-exempt
-questions.md⋮its spot-check is owed and$⋮v46-ratify-spot-check-owed
-questions.md⋮\*\*the sampled lines do not\*\*⋮v46-sampled-lines-held
-questions.md⋮An owed spot-check is re-offered first⋮v46-q6-reoffers-spot-check
-status.md⋮an unanswered spot-check is named here too⋮v46-c5-spot-check-owed
-resolve.md⋮\*\*.spot-check owed.\*\* and the sampled lines⋮v46-r5-ratified-spot-check-owed
+questions.md⋮The one transition, and it fires once per line⋮v62-q1-transition
+questions.md⋮A line nobody vetoes stays as written⋮v62-unvetoed-stays
+questions.md⋮nothing to ratify, no sample to answer⋮v62-q1-nothing-to-ratify
+status.md⋮A pre-v62 default marker, one counted line⋮v62-c5-legacy-marker
+resolve.md⋮is \*\*read, never written\*\* since v62⋮v62-r5-ratified-read-only
 spec/run-progress.md⋮Two lines are mandatory whenever$⋮v46-reply-check-lines
 spec/run-progress.md⋮independent reading could not be done, so 4 items are unchecked⋮v46-reply-unverified-line
 spec/run-progress.md⋮cut or narrowed because no source$⋮v46-reply-cut-line
@@ -604,8 +605,8 @@ add.md⋮re-quoted in place⋮v47-requote-untouched-row
 resolve.md⋮read from the system clock⋮v47-times-from-clock
 spec/run-progress.md⋮counted from the files at close⋮v47-reply-counts-from-files
 spec/run-progress.md⋮nothing comes before it⋮v47-reply-opens-with-what-happened
-SKILL.md⋮never a lightweight model⋮v47-checker-not-lightweight
-SKILL.md⋮several agent calls in one message⋮v47-concurrent-foreground
+rules.md⋮never a lightweight model⋮v47-checker-not-lightweight
+rules.md⋮native completion and wait mechanisms⋮v47-concurrent-foreground
 resolve.md⋮.classify-before-read., where a command opened a file⋮v47-deviation-classify-before-read
 init.md⋮run takes a .classify-before-read. .DEVIATIONS. line⋮v47-i1-cites-classify-kind
 init.md⋮The discard recheck⋮v47-i6-discard-recheck
@@ -614,11 +615,11 @@ init.md⋮what this run.s write introduced⋮v47-specifics-introduced-only
 init.md⋮is the only thing stripped, never the requirement⋮v47-specifics-strip-specific-only
 init.md⋮whose words are in the cited span keeps them⋮v47-specifics-sourced-vague-kept
 questions.md⋮Then the claim test⋮v47-default-claim-test
-SKILL.md⋮from the top through Q4⋮v47-reading-map-questions-preamble
-SKILL.md⋮notion-mechanics.md. .{1,2}3 on the Notion target⋮v47-status-reads-notion-s3
-SKILL.md⋮abandoned only when nothing has been written for it for 30 minutes, whichever session opened it⋮v52-abandoned-only-when-idle
-SKILL.md⋮this run halts with one plain line and writes nothing to the log⋮v52-halt-writes-nothing
-SKILL.md⋮tested immediately before this$⋮v52-preflight4-test-timing
+execution.md⋮from the top through Q4⋮v47-reading-map-questions-preamble
+execution.md⋮notion-mechanics.md. .{1,2}3 on the Notion target⋮v47-status-reads-notion-s3
+rules.md⋮abandoned only when nothing has been written for it for 30 minutes, whichever session opened it⋮v52-abandoned-only-when-idle
+rules.md⋮this run halts with one plain line and writes nothing to the log⋮v52-halt-writes-nothing
+rules.md⋮tested immediately before this$⋮v52-preflight4-test-timing
 resolve.md⋮pre-flight 3 \(a local folder it cannot write, v52\)⋮v52-resolve-halt-list-local
 resolve.md⋮It is abandoned only when its last activity is 30$⋮v52-r1-abandoned-only-when-idle
 resolve.md⋮when the person says that session crashed, was$⋮v52-r1-person-consent
@@ -629,12 +630,12 @@ resolve.md⋮the halt writes nothing to the log⋮v52-r1-halt-writes-nothing
 spec/targets.md⋮grep -lxF .address: <that folder>/. wiki-\*/blueprint/target\.md \.blueprint/target\.md⋮v52-second-project-anchored
 spec/targets.md⋮Exactly one file printed wins; none or several fall through⋮v52-second-project-one-wins
 spec/targets.md⋮A folder a run creates at the top of the workspace is named, by its$⋮v52-new-folder-named
-SKILL.md⋮A local folder is tested instead, once, before any drafting⋮v52-write-test-up-front
-SKILL.md⋮the run never changes a file permission itself⋮v52-no-permission-change
-SKILL.md⋮write never records its source as applied⋮v52-unwritten-not-applied
+rules.md⋮A local folder is tested instead, once, before any drafting⋮v52-write-test-up-front
+rules.md⋮the run never changes a file permission itself⋮v52-no-permission-change
+rules.md⋮write never records its source as applied⋮v52-unwritten-not-applied
 init.md⋮with no stop to ask; the reply names the folder⋮v52-init-no-target-stop
 init.md⋮as the line .address: <folder>/., relative to the workspace, the line .{1,2}5 matches⋮v52-target-address-written
-SKILL.md⋮except .init., which with no target named uses a local folder⋮v52-preflight1-init-default
+rules.md⋮except .init., which with no target named uses a local folder⋮v52-preflight1-init-default
 resolve.md⋮its objection .the answer does not address this question., and is$⋮v52-off-topic-flagged
 resolve.md⋮never re-queued as .Answered.⋮v52-off-topic-not-requeued
 resolve.md⋮the answer does not address its row.s question \(R3\.1\)⋮v52-off-topic-r4-row
@@ -642,14 +643,46 @@ spec/run-progress.md⋮Every reply keeps this section.s plain-words rules[^a-z]*
 resolve.md⋮^Never rebuild the run log from memory or rewrite it with Write: add this run.s lines with Edit or an append,$⋮v56-log-no-rebuild-no-write
 resolve.md⋮^and correct only this run.s own lines; if an earlier line is found damaged, say so plainly in a NOTE line$⋮v56-log-own-lines-damage-noted
 resolve.md⋮^and in the reply .{1,3} never claim it was restored\.$⋮v56-log-never-claim-restored
-HISTORY.md⋮^# v56 \(v47x\): v47 \+ unhappy-path fixes from v52, light log rule$⋮v56-history-entry'
+HISTORY.md⋮^# v56 \(v47x\): v47 \+ unhappy-path fixes from v52, light log rule$⋮v56-history-entry
+questions.md⋮\*\*Outside the charter\*\* \(v58\)⋮v58-charter-filter
+spec/charter.md⋮never for a §5 item⋮v58-floor-never-demoted
+spec/charter.md⋮halts every write run⋮v58-missing-charter-halts
+spec/charter.md⋮\*\*Sourced content is always written\.\*\*⋮v58-sourced-content-written
+answer.md⋮\*\*The invocation is the delegation\.\*\*⋮v60-invocation-is-delegation
+answer.md⋮\*\*It fails toward the owner on the hard limits\.\*\*⋮v61-fails-toward-owner-on-hard-limits
+answer.md⋮owner might have liked to decide it is not a reason⋮v61-challenger-not-a-gatekeeper
+answer.md⋮\*\*5\. Simplest for the owner\*\*⋮v61-ground-5
+answer.md⋮and is answered only on ground 1⋮v61-minors-ground-1-only
+answer.md⋮class \*needs a figure only you have\*⋮v61-no-invented-figure
+answer.md⋮delegated answer adds to the document and never supersedes it⋮v60-never-supersedes
+answer.md⋮^Task list: ⋮progress-list-in-answer
+resolve.md⋮takes this gate in every mode⋮v60-resolve-gates-delegated
+rules.md⋮A delegated answer lives under this rule too⋮v60-rule1-delegation
+SKILL.md⋮^## The seven commands⋮v60-seven-commands
+rules.md⋮fork_turns: "none"⋮v63-codex-fresh-context
+rules.md⋮non-fork isolated Agent/Task⋮v63-claude-fresh-context
+rules.md⋮collect every required result before a⋮v63-dependent-wait
+answer.md⋮orchestrator drafts directly⋮v63-author-drafts
+answer.md⋮ten-answer ceiling⋮v63-challenge-batch-bound
+answer.md⋮history-sharing fork is not this fresh challenge⋮v63-fresh-answer-challenge
+answer.md⋮Every challenger brief carries the complete decision bar⋮v63-challenger-full-bar
+questions.md⋮Testability within lens 1⋮v63-testability-executor
+questions.md⋮Reachable bulk events within lens 3⋮v63-bulk-executor
+questions.md⋮Trace supplied ownership and authority through both reads and actions on the same records⋮v63-action-scope-trace
+questions.md⋮alone is not action authority, and a clear global rule need not be repeated in each feature⋮v63-action-scope-global-rule
+questions.md⋮For in-scope saves, sends and responses, check observable success, failure and unconfirmed outcomes⋮v63-action-observable-outcomes
+questions.md⋮without adding persistence promises, retry machinery or capabilities⋮v63-action-no-mechanism-expansion
+questions.md⋮Route any gap through the existing source/default/gap rules; these checks do not mandate new questions⋮v63-action-existing-dispositions
+questions.md⋮Collective materiality, before final routing⋮v63-collective-executor
+SKILL.md⋮Read \[rules.md\].rules.md. before a run⋮v63-router-rules'
 
-FORBIDDEN='SKILL.md⋮A human approves, always.*([Ee]xcept|[Uu]nless)⋮inv-human-approves-no-weakener
-SKILL.md⋮code repo.*([Ee]xcept|[Uu]nless|[Pp]refer|[Gg]enerally)⋮inv-no-code-repo-no-weakener
-SKILL.md⋮append-only.*([Ee]xcept|[Uu]nless|rewrit|compact)⋮inv-append-only-no-weakener
+FORBIDDEN='rules.md⋮A human approves, always.*([Ee]xcept|[Uu]nless)⋮inv-human-approves-no-weakener
+rules.md⋮code repo.*([Ee]xcept|[Uu]nless|[Pp]refer|[Gg]enerally)⋮inv-no-code-repo-no-weakener
+rules.md⋮append-only.*([Ee]xcept|[Uu]nless|rewrit|compact)⋮inv-append-only-no-weakener
 spec/doc-shape.md⋮A marker removal with no row ID⋮v31-retired-row-id-only
 questions.md⋮\[e\]dit · \[r\]eject · already⋮v31-retired-q5-five-keys
-SKILL.md⋮^## The six commands|^## The seven commands⋮skill-command-count
+SKILL.md⋮^## The five commands|^## The six commands⋮skill-command-count
+answer.md⋮[Ee]xcept the owner|[Uu]nless the owner|owner.s list.*may be answered on (ground|grounds) [234]⋮v60-owner-list-no-weakener
 questions.md⋮the budget is an absolute number⋮v30-no-absolute-row-budget
 questions.md⋮a stated .question budget⋮v30-no-stated-question-budget
 questions.md⋮count against the budget⋮v30-no-counting-against-budget
@@ -695,7 +728,7 @@ resolve.md⋮Contradiction is the hard stop⋮resolve-old-hard-stop
 resolve.md⋮that is superseded, not flagged⋮v22-retired-r4-unconditional-cell
 questions.md⋮full battery, every time⋮v23-retired-unconditional-battery
 questions.md⋮full battery on a first grill⋮v36-retired-first-grill-battery
-SKILL.md⋮full battery on a first grill⋮v36-retired-skill-first-grill-battery
+execution.md⋮full battery on a first grill⋮v36-retired-skill-first-grill-battery
 questions.md⋮there is no light mode⋮v36-retired-no-light-mode
 questions.md⋮one fresh dispatch per drafted question⋮v36-retired-coldread-one-per-row
 questions.md⋮whole-document snapshot stays the brief⋮v36-retired-snapshot-brief
@@ -703,12 +736,12 @@ questions.md⋮are dispatched once per .Area. as well as once whole-document⋮v
 questions.md⋮Lens 4 runs once per⋮v36-retired-pairwise-lens4
 questions.md⋮One row per dispatch⋮v36-retired-one-row-per-dispatch
 add.md⋮Grill the delta⋮v36-retired-a2-prewrite-grill
-SKILL.md⋮one fresh reader per drafted question⋮v36-retired-skill-one-reader
+execution.md⋮one fresh reader per drafted question⋮v36-retired-skill-one-reader
 README.md⋮one reader per drafted question⋮v36-retired-readme-one-reader
 README.md⋮The full grilling battery on a first grill⋮v36-retired-readme-first-grill
 QUICKSTART.md⋮read cold by a fresh dispatch⋮v36-retired-quickstart-fresh-dispatch
 questions.md⋮counted as it emitted them and before deduplication⋮v24-retired-emit-time-trigger
-SKILL.md⋮always the full battery⋮v23-retired-skill-always-battery
+execution.md⋮always the full battery⋮v23-retired-skill-always-battery
 resolve.md⋮is the default and a bare .resolve. is it⋮v22-grammar-not-restated-in-resolve
 resolve.md⋮### R3.3 Five outcomes⋮v22-retired-five-outcomes
 resolve.md⋮does not return .Clean. or .Patched.⋮f1-r34-stale-trigger
@@ -722,7 +755,7 @@ add.md⋮every .Not doing. line this run wrote without a⋮revisitif-q-add
 spec/doc-shape.md⋮where one is missing it proposes a question⋮revisitif-q-docshape
 spec/targets.md⋮the four views, and the run log⋮run-log-not-created-on-target
 resolve.md⋮never a working-folder file⋮run-log-not-on-target
-SKILL.md⋮seven pre-flight checks|seven checks⋮old-seven-checks
+rules.md⋮seven pre-flight checks|seven checks⋮old-seven-checks
 status.md⋮readiness definition⋮old-readiness-elsewhere
 resolve.md⋮neither is this run.s to pick⋮v19-no-refusal-sample
 resolve.md⋮accept .{1,2} edit .{1,2} decline⋮v19-no-seed-gate-sample
@@ -735,14 +768,14 @@ init.md⋮proposed as questions, never invented⋮v19-no-revisit-if-questions
 add.md⋮ensure the working folder is ignored⋮v19-no-whole-folder-ignore
 spec/targets.md⋮in Status order⋮v19-no-status-order
 questions.md⋮distribution printed in the (run-log )?entry⋮v19-distribution-not-in-entry
-SKILL.md⋮v3.{1,3}v18⋮v19-legacy-range-restored
+rules.md⋮v3.{1,3}v18⋮v19-legacy-range-restored
 blueprint-explained.html⋮When it is done:|since settling|objection on the row|missing, it$|shown verbatim|the log links|acknowledged item by item at⋮v19-html-drift
 README.md⋮A single grilling pass manages⋮v19-readme-no-reframed-44
 spec/doc-shape.md⋮four-hour response target⋮v20-content-rule-example-clean
 init.md⋮the entry is the first thing written after the structure exists⋮v20-no-contradictory-ordering
 questions.md⋮The last gate, and it reads⋮v32-readback-gate-not-last
 questions.md⋮DISPOSED WITH NO CHANNEL \(1 of the 11⋮v32-q3-paste-not-restored
-SKILL.md⋮internal/. on a local target⋮v33-retired-internal-home
+rules.md⋮internal/. on a local target⋮v33-retired-internal-home
 spec/targets.md⋮hidden folder is right for something that stands alone⋮v33-retired-hidden-folder
 spec/targets.md⋮so a project holds one directory, not two siblings⋮v33-retired-nested-internal
 spec/targets.md⋮^  internal/⋮v33-retired-internal-in-local-tree
@@ -766,7 +799,7 @@ init.md⋮path rather than a link⋮v37-retired-init-path-not-link
 init.md⋮run record.s path⋮v37-retired-init-run-record-path
 init.md⋮LINKS +deck ⋮v37-retired-i3-links-sample
 spec/targets.md⋮^  old path, report it for a human⋮v37-retired-rename-path-only
-SKILL.md⋮init. keeps its stop⋮v46-retired-init-keeps-stop
+rules.md⋮init. keeps its stop⋮v46-retired-init-keeps-stop
 init.md⋮^\*\*The one hard stop in the run\.\*\*⋮v46-retired-unconditional-i3
 QUICKSTART.md⋮the hard stop is yours⋮v46-retired-quickstart-stop
 resolve.md⋮writes .CLOSED \(crashed\).⋮v46-retired-hand-close
@@ -782,6 +815,13 @@ questions.md⋮closing clause carries the row.s own depth⋮v46-retired-whyasked
 questions.md⋮marker-backed candidates first⋮v46-retired-marker-precedence
 questions.md⋮privacy, accessibility, platform and scale candidates enter only where⋮v46-retired-sweep-source-names-obligation
 questions.md⋮Only a .soft. invocation waits for the spot-check answer first⋮v46-retired-ratify-before-sample
+questions.md⋮fresh random sample of the named ledger⋮v62-retired-spot-check-draw
+questions.md⋮An owed spot-check is re-offered first⋮v62-retired-spot-check-reoffer
+questions.md⋮Ratifying the defaults batch is the human act⋮v62-retired-ratify-clears-marker
+questions.md⋮does not open a new batch while one stands unratified⋮v62-retired-grow-oldest-ledger
+status.md⋮batch unratified past two sittings⋮v62-retired-c5-aging-batch
+rules.md⋮named batch-ratification per sitting⋮v62-retired-batch-ratification
+spec/doc-shape.md⋮explicit ratification of that defaults batch⋮v62-retired-route6-ratify
 spec/doc-shape.md⋮same run discarded on a quoted filter⋮v46-retired-route-9-any-filter
 spec/prd-scope.md⋮Exactly one per project, asked early⋮v46-retired-volume-always
 spec/run-progress.md⋮each traced to what⋮v47-retired-each-traced
@@ -790,8 +830,8 @@ init.md⋮no answer becomes an owned open question⋮v47-retired-success-row
 spec/doc-shape.md⋮unstated means an owned open question⋮v47-retired-docshape-success-row
 questions.md⋮twenty-five candidates to a dispatch⋮v47-retired-batch-25
 init.md⋮Rabbit holes. .\*\*empty is fine⋮v47-retired-bare-empty-heading
-SKILL.md⋮this conversation did not start that run⋮v52-retired-abandoned-on-sight
-SKILL.md⋮Only a run this conversation⋮v52-retired-only-this-conversation-halts
+rules.md⋮this conversation did not start that run⋮v52-retired-abandoned-on-sight
+rules.md⋮Only a run this conversation⋮v52-retired-only-this-conversation-halts
 resolve.md⋮this conversation did not mint its run id⋮v52-retired-abandoned-on-sight-r1
 resolve.md⋮Only a run this conversation started⋮v52-retired-only-this-conversation-halts-r1
 resolve.md⋮started by another session⋮v52-retired-abandoned-other-session
@@ -801,7 +841,16 @@ init.md⋮where its session is no longer running⋮v52-retired-abandoned-edge-ro
 status.md⋮by a session no longer running⋮v52-retired-abandoned-status
 resolve.md⋮left open by a session that is no longer running⋮v56-retired-abandoned-stop-reason
 resolve.md⋮closes it as .ABANDONED. \|⋮v56-retired-interrupted-next-run
-resolve.md⋮closed by the next write run with one appended⋮v56-retired-dead-run-next-run'
+resolve.md⋮closed by the next write run with one appended⋮v56-retired-dead-run-next-run
+rules.md⋮Try three rungs before⋮v63-retired-probe-ladder
+rules.md⋮throwaway agent with a trivial prompt⋮v63-retired-dummy-probe
+rules.md⋮together, in the foreground⋮v63-retired-foreground-only
+answer.md⋮one drafter per ten queued rows⋮v63-retired-drafter-dispatch
+execution.md⋮one drafter per 10 queued rows⋮v63-retired-drafter-cost
+spec/prd-scope.md⋮mass-event sweep in .3 is imported by nothing⋮v63-retired-missing-executor
+README.md⋮One agent drafts each answer|any doubt.*leaves the row open⋮v63-retired-answer-summary
+QUICKSTART.md⋮and leaves money, scope, legal⋮v63-retired-quickstart-authority
+blueprint-explained.html⋮The five commands|three routes and name them⋮v63-retired-html-routing'
 
 SINGLE_HOME='single home of where the working folder lives⋮1
 `force` is the default⋮1
@@ -822,7 +871,7 @@ this is where a generated question lands⋮1
 the shape-change register⋮1
 no bump without a register decision⋮1
 this list is the single home of the sweep⋮1
-Ratifying the defaults batch is the human act⋮1
+the single home of what happens to a default, a fix or a slot⋮1
 the only machine route into an empty body⋮1
 single home of the cold read⋮1
 single home of what a run may spend⋮1
@@ -835,13 +884,14 @@ Hedged or deferred source statements⋮1
 The bundle gate⋮1
 re-quoted in place⋮2
 read from the system clock⋮2
-always-ask register⋮4
-Run the six pre-flight checks⋮4
+always-ask register⋮6
+Run the six pre-flight checks⋮5
 Resolve `<home>`, in this order⋮1
 the web URL of `record/run-log.md`⋮1
 Do not invoke any skill or slash command⋮1
 the expected range for the material⋮1
-Never rebuild the run log from memory⋮1'
+Never rebuild the run log from memory⋮1
+single home of the delegation⋮1'
 
 a_pass=0; a_total=0
 

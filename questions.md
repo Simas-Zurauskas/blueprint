@@ -9,12 +9,12 @@ gray area a builder would have filled in silently becomes a decision somebody ac
 Run on demand — *"grill this spec"*, *"what should we be asking?"* — and automatically at the end of
 [`init.md`](init.md) I7 and [`add.md`](add.md) A5. Either way it is these six phases, in this order.
 **An embedding run does not get to skip it or put it off**, and it runs at the size Q2 sets and
-[`SKILL.md`](SKILL.md)'s cost section caps — v16 removed the deferral branch on both embedding paths at the owner's direction, because a
+[`execution.md`](execution.md)'s cost section caps — v16 removed the deferral branch on both embedding paths at the owner's direction, because a
 run that writes material and stops before its questions exist leaves markers `carried` with nothing
 coming for them ([`status.md`](status.md) C5 would name them forever).
 
 **A written question is a question.** It lands at `Status = Open` the moment it passes Q4's admission
-gate — no approval state, no per-row approval *(v13; see [`SKILL.md`](SKILL.md) rule 5 for why the step
+gate — no approval state, no per-row approval *(v13; see [`rules.md`](rules.md) rule 5 for why the step
 was retired and what replaced it)*. **What a run still never does is send it:** the client packet is a
 batch a human assembles and puts to whoever answers (Q6), never the `Open` view piped outward. Writing a
 question is a run's act; asking a client is not.
@@ -23,12 +23,12 @@ question is a run's act; asking a client is not.
 the rarest of them.** A **QUESTION** is written only for a gap whose answer is an act only the client can
 perform AND whose absence leaves a named part of this document unwritable (the Q4 admission gate, both
 axes). A gap settled by one dominant convention becomes a **DEFAULT** — written
-into the feature body as labeled, vetoable text under [`SKILL.md`](SKILL.md) rule 4's carve-out, listed in
-the run's defaults ledger for explicit batch ratification. A gap whose answer is content the client will
+into the feature body as labeled, vetoable text under [`rules.md`](rules.md) rule 4's carve-out and listed
+on the run's defaults ledger, **adopted as it is written** (Q4's *Adoption on write*, v62). A gap whose answer is content the client will
 produce becomes a **CONTENT SLOT** — the document defines the slot, the content manifest collects the
-items for one batched sign-off (Q4). A genuine correction to existing text — stale
+items the client will deliver (Q4). A genuine correction to existing text — stale
 wording, an under-counted list, an internal contradiction with a mechanically checkable winner — becomes a
-**DOC-FIX**, applied through the serial commit path and ratified as one batch. Everything else is
+**DOC-FIX**, applied through the serial commit path and adopted the same way. Everything else is
 discarded on a stated filter, and **an engineering discard is a record, not a disappearance**: the
 builders'-call discards are grouped under their own report heading so a reviewer can veto any of them
 back into the pipeline with one word. **And a QUESTION is read once more before it exists** (v32): one
@@ -44,7 +44,7 @@ and why the packet that carries it to a client is assembled by a person. One num
 **the best agent on the nearest benchmark finds 44.4% of real gaps.** That is a **recall** figure and it
 supports exactly one conclusion — **an empty question list is never evidence the Blueprint is complete.**
 *(Its source was never recorded in these files; as of v19 it is carried as unverified and no rule rests
-on it — [`SKILL.md`](SKILL.md)'s citation paragraph.)*
+on it — [`rules.md`](rules.md) Evidence claims.)*
 It was previously cited here to argue that most of what this phase produces is noise; that is a
 *precision* claim, it does not follow from a recall measurement, and it has been withdrawn (v13).
 
@@ -96,7 +96,7 @@ Specs obeyed, not restated: [`spec/doc-shape.md`](spec/doc-shape.md) ·
 [`spec/run-progress.md`](spec/run-progress.md) ·
 [`spec/prd-scope.md`](spec/prd-scope.md).
 
-**Run the six pre-flight checks in [`SKILL.md`](SKILL.md) first.**
+**Run the six pre-flight checks in [`rules.md`](rules.md) first.**
 
 ---
 
@@ -117,7 +117,7 @@ Task list: `Q1` reconcile · `Q2` grill · `Q3` deduplicate · `Q4` dispose and 
 Q5's review sitting, which exists only because a human asked for one and ends the moment they stop
 answering. **Nothing in Q5 or in the offer conditions on how this run was invoked**, and on the
 local-markdown target the offer is the only review route there is — so an embedding command inherits
-this stop and says so in its own list. Q6 step 9 **puts** the three batches to their human and does not wait.
+this stop and says so in its own list. Q6 step 9 **shows** the three batches, asks nothing and does not wait.
 
 ---
 
@@ -131,7 +131,7 @@ since the last run — in the UI, at their own pace, without this skill.
 - `Rejected`, but `Answer & why` reads as a **decisive answer** rather than a rejection reason — a
   **rejected-with-answer discrepancy.** It happens when a machine pass or a hurried reviewer records the
   decision in the rejection field, and the decision then exists nowhere the resolve seam can reach. The
-  run never flips it — a human's status stands ([`SKILL.md`](SKILL.md) rule 1) — but it **names every
+  run never flips it — a human's status stands ([`rules.md`](rules.md) rule 1) — but it **names every
   such row in the report, quoting the answer-shaped text**, so its human can confirm the rejection or
   move the row to `Answered` themselves. Measured cost of not looking: on 2026-08-14 an owner directive
   revived ten such rows in one sitting — decisions that had sat unreachable behind a `Rejected` status
@@ -146,64 +146,47 @@ since the last run — in the UI, at their own pace, without this skill.
   link. Do not chase `Owner`; an empty one is normal ([`spec/databases.md`](spec/databases.md) §2). The row is
   resolve-eligible as it stands ([`spec/databases.md`](spec/databases.md) §4); nothing routes it back
   through `Open`. An `Answered` row with an **empty** `Answer & why` is different — that is a status with
-  no answer behind it: report it and leave it, a discrepancy for its human ([`SKILL.md`](SKILL.md) rule 1).
+  no answer behind it: report it and leave it, a discrepancy for its human ([`rules.md`](rules.md) rule 1).
 - An `Open` row whose wording a human edited: accept their wording as the question. Never restore the
   original.
 - A `Key` value changed by a human (legacy projects only — the flag is retired, Q4): **their move
   wins.** Read, never edited; the run neither derives nor writes `Key` anywhere.
 - Anything at `Applied`, `Flagged` or `Closed (not applied)`: not this
   run's business, except as duplicate-detection input at Q3.
-- **A ratification or veto given since the last run — this is the executor, and there is no other**
-  (v19). A defaults ledger, a fixes batch or a content manifest is put to its human at Q6 step 9, and
-  the human answers it **to a run** — in the conversation that closed that run (Q6 step 9 then calls
-  this procedure before closing) or to this one. **Plain words are the act** (v46): any reply that says
-  in plain words to keep or reject the batch or named lines — *"ratify all"*, *"keep them"*, *"veto 3"*,
-  *"drop the second one"* — is executed. **No run id is required**, and a batch named by what it is
-  (*"the defaults"*, *"the fixes"*) means the newest standing ledger of that kind. A reply naming no
-  batch covers all three; one naming a batch covers that one; one naming lines covers those lines (the
-  numbered batch — a fix or a slot is named by quoting or describing its line); *"keep the rest"* after
-  vetoes covers what is left. The run-id forms earlier reports printed are still read.
-  **A ratification named to a LATER run is executed at once, and its spot-check is owed and
-  binding** (v21; v46 for the order). The run draws a **fresh random sample of the named ledger's
-  lines** — read back from `record/run-log.md`, where those lines are already durable — and **puts it
-  in the same reply**, in plain words. The act is recorded as one `RATIFIED` line carrying
-  **`spot-check owed`** and naming the sampled lines by content. **The unsampled lines relabel at
-  once**; **the sampled lines do not**: each keeps its `— ratify on review` label and its marker stays
-  at `→ Default: awaiting ratification` until the human answers the sample — a keep relabels it and
-  removes its marker, citing that answer on a second `RATIFIED` line; a veto reverts it like any veto —
-  **or until the next questions run re-offers the same sample** at Q6 step 9, never a fresh draw and
-  never cleared by the silence in between. [`status.md`](status.md) C5 names an unanswered
-  spot-check. **A `soft` invocation waits for the spot-check answer before executing any line.** A
-  ratification arriving in the same conversation keeps the sample Q6 step 9 has just handed over, and
-  that sample's lines are answered before they relabel, exactly the same way. The spot-check is what
-  keeps a batch ratification from being a rubber stamp — *"keep them"* may rest on five lines of a
-  reply — so no sampled line becomes ratified text on those words alone; running the act at once
-  removes the stop, and holding the sample back loses no check.
+- **A veto given since the last run — this is the executor, and there is no other** (v19; v62).
+  Defaults, fixes and slots are **adopted as they are written** (Q4's *Adoption on write*), so there is
+  nothing to ratify, no sample to answer and no run asks for either. What a human keeps is the veto, at
+  any time: any reply that says in plain words to drop named lines — *"drop #3"*, *"veto the second
+  one"*, *"undo the default about refunds"* — given **to a run**, in the conversation that closed it
+  (Q6 step 9 then calls this procedure before closing) or to a later one, is executed. **No run id is
+  required**; a line is named by its number on the report the human read, or by its content, and a fix
+  or a slot by quoting or describing its line. *"Keep them"*, *"ratify all"* and their kin change
+  nothing — everything is already kept — and are answered in one plain line saying so.
 
   **A number a human gives is resolved against what they read, never against what the ledger counts**
   (v30). The report prints the ledger **risk-sorted** (Q6 step 9) while the ledger is numbered in
   **write order**, so *"veto number 5"* names the fifth line **on their screen**, which is routinely
-  not ledger line #5. **Before executing any veto or partial ratification, match each number the human
+  not ledger line #5. **Before executing any veto, match each number the human
   gave to its ledger line by that line's own content — quoting the sentence they were looking at — and
-  record the mapping in the `VETOED`/`RATIFIED` line.** Where a number cannot be matched to exactly one
+  record the mapping in the `VETOED` line.** Where a number cannot be matched to exactly one
   line by content, **nothing is executed for that number**; it is named in the report for the human to
   restate. *A measured run mapped a human's "number 5" straight onto ledger #5. Her words named the
   privacy footer link, which was ledger #6; #5 was a concurrency default she had explicitly approved —
   so acting on it would have removed a default she approved and kept one she rejected.*
 
-  There is deliberately no field for it — the schema carries no
-  ratification state ([`spec/databases.md`](spec/databases.md) §8) — so a batch nobody has named to a
-  run is unratified, however long it has stood, and [`status.md`](status.md) C5 says so. **Per ledger
-  line, ratified:** the default is re-labeled `(standard practice — ratified <date>)` in the body, and
-  its patched marker is removed citing the ledger line and the `RATIFIED` line
-  ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 6), through the serial commit path. **Vetoed:**
-  the default sentence is removed, the marker returns to `→ Question: carried`, and the gap is a
-  candidate for this run's Q4 that is **never demoted** to a default again. **A vetoed fix** is
-  reverted to the quoted old text; a ratified fix stands as written. **A ratified content manifest**
-  confirms the slots; a vetoed slot line is removed and its gap becomes a question. Each batch act is
-  one `RATIFIED` or `VETOED` line in the entry ([`resolve.md`](resolve.md) R5), carrying the human's
-  words verbatim — so a later reader, and C5, can see the act and who made it. **A line the human
-  did not name is neither**: it stays labeled, counted and reported.
+  **Per ledger line, vetoed:** the default sentence is removed, its gap returns as `→ Question: carried`,
+  and the gap is a candidate for this run's Q4 that is **never demoted** to a default again, through the
+  serial commit path. **A vetoed fix** is reverted to the quoted old text. **A vetoed slot line** is
+  removed and its gap becomes a question. Each veto is one `VETOED` line in the entry
+  ([`resolve.md`](resolve.md) R5), carrying the human's words verbatim — so a later reader can see the
+  act and who made it. **A line nobody vetoes stays as written**, adopted, for the life of the document.
+
+  **The one transition, and it fires once per line** (v62): a Blueprint written before v62 can still
+  carry a `Default (… — ratify on review)` line, its `→ Default: awaiting ratification` marker, and a
+  `RATIFIED` line marked `spot-check owed`. The first questions run that finds them adopts them as
+  they stand — relabels each `(standard practice — adopted <date>)`, removes its marker
+  ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 6) — and records one `NOTE` line naming the lines.
+  A line already relabelled `ratified <date>` is left as it is: it reads as kept.
 
 **A run never reverses a human's move**, and never re-proposes something a human rejected unless new
 source material bears on it — in which case it is proposed once, citing the earlier rejection so the
@@ -211,13 +194,13 @@ reviewer can see they are being asked twice and why.
 
 **A field a human has set is read, never edited
 not even to blank it, and not even where doing so seems to enforce this file's own gate correctly.**
-[`SKILL.md`](SKILL.md) rule 1 is the single home of this and bars clearing exactly as much as setting; a
+[`rules.md`](rules.md) rule 1 is the single home of this and bars clearing exactly as much as setting; a
 row that looks prematurely moved is reported as a discrepancy and left alone — there is never a reason to
 touch what a human wrote to make a row ineligible.
 
 This phase is first because generating before reading it means writing questions somebody already
 answered or rejected this morning. **Open the run-log entry here**, before any proposal is written, and close it at
-the end ([`SKILL.md`](SKILL.md) pre-flight check 4).
+the end ([`rules.md`](rules.md) pre-flight check 4).
 
 ---
 
@@ -230,9 +213,9 @@ run names which one on the progress line it prints before the first dispatch:**
 | Scale | When | Dispatches |
 |---|---|---|
 | **Delta** | **The default**: every `add` handoff, `init`'s closing handoff ([`init.md`](init.md) I7), and every `/blueprint questions` without `full` | **At most four.** Each dispatch attacks up to four bodies from the attack surface below and works lenses 1–4 over them in one pass; lens 5 joins only where the overview changed; the absence sweeps run only as far as the changed text touches their checklists, inside those same dispatches |
-| **Full** | `init`'s grill ([`init.md`](init.md) I2), sized to the material ([`SKILL.md`](SKILL.md) cost section: one pass, two, or one per `Area` plus two); `/blueprint questions full`, when a human asks for it by name, always at one per `Area` plus two | **One per `Area`** working lenses 1–3 over its bodies, **one whole-document** dispatch working lenses 4 and 5, and **one** dispatch running the ten absence sweeps as a single checklist. On smaller `init` material the same lenses and checklists are worked by one pass, or two concurrent passes (lenses 1–3 over every body · lenses 4–5 plus the checklists), **every lens still framed and worked separately inside its pass** (v46) |
+| **Full** | `init`'s grill ([`init.md`](init.md) I2), sized to the material ([`execution.md`](execution.md) cost section: one pass, two, or one per `Area` plus two); `/blueprint questions full`, when a human asks for it by name, always at one per `Area` plus two | **One per `Area`** working lenses 1–3 over its bodies, **one whole-document** dispatch working lenses 4 and 5, and **one** dispatch running the ten absence sweeps as a single checklist. On smaller `init` material the same lenses and checklists are worked by one pass, or two concurrent passes (lenses 1–3 over every body · lenses 4–5 plus the checklists), **every lens still framed and worked separately inside its pass** (v46) |
 
-[`SKILL.md`](SKILL.md)'s cost section is the single home of the caps and of what happens past them; a
+[`execution.md`](execution.md)'s cost section is the single home of the caps and of what happens past them; a
 run never raises the scale on its own judgement. **Five adversarial lenses, each framed separately and
 worked one at a time inside the pass that applies them** — a reader looking for everything finds the
 average of it, a reader trying to break one thing finds it, and a pass reports which lens found each
@@ -248,6 +231,11 @@ password length, a generic error message, a retry count — is **not a question*
 emit it as a `default` candidate for the DEFAULT channel. This is the lens that finds what a checklist
 cannot, because it reads the document the way its real consumer will — and its real consumer is allowed
 to know their trade.
+
+**Testability within lens 1.** Apply [status.md](status.md) C11's existing checks here: a
+requirement must have an observable failure, consequential behavior in prose must belong to a numbered
+requirement, and cross-feature terms must have a recoverable definition. Report the exact unsupported
+claim or ambiguous outcome through the existing dispositions; do not require a test suite or plan.
 
 **Lens 2 — the hostile tester.** Attack each numbered requirement: try to construct an input, a state or
 a sequence the sentence does not decide. **The two-drafts test is the sharpest tool here** — draft both
@@ -271,6 +259,16 @@ what exists on day one before there is any data · what happens to in-flight thi
 cancelled or changed. **An empty, error, slow or offline state is a candidate only where the sources
 make it reachable and two plausible behaviours differ in what a user is promised — otherwise a default
 or nothing** (v46: a generic walk of these states produced checklist questions no source raised).
+Trace supplied ownership and authority through both reads and actions on the same records: visibility
+alone is not action authority, and a clear global rule need not be repeated in each feature.
+For in-scope saves, sends and responses, check observable success, failure and unconfirmed outcomes
+without adding persistence promises, retry machinery or capabilities.
+Route any gap through the existing source/default/gap rules; these checks do not mandate new questions.
+
+**Reachable bulk events within lens 3.** Apply [spec/prd-scope.md](spec/prd-scope.md) §3's
+mass-event check to the operations in scope: can a supplied flow produce several affected records
+at once, and would plausible responses change a requested promise? Raise that concrete case only.
+Do not invent a bulk-operation feature, scale target or hypothetical event to satisfy a checklist.
 
 **Lens 4 — collisions and boundaries.** Where two features touch the same record or state and neither
 says who wins · where a feature's edge touches another feature, a third party, or money, and nothing says
@@ -298,8 +296,8 @@ success means — every other lens reads the features, and only this one reads t
    requirement index** — every other feature's name, `What it does`, numbered requirements, `Edge cases`
    leads and `Not doing` lines, with provenance lines stripped; the standing question rows by title and
    status, with their answers; and the ratified-design survey where one is on record. It is written once
-   as a frozen brief file ([`SKILL.md`](SKILL.md) rule 8(i)) and read by path, and it **opens with the
-   scope line ([`SKILL.md`](SKILL.md) rule 8)** (v46: a pass that re-entered the skill ran `init` in
+   as a frozen brief file ([`rules.md`](rules.md) rule 8(i)) and read by path, and it **opens with the
+   scope line ([`rules.md`](rules.md) rule 8)** (v46: a pass that re-entered the skill ran `init` in
    the middle of a run). A pass that cannot see the
    rest of the document generates candidates the document already answers, and a pass that cannot see
    the design asks for what a drawn screen plainly shows (measured: 94 doc-answered and 50
@@ -307,7 +305,7 @@ success means — every other lens reads the features, and only this one reads t
    the rest in view without paying for every body, verbatim, in every dispatch. The design survey enters as a **recorded
    source artifact**: a working-folder source record naming the file, version, capture date and who
    ratified it — cited like any source, frame references and all; with no such record on file, no
-   design-grounded disposition is available and nothing pretends otherwise. **Every pass disposes before it emits:** it first
+   design-grounded disposition is available and nothing pretends otherwise. **Before emitting, each pass checks its batch for collectively material or shared-convention decisions under [spec/prd-scope.md](spec/prd-scope.md) §4, grouping only the same decision without losing grounded cases. Q4 reconciles groups across passes. **Every pass disposes before it emits:** it first
    tries to answer each of its own candidates from its brief — the document, the design record, or one
    dominant convention — and an answered candidate is emitted tagged `default` or `fix` with its
    grounding, not as a question candidate. **An empty pass is a reported success, never a failure to
@@ -333,7 +331,7 @@ success means — every other lens reads the features, and only this one reads t
    enter only where a source names the audience, platform or load that makes them matter.** **Exempt
    from this gate and from Q3's `Generic checklist` filter alike:** any candidate on an always-ask
    topic — the two mandatory entries, *minors' data protection and child-recording consent* and
-   *regulatory applicability* ([`SKILL.md`](SKILL.md) rule 4: which regime applies is always a
+   *regulatory applicability* ([`rules.md`](rules.md) rule 4: which regime applies is always a
    question), and every topic a human added — and any data-retention or deletion candidate on a
    product whose sources describe stored user data. A checklist the material never touches otherwise
    yields no candidate. *The A/B record's generic accessibility, scale and empty-state questions were
@@ -380,7 +378,7 @@ baseline). The full scale attacks every body. The delta scale attacks:
   already in every pass's brief.
 
 **Where the cap is reached, the rest are named on the `GRILL` line as `queued`**, and the next run's
-delta starts with them ([`SKILL.md`](SKILL.md)'s cost section is the single home of the cap).
+delta starts with them ([`execution.md`](execution.md)'s cost section is the single home of the cap).
 
 **Rotation, not skipping.** A body outside that set is attacked anyway if **no run in the last three
 `GRILL` lines names it as `delta` or `rotation`** — a `shared` or `queued` mark is not an attack for
@@ -415,7 +413,7 @@ construction, and an absence-sweep candidate has no grounding text and so no dep
 scale reads the attacked bodies against the index.
 
 All passes are read-only over the same frozen brief and dispatch concurrently
-([`SKILL.md`](SKILL.md) rule 8); their findings merge before the standing sweep and Q3.
+([`rules.md`](rules.md) rule 8); their findings merge before the standing sweep and Q3.
 
 **And the standing sweep, after the lenses** — the mechanical part:
 
@@ -520,7 +518,7 @@ proposed.** The same applies to the `Duplicate` filter, which quotes the row it 
 
 **A candidate half-settled is trimmed, not asked whole** (v47): where
 [`spec/prd-scope.md`](spec/prd-scope.md) §7a splits a candidate and a requirement, an `Edge cases` line or
-an unratified Default line already settles one half, that half is discarded *Already answered*, quoting
+a Default line already settles one half, that half is discarded *Already answered*, quoting
 it, and only the undecided half proceeds.
 
 **At volume — an exhaustive sitting, a backlog drain — dedup runs in batches**, each batch checked
@@ -535,21 +533,22 @@ backlog no human could review.
 
 | Filter | Discard when | Instead |
 |---|---|---|
-| **Already answered** | A requirement, an `Edge cases` line, a `Not doing` line, the NOT-clause **or a `Content slot — client-supplied:` line** (v23 — the slot channel's own output was on no filter's list, so a slot-routed candidate was re-routed and re-slotted every run) answers it — **and you can quote the sentence**. **An unratified `Default (… — ratify on review)` line that adopts the same behaviour counts here too** (v19): the gap is already on a ledger awaiting its human; it is neither a second default nor a question — a duplicate of a disposition already made, not a demotion (Q4's never-demoted clause governs candidates that would become a *new* default). **A candidate that contests the default's behaviour** is not a duplicate: it goes to Q6 step 9 as a veto candidate on that ledger line, never as a second default. **Or a source-record span or a human's reply settles it — quote the span; the sourced fact belongs in the document, so it routes to the DOC-FIX channel with its quote (on `init`, I5 writes it), never to a question** (v46: the A/B record's questions the sources already answered) | Link to the answer, quoting it — for a default, the ledger line; for a source span, the DOC-FIX line that writes it |
+| **Already answered** | A requirement, an `Edge cases` line, a `Not doing` line, the NOT-clause **or a `Content slot — client-supplied:` line** (v23 — the slot channel's own output was on no filter's list, so a slot-routed candidate was re-routed and re-slotted every run) answers it — **and you can quote the sentence**. **A `Default (…)` line that adopts the same behaviour counts here too** (v19; v62): the gap is already on the ledger, adopted and vetoable; it is neither a second default nor a question — a duplicate of a disposition already made, not a demotion (Q4's never-demoted clause governs candidates that would become a *new* default). **A candidate that contests the default's behaviour** is not a duplicate: it goes to Q6 step 9 as a veto candidate on that ledger line, never as a second default. **Or a source-record span or a human's reply settles it — quote the span; the sourced fact belongs in the document, so it routes to the DOC-FIX channel with its quote (on `init`, I5 writes it), never to a question** (v46: the A/B record's questions the sources already answered). **The orchestrator runs that search, since passes read only the document** (v57): every candidate grounded in absence, and every project-level one, is searched for over `sources/` (`command grep -rni`, its key terms) before it is disposed | Link to the answer, quoting it — for a default, the ledger line; for a source span, the DOC-FIX line that writes it |
 | **Shown by the ratified design** | A ratified frame on the design-source record plainly shows it, **and following the drawing is safe, lawful and consistent with the document** | **Never a silent discard**: a frame-cited `adopted from design` entry on the defaults ledger, vetoable like any default. A drawing that itself embodies a risk — a child-operable consent control was the measured case — is a fork put to the client, not an adoption |
-| **Settled by convention** | [`SKILL.md`](SKILL.md) rule 4's four conditions all hold, each attested, and nothing on the never-defaultable list or the always-ask register is touched | Route to the **DEFAULT** channel (Q4) |
+| **Settled by convention** | [`rules.md`](rules.md) rule 4's four conditions all hold, each attested, and nothing on the never-defaultable list or the always-ask register is touched | Route to the **DEFAULT** channel (Q4) |
 | **Correction, not question** | Existing text is wrong in a way with a mechanically checkable winner (Q4's DOC-FIX admission) | Route to the **DOC-FIX** channel (Q4) |
 | **Duplicate** | A question row already asks it, in **any** status — **and you can quote the row's own words** (v21). If the quote cannot be produced the discard is invalid and the candidate is proposed | Point at that row, **quoting it verbatim**. A marker this run minted over the gap is re-linked to that row, its `Touches` widened or proposed for widening ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 9) |
 | **Not a specification question** | The answer changes no requirement statement in this document. Business strategy, mission and goals, the business model, the client's **own internal process or operating policy**, and any *"under what conditions would we reconsider this"* — a different document's content, named in the scope statement above. **Two exemptions, both project-level and both asked once, ever — and each minted only where it earns a row** (v47): *who is this for*, where no source names an audience; and *what one or two observable things would tell you this worked*, only where lens 5 says an answer would add something the product records, counts or shows. Once minted, both are undiscardable as before | Named in the report under its own heading; no row, no marker |
 | **Implementation, not intent** | The answer changes how it is built, not what the feature is — **unless materiality holds**: the choice (M1) alters a promise a user or the client can observe, (M2) sits on a project-specific, **historically expensive failure** this project has named, or (M3) is externally mandated. **And even then it is only a question if the decision must be taken outside the technical department** *(v16, owner's words)*: a choice a designer, a product lead or the client must make is admissible; one the engineers can settle among themselves is theirs, whatever it costs. Where it is admissible the document records the observable constraint in one sentence, never the mechanism; retry counts, teardown ordering, storage housekeeping and their kin are the builders' to decide. **M2 survives this tightening** — a failure this project has named is a standing constraint, not a fresh engineering choice | A `Rabbit holes` line, or nothing |
 | **Unanswerable here** | It turns on a party outside this project, or nobody can decide yet | Name it in the report; no row. A marker this run minted over it **stays `carried`**, saying why in plain words ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 9) |
 | **Generic checklist** (v46) | The candidate is a checklist topic (accessibility, scale, empty or first-run states, platform, or retention on a product whose sources describe no stored user data) and nothing in the sources or the document makes it bear on a named requirement. **Never reaches** a candidate on an always-ask topic — the two mandatory entries included — or a data-retention or deletion candidate on a product whose sources describe stored user data (Q2 sweep item 2's exemption) | One report line; no row, no marker |
+| **Outside the charter** (v58) | A charter is in force and the candidate's topic is one it leaves out, or its stage does not work ([`spec/charter.md`](spec/charter.md) §3–§4). **Never reaches** anything on [`spec/charter.md`](spec/charter.md) §5's floor | A `discard` line naming the topic and the charter's hash; the report's *Not examined under the charter* line |
 | **Client-internal** | The answer changes nothing this delivery team builds — the client's own staffing, internal process, legal operations, marketing plans. Passing Q4's client-only-act test does not save it: the act is theirs, and so is the question | Name it in the report under its own heading; no row, and no new marker — a marker this run already minted over it **stays `carried`**, saying why in plain words ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 9). Where the client genuinely needs prompting, it belongs in the client packet's covering note, not the PRD |
-| **Deliverable content, not a decision** | The answer is content the client will produce — a catalog, a scene list, copy, artwork — rather than a decision about behaviour | Route to the **CONTENT SLOT** channel (Q4): the document defines the slot; the content arrives on the content manifest's one batched sign-off, never as per-item questions |
+| **Deliverable content, not a decision** | The answer is content the client will produce — a catalog, a scene list, copy, artwork — rather than a decision about behaviour | Route to the **CONTENT SLOT** channel (Q4): the document defines the slot; the content arrives on the content manifest as one batched delivery, never as per-item questions |
 | **Already decided against** | It is a decided exclusion | A `Not doing` line, never a question |
 | **Consequence of an open question** (v30) | Its answer is **blocked by a question already standing `Open` or `Answered`-but-unapplied**, so nobody could answer it today whatever they wanted — [`spec/prd-scope.md`](spec/prd-scope.md) §8's rule, which until v30 was written in a spec no phase read back. **Cite the blocking row and quote the sentence in it that does the blocking**; where the quote cannot be produced the discard is invalid and the candidate proceeds, exactly as for `Duplicate`. The candidate is **not lost**: it is a `discard` line the next run's dedup reads, and it regenerates once the blocker is answered — which is when it becomes answerable | Point at the blocking row, **quoting it**. Named in the report under *"waiting on an open question"*. A marker this run minted over it is **linked to the blocking row**, never removed ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 9) |
 | **Answered by a principle the client stated** (v30) | A principle already on record decides it, and the candidate merely applies that principle to one more instance — [`spec/prd-scope.md`](spec/prd-scope.md) §5's row, brought into this table because it lived in a spec section Q4 does not import. **Quote the principle and the candidate side by side**; the discard is invalid without the principle's own words. **The exception §5 states holds here:** where the principle is silent on the *posture* — whether the product refuses, warns, or records after the fact — that posture is a live question and this filter does not reach it | Point at the principle, **quoting it**. Where the instance genuinely needs writing down, it is a **DOC-FIX** applying the stated principle, never a question |
-| **Derived past the bound** (v23) | **The candidate's disposition would be QUESTION** — a DEFAULT, a DOC-FIX or a CONTENT SLOT is never capped, since each costs one batched ratification rather than a person's attention, and doc-fix class (i) is by construction grounded in answer-written text — **and** it is **depth 3 or deeper** — it is grounded in text an answer wrote, whose own row was itself grounded in text an answer wrote. **Depth is read, never inferred**: from the `depth n` the writing channel stamped on its `item` line in the run log (Q4) — or, for text written before v46, the legacy `· depth n` token in the body — and a candidate grounded in text with neither is depth 1. **Where a candidate has more than one grounding — the same question found by two passes, or one resting on two lines — its depth is the DEEPEST of them, and every pass reports every grounding it used** (v24). Depth is a property of the candidate, not of whichever pass happened to find it: a measured cycle emitted one question twice, from `FR-5` with no token and from `FR-6` at depth 2, so the same question was depth 1 or depth 3 depending on which return the dedup kept. **A cap that a pass ordering can flip is not a cap**, and taking the deepest is the reading that cannot be gamed by finding a shallower path to the same gap. **Four classes are exempt and are never capped**: a contradiction-backed candidate · a standing client-bound carried-marker transcription · the two project-level questions Q3 exempts by name · and anything on the always-ask register | A `Rabbit holes` line, **its depth recorded on its `item` line**, where it names a **build concern — a choice about mechanism the builders own**, the class the `Implementation, not intent` filter names, and never a client commitment such as a price, a duration or a scope line; otherwise a discard like any other, **with its filter and its one-line counter-case**, so the next run's dedup reads it back rather than re-deriving it |
+| **Derived past the bound** (v23) | **The candidate's disposition would be QUESTION** — a DEFAULT, a DOC-FIX or a CONTENT SLOT is never capped, since each costs one line on a ledger rather than a person's attention, and doc-fix class (i) is by construction grounded in answer-written text — **and** it is **depth 3 or deeper** — it is grounded in text an answer wrote, whose own row was itself grounded in text an answer wrote. **Depth is read, never inferred**: from the `depth n` the writing channel stamped on its `item` line in the run log (Q4) — or, for text written before v46, the legacy `· depth n` token in the body — and a candidate grounded in text with neither is depth 1. **Where a candidate has more than one grounding — the same question found by two passes, or one resting on two lines — its depth is the DEEPEST of them, and every pass reports every grounding it used** (v24). Depth is a property of the candidate, not of whichever pass happened to find it: a measured cycle emitted one question twice, from `FR-5` with no token and from `FR-6` at depth 2, so the same question was depth 1 or depth 3 depending on which return the dedup kept. **A cap that a pass ordering can flip is not a cap**, and taking the deepest is the reading that cannot be gamed by finding a shallower path to the same gap. **Four classes are exempt and are never capped**: a contradiction-backed candidate · a standing client-bound carried-marker transcription · the two project-level questions Q3 exempts by name · and anything on the always-ask register | A `Rabbit holes` line, **its depth recorded on its `item` line**, where it names a **build concern — a choice about mechanism the builders own**, the class the `Implementation, not intent` filter names, and never a client commitment such as a price, a duration or a scope line; otherwise a discard like any other, **with its filter and its one-line counter-case**, so the next run's dedup reads it back rather than re-deriving it |
 
 **The dedup also runs in reverse — once per sitting, against the standing `Open` backlog.** Dedup as
 stated above only stops *new* candidates duplicating what exists; nothing re-reads the rows already
@@ -560,7 +559,7 @@ report had named. So: sweep every standing `Open` row against the current docume
 quote discipline, and list each **fully**-settled one in the report under *"Already settled — recommend
 closing"*, quoting the text that answers it. **The run closes none of them** — a live question is
 machine-set, but the disposal is a human's call, made in the UI or by directive at a sitting
-([`SKILL.md`](SKILL.md) rule 1). A partly-settled row is left alone: half an answer is not an answer.
+([`rules.md`](rules.md) rule 1). A partly-settled row is left alone: half an answer is not an answer.
 
 ---
 
@@ -600,6 +599,12 @@ standing in for the client, and the persona kept 9 — the generator had no mode
 matter, so it could not tell a question that changes a requirement from one that merely sounds
 important. No human labelled that corpus; it justifies the tests, it certifies no result.*
 
+**Collective materiality, before final routing.** Once per surviving candidate batch, apply
+[spec/prd-scope.md](spec/prd-scope.md) §4's shared-convention and collective-impact test. Merge related
+candidates into the one decision that actually settles them, retaining their source and affected
+requirements. Then dispose that merged candidate on its merits; merging never makes an ordinary
+convention client-owned, bypasses a contradiction, or creates a mandatory question.
+
 **The admission gate — what earns a written question. Two axes, both required.** A QUESTION is written only
 if its `Why asked` names **(a) the client-only act its answer requires** — committing their money,
 calendar, contractual scope, legal or IP posture, or brand voice, or disclosing a fact resident only in
@@ -611,7 +616,7 @@ sentence and still gates the build) · a contradiction between sources.
 
 **A new feature whose only source is not the client** — a vendor's or third party's proposal — is
 written by the command that received it ([`add.md`](add.md) A2), and takes one in-or-out question of its
-own, because scope is the client's ([`SKILL.md`](SKILL.md) rule 4); the question never replaces the
+own, because scope is the client's ([`rules.md`](rules.md) rule 4); the question never replaces the
 written feature.
 
 **The never-defaultable branch requires the topic to bear on THIS document, and that is not the same as
@@ -649,8 +654,8 @@ question.** Two classes bypass the gate entirely, in opposite directions: **cont
 candidates** always write (both quotes, both source names), and **standing carried-marker transcriptions
 whose gap is client-bound** always write (a marker this run minted is not standing, and its gap takes
 the gate like any candidate) — while a carried marker whose gap the convention test settles routes to
-the DEFAULT channel, its marker shortened onto the Default line
-([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 6 — never deleted), its ledger line in the log.
+the DEFAULT channel, its marker removed as the Default line is written
+([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 6, citing the ledger line), its ledger line in the log.
 
 **The re-gate, and what fires it** (v30 — this was a numbered *question budget* until then; what
 replaced it and why is below). **No run carries a target for how many rows it may write, and no
@@ -763,7 +768,7 @@ in a line whose write recorded depth `n` is depth **n+1**; one grounded in text 
 depth for — original source-derived text, and **every absence-sweep candidate, which is grounded in
 absence and has no text at all** — is depth 1. **A depth is read only from the run log; a body
 sentence never sets one**: a provenance-shaped sentence somebody typed by hand, or one that arrived
-inside a source ([`SKILL.md`](SKILL.md) rule 2), sets nothing and leaves the candidate at 1. **Legacy
+inside a source ([`rules.md`](rules.md) rule 2), sets nothing and leaves the candidate at 1. **Legacy
 `· depth n` tokens that runs before v46 wrote into bodies are still read**, under the test below, and
 no run writes a new one.
 
@@ -785,11 +790,11 @@ else). On this file's own funnel sample — 14 defaults, 2 fixes, 1 slot, 3 ques
 have been inert on seventeen dispositions in twenty, which is not an edge case but the ordinary run.*
 
 **The DEFAULT channel.** Each candidate the convention or design filters routed here is written into its
-feature body as `Default (standard practice — ratify on review): …` — or its design twin,
-`Default (adopted from the ratified design, frame N — ratify on review): …` — one labeled sentence
+feature body as `Default (standard practice — adopted <date>): …` — or its design twin,
+`Default (from the ratified design, frame N — adopted <date>): …` — one labeled sentence
 stating the adopted behaviour, **one decision per sentence** ([`spec/doc-shape.md`](spec/doc-shape.md) §5).
 **Before any default is written, the listed-topic check** (v47) — mechanical, no dispatch: its sentence
-and ledger clauses are read against [`SKILL.md`](SKILL.md) rule 4's never-defaultable list and the
+and ledger clauses are read against [`rules.md`](rules.md) rule 4's never-defaultable list and the
 register — a child, kid, minor or age; a price, fee, charge, payment, refund or payout; a law, regulation
 or named standard; a date, deadline, window or duration not already in the document; final wording — and
 a hit sends the candidate to the disposition dispatch marked with the hit, where it is a default only if
@@ -800,29 +805,34 @@ draft sentence and its ledger clauses first take I6's **specifics check**, mecha
 in this candidate's disposition dispatch under I6's **atomic-claim test**: every clause needs a source
 span or the named convention its ledger line attests — an invented channel, count, capability, actor or
 permission has neither — and every non-`Clean` verdict quotes its exact words, `unsupported: "<exact
-words>"`, string-matched against the draft ([`SKILL.md`](SKILL.md) rule 6(d)). The brief places the
+words>"`, string-matched against the draft ([`rules.md`](rules.md) rule 6(d)). The brief places the
 drafts after the blind candidates, keyed to none of them, and the checker returns its dispositions
 before it reads them. A clause objected to is removed or narrowed before the write, under I6's
 one-retry rule and never overruled; a draft left stating no failable behaviour becomes a question.
 Each non-`Clean` verdict is a `VERDICTS` line on `init` and `add` and a `check` line on `questions`;
 the test's count is its own figure, never added to I6's; with no second dispatch the default is
-written `unverified`, as its routing is. **The body carries the labelled sentence alone, and its run id, date
+written `unverified`, as its routing is, and its label says so: `(standard practice — adopted <date>,
+unverified)`. **The body carries the labelled sentence alone, and its run id, date
 and ledger number live on its ledger line** (v46), through the serial commit path
-([`SKILL.md`](SKILL.md) rule 8), never overriding existing text. Every default also lands as **one line
+([`rules.md`](rules.md) rule 8), never overriding existing text. Every default also lands as **one line
 one, and clauses rather than paragraphs** — on the run's **defaults ledger** (run log + report): the
-sentence, the grounding, the four attestations ([`SKILL.md`](SKILL.md) rule 4, one clause each), and a
+sentence, the grounding, the four attestations ([`rules.md`](rules.md) rule 4, one clause each), and a
 last clause naming what client-owned thing it does not decide. The ledger is **risk-sorted** — anything adjacent to the
-always-ask register or irreversible first — and **capped at what one sitting can honestly ratify**;
-**and a run does not open a new batch while one stands unratified** (v24): its defaults join the
-**oldest standing ledger**, which keeps its run id and grows, so a human ratifies **one list once**
-rather than a fresh batch per run. A measured three-cycle campaign reached **63 defaults across nine
-batches** and nobody had held a sitting — nine separate acts of ratification is nine reasons to hold
-none, and the count of batches is the number that makes the debt unpayable, not the count of lines.
-**Whenever a ledger stands unratified, the reply names that debt in one plain line** — how many
-defaults are waiting, since when, and the plain words that clear it (*"say 'keep them' or name any to
-drop"*) — and the report carries its age in sittings and line count ahead of the funnel, because a
-document accumulating unratified machine text is a document drifting away from the human who owns it;
-overflow defaults stay written and labeled but head the next sitting's ledger.
+always-ask register or irreversible first — and each run's defaults are **its own ledger**, numbered on
+from the last one so every line keeps one number for life.
+
+**Adoption on write — the single home of what happens to a default, a fix or a slot once it is
+written** (v62, the owner's direction: *"we trust the tool to do it"*). **It is adopted as it is
+written.** No ratification is asked for, no sample is drawn, no reply waits on it, and no report or
+status names it as a debt. What earns that trust is upstream and unchanged: [`rules.md`](rules.md)
+rule 4's four conditions and never-defaultable list keep money, legal posture, brand copy, scope,
+dates, minors' data and the always-ask register out of this channel entirely — those are questions —
+and every default has passed the listed-topic check, a blind second-model routing and the claim test
+before it exists. **What keeps the adoption honest is the label, not a gate:** the body says
+*adopted*, never *ratified*, so a later reader knows a machine chose it and no person read it, and the
+ledger line carries the grounding, the four attestations and what it does not decide. **The veto stays
+the human's, for the life of the document** — Q1 executes *"drop #n"* at any later run, and a vetoed gap
+is never demoted to a default again. Why the batch ratification it replaced was retired is in `HISTORY.md` under v62.
 
 **A default that belongs to no single feature has a home, and until v30 it had none** — the channel
 writes into a feature body, so a candidate passing rule 4's four conditions but scoped to the whole
@@ -839,10 +849,10 @@ its ledger line like any other default; what differs is only where the sentence 
 doc-internal staleness — both quotes doc-side, one demonstrably superseded by a resolve-applied answer on
 record; **(ii)** an under-enumeration or stale line amendable from one verbatim quote plus the feature's
 own stated behaviour. Exact replacement wording, applied through the serial commit path, every fix listed
-in the report for **one explicit batch ratification**. **In an `add soft` handoff, a fix to text that
+in the report beside the text it replaced, **adopted on write** like a default and vetoable by its line. **In an `add soft` handoff, a fix to text that
 stood before the run is proposed in the report, not applied** (v46: a soft run rewrote an existing line
 through a fix it owed a re-check), while a fix to text this same run wrote is applied as usual. **A doc-vs-design contradiction is never a fix**
-it is surfaced as a question with both quotes ([`SKILL.md`](SKILL.md) rule 4's no-ranking clause); where
+it is surfaced as a question with both quotes ([`rules.md`](rules.md) rule 4's no-ranking clause); where
 neither side of any conflict can win mechanically, the candidate converts to a QUESTION through the gate.
 
 **The CONTENT SLOT channel** (v12, generalising the brand-copy clause — the one content class rule 4
@@ -851,20 +861,21 @@ scene list, copy beyond brand voice, artwork, media — the run writes the **slo
 labeled line in the feature body,
 `Content slot — client-supplied: <what> · <shape/format> · <cardinality or bounds> · <who supplies>`,
 through the serial commit path, plus one line on the run's **content manifest** (run log + report). The
-manifest is put to the client as **one batched sign-off**, exactly as brand copy's final wording is
-never one question per item, because a per-item ask converts a delivery checklist into review workload.
+slot is adopted on write; the manifest is the client's **one batched delivery list**, exactly as brand
+copy's final wording is never one question per item, because a per-item ask converts a delivery
+checklist into review workload.
 A slot may carry neutral **illustrative** examples, labeled as such, where the body needs them to read.
 What stays a QUESTION: a decision *about* the content that changes behaviour — whether a category
 exists at all, whether content is moderated, who may see it — passes the gate on its own merits.
 
 **The disposition check — the same pre-write dispatch, wider verdict.** The second-model dispatch that
-verifies suggested directions ([`SKILL.md`](SKILL.md) rule 6) **re-derives every candidate's
+verifies suggested directions ([`rules.md`](rules.md) rule 6) **re-derives every candidate's
 disposition blind** — from the candidate and its grounding alone, never shown the first routing — **at
 most fifteen candidates to a dispatch** (v36; v47 lowered it from twenty-five, because a batch's return
 time grows with its size and the batches run side by side — a measured twenty-five-candidate batch took
 sixteen minutes while a nine-candidate one took two; a larger batch splits, after a measured check handed
 eighty-eight ran out of output before it answered any). **The batches dispatch together, each brief
-opens with the scope line ([`SKILL.md`](SKILL.md) rule 8), and the draft `Suggested directions` are
+opens with the scope line ([`rules.md`](rules.md) rule 8), and the draft `Suggested directions` are
 verified in this same dispatch** (v46) — one round trip, not a check per batch in turn and a second
 one for the directions. **What a
 divergence does is decided by what the two verdicts are, and this ordering is exact**:
@@ -875,7 +886,7 @@ divergence does is decided by what the two verdicts are, and this ordering is ex
 
   **The surveyed no-requirement finding — the third evidence class, added v23 because the measured
   complaint came through this bullet.** *"The privacy policy text is unspecified"* is true, is
-  client-owned, and is undefaultable, so [`SKILL.md`](SKILL.md) rule 4 bars settling it — and three Q3
+  client-owned, and is undefaultable, so [`rules.md`](rules.md) rule 4 bars settling it — and three Q3
   filters name its class (**Deliverable content**, **Client-internal**, **Not a specification
   question**). It was written anyway, because a routing to one of those filters produced neither a quote
   nor four attestations, so this bullet failed open over the top of them. The finding is that gap closed,
@@ -903,7 +914,7 @@ divergence does is decided by what the two verdicts are, and this ordering is ex
   **and quotes each one's own sentence**, so the finding stands or falls on text the log carries. A
   probe produced a form-compliant survey whose supporting clause — *"the requirement that the email is
   sent exists"* — named a requirement **that did not exist in the document**, and nothing caught it,
-  because [`SKILL.md`](SKILL.md) rule 6(d)'s check is a string match on a quotation and that record
+  because [`rules.md`](rules.md) rule 6(d)'s check is a string match on a quotation and that record
   quoted nothing. With the sentences quoted, 6(d) reaches it unchanged: **a survey citing a requirement
   whose quoted sentence is not found in the document is not evidence**, and the candidate is written. Silence was the original defect — a
   router that routed correctly and said nothing produced no evidence, so this bullet failed open over
@@ -927,14 +938,14 @@ divergence does is decided by what the two verdicts are, and this ordering is ex
   client is not needed — that agreement stands. Route to **DEFAULT**, the most conservative of the three
   (labeled, ledgered, vetoable), with the disagreement printed on its ledger line.
 **Where no second verdict exists, the routing keeps its first routing and is recorded `unverified`**
-([`SKILL.md`](SKILL.md) rule 6(a)–(c)) — the token goes on the candidate's own line: its ledger line
+([`rules.md`](rules.md) rule 6(a)–(c)) — the token goes on the candidate's own line: its ledger line
 for a default, its manifest line for a slot, its batch line for a fix, and the run's report states the
 unverified total **on its own line**, in rule 6(c)'s words — *"n items written unverified — no second
 dispatch was available."* **Rule 6 says every phase that verifies must carry the token; this is Q4
 carrying it** (v20: rule 6 named only [`resolve.md`](resolve.md) R3.3 and [`init.md`](init.md) I6, so
 this phase had no outcome vocabulary and a measured run recorded six defaults and sixteen routings with
 no verification state at all). Never demoted, regardless of grounding: standing carried-marker
-transcriptions of client-bound gaps, anything the document records as awaiting client sign-off or ratification, and a
+transcriptions of client-bound gaps, anything the document records as awaiting client sign-off, and a
 gap whose default a human vetoed (Q1). Every
 demotion is logged with its grounding quote, and the run-log entry prints the funnel fresh: drafted →
 routed default → routed fix → routed slot → written as a question. **The run records the same
@@ -946,8 +957,8 @@ in the entry that are recountable.
 and channels as any candidate: the marker already names its entity; a client-bound gap becomes a row whose
 `Why asked` says in plain words what the document leaves open there — the marker and the run that
 minted it are cited on the row's `item` line, never in the field — and a convention-settled one becomes a default
-with its marker shortened onto the Default line ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 6 —
-never deleted), **and a gap whose answer is client-supplied content becomes a
+with its marker removed as the Default line is written ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 6,
+citing the ledger line), **and a gap whose answer is client-supplied content becomes a
 slot whose written line removes the marker** ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 7).
 **A marker this run minted whose gap it discarded is removed, citing the discard line, only where
 the filter's `Instead` wrote the gap's resolution into the document** — *Already answered*, *Already
@@ -964,14 +975,14 @@ that no route covered — which made convergence unreachable by construction on 
 slot channel, and left the grill re-detecting them at 23% of its candidate pool every run).
 **The only markers that legitimately survive this phase at `carried` are the ones a human's veto or
 *ask it better* rejection returned there, and this run's own markers kept by route 9 over a gap
-nobody here can answer or the client owns**, and each is named with its reason.
+nobody here can answer, the client owns, or the charter leaves out**, and each is named with its reason.
 
 **The run does not open a review sitting on its own — but it does offer one, once, in its closing
 line, and asking is not starting** (v16). The offer is a single sentence — *"want to go through these now,
 ten at a time?"* — and **silence declines it**: the run does not wait, does not re-ask, and closes
 either way. **On the local-markdown target the offer is not optional courtesy but the only route
 there is**, because `Unsent — packet candidates` is a saved view and
-[`spec/targets.md`](spec/targets.md) §3 says the four views do not exist on that target. A person reviews
+[`spec/targets.md`](spec/targets.md) §3 says the saved views do not exist on that target. A person reviews
 in the `Unsent — packet candidates` tab — on the local target, in the folder's `questions.md`, where
 every `Open` section is that tab — at their own pace, and Q1 reconciles every move next run; Q5 runs
 only when a person asks to go through the rows together. Where a sitting does run, about ten rows are
@@ -989,7 +1000,7 @@ questions or full" against 693 rows — and its criterion, *the document cannot 
 the answer*, is now axis (b) of the admission gate itself: every row that exists passes it, so a flag
 distinguishing the build-gating rows distinguishes nothing. The compensator for over-generation is gone
 because the generation is gated at the cause. **On an existing Blueprint the column simply goes inert**
-human-set values are never edited or deleted ([`SKILL.md`](SKILL.md) rule 1), no run reads or writes it
+human-set values are never edited or deleted ([`rules.md`](rules.md) rule 1), no run reads or writes it
 again, and each row's one-line criterion survives as the closing clause of its `Why asked`. **If a future
 project ever produces real question volume again, that is the admission gate failing — fix the gate;
 do not resurrect the flag.**
@@ -1058,7 +1069,7 @@ watched it being made — and *"the document already answers this"* has so far b
 context that generated the candidate, which is the configuration the preamble names as biased toward
 over-predicting ambiguity and the one the derivative-round bound above names as unable to
 self-correct. **So before any drafted row is
-written, a separate dispatch ([`SKILL.md`](SKILL.md) rule 6) is briefed with the rows as they would be
+written, a separate dispatch ([`rules.md`](rules.md) rule 6) is briefed with the rows as they would be
 written** — `Question`, `Why asked`, `Touches` and the draft `Suggested directions`, up to ten rows —
 **together with Q2's brief — the requirement index, with every body those rows touch in full — every
 standing question row by title and status with its `Answer & why` where one exists, the standing
@@ -1267,10 +1278,10 @@ UI or spoken at the review — makes it `Answered`.
    [`add.md`](add.md) run that wrote the source, in the same act, citing the segment and its `item`
    line. Named here so the two are not confused.
 
-7. **Every remaining marker reads one of the three legitimate forms** — `→ Question: <row link>` (a row
-   was written for it, step 1), `→ Default: awaiting ratification` (route 6 — shortened onto the end of its
-   Default line; the in-place and ledger-numbered forms earlier versions wrote are still read), or `→ Question: carried` where neither applies — never
-   `pending`, which names neither state.
+7. **Every remaining marker reads one of the two legitimate forms** — `→ Question: <row link>` (a row
+   was written for it, step 1), or `→ Question: carried` where none was — never
+   `pending`, which names neither state. A default leaves no marker (route 6); a pre-v62
+   `→ Default: awaiting ratification` marker still found is adopted by Q1's transition.
 8. **Write the row for every answer given out loud** — the review's *answer now* outcome, and any decision
    quoted from a meeting or a message ([`spec/doc-shape.md`](spec/doc-shape.md)
    §9 route 5): the human's words **verbatim** in `Answer & why` (`Owner` is left alone — no run writes it,
@@ -1281,27 +1292,15 @@ UI or spoken at the review — makes it `Answered`.
    [`spec/doc-shape.md`](spec/doc-shape.md) §9 route 5 is the single home of that split — **and of the
    verbatim check this step owes before it writes anything**: the words must be findable in the captured
    reply by string match, and words that are not there are not written and no row is moved (v20).
-9. **Put the defaults ledger, the fixes batch and the content manifest to their human — one explicit act each, never
-   ratification by silence.** The ledger prints risk-sorted (always-ask-adjacent and irreversible items
-   first) with each line vetoable by number; the fixes batch prints each replacement beside what it
-   replaced. **Before ratifying, the human is handed a small random sample of ledger lines to
-   spot-check** — the sample is the honesty probe that keeps a batch act from
-   becoming a rubber stamp, and a failed spot-check vetoes the line and doubles the next sample.
-   **An owed spot-check is re-offered first** (Q1): a `RATIFIED` line still carrying
-   `spot-check owed` puts the same sampled lines back in front of the human, never a fresh draw, and
-   those lines stay `— ratify on review` until it is answered. **Ratifying the defaults batch is the human act that clears each default's patched marker**
-   ([`spec/doc-shape.md`](spec/doc-shape.md) §9 route 6); a **veto** converts that line back into a
-   marker plus a question through the ordinary gate, and vetoed text is removed in the same sitting. **The two halves of that, reconciled — they read as a
-   contradiction and three separate runs said so** (v16). *Put to their human* means **written once
-   into the report, each line vetoable by number, and named in the reply in one plain line** (up to
-   five lines listed there when the batch is short; v46) — that is the explicit act, and the run
-   performs it unprompted. It does **not** mean the run waits: silence is not ratification and it is
-   not a decline either, so **all three simply wait**, labeled and reported, named by
-   [`status.md`](status.md) as they age. **Printing is the run's act; ratifying is the human's**, and
-   an unratified default is never silently promoted by time. **Where the answer arrives in this same
-   conversation, this run executes it before it closes** — the Q1 procedure, run late: relabel, remove
-   or revert per line, one `RATIFIED`/`VETOED` line each (v19: step 8 described the act and named no
-   phase that performed it).
+9. **Show the defaults ledger, the fixes batch and the content manifest — for information, not for an
+   answer** (v62; Q4's *Adoption on write* is the single home of why). The ledger prints risk-sorted
+   (always-ask-adjacent and irreversible items first) with each line numbered for a veto; the fixes
+   batch prints each replacement beside what it replaced. They are **written once into the report and
+   named in the reply in one plain line** — how many were adopted, and that *"drop #n"* undoes any
+   (up to five lines listed there when the batch is short; v46). Nothing waits on them and no later
+   run or status report names them as owed. **Where a veto arrives in this same conversation, this
+   run executes it before it closes** — the Q1 procedure, run late: remove or revert per line, one
+   `VETOED` line each (v19: step 8 described the act and named no phase that performed it).
 10. **Every candidate's disposition is recorded, and every one that is not a question is a line in the log, **and every Q-phase write into a feature body also takes its own `item` line carrying the post-write body hash** (v21) **and the depth of what it wrote** (v46, Q4)**
    ([`resolve.md`](resolve.md) R5's closed list is the shape).
    A candidate that became a question is carried by its row and counted in the funnel — never re-listed
@@ -1330,7 +1329,7 @@ UI or spoken at the review — makes it `Answered`.
    here (v19: a standalone `questions` run had no sweep step at all).
 12. **Report** — written to `record/runs/<run-id>.md`, while what is printed in chat is the reply,
    which follows [`spec/run-progress.md`](spec/run-progress.md) §4 (v46). Every count in the report
-   is freshly derived at the moment of writing ([`SKILL.md`](SKILL.md) rule 7), taken from the files
+   is freshly derived at the moment of writing ([`rules.md`](rules.md) rule 7), taken from the files
    as they stand, never carried from an earlier sitting's tally. It opens with the
    **funnel line** — candidates drafted → routed default → routed fix → routed slot → written as
    questions — printed
@@ -1345,7 +1344,7 @@ the **scale line**: delta or full, dispatches spent against the cap, and every b
    condition each run invents for itself). An `add` handoff is unconditional, so new material must
    never be announced as *"nothing has changed"* · **no candidate survived Q3** from any pass, per-`Area` and
    rotation passes included — a run that wrote three rows out of a rotation pass has not converged ·
-   **nothing is outstanding**, meaning no carried marker, no `CON-k`, no unratified batch, no body left
+   **nothing is outstanding**, meaning no carried marker (bar those held *outside the charter*, [`spec/charter.md`](spec/charter.md) §6), no `CON-k`, no body left
    `queued` by the cap, **and no
    `Open` or `Answered` row standing** — the line ends *"nothing is waiting on anybody"*, and forty
    unanswered rows are forty people-shaped things waiting. Then:
@@ -1358,8 +1357,8 @@ the **scale line**: delta or full, dispatches spent against the cap, and every b
    and re-deriving it would be the prediction that file forbids. A run meeting three of the four names
    the one it missed — **in the report, not the log**, since R5's kinds admit no line for it and none
    is paragraph-shaped. Then the report carries the
-   **`DEFAULTS ADOPTED (n) — ratify or veto by number`**, **`FIXES APPLIED (n) — ratify below`** and
-   **`CONTENT SLOTS (n) — one batched sign-off`** blocks, the **`COLD READ`** block — rows read, the
+   **`DEFAULTS ADOPTED (n) — veto any by number`**, **`FIXES APPLIED (n) — veto any by line`** and
+   **`CONTENT SLOTS (n) — the client's delivery list`** blocks, the **`COLD READ`** block — rows read, the
    five verdict tallies, the rows absorbed by an extension and the unverified count, then one line per row that did not stand as
    drafted, the drafted wording beside the adopted one and every demotion's quote (v32) — the **suggested directions**
    block (below) for the top proposals, and the per-feature routing diagnostic — a feature carrying more
@@ -1367,7 +1366,7 @@ the **scale line**: delta or full, dispatches spent against the cap, and every b
    and **it ends with the client packet — a candidate list, not a send.** The report proposes every
    `Open` row grouped by `Area` (via `Touches`; project-level rows in their own group), so taking
    only one `Area` group is a choice the packet supports without becoming two packets. **A human decides
-   what actually goes, and a human sends it** ([`SKILL.md`](SKILL.md) rules 1 and 5): since v13 a run
+   what actually goes, and a human sends it** ([`rules.md`](rules.md) rules 1 and 5): since v13 a run
    writes questions directly to `Open`, so the `Open` view holds machine-written rows a person may not
    have read yet, and piping it to a client unread is the one failure retiring that state could
    have caused. The packet names how many rows it proposes and states plainly that they are the run's
@@ -1394,7 +1393,7 @@ read back only through a human's pointer, [`resolve.md`](resolve.md) R2.1.) Date
 standing line: *machine-drafted decision support — not a source; answer in your own words, or name one
 direction by its number.* **A separate dispatch on a different model verifies every batch before it is
 written** — a quote that does not exist in the document is struck, and a direction that could not be
-written into its feature as it stands is rewritten or struck (the pointability test above) ([`SKILL.md`](SKILL.md) rules 6 and 8). **With no dispatch available the quotations
+written into its feature as it stands is rewritten or struck (the pointability test above) ([`rules.md`](rules.md) rules 6 and 8). **With no dispatch available the quotations
 are still checked, mechanically**: rule 6(d)'s string match on normalised whitespace, one `citation`
 line each in the log, a quotation that does not match dropped and the mismatch reported. **The
 directions are still written** — it is the unmatched quotation that is withheld, never the whole
@@ -1417,16 +1416,16 @@ QUESTIONS — «Golden Crumb» · 2026-08-11
 FUNNEL     33 candidates drafted → 14 routed default · 2 routed fix · 1 routed slot · 3 written as questions
            (1 transcribed from a carried marker) · 13 discarded on a filter (2 by the cold read;
            listed with their counter-case). Per-pass counts logged; distribution in record/runs/.
-DEFAULTS ADOPTED (14) — ratify or veto by number; risk-sorted, spot-check sample: #3, #11
-   1. «Checkout»  Default (standard practice — ratify on review): reset links are
+DEFAULTS ADOPTED (14) — kept as written; veto any by number; risk-sorted
+   1. «Checkout»  Default (standard practice — adopted 2026-08-11): reset links are
       single-use and expire — does not decide: any legal promise about erasure timing
-   2. «Ordering»  Default (adopted from the ratified design, frame 12:400 — ratify on
-      review): the basket persists across the payment detour
+   2. «Ordering»  Default (from the ratified design, frame 12:400 — adopted 2026-08-11):
+      the basket persists across the payment detour
    … 12 more, each one line, grounding + what it does not decide
-FIXES APPLIED (2) — ratify below
+FIXES APPLIED (2) — kept as written; veto any by line
    «Loyalty» FR-3 under-enumerated its own list (quote → replacement, applied)
    «Checkout» stale line superseded by the applied answer on q-04 (quote → replacement)
-CONTENT SLOTS (1) — one batched sign-off; the document defines the slot, the client fills it
+CONTENT SLOTS (1) — the client's delivery list; the document defines the slot, the client fills it
    «Browse the menu»  Content slot — client-supplied: the pastry list · name + price + allergens
       · 20–60 items · supplied by the client. Illustrative examples in the body are labelled.
 COLD READ  5 drafted rows read by 1 reader · 1 stands · 1 answered · 0 irrelevant
@@ -1448,7 +1447,7 @@ SUGGESTED DIRECTIONS — top 2 by ordering · verified by the same dispatch that
        at the moment of highest intent.
     (Both drafts commit the client's money either way — that is why this wrote as a
     question instead of routing default.)
-MARKERS    1 patched with its row · 13 patched to ledger lines (cleared on ratification)
+MARKERS    1 patched with its row · 13 removed as their defaults were written (route 6)
            · 1 removed (route 3, Not doing line written) · 0 carried
 ROUTING DIAGNOSTIC  «Checkout» carries 2 open questions — both name distinct client
            commitments; no channel leaked.
@@ -1482,8 +1481,8 @@ shape [`spec/run-progress.md`](spec/run-progress.md) §4 sets, in plain words on
 Grilled the Golden Crumb Blueprint: 3 new questions, 14 standard-practice defaults written in,
 2 small corrections and 1 slot for the pastry list.
 Needs you: the 3 questions wait in Open Questions — answer in your own words or reject with a
-reason, then run /blueprint resolve. 14 defaults to glance at, such as "reset links are
-single-use and expire": say "keep them", or name any to drop.
+reason, then run /blueprint resolve. 14 standard-practice defaults were adopted as written, such
+as "reset links are single-use and expire" — say "drop #n" if any is wrong; nothing waits on them.
 The full report is in the Blueprint's record folder.
 Next: answer "Can a customer retry a failed payment?" first — it changes the most.
 ```

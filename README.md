@@ -51,9 +51,9 @@ and it uses a local folder and says where. Local needs zero setup — right for 
 Every gap the grilling finds is **disposed on the spot, and most never become questions**: a gap only
 you (or your client) can decide, without which a named part of the document cannot be written, is
 written in as a live question; a gap one convention settles becomes a labeled
-`Default (standard practice — ratify on review)` sentence in the feature body, which you ratify or veto
-as one batch, in plain words — *"ratify all"*, *"veto 3"*; content you will supply becomes a slot on one manifest; text that was simply wrong gets a
-doc-fix you ratify the same way. **The run never interrogates
+`Default (standard practice — adopted <date>)` sentence in the feature body, kept as written — you veto
+any one in plain words, *"drop #3"*, whenever you read it; content you will supply becomes a slot on one manifest; text that was simply wrong gets a
+doc-fix kept the same way. **The run never interrogates
 you: it writes everything it found, prints the report, and stops.** You read the questions in the
 `Unsent — packet candidates` tab (on a local folder, in `questions.md`) whenever suits: answer, reject
 (say why), or carry them into the packet you send the client — the next run picks up every move. **Nothing goes to a client until you send it**: the run
@@ -82,10 +82,20 @@ a[n]swer now · [e]dit · [r]eject · already [d]ecided · [s]kip
 
 ### 3 · Answer the questions you kept
 
-In Notion or the files, at your own pace: write the answer **and why**, then
-set `Status = Answered` — that move is your sign-off, and resolve consumes only rows a human moved
-there. Nothing a machine drafted enters the spec until
-a person has signed it — that is the whole safety model.
+In Notion or the files, at your own pace: write the answer **and why**, then set `Status = Answered`.
+That records your decision. Alternatively, an explicit `/blueprint answer` delegates answering under
+[answer.md](answer.md)'s limits; those answers are visibly labelled and remain yours to review before
+resolve applies them.
+
+**Too many basic ones? `/blueprint answer`.** The author drafts defensible answers using the document,
+your sources, an eligible convention, the safer and smaller option, or the option that commits you to
+least. A fresh challenger checks the evidence and decision limits. Money, scope, legal posture, final
+wording and users' data choices are flagged for your attention when answered; their category alone
+does not leave a row open. A breached decision limit, contradiction, dependency, unsupported figure or failed
+test leaves the row for you. A grounded objection prevents writing; an unsupported doubt is reported
+beside the answer. Every answer stops at `Answered`, labelled as delegated, and never supersedes
+existing document text. `answer soft` permits only grounds 1–2: what your document or sources already
+give. The complete eligibility rules and unavailable-review fallback live in [answer.md](answer.md).
 
 ### 4 · `/blueprint resolve` — write the answers in
 
@@ -111,9 +121,11 @@ again → `/blueprint questions`. Apply new answers → `/blueprint resolve`. As
 |---|---|---|
 | `/blueprint init` | Sources or interview → grilled skeleton → the Blueprint (`init soft` stops for your confirm first) | Immediately (`init soft`: after your confirm) |
 | `/blueprint add` | New material into existing/new features. **Runs to the end without stopping**, and by default **new source material supersedes document text it contradicts** — `add soft` keeps every contradiction as a question instead | Immediately, and the report names every change |
-| `/blueprint questions` | A grilling sized to what changed — the whole-document battery only when you ask for `/blueprint questions full` — every find disposed: questions written, convention settled as labeled defaults, content as slots, wrong text as doc-fixes — every drafted question read cold before it is written, ten to a reader, and given guidance | Live questions at `Open` + guidance; labeled default, fix and slot lines in feature bodies, awaiting your batch ratification |
+| `/blueprint questions` | A grilling sized to what changed — the whole-document battery only when you ask for `/blueprint questions full` — every find disposed: questions written, convention settled as labeled defaults, content as slots, wrong text as doc-fixes — every drafted question read cold before it is written, ten to a reader, and given guidance | Live questions at `Open` + guidance; labeled default, fix and slot lines in feature bodies, kept as written and vetoable |
+| `/blueprint answer` | Answers the open questions a careful product lead could settle without you, labels each as given by the AI at your request, and leaves the rest for you with the reason — `answer soft` only what your document or sources already say | `Answer & why` and `Status = Answered` on the rows it answers — nothing else |
 | `/blueprint resolve` | Write vetted answers into the feature specs. **Runs to the end without stopping**, and by default **a vetted answer supersedes document text it contradicts** — `resolve soft` flags that row with both texts instead, and writes nothing | The answers |
 | `/blueprint status` | One screen: what's flagged, what's waiting on you, what's still unsettled | **Never** |
+| `/blueprint charter <plain words>` | Optional: how deep this Blueprint goes — idea, prototype, private or public MVP, what to question hard or leave out. Asks you up to five questions, then writes `charter.md` in the working folder ([`charter-guide.md`](charter-guide.md)) | Only the charter file |
 
 `status` is always safe to run. When lost, run it — every line ends with what to do next. An earlier
 run that stopped part-way never blocks you: the next run closes it and says so.
@@ -124,8 +136,7 @@ run that stopped part-way never blocks you: the next run closes it and says so.
 
 The Blueprint itself lives at the target — Notion, or your folder of markdown files. Everything the
 tool needs to be traceable later lives beside the project's docs, in **`wiki-{project}/blueprint/`**
-(the same place `eng-rulebook` keeps a project's profiles and audits; `.blueprint/` in the workspace
-only when the project has no wiki folder):
+(`.blueprint/` in the workspace only when the project has no wiki folder; no companion skill is required):
 
 - `target.md` — where the Blueprint is: the Notion page's ID, or the document's path
 - `record/` — the append-only run log and each run's detail; committed with the wiki
@@ -139,8 +150,9 @@ The folder's own `README.md` names the Notion page. A project that used the earl
 
 ## What only you can do
 
-The tool drafts; you decide. It will never: send a client packet it assembled, record an answer no
-human gave, write your name, or invent an answer to anything. **Working alone?** All of this
+The tool drafts; you decide. It never sends a client packet it assembled or attributes invented words
+to you. An explicit `answer` invocation delegates defensible answers under that command's limits;
+they remain labelled, challenged and yours to review before `resolve`. **Working alone?** All of this
 collapses naturally — you're the one answering and the one sending, everywhere. It isn't ceremony; it's the record
 that a person actually read the thing, which matters just as much when that person is you in three
 months.

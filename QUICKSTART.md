@@ -5,16 +5,19 @@ If this file and a run file ever disagree, the run file wins and this file is wr
 
 ## Before anything
 
-- Confirm no Blueprint already exists for this project — one per project, ever (→ SKILL.md pre-flight 1).
+- Confirm no Blueprint already exists for this project — one per project, ever (→ rules.md pre-flight 1).
 - Know your target: a Notion teamspace page a human made, or a folder (→ spec/targets.md §2–3).
 - Know where the machinery lives: `wiki-{project}/blueprint/` when the project has a wiki folder,
   `.blueprint/` in the workspace otherwise — `record/` is committed, `sources/` never
   (→ spec/targets.md §5).
 - The one prohibition that catches first-timers: the skill **never reads a code repo** — what the
-  product *should* do comes from people, not from what somebody already built (→ SKILL.md "What this
+  product *should* do comes from people, not from what somebody already built (→ rules.md "What this
   skill does NOT do").
+- Optional: say how far this project is going — idea, prototype, private or public MVP — with
+  `/blueprint charter <plain words>`; with no charter everything is questioned at full depth
+  (→ charter-guide.md, spec/charter.md).
 - Sub-agent dispatches are mandatory for every independent check; know how your harness spawns one
-  before starting, or every check will honestly report itself unperformed (→ SKILL.md rule 6).
+  before starting, or every check will honestly report itself unperformed (→ rules.md rule 6).
 
 ## First hour — from client material to a draft
 
@@ -32,23 +35,27 @@ If this file and a run file ever disagree, the run file wins and this file is wr
 5. Read the live questions in the UI at your own pace: answer directly, or reject **with a reason** — the reason
    decides the marker's fate (→ spec/doc-shape.md §9 route 4).
 6. Expect few questions: only client-gating build decisions qualify; convention becomes labeled
-   defaults you ratify in one batch, content becomes slots on one manifest, and every drafted
+   defaults kept as written (veto any with "drop #n"), content becomes slots on one manifest, and every drafted
    question is read cold before it is written, ten to a reader (→ questions.md Q4).
-7. Say `/blueprint resolve` to write vetted answers in. It commits one verified item at a time and
+7. Too many basic questions? Say `/blueprint answer` — the author drafts defensible answers and a
+   fresh challenger checks them. Answered money, scope, legal, wording and data choices are named for
+   your review; breached limits, failed tests and grounded objections leave rows open. Overrule any
+   delegated answer before resolve; `answer soft` permits only grounds 1–2 (→ answer.md W2–W5).
+8. Say `/blueprint resolve` to write vetted answers in. It commits one verified item at a time and
    reads everything back (→ resolve.md R3–R5).
-8. Say `/blueprint status` any time — read-only, tells you what to do next (→ status.md).
+9. Say `/blueprint status` any time — read-only, tells you what to do next (→ status.md).
 
 ## What a sitting costs
 
 - A sitting is ten items; a run keeps opening sittings until a named stop reason fires
   (→ resolve.md R5).
 - A grill is sized to what changed: at most four dispatches, unless you say
-  `/blueprint questions full` (→ SKILL.md, the cost section).
+  `/blueprint questions full` (→ execution.md, the cost section).
 - Every write run logs a cost line — dispatches, tokens, wall-clock (→ resolve.md R5).
 - A run-log entry is a closed list of line kinds, not prose; explanations go in the report
   (→ resolve.md R5).
 
 ## How you know where it stands
 
-9. Nothing ever declares it finished — say `/blueprint status` and its `What is still unsettled`
+10. Nothing ever declares it finished — say `/blueprint status` and its `What is still unsettled`
    block names every gap by row (→ status.md S3).

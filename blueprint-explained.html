@@ -161,7 +161,7 @@
         <ol>
           <li><a href="#what">What it is, and the one rule</a></li>
           <li><a href="#states">Three states, and nothing else</a></li>
-          <li><a href="#commands">The five commands</a></li>
+          <li><a href="#commands">The seven commands</a></li>
           <li><a href="#shape">What you get</a></li>
           <li><a href="#question">The life of a question</a></li>
           <li><a href="#who">Who decides what</a></li>
@@ -222,8 +222,8 @@
               it, it is reversible without breaking a promise to users, and no fact only the client
               holds is needed to choose it — and the topic is on neither the closed never-defaultable
               list nor the project's always-ask register, which win over all four. It is written in a
-              labeled shape such as <code>Default (standard practice — ratify on review)</code> —
-              visible, counted, reported, and vetoable by number until you ratify it.</p>
+              labeled shape such as <code>Default (standard practice — adopted 2026-08-11)</code> —
+              kept as written, visible, ledgered, and vetoable by number whenever you read it.</p>
           </div>
         </div>
         <div class="state">
@@ -252,7 +252,7 @@
         nothing records whether the content has arrived.
       </p>
 
-      <h2 id="commands"><span class="n">3</span>The five commands</h2>
+      <h2 id="commands"><span class="n">3</span>The seven commands</h2>
       <p>Roughly in the order you use them.</p>
 
       <div class="scroll">
@@ -288,6 +288,15 @@
               <td>No. It offers a review sitting once, in its closing line, and silence declines it.</td>
             </tr>
             <tr>
+              <td><code>answer</code></td>
+              <td>Explicit delegation: the author drafts defensible answers and a fresh challenger
+                checks the complete decision limits and evidence. Consequential answered choices are
+                named for your review; breached limits and grounded objections leave the row open.
+                <code>answer soft</code> permits only what your document or sources already give.</td>
+              <td>Stops at <code>Answered</code>, labelled as delegated, for your review before resolve.
+                It applies nothing and never supersedes existing text.</td>
+            </tr>
+            <tr>
               <td><code>resolve</code></td>
               <td>The one seam that writes answers. Takes questions you answered, writes each into the
                 feature it touches, removes the marker. By default a vetted answer overwrites document
@@ -302,6 +311,12 @@
               <td>Reads everything, runs ten checks, prints one screen worst-first. Every line ends in a
                 move you can make.</td>
               <td>No — and it <strong>writes nothing, ever</strong>.</td>
+            </tr>
+            <tr>
+              <td><code>charter</code></td>
+              <td>Optional project depth and review focus: idea, prototype or MVP, with topics to
+                examine closely or leave out. <code>charter off</code> removes it.</td>
+              <td>One question round, then only the charter file is written.</td>
             </tr>
           </tbody>
         </table>
@@ -548,7 +563,7 @@
           <thead><tr><th>Status</th><th>Means</th><th>Set by</th></tr></thead>
           <tbody>
             <tr><td><code>Open</code></td><td>Live and unanswered — where a generated question lands, readable from the moment it passes the gate.</td><td>a run (or you, in the UI)</td></tr>
-            <tr><td><code>Answered</code></td><td>The answer and its reasoning are written down. This move is the sign-off.</td><td><strong>you</strong> — in the UI, spoken at a sitting and transcribed verbatim as your move, or relayed verbatim from the client under your name</td></tr>
+            <tr><td><code>Answered</code></td><td>The answer and its reasoning are written down. A human move records their decision; a delegated answer carries its label and review window.</td><td><strong>you</strong> — in the UI, spoken at a sitting and transcribed verbatim as your move, or relayed verbatim from the client under your name; also a labelled delegate under an explicit <code>answer</code> invocation</td></tr>
             <tr><td><code>Applied</code></td><td>Written into the feature it touches, marker removed.</td><td><code>resolve</code> only</td></tr>
             <tr><td><code>Flagged</code></td><td>A run is finished with it and a person is not: nothing could be derived, the body changed under it, or <code>resolve soft</code> refused an overwrite. The objection is in the run log.</td><td><code>resolve</code> only</td></tr>
             <tr><td><code>Closed (not applied)</code></td><td>Answered but its home is elsewhere, or nobody will ever answer it — the reason is written in its place.</td><td><strong>you</strong></td></tr>
@@ -589,8 +604,8 @@
           <tbody>
             <tr>
               <td>Draft, grill, write sourced text, mint markers, propose questions, adopt labeled
-                defaults, and write an answer <em>you</em> vetted into the feature it touches.</td>
-              <td>Write a field a human owns, clear one, set a human's status, invent an answer, decide
+                defaults, record labelled answers under an explicit <code>answer</code> delegation, and write a vetted answer into the feature it touches.</td>
+              <td>Write a field a human owns, clear one, pretend a delegated answer was your own words, invent unsupported policy, decide
                 a question was not worth asking, or send a client packet it assembled.</td>
             </tr>
           </tbody>
@@ -604,15 +619,13 @@
         informal label for people, and no run ever touches it.
       </p>
       <p>
-        Labeled defaults are batch business: the report prints a numbered ledger and you settle it by
-        naming it back to a <code>questions</code> run in plain words — <code>ratify all</code>, or
-        <code>veto 2</code> for the one you disagree with, the number matched by the
+        Labeled defaults are kept as they are written: the report prints a numbered ledger for
+        information, nothing waits on it, and you undo any line by naming it to a
+        <code>questions</code> run in plain words — <code>drop #2</code> — the number matched by the
         line's own content. Only <code>questions</code> can execute that; <code>resolve</code> carries
-        it forward. A vetoed default becomes a marker and a question again. The fixes batch and the
-        content manifest are ratified the same way, a fix or a slot vetoed by quoting its line, and no
-        run opens a second defaults ledger while one stands unratified — new defaults join the standing
-        one, and <code>status</code> names a batch left waiting past two sittings. Until you act, every
-        line stays counted and reported; ratification is never inferred from silence.
+        it forward. A vetoed default becomes a marker and a question again. Fixes and content slots
+        are kept the same way, a fix or a slot vetoed by quoting its line. The label says
+        <em>adopted</em>, never <em>ratified</em>, so a later reader knows a machine chose it.
       </p>
 
       <h2 id="guarantees"><span class="n">7</span>What it refuses to do</h2>
@@ -662,22 +675,24 @@
         <h3>It never checks its own work by narrating a second opinion</h3>
         <p class="muted">
           Where a check must be independent, it is a genuinely separate agent with a fresh context — not
-          the same context describing a reviewer. Before claiming none can be reached it has to try
-          three routes and name them; where none works, the item is recorded <em>unverified</em>, never
-          counted clean, and the report says how many were written that way.
+          the same context describing a reviewer or a history-sharing fork. Its first real review checks
+          the native route; at most one permitted CLI fallback is tried if needed. An unavailable
+          route or failed check is reported honestly, and unfinished review is not counted clean.
         </p>
       </div>
 
       <div class="card">
         <h3>It never settles certain topics by convention</h3>
         <p class="muted">
-          A closed list in the rules is always asked, never defaulted, however obvious the convention
-          seems: which regulations apply and what they imply, pricing, credit and virtual-currency
+          A closed list in the rules is excluded from convention defaults; a question still needs
+          to affect this product: which regulations apply and what they imply, pricing, credit and virtual-currency
           mechanics and any commercial figure, final user-facing copy, contractual scope, dates and
           windows however phrased, terms the client coined, how long user-provided media is kept, and
           anything touching minors' data. Beside it sits a per-project always-ask register on the
           overview, seeded with minors' data protection and child-recording consent and with
           regulatory applicability — two entries no human removes — and widened only by a human.
+          Explicit delegated answers follow the separate limits in <code>answer.md</code>, including
+          grounded objections, labelled answers and the owner's review before resolve.
         </p>
       </div>
 
@@ -690,8 +705,7 @@
       <p>
         The document is one thing; the machinery behind it is another, and it lives in one place on
         either target: <code>wiki-{project}/blueprint/</code>, inside the project's docs repo — the
-        same wiki folder <code>eng-rulebook</code> keeps a project's profiles and audits in, beside
-        them, in a part of that repo a wiki-system recheck never writes, deletes or walks. A path you
+        project documentation folder; no companion skill is required. A path you
         name for the project wins outright; otherwise the wiki folder — two real wikis make it stop and
         ask — and only where there is no usable wiki folder does it fall back to a hidden
         <code>.blueprint/</code> beside the code. The folder is split by how durable each part is:
